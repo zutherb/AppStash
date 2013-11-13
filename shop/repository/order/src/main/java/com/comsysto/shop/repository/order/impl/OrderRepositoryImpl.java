@@ -33,7 +33,7 @@ public class OrderRepositoryImpl extends AbstractRepositoryImpl<Order> implement
 
     @Override
     public List<Order> findAll(int limit, int offset, Sort sort) {
-        Query query = Query.query(Criteria.where("_id").exists(true));
+        Query query = new Query();
         applySortAndPagination(query, limit, offset, sort);
         return mongoOperations.find(query, Order.class);
     }
