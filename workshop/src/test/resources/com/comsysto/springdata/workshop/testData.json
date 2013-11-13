@@ -1,0 +1,15 @@
+{
+    "user":
+        [
+            { "_id":"51ef78fe036466edeed040c2", "_class" : "com.comsysto.shop.repository.user.model.User", "username" : "username", "password" : "password", "firstname" : "First", "lastname" : "Last", "email" : "username@user.com", "address" : { "location" : [  0,  0 ] } }
+        ],
+
+    "order":
+    [
+        { "_class" : "com.comsysto.shop.repository.order.model.Order", "orderId" : 11111111, "orderItems" : [ 	{ 	"product" : { 	"_id" : null, 	"articleId" : "testId", 	"name" : "Test Pizza", 	"type" : "PIZZA", 	"price" : 9.99 }, 	"uuid" : "061247de-951b-4c1c-a01a-29725ed5f43d" } ], "orderDate" : {"$date":"2013-08-02T22:00:00Z"}, "deliveryAddress" : { "location" : [  0,  0 ] }, "sessionId" : "dummy", "userId" : "51ef78fe036466edeed040c2" },
+        { "_class" : "com.comsysto.shop.repository.order.model.Order", "orderId" : 22222222, "orderItems" : [ 	{ 	"product" : { 	"_id" : null, 	"articleId" : "testId", 	"name" : "Test Pizza", 	"type" : "PIZZA", 	"price" : 9.99 }, 	"uuid" : "45536ba0-0331-4fe3-a3ab-7a7fe9dd46fa" } ], "orderDate" : {"$date":"2013-08-12T22:00:00Z"}, "deliveryAddress" : { "location" : [  0,  0 ] }, "sessionId" : "dummy", "userId" : "51ef78fe036466edeed040c2" },
+        { "_class" : "com.comsysto.shop.repository.order.model.Order", "orderId" : 33333333, "orderItems" : [ 	{ 	"product" : { 	"_id" : null, 	"articleId" : "testId", 	"name" : "Test Pizza", 	"type" : "PIZZA", 	"price" : 9.99 }, 	"uuid" : "5882ed73-3cdb-4804-93f4-425595afb806" } ], "orderDate" : {"$date":"2013-08-22T22:00:00Z"}, "deliveryAddress" : { "location" : [  0,  0 ] }, "sessionId" : "dummy", "userId" : "51ef78fe036466edeed040c2" },
+        { "_class" : "com.comsysto.shop.repository.order.model.Order", "orderId" : 44444444, "orderItems" : [ 	{ 	"product" : { 	"_id" : null, 	"articleId" : "testId", 	"name" : "Test Pizza", 	"type" : "PIZZA", 	"price" : 9.99 }, 	"uuid" : "41419f33-180e-4cb6-83f1-4d7b44cbdcc1" } ], "orderDate" : {"$date":"2013-09-01T22:00:00Z"}, "deliveryAddress" : { "location" : [  0,  0 ] }, "sessionId" : "dummy", "userId" : "51ef78fe036466edeed040c2" },
+        { "_class" : "com.comsysto.shop.repository.order.model.Order", "orderId" : 55555555, "orderItems" : [ 	{ 	"product" : { 	"_id" : null, 	"articleId" : "testId", 	"name" : "Test Pizza", 	"type" : "PIZZA", 	"price" : 9.99 }, 	"uuid" : "5db445ee-298e-4b59-9573-1c29bf2fa271" } ], "orderDate" : {"$date":"2013-09-11T22:00:00Z"}, "deliveryAddress" : { "location" : [  0,  0 ] }, "sessionId" : "dummy", "userId" : "51ef78fe036466edeed040c2" }
+    ]
+}

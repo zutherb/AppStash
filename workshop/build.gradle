@@ -1,0 +1,27 @@
+
+
+idea {
+    module {
+        name='workshop'
+    }
+}
+
+sourceSets {
+    test {
+        resources {
+            srcDir 'src/test/java'
+            srcDir 'src/test/resources'
+        }
+    }
+}
+
+// skip those tests during build
+test.onlyIf { false }
+
+
+dependencies {
+    // includes everything via transitive dependencies
+    compile project(':shop:ui')
+
+    testCompile testDeps
+}

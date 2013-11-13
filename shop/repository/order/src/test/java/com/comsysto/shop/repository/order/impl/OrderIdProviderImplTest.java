@@ -1,0 +1,31 @@
+package com.comsysto.shop.repository.order.impl;
+
+import com.comsysto.shop.repository.order.api.OrderIdProvider;
+import org.junit.Ignore;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
+
+import static junit.framework.Assert.assertEquals;
+
+/**
+ * @author zutherb
+ */
+@ActiveProfiles("test")
+@ContextConfiguration(locations = "classpath:com/comsysto/shop/repository/order/spring-context.xml")
+public class OrderIdProviderImplTest extends AbstractJUnit4SpringContextTests {
+
+    @Autowired
+    private OrderIdProvider orderIdProvider;
+
+    @Test
+    @Ignore // TODO this currently fails due to a bug in fongo, will hopefully be fixed soon
+    public void testNextVal() throws Exception {
+        Long orderId = orderIdProvider.nextVal();
+        Long nextOrderId = orderIdProvider.nextVal();
+        Long expected = orderId + 1;
+        assertEquals(expected , nextOrderId);
+    }
+}

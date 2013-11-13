@@ -1,0 +1,24 @@
+
+
+idea {
+    module {
+        name='product-service'
+    }
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDir 'src/main/java'
+            srcDir 'src/main/resources'
+        }
+    }
+}
+
+
+dependencies {
+    compile project(':common:service')
+    compile project(':shop:repository:product')
+
+    testCompile testDeps
+}

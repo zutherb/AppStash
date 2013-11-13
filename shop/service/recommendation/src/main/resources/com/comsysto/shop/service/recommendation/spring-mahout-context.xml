@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+
+    <context:component-scan base-package="com.comsysto.shop.service.recommendation"/>
+
+    <import resource="classpath:com/comsysto/shop/service/product/spring-context.xml"/>
+
+    <!-- Mahout Model -->
+    <bean id="dataModel" class="org.apache.mahout.cf.taste.impl.model.mongodb.MongoDBDataModel">
+        <constructor-arg name="host" value="${mongo.host}"/>
+        <constructor-arg name="port" value="${mongo.port}"/>
+        <constructor-arg name="database" value="${mongo.db}"/>
+        <constructor-arg name="collection" value="recommendation.preference"/>
+        <constructor-arg name="mappingCollection" value="recommendation.mapping"/>
+        <constructor-arg name="manage" value="${mahout.mongodatamodel.manage}"/>
+        <constructor-arg name="finalRemove" value="${mahout.mongodatamodel.finalRemove}"/>
+        <constructor-arg name="format">
+            <null/>
+        </constructor-arg>
+        <constructor-arg name="userIDField" value="userId"/>
+        <constructor-arg name="itemIDField" value="articleId"/>
+        <constructor-arg name="preferenceField" value="preference"/>
+    </bean>
+
+    <!-- recommenders -->
+
+    <bean id="itemBasedEuclideanDistance"
+          class="org.apache.mahout.cf.taste.impl.recommender.GenericItemBasedRecommender">
+        <constructor-arg name="dataModel" ref="dataModel"/>
+        <constructor-arg name="similarity" ref="euclideanDistanceSimilarity"/>
+    </bean>
+    <bean id="userBasedEuclideanDistance"
+          class="org.apache.mahout.cf.taste.impl.recommender.GenericUserBasedRecommender">
+        <constructor-arg name="dataModel" ref="dataModel"/>
+        <constructor-arg name="neighborhood" ref="nearestNUserNeighborhoodEuclideanDistance"/>
+        <constructor-arg name="similarity" ref="euclideanDistanceSimilarity"/>
+    </bean>
+    <bean id="nearestNUserNeighborhoodEuclideanDistance"
+          class="org.apache.mahout.cf.taste.impl.neighborhood.NearestNUserNeighborhood">
+        <constructor-arg name="n" value="${mahout.mongodatamodel.nearestNUserNeighborhood.n}"/>
+        <constructor-arg name="userSimilarity" ref="euclideanDistanceSimilarity"/>
+        <constructor-arg name="dataModel" ref="dataModel"/>
+    </bean>
+    <bean id="euclideanDistanceSimilarity"
+          class="org.apache.mahout.cf.taste.impl.similarity.EuclideanDistanceSimilarity">
+        <constructor-arg name="dataModel" ref="dataModel"/>
+    </bean>
+</beans>

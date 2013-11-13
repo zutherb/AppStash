@@ -1,0 +1,35 @@
+
+
+idea {
+    module {
+        name='order-service'
+    }
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDir 'src/main/java'
+            srcDir 'src/main/resources'
+        }
+    }
+    test {
+        resources {
+            srcDir 'src/test/java'
+        }
+    }
+}
+
+
+dependencies {
+    compile project(':common:service')
+    compile project(':shop:repository:order')
+    compile project(':shop:service:basket')
+    compile project(':shop:service:product')
+    compile project(':shop:service:user')
+    // required for automatic supplier generation
+    compile project(':dataloader')
+    //
+
+    testCompile testDeps
+}

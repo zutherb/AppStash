@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd ">
+<wicket:head/>
+<body>
+<wicket:panel>
+    <div class="modal" wicket:id="modalContainer">
+        <form wicket:id="loginForm">
+            <div class="modal-header">
+                <a class="close" data-dismiss="modal">×</a>
+
+                <h3>Sign in</h3>
+            </div>
+            <div class="modal-body" wicket:id="loginPanel"/>
+            <div class="modal-footer">
+                <a href="#" class="btn" wicket:id="close">Close</a>
+                <a href="#" class="btn btn-primary" wicket:id="login">Sign in</a>
+            </div>
+        </form>
+    </div>
+    <script type="text/javascript" wicket:id="modalContainerJS"/>
+</wicket:panel>
+</body>
+</html>

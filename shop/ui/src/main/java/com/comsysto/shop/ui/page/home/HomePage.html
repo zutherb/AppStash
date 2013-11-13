@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org/dtds.data/wicket-xhtml1.4-strict.dtd">
+<head>
+    <title>Bestellungen</title>
+</head>
+<body>
+<wicket:extend>
+    <div class="row">
+        <div class="span8">
+            <div wicket:id="topSellerProductsContainer"></div>
+            <div wicket:id="youMayAlsoLikeProductsContainer"></div>
+        </div>
+        <style>
+            .basket .wicket-ajax-indicator {
+                position: absolute;
+                right: -25px;
+                top: 3px;
+            }
+        </style>
+        <div class="span4 basket" wicket:id="basketPanel"></div>
+    </div>
+</wicket:extend>
+</body>
+</html>

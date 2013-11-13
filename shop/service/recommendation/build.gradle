@@ -1,0 +1,26 @@
+
+
+idea {
+    module {
+        name='recommendation-service'
+    }
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDir 'src/main/java'
+            srcDir 'src/main/resources'
+        }
+    }
+}
+
+
+dependencies {
+    compile mahoutDeps
+    compile project(':common:service')
+    compile project(':shop:service:authentication')
+    compile project(':shop:service:product')
+
+    testCompile testDeps
+}

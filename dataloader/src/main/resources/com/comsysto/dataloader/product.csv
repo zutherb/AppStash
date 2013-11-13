@@ -1,0 +1,32 @@
+100;PIZZA;Margherita;our famous tomato sauce and genuine mozzarella;3.80;vegetarian
+101;PIZZA;Funghi;fresh mushrooms give it that special aroma;4.50;vegan
+102;PIZZA;Pepperoni;our special salami, hot pepperoni and black olives;4.90;carnivore
+103;PIZZA;Milano;milan pepperoni, fresh tomato, genuine mozzarella and rocket;6.50;carnivore
+104;PIZZA;Capricciosa;pepperoni, fresh mushrooms, ham, kalamata style olives and genuine mozzarella;5.70;carnivore
+105;PIZZA;Vegetaria;light and sunny: fresh mushrooms, colorful peppers mix and fresh tomato slices;4.90;vegetarian
+106;PIZZA;Tuna;the clear choice: tuna with red onions and our famous tomato sauce;5.70;fish
+107;PIZZA;Cheese;for the ultimate taste experience: feta-style cheese, cheddar, gouda and mozzarella;6.90;vegetarian
+200;PASTA;Cheese Ravioli;red sauce, ravioli and mozzarella cheese;4.50;vegetarian
+201;PASTA;Fresh Fettuccine;alfredo sauce, fettuccine, roasted chicken, roasted red pepper, fresh garlic and mozzarella;5.50;carnivore
+202;PASTA;Rigatoni Caprese;diced tomatoes, olive oil, garlic, fresh basil and melted mozzarella;5.50;vegetarian
+203;PASTA;Lasagne;served with marinara sauce;6.00;carnivore
+204;PASTA;Spaghetti with Clams;clam sauce with garlic and fresh clam broth;6.50;fish
+205;PASTA;Penne Vodka;pink sauce with a touch of vodka, prosciutto and onions;7.00;carnivore
+206;PASTA;Farfalle Campanella;bow tie shaped pasta with fresh tomatoes, eggplant topped with basil and diced mozzarella;6.00;vegetarian
+207;PASTA;Shrimp Spaghetti;battered shrimp with lemon white wine sauce over spaghetti;6.50;fish
+300;SALAD;Caesar Salad;crisp romaine topped with creamy caesar dressing, parmesan and croutons;5.50;vegetarian
+301;SALAD;Chef Salad;crisp romaine, thinly sliced ham and turkey, pepper jack, shredded carrots, tomatoe slices, olives, sunflower seeds topped with sesame oriental dressing;6.50;carnivore
+302;SALAD;House Salad;crisp romaine, pepper jack, olives, shredded carrots, tomatoe slices and sunflower seeds;5.50;vegan
+303;SALAD;Bangkok Thai Salad;crisp romaine, shredded carrots, grilled chicken breast, crunch noodles, water chestnuts, sunflower seeds topped with sesame oriental dressing;6.50;carnivore
+304;SALAD;Apple-Walnut Tuna Salad;imported Italian light tuna, apple slices, walnuts, crisp romaine, shredded carrots, tomatoe slices, black olives, sunflower seeds and croutons;6.50;fish
+305;SALAD;Strawberry Shrimp Salad;Grilled shrimps, sliced strawberries, cubed fresh cottage cheese, green onions, chopped romaine heart, shredded carrots, sundried tomatoes, and toasted pecans tossed with balsamic-honey mustard dressing;6.50;fish
+306;SALAD;All Seasons Salad;crisp romaine tossed with artichoke hearts, tomato, olives, grilled red onions, toasted pine nuts and balsamic vinaigrette, topped with crumbled feta cheese and served with bread and butter;6.00;vegetarian
+307;SALAD;Apple Roast Beef Salad;thinly sliced roast beef, spring mix, toasted almond slices, apple slices, mandarin orange, and shredded carrots tossed with sesame soy blended with Italian dressing;6.40;carnivore
+400;BEVERAGE;Coca Cola 0.33l;The authentic cola sensation that is a refreshing part of sharing life's enjoyable moments.;1.50;soda
+401;BEVERAGE;Fanta Mango 0.33l;Exuberant tropical fun to release you from the everyday mundane.;1.50;soda
+402;BEVERAGE;Sprite Zero 0.33l;Unique Lymon (lemon-lime) flavor, clear, clean and crisp without caffeine.;1.50;soda
+403;BEVERAGE;Augustiner Hell 0.5l;A particularily mild, sparkling, long stored beer, refreshing and easily digestible at the same time. Ingredients: water, barley malt, hops, ALC. 5.2% vol.;2.10;beer
+404;BEVERAGE;Tegern Seer Hell 0.5l;This slightly dry and lean pale lager beer has a clean and crisp taste.;2.10;beer
+405;BEVERAGE;Orange Juice 0.33l;Freshly sqeezed orange juice without preservative.;2.80;juice
+406;BEVERAGE;Apple Juice 0.33l;Freshly sqeezed apple juice without preservative.;2.80;juice
+407;BEVERAGE;Evian 0.5l;Fresh, crisp tasting water.;1.00;water

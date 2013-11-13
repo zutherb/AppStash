@@ -1,0 +1,32 @@
+
+
+idea {
+    module {
+        name='authentication-service'
+    }
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDir 'src/main/java'
+            srcDir 'src/main/resources'
+        }
+    }
+    test {
+        resources {
+            srcDir 'src/test/java'
+        }
+    }
+}
+
+
+dependencies {
+    compile project(':common:service')
+    compile project(':shop:service:user')
+    // required for fake authentication
+    compile project(':dataloader')
+    //
+
+    testCompile testDeps
+}

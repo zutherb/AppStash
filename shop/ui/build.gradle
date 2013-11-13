@@ -1,0 +1,53 @@
+apply plugin: 'war'
+apply plugin: 'jetty'
+
+
+idea {
+    module {
+        name = 'ui'
+    }
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDir 'src/main/resources'
+            srcDir 'src/main/webapp'
+            srcDir 'src/main/java'
+        }
+    }
+    test {
+        resources {
+            srcDir 'src/test/resources'
+            srcDir 'src/test/java'
+        }
+    }
+}
+
+dependencies {
+    compile wicketDeps
+    compile webAppDeps
+
+    compile project(':shop:service:authentication')
+    compile project(':shop:service:basket')
+    compile project(':shop:service:checkout')
+    compile project(':shop:service:order')
+    compile project(':shop:service:product')
+    compile project(':shop:service:recommendation')
+    compile project(':shop:service:user')
+    // for generating sample data automatically on startup
+    compile project(':dataloader')
+    //
+
+    testCompile jettyDeps
+    testCompile testDeps
+}
+
+[jettyRun, jettyRunWar]*.with {
+    httpPort = 8080
+    contextPath = "pizza"
+}
+
+jettyRun.doFirst {
+    System.setProperty("spring.profiles.active", "default")
+}

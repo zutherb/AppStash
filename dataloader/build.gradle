@@ -1,0 +1,31 @@
+
+
+idea {
+    module {
+        name='dataloader'
+    }
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDir 'src/main/resources'
+            srcDir 'src/main/java'
+        }
+    }
+    test {
+        resources {
+            srcDir 'src/test/java'
+        }
+    }
+}
+
+
+dependencies {
+    compile project(':common:util')
+    compile project(':shop:repository:product')
+    compile project(':shop:repository:order')
+    compile project(':shop:repository:user')
+
+    testCompile testDeps
+}

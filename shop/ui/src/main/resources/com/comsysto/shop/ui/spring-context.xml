@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd http://www.springframework.org/schema/cache http://www.springframework.org/schema/cache/spring-cache.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <context:component-scan base-package="com.comsysto.shop.ui"/>
+
+
+    <security:http auto-config="true">
+        <security:anonymous enabled="false"/>
+        <security:http-basic/>
+    </security:http>
+
+    <import resource="classpath:com/comsysto/shop/service/authentication/spring-context.xml"/>
+    <import resource="classpath:com/comsysto/shop/service/basket/spring-context.xml"/>
+    <import resource="classpath:com/comsysto/shop/service/checkout/spring-context.xml"/>
+    <import resource="classpath:com/comsysto/shop/service/order/spring-context.xml"/>
+    <import resource="classpath:com/comsysto/shop/service/product/spring-context.xml"/>
+    <import resource="classpath:com/comsysto/shop/service/recommendation/spring-context.xml"/>
+
+    <import resource="classpath:com/comsysto/dataloader/spring-context.xml"/>
+
+    <import resource="spring-profile-context.xml"/>
+
+    <bean id="dozerMapper" class="org.dozer.DozerBeanMapper">
+        <property name="mappingFiles">
+            <list>
+                <value>com/comsysto/shop/service/user/dozer-mapping.xml</value>
+                <value>com/comsysto/shop/service/checkout/dozer-mapping.xml</value>
+                <value>com/comsysto/shop/service/order/dozer-mapping.xml</value>
+                <value>com/comsysto/shop/service/product/dozer-mapping.xml</value>
+            </list>
+        </property>
+    </bean>
+</beans>
