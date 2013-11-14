@@ -1,7 +1,6 @@
 package com.comsysto.shop.repository.order.impl;
 
 import com.comsysto.shop.repository.order.api.OrderIdProvider;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
@@ -21,7 +20,6 @@ public class OrderIdProviderImplTest extends AbstractJUnit4SpringContextTests {
     private OrderIdProvider orderIdProvider;
 
     @Test
-    @Ignore // TODO this currently fails due to a bug in fongo, will hopefully be fixed soon
     public void testNextVal() throws Exception {
         Long orderId = orderIdProvider.nextVal();
         Long nextOrderId = orderIdProvider.nextVal();
