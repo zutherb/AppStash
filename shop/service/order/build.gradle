@@ -28,7 +28,7 @@ dependencies {
     compile project(':shop:service:product')
     compile project(':shop:service:user')
     // required for automatic supplier generation
-    compile project(':dataloader')
+    compile project(':common:dataloader')
     //
 
     testCompile testDeps

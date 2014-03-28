@@ -104,11 +104,6 @@ subprojects {
             "org.mongodb:bson:$mongodbDriverVersion",
     ]
 
-    ext.mahoutDeps = [
-            "org.apache.mahout:mahout-core:$mahoutVersion",
-            "org.apache.mahout:mahout-integration:$mahoutVersion"
-    ]
-
     ext.springDeps = [
             "org.springframework:spring-core:$springVersion",
             "org.springframework.security:spring-security-core:$springSecurityVersion",
@@ -145,5 +140,5 @@ subprojects {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.6'
+    gradleVersion = '1.10'
 }

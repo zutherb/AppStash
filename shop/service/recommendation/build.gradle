@@ -17,7 +17,6 @@ sourceSets {
 
 
 dependencies {
-    compile mahoutDeps
     compile project(':common:service')
     compile project(':shop:service:authentication')
     compile project(':shop:service:product')

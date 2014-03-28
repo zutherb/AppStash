@@ -16,7 +16,7 @@ import java.util.List;
 
 /**
  * Just a dummy implementation.
- *
+ * <p/>
  * User: christian.kroemer@comsysto.com
  * Date: 6/21/13
  * Time: 3:35 PM
@@ -26,24 +26,18 @@ public class RecommendationServiceImpl implements RecommendationService {
 
     private AuthenticationService authenticationService;
     private ProductService productService;
-    private MahoutRecommender mahoutRecommender;
 
     @Autowired
     public RecommendationServiceImpl(@Qualifier("authenticationService") AuthenticationService authenticationService,
-                                     @Qualifier("productService") ProductService productService,
-                                     @Qualifier("mahoutRecommender") MahoutRecommender mahoutRecommender) {
+                                     @Qualifier("productService") ProductService productService) {
         this.authenticationService = authenticationService;
         this.productService = productService;
-        this.mahoutRecommender = mahoutRecommender;
     }
 
 
     @Override
     public List<ProductInfo> getCollaborativeFilteringRecommendations(int limit) {
-        if (authenticationService.getAuthenticatedUserInfo() == null) {
-            return Collections.emptyList();
-        }
-        return mahoutRecommender.getRecommendations(authenticationService.getAuthenticatedUserInfo().getId(), limit);
+        return getRandomlyChosenProducts(limit);
     }
 
     @Override

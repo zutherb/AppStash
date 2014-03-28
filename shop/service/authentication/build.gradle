@@ -25,7 +25,7 @@ dependencies {
     compile project(':common:service')
     compile project(':shop:service:user')
     // required for fake authentication
-    compile project(':dataloader')
+    compile project(':common:dataloader')
     //
 
     testCompile testDeps

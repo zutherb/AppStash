@@ -36,7 +36,7 @@ dependencies {
     compile project(':shop:service:recommendation')
     compile project(':shop:service:user')
     // for generating sample data automatically on startup
-    compile project(':dataloader')
+    compile project(':common:dataloader')
     //
 
     testCompile jettyDeps

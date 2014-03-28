@@ -1,8 +1,7 @@
 include 'common:util'
 include 'common:repository'
 include 'common:service'
-
-include 'dataloader'
+include 'common:dataloader'
 
 include 'shop:repository:order'
 include 'shop:repository:product'
@@ -15,5 +14,3 @@ include 'shop:service:product'
 include 'shop:service:recommendation'
 include 'shop:service:user'
 include 'shop:ui'
-
-include 'workshop'
