@@ -6,6 +6,7 @@ logs/
 .idea/
 .history/
 .metadata/
+.sonar/
 
 rebel.xml
 
@@ -13,6 +14,7 @@ out/
 *.iml
 *.ipr
 *.iws
+*.log
 
 rebel.xml
 

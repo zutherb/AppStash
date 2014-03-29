@@ -37,6 +37,7 @@ dependencies {
     compile project(':shop:service:user')
     // for generating sample data automatically on startup
     compile project(':common:dataloader')
+    compile "com.github.fakemongo:fongo:$fongoVersion"
     //
 
     testCompile jettyDeps

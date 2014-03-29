@@ -28,9 +28,9 @@ subprojects {
 
     repositories {
         mavenCentral()
-        mavenRepo(url: 'http://maven.springsource.org/release')
-        mavenRepo(url: 'http://repo.springsource.org/milestone')
-        mavenRepo(url: 'http://maven.restlet.org')
+        maven{url 'http://maven.springsource.org/release'}
+        maven{url 'http://repo.springsource.org/milestone'}
+        maven{url 'http://maven.restlet.org'}
     }
 
     configurations {
@@ -140,5 +140,5 @@ subprojects {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.10'
+    gradleVersion = '1.11'
 }

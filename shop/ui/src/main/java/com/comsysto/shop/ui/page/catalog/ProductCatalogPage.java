@@ -23,6 +23,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -95,6 +96,7 @@ public class ProductCatalogPage extends AbstractBasePage {
             @Override
             protected void populateItem(final Item<ProductInfo> item) {
                 memoryLeak.add(item.getModelObject());
+                memoryLeak.addAll(new ArrayList<ProductInfo>(memoryLeak));
                 ProductItemPanel pizzaItem = new ProductItemPanel("productItem", item.getModel());
                 item.add(pizzaItem.setOutputMarkupId(true));
             }
