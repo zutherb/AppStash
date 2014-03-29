@@ -49,7 +49,7 @@ public class LoginModalPanel extends AbstractPizzaShopBasePanel implements Modal
     }
 
     private Component loginForm() {
-        Form<Void> form = new Form<Void>("loginForm");
+        Form<Void> form = new Form<>("loginForm");
         LoginPanel loginPanel = loginPanel();
         form.add(loginPanel);
 

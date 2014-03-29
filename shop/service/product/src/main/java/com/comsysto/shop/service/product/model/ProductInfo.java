@@ -16,10 +16,11 @@ public class ProductInfo implements Serializable, Comparable<ProductInfo> {
     private ProductType type;
     private double price;
 
-    private ProductInfo(){}
+    private ProductInfo() {
+    }
 
     public ProductInfo(String id, String articleId, String name, String urlname, String description, ProductType type,
-                     double price, String category ) {
+                       double price, String category) {
         this.id = id;
         this.articleId = articleId;
         this.name = name;
@@ -27,7 +28,7 @@ public class ProductInfo implements Serializable, Comparable<ProductInfo> {
         this.description = description;
         this.type = type;
         this.price = price;
-        this.category=category;
+        this.category = category;
     }
 
     public String getId() {
@@ -53,6 +54,7 @@ public class ProductInfo implements Serializable, Comparable<ProductInfo> {
     public double getPrice() {
         return price;
     }
+
     public String getCategory() {
         return category;
     }
@@ -64,7 +66,7 @@ public class ProductInfo implements Serializable, Comparable<ProductInfo> {
 
         ProductInfo productInfo = (ProductInfo) o;
 
-        if (articleId != null ? !articleId.equals( productInfo.articleId ) : productInfo.articleId != null) return false;
+        if (articleId != null ? !articleId.equals(productInfo.articleId) : productInfo.articleId != null) return false;
 
         return true;
     }
@@ -80,6 +82,6 @@ public class ProductInfo implements Serializable, Comparable<ProductInfo> {
 
     @Override
     public int compareTo(ProductInfo productInfo) {
-        return this.getName().compareTo( productInfo.getName( ));
+        return this.getName().compareTo(productInfo.getName());
     }
 }

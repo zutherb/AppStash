@@ -33,7 +33,7 @@ public class CheckoutImpl implements Checkout {
 
     @Override
     public List<OrderItemInfo> getOrderItemInfos() {
-        ArrayList<OrderItemInfo> orderItemInfos = new ArrayList<OrderItemInfo>();
+        ArrayList<OrderItemInfo> orderItemInfos = new ArrayList<>();
         for (BasketItem basketItem : basket.getAll()) {
             orderItemInfos.add(mapper.map(basketItem, OrderItemInfo.class));
         }

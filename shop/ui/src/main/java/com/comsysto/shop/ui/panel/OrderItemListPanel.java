@@ -26,7 +26,7 @@ public class OrderItemListPanel extends Panel {
     }
 
     private Component totalSum() {
-        return new Label("totalSum", new PriceModel(new PropertyModel<Number>(getDefaultModel(), "totalSum")));
+        return new Label("totalSum", new PriceModel(new PropertyModel<>(getDefaultModel(), "totalSum")));
     }
 
     private Component orderItemList() {
@@ -39,7 +39,7 @@ public class OrderItemListPanel extends Panel {
                 orderItem.add(new Label("orderItemCounter", Model.of(orderItemCounter++)));
                 orderItem.add(new Label("product", new PropertyModel<String>(orderItem.getModel(), "product.name")));
                 orderItem.add(new Label("description", new PropertyModel<String>(orderItem.getModel(), "product.description")));
-                orderItem.add(new Label("totalSum", new PriceModel(new PropertyModel<Number>(orderItem.getModel(), "totalSum"))));
+                orderItem.add(new Label("totalSum", new PriceModel(new PropertyModel<>(orderItem.getModel(), "totalSum"))));
             }
 
             @Override

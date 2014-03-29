@@ -57,7 +57,7 @@ public class LoginPanel extends AbstractPizzaShopBasePanel {
     }
 
     private Component loginForm() {
-        Form<LoginInfo> loginForm = new Form<LoginInfo>("loginForm");
+        Form<LoginInfo> loginForm = new Form<>("loginForm");
         loginForm.add(usernameField());
         loginForm.add(passwordField());
         loginForm.add(submitLink());
@@ -93,11 +93,11 @@ public class LoginPanel extends AbstractPizzaShopBasePanel {
     }
 
     private IModel<String> passwordModel() {
-        return new PropertyModel<String>(loginInfoModel, "password");
+        return new PropertyModel<>(loginInfoModel, "password");
     }
 
     private TextField<String> usernameField() {
-        TextField<String> usernameField = new TextField<String>("username", usernameModel());
+        TextField<String> usernameField = new TextField<>("username", usernameModel());
         usernameField.add(new IValidator<String>() {
             private static final long serialVersionUID = 1315522649098034068L;
 
@@ -116,7 +116,7 @@ public class LoginPanel extends AbstractPizzaShopBasePanel {
     }
 
     private PropertyModel<String> usernameModel() {
-        return new PropertyModel<String>(loginInfoModel, "username");
+        return new PropertyModel<>(loginInfoModel, "username");
     }
 
     //HOOK METHOD

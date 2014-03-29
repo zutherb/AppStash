@@ -58,7 +58,7 @@ public class OrderInfo implements Serializable {
 
     public List<OrderItemInfo> getOrderItems() {
         if (orderItems == null) {
-            orderItems = new ArrayList<OrderItemInfo>();
+            orderItems = new ArrayList<>();
         }
         return Collections.unmodifiableList(orderItems);
     }

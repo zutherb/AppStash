@@ -61,7 +61,7 @@ public class UserDBTest extends AbstractJUnit4SpringContextTests {
     }
 
     private static User createSampleUser(String username) {
-        User user = new User(username, "John", "Smith", "securepw", new Address("", "", "", ""), Collections.EMPTY_SET);
+        User user = new User(username, "John", "Smith", "securepw", new Address("", "", "", ""), Collections.emptySet());
         user.setEmail("username" + new Random().nextInt(1000) + "@gmail.com");
         return user;
     }

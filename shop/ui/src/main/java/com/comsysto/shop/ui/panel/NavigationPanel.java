@@ -12,7 +12,6 @@ import com.comsysto.shop.ui.navigation.EnumProductTypeNavigationItem;
 import com.comsysto.shop.ui.panel.login.LoginInfoPanel;
 import com.comsysto.shop.ui.panel.login.LoginModalPanel;
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.collections.Predicate;
 import org.apache.commons.lang.StringUtils;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
@@ -117,13 +116,8 @@ public class NavigationPanel extends Panel {
 
             @Override
             public List<NavigationGroup> getObject() {
-                List<NavigationGroup> navigationGroups = new LinkedList<NavigationGroup>(navigationProvider.getNavigation().getNavigationGroups());
-                CollectionUtils.filter(navigationGroups, new Predicate() {
-                    @Override
-                    public boolean evaluate(Object object) {
-                        return object instanceof NavigationGroup && !"main".equals(((NavigationGroup) object).getName());
-                    }
-                });
+                List<NavigationGroup> navigationGroups = new LinkedList<>(navigationProvider.getNavigation().getNavigationGroups());
+                CollectionUtils.filter(navigationGroups, object -> object instanceof NavigationGroup && !"main".equals(((NavigationGroup) object).getName()));
                 return navigationGroups;
             }
         };
@@ -141,7 +135,7 @@ public class NavigationPanel extends Panel {
             protected void populateItem(ListItem<NavigationEntry> listItem) {
                 WebMarkupContainer item = new WebMarkupContainer("item");
                 NavigationEntry navigationEntry = listItem.getModelObject();
-                BookmarkablePageLink<? extends Page> pageLink = new BookmarkablePageLink<Page>("link",
+                BookmarkablePageLink<? extends Page> pageLink = new BookmarkablePageLink<>("link",
                         navigationEntry.getPageClass(), navigationEntry.getPageParameters());
 
                 pageLink.add(new Label("name", Model.of(navigationEntry.getName())));

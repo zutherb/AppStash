@@ -71,7 +71,7 @@ public class OrderListPanel extends AbstractPizzaShopBasePanel {
     }
 
     private Component dateForm() {
-        Form<Void> form = new Form<Void>("dateForm");
+        Form<Void> form = new Form<>("dateForm");
         form.add(createDatePicker("fromDate", fromDateModel));
         form.add(createDatePicker("toDate", toDateModel));
         return form;
@@ -120,20 +120,20 @@ public class OrderListPanel extends AbstractPizzaShopBasePanel {
             }
         };
 
-        dataProvider.setSort(new SortParam<String>("orderDate", false));
+        dataProvider.setSort(new SortParam<>("orderDate", false));
 
-        List<IColumn<OrderInfo, String>> columns = new ArrayList<IColumn<OrderInfo, String>>(4);
-        columns.add(new PropertyColumn<OrderInfo, String>(new Model<String>("Order ID"), "orderId", "orderId"));
-        columns.add(new PropertyColumn<OrderInfo, String>(new Model<String>("Date"), "orderDate", "orderDate"));
-        columns.add(new TextFilteredPropertyColumn<OrderInfo, OrderInfo, String>(new Model<String>("Customer"), "user.username"));
-        columns.add(new AbstractColumn<OrderInfo, String>(new Model<String>("Sum")) {
+        List<IColumn<OrderInfo, String>> columns = new ArrayList<>(4);
+        columns.add(new PropertyColumn<>(new Model<>("Order ID"), "orderId", "orderId"));
+        columns.add(new PropertyColumn<>(new Model<>("Date"), "orderDate", "orderDate"));
+        columns.add(new TextFilteredPropertyColumn<OrderInfo, OrderInfo, String>(new Model<>("Customer"), "user.username"));
+        columns.add(new AbstractColumn<OrderInfo, String>(new Model<>("Sum")) {
             @Override
             public void populateItem(Item<ICellPopulator<OrderInfo>> cellItem, String componentId, IModel<OrderInfo> rowModel) {
                 cellItem.add(formattedValueLabel(componentId, rowModel.getObject().getTotalSum()));
             }
         });
 
-        return new DefaultDataTable<OrderInfo, String>("orderList", columns, dataProvider, 10);
+        return new DefaultDataTable<>("orderList", columns, dataProvider, 10);
     }
 
     private Label formattedValueLabel(String id, double number) {

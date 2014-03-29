@@ -2,7 +2,6 @@ package com.comsysto.shop.ui.page.catalog;
 
 
 import com.comsysto.shop.repository.product.model.ProductType;
-import com.comsysto.shop.service.basket.api.Basket;
 import com.comsysto.shop.service.product.api.ProductService;
 import com.comsysto.shop.service.product.model.ProductInfo;
 import com.comsysto.shop.ui.navigation.EnumProductTypeNavigationItem;
@@ -22,8 +21,6 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -35,15 +32,9 @@ public class ProductCatalogPage extends AbstractBasePage {
     @SpringBean(name = "productService")
     private ProductService productService;
 
-    @SpringBean(name = "basket")
-    private Basket basket;
-
     private IModel<ProductType> productTypeModel;
     private IModel<List<ProductInfo>> productListModel;
     private Component basketPanel;
-
-    private static List<ProductInfo> memoryLeak = new ArrayList<ProductInfo>();
-
 
     public ProductCatalogPage(PageParameters pageParameters) {
         super(pageParameters);
@@ -95,8 +86,6 @@ public class ProductCatalogPage extends AbstractBasePage {
 
             @Override
             protected void populateItem(final Item<ProductInfo> item) {
-                memoryLeak.add(item.getModelObject());
-                memoryLeak.addAll(new ArrayList<ProductInfo>(memoryLeak));
                 ProductItemPanel pizzaItem = new ProductItemPanel("productItem", item.getModel());
                 item.add(pizzaItem.setOutputMarkupId(true));
             }

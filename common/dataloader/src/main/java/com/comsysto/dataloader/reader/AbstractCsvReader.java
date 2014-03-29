@@ -28,7 +28,7 @@ public abstract class AbstractCsvReader<T> {
         InputStreamReader ioReader = new InputStreamReader(classPathResource.getInputStream());
         CSVReader reader = new CSVReader(ioReader, ';');
 
-        ColumnPositionMappingStrategy<T> strat = new ColumnPositionMappingStrategy<T>();
+        ColumnPositionMappingStrategy<T> strat = new ColumnPositionMappingStrategy<>();
         strat.setType(getDestinationClass());
         strat.setColumnMapping(getColumnMapping());
         CsvToBean<T> csv = getParser();
@@ -56,7 +56,7 @@ public abstract class AbstractCsvReader<T> {
                             if( StringUtils.isBlank( getAsText( ))) {
                                 return null;
                             }
-                            Set<String> result = new HashSet<String>();
+                            Set<String> result = new HashSet<>();
                             CollectionUtils.addAll( result, StringUtils.split( getAsText(), "," ) );
                             return result;
                         }

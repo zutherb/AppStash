@@ -180,11 +180,11 @@ public class CheckoutPage extends AbstractBasePage {
         IModel<List<ProductInfo>> productListModel = !showFrequentlyBoughtWithPanel()
                 ? emptyListModel() : productListModel(orderItemInfos);
         return new RecommendationItemListPanel("frequentlyBoughtWithProducts", "FREQUENTLY_BOUGHT",
-                new Model<String>("Frequently bought with"), productListModel);
+                new Model<>("Frequently bought with"), productListModel);
     }
 
     private IModel<List<ProductInfo>> emptyListModel() {
-        return new ListModel<ProductInfo>(Collections.<ProductInfo>emptyList());
+        return new ListModel<>(Collections.<ProductInfo>emptyList());
     }
 
     private LoadableDetachableModel<List<ProductInfo>> productListModel(final List<OrderItemInfo> orderItemInfos) {

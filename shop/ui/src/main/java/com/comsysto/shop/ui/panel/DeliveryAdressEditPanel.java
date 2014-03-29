@@ -24,12 +24,12 @@ public class DeliveryAdressEditPanel extends AbstractPizzaShopBasePanel {
     }
 
     private Component deliveryAdressEditForm() {
-        Form<OrderInfo> deliveryAdressEditForm = new Form<OrderInfo>("deliveryAdressEditForm");
-        deliveryAdressEditForm.add(new TextField<String>("firstname", new PropertyModel<String>(orderModel, "deliveryAddress.firstname")).setRequired(true));
-        deliveryAdressEditForm.add(new TextField<String>("lastname", new PropertyModel<String>(orderModel, "deliveryAddress.lastname")).setRequired(true));
-        deliveryAdressEditForm.add(new TextField<String>("street", new PropertyModel<String>(orderModel, "deliveryAddress.street")).setRequired(true));
-        deliveryAdressEditForm.add(new TextField<String>("zip", new PropertyModel<String>(orderModel, "deliveryAddress.zip")).setRequired(true));
-        deliveryAdressEditForm.add(new TextField<String>("city", new PropertyModel<String>(orderModel, "deliveryAddress.city")).setRequired(true));
+        Form<OrderInfo> deliveryAdressEditForm = new Form<>("deliveryAdressEditForm");
+        deliveryAdressEditForm.add(new TextField<>("firstname", new PropertyModel<>(orderModel, "deliveryAddress.firstname")).setRequired(true));
+        deliveryAdressEditForm.add(new TextField<>("lastname", new PropertyModel<>(orderModel, "deliveryAddress.lastname")).setRequired(true));
+        deliveryAdressEditForm.add(new TextField<>("street", new PropertyModel<>(orderModel, "deliveryAddress.street")).setRequired(true));
+        deliveryAdressEditForm.add(new TextField<>("zip", new PropertyModel<>(orderModel, "deliveryAddress.zip")).setRequired(true));
+        deliveryAdressEditForm.add(new TextField<>("city", new PropertyModel<>(orderModel, "deliveryAddress.city")).setRequired(true));
         deliveryAdressEditForm.add(new SubmitLink("deliveryAdressEditFormSubmit") {
             private static final long serialVersionUID = 8821619700889289116L;
 

@@ -3,8 +3,8 @@ package com.comsysto.common.service;
 import com.comsysto.common.repository.AbstractRepository;
 import org.dozer.Mapper;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author zutherb
@@ -58,11 +58,9 @@ public class AbstractServiceImpl<D, S> implements AbstractService<D> {
      * @return list of destination entities
      */
     protected List<D> mapListOfSourceEntitiesToDestinationEntities(List<S> sourceEntities) {
-        List<D> destinationObjects = new ArrayList<D>();
-        for (S sourceEntity : sourceEntities) {
-            destinationObjects.add(mapSourceEntityToDestinationEntity(sourceEntity));
-        }
-        return destinationObjects;
+        return sourceEntities.stream()
+                .map(this::mapSourceEntityToDestinationEntity)
+                .collect(Collectors.toList());
     }
 
     protected D mapSourceEntityToDestinationEntity(S sourceEntity) {

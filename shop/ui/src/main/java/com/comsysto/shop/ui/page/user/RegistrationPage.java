@@ -40,12 +40,12 @@ public class RegistrationPage extends AbstractBasePage {
 
     public RegistrationPage(Model<UserInfo> userInfoModel) {
         super(userInfoModel);
-        this.userInfoModel = new CompoundPropertyModel<UserInfo>(userInfoModel);
+        this.userInfoModel = new CompoundPropertyModel<>(userInfoModel);
         add(loginData());
     }
 
     private Component loginData() {
-        Form<UserInfo> loginData = new Form<UserInfo>("registration");
+        Form<UserInfo> loginData = new Form<>("registration");
 
         loginData.add(firstnameField());
         loginData.add(lastnameField());
@@ -67,32 +67,29 @@ public class RegistrationPage extends AbstractBasePage {
     }
 
     private Component firstnameField() {
-        return new RequiredTextField<String>("firstname", new PropertyModel<String>(userInfoModel, "firstname"));
+        return new RequiredTextField<>("firstname", new PropertyModel<>(userInfoModel, "firstname"));
     }
 
     private Component lastnameField() {
-        return new RequiredTextField<String>("lastname", new PropertyModel<String>(userInfoModel, "lastname"));
+        return new RequiredTextField<>("lastname", new PropertyModel<>(userInfoModel, "lastname"));
     }
 
     private Component cityField() {
-        return new RequiredTextField<String>("city", new PropertyModel<String>(userInfoModel, "address.city"));
+        return new RequiredTextField<>("city", new PropertyModel<>(userInfoModel, "address.city"));
     }
 
     private Component streetField() {
-        return new RequiredTextField<String>("street", new PropertyModel<String>(userInfoModel, "address.street"));
+        return new RequiredTextField<>("street", new PropertyModel<>(userInfoModel, "address.street"));
     }
 
     private Component zipField() {
-        RequiredTextField<String> zip = new RequiredTextField<String>("zip", new PropertyModel<String>(userInfoModel, "address.zip"));
+        RequiredTextField<String> zip = new RequiredTextField<>("zip", new PropertyModel<>(userInfoModel, "address.zip"));
 
-        zip.add(new IValidator<String>() {
-            @Override
-            public void validate(IValidatable<String> validatable) {
-                if (validatable.getValue() != null && !validatable.getValue().matches("^[0-9]{5}$")) {
-                    error("Please enter a valid ZIP code");
-                }
-
+        zip.add(validatable -> {
+            if (validatable.getValue() != null && !validatable.getValue().matches("^[0-9]{5}$")) {
+                error("Please enter a valid ZIP code");
             }
+
         });
 
         return zip;
@@ -127,14 +124,14 @@ public class RegistrationPage extends AbstractBasePage {
     }
 
     private PasswordTextField passwordField() {
-        PasswordTextField password = new PasswordTextField("password", new PropertyModel<String>(userInfoModel, "password"));
+        PasswordTextField password = new PasswordTextField("password", new PropertyModel<>(userInfoModel, "password"));
         password.setRequired(true);
 
         return password;
     }
 
     private Component usernameField() {
-        TextField<String> username = new TextField<String>("username", new PropertyModel<String>(userInfoModel, "username"));
+        TextField<String> username = new TextField<>("username", new PropertyModel<>(userInfoModel, "username"));
         username.add(new IValidator<String>() {
             private static final long serialVersionUID = 5670647976176255775L;
 
@@ -151,7 +148,7 @@ public class RegistrationPage extends AbstractBasePage {
     }
 
     private Component emailField() {
-        TextField<String> email = new TextField<String>("email", new PropertyModel<String>(userInfoModel, "email"));
+        TextField<String> email = new TextField<>("email", new PropertyModel<>(userInfoModel, "email"));
         email.add(new IValidator<String>() {
 
             private static final long serialVersionUID = 5670647976176255775L;

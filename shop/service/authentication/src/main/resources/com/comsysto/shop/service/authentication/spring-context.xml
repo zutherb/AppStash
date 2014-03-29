@@ -4,10 +4,10 @@
        xmlns:security="http://www.springframework.org/schema/security"
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-            http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
-            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+            http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
-    <context:component-scan base-package="com.comsysto.shop.service.authentication" />
+    <context:component-scan base-package="com.comsysto.shop.service.authentication"/>
 
     <import resource="classpath:com/comsysto/shop/service/user/spring-context.xml"/>
     <import resource="classpath:com/comsysto/dataloader/spring-context.xml"/>
@@ -20,7 +20,6 @@
             </security:password-encoder>
         </security:authentication-provider>
     </security:authentication-manager>
-
 
 
     <bean id="testValues" class="org.springframework.beans.factory.config.PropertiesFactoryBean">

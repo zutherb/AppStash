@@ -40,8 +40,8 @@ public class TopSellerRecommendationPanel extends AbstractPizzaShopBasePanel {
     }
 
     private Component recommendationItemPanel() {
-        ArrayList<String> tagListe = new ArrayList<String>(2);
-        IModel<List<String>> tagsModel = new ListModel<String>(tagListe);
+        ArrayList<String> tagListe = new ArrayList<>(2);
+        IModel<List<String>> tagsModel = new ListModel<>(tagListe);
         RecommendationItemPanel recommendationItemPanel = new RecommendationItemPanel("recPizzaItem", pizzaInfoModel, tagsModel);
         recommendationItemPanel.setOutputMarkupId(true);
         return recommendationItemPanel;

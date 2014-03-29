@@ -19,7 +19,7 @@ public class NavigationGroup implements Serializable {
 
     public List<NavigationEntry> getNavigationEntries() {
         if(navigationEntries == null){
-            navigationEntries = new LinkedList<NavigationEntry>();
+            navigationEntries = new LinkedList<>();
         }
         Collections.sort(navigationEntries);
         return navigationEntries;

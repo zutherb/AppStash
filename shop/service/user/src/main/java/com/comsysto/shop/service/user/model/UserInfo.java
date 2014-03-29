@@ -50,7 +50,7 @@ public class UserInfo implements Serializable {
 
     public Set<RoleInfo> getRoles() {
         if(roles == null){
-            roles = new HashSet<RoleInfo>();
+            roles = new HashSet<>();
         }
         return roles;
     }

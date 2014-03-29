@@ -21,7 +21,7 @@ public class AddToBasketEvent implements BasketChangeEvent {
     public AddToBasketEvent(AjaxRequestTarget target, Component component, ProductInfo product, List<String> tags) {
         this.target = target;
         Injector.get().inject(this);
-        BasketItem basketItem = basket.addItem(product);
+        basket.addItem(product);
     }
 
     public AjaxRequestTarget getTarget() {

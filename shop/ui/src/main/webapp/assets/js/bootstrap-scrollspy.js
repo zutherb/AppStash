@@ -29,14 +29,14 @@
   function ScrollSpy(element, options) {
     var process = $.proxy(this.process, this)
       , $element = $(element).is('body') ? $(window) : $(element)
-      , href
-    this.options = $.extend({}, $.fn.scrollspy.defaults, options)
-    this.$scrollElement = $element.on('scroll.scroll-spy.data-api', process)
+      , href;
+    this.options = $.extend({}, $.fn.scrollspy.defaults, options);
+    this.$scrollElement = $element.on('scroll.scroll-spy.data-api', process);
     this.selector = (this.options.target
       || ((href = $(element).attr('href')) && href.replace(/.*(?=#[^\s]+$)/, '')) //strip for ie7
-      || '') + ' .nav li > a'
-    this.$body = $('body')
-    this.refresh()
+      || '') + ' .nav li > a';
+    this.$body = $('body');
+    this.refresh();
     this.process()
   }
 
@@ -46,24 +46,24 @@
 
     , refresh: function () {
         var self = this
-          , $targets
+          , $targets;
 
-        this.offsets = $([])
-        this.targets = $([])
+        this.offsets = $([]);
+        this.targets = $([]);
 
         $targets = this.$body
           .find(this.selector)
           .map(function () {
             var $el = $(this)
               , href = $el.data('target') || $el.attr('href')
-              , $href = /^#\w/.test(href) && $(href)
+              , $href = /^#\w/.test(href) && $(href);
             return ( $href
               && $href.length
               && [[ $href.position().top + (!$.isWindow(self.$scrollElement.get(0)) && self.$scrollElement.scrollTop()), href ]] ) || null
           })
           .sort(function (a, b) { return a[0] - b[0] })
           .each(function () {
-            self.offsets.push(this[0])
+            self.offsets.push(this[0]);
             self.targets.push(this[1])
           })
       }
@@ -75,7 +75,7 @@
           , offsets = this.offsets
           , targets = this.targets
           , activeTarget = this.activeTarget
-          , i
+          , i;
 
         if (scrollTop >= maxScroll) {
           return activeTarget != (i = targets.last()[0])
@@ -92,21 +92,21 @@
 
     , activate: function (target) {
         var active
-          , selector
+          , selector;
 
-        this.activeTarget = target
+        this.activeTarget = target;
 
         $(this.selector)
           .parent('.active')
-          .removeClass('active')
+          .removeClass('active');
 
         selector = this.selector
           + '[data-target="' + target + '"],'
-          + this.selector + '[href="' + target + '"]'
+          + this.selector + '[href="' + target + '"]';
 
         active = $(selector)
           .parent('li')
-          .addClass('active')
+          .addClass('active');
 
         if (active.parent('.dropdown-menu').length)  {
           active = active.closest('li.dropdown').addClass('active')
@@ -115,38 +115,38 @@
         active.trigger('activate')
       }
 
-  }
+  };
 
 
  /* SCROLLSPY PLUGIN DEFINITION
   * =========================== */
 
-  var old = $.fn.scrollspy
+  var old = $.fn.scrollspy;
 
   $.fn.scrollspy = function (option) {
     return this.each(function () {
       var $this = $(this)
         , data = $this.data('scrollspy')
-        , options = typeof option == 'object' && option
-      if (!data) $this.data('scrollspy', (data = new ScrollSpy(this, options)))
+        , options = typeof option == 'object' && option;
+      if (!data) $this.data('scrollspy', (data = new ScrollSpy(this, options)));
       if (typeof option == 'string') data[option]()
     })
-  }
+  };
 
-  $.fn.scrollspy.Constructor = ScrollSpy
+  $.fn.scrollspy.Constructor = ScrollSpy;
 
   $.fn.scrollspy.defaults = {
     offset: 10
-  }
+  };
 
 
  /* SCROLLSPY NO CONFLICT
   * ===================== */
 
   $.fn.scrollspy.noConflict = function () {
-    $.fn.scrollspy = old
+    $.fn.scrollspy = old;
     return this
-  }
+  };
 
 
  /* SCROLLSPY DATA-API
@@ -154,7 +154,7 @@
 
   $(window).on('load', function () {
     $('[data-spy="scroll"]').each(function () {
-      var $spy = $(this)
+      var $spy = $(this);
       $spy.scrollspy($spy.data())
     })
   })

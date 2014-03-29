@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-            http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <bean id="mongoTemplate"
           class="org.springframework.data.mongodb.core.MongoTemplate">
@@ -14,18 +10,10 @@
     </bean>
 
 
-    <beans profile="default">
-        <bean name="fongo" class="com.github.fakemongo.Fongo">
-            <constructor-arg value="pizza" />
-        </bean>
-        <bean id="mongo" class="com.mongodb.Mongo" factory-bean="fongo" factory-method="getMongo" />
-    </beans>
+    <bean name="fongo" class="com.github.fakemongo.Fongo">
+        <constructor-arg value="pizza"/>
+    </bean>
 
-    <beans profile="test">
-        <bean name="fongo" class="com.github.fakemongo.Fongo">
-            <constructor-arg value="pizza" />
-        </bean>
-        <bean id="mongo" class="com.mongodb.Mongo" factory-bean="fongo" factory-method="getMongo" />
-    </beans>
+    <bean id="mongo" class="com.mongodb.Mongo" factory-bean="fongo" factory-method="getMongo"/>
 
 </beans>

@@ -81,12 +81,12 @@ public class ProductItemListPanel extends AbstractPizzaShopBasePanel {
 
 
     protected List<String> getTags(String parentTag) {
-        return new ArrayList<String>();
+        return new ArrayList<>();
     }
 
     protected ListModel<String> createTags(String parentTag) {
-        ArrayList<String> tagList = new ArrayList<String>(1);
+        ArrayList<String> tagList = new ArrayList<>(1);
         tagList.add(parentTag);
-        return new ListModel<String>(tagList);
+        return new ListModel<>(tagList);
     }
 }

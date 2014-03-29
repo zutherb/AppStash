@@ -15,7 +15,7 @@ public class Navigation implements Serializable {
 
     public List<NavigationGroup> getNavigationGroups(){
         if(navigationGroups == null){
-            navigationGroups = new LinkedList<NavigationGroup>();
+            navigationGroups = new LinkedList<>();
         }
         return navigationGroups;
     }

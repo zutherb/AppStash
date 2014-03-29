@@ -53,7 +53,7 @@ public class RecommendationServiceImpl implements RecommendationService {
     @Override
     public List<ProductInfo> getTopsellerRecommendations(int limit) {
         // specification is topseller of each category here
-        List<ProductInfo> result = new ArrayList<ProductInfo>(ProductType.values().length);
+        List<ProductInfo> result = new ArrayList<>(ProductType.values().length);
         for (ProductType type : ProductType.values()) {
             if (result.size() >= limit) {
                 break;

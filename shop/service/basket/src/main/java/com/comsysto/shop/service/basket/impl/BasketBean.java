@@ -24,7 +24,7 @@ public class BasketBean implements Basket {
     private List<BasketItem> items;
 
     public BasketBean(){
-        items = new ArrayList<BasketItem>();
+        items = new ArrayList<>();
     }
 
     @Override

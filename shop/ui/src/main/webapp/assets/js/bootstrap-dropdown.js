@@ -28,11 +28,11 @@
 
   var toggle = '[data-toggle=dropdown]'
     , Dropdown = function (element) {
-        var $el = $(element).on('click.dropdown.data-api', this.toggle)
+        var $el = $(element).on('click.dropdown.data-api', this.toggle);
         $('html').on('click.dropdown.data-api', function () {
           $el.parent().removeClass('open')
         })
-      }
+      };
 
   Dropdown.prototype = {
 
@@ -41,21 +41,21 @@
   , toggle: function (e) {
       var $this = $(this)
         , $parent
-        , isActive
+        , isActive;
 
-      if ($this.is('.disabled, :disabled')) return
+      if ($this.is('.disabled, :disabled')) return;
 
-      $parent = getParent($this)
+      $parent = getParent($this);
 
-      isActive = $parent.hasClass('open')
+      isActive = $parent.hasClass('open');
 
-      clearMenus()
+      clearMenus();
 
       if (!isActive) {
         $parent.toggleClass('open')
       }
 
-      $this.focus()
+      $this.focus();
 
       return false
     }
@@ -66,42 +66,42 @@
         , $active
         , $parent
         , isActive
-        , index
+        , index;
 
-      if (!/(38|40|27)/.test(e.keyCode)) return
+      if (!/(38|40|27)/.test(e.keyCode)) return;
 
-      $this = $(this)
+      $this = $(this);
 
-      e.preventDefault()
-      e.stopPropagation()
+      e.preventDefault();
+      e.stopPropagation();
 
-      if ($this.is('.disabled, :disabled')) return
+      if ($this.is('.disabled, :disabled')) return;
 
-      $parent = getParent($this)
+      $parent = getParent($this);
 
-      isActive = $parent.hasClass('open')
+      isActive = $parent.hasClass('open');
 
       if (!isActive || (isActive && e.keyCode == 27)) {
-        if (e.which == 27) $parent.find(toggle).focus()
+        if (e.which == 27) $parent.find(toggle).focus();
         return $this.click()
       }
 
-      $items = $('[role=menu] li:not(.divider):visible a', $parent)
+      $items = $('[role=menu] li:not(.divider):visible a', $parent);
 
-      if (!$items.length) return
+      if (!$items.length) return;
 
-      index = $items.index($items.filter(':focus'))
+      index = $items.index($items.filter(':focus'));
 
-      if (e.keyCode == 38 && index > 0) index--                                        // up
-      if (e.keyCode == 40 && index < $items.length - 1) index++                        // down
-      if (!~index) index = 0
+      if (e.keyCode == 38 && index > 0) index--;                                        // up
+      if (e.keyCode == 40 && index < $items.length - 1) index++;                        // down
+      if (!~index) index = 0;
 
       $items
         .eq(index)
         .focus()
     }
 
-  }
+  };
 
   function clearMenus() {
     $(toggle).each(function () {
@@ -111,16 +111,16 @@
 
   function getParent($this) {
     var selector = $this.attr('data-target')
-      , $parent
+      , $parent;
 
     if (!selector) {
-      selector = $this.attr('href')
-      selector = selector && /#/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, '') //strip for ie7
+      selector = $this.attr('href');
+      selector = selector && /#/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, ''); //strip for ie7
     }
 
-    $parent = selector && $(selector)
+    $parent = selector && $(selector);
 
-    if (!$parent || !$parent.length) $parent = $this.parent()
+    if (!$parent || !$parent.length) $parent = $this.parent();
 
     return $parent
   }
@@ -129,27 +129,27 @@
   /* DROPDOWN PLUGIN DEFINITION
    * ========================== */
 
-  var old = $.fn.dropdown
+  var old = $.fn.dropdown;
 
   $.fn.dropdown = function (option) {
     return this.each(function () {
       var $this = $(this)
-        , data = $this.data('dropdown')
-      if (!data) $this.data('dropdown', (data = new Dropdown(this)))
+        , data = $this.data('dropdown');
+      if (!data) $this.data('dropdown', (data = new Dropdown(this)));
       if (typeof option == 'string') data[option].call($this)
     })
-  }
+  };
 
-  $.fn.dropdown.Constructor = Dropdown
+  $.fn.dropdown.Constructor = Dropdown;
 
 
  /* DROPDOWN NO CONFLICT
   * ==================== */
 
   $.fn.dropdown.noConflict = function () {
-    $.fn.dropdown = old
+    $.fn.dropdown = old;
     return this
-  }
+  };
 
 
   /* APPLY TO STANDARD DROPDOWN ELEMENTS

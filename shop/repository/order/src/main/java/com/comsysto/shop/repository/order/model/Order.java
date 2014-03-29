@@ -65,7 +65,7 @@ public class Order implements Serializable {
 
     public List<OrderItem> getOrderItems() {
         if (orderItems == null) {
-            orderItems = new ArrayList<OrderItem>();
+            orderItems = new ArrayList<>();
         }
         return orderItems;
     }

@@ -38,11 +38,11 @@ public class BasketPanel extends AbstractPizzaShopBasePanel {
     }
 
     private Label totalSum() {
-        return new Label("price", new PriceModel(new PropertyModel<Number>(basket, "totalSum")));
+        return new Label("price", new PriceModel(new PropertyModel<>(basket, "totalSum")));
     }
 
     private BookmarkablePageLink<Void> checkoutLink() {
-        return new BookmarkablePageLink<Void>("checkout", CheckoutPage.class);
+        return new BookmarkablePageLink<>("checkout", CheckoutPage.class);
     }
 
     private Component basketView() {
@@ -57,7 +57,7 @@ public class BasketPanel extends AbstractPizzaShopBasePanel {
                         send(BasketPanel.this, Broadcast.BREADTH, new RemoveFromBasketEvent(item.getModel().getObject(), target));
                     }
                 });
-                basketItem.add(new Label("price", new PriceModel(new PropertyModel<Number>(item.getModel(), "totalSum"))));
+                basketItem.add(new Label("price", new PriceModel(new PropertyModel<>(item.getModel(), "totalSum"))));
                 item.add(basketItem);
             }
         };
@@ -66,7 +66,7 @@ public class BasketPanel extends AbstractPizzaShopBasePanel {
     }
 
     private ListDataProvider<BasketItem> basketDataProvider() {
-        return new ListDataProvider<BasketItem>(basket.getAll());
+        return new ListDataProvider<>(basket.getAll());
     }
 
     @Override

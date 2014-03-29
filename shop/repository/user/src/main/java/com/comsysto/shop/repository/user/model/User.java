@@ -48,7 +48,7 @@ public class User implements Serializable {
 
     public Set<Role> getRoles() {
         if (roles == null) {
-            roles = new HashSet<Role>();
+            roles = new HashSet<>();
         }
         return roles;
     }
@@ -111,7 +111,7 @@ public class User implements Serializable {
 
     public Set<String> getCategories() {
         if (categories == null) {
-            categories = new HashSet<String>();
+            categories = new HashSet<>();
         }
         return categories;
     }

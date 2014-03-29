@@ -10,12 +10,7 @@ import java.util.Set;
 
 public class NavigationPageUtil {
 
-    private static final Predicate PAGE_PREDICATE = new Predicate() {
-        @Override
-        public boolean evaluate(Object pageCandidate) {
-            return Page.class.isAssignableFrom((Class<?>) pageCandidate);
-        }
-    };
+    private static final Predicate PAGE_PREDICATE = pageCandidate -> Page.class.isAssignableFrom((Class<?>) pageCandidate);
 
     @SuppressWarnings("unchecked") // apache commons collection api does not support generics
     public static Set<Class<? extends Page>> getAnnotatedWicketPage(String packageScanPath, Class<? extends Annotation> annotationClazz) {

@@ -91,7 +91,7 @@ public class ProductDetailPage extends AbstractBasePage {
     }
 
     private Label productPriceLabel() {
-        return new Label("productPrice", new PriceModel(new PropertyModel<Number>(productInfoModel, "price")));
+        return new Label("productPrice", new PriceModel(new PropertyModel<>(productInfoModel, "price")));
     }
 
     private IndicatingAjaxLink<Void> addToBasketLink() {
@@ -120,7 +120,7 @@ public class ProductDetailPage extends AbstractBasePage {
     }
 
     private RecommendationItemListPanel otherUsersAlsoViewedPanel() {
-        return new RecommendationItemListPanel("otherUsersAlsoViewedProducts", "OTHER_UERS_ALSO_VIEWED", new Model<String>("Other users also viewed"),
+        return new RecommendationItemListPanel("otherUsersAlsoViewedProducts", "OTHER_UERS_ALSO_VIEWED", new Model<>("Other users also viewed"),
                 new LoadableDetachableModel<List<ProductInfo>>() {
                     @Override
                     protected List<ProductInfo> load() {

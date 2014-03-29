@@ -1,4 +1,4 @@
-package com.comsysto.shop.ui.page
+
 
 import geb.Browser
 

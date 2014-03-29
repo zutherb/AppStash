@@ -80,7 +80,7 @@ public abstract class AbstractBasePage extends WebPage {
 
 
     private Component homePageLink() {
-        BookmarkablePageLink<Void> pageLink = new BookmarkablePageLink<Void>("home", ShopApplication.get().getHomePage());
+        BookmarkablePageLink<Void> pageLink = new BookmarkablePageLink<>("home", ShopApplication.get().getHomePage());
         pageLink.add(new Image("logo", new HomeButtonImageRessource()));
         return pageLink;
     }

@@ -33,7 +33,7 @@ public class ProductItemPanel extends AbstractPizzaShopBasePanel {
     private IModel<String> productUrlModel;
 
     public ProductItemPanel(String productItem, IModel<ProductInfo> model) {
-        this(productItem, model, new ListModel<String>(Collections.<String>emptyList()));
+        this(productItem, model, new ListModel<>(Collections.<String>emptyList()));
     }
 
     public ProductItemPanel(String id, IModel<ProductInfo> productInfoModel, IModel<List<String>> additionalTagsModel) {
@@ -58,7 +58,7 @@ public class ProductItemPanel extends AbstractPizzaShopBasePanel {
 
 
     private Label productPriceLabel() {
-        return new Label("price", new PriceModel(new PropertyModel<Number>(productInfoModel, "price")));
+        return new Label("price", new PriceModel(new PropertyModel<>(productInfoModel, "price")));
     }
 
     private Label productNameLabel() {
@@ -106,10 +106,6 @@ public class ProductItemPanel extends AbstractPizzaShopBasePanel {
 
     protected List<String> getTags() {
         return additionalTagsModel.getObject();
-    }
-
-    protected IModel<ProductInfo> getProductInfoModel() {
-        return productInfoModel;
     }
 
     protected boolean showAddToBasketLink() {
