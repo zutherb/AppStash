@@ -1,3 +1,4 @@
+include 'agent'
 include 'common:util'
 include 'common:repository'
 include 'common:service'

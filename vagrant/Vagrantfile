@@ -1,0 +1,67 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+$elasticsearch_script = <<SCRIPT
+#!/bin/bash
+cat > /etc/hosts <<EOF
+127.0.0.1       localhost
+
+# The following lines are desirable for IPv6 capable hosts
+::1     ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+
+10.211.55.100   elasticsearch-node
+EOF
+
+cd ~
+sudo apt-get update
+sudo apt-get install openjdk-7-jre-headless apache2 apache2-doc links curl -y
+
+### Check http://www.elasticsearch.org/download/ for latest version of ElasticSearch and replace wget link below
+wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.1.1.tar.gz
+tar -xf elasticsearch-1.1.1.tar.gz
+rm elasticsearch-1.1.1.tar.gz
+sudo mv elasticsearch-* elasticsearch
+sudo mv elasticsearch /usr/local/share
+
+wget http://github.com/elasticsearch/elasticsearch-servicewrapper/tarball/master
+tar -xf *master*
+sudo mv *servicewrapper*/service /usr/local/share/elasticsearch/bin/
+rm -Rf *servicewrapper*
+sudo /usr/local/share/elasticsearch/bin/service/elasticsearch install
+sudo ln -s `readlink -f /usr/local/share/elasticsearch/bin/service/elasticsearch` /usr/local/bin/rcelasticsearch
+
+sudo service elasticsearch start
+
+wget https://download.elasticsearch.org/kibana/kibana/kibana-3.1.0.tar.gz
+tar -xf kibana-3.1.0.tar.gz
+rm kibana-3.1.0.tar.gz
+sudo mv kibana-* kibana
+sudo mv kibana /var/www/
+
+sudo groupadd www
+sudo adduser vagrant www
+sudo chgrp www /var/www
+sudo chmod g+w /var/www
+SCRIPT
+
+# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+  config.vm.define :elasticsearch do |elasticsearch|
+    elasticsearch.vm.box = "precise64"
+    elasticsearch.vm.provider "virtualbox" do |v|
+      v.name = "elasticsearch-node"
+      v.customize ["modifyvm", :id, "--memory", "4112"]
+    end
+    elasticsearch.vm.network :private_network, ip: "10.211.55.100"
+    elasticsearch.vm.hostname = "elasticsearch-node"
+    elasticsearch.vm.provision :shell, :inline => $elasticsearch_script
+    elasticsearch.vm.network :forwarded_port, host: 9200, guest: 9200, auto_correct: true
+    elasticsearch.vm.network :forwarded_port, host: 80, guest: 80, auto_correct: true
+  end
+end

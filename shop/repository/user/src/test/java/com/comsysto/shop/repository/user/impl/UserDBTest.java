@@ -2,6 +2,7 @@ package com.comsysto.shop.repository.user.impl;
 
 import com.comsysto.shop.repository.user.api.UserRepository;
 import com.comsysto.shop.repository.user.model.Address;
+import com.comsysto.shop.repository.user.model.Role;
 import com.comsysto.shop.repository.user.model.User;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -61,7 +62,7 @@ public class UserDBTest extends AbstractJUnit4SpringContextTests {
     }
 
     private static User createSampleUser(String username) {
-        User user = new User(username, "John", "Smith", "securepw", new Address("", "", "", ""), Collections.emptySet());
+        User user = new User(username, "John", "Smith", "securepw", new Address("", "", "", ""), Collections.<Role>emptySet());
         user.setEmail("username" + new Random().nextInt(1000) + "@gmail.com");
         return user;
     }

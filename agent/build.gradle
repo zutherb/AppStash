@@ -1,0 +1,21 @@
+
+sourceSets {
+    main {
+        resources {
+            srcDir 'src/main/java'
+        }
+    }
+    test {
+        resources {
+            srcDir 'src/test/java'
+        }
+    }
+}
+
+dependencies {
+    compile commonDeps
+    compile mongoDeps
+    compile springDeps
+    testCompile testDeps
+}
+

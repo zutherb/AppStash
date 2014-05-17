@@ -38,9 +38,6 @@ public class ProductCatalogPage extends AbstractBasePage {
     private IModel<List<ProductInfo>> productListModel;
     private Component basketPanel;
 
-    private static List<ProductInfo> memoryLeak = new ArrayList<ProductInfo>();
-
-
     public ProductCatalogPage(PageParameters pageParameters) {
         super(pageParameters);
 
@@ -91,8 +88,6 @@ public class ProductCatalogPage extends AbstractBasePage {
 
             @Override
             protected void populateItem(final Item<ProductInfo> item) {
-                memoryLeak.add(item.getModelObject());
-                memoryLeak.addAll(new ArrayList<ProductInfo>(memoryLeak));
                 ProductItemPanel pizzaItem = new ProductItemPanel("productItem", item.getModel());
                 item.add(pizzaItem.setOutputMarkupId(true));
             }
