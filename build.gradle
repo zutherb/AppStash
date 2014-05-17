@@ -4,14 +4,14 @@ apply plugin: 'idea'
 
 test.onlyIf { !Boolean.getBoolean('skip.tests') }
 
-tasks.withType(Compile) {
+tasks.withType(JavaCompile) {
     options.compilerArgs << "-Xlint:unchecked -Xlint:deprecation"
 }
 
 group = 'com.comsysto'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
 
 compileJava.options.encoding = 'UTF-8'
 compileTestJava.options.encoding = 'UTF-8'
