@@ -1,5 +1,15 @@
+import sun.jvm.hotspot.utilities.WorkerThread;
+
+import java.util.AbstractCollection;
+
 /**
  * @author zutherb
  */
-public class MemoryTask {
+public class MemoryTask extends AbstractTask implements Runnable {
+
+
+    @Override
+    public void run() {
+
+    }
 }

@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:mongo="http://www.springframework.org/schema/data/mongo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+
+            http://www.springframework.org/schema/data/mongo http://www.springframework.org/schema/data/mongo/spring-mongo.xsd">
 
     <bean id="mongoTemplate"
           class="org.springframework.data.mongodb.core.MongoTemplate">
@@ -10,10 +13,19 @@
     </bean>
 
 
-    <bean name="fongo" class="com.github.fakemongo.Fongo">
-        <constructor-arg value="pizza"/>
-    </bean>
+    <beans profile="default">
+        <mongo:mongo id="mongo" host="localhost">
+            <mongo:options auto-connect-retry="true"
+                           threads-allowed-to-block-for-connection-multiplier="20"/>
+        </mongo:mongo>
+    </beans>
 
-    <bean id="mongo" class="com.mongodb.Mongo" factory-bean="fongo" factory-method="getMongo"/>
+    <beans profile="test">
+        <bean name="fongo" class="com.github.fakemongo.Fongo">
+            <constructor-arg value="pizza"/>
+        </bean>
+
+        <bean id="mongo" class="com.mongodb.Mongo" factory-bean="fongo" factory-method="getMongo"/>
+    </beans>
 
 </beans>

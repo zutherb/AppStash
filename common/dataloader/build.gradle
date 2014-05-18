@@ -1,4 +1,4 @@
-
+jar.baseName = "common-dataloader"
 
 idea {
     module {

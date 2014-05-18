@@ -5,9 +5,11 @@ import java.lang.instrument.Instrumentation;
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryPoolMXBean;
 import java.lang.management.MemoryUsage;
+import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Iterator;
+import java.util.TimeZone;
 import java.util.UUID;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
@@ -36,20 +38,23 @@ public class Agent {
                     DB analytics = mongo.getDB("analytics");
                     DBCollection memory = analytics.getCollection("memory");
 
-                    Iterator<MemoryPoolMXBean> iterator = ManagementFactory.getMemoryPoolMXBeans().iterator();
-                    while (iterator.hasNext()) {
-                        MemoryPoolMXBean memoryPoolMXBean = iterator.next();
+                    for (MemoryPoolMXBean memoryPoolMXBean : ManagementFactory.getMemoryPoolMXBeans()) {
                         MemoryUsage usage = memoryPoolMXBean.getUsage();
 
                         DBObject dbObject = new BasicDBObject();
                         dbObject.put("name", memoryPoolMXBean.getName());
-                        dbObject.put("type", memoryPoolMXBean.getType().name());
+                        dbObject.put("type", memoryPoolMXBean.getType().toString());
+                        dbObject.put("host", InetAddress.getLocalHost().getHostName());
+                        dbObject.put("ip", InetAddress.getLocalHost().getHostAddress());
                         dbObject.put("committed", usage.getCommitted());
                         dbObject.put("init", usage.getInit());
                         dbObject.put("max", usage.getMax());
                         dbObject.put("used", usage.getUsed());
-                        dbObject.put("timestamp", new Date().getTime());
-                        restTemplate.put("http://localhost:9200/analytics/memory/{id}", dbObject.toString(), UUID.randomUUID().toString());
+
+                        SimpleDateFormat formatUTC = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+                        formatUTC.setTimeZone(TimeZone.getTimeZone("UTC"));
+                        dbObject.put("@timestamp", formatUTC.format(new Date()).replace(" ", "T"));
+                        restTemplate.put("http://10.211.55.100:9200/analytics/memory/{id}", dbObject.toString(), UUID.randomUUID().toString());
                         memory.save(dbObject);
                     }
                 } catch (UnknownHostException e) {
@@ -57,7 +62,5 @@ public class Agent {
                 }
             }
         }, 0, 1, TimeUnit.SECONDS);
-
-        System.out.println("foo");
     }
 }

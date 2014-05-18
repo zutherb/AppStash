@@ -12,16 +12,15 @@ import org.springframework.web.context.ConfigurableWebApplicationContext;
  *
  * @author zutherb
  */
-public class
-        ProfileInitializer implements ApplicationContextInitializer<ConfigurableWebApplicationContext> {
+public class ProfileInitializer implements ApplicationContextInitializer<ConfigurableWebApplicationContext> {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ProfileInitializer.class);
 
     @Override
     public void initialize(ConfigurableWebApplicationContext configurableWebApplicationContext) {
         ConfigurableEnvironment environment = configurableWebApplicationContext.getEnvironment();
-        if(!hasActiveProfile(environment)){
-            environment.setActiveProfiles("prod");
+        if (!hasActiveProfile(environment)) {
+            environment.setActiveProfiles("default");
         }
         LOGGER.info("active profiles are {}", StringUtils.join(environment.getActiveProfiles(), ","));
     }

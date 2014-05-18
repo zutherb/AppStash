@@ -1,4 +1,4 @@
-
+jar.baseName = "product-service"
 
 idea {
     module {
