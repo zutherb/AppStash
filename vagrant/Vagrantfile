@@ -64,44 +64,35 @@ ff02::2 ip6-allrouters
 10.211.55.101   app-server-node-1
 EOF
 
-cd ~
-sudo apt-get update
-sudo apt-get install python-software-properties git links curl mongodb mongodb-clients mongodb-server unzip -y  -q
-sudo add-apt-repository ppa:webupd8team/java
-sudo apt-get update
-sudo apt-get install oracle-java8-installer -y -q
-
-cd /usr/local/
-sudo wget http://www.us.apache.org/dist/tomcat/tomcat-8/v8.0.3/bin/apache-tomcat-8.0.3.tar.gz
-sudo tar -xvf apache-tomcat-8.0.3.tar.gz
-rm apache-tomcat-8.0.3.tar.gz
-
-sudo cat > /etc/init.d/tomcat8  <<EOF
-#!/bin/bash
-export CATALINA_HOME=/usr/local/apache-tomcat-8.0.3
-PATH=/sbin:/bin:/usr/sbin:/usr/bin
-start() {
-  sh $CATALINA_HOME/bin/startup.sh
-}
-stop() {
-  sh $CATALINA_HOME/bin/shutdown.sh
-}
-case $1 in
-  start|stop) $1;;
-  restart) stop; start;;
-  *) echo "Run as $0 <start|stop|restart>"; exit 1;;
-esac
+sudo rm /etc/apt/sources.list
+sudo cat > /etc/apt/sources.list <<EOF
+deb http://eu-west-1.ec2.archive.ubuntu.com/ubuntu/ precise main restricted universe multiverse
+deb http://eu-west-1.ec2.archive.ubuntu.com/ubuntu/ precise-updates main restricted universe multiverse
+deb http://eu-west-1.ec2.archive.ubuntu.com/ubuntu/ precise-security main restricted universe multiverse
 EOF
-sudo chmod +x /etc/init.d/tomcat8
 
-sudo cat > /usr/local/apache-tomcat-8.0.3/bin/setenv.sh  <<EOF
-JAVA_HOME=/usr/lib/jvm/java-8-oracle/jre/
+sudo apt-get update
+sudo apt-get install tomcat7 tomcat7-admin python-software-properties git links curl mongodb mongodb-clients mongodb-server unzip -y  -q
+#sudo add-apt-repository ppa:webupd8team/java
+#sudo apt-get update
+#sudo apt-get install oracle-java8-installer -y -q
+cd /usr/local/
+sudo wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u5-b13/jdk-8u5-linux-x64.tar.gz"
+sudo tar xzf jdk-8u5-linux-x64.tar.gz
+sudo update-alternatives --install "/usr/bin/java" "java" "/usr/local/jdk1.8.0_05/bin/java" 1
+sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/local/jdk1.8.0_05/bin/javac" 1
+sudo update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/local/jdk1.8.0_05/bin/javaws" 1
+
+sudo /etc/default/tomcat7
+sudo cat > /etc/default/tomcat7  <<EOF
+TOMCAT7_USER=tomcat7
+TOMCAT7_GROUP=tomcat7
+JAVA_HOME=/usr/local/jdk1.8.0_05
 JAVA_OPTS="-Djava.awt.headless=true -Xmx1024M -Xms512M"
 EOF
-sudo chmod +x /usr/local/apache-tomcat-8.0.3/bin/setenv.sh
 
-sudo rm /usr/local/apache-tomcat-8.0.3/conf/tomcat-users.xml
-sudo cat > /usr/local/apache-tomcat-8.0.3/conf/tomcat-users.xml <<EOF
+sudo rm /var/lib/tomcat7/conf/tomcat-users.xml
+sudo cat > /var/lib/tomcat7/conf/tomcat-users.xml <<EOF
 <tomcat-users>
   <role rolename="probeuser" />
   <role rolename="poweruser" />
@@ -115,15 +106,20 @@ EOF
 cd ~
 wget https://psi-probe.googlecode.com/files/probe-2.3.3.zip
 unzip probe-2.3.3.zip
-sudo mv probe.war /usr/local/apache-tomcat-8.0.3/webapps/
+sudo mv probe.war /var/lib/tomcat7/webapps/
 
-git clone https://github.com/zutherb/mongodb-onlineshop.git mongodb-onlineshop
+cd ~
+git clone https://github.com/zutherb/AppStash.git mongodb-onlineshop
 cd mongodb-onlineshop/
-export JAVA_HOME=/usr/lib/jvm/java-8-oracle/jre/
+export JAVA_HOME=/usr/local/jdk1.8.0_05
 ./gradlew -p shop/ui war
-cp shop/ui/build/libs/ui-0.4-DEV.war /usr/local/apache-tomcat-8.0.3/webapps/pizza.war
+sudo cp shop/ui/build/libs/ui-0.4-DEV.war /var/lib/tomcat7/webapps/pizza.war
 
-sudo service tomcat8 restart
+sudo service tomcat7 restart
+
+cd ~
+wget https://download.elasticsearch.org/logstash/logstash/logstash-1.4.1.tar.gz
+tar xvf logstash-1.4.1.tar.gz
 
 SCRIPT
 
