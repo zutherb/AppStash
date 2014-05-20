@@ -71,6 +71,13 @@ ff02::2 ip6-allrouters
 10.211.55.101   app-server-node-1
 EOF
 
+sudo rm /etc/apt/sources.list
+sudo cat > /etc/apt/sources.list <<EOF
+deb http://eu-west-1.ec2.archive.ubuntu.com/ubuntu/ precise main restricted universe multiverse
+deb http://eu-west-1.ec2.archive.ubuntu.com/ubuntu/ precise-updates main restricted universe multiverse
+deb http://eu-west-1.ec2.archive.ubuntu.com/ubuntu/ precise-security main restricted universe multiverse
+EOF
+
 sudo apt-get update
 sudo apt-get install tomcat7 tomcat7-admin python-software-properties git links curl mongodb mongodb-clients mongodb-server unzip -y  -q
 cd /usr/local/
