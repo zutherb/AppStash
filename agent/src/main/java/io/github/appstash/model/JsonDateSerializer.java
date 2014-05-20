@@ -1,3 +1,5 @@
+package io.github.appstash.model;
+
 import org.codehaus.jackson.JsonGenerator;
 import org.codehaus.jackson.JsonProcessingException;
 import org.codehaus.jackson.map.JsonSerializer;

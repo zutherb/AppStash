@@ -1,3 +1,5 @@
+package io.github.appstash.task;
+
 import org.codehaus.jackson.map.ObjectMapper;
 import org.codehaus.jackson.map.SerializationConfig;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
@@ -11,7 +13,7 @@ import java.util.List;
 /**
  * @author zutherb
  */
-public class AbstractTask {
+public class AbstractLoggingTask {
 
     private final static RestTemplate REST_TEMPLATE = createRestTemplate();
 

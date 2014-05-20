@@ -1,3 +1,5 @@
+package io.github.appstash.model;
+
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 

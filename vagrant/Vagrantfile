@@ -17,6 +17,13 @@ ff02::2 ip6-allrouters
 10.211.55.101   app-server-node-1
 EOF
 
+sudo rm /etc/apt/sources.list
+sudo cat > /etc/apt/sources.list <<EOF
+deb http://eu-west-1.ec2.archive.ubuntu.com/ubuntu/ precise main restricted universe multiverse
+deb http://eu-west-1.ec2.archive.ubuntu.com/ubuntu/ precise-updates main restricted universe multiverse
+deb http://eu-west-1.ec2.archive.ubuntu.com/ubuntu/ precise-security main restricted universe multiverse
+EOF
+
 cd ~
 sudo apt-get update
 sudo apt-get install openjdk-7-jre-headless apache2 apache2-doc links curl -y
@@ -64,18 +71,8 @@ ff02::2 ip6-allrouters
 10.211.55.101   app-server-node-1
 EOF
 
-sudo rm /etc/apt/sources.list
-sudo cat > /etc/apt/sources.list <<EOF
-deb http://eu-west-1.ec2.archive.ubuntu.com/ubuntu/ precise main restricted universe multiverse
-deb http://eu-west-1.ec2.archive.ubuntu.com/ubuntu/ precise-updates main restricted universe multiverse
-deb http://eu-west-1.ec2.archive.ubuntu.com/ubuntu/ precise-security main restricted universe multiverse
-EOF
-
 sudo apt-get update
 sudo apt-get install tomcat7 tomcat7-admin python-software-properties git links curl mongodb mongodb-clients mongodb-server unzip -y  -q
-#sudo add-apt-repository ppa:webupd8team/java
-#sudo apt-get update
-#sudo apt-get install oracle-java8-installer -y -q
 cd /usr/local/
 sudo wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u5-b13/jdk-8u5-linux-x64.tar.gz"
 sudo tar xzf jdk-8u5-linux-x64.tar.gz
@@ -120,7 +117,74 @@ sudo service tomcat7 restart
 cd ~
 wget https://download.elasticsearch.org/logstash/logstash/logstash-1.4.1.tar.gz
 tar xvf logstash-1.4.1.tar.gz
+rm logstash-1.4.1.tar.gz
+sudo mv logstash-1.4.1 /usr/local/logstash
 
+sudo mkdir /etc/logstash/
+sudo cat > /etc/logstash/logstash.conf <<EOF
+input {
+	file {
+                type => "access-log"
+                path => "/var/log/tomcat7/localhost_access_log.*.txt"
+        }
+	file {
+    		type => "catalina-log"
+    		path => "/var/log/tomcat7/catalina.out"
+  }
+}
+filter {
+  grok {
+    type => "apache-access"
+    pattern => "%{COMBINEDAPACHELOG}"
+  }
+  multiline {
+    type => "catalina-log"
+    pattern => "(^.+Exception.*)|(^\s+at .+)|(^\s+... \d+ more)|(^\s*Caused by:.+)"
+    what => "previous"
+  }
+}
+output {
+  elasticsearch {
+    host => "10.211.55.100"
+    port => "9200"
+    embedded => false
+    codec => json
+    protocol => http
+  }
+}
+EOF
+
+sudo cat > /etc/init.d/logstash <<EOF
+#! /bin/sh
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin:/etc/init.d
+. /lib/lsb/init-functions
+
+case "$1" in
+    start)
+        log_daemon_msg "Starting access"
+        nohup /usr/local/logstash/bin/logstash -f /etc/logstash/logstash.conf >/usr/local/logstash/logstash.log$$ 2>&1 &
+        sleep 1
+        ;;
+    restart|reload|force-reload)
+        log_daemon_msg "Restart access"
+        kill `ps ax|grep logstash|sed 's/\(.*\)pts.*/\1/g'|head -n 1`
+        nohup /usr/local/logstash/bin/logstash -f /etc/logstash/logstash.conf >/usr/local/logstash/logstash.log$$ 2>&1 &
+        sleep 1
+        ;;
+    stop)
+        kill `ps ax|grep logstash|sed 's/\(.*\)pts.*/\1/g'|head -n 1`
+        ;;
+    *)
+        echo "Usage: $0 start|restart|stop" >&2
+        exit 3
+        ;;
+esac
+EOF
+sudo chmod +x /etc/init.d/logstash
+sudo service logstash start
+
+sudo service tomcat7 restart
 SCRIPT
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
