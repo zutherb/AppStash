@@ -1,0 +1,25 @@
+#! /bin/sh
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin:/etc/init.d
+. /lib/lsb/init-functions
+
+case "$1" in
+    start)
+        log_daemon_msg "Starting access"
+        nohup /usr/local/logstash/bin/logstash -f /etc/logstash/logstash.conf >/usr/local/logstash/logstash.log$$ 2>&1 &
+        sleep 1
+        ;;
+    restart|reload|force-reload)
+        log_daemon_msg "Restart access"
+        kill `ps ax|grep logstash|sed 's/\(.*\)pts.*/\1/g'|head -n 1`
+        nohup /usr/local/logstash/bin/logstash -f /etc/logstash/logstash.conf >/usr/local/logstash/logstash.log$$ 2>&1 &
+        sleep 1
+        ;;
+    stop)
+        kill `ps ax|grep logstash|sed 's/\(.*\)pts.*/\1/g'|head -n 1`
+        ;;
+    *)
+        echo "Usage: $0 start|restart|stop" >&2
+        exit 3
+        ;;
+esac
