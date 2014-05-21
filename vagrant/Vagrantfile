@@ -140,7 +140,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define :appserver2 do |appserver2|
     appserver2.vm.box = "precise64"
     appserver2.vm.provider "virtualbox" do |v|
-      v.name = "app-server-node-1"
+      v.name = "app-server-node-2"
       v.customize ["modifyvm", :id, "--memory", "1024"]
     end
     appserver2.vm.network :private_network, ip: "10.211.55.102"
