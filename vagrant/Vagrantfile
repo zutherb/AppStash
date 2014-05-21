@@ -71,8 +71,9 @@ JAVA_HOME=/usr/local/jdk1.8.0_05
 JAVA_OPTS="-Djava.awt.headless=true -Xmx1024M -Xms512M"
 EOF
 
-sudo rm /etc/tomcat7/server.xml
+sudo rm /var/lib/tomcat7/conf/server.xml
 sudo rm /var/lib/tomcat7/conf/tomcat-users.xml
+cd /var/lib/tomcat7/conf/
 sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/tomcat/server.xml
 sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/tomcat/tomcat-users.xml
 
@@ -97,9 +98,8 @@ rm logstash-1.4.1.tar.gz
 sudo mv logstash-1.4.1 /usr/local/logstash
 
 sudo mkdir /etc/logstash/
+cd /etc/logstash/
 sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/logstash/logstash.conf
-
-
 cd /etc/init.d/
 sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/logstash/logstash
 sudo chmod +x /etc/init.d/logstash
@@ -134,7 +134,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     appserver1.vm.network :private_network, ip: "10.211.55.101"
     appserver1.vm.hostname = "app-server-node-1"
     appserver1.vm.provision :shell, :inline => $app_server_script
-    # appserver1.vm.network :forwarded_port, host: 9200, guest: 9200, auto_correct: true
-    # appserver1.vm.network :forwarded_port, host: 80, guest: 80, auto_correct: true
+    appserver1.vm.network :forwarded_port, host: 8080, guest: 8080, auto_correct: true
+  end
+
+  config.vm.define :appserver2 do |appserver2|
+    appserver2.vm.box = "precise64"
+    appserver2.vm.provider "virtualbox" do |v|
+      v.name = "app-server-node-1"
+      v.customize ["modifyvm", :id, "--memory", "1024"]
+    end
+    appserver2.vm.network :private_network, ip: "10.211.55.102"
+    appserver2.vm.hostname = "app-server-node-2"
+    appserver2.vm.provision :shell, :inline => $app_server_script
+    appserver2.vm.network :forwarded_port, host: 8081, guest: 8080, auto_correct: true
   end
 end
