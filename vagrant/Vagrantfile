@@ -3,26 +3,13 @@
 
 $elasticsearch_script = <<SCRIPT
 #!/bin/bash
-cat > /etc/hosts <<EOF
-127.0.0.1       localhost
-
-# The following lines are desirable for IPv6 capable hosts
-::1     ip6-localhost ip6-loopback
-fe00::0 ip6-localnet
-ff00::0 ip6-mcastprefix
-ff02::1 ip6-allnodes
-ff02::2 ip6-allrouters
-
-10.211.55.100   elasticsearch-node
-10.211.55.101   app-server-node-1
-EOF
+sudo rm /etc/hosts
+cd /etc
+sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/etc/hosts
 
 sudo rm /etc/apt/sources.list
-sudo cat > /etc/apt/sources.list <<EOF
-deb http://eu-west-1.ec2.archive.ubuntu.com/ubuntu/ precise main restricted universe multiverse
-deb http://eu-west-1.ec2.archive.ubuntu.com/ubuntu/ precise-updates main restricted universe multiverse
-deb http://eu-west-1.ec2.archive.ubuntu.com/ubuntu/ precise-security main restricted universe multiverse
-EOF
+cd /etc/apt/
+sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/apt/sources.list
 
 cd ~
 sudo apt-get update
@@ -59,24 +46,13 @@ SCRIPT
 
 $app_server_script = <<SCRIPT
 #!/bin/bash
-cat > /etc/hosts <<EOF
-# The following lines are desirable for IPv6 capable hosts
-::1     ip6-localhost ip6-loopback
-fe00::0 ip6-localnet
-ff00::0 ip6-mcastprefix
-ff02::1 ip6-allnodes
-ff02::2 ip6-allrouters
-
-10.211.55.100   elasticsearch-node
-10.211.55.101   app-server-node-1
-EOF
+sudo rm /etc/hosts
+cd /etc
+sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/etc/hosts
 
 sudo rm /etc/apt/sources.list
-sudo cat > /etc/apt/sources.list <<EOF
-deb http://eu-west-1.ec2.archive.ubuntu.com/ubuntu/ precise main restricted universe multiverse
-deb http://eu-west-1.ec2.archive.ubuntu.com/ubuntu/ precise-updates main restricted universe multiverse
-deb http://eu-west-1.ec2.archive.ubuntu.com/ubuntu/ precise-security main restricted universe multiverse
-EOF
+cd /etc/apt/
+sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/apt/sources.list
 
 sudo apt-get update
 sudo apt-get install tomcat7 tomcat7-admin python-software-properties git links curl mongodb mongodb-clients mongodb-server unzip -y  -q
@@ -96,57 +72,9 @@ JAVA_OPTS="-Djava.awt.headless=true -Xmx1024M -Xms512M"
 EOF
 
 sudo rm /etc/tomcat7/server.xml
-sudo cat > /etc/tomcat7/server.xml <<EOF
-<?xml version='1.0' encoding='utf-8'?>
-<Server port="8005" shutdown="SHUTDOWN">
-    <Listener className="org.apache.catalina.core.JasperListener"/>
-    <Listener className="org.apache.catalina.core.JreMemoryLeakPreventionListener"/>
-    <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener"/>
-    <Listener className="org.apache.catalina.core.ThreadLocalLeakPreventionListener"/>
-
-    <GlobalNamingResources>
-        <Resource name="UserDatabase" auth="Container"
-                  type="org.apache.catalina.UserDatabase"
-                  description="User database that can be updated and saved"
-                  factory="org.apache.catalina.users.MemoryUserDatabaseFactory"
-                  pathname="conf/tomcat-users.xml"/>
-    </GlobalNamingResources>
-
-    <Service name="Catalina">
-
-        <Connector port="8080" protocol="HTTP/1.1"
-                   connectionTimeout="20000"
-                   URIEncoding="UTF-8"
-                   redirectPort="8443"/>
-        <Engine name="Catalina" defaultHost="localhost">
-
-            <Realm className="org.apache.catalina.realm.LockOutRealm">
-                <Realm className="org.apache.catalina.realm.UserDatabaseRealm"
-                       resourceName="UserDatabase"/>
-            </Realm>
-
-            <Host name="localhost" appBase="webapps"
-                  unpackWARs="true" autoDeploy="true">
-                <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
-                       prefix="localhost_access_log." suffix=".txt"
-                       pattern="{ &quot;remoteHost&quot;:&quot;%h&quot;, &quot;remoteLogname&quot;:&quot;%l&quot;, &quot;user&quot;:&quot;%u&quot;, &quot;time&quot;:&quot;%t&quot;, &quot;request&quot;:&quot;%r&quot;, &quot;status&quot;:&quot;%s&quot;, &quot;size&quot;:&quot;%b&quot;, &quot;referer&quot;:&quot;%{Referer}i&quot;, &quot;userAgent&quot;:&quot;%{User-agent}i&quot; }"/>
-            </Host>
-        </Engine>
-    </Service>
-</Server>
-EOF
-
 sudo rm /var/lib/tomcat7/conf/tomcat-users.xml
-sudo cat > /var/lib/tomcat7/conf/tomcat-users.xml <<EOF
-<tomcat-users>
-  <role rolename="probeuser" />
-  <role rolename="poweruser" />
-  <role rolename="poweruserplus" />
-  <role rolename="manager"/>
-  <role rolename="admin"/>
-  <user username="admin" password="topsecret" roles="admin,manager"/>
-</tomcat-users>
-EOF
+sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/tomcat/server.xml
+sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/tomcat/tomcat-users.xml
 
 cd ~
 wget https://psi-probe.googlecode.com/files/probe-2.3.3.zip
@@ -169,57 +97,11 @@ rm logstash-1.4.1.tar.gz
 sudo mv logstash-1.4.1 /usr/local/logstash
 
 sudo mkdir /etc/logstash/
-sudo cat > /etc/logstash/logstash.conf <<EOF
-input {
-        file {
-                type => "access-log"
-                path => "/var/log/tomcat7/localhost_access_log.*.txt"
-                codec => json
-        }
-        file {
-                type => "catalina-log"
-                path => "/var/log/tomcat7/catalina.out"
-                codec => json
-        }
-}
-output {
-        elasticsearch {
-                host => "10.211.55.100"
-                port => "9200"
-                embedded => false
-                codec => json
-                protocol => http
-        }
-}
-EOF
+sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/logstash/logstash.conf
 
-sudo cat > /etc/init.d/logstash <<EOF
-#! /bin/sh
 
-PATH=/sbin:/bin:/usr/sbin:/usr/bin:/etc/init.d
-. /lib/lsb/init-functions
-
-case "$1" in
-    start)
-        log_daemon_msg "Starting access"
-        nohup /usr/local/logstash/bin/logstash -f /etc/logstash/logstash.conf >/usr/local/logstash/logstash.log$$ 2>&1 &
-        sleep 1
-        ;;
-    restart|reload|force-reload)
-        log_daemon_msg "Restart access"
-        kill `ps ax|grep logstash|sed 's/\(.*\)pts.*/\1/g'|head -n 1`
-        nohup /usr/local/logstash/bin/logstash -f /etc/logstash/logstash.conf >/usr/local/logstash/logstash.log$$ 2>&1 &
-        sleep 1
-        ;;
-    stop)
-        kill `ps ax|grep logstash|sed 's/\(.*\)pts.*/\1/g'|head -n 1`
-        ;;
-    *)
-        echo "Usage: $0 start|restart|stop" >&2
-        exit 3
-        ;;
-esac
-EOF
+cd /etc/init.d/
+sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/logstash/logstash
 sudo chmod +x /etc/init.d/logstash
 sudo service logstash start
 
