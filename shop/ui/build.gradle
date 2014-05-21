@@ -28,6 +28,7 @@ dependencies {
     compile wicketDeps
     compile webAppDeps
 
+    compile "net.logstash.logback:logstash-logback-encoder:2.5"
     compile project(':shop:service:authentication')
     compile project(':shop:service:basket')
     compile project(':shop:service:checkout')

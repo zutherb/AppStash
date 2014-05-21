@@ -1,12 +1,10 @@
-import ch.qos.logback.classic.encoder.PatternLayoutEncoder
+import net.logstash.logback.encoder.LogstashEncoder
 import ch.qos.logback.core.ConsoleAppender
 
 import static ch.qos.logback.classic.Level.*
-def defaultPattern = "{ \"@timestamp\":\"%d{yyyy/MM/dd'T'HH:mm:ss,SSS}\", \"thread\":\"%thread\", \"level\": \"%-5level\", \"class\" : \"%logger{36}\", \"message\" : \"%msg%n\"}"
 
 appender("stdout", ConsoleAppender) {
-    encoder(PatternLayoutEncoder) {
-        pattern = defaultPattern
+    encoder(LogstashEncoder) {
     }
 }
 
