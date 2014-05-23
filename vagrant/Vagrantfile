@@ -103,6 +103,7 @@ sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/prov
 cd /etc/init.d/
 sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/logstash/logstash
 sudo chmod +x /etc/init.d/logstash
+sudo update-rc.d logstash defaults
 sudo service logstash start
 
 sudo service tomcat7 restart
