@@ -2,8 +2,8 @@ package io.github.appstash.task;
 
 import io.github.appstash.model.AppStashClassLoading;
 
-import java.lang.management.ClassLoadingMXBean;
 import java.lang.management.ManagementFactory;
+import java.lang.management.OperatingSystemMXBean;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.Date;
@@ -17,23 +17,31 @@ public class CpuLoggingTask extends AbstractLoggingTask implements Runnable {
 
     @Override
     public void run() {
-        ClassLoadingMXBean classLoadingMXBean = ManagementFactory.getClassLoadingMXBean();
+        OperatingSystemMXBean operatingSystemMXBean = ManagementFactory.getOperatingSystemMXBean();
         try {
-            getRestTemplate().put("http://10.211.55.100:9200/analytics/classes/{id}",
+            getRestTemplate().put("http://10.211.55.100:9200/analytics/cpu/{id}",
                     AppStashClassLoading.builder()
-                            .name(classLoadingMXBean.getObjectName().getCanonicalName())
-                            .host(InetAddress.getLocalHost().getHostName())
-                            .ip(InetAddress.getLocalHost().getHostAddress())
+                            .host(getHostName())
+                            .ip(getHostAddress())
                             .timestamp(new Date())
-                            .loadedClassCount(classLoadingMXBean.getLoadedClassCount())
-                            .totalLoadedClassCount(classLoadingMXBean.getTotalLoadedClassCount())
-                            .unloadedClassCount(classLoadingMXBean.getUnloadedClassCount())
                             .create(),
-                    UUID.randomUUID().toString()
+                    createRandomUUID()
             );
         } catch (UnknownHostException e) {
             e.printStackTrace();
         }
 
+    }
+
+    private String createRandomUUID() {
+        return UUID.randomUUID().toString();
+    }
+
+    private String getHostName() throws UnknownHostException {
+        return InetAddress.getLocalHost().getHostName();
+    }
+
+    private String getHostAddress() throws UnknownHostException {
+        return InetAddress.getLocalHost().getHostAddress();
     }
 }

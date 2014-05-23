@@ -108,7 +108,6 @@ sudo service logstash start
 sudo service tomcat7 restart
 SCRIPT
 
-# Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
@@ -122,7 +121,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     elasticsearch.vm.hostname = "elasticsearch-node"
     elasticsearch.vm.provision :shell, :inline => $elasticsearch_script
     elasticsearch.vm.network :forwarded_port, host: 9200, guest: 9200, auto_correct: true
-    elasticsearch.vm.network :forwarded_port, host: 80, guest: 80, auto_correct: true
+    elasticsearch.vm.network :forwarded_port, host: 8000, guest: 80, auto_correct: true
   end
 
   config.vm.define :appserver1 do |appserver1|

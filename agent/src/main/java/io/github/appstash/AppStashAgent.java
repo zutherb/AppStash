@@ -18,6 +18,7 @@ public class AppStashAgent {
         ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(5);
         scheduler.scheduleAtFixedRate(new MemoryLoggingTask(), 0, 1, TimeUnit.SECONDS);
         scheduler.scheduleAtFixedRate(new ClassLoadingLoggingTask(), 0, 1, TimeUnit.SECONDS);
+//        scheduler.execute();
     }
 
     public static void main(String[] args) {

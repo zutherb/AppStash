@@ -14,6 +14,7 @@ import java.util.UUID;
  */
 public class ClassLoadingLoggingTask extends AbstractLoggingTask implements Runnable {
 
+    private static final String CLASS_LOADING = "ClassLoading";
 
     @Override
     public void run() {
@@ -22,6 +23,7 @@ public class ClassLoadingLoggingTask extends AbstractLoggingTask implements Runn
             getRestTemplate().put("http://10.211.55.100:9200/analytics/classes/{id}",
                     AppStashClassLoading.builder()
                             .name(classLoadingMXBean.getObjectName().getCanonicalName())
+                            .type(CLASS_LOADING)
                             .host(InetAddress.getLocalHost().getHostName())
                             .ip(InetAddress.getLocalHost().getHostAddress())
                             .timestamp(new Date())
