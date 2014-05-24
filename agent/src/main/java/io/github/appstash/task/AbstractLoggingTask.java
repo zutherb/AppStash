@@ -7,17 +7,21 @@ import org.springframework.http.converter.HttpMessageConverter;
 import org.springframework.http.converter.json.MappingJacksonHttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * @author zutherb
  */
-public class AbstractLoggingTask {
+public abstract class AbstractLoggingTask<T> {
 
-    private final static RestTemplate REST_TEMPLATE = createRestTemplate();
+    private static final RestTemplate REST_TEMPLATE = createRestTemplate();
+    private static final String URI_TEMPLATE = "{protocol}://{host}:{port}/{index}/{type}/{id}";
 
-    public static RestTemplate createRestTemplate() {
+    private static RestTemplate createRestTemplate() {
         RestTemplate restTemplate = new RestTemplate();
         List<HttpMessageConverter<?>> messageConverters = new ArrayList<>();
         MappingJacksonHttpMessageConverter jsonMessageConverter = new MappingJacksonHttpMessageConverter();
@@ -35,7 +39,45 @@ public class AbstractLoggingTask {
         return objectMapper;
     }
 
-    public static RestTemplate getRestTemplate() {
-        return REST_TEMPLATE;
+    protected void log(T object) {
+        REST_TEMPLATE.put(URI_TEMPLATE, object, getProtocol(), getHost(), getPort(), getIndexName(), getTypeName(), getId());
+    }
+
+    protected abstract String getTypeName();
+
+    protected String getHostName() {
+        try {
+            return InetAddress.getLocalHost().getHostName();
+        } catch (UnknownHostException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    protected String getHostAddress() {
+        try {
+            return InetAddress.getLocalHost().getHostAddress();
+        } catch (UnknownHostException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public String getProtocol() {
+        return "http";
+    }
+
+    public String getHost() {
+        return "10.211.55.100";
+    }
+
+    private String getIndexName() {
+        return "appstash-2014.05.24";
+    }
+
+    public Object getPort() {
+        return 9200;
+    }
+
+    public Object getId() {
+        return UUID.randomUUID().toString();
     }
 }
