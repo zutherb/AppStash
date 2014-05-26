@@ -19,7 +19,7 @@ import java.util.UUID;
 public abstract class AbstractLoggingTask<T> {
 
     private static final RestTemplate REST_TEMPLATE = createRestTemplate();
-    private static final String URI_TEMPLATE = "{protocol}://{host}:{port}/{index}/{type}/{id}";
+    private static final String URI_TEMPLATE = "{baseUrl}/{index}/{type}/{id}";
 
     private static RestTemplate createRestTemplate() {
         RestTemplate restTemplate = new RestTemplate();
@@ -40,7 +40,8 @@ public abstract class AbstractLoggingTask<T> {
     }
 
     protected void log(T object) {
-        REST_TEMPLATE.put(URI_TEMPLATE, object, getProtocol(), getHost(), getPort(), getIndexName(), getTypeName(), getId());
+        String baseUrl = getProtocol() + "://" + getHost() + ":" + getPort();
+        REST_TEMPLATE.put(URI_TEMPLATE, object, baseUrl, getIndexName(), getTypeName(), getId());
     }
 
     protected abstract String getTypeName();
