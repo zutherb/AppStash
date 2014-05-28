@@ -34,7 +34,7 @@ public class MemoryLoggingTask implements Runnable {
     private MemoryUsageInfo buildMemoryUsageInfo(MemoryPoolMXBean memoryPoolMXBean) {
         return MemoryUsageInfo.builder()
                 .name(memoryPoolMXBean.getName())
-                .type(memoryPoolMXBean.getType().name())
+                .type(memoryPoolMXBean.getType().toString())
                 .usage(memoryPoolMXBean.getUsage())
                 .build();
     }
