@@ -33,7 +33,6 @@ public class MemoryUsageInfo extends java.lang.management.MemoryUsage {
         return type;
     }
 
-
     @JsonProperty("@timestamp")
     @JsonSerialize(using = JsonDateSerializer.class)
     @SuppressWarnings("unused")

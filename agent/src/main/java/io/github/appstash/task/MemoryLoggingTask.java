@@ -22,15 +22,20 @@ public class MemoryLoggingTask implements Runnable {
     public void run() {
         for (MemoryPoolMXBean memoryPoolMXBean : ManagementFactory.getMemoryPoolMXBeans()) {
             try {
-                LOGGER.info(OBJECT_MAPPER.writeValueAsString(MemoryUsageInfo.builder()
-                        .name(memoryPoolMXBean.getName())
-                        .type(memoryPoolMXBean.getType().name())
-                        .usage(memoryPoolMXBean.getUsage())
-                        .build()));
+                String msg = OBJECT_MAPPER.writeValueAsString(buildMemoryUsageInfo(memoryPoolMXBean));
+                LOGGER.info(msg);
             } catch (IOException e) {
-                e.printStackTrace();
+                LOGGER.error("Object could not be converted to JSON String:", e);
             }
         }
 
+    }
+
+    private MemoryUsageInfo buildMemoryUsageInfo(MemoryPoolMXBean memoryPoolMXBean) {
+        return MemoryUsageInfo.builder()
+                .name(memoryPoolMXBean.getName())
+                .type(memoryPoolMXBean.getType().name())
+                .usage(memoryPoolMXBean.getUsage())
+                .build();
     }
 }
