@@ -3,9 +3,10 @@
        xmlns:security="http://www.springframework.org/schema/security"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
-            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
 
     <context:component-scan base-package="com.comsysto.shop.ui"/>
 
@@ -36,4 +37,12 @@
             </list>
         </property>
     </bean>
+
+    <bean id="appStashMemoryLogging" class="io.github.appstash.task.MemoryLoggingTask" />
+
+    <task:scheduled-tasks scheduler="appStashScheduler">
+        <task:scheduled ref="appStashMemoryLogging" method="run" fixed-delay="5000"/>
+    </task:scheduled-tasks>
+
+    <task:scheduler id="appStashScheduler" pool-size="10"/>
 </beans>

@@ -14,7 +14,6 @@ import java.util.Date;
  * @author zutherb
  */
 public class JsonDateSerializer extends JsonSerializer<Date> {
-
     private static DateTimeFormatter formatter =
             DateTimeFormat.forPattern("yyyy-MM-dd'T'HH:mm:ss");
 

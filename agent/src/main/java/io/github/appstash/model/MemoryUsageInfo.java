@@ -9,55 +9,54 @@ import java.util.Date;
 /**
  * @author zutherb
  */
-public class AppStashMemoryUsage extends java.lang.management.MemoryUsage {
+public class MemoryUsageInfo extends java.lang.management.MemoryUsage {
+    private final static String version = "1";
+
     private String name;
     private String type;
-    private String host;
-    private String ip;
     private Date timestamp;
 
-    private AppStashMemoryUsage(MemoryUsage usage, String name, String type, String host, String ip, Date timestamp) {
+    private MemoryUsageInfo(MemoryUsage usage, String name, String type, Date timestamp) {
         super(usage.getInit(), usage.getUsed(), usage.getCommitted(), usage.getMax());
         this.name = name;
         this.type = type;
-        this.host = host;
-        this.ip = ip;
-        this.timestamp = timestamp;
+        this.timestamp = (timestamp != null) ? timestamp : new Date();
     }
 
+    @SuppressWarnings("unused")
     public String getName() {
         return name;
     }
 
+    @SuppressWarnings("unused")
     public String getType() {
         return type;
     }
 
-    public String getHost() {
-        return host;
-    }
-
-    public String getIp() {
-        return ip;
-    }
 
     @JsonProperty("@timestamp")
     @JsonSerialize(using = JsonDateSerializer.class)
+    @SuppressWarnings("unused")
     public Date getTimestamp() {
         return timestamp;
+    }
+
+    @JsonProperty("@version")
+    @SuppressWarnings("unused")
+    public String getVersion() {
+        return version;
     }
 
     public static Builder builder() {
         return new Builder();
     }
 
+
     public static class Builder {
 
         private MemoryUsage usage;
         private String name;
         private String type;
-        private String host;
-        private String ip;
 
         private Date timestamp;
 
@@ -76,23 +75,13 @@ public class AppStashMemoryUsage extends java.lang.management.MemoryUsage {
             return this;
         }
 
-        public Builder host(String host) {
-            this.host = host;
-            return this;
-        }
-
-        public Builder ip(String ip) {
-            this.ip = ip;
-            return this;
-        }
-
         public Builder timestamp(Date timestamp) {
             this.timestamp = timestamp;
             return this;
         }
 
-        public AppStashMemoryUsage create() {
-            return new AppStashMemoryUsage(usage, name, type, host, ip, timestamp);
+        public MemoryUsageInfo build() {
+            return new MemoryUsageInfo(usage, name, type, timestamp);
         }
     }
 }

@@ -1,39 +1,36 @@
 package io.github.appstash.task;
 
-import io.github.appstash.model.AppStashMemoryUsage;
+import io.github.appstash.model.MemoryUsageInfo;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
-import java.lang.management.ClassLoadingMXBean;
+import java.io.IOException;
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryPoolMXBean;
-import java.util.Date;
+
 
 /**
  * @author zutherb
  */
-public class MemoryLoggingTask extends AbstractLoggingTask<AppStashMemoryUsage> implements Runnable {
+public class MemoryLoggingTask implements Runnable {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(MemoryLoggingTask.class);
+    private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
 
     @Override
     public void run() {
-        ClassLoadingMXBean classLoadingMXBean = ManagementFactory.getClassLoadingMXBean();
         for (MemoryPoolMXBean memoryPoolMXBean : ManagementFactory.getMemoryPoolMXBeans()) {
-
-            AppStashMemoryUsage appStashMemoryUsage = AppStashMemoryUsage.builder()
-                    .usage(memoryPoolMXBean.getUsage())
-                    .name(memoryPoolMXBean.getName())
-                    .type(memoryPoolMXBean.getType().toString())
-                    .host(getHostName())
-                    .ip(getHostAddress())
-                    .timestamp(new Date())
-                    .create();
-            log(appStashMemoryUsage);
-
+            try {
+                LOGGER.info(OBJECT_MAPPER.writeValueAsString(MemoryUsageInfo.builder()
+                        .name(memoryPoolMXBean.getName())
+                        .type(memoryPoolMXBean.getType().name())
+                        .usage(memoryPoolMXBean.getUsage())
+                        .build()));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
         }
 
-    }
-
-    @Override
-    protected String getTypeName() {
-        return "memory";
     }
 }

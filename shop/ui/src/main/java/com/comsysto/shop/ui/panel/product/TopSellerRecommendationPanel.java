@@ -1,9 +1,9 @@
 package com.comsysto.shop.ui.panel.product;
 
-import com.comsysto.shop.ui.event.AjaxEvent;
 import com.comsysto.shop.repository.product.model.ProductType;
 import com.comsysto.shop.service.product.model.ProductInfo;
 import com.comsysto.shop.service.recommendation.api.RecommendationService;
+import com.comsysto.shop.ui.event.AjaxEvent;
 import com.comsysto.shop.ui.event.basket.AddToBasketEvent;
 import com.comsysto.shop.ui.event.basket.RemoveFromBasketEvent;
 import com.comsysto.shop.ui.panel.base.AbstractPizzaShopBasePanel;
