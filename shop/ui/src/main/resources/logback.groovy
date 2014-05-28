@@ -6,6 +6,8 @@ import net.logstash.logback.encoder.LogstashEncoder
 import static ch.qos.logback.classic.Level.ERROR
 import static ch.qos.logback.classic.Level.INFO
 
+scan()
+
 appender("stdout", ConsoleAppender) {
     encoder(LogstashEncoder) {
     }

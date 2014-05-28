@@ -91,6 +91,12 @@ sudo cp shop/ui/build/libs/ui-0.4-DEV.war /var/lib/tomcat7/webapps/pizza.war
 
 sudo service tomcat7 restart
 
+cd /var/lib/tomcat7/webapps/pizza/WEB-INF/classes
+sudo rm logback.groovy
+sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/tomcat/logback.groovy
+
+sudo service tomcat7 restart
+
 cd ~
 wget https://download.elasticsearch.org/logstash/logstash/logstash-1.4.1.tar.gz
 tar xvf logstash-1.4.1.tar.gz
