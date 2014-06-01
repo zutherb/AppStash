@@ -17,6 +17,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.validation.IValidatable;
 import org.apache.wicket.validation.IValidator;
 import org.apache.wicket.validation.validator.EmailAddressValidator;
+import org.apache.wicket.validation.validator.PatternValidator;
 import org.wicketstuff.annotation.mount.MountPath;
 
 /**
@@ -84,14 +85,7 @@ public class RegistrationPage extends AbstractBasePage {
 
     private Component zipField() {
         RequiredTextField<String> zip = new RequiredTextField<>("zip", new PropertyModel<>(userInfoModel, "address.zip"));
-
-        zip.add(validatable -> {
-            if (validatable.getValue() != null && !validatable.getValue().matches("^[0-9]{5}$")) {
-                error("Please enter a valid ZIP code");
-            }
-
-        });
-
+        zip.add(new PatternValidator("^[0-9]{5}$"));
         return zip;
     }
 

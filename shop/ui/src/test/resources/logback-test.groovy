@@ -1,13 +1,13 @@
-package com.comsysto.shop
-
 import ch.qos.logback.classic.encoder.PatternLayoutEncoder
 import ch.qos.logback.core.ConsoleAppender
-
 import static ch.qos.logback.classic.Level.*
+
+def defaultPattern = "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
+
 appender("stdout", ConsoleAppender) {
     encoder(PatternLayoutEncoder) {
-        pattern = "%d{ABSOLUTE} %5p %c{1}:%L - %m%n"
+        pattern = defaultPattern
     }
 }
 
-root(ERROR, ["stdout"])
+root(INFO, ["stdout"])

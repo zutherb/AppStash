@@ -26,6 +26,7 @@
     <import resource="classpath:com/comsysto/dataloader/spring-context.xml"/>
 
     <import resource="spring-profile-context.xml"/>
+    <import resource="spring-jetm-context.xml"/>
 
     <bean id="dozerMapper" class="org.dozer.DozerBeanMapper">
         <property name="mappingFiles">

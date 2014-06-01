@@ -56,6 +56,7 @@ subprojects {
                         "commons-pool:commons-pool:$commonsPoolVersion",
                         "commons-cli:commons-cli:$commonsCliVersion",
                         "commons-lang:commons-lang:$commonsLangVersion",
+                        "commons-collections:commons-collections:$commonsCollectionsVersion",
                         "org.apache.commons:commons-math:$commonsMathVersion",
                         "com.google.guava:guava:$guavaVersion",
                         "org.codehaus.jackson:jackson-mapper-asl:$jacksonVersion",
@@ -101,6 +102,9 @@ subprojects {
 
     ext.webAppDeps = [
             "javax.servlet:javax.servlet-api:3.0.1",
+            "org.jminix:jminix:$jminixVersion",
+            "fm.void.jetm:jetm:$jetmVersion",
+            "fm.void.jetm:jetm-optional:$jetmVersion"
     ]
 
     ext.mongoDeps = [

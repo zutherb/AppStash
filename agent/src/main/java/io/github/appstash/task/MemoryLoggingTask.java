@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.lang.management.ManagementFactory;
 import java.lang.management.MemoryPoolMXBean;
+import java.util.List;
 
 
 /**
@@ -17,10 +18,11 @@ public class MemoryLoggingTask implements Runnable {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MemoryLoggingTask.class);
     private static final ObjectMapper OBJECT_MAPPER = new ObjectMapper();
+    private static final List<MemoryPoolMXBean> MEMORY_POOL_MX_BEANS = ManagementFactory.getMemoryPoolMXBeans();
 
     @Override
     public void run() {
-        for (MemoryPoolMXBean memoryPoolMXBean : ManagementFactory.getMemoryPoolMXBeans()) {
+        for (MemoryPoolMXBean memoryPoolMXBean : MEMORY_POOL_MX_BEANS) {
             try {
                 String message = memoryUsageAsJsonString(memoryPoolMXBean);
                 LOGGER.info(message);

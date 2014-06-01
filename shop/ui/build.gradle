@@ -25,10 +25,11 @@ sourceSets {
 }
 
 dependencies {
+    compile "net.logstash.logback:logstash-logback-encoder:2.5"
+
     compile wicketDeps
     compile webAppDeps
 
-    compile "net.logstash.logback:logstash-logback-encoder:2.5"
     compile project(':agent')
     compile project(':shop:service:authentication')
     compile project(':shop:service:basket')
