@@ -1,6 +1,7 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
+apply plugin: "jacoco"
 apply plugin: "sonar-runner"
 
 sonarRunner {
@@ -33,15 +34,25 @@ def props = new Properties();
 file("gradle.properties").withInputStream { props.load(it) }
 props.each({ project.ext[it.key] = it.value })
 
+
+allprojects {
+    apply plugin: "jacoco"
+
+    jacoco {
+        toolVersion = "0.7.1.201405082137"
+        destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
+    }
+}
+
 subprojects {
     apply plugin: 'java'
     apply plugin: 'eclipse'
     apply plugin: 'idea'
 
-
     sonarRunner {
         sonarProperties {
             property "sonar.sourceEncoding", "UTF-8"
+            property "sonar.jacoco.reportPath", "$buildDir/jacoco/jacocoTest.exec"
         }
     }
 
