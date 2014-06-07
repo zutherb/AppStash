@@ -1,6 +1,17 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
+apply plugin: "sonar-runner"
+
+sonarRunner {
+    sonarProperties {
+        property "sonar.host.url", "http://localhost:9000/"
+        property "sonar.jdbc.url", "jdbc:postgresql://localhost/sonar"
+        property "sonar.jdbc.driverClassName", "org.postgresql.Driver"
+        property "sonar.jdbc.username", "sonar"
+        property "sonar.jdbc.password", "sonar"
+    }
+}
 
 test.onlyIf { !Boolean.getBoolean('skip.tests') }
 
@@ -26,11 +37,18 @@ subprojects {
     apply plugin: 'eclipse'
     apply plugin: 'idea'
 
+
+    sonarRunner {
+        sonarProperties {
+            property "sonar.sourceEncoding", "UTF-8"
+        }
+    }
+
     repositories {
         mavenCentral()
-        maven{url 'http://maven.springsource.org/release'}
-        maven{url 'http://repo.springsource.org/milestone'}
-        maven{url 'http://maven.restlet.org'}
+        maven { url 'http://maven.springsource.org/release' }
+        maven { url 'http://repo.springsource.org/milestone' }
+        maven { url 'http://maven.restlet.org' }
     }
 
     configurations {
