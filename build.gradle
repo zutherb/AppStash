@@ -4,6 +4,8 @@ apply plugin: 'idea'
 apply plugin: "jacoco"
 apply plugin: "sonar-runner"
 
+def jacocoFile = "$buildDir/jacoco/jacoco.exec"
+
 sonarRunner {
     sonarProperties {
         property "sonar.host.url", "http://localhost:9000/"
@@ -12,6 +14,8 @@ sonarRunner {
         property "sonar.jdbc.username", "sonar"
         property "sonar.jdbc.password", "sonar"
         property "sonar.projectName", "pizza"
+        property "sonar.core.codeCoveragePlugin", "jacoco"
+        property "sonar.jacoco.reportPath", jacocoFile
     }
 }
 
@@ -40,14 +44,12 @@ allprojects {
 
     jacoco {
         toolVersion = "0.7.1.201405082137"
-        destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
+        destinationFile = file(jacocoFile)
     }
 }
 
 subprojects {
     apply plugin: 'java'
-    apply plugin: 'eclipse'
-    apply plugin: 'idea'
 
     sonarRunner {
         sonarProperties {
