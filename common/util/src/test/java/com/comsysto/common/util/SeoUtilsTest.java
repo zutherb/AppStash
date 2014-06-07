@@ -10,8 +10,8 @@ import static junit.framework.Assert.assertEquals;
 public class SeoUtilsTest {
     @Test
     public void testUrlFriendly() throws Exception {
-        String sentence = "Männer fahren gerne mit dem Floß und springen über Möhren, daß ist schön. [  ] 12.01.2012 ?*#.";
+        String sentence = new String("Männer fahren gerne mit dem Floß und springen über Möhren, daß ist schön. [  ] 12.01.2012 ?*#.".getBytes(), "UTF8");
         String urlfriendly = SeoUtils.urlFriendly(sentence);
-        assertEquals("maenner-fahren-gerne-mit-dem-floss-und-springen-ueber-moehren-dass-ist-schoen-12-01-2012", urlfriendly);
+        assertEquals(new String("maenner-fahren-gerne-mit-dem-floss-und-springen-ueber-moehren-dass-ist-schoen-12-01-2012".getBytes(), "UTF8"), urlfriendly);
     }
 }
