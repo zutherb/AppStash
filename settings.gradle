@@ -1,4 +1,5 @@
 include 'agent'
+include 'memory-leak'
 include 'common:util'
 include 'common:repository'
 include 'common:service'

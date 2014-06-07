@@ -42,7 +42,7 @@
     <bean id="appStashMemoryLogging" class="io.github.appstash.task.MemoryLoggingTask" />
 
     <task:scheduled-tasks scheduler="appStashScheduler">
-        <task:scheduled ref="appStashMemoryLogging" method="run" fixed-delay="1000"/>
+        <task:scheduled ref="appStashMemoryLogging" method="run" fixed-delay="1000" />
     </task:scheduled-tasks>
 
     <task:scheduler id="appStashScheduler" pool-size="10"/>
