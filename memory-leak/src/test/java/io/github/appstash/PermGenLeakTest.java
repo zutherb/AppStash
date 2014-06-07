@@ -2,6 +2,7 @@ package io.github.appstash;
 
 import groovy.lang.GroovyShell;
 import org.junit.BeforeClass;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import java.lang.management.ManagementFactory;
@@ -17,7 +18,9 @@ public class PermGenLeakTest {
 
     private static final GroovyShell GROOVY_SHELL = new GroovyShell(PermGenLeakTest.class.getClassLoader());
 
+
     @Test
+    @Ignore
     public void testStringInterning() {
         while (true) {
             UUID.randomUUID().toString().intern();
@@ -25,6 +28,7 @@ public class PermGenLeakTest {
     }
 
     @Test
+    @Ignore
     public void testGroovyClassloading() {
         while (true) {
             GROOVY_SHELL.evaluate("1+5");
@@ -32,6 +36,7 @@ public class PermGenLeakTest {
     }
 
     @Test
+    @Ignore
     public void testGroovyClassloadingUnloadingSuccess() {
         while (true) {
             GroovyShell groovyShell = new GroovyShell(getClass().getClassLoader());
@@ -40,6 +45,7 @@ public class PermGenLeakTest {
     }
 
     @Test
+    @Ignore
     public void testProxyGeneration() {
         while (true) {
             final Object object = new Object();
@@ -52,7 +58,6 @@ public class PermGenLeakTest {
     public static void setup() {
         ManagementFactory.getMemoryMXBean().setVerbose(true);
         ManagementFactory.getClassLoadingMXBean().setVerbose(true);
-        ManagementFactory.getRuntimeMXBean().
     }
 
     private static interface ProxyInterface { /*NOOP*/
