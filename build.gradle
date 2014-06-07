@@ -10,6 +10,7 @@ sonarRunner {
         property "sonar.jdbc.driverClassName", "org.postgresql.Driver"
         property "sonar.jdbc.username", "sonar"
         property "sonar.jdbc.password", "sonar"
+        property "sonar.projectName", "pizza"
     }
 }
 
