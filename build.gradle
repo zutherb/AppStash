@@ -4,7 +4,8 @@ apply plugin: 'idea'
 apply plugin: "jacoco"
 apply plugin: "sonar-runner"
 
-def jacocoFile = "$buildDir/jacoco/jacoco.exec"
+def jacocoReportPath = "$buildDir/jacoco/"
+def jacocoFile = jacocoReportPath + "jacoco.exec"
 
 sonarRunner {
     sonarProperties {
@@ -45,6 +46,29 @@ allprojects {
     jacoco {
         toolVersion = "0.7.1.201405082137"
         destinationFile = file(jacocoFile)
+    }
+
+    test {
+        jacoco {
+            destinationFile = file(jacocoFile)
+        }
+    }
+
+    jacocoTestReport {
+        group = "Reporting"
+        description = "Generate Jacoco coverage reports after running tests."
+        reports {
+            xml{
+                enabled true
+                destination "${buildDir}/reports/jacoco/jacoco.xml"
+            }
+            csv.enabled false
+            html{
+                enabled true
+                destination "${buildDir}/jacocoHtml"
+            }
+        }
+        additionalSourceDirs = files(sourceSets.main.allJava.srcDirs)
     }
 }
 
