@@ -75,8 +75,8 @@ dependencies {
 }
 
 [jettyRun, jettyRunWar]*.with {
-    httpPort = 8080
-    stopPort = 8091
+    httpPort = 8888
+    stopPort = 8889
     contextPath = "pizza"
 }
 
@@ -98,12 +98,12 @@ drivers.each { driver ->
         // systemProperty "geb.build.baseUrl", "http://myapp.com"
 
         doFirst {
-            jettyRun.httpPort = 8080    // Port for test
+            jettyRun.httpPort = 8888    // Port for test
             jettyRun.daemon = true
             jettyRun.execute()
         }
         doLast {
-            jettyStop.stopPort = 8091   // Port for stop signal
+            jettyStop.stopPort = 8889   // Port for stop signal
             jettyStop.stopKey = 'stopKey'
             jettyStop.execute()
         }
