@@ -1,121 +1,5 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
-
-$elasticsearch_script = <<SCRIPT
-#!/bin/bash
-sudo rm /etc/hosts
-cd /etc
-sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/etc/hosts
-
-sudo rm /etc/apt/sources.list
-cd /etc/apt/
-sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/apt/sources.list
-
-cd ~
-sudo apt-get update
-sudo apt-get install openjdk-7-jre-headless apache2 apache2-doc links curl -y
-
-### Check http://www.elasticsearch.org/download/ for latest version of ElasticSearch and replace wget link below
-wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.1.1.tar.gz
-tar -xf elasticsearch-1.1.1.tar.gz
-rm elasticsearch-1.1.1.tar.gz
-sudo mv elasticsearch-* elasticsearch
-sudo mv elasticsearch /usr/local/share
-
-wget http://github.com/elasticsearch/elasticsearch-servicewrapper/tarball/master
-tar -xf *master*
-sudo mv *servicewrapper*/service /usr/local/share/elasticsearch/bin/
-rm -Rf *servicewrapper*
-sudo /usr/local/share/elasticsearch/bin/service/elasticsearch install
-sudo ln -s `readlink -f /usr/local/share/elasticsearch/bin/service/elasticsearch` /usr/local/bin/rcelasticsearch
-
-sudo service elasticsearch start
-
-wget https://download.elasticsearch.org/kibana/kibana/kibana-3.1.0.tar.gz
-tar -xf kibana-3.1.0.tar.gz
-rm kibana-3.1.0.tar.gz
-sudo mv kibana-* kibana
-sudo mv kibana/* /var/www/
-rf -rf kibana/
-
-sudo groupadd www
-sudo adduser vagrant www
-sudo chgrp www /var/www
-sudo chmod g+w /var/www
-SCRIPT
-
-$app_server_script = <<SCRIPT
-#!/bin/bash
-sudo rm /etc/hosts
-cd /etc
-sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/etc/hosts
-
-sudo rm /etc/apt/sources.list
-cd /etc/apt/
-sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/apt/sources.list
-
-sudo apt-get update
-sudo apt-get install tomcat7 tomcat7-admin python-software-properties git links curl mongodb mongodb-clients mongodb-server unzip -y  -q
-cd /usr/local/
-sudo wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u5-b13/jdk-8u5-linux-x64.tar.gz"
-sudo tar xzf jdk-8u5-linux-x64.tar.gz
-sudo update-alternatives --install "/usr/bin/java" "java" "/usr/local/jdk1.8.0_05/bin/java" 1
-sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/local/jdk1.8.0_05/bin/javac" 1
-sudo update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/local/jdk1.8.0_05/bin/javaws" 1
-
-sudo /etc/default/tomcat7
-sudo cat > /etc/default/tomcat7  <<EOF
-TOMCAT7_USER=tomcat7
-TOMCAT7_GROUP=tomcat7
-JAVA_HOME=/usr/local/jdk1.8.0_05
-JAVA_OPTS="-Djava.awt.headless=true -Xmx1024M -Xms512M"
-CATALINA_OPTS="-Dcom.sun.management.jmxremote.port=11001 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"
-EOF
-
-sudo rm /var/lib/tomcat7/conf/server.xml
-sudo rm /var/lib/tomcat7/conf/tomcat-users.xml
-cd /var/lib/tomcat7/conf/
-sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/tomcat/server.xml
-sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/tomcat/tomcat-users.xml
-
-cd ~
-wget https://psi-probe.googlecode.com/files/probe-2.3.3.zip
-unzip probe-2.3.3.zip
-sudo mv probe.war /var/lib/tomcat7/webapps/
-
-cd ~
-git clone https://github.com/zutherb/AppStash.git mongodb-onlineshop
-cd mongodb-onlineshop/
-export JAVA_HOME=/usr/local/jdk1.8.0_05
-./gradlew -p shop/ui war
-sudo cp shop/ui/build/libs/ui-0.4-DEV.war /var/lib/tomcat7/webapps/pizza.war
-
-sudo service tomcat7 restart
-
-cd /var/lib/tomcat7/webapps/pizza/WEB-INF/classes
-sudo rm logback.groovy
-sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/tomcat/logback.groovy
-
-sudo service tomcat7 restart
-
-cd ~
-wget https://download.elasticsearch.org/logstash/logstash/logstash-1.4.1.tar.gz
-tar xvf logstash-1.4.1.tar.gz
-rm logstash-1.4.1.tar.gz
-sudo mv logstash-1.4.1 /usr/local/logstash
-
-sudo mkdir /etc/logstash/
-cd /etc/logstash/
-sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/logstash/logstash.conf
-cd /etc/init.d/
-sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/logstash/logstash
-sudo chmod +x /etc/init.d/logstash
-sudo update-rc.d logstash defaults
-sudo service logstash start
-
-sudo service tomcat7 restart
-SCRIPT
-
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
@@ -123,13 +7,27 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     elasticsearch.vm.box = "precise64"
     elasticsearch.vm.provider "virtualbox" do |v|
       v.name = "elasticsearch-node"
-      v.customize ["modifyvm", :id, "--memory", "4112"]
+      v.customize ["modifyvm", :id, "--memory", "2048"]
     end
     elasticsearch.vm.network :private_network, ip: "10.211.55.100"
     elasticsearch.vm.hostname = "elasticsearch-node"
-    elasticsearch.vm.provision :shell, :inline => $elasticsearch_script
+    elasticsearch.vm.provision :shell, :path => "provision/elasticsearch.sh"
     elasticsearch.vm.network :forwarded_port, host: 9200, guest: 9200, auto_correct: true
     elasticsearch.vm.network :forwarded_port, host: 8000, guest: 80, auto_correct: true
+  end
+
+  config.vm.define :buildserver do |buildserver|
+    buildserver.vm.box = "precise64"
+    buildserver.vm.provider "virtualbox" do |v|
+      v.name = "ci-node"
+      v.customize ["modifyvm", :id, "--memory", "1024"]
+    end
+    buildserver.vm.network :private_network, ip: "10.211.55.200"
+    buildserver.vm.hostname = "ci-node"
+    buildserver.vm.provision :shell, :path => "provision/buildserver.sh"
+    buildserver.vm.network :forwarded_port, host: 10000, guest: 8080, auto_correct: true
+    buildserver.vm.network :forwarded_port, host: 9000, guest: 9000, auto_correct: true
+    buildserver.vm.network :forwarded_port, host: 5432, guest: 5432, auto_correct: true
   end
 
   config.vm.define :appserver1 do |appserver1|
@@ -140,7 +38,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
     appserver1.vm.network :private_network, ip: "10.211.55.101"
     appserver1.vm.hostname = "app-server-node-1"
-    appserver1.vm.provision :shell, :inline => $app_server_script
+    appserver1.vm.provision :shell, :path => "provision/appserver.sh"
     appserver1.vm.network :forwarded_port, host: 8080, guest: 8080, auto_correct: true
   end
 
@@ -152,7 +50,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
     appserver2.vm.network :private_network, ip: "10.211.55.102"
     appserver2.vm.hostname = "app-server-node-2"
-    appserver2.vm.provision :shell, :inline => $app_server_script
+    appserver2.vm.provision :shell, :path => "provision/appserver.sh"
     appserver2.vm.network :forwarded_port, host: 8081, guest: 8080, auto_correct: true
   end
 end

@@ -31,11 +31,14 @@
     <builders>
         <hudson.tasks.Shell>
             <command>ssh vagrant@app-server-node-1 -o StrictHostKeyChecking=no -v &lt;&lt;EOF
-                sudo service tomcat7 stop
-                sudo rm -rf /var/lib/tomcat7/webapps/pizza*
-                sudo wget -O /var/lib/tomcat7/webapps/pizza.war http://ci-node:8080/job/pizza-build/4/artifact/shop/ui/build/libs/ui-0.4-DEV.war
-                sudo service tomcat7 start
-                EOF</command>
+sudo service tomcat7 stop
+sudo rm -rf /var/lib/tomcat7/webapps/pizza*
+sudo wget -O /var/lib/tomcat7/webapps/pizza.war http://ci-node:8080/job/pizza-build/lastSuccessfulBuild/artifact/shop/ui/build/libs/ui-0.4-DEV.war
+sudo service tomcat7 start
+cd /var/lib/tomcat7/webapps/pizza/WEB-INF/classes
+sudo rm logback.groovy
+sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/tomcat/logback.groovy
+EOF</command>
         </hudson.tasks.Shell>
     </builders>
     <publishers/>

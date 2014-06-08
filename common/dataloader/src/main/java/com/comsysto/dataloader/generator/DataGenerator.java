@@ -5,10 +5,6 @@ import com.comsysto.dataloader.reader.AddressCsvReader;
 import com.comsysto.dataloader.reader.ProductCsvReader;
 import com.comsysto.dataloader.reader.SupplierCsvReader;
 import com.comsysto.dataloader.reader.UserCsvReader;
-import com.comsysto.shop.repository.user.api.UserRepository;
-import com.comsysto.shop.repository.user.model.Address;
-import com.comsysto.shop.repository.user.model.Role;
-import com.comsysto.shop.repository.user.model.User;
 import com.comsysto.shop.repository.order.api.OrderIdProvider;
 import com.comsysto.shop.repository.order.api.OrderRepository;
 import com.comsysto.shop.repository.order.model.DeliveryAddress;
@@ -17,6 +13,10 @@ import com.comsysto.shop.repository.order.model.OrderItem;
 import com.comsysto.shop.repository.order.model.Supplier;
 import com.comsysto.shop.repository.product.api.ProductRepository;
 import com.comsysto.shop.repository.product.model.Product;
+import com.comsysto.shop.repository.user.api.UserRepository;
+import com.comsysto.shop.repository.user.model.Address;
+import com.comsysto.shop.repository.user.model.Role;
+import com.comsysto.shop.repository.user.model.User;
 import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -38,7 +38,7 @@ import java.util.*;
 /**
  * This dataloader loads a basic data set in the database when the application starts and the
  * database is empty
- * <p/>
+ * <p>
  * for the test environment the drop.collections can be set to true and the dataloader will
  * always clean the database and so run every time with a fixed set of test data
  *
@@ -102,7 +102,7 @@ public class DataGenerator {
         cleanCollections();
         createSupplierList();
 
-        if(productRepository.findAll().isEmpty()){
+        if (productRepository.findAll().isEmpty()) {
             createProducts();
             createUsers();
             createOrders();

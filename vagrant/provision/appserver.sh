@@ -40,11 +40,7 @@ unzip probe-2.3.3.zip
 sudo mv probe.war /var/lib/tomcat7/webapps/
 
 cd ~
-git clone https://github.com/zutherb/AppStash.git mongodb-onlineshop
-cd mongodb-onlineshop/
-export JAVA_HOME=/usr/local/jdk1.8.0_05
-./gradlew -p shop/ui war
-sudo cp shop/ui/build/libs/ui-0.4-DEV.war /var/lib/tomcat7/webapps/pizza.war
+sudo wget -O /var/lib/tomcat7/webapps/pizza.war http://ci-node:8080/job/pizza-build/lastSuccessfulBuild/artifact/shop/ui/build/libs/ui-0.4-DEV.war
 
 sudo service tomcat7 restart
 

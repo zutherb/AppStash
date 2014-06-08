@@ -40,7 +40,7 @@
     <builders>
         <hudson.tasks.Shell>
             <command>./gradlew clean build
-                ./gradlew -p shop/ui war</command>
+./gradlew -p shop/ui war</command>
         </hudson.tasks.Shell>
     </builders>
     <publishers>

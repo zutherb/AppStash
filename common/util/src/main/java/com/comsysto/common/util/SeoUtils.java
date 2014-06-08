@@ -7,7 +7,7 @@ import org.apache.commons.lang.StringUtils;
  */
 public class SeoUtils {
 
-    public static String urlFriendly(String urlUnfriendly){
+    public static String urlFriendly(String urlUnfriendly) {
         String urlFriendly = urlUnfriendly.toLowerCase();
         urlFriendly = urlFriendly.replaceAll("ä", "ae");
         urlFriendly = urlFriendly.replaceAll("ö", "oe");
@@ -19,8 +19,8 @@ public class SeoUtils {
         urlFriendly = urlFriendly.replaceAll("\\s", "-");
         urlFriendly = urlFriendly.replaceAll("[^a-z0-9\\-]+", "");
         urlFriendly = urlFriendly.replaceAll("\\-+", "-");
-        if(StringUtils.endsWith(urlFriendly, "-")){
-            return urlFriendly.substring(0, urlFriendly.length()-1);
+        if (StringUtils.endsWith(urlFriendly, "-")) {
+            return urlFriendly.substring(0, urlFriendly.length() - 1);
         }
         return urlFriendly;
     }
