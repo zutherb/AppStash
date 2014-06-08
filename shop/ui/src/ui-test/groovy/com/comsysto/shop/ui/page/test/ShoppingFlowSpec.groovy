@@ -33,11 +33,11 @@ class ShoppingFlowSpec extends GebReportingSpec {
         then:
         at CheckoutPage
 
-//        and:
-//        submitOrderLink.click()
-//
-//        then:
-//        at OrderConfirmationPage
+        and:
+        submitOrderLink.click()
+
+        then:
+        at OrderConfirmationPage
     }
 
 }

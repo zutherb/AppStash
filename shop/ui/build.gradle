@@ -21,7 +21,7 @@ sourceSets {
         resources {
             srcDir 'src/test/resources'
             srcDir 'src/test/java'
-            srcDir 'src/test/groovy'
+            srcDir 'src/ui-test/groovy'
         }
     }
 }
@@ -29,9 +29,6 @@ sourceSets {
 repositories {
     jcenter()
 }
-
-def gebVersion = "0.9.2"
-def seleniumVersion = "2.42.2"
 
 // The drivers we want to use
 ext.drivers = ["firefox"] //, "chrome"]
@@ -81,11 +78,15 @@ dependencies {
 }
 
 jettyRun.doFirst {
-    System.setProperty("spring.profiles.active", "default")
+    if(!Boolean.getBoolean('spring.profiles.active')){
+        System.setProperty("spring.profiles.active", "default")
+    }
 }
 
 drivers.each { driver ->
     task "${driver}Test"(type: Test) {
+        include '**/*Spec*'
+
         reports {
             html.destination = reporting.file("$name/tests")
             junitXml.destination = file("$buildDir/test-results/$name")
@@ -98,6 +99,7 @@ drivers.each { driver ->
         // systemProperty "geb.build.baseUrl", "http://myapp.com"
 
         doFirst {
+            System.setProperty("spring.profiles.active", "test")
             jettyRun.httpPort = 8888    // Port for test
             jettyRun.daemon = true
             jettyRun.execute()
@@ -110,9 +112,7 @@ drivers.each { driver ->
     }
 }
 
-/*
+
 test {
-    dependsOn drivers.collect { tasks["${it}Test"] }
-    enabled = false
+    exclude '**/*Spec*'
 }
-*/
