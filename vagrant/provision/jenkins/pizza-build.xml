@@ -30,7 +30,6 @@
     <disabled>false</disabled>
     <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
     <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-    <jdk>java 8</jdk>
     <triggers>
         <hudson.triggers.SCMTrigger>
             <spec>H/60 * * * *</spec>
@@ -40,9 +39,16 @@
     <concurrentBuild>false</concurrentBuild>
     <builders>
         <hudson.tasks.Shell>
-            <command>./gradlew clean build</command>
+            <command>./gradlew clean build
+                ./gradlew -p shop/ui war</command>
         </hudson.tasks.Shell>
     </builders>
-    <publishers/>
+    <publishers>
+        <hudson.tasks.ArtifactArchiver>
+            <artifacts>**/*.war</artifacts>
+            <latestOnly>false</latestOnly>
+            <allowEmptyArchive>false</allowEmptyArchive>
+        </hudson.tasks.ArtifactArchiver>
+    </publishers>
     <buildWrappers/>
 </project>

@@ -1,4 +1,7 @@
 #!/bin/bash
+wget -O /home/vagrant/.ssh/id_rsa https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/ssh/id_rsa
+wget -O /home/vagrant/.ssh/id_rsa.pub https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/ssh/id_rsa.pub
+
 sudo rm /etc/hosts
 cd /etc
 sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/etc/hosts

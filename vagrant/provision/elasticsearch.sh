@@ -1,4 +1,7 @@
 #!/bin/bash
+wget -O /home/vagrant/.ssh/id_rsa https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/ssh/id_rsa
+wget -O /home/vagrant/.ssh/id_rsa.pub https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/ssh/id_rsa.pub
+
 sudo rm /etc/hosts
 cd /etc
 sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/etc/hosts
@@ -13,8 +16,8 @@ sudo apt-get install openjdk-7-jre-headless apache2 apache2-doc links curl -y
 
 ### Check http://www.elasticsearch.org/download/ for latest version of ElasticSearch and replace wget link below
 wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-1.2.1.tar.gz
-tar -xf elasticsearch-1.1.1.tar.gz
-rm elasticsearch-1.1.1.tar.gz
+tar -xf elasticsearch-1.2.1.tar.gz
+rm elasticsearch-1.2.1.tar.gz
 sudo mv elasticsearch-* elasticsearch
 sudo mv elasticsearch /usr/local/share
 

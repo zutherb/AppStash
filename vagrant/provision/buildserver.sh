@@ -1,4 +1,7 @@
 #!/bin/bash
+wget -O /home/vagrant/.ssh/id_rsa https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/ssh/id_rsa
+wget -O /home/vagrant/.ssh/id_rsa.pub https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/ssh/id_rsa.pub
+
 sudo rm /etc/hosts
 cd /etc
 sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/etc/hosts
@@ -28,8 +31,18 @@ sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/prov
 sudo service sonar restart
 sudo update-rc.d sonar defaults
 
+sudo su jenkins
 cd ~
+mkdir /var/lib/jenkins/.ssh
+wget -O /var/lib/jenkins/.ssh/id_rsa https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/ssh/id_rsa
+wget -O /var/lib/jenkins/.ssh/id_rsa.pub https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/ssh/id_rsa.pub
+chmod 600 ~/.ssh/id_rsa
+chmod 600 ~/.ssh/id_rsa.pub
+wget -qO - https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/jenkins/config.xml >> /var/lib/jenkins/config.xml
 wget http://localhost:8080/jnlpJars/jenkins-cli.jar
 java -jar jenkins-cli.jar -s http://localhost:8080/ install-plugin git greenballs build-pipeline-plugin copyartifact performance jacoco -restart
-
+wget -qO - https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/jenkins/pizza-build.xml | java -jar jenkins-cli.jar -s http://localhost:8080/ create-job pizza-build
+wget -qO - https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/jenkins/pizza-test-deployment.xml | java -jar jenkins-cli.jar -s http://localhost:8080/ create-job pizza-test-deployment
+java -jar jenkins-cli.jar -s http://localhost:8080/ restart
+exit
 
