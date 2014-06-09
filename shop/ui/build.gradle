@@ -1,13 +1,23 @@
 apply plugin: "groovy"
 apply plugin: 'war'
 apply plugin: 'jetty'
-
+apply plugin: 'jmeter'
 
 idea {
     module {
         name = 'ui'
     }
 }
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "com.github.kulya:jmeter-gradle-plugin:1.3.1-2.6"
+    }
+}
+
 
 sourceSets {
     main {
@@ -19,6 +29,7 @@ sourceSets {
     }
     test {
         resources {
+            srcDir 'src/test/load'
             srcDir 'src/test/resources'
             srcDir 'src/test/java'
             srcDir 'src/ui-test/groovy'
@@ -115,4 +126,9 @@ drivers.each { driver ->
 
 test {
     exclude '**/*Spec*'
+}
+
+jmeterRun.configure {
+    jmeterPropertyFile = file("src/test/resources/jmeter.properties")
+    jmeterTestFiles = [file("src/test/load/loadtest.jmx")]
 }
