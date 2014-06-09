@@ -38,6 +38,8 @@ props.each({ project.ext[it.key] = it.value })
 
 subprojects {
     apply plugin: 'java'
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
 
     sonarRunner {
         sonarProperties {
