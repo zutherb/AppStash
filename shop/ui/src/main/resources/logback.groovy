@@ -14,7 +14,8 @@ appender("stdout", ConsoleAppender) {
 }
 
 appender("appstash", FileAppender) {
-    file = "/var/log/tomcat7/appstash.log"
+    //def appstashLogFile = "/var/log/tomcat7/appstash.log"
+    file = "appstash.log"
     append = true
     encoder(PatternLayoutEncoder) {
         pattern = "%msg%n"

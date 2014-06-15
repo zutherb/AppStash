@@ -35,7 +35,7 @@ sudo su jenkins
 cd ~
 wget -qO - https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/jenkins/config.xml >> /var/lib/jenkins/config.xml
 wget http://localhost:8080/jnlpJars/jenkins-cli.jar
-java -jar jenkins-cli.jar -s http://localhost:8080/ install-plugin git greenballs build-pipeline-plugin copyartifact performance jacoco buildgraph-view -restart
+java -jar jenkins-cli.jar -s http://localhost:8080/ install-plugin git greenballs build-pipeline-plugin copyartifact performance jacoco buildgraph-view xvnc -restart
 wget -qO - https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/jenkins/pizza-build.xml | java -jar jenkins-cli.jar -s http://localhost:8080/ create-job pizza-build
 wget -qO - https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/jenkins/pizza-test-deployment.xml | java -jar jenkins-cli.jar -s http://localhost:8080/ create-job pizza-test-deployment
 java -jar jenkins-cli.jar -s http://localhost:8080/ restart

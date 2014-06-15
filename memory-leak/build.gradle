@@ -1,3 +1,15 @@
+apply plugin: 'application'
+
+mainClassName = "io.github.appstash.memoryleak.Runner"
+
+applicationDefaultJvmArgs = ["-Dcom.sun.management.jmxremote",
+                             "-Dcom.sun.management.jmxremote.port=10001",
+                             "-Dcom.sun.management.jmxremote.authenticate=false",
+                             "-Dcom.sun.management.jmxremote.ssl=false"]
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.6
+
 sourceSets {
     main {
         resources {
@@ -12,7 +24,16 @@ sourceSets {
 }
 
 dependencies {
-    testCompile commonDeps
+    compile commonDeps
     testCompile testDeps
+}
+
+tasks.withType(JavaCompile) {
+    sourceCompatibility = "1.8"
+    targetCompatibility = "1.6"
+}
+
+compileJava.doFirst {
+    println "source compatibility " + sourceCompatibility
 }
 

@@ -25,9 +25,6 @@ tasks.withType(JavaCompile) {
 
 group = 'com.comsysto'
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.6
-
 compileJava.options.encoding = 'UTF-8'
 compileTestJava.options.encoding = 'UTF-8'
 
@@ -35,6 +32,11 @@ compileTestJava.options.encoding = 'UTF-8'
 def props = new Properties();
 file("gradle.properties").withInputStream { props.load(it) }
 props.each({ project.ext[it.key] = it.value })
+
+allprojects {
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.6
+}
 
 subprojects {
     apply plugin: 'java'

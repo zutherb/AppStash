@@ -1,6 +1,7 @@
 package io.github.appstash;
 
 import groovy.lang.GroovyShell;
+import io.github.appstash.memoryleak.simulator.StringInterningMemoryLeakSimulator;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -9,7 +10,6 @@ import java.lang.management.ManagementFactory;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-import java.util.UUID;
 
 /**
  * @author zutherb
@@ -18,13 +18,10 @@ public class PermGenLeakTest {
 
     private static final GroovyShell GROOVY_SHELL = new GroovyShell(PermGenLeakTest.class.getClassLoader());
 
-
     @Test
     @Ignore
     public void testStringInterning() {
-        while (true) {
-            UUID.randomUUID().toString().intern();
-        }
+        new StringInterningMemoryLeakSimulator().run();
     }
 
     @Test

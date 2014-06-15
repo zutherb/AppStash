@@ -41,13 +41,6 @@ sudo mv probe.war /var/lib/tomcat7/webapps/
 
 cd ~
 sudo wget -O /var/lib/tomcat7/webapps/pizza.war http://ci-node:8080/job/pizza-build/lastSuccessfulBuild/artifact/shop/ui/build/libs/ui-0.4-DEV.war
-
-sudo service tomcat7 restart
-
-cd /var/lib/tomcat7/webapps/pizza/WEB-INF/classes
-sudo rm logback.groovy
-sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/tomcat/logback.groovy
-
 sudo service tomcat7 restart
 
 cd ~
