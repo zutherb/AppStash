@@ -25,7 +25,6 @@ sudo tar xzf jdk-7u60-linux-x64.tar.gz
 sudo tar xzf jdk-8u5-linux-x64.tar.gz
 sudo rm -f *.tar.gz
 
-
 sudo update-alternatives --install "/usr/bin/java" "java" "/usr/local/jdk1.8.0_05/bin/java" 1
 sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/local/jdk1.8.0_05/bin/javac" 1
 sudo update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/local/jdk1.8.0_05/bin/javaws" 1

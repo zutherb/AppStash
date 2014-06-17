@@ -34,14 +34,19 @@ file("gradle.properties").withInputStream { props.load(it) }
 props.each({ project.ext[it.key] = it.value })
 
 allprojects {
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.6
+    sourceCompatibility = org.gradle.api.JavaVersion.VERSION_1_8
+    targetCompatibility = org.gradle.api.JavaVersion.VERSION_1_6
 }
 
 subprojects {
     apply plugin: 'java'
     apply plugin: 'eclipse'
     apply plugin: 'idea'
+
+    compileJava.doFirst {
+        println "source compatibility " + sourceCompatibility
+        println "target compatibility " + targetCompatibility
+    }
 
     sonarRunner {
         sonarProperties {
@@ -117,6 +122,7 @@ subprojects {
             "org.slf4j:slf4j-api:$slf4jVersion",
             "ch.qos.logback:logback-classic:$logbackVersion",
             "org.codehaus.groovy:groovy-all:$groovyVersion", // required for logback logger
+            "org.projectlombok:lombok:1.14.2",
             "commons-collections:commons-collections:$commonsCollectionsVersion",
             "commons-io:commons-io:$commonsIoVersion",
             "org.reflections:reflections:$reflectionsVersion",

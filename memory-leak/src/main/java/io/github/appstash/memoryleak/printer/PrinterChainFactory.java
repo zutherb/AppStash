@@ -11,7 +11,7 @@ import java.util.List;
  */
 public class PrinterChainFactory {
     public static List<ConsolePrinter> createPrinterChain() {
-        ArrayList<ConsolePrinter> printerChain = new ArrayList<>();
+        ArrayList<ConsolePrinter> printerChain = new ArrayList<ConsolePrinter>();
         printerChain.add(new ProcessIdPrinter());
         for (MemoryPoolMXBean mxBean : ManagementFactory.getMemoryPoolMXBeans()) {
             printerChain.add(new MemoryProgressPrinter(new MemoryProgressPrinterContext(mxBean)));

@@ -5,7 +5,10 @@ package io.github.appstash.memoryleak.simulator;
  */
 public enum Simulator {
     STRING_INTERN(new StringInterningMemoryLeakSimulator()),
-    GROOVY_CLASSLOADING(new GroovyClassloadingMemoryLeakSimulator());
+    GROOVY_CLASSLOADING(new GroovyClassloadingMemoryLeakSimulator()),
+    ARRAY(new ArrayMemoryLeakSimulator()),
+    ARRAY_INTERN(new ArrayInternSimulator()),
+    CACHE(new CacheMemoryLeakSimulator());
 
     private AbstractMemoryLeakSimulator memoryLeakSimulator;
 

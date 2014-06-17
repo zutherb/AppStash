@@ -7,8 +7,8 @@ applicationDefaultJvmArgs = ["-Dcom.sun.management.jmxremote",
                              "-Dcom.sun.management.jmxremote.authenticate=false",
                              "-Dcom.sun.management.jmxremote.ssl=false"]
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.6
+sourceCompatibility = org.gradle.api.JavaVersion.VERSION_1_6
+targetCompatibility = org.gradle.api.JavaVersion.VERSION_1_6
 
 sourceSets {
     main {
@@ -28,12 +28,4 @@ dependencies {
     testCompile testDeps
 }
 
-tasks.withType(JavaCompile) {
-    sourceCompatibility = "1.8"
-    targetCompatibility = "1.6"
-}
-
-compileJava.doFirst {
-    println "source compatibility " + sourceCompatibility
-}
 

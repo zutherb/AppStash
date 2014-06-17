@@ -13,10 +13,7 @@ import org.apache.wicket.extensions.ajax.markup.html.IndicatingAjaxLink;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
-import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.LoadableDetachableModel;
-import org.apache.wicket.model.Model;
-import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.model.*;
 import org.apache.wicket.model.util.ListModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 
@@ -58,7 +55,7 @@ public class ProductItemPanel extends AbstractPizzaShopBasePanel {
 
 
     private Label productPriceLabel() {
-        return new Label("price", new PriceModel(new PropertyModel<>(productInfoModel, "price")));
+        return new Label("price", new PriceModel(new PropertyModel<Number>(productInfoModel, "price")));
     }
 
     private Label productNameLabel() {
@@ -69,16 +66,15 @@ public class ProductItemPanel extends AbstractPizzaShopBasePanel {
         Link<Void> detailPageLink = new Link<Void>("productDetailLink") {
             @Override
             public void onClick() {
-
                 PageParameters pageParameters = new PageParameters();
                 pageParameters.set("urlname", productUrlModel.getObject());
                 setResponsePage(new ProductDetailPage(pageParameters));
             }
         };
         WebMarkupContainer image = new WebMarkupContainer("image");
-        image.add(new AttributeModifier("src", new LoadableDetachableModel<String>() {
+        image.add(new AttributeModifier("src", new AbstractReadOnlyModel<String>() {
             @Override
-            protected String load() {
+            public String getObject() {
                 String contextPath = getRequestCycle().getRequest().getContextPath();
                 return contextPath + "/assets/img/Pizza/" + productInfoModel.getObject().getUrlname() + ".jpg";
             }
