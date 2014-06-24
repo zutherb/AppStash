@@ -1,7 +1,7 @@
 package io.github.appstash;
 
 import groovy.lang.GroovyShell;
-import io.github.appstash.memoryleak.simulator.StringInterningMemoryLeakSimulator;
+import io.github.appstash.memoryleak.simulation.StringInterningMemoryLeakSimulator;
 import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;

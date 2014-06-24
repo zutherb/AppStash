@@ -23,8 +23,6 @@ dependencies {
 }
 
 jar {
-    //from(configurations.compile.collect { it.isDirectory() ? it : zipTree(it) })
-
     manifest {
         attributes "Agent-Class": agentClassName,
                    "Premain-Class": agentClassName

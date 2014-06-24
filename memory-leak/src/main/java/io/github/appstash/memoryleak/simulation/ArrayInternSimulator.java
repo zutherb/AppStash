@@ -1,4 +1,4 @@
-package io.github.appstash.memoryleak.simulator;
+package io.github.appstash.memoryleak.simulation;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * @author zutherb
  */
-public class ArrayMemoryLeakSimulator extends AbstractMemoryLeakSimulator {
+public class ArrayInternSimulator extends AbstractMemoryLeakSimulator {
 
     private int counter = 0;
     private String[] strings = {"1", "2", "3", "4", "5"};
@@ -14,7 +14,7 @@ public class ArrayMemoryLeakSimulator extends AbstractMemoryLeakSimulator {
 
     @Override
     protected void doLeakSimulation() {
-        leak.add(strings[getCounter()]);
+        leak.add(strings[getCounter()].intern());
     }
 
     private int getCounter() {

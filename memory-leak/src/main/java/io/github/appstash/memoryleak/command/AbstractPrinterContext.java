@@ -1,4 +1,4 @@
-package io.github.appstash.memoryleak.printer;
+package io.github.appstash.memoryleak.command;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -6,7 +6,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * @author zutherb
  */
 public abstract class AbstractPrinterContext {
-    protected static final AtomicInteger STRING_LENGTH_COUNTER = new AtomicInteger();
+    private static final AtomicInteger STRING_LENGTH_COUNTER = new AtomicInteger();
 
     protected String getSpaces() {
         StringBuilder builder = new StringBuilder();
@@ -17,4 +17,9 @@ public abstract class AbstractPrinterContext {
     }
 
     protected abstract int getLength();
+
+
+    public static AtomicInteger getStringLengthCounter() {
+        return STRING_LENGTH_COUNTER;
+    }
 }

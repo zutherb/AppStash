@@ -1,29 +1,31 @@
-package io.github.appstash.memoryleak.printer;
+package io.github.appstash.memoryleak.command;
 
 /**
  * @author zutherb
  */
-public class MemoryProgressPrinter implements ConsolePrinter {
+public class MemoryProgressWriter implements Command {
 
     private MemoryProgressPrinterContext printerContext;
 
-    public MemoryProgressPrinter(MemoryProgressPrinterContext printerContext) {
+    public MemoryProgressWriter(MemoryProgressPrinterContext printerContext) {
         this.printerContext = printerContext;
     }
 
     @Override
-    public void print() {
+    public void execute() {
         final int width = 50; // progress bar width in chars
 
-        System.out.print(printerContext.getName() + ": [");
+        StringBuilder builder = new StringBuilder();
+        builder.append(printerContext.getName() + ": [");
         int i = 0;
         for (; i <= (int) (getPercentage() * width); i++) {
-            System.out.print(".");
+            builder.append(".");
         }
         for (; i < width; i++) {
-            System.out.print(" ");
+            builder.append(" ");
         }
-        System.out.print("]\n");
+        builder.append("]");
+        ConsolePrinter.writeLine(builder.toString());
     }
 
     private double getPercentage() {
@@ -31,4 +33,5 @@ public class MemoryProgressPrinter implements ConsolePrinter {
         double max = printerContext.getMax();
         return used / max;
     }
+
 }

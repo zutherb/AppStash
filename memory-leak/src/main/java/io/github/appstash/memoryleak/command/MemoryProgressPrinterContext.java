@@ -1,4 +1,4 @@
-package io.github.appstash.memoryleak.printer;
+package io.github.appstash.memoryleak.command;
 
 import java.lang.management.MemoryPoolMXBean;
 
@@ -14,8 +14,8 @@ public class MemoryProgressPrinterContext extends AbstractPrinterContext {
     public MemoryProgressPrinterContext(MemoryPoolMXBean mxBean) {
         synchronized (LOCK) {
             int maxLength = mxBean.getName().length();
-            if (STRING_LENGTH_COUNTER.get() < maxLength) {
-                STRING_LENGTH_COUNTER.set(maxLength);
+            if (getStringLengthCounter().get() < maxLength) {
+                getStringLengthCounter().set(maxLength);
             }
         }
         this.mxBean = mxBean;

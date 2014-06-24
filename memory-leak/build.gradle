@@ -1,11 +1,13 @@
 apply plugin: 'application'
 
 mainClassName = "io.github.appstash.memoryleak.Runner"
+agentClassName = "io.github.appstash.memoryleak.classloader.ClassLoaderLoggingAgent"
 
 applicationDefaultJvmArgs = ["-Dcom.sun.management.jmxremote",
                              "-Dcom.sun.management.jmxremote.port=10001",
                              "-Dcom.sun.management.jmxremote.authenticate=false",
-                             "-Dcom.sun.management.jmxremote.ssl=false"]
+                             "-Dcom.sun.management.jmxremote.ssl=false"]//,
+                             //"-Djava.system.class.loader=io.github.appstash.memoryleak.classloader.LoggingClassLoader"]
 
 sourceCompatibility = org.gradle.api.JavaVersion.VERSION_1_6
 targetCompatibility = org.gradle.api.JavaVersion.VERSION_1_6
@@ -24,8 +26,23 @@ sourceSets {
 }
 
 dependencies {
-    compile commonDeps
+    compile "org.codehaus.groovy:groovy-all:$groovyVersion"
+    testCompile commonDeps
     testCompile testDeps
 }
+
+run {
+    if ( project.hasProperty("appArgs") ) {
+        args Eval.me(appArgs)
+    }
+}
+
+jar {
+    manifest {
+        attributes "Agent-Class": agentClassName,
+                   "Premain-Class": agentClassName
+    }
+}
+
 
 

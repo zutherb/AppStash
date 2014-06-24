@@ -1,4 +1,4 @@
-package io.github.appstash.memoryleak.simulator;
+package io.github.appstash.memoryleak.simulation;
 
 import java.util.UUID;
 

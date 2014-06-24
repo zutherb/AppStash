@@ -1,4 +1,4 @@
-package io.github.appstash.memoryleak.simulator;
+package io.github.appstash.memoryleak.simulation;
 
 /**
  * @author zutherb
@@ -11,14 +11,17 @@ public abstract class AbstractMemoryLeakSimulator implements Runnable {
 
     @Override
     public void run() {
-        while (notCrashed) {
-            try {
+        try {
+            Thread.sleep(10000);
+            while (notCrashed) {
                 doLeakSimulation();
-            } catch (OutOfMemoryError error) {
-                notCrashed = false;
-                error.printStackTrace();
-                System.exit(1);
             }
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } catch (OutOfMemoryError error) {
+            notCrashed = false;
+            error.printStackTrace();
+            System.exit(1);
         }
     }
 

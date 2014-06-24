@@ -19,6 +19,7 @@ public class AppStashAgent {
 
     public static void premain(String agentArguments, Instrumentation instrumentation) {
         agentmain(agentArguments, instrumentation);
+
     }
     public static void agentmain(String agentArguments, Instrumentation instrumentation) {
         scheduler.scheduleAtFixedRate(new MemoryLoggingTask(), 0, 1, TimeUnit.SECONDS);
