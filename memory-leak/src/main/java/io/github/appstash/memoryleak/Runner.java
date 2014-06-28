@@ -2,7 +2,7 @@ package io.github.appstash.memoryleak;
 
 import io.github.appstash.memoryleak.classloader.ClassLoaderLoggingAgentLauncher;
 import io.github.appstash.memoryleak.command.Command;
-import io.github.appstash.memoryleak.command.CommandChainFactory;
+import io.github.appstash.memoryleak.command.PrintCommandChainFactory;
 import io.github.appstash.memoryleak.command.SimulationChoiceWriter;
 import io.github.appstash.memoryleak.simulation.AbstractMemoryLeakSimulator;
 import io.github.appstash.memoryleak.simulation.SimulatorType;
@@ -19,7 +19,7 @@ import java.util.concurrent.Executors;
 public class Runner {
 
     private static final ExecutorService THREAD_POOL = Executors.newFixedThreadPool(1);
-    private static final List<Command> PRINTER_CHAIN = CommandChainFactory.createPrinterChain();
+    private static final List<Command> PRINTER_CHAIN = PrintCommandChainFactory.createPrinterChain();
 
     public static void main(String[] args) throws Exception {
         ClassLoaderLoggingAgentLauncher.launch(args);

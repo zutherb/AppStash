@@ -1,10 +1,13 @@
 package io.github.appstash.memoryleak.command;
 
+import io.github.appstash.memoryleak.logging.ConsoleLogger;
+
 /**
  * @author zutherb
  */
-public class ClearConsoleCommand extends AbstractPrinterContext implements Command {
-    private static final Command INSTANCE = new ClearConsoleCommand();
+public class ClearConsolePrintCommand implements Command {
+    private static final Command INSTANCE = new ClearConsolePrintCommand();
+    private static final ConsoleLogger LOGGER = ConsoleLogger.getConsoleLogger();
 
     @Override
     public void execute() {
@@ -13,15 +16,10 @@ public class ClearConsoleCommand extends AbstractPrinterContext implements Comma
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        ConsolePrinter.writeLine("\033[2J\033[1;1H");
+        LOGGER.log("\033[2J\033[1;1H");
     }
 
     public static Command getInstance() {
         return INSTANCE;
-    }
-
-    @Override
-    protected int getLength() {
-        return 0;
     }
 }

@@ -1,13 +1,16 @@
 package io.github.appstash.memoryleak.command;
 
+import io.github.appstash.memoryleak.logging.ConsoleLogger;
+
 /**
  * @author zutherb
  */
-public class MemoryProgressWriter implements Command {
+public class MemoryProgressPrintCommand implements Command {
+    private static final ConsoleLogger LOGGER = ConsoleLogger.getConsoleLogger();
 
-    private MemoryProgressPrinterContext printerContext;
+    private MemoryProgressPrintCommandContext printerContext;
 
-    public MemoryProgressWriter(MemoryProgressPrinterContext printerContext) {
+    public MemoryProgressPrintCommand(MemoryProgressPrintCommandContext printerContext) {
         this.printerContext = printerContext;
     }
 
@@ -25,7 +28,7 @@ public class MemoryProgressWriter implements Command {
             builder.append(" ");
         }
         builder.append("]");
-        ConsolePrinter.writeLine(builder.toString());
+        LOGGER.log(builder.toString());
     }
 
     private double getPercentage() {

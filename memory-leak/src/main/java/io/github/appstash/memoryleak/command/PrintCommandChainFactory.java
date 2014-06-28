@@ -9,15 +9,15 @@ import java.util.List;
 /**
  * @author zutherb
  */
-public class CommandChainFactory {
+public class PrintCommandChainFactory {
     public static List<Command> createPrinterChain() {
         ArrayList<Command> printerChain = new ArrayList<Command>();
         printerChain.add(new ProcessIdWriter());
         for (MemoryPoolMXBean mxBean : ManagementFactory.getMemoryPoolMXBeans()) {
-            printerChain.add(new MemoryProgressWriter(new MemoryProgressPrinterContext(mxBean)));
+            printerChain.add(new MemoryProgressPrintCommand(new MemoryProgressPrintCommandContext(mxBean)));
         }
-
-        printerChain.add(ClearConsoleCommand.getInstance());
+        printerChain.add(ClassesPrintCommand.getInstance());
+        printerChain.add(ClearConsolePrintCommand.getInstance());
         return Collections.unmodifiableList(printerChain);
     }
 }
