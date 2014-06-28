@@ -12,7 +12,7 @@ public abstract class AbstractMemoryLeakSimulator implements Runnable {
             while (notCrashed) {
                 doLeakSimulation();
             }
-        } catch (OutOfMemoryError error) {
+        } catch (Throwable error) {
             notCrashed = false;
             error.printStackTrace();
             Thread.currentThread().interrupt();

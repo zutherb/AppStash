@@ -1,13 +1,13 @@
 apply plugin: 'application'
 
 mainClassName = "io.github.appstash.memoryleak.Runner"
-agentClassName = "io.github.appstash.memoryleak.classloader.ClassLoaderLoggingAgent"
+def agentClassName = "io.github.appstash.memoryleak.classloader.ClassLoaderLoggingAgent"
 
 applicationDefaultJvmArgs = ["-Dcom.sun.management.jmxremote",
                              "-Dcom.sun.management.jmxremote.port=10001",
                              "-Dcom.sun.management.jmxremote.authenticate=false",
-                             "-Dcom.sun.management.jmxremote.ssl=false"]//,
-                             //"-Djava.system.class.loader=io.github.appstash.memoryleak.classloader.LoggingClassLoader"]
+                             "-Dcom.sun.management.jmxremote.ssl=false",
+                             "-XX:-HeapDumpOnOutOfMemoryError"]
 
 sourceCompatibility = org.gradle.api.JavaVersion.VERSION_1_6
 targetCompatibility = org.gradle.api.JavaVersion.VERSION_1_6
@@ -27,6 +27,7 @@ sourceSets {
 
 dependencies {
     compile "org.codehaus.groovy:groovy-all:$groovyVersion"
+    compile "com.sun.tools.btrace:btrace-boot:1.2.3"
     testCompile commonDeps
     testCompile testDeps
 }
@@ -43,6 +44,5 @@ jar {
                    "Premain-Class": agentClassName
     }
 }
-
 
 

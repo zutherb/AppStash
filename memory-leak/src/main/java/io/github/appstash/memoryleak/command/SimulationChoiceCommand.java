@@ -5,21 +5,21 @@ import io.github.appstash.memoryleak.simulation.SimulatorType;
 /**
  * @author zutherb
  */
-public class SimulationChoiceWriter implements Command {
+public class SimulationChoiceCommand implements Command {
 
-    private static final SimulationChoiceWriter INSTANCE = new SimulationChoiceWriter();
+    private static final SimulationChoiceCommand INSTANCE = new SimulationChoiceCommand();
 
-    private SimulationChoiceWriter() {/*NOOP*/}
+    private SimulationChoiceCommand() {/*NOOP*/}
 
     @Override
     public void execute() {
         for (SimulatorType simulatorType : SimulatorType.values()) {
-            System.out.println(simulatorType.ordinal() + ". " + simulatorType.name());
+            System.out.println(simulatorType.ordinal() + ". " + simulatorType.getDescription());
         }
         System.out.print("Choice simulation: ");
     }
 
-    public static SimulationChoiceWriter getPrinter() {
+    public static SimulationChoiceCommand getPrinter() {
         return INSTANCE;
     }
 }

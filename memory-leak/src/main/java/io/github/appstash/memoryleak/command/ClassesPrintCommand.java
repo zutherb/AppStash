@@ -5,8 +5,6 @@ import io.github.appstash.memoryleak.classloader.ClassLoadingInfo;
 import io.github.appstash.memoryleak.logging.ConsoleLogger;
 import io.github.appstash.memoryleak.logging.SpaceCalculator;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static java.lang.String.format;
@@ -21,14 +19,9 @@ public class ClassesPrintCommand implements Command {
 
     @Override
     public void execute() {
-        List<ClassLoadingInfo> loadedClasses = ClassLoaderLoggingAgent.getLoadedClasses();
-        int fromIndex = loadedClasses.size() - 11;
-        List<ClassLoadingInfo> classLoadingInfos = Collections.emptyList();
-        synchronized (loadedClasses) {
-            classLoadingInfos = new ArrayList<ClassLoadingInfo>(loadedClasses.subList(fromIndex, loadedClasses.size() - 1));
-        }
+        List<ClassLoadingInfo> loadedClasses = ClassLoaderLoggingAgent.getLastTenLoadedClasses();
         boolean first = true;
-        for (ClassLoadingInfo loadedClass : classLoadingInfos) {
+        for (ClassLoadingInfo loadedClass : loadedClasses) {
             if (first) {
                 log(CLASS_LOADED, loadedClass);
             } else {

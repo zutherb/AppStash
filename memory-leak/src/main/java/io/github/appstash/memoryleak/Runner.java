@@ -3,7 +3,7 @@ package io.github.appstash.memoryleak;
 import io.github.appstash.memoryleak.classloader.ClassLoaderLoggingAgentLauncher;
 import io.github.appstash.memoryleak.command.Command;
 import io.github.appstash.memoryleak.command.PrintCommandChainFactory;
-import io.github.appstash.memoryleak.command.SimulationChoiceWriter;
+import io.github.appstash.memoryleak.command.SimulationChoiceCommand;
 import io.github.appstash.memoryleak.simulation.AbstractMemoryLeakSimulator;
 import io.github.appstash.memoryleak.simulation.SimulatorType;
 
@@ -21,9 +21,9 @@ public class Runner {
     private static final ExecutorService THREAD_POOL = Executors.newFixedThreadPool(1);
     private static final List<Command> PRINTER_CHAIN = PrintCommandChainFactory.createPrinterChain();
 
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) {
         ClassLoaderLoggingAgentLauncher.launch(args);
-        SimulationChoiceWriter.getPrinter().execute();
+        SimulationChoiceCommand.getPrinter().execute();
         Scanner scanner = new Scanner(System.in);
         SimulatorType simulatorType = SimulatorType.values()[(args.length > 0) ? Integer.valueOf(args[0]) : scanner.nextInt()];
         AbstractMemoryLeakSimulator memoryLeakSimulator = simulatorType.getMemoryLeakSimulator();

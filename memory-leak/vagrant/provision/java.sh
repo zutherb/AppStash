@@ -36,3 +36,5 @@ sudo update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/local/jdk1.7
 sudo update-alternatives --install "/usr/bin/java" "java" "/usr/local/jdk1.6.0_45/bin/java" 3
 sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/local/jdk1.6.0_45/bin/javac" 3
 sudo update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/local/jdk1.6.0_45/bin/javaws" 3
+
+wget http://bernd-zuther.de/files/memory-leak.zip

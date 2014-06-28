@@ -49,7 +49,17 @@ public class ClassLoaderLeakSimulator extends AbstractMemoryLeakSimulator {
             return c;
         }
 
+        @Override
+        protected Class<?> loadClass(String name, boolean resolve) throws ClassNotFoundException {
+            if ((name != null) && name.startsWith("java.")) {
+                return super.loadClass(name);
+            }
+            return findClass(name);
+        }
+
         private byte[] loadClassData(String name) throws IOException {
+
+
             BufferedInputStream in = new BufferedInputStream(
                     ClassLoader.getSystemResourceAsStream(name.replace(".", "/")
                             + ".class"));

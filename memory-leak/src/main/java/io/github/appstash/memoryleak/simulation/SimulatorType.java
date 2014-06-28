@@ -4,12 +4,9 @@ package io.github.appstash.memoryleak.simulation;
  * @author zutherb
  */
 public enum SimulatorType {
-    STRING_INTERN(new StringInterningMemoryLeakSimulator(), "String Interning Leak: Simulate PermGen OutOfError"),
-    GROOVY_CLASSLOADING(new GroovyClassloadingMemoryLeakSimulator(), "ClassLoader Leak: Simulate PermGen OutOfError"),
-    CLASSLOADING(new ClassLoaderLeakSimulator(), "ClassLoader Leak: Simulate PermGen OutOfError"),
-    ARRAY(new ArrayMemoryLeakSimulator(), ""),
-    ARRAY_INTERN(new ArrayInternSimulator(), ""),
-    CACHE(new CacheMemoryLeakSimulator(), "");
+    STRING_INTERN(new StringInterningMemoryLeakSimulator(), "Interning Leak: Simulate OutOfError: PermGen"),
+    GROOVY_CLASSLOADING(new GroovyClassloadingMemoryLeakSimulator(), "ClassLoader Leak: Simulate OutOfError: PermGen"),
+    CACHE(new CacheMemoryLeakSimulator(), "Heap Leak: Simulate OutOfError: Heap Space");
 
     private AbstractMemoryLeakSimulator memoryLeakSimulator;
     private String description;
