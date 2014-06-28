@@ -23,6 +23,10 @@ public class MemoryProgressPrintCommandContext {
         return mxBean.getUsage().getMax();
     }
 
+    public double getCommitted() {
+        return mxBean.getUsage().getCommitted();
+    }
+
     public String getName() {
         return SpaceCalculator.appendSpaces(mxBean.getName());
     }

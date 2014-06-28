@@ -33,7 +33,7 @@ public class MemoryProgressPrintCommand implements Command {
 
     private double getPercentage() {
         double used = printerContext.getUsed();
-        double max = printerContext.getMax();
+        double max = (printerContext.getMax() > 0)?printerContext.getMax():printerContext.getCommitted();
         return used / max;
     }
 

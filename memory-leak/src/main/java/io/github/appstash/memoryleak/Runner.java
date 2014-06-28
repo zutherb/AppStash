@@ -14,7 +14,6 @@ import java.util.concurrent.Executors;
 
 /**
  * @author zutherb
- *         -Xbootclasspath/p:/Users/berndzuther/appstash/memory-leak/build/libs/; -verbose:class -Djava.system.class.loader=io.github.appstash.memoryleak.classloader.LoggingClassLoader
  */
 public class Runner {
 
@@ -23,15 +22,35 @@ public class Runner {
 
     public static void main(String[] args) {
         ClassLoaderLoggingAgentLauncher.launch(args);
-        SimulationChoiceCommand.getPrinter().execute();
-        Scanner scanner = new Scanner(System.in);
-        SimulatorType simulatorType = SimulatorType.values()[(args.length > 0) ? Integer.valueOf(args[0]) : scanner.nextInt()];
-        AbstractMemoryLeakSimulator memoryLeakSimulator = simulatorType.getMemoryLeakSimulator();
-        THREAD_POOL.submit(memoryLeakSimulator);
+        SimulatorType simulatorType = showSimulationSelection();
+        AbstractMemoryLeakSimulator memoryLeakSimulator = submitSimulation(simulatorType);
+        printDebugInformation(memoryLeakSimulator);
+    }
+
+    private static void printDebugInformation(AbstractMemoryLeakSimulator memoryLeakSimulator) {
         while (memoryLeakSimulator.isNotCrashed()) {
             for (Command command : PRINTER_CHAIN) {
                 command.execute();
             }
         }
+    }
+
+    private static AbstractMemoryLeakSimulator submitSimulation(SimulatorType simulatorType) {
+        AbstractMemoryLeakSimulator memoryLeakSimulator = simulatorType.getMemoryLeakSimulator();
+        THREAD_POOL.submit(memoryLeakSimulator);
+        return memoryLeakSimulator;
+    }
+
+    private static SimulatorType showSimulationSelection() {
+        SimulatorType simulatorType = null;
+        while (simulatorType == null) {
+            try {
+                Scanner scanner = new Scanner(System.in);
+                SimulationChoiceCommand.getPrinter().execute();
+                simulatorType = SimulatorType.values()[scanner.nextInt()];
+            } catch (Exception e) {
+            }
+        }
+        return simulatorType;
     }
 }

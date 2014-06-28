@@ -32,7 +32,7 @@ public class ClassesPrintCommand implements Command {
     }
 
     private void log(String text, ClassLoadingInfo loadedClass) {
-        LOGGER.log(format("%s: %d. %s from %s", SpaceCalculator.appendSpaces(text), loadedClass.getNumber(), loadedClass.getClassName(), loadedClass.getClassLoaderName()));
+        LOGGER.log(format("%s: %d. %s by %s", SpaceCalculator.appendSpaces(text), loadedClass.getNumber(), loadedClass.getClassName(), loadedClass.getClassLoaderName()));
     }
 
     public static Command getInstance() {

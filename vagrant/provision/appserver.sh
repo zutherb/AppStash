@@ -11,7 +11,7 @@ cd /etc/apt/
 sudo wget https://raw.githubusercontent.com/zutherb/AppStash/master/vagrant/provision/apt/sources.list
 
 sudo apt-get update
-sudo apt-get install tomcat7 tomcat7-admin python-software-properties git links curl mongodb mongodb-clients mongodb-server unzip -y  -q
+sudo apt-get install tomcat7 tomcat7-admin python-software-properties git links curl mongodb mongodb-clients mongodb-server unzip ttf-dejavu -y  -q
 cd /usr/local/
 sudo wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u5-b13/jdk-8u5-linux-x64.tar.gz"
 sudo tar xzf jdk-8u5-linux-x64.tar.gz
