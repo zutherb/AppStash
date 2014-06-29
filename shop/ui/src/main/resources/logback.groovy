@@ -25,8 +25,8 @@ appender("appstash", FileAppender) {
 logger("org.apache.wicket", INFO)
 logger("org.springframework.web.client", ERROR)
 logger("org.springframework", INFO)
-logger("com.comsysto", INFO)
-logger("com.comsysto.shop.service.recommendation.impl", INFO)
+logger("io.github.appstash", INFO)
+logger("io.github.appstash.shop.service.recommendation.impl", INFO)
 logger("io.github.appstash", INFO, ["appstash"], false)
 
 root(ERROR, ["stdout", "appstash"])

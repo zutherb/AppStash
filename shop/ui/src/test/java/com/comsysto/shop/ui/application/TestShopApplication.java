@@ -1,4 +1,4 @@
-package com.comsysto.shop.ui.application;
+package io.github.appstash.shop.ui.application;
 
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.springframework.context.ApplicationContext;

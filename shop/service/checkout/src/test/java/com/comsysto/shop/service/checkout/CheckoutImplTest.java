@@ -1,12 +1,12 @@
-package com.comsysto.shop.service.checkout;
+package io.github.appstash.shop.service.checkout;
 
-import com.comsysto.shop.repository.product.model.ProductType;
-import com.comsysto.shop.service.basket.api.Basket;
-import com.comsysto.shop.service.basket.model.BasketItem;
-import com.comsysto.shop.service.checkout.api.Checkout;
-import com.comsysto.shop.service.checkout.impl.CheckoutImpl;
-import com.comsysto.shop.service.order.model.OrderItemInfo;
-import com.comsysto.shop.service.product.model.ProductInfo;
+import io.github.appstash.shop.repository.product.model.ProductType;
+import io.github.appstash.shop.service.basket.api.Basket;
+import io.github.appstash.shop.service.basket.model.BasketItem;
+import io.github.appstash.shop.service.checkout.api.Checkout;
+import io.github.appstash.shop.service.checkout.impl.CheckoutImpl;
+import io.github.appstash.shop.service.order.model.OrderItemInfo;
+import io.github.appstash.shop.service.product.model.ProductInfo;
 import org.bson.types.ObjectId;
 import org.dozer.DozerBeanMapper;
 import org.junit.Before;
@@ -34,7 +34,7 @@ public class CheckoutImplTest {
         initMocks(this);
         when(basket.getAll()).thenReturn(createBasketItems());
         when(basket.getTotalSum()).thenReturn(2.0);
-        checkout = new CheckoutImpl(basket, new DozerBeanMapper(Arrays.asList("com/comsysto/shop/service/checkout/dozer-mapping.xml")));
+        checkout = new CheckoutImpl(basket, new DozerBeanMapper(Arrays.asList("io/github/appstash/shop/service/checkout/dozer-mapping.xml")));
     }
 
     private List<BasketItem> createBasketItems() {

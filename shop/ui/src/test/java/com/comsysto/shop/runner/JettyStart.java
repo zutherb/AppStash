@@ -1,4 +1,4 @@
-package com.comsysto.shop.runner;
+package io.github.appstash.shop.runner;
 
 /**
  * @author zutherb

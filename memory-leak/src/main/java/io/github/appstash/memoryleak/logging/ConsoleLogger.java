@@ -13,13 +13,13 @@ public class ConsoleLogger {
 
     static {
         LOGGER.setUseParentHandlers(false);
-        Handler conHdlr = new ConsoleHandler();
-        conHdlr.setFormatter(new Formatter() {
+        Handler consoleHandler = new ConsoleHandler();
+        consoleHandler.setFormatter(new Formatter() {
             public String format(LogRecord record) {
                 return record.getMessage() + "\n";
             }
         });
-        LOGGER.addHandler(conHdlr);
+        LOGGER.addHandler(consoleHandler);
 
     }
 

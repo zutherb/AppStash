@@ -1,14 +1,14 @@
-package com.comsysto.shop.service;
+package io.github.appstash.shop.service;
 
-import com.comsysto.common.util.SeoUtils;
-import com.comsysto.shop.service.user.model.AddressInfo;
-import com.comsysto.shop.service.user.model.RoleInfo;
-import com.comsysto.shop.service.user.model.UserInfo;
-import com.comsysto.shop.repository.product.model.ProductType;
-import com.comsysto.shop.service.order.model.DeliveryAddressInfo;
-import com.comsysto.shop.service.order.model.OrderInfo;
-import com.comsysto.shop.service.order.model.OrderItemInfo;
-import com.comsysto.shop.service.product.model.ProductInfo;
+import io.github.appstash.common.util.SeoUtils;
+import io.github.appstash.shop.service.user.model.AddressInfo;
+import io.github.appstash.shop.service.user.model.RoleInfo;
+import io.github.appstash.shop.service.user.model.UserInfo;
+import io.github.appstash.shop.repository.product.model.ProductType;
+import io.github.appstash.shop.service.order.model.DeliveryAddressInfo;
+import io.github.appstash.shop.service.order.model.OrderInfo;
+import io.github.appstash.shop.service.order.model.OrderItemInfo;
+import io.github.appstash.shop.service.product.model.ProductInfo;
 import org.bson.types.ObjectId;
 
 import java.util.Arrays;

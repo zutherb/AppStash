@@ -23,7 +23,7 @@ tasks.withType(JavaCompile) {
     options.compilerArgs << "-Xlint:unchecked -Xlint:deprecation"
 }
 
-group = 'com.comsysto'
+group = 'io.github.appstash'
 
 compileJava.options.encoding = 'UTF-8'
 compileTestJava.options.encoding = 'UTF-8'
@@ -42,11 +42,6 @@ subprojects {
     apply plugin: 'java'
     apply plugin: 'eclipse'
     apply plugin: 'idea'
-
-    compileJava.doFirst {
-        println "source compatibility " + sourceCompatibility
-        println "target compatibility " + targetCompatibility
-    }
 
     sonarRunner {
         sonarProperties {

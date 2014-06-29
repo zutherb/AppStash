@@ -1,7 +1,7 @@
-package com.comsysto.shop.ui.navigation;
+package io.github.appstash.shop.ui.navigation;
 
-import com.comsysto.shop.service.authentication.api.AuthenticationService;
-import com.comsysto.shop.service.basket.api.Basket;
+import io.github.appstash.shop.service.authentication.api.AuthenticationService;
+import io.github.appstash.shop.service.basket.api.Basket;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.spring.test.ApplicationContextMock;
 import org.junit.After;
@@ -43,7 +43,7 @@ public class NavigationProviderImplTest {
     @After
     public void tearDown() {
         NavigationProvider navigationProvider = new NavigationProviderImpl(new ApplicationContextMock(), authenticationService);
-        navigationProvider.setClassPathToScan("com.comsysto.shop.ui.page");
+        navigationProvider.setClassPathToScan("io.github.appstash.shop.ui.page");
     }
 
     @Test

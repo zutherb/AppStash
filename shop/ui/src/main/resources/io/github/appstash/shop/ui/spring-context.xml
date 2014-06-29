@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:task="http://www.springframework.org/schema/task"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd">
+
+    <context:component-scan base-package="io.github.appstash.shop.ui"/>
+
+
+    <security:http auto-config="true">
+        <security:anonymous enabled="false"/>
+        <security:http-basic/>
+    </security:http>
+
+    <import resource="classpath:io/github/appstash/shop/service/authentication/spring-context.xml"/>
+    <import resource="classpath:io/github/appstash/shop/service/basket/spring-context.xml"/>
+    <import resource="classpath:io/github/appstash/shop/service/checkout/spring-context.xml"/>
+    <import resource="classpath:io/github/appstash/shop/service/order/spring-context.xml"/>
+    <import resource="classpath:io/github/appstash/shop/service/product/spring-context.xml"/>
+    <import resource="classpath:io/github/appstash/shop/service/recommendation/spring-context.xml"/>
+
+    <import resource="classpath:io/github/appstash/dataloader/spring-context.xml"/>
+
+    <import resource="spring-profile-context.xml"/>
+    <import resource="spring-jetm-context.xml"/>
+
+    <bean id="dozerMapper" class="org.dozer.DozerBeanMapper">
+        <property name="mappingFiles">
+            <list>
+                <value>io/github/appstash/shop/service/user/dozer-mapping.xml</value>
+                <value>io/github/appstash/shop/service/checkout/dozer-mapping.xml</value>
+                <value>io/github/appstash/shop/service/order/dozer-mapping.xml</value>
+                <value>io/github/appstash/shop/service/product/dozer-mapping.xml</value>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="appStashMemoryLogging" class="io.github.appstash.task.MemoryLoggingTask" />
+
+    <task:scheduled-tasks scheduler="appStashScheduler">
+        <task:scheduled ref="appStashMemoryLogging" method="run" fixed-delay="1000" />
+    </task:scheduled-tasks>
+
+    <task:scheduler id="appStashScheduler" pool-size="10"/>
+</beans>

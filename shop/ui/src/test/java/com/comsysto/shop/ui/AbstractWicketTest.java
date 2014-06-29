@@ -1,18 +1,18 @@
-package com.comsysto.shop.ui;
+package io.github.appstash.shop.ui;
 
-import com.comsysto.shop.ui.navigation.NavigationEntry;
-import com.comsysto.shop.ui.navigation.NavigationGroup;
-import com.comsysto.shop.ui.navigation.Navigation;
-import com.comsysto.shop.ui.navigation.NavigationProvider;
-import com.comsysto.shop.service.authentication.api.AuthenticationService;
-import com.comsysto.shop.service.authentication.api.FakeAuthenticationService;
-import com.comsysto.shop.service.user.api.UserService;
-import com.comsysto.shop.repository.product.api.ProductRepository;
-import com.comsysto.shop.service.basket.api.Basket;
-import com.comsysto.shop.service.checkout.api.Checkout;
-import com.comsysto.shop.service.product.api.ProductService;
-import com.comsysto.shop.service.recommendation.api.RecommendationService;
-import com.comsysto.shop.ui.application.TestShopApplication;
+import io.github.appstash.shop.ui.navigation.NavigationEntry;
+import io.github.appstash.shop.ui.navigation.NavigationGroup;
+import io.github.appstash.shop.ui.navigation.Navigation;
+import io.github.appstash.shop.ui.navigation.NavigationProvider;
+import io.github.appstash.shop.service.authentication.api.AuthenticationService;
+import io.github.appstash.shop.service.authentication.api.FakeAuthenticationService;
+import io.github.appstash.shop.service.user.api.UserService;
+import io.github.appstash.shop.repository.product.api.ProductRepository;
+import io.github.appstash.shop.service.basket.api.Basket;
+import io.github.appstash.shop.service.checkout.api.Checkout;
+import io.github.appstash.shop.service.product.api.ProductService;
+import io.github.appstash.shop.service.recommendation.api.RecommendationService;
+import io.github.appstash.shop.ui.application.TestShopApplication;
 import org.apache.wicket.spring.test.ApplicationContextMock;
 import org.apache.wicket.util.tester.WicketTester;
 import org.dozer.DozerBeanMapper;
@@ -85,12 +85,12 @@ public abstract class AbstractWicketTest {
     }
 
     private Mapper createDozerMapper() {
-        return new DozerBeanMapper(Arrays.asList("com/comsysto/shop/service/user/dozer-mapping.xml",
-                "com/comsysto/shop/service/checkout/dozer-mapping.xml",
-                "com/comsysto/shop/service/order/dozer-mapping.xml",
-                "com/comsysto/shop/service/product/dozer-mapping.xml",
-                "com/comsysto/shop/service/rule/dozer-mapping.xml",
-                "com/comsysto/shop/ui/dozer-mapping.xml"));
+        return new DozerBeanMapper(Arrays.asList("io/github/appstash/shop/service/user/dozer-mapping.xml",
+                "io/github/appstash/shop/service/checkout/dozer-mapping.xml",
+                "io/github/appstash/shop/service/order/dozer-mapping.xml",
+                "io/github/appstash/shop/service/product/dozer-mapping.xml",
+                "io/github/appstash/shop/service/rule/dozer-mapping.xml",
+                "io/github/appstash/shop/ui/dozer-mapping.xml"));
     }
 
     private Navigation createNavigationMock() {

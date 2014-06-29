@@ -1,6 +1,6 @@
-package com.comsysto.shop;
+package io.github.appstash.shop;
 
-import com.comsysto.shop.ui.navigation.NavigationProvider;
+import io.github.appstash.shop.ui.navigation.NavigationProvider;
 import com.mongodb.Mongo;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import static org.junit.Assert.assertNotNull;
  * @author zutherb
  */
 @ActiveProfiles("test")
-@ContextConfiguration(locations = "classpath:com/comsysto/shop/ui/spring-context.xml")
+@ContextConfiguration(locations = "classpath:io/github/appstash/shop/ui/spring-context.xml")
 public class ApplicationContextTest extends AbstractJUnit4SpringContextTests {
 
     @Autowired
