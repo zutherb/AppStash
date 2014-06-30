@@ -1,14 +1,11 @@
 package io.github.appstash.shop.ui.panel;
 
+import io.github.appstash.shop.ui.application.ShopApplication;
 import io.github.appstash.shop.ui.event.AjaxEvent;
-import io.github.appstash.shop.ui.event.login.LoginEvent;
-import io.github.appstash.shop.ui.navigation.ModalPanelItem;
-import io.github.appstash.shop.ui.navigation.NavigationEntry;
-import io.github.appstash.shop.ui.navigation.NavigationGroup;
-import io.github.appstash.shop.ui.navigation.NavigationProvider;
 import io.github.appstash.shop.ui.event.basket.AddToBasketEvent;
 import io.github.appstash.shop.ui.event.basket.RemoveFromBasketEvent;
-import io.github.appstash.shop.ui.navigation.EnumProductTypeNavigationItem;
+import io.github.appstash.shop.ui.event.login.LoginEvent;
+import io.github.appstash.shop.ui.navigation.*;
 import io.github.appstash.shop.ui.panel.login.LoginInfoPanel;
 import io.github.appstash.shop.ui.panel.login.LoginModalPanel;
 import org.apache.commons.collections.CollectionUtils;
@@ -49,11 +46,17 @@ public class NavigationPanel extends Panel {
     public NavigationPanel(String id, LoginModalPanel loginModalPanel) {
         super(id);
         this.loginModalPanel = loginModalPanel;
+        add(homePageLink());
         add(mainNavigation());
         add(otherNavigation());
         add(loginInfoPanel());
         setOutputMarkupId(true);
         setOutputMarkupPlaceholderTag(true);
+    }
+
+    private Component homePageLink() {
+        BookmarkablePageLink<Void> pageLink = new BookmarkablePageLink<>("home", ShopApplication.get().getHomePage());
+        return pageLink;
     }
 
     private LoginInfoPanel loginInfoPanel() {

@@ -14,14 +14,14 @@ import java.util.concurrent.TimeUnit;
  */
 public class AppStashAgent {
 
-    private static final ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(5);
+    private static final ScheduledExecutorService SCHEDULER = Executors.newScheduledThreadPool(5);
     private static final Logger LOGGER = LoggerFactory.getLogger(AppStashAgent.class);
 
     public static void premain(String agentArguments, Instrumentation instrumentation) {
         agentmain(agentArguments, instrumentation);
-
     }
+
     public static void agentmain(String agentArguments, Instrumentation instrumentation) {
-        scheduler.scheduleAtFixedRate(new MemoryLoggingTask(), 0, 1, TimeUnit.SECONDS);
+        SCHEDULER.scheduleAtFixedRate(new MemoryLoggingTask(), 0, 1, TimeUnit.SECONDS);
     }
 }

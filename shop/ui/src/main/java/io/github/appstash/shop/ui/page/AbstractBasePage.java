@@ -1,7 +1,6 @@
 package io.github.appstash.shop.ui.page;
 
 import io.github.appstash.shop.service.authentication.api.AuthenticationService;
-import io.github.appstash.shop.ui.application.ShopApplication;
 import io.github.appstash.shop.ui.panel.NavigationPanel;
 import io.github.appstash.shop.ui.panel.base.FeedbackPanel;
 import io.github.appstash.shop.ui.panel.login.LoginModalPanel;
@@ -12,7 +11,6 @@ import org.apache.wicket.markup.head.JavaScriptHeaderItem;
 import org.apache.wicket.markup.head.StringHeaderItem;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
-import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
@@ -66,7 +64,6 @@ public abstract class AbstractBasePage extends WebPage {
 
     private Component headerContainer() {
         header = new WebMarkupContainer("header");
-        header.add(homePageLink());
         header.add(navigation());
         return header.setOutputMarkupId(true);
     }
@@ -74,12 +71,6 @@ public abstract class AbstractBasePage extends WebPage {
     private Component navigation() {
         navigation = new NavigationPanel("navigation", loginModal);
         return navigation.setOutputMarkupId(true);
-    }
-
-
-    private Component homePageLink() {
-        BookmarkablePageLink<Void> pageLink = new BookmarkablePageLink<>("home", ShopApplication.get().getHomePage());
-        return pageLink;
     }
 
     @Override
