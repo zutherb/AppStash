@@ -7,12 +7,12 @@
 <wicket:extend>
     <div class="container">
         <div class="row">
-            <div class="span8">
+            <div class="col-md-8">
                 <div class="row">
-                    <div class="span4" style="margin-left: 0px;">
+                    <div class="col-md-4" style="margin-left: 0px;">
                         <img wicket:id="productImage"/>
                     </div>
-                    <div class="span4">
+                    <div class="col-md-4">
                         <h2>
                             <div wicket:id="productName">Pizza Fantastica</div>
                         </h2>
@@ -23,7 +23,7 @@
 
                         <div class="caption">
                             <a wicket:id="addToBasket" class="btn btn-primary addToBasket">
-                                <i class="icon-shopping-cart icon-white"></i>
+                                <span class="glyphicon glyphicon-shopping-cart"></span>
                             </a>
                             <strong><span class="price" wicket:id="productPrice">9.10</span></strong>
                         </div>
@@ -36,7 +36,7 @@
                     <div wicket:id="otherUsersAlsoViewedProducts"></div>
                 </div>
             </div>
-            <div class="span4">
+            <div class="col-md-4">
                 <div wicket:id="basketPanel"></div>
             </div>
         </div>

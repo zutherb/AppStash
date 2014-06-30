@@ -6,9 +6,9 @@
 <body>
 <wicket:extend>
     <div class="row">
-        <div class="span8">
-            <div wicket:id="topSellerProductsContainer"></div>
-            <div wicket:id="youMayAlsoLikeProductsContainer"></div>
+        <div class="col-md-8">
+            <div wicket:id="topSellerProductsContainer" class="row"></div>
+            <div wicket:id="youMayAlsoLikeProductsContainer" class="row"></div>
         </div>
         <style>
             .basket .wicket-ajax-indicator {
@@ -17,7 +17,7 @@
                 top: 3px;
             }
         </style>
-        <div class="span4 basket" wicket:id="basketPanel"></div>
+        <div class="col-md-4 basket" wicket:id="basketPanel"></div>
     </div>
 </wicket:extend>
 </body>
