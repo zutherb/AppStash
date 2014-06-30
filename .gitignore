@@ -23,3 +23,8 @@ rebel.xml
 bootstrap.zip
 .Rhistory
 .shell_history
+node_modules
+dist
+.tmp
+.sass-cache
+bower_components
