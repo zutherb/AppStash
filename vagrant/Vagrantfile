@@ -9,6 +9,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       v.name = "elasticsearch-node"
       v.customize ["modifyvm", :id, "--memory", "2048"]
     end
+    elasticsearch.vm.synced_folder "provision", "/provision"
     elasticsearch.vm.network :private_network, ip: "10.211.55.100"
     elasticsearch.vm.hostname = "elasticsearch-node"
     elasticsearch.vm.provision :shell, :path => "provision/elasticsearch.sh"
@@ -22,6 +23,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       v.name = "ci-node"
       v.customize ["modifyvm", :id, "--memory", "1024"]
     end
+    buildserver.vm.synced_folder "provision", "/provision"
     buildserver.vm.network :private_network, ip: "10.211.55.200"
     buildserver.vm.hostname = "ci-node"
     buildserver.vm.provision :shell, :path => "provision/buildserver.sh"
@@ -36,6 +38,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       v.name = "app-server-node-1"
       v.customize ["modifyvm", :id, "--memory", "1024"]
     end
+    appserver1.vm.synced_folder "provision", "/provision"
     appserver1.vm.network :private_network, ip: "10.211.55.101"
     appserver1.vm.hostname = "app-server-node-1"
     appserver1.vm.provision :shell, :path => "provision/appserver.sh"
@@ -48,6 +51,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       v.name = "app-server-node-2"
       v.customize ["modifyvm", :id, "--memory", "1024"]
     end
+    appserver2.vm.synced_folder "provision", "/provision"
     appserver2.vm.network :private_network, ip: "10.211.55.102"
     appserver2.vm.hostname = "app-server-node-2"
     appserver2.vm.provision :shell, :path => "provision/appserver.sh"

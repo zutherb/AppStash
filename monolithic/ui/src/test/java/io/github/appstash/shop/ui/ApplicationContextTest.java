@@ -1,4 +1,4 @@
-package io.github.appstash.shop;
+package io.github.appstash.shop.ui;
 
 import io.github.appstash.shop.ui.navigation.NavigationProvider;
 import com.mongodb.Mongo;

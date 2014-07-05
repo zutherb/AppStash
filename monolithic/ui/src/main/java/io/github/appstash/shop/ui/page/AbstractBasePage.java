@@ -25,7 +25,7 @@ import java.util.Map;
  */
 public abstract class AbstractBasePage extends WebPage {
 
-    private static final String FAVICON_HEADER = "<link rel=\"icon\" type=\"image/png\" href=\"${contextPath}/assets/ico/Icons_Map-14.png\" />";
+    private static final String FAVICON_HEADER = "<link rel=\"icon\" type=\"image/png\" href=\"${contextPath}/assets/ico/favicon.ico\" />";
     private static final long serialVersionUID = -9213806230323972218L;
 
     @SpringBean(name = "authenticationService")
@@ -103,7 +103,7 @@ public abstract class AbstractBasePage extends WebPage {
         return authenticationService;
     }
 
-     protected Component pizzaShopFeedbackPanel() {
+    protected Component pizzaShopFeedbackPanel() {
         feedback = new FeedbackPanel("feedback");
         feedback.setOutputMarkupId(true);
         feedback.setOutputMarkupPlaceholderTag(true);

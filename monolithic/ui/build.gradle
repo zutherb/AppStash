@@ -1,10 +1,14 @@
 import java.util.concurrent.Executors
 import java.util.concurrent.TimeUnit
 
-apply plugin: "groovy"
+apply plugin: 'groovy'
 apply plugin: 'war'
 apply plugin: 'jetty'
 apply plugin: 'jmeter'
+
+war{
+    archiveName = "monolithic-shop.war"
+}
 
 idea {
     module {
@@ -32,10 +36,10 @@ sourceSets {
     }
     test {
         resources {
-            srcDir 'src/test/load'
-            srcDir 'src/test/resources'
             srcDir 'src/test/java'
+            srcDir 'src/test/resources'
             srcDir 'src/ui-test/groovy'
+            srcDir 'src/test/load'
         }
     }
 }
@@ -112,24 +116,24 @@ drivers.each { driver ->
         // If you wanted to set the baseUrl in your build…
         // systemProperty "geb.build.baseUrl", "http://myapp.com"
 
-        doFirst {
-            System.setProperty("spring.profiles.active", "test")
-            jettyRun.httpPort = 8888    // Port for test
-            jettyRun.daemon = true
-            jettyRun.execute()
-        }
-        doLast {
-            jettyStop.stopPort = 8889   // Port for stop signal
-            jettyStop.stopKey = 'stopKey'
-            jettyStop.execute()
-        }
+        //doFirst {
+        //    System.setProperty("spring.profiles.active", "test")
+        //    jettyRun.httpPort = 8888    // Port for test
+        //    jettyRun.daemon = true
+        //    jettyRun.execute()
+        //}
+        //doLast {
+        //    jettyStop.stopPort = 8889   // Port for stop signal
+        //    jettyStop.stopKey = 'stopKey'
+        //    jettyStop.execute()
+        //}
     }
 }
 
 
-test {
+//test {
     //exclude '**/*Spec*'
-}
+//}
 
 jmeterRun.configure {
     jmeterPropertyFile = file("${projectDir}/src/test/load/jmeter.properties")

@@ -5,7 +5,7 @@ import au.com.bytecode.opencsv.bean.ColumnPositionMappingStrategy;
 import au.com.bytecode.opencsv.bean.CsvToBean;
 import io.github.appstash.shop.repository.user.model.User;
 import org.apache.commons.collections.CollectionUtils;
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.io.ClassPathResource;
 
 import java.beans.PropertyDescriptor;
@@ -46,39 +46,39 @@ public abstract class AbstractCsvReader<T> {
     protected CsvToBean<T> getParser() {
         return new CsvToBean<T>() {
             @Override
-            protected PropertyEditor getPropertyEditor( final PropertyDescriptor desc ) throws InstantiationException, IllegalAccessException {
+            protected PropertyEditor getPropertyEditor(final PropertyDescriptor desc) throws InstantiationException, IllegalAccessException {
 
-                if( getDestinationClass().isAssignableFrom( User.class ) && "categories".equalsIgnoreCase(
+                if (getDestinationClass().isAssignableFrom(User.class) && "categories".equalsIgnoreCase(
                         desc.getDisplayName())) {
-                    return new DummyPropertyEditor(){
+                    return new DummyPropertyEditor() {
                         @Override
                         public Object getValue() {
-                            if( StringUtils.isBlank( getAsText( ))) {
+                            if (StringUtils.isBlank(getAsText())) {
                                 return null;
                             }
                             Set<String> result = new HashSet<>();
-                            CollectionUtils.addAll( result, StringUtils.split( getAsText(), "," ) );
+                            CollectionUtils.addAll(result, StringUtils.split(getAsText(), ","));
                             return result;
                         }
                     };
                 }
                 final Class<?> enumCandidate = desc.getWriteMethod().getParameterTypes()[0];
 
-                if( enumCandidate.isEnum( )) {
+                if (enumCandidate.isEnum()) {
                     return new DummyPropertyEditor() {
                         @Override
                         public Object getValue() {
                             try {
-                                Method valueOfMethod = enumCandidate.getMethod( "valueOf", String.class );
+                                Method valueOfMethod = enumCandidate.getMethod("valueOf", String.class);
                                 return valueOfMethod.invoke(null, getAsText());
-                            } catch ( Exception e) {
-                                throw new RuntimeException( "Unable to parse enum " + enumCandidate + " from csv value "
+                            } catch (Exception e) {
+                                throw new RuntimeException("Unable to parse enum " + enumCandidate + " from csv value "
                                         + getAsText());
                             }
                         }
                     };
                 }
-                return super.getPropertyEditor( desc );
+                return super.getPropertyEditor(desc);
             }
         };
     }
@@ -88,7 +88,7 @@ public abstract class AbstractCsvReader<T> {
         private String sourceCsvValue;
 
         @Override
-        public void setAsText( String sourceCsvValue ) throws IllegalArgumentException {
+        public void setAsText(String sourceCsvValue) throws IllegalArgumentException {
             this.sourceCsvValue = sourceCsvValue;
         }
 
@@ -99,7 +99,7 @@ public abstract class AbstractCsvReader<T> {
 
         @Override
         public Object getValue() {
-            throw new UnsupportedOperationException( "Must be implemented by caller!" );
+            throw new UnsupportedOperationException("Must be implemented by caller!");
         }
     }
 }

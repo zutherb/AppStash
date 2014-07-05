@@ -1,7 +1,7 @@
 package io.github.appstash.shop.ui.page.test
 import geb.spock.GebReportingSpec
 /*
-add vm params: -Dgeb.build.reportsDir="~/geb" -Dgeb.env="firefox"
+add vm params: -Dgeb.build.reportsDir="/tmp/geb" -Dgeb.env="firefox"
  */
 class ShoppingFlowSpec extends GebReportingSpec {
 

@@ -6,30 +6,34 @@ import org.eclipse.jetty.webapp.WebAppContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
-
 /**
  * @author zutherb
  */
-public class JettyStarterShop {
+public class JettyStart {
 
-    private static final Logger LOGGER = LoggerFactory .getLogger(JettyStarterShop.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(JettyStart.class);
 
-    private final Server server;
+    static {
+        System.setProperty("logback.configurationFile", "logback-test.groovy");
+        System.setProperty("spring.profiles.active", "default");
+    }
 
-    public JettyStarterShop(int port){
-        Validate.notNull(port, "A Port is needed to start the server");
+    public static void main(final String[] args) {
+        if (args.length < 1) {
+            System.out.println("JettyStart <httpport>");
+            return;
+        }
 
-        server = new Server(port);
+        Validate.notNull(args[0], "A Port is needed to start the server");
+
+        Server server = new Server(Integer.valueOf(args[0]));
         WebAppContext context = new WebAppContext();
         context.setContextPath("/pizza");
         context.setResourceBase("src/main/webapp/");
         context.setDescriptor("src/main/webapp/WEB-INF/web.xml");
         context.setParentLoaderPriority(true);
         server.setHandler(context);
-    }
 
-    public void startServer(){
         try {
             LOGGER.info("JETTY SERVER STARTING NOW ...");
             server.start();
@@ -38,17 +42,5 @@ public class JettyStarterShop {
             LOGGER.error("Jetty Server could not be started", e);
             System.exit(100);
         }
-    }
-
-    public void stopServer(){
-        server.destroy();
-    }
-
-    public boolean isServerStarted(){
-        return server.isStarted();
-    }
-
-    public boolean isServerFailed(){
-        return server.isFailed();
     }
 }

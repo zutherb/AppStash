@@ -1,5 +1,6 @@
 package io.github.appstash.model;
 
+import io.github.appstash.json.JsonDateSerializer;
 import org.codehaus.jackson.annotate.JsonProperty;
 import org.codehaus.jackson.map.annotate.JsonSerialize;
 
