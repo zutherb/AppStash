@@ -1,8 +1,8 @@
-
+jar.baseName = "user-repository"
 
 idea {
     module {
-        name='authentication-service'
+        name='user-repository'
     }
 }
 
@@ -22,11 +22,7 @@ sourceSets {
 
 
 dependencies {
-    compile project(':common:service')
-    compile project(':shop:service:user')
-    // required for fake authentication
-    compile project(':common:dataloader')
-    //
+    compile project(':monolithic:repository:common')
 
     testCompile testDeps
 }

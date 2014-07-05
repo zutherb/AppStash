@@ -1,8 +1,8 @@
-jar.baseName = "order-repository"
+
 
 idea {
     module {
-        name='order-repository'
+        name='authentication-service'
     }
 }
 
@@ -22,9 +22,11 @@ sourceSets {
 
 
 dependencies {
-    compile project(':common:repository')
-    compile project(':shop:repository:product')
-    compile project(':shop:repository:user')
+    compile project(':monolithic:service:common')
+    compile project(':monolithic:service:user')
+    // required for fake authentication
+    compile project(':monolithic:common:dataloader')
+    //
 
     testCompile testDeps
 }

@@ -1,8 +1,8 @@
-
+jar.baseName = "product-repository"
 
 idea {
     module {
-        name='recommendation-service'
+        name='product-repository'
     }
 }
 
@@ -13,13 +13,16 @@ sourceSets {
             srcDir 'src/main/resources'
         }
     }
+    test {
+        resources {
+            srcDir 'src/test/java'
+        }
+    }
 }
 
 
 dependencies {
-    compile project(':common:service')
-    compile project(':shop:service:authentication')
-    compile project(':shop:service:product')
+    compile project(':monolithic:repository:common')
 
     testCompile testDeps
 }

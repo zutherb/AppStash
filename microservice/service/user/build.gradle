@@ -1,29 +1,31 @@
 apply plugin: 'groovy'
 
-jar.baseName = "user-service"
+jar.baseName = "user-microservice"
 
 idea {
     module {
-        name='user-service'
+        name='user-microservice'
     }
 }
 
 sourceSets {
     main {
         resources {
-            srcDir 'src/main/java'
+            srcDir 'src/main/groovy'
             srcDir 'src/main/resources'
         }
     }
     test {
         resources {
-            srcDir 'src/test/java'
+            srcDir 'src/test/groovy'
         }
     }
 }
 
 
 dependencies {
-    compile project(':common:service')
+    compile commonDeps
+    compile mongoDeps
+    compile springDeps
     testCompile testDeps
 }

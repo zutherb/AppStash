@@ -1,8 +1,8 @@
-jar.baseName = "product-repository"
+jar.baseName = "order-repository"
 
 idea {
     module {
-        name='product-repository'
+        name='order-repository'
     }
 }
 
@@ -22,7 +22,9 @@ sourceSets {
 
 
 dependencies {
-    compile project(':common:repository')
+    compile project(':monolithic:repository:common')
+    compile project(':monolithic:repository:product')
+    compile project(':monolithic:repository:user')
 
     testCompile testDeps
 }

@@ -54,15 +54,15 @@ dependencies {
     compile webAppDeps
 
     compile project(':agent')
-    compile project(':shop:service:authentication')
-    compile project(':shop:service:basket')
-    compile project(':shop:service:checkout')
-    compile project(':shop:service:order')
-    compile project(':shop:service:product')
-    compile project(':shop:service:recommendation')
-    compile project(':shop:service:user')
+    compile project(':monolithic:service:authentication')
+    compile project(':monolithic:service:basket')
+    compile project(':monolithic:service:checkout')
+    compile project(':monolithic:service:order')
+    compile project(':monolithic:service:product')
+    compile project(':monolithic:service:recommendation')
+    compile project(':monolithic:service:user')
     // for generating sample data automatically on startup
-    compile project(':common:dataloader')
+    compile project(':monolithic:common:dataloader')
     compile "com.github.fakemongo:fongo:$fongoVersion"
     //
 

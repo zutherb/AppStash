@@ -2,7 +2,7 @@
 
 idea {
     module {
-        name='checkout-service'
+        name='basket-service'
     }
 }
 
@@ -22,9 +22,9 @@ sourceSets {
 
 
 dependencies {
-    compile project(':common:util')
-    compile project(':common:service')
-    compile project(':shop:service:order')
+    compile project(':monolithic:common:util')
+    compile project(':monolithic:service:common')
+    compile project(':monolithic:service:product')
 
     testCompile testDeps
 }

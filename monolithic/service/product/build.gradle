@@ -17,8 +17,8 @@ sourceSets {
 
 
 dependencies {
-    compile project(':common:service')
-    compile project(':shop:repository:product')
+    compile project(':monolithic:service:common')
+    compile project(':monolithic:repository:product')
 
     testCompile testDeps
 }

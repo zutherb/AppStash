@@ -148,7 +148,7 @@ subprojects {
             "org.springframework.mobile:spring-mobile-device:$springMobileVersion",
             "org.springframework.data:spring-data-mongodb:$springDataMongoVersion",
             "org.springframework.data:spring-data-hadoop:$springDataHadoopVersion",
-            "org.springframework.boot:spring-boot-starter-web"
+            //"org.springframework.boot:spring-boot-starter-web"
     ]
 
     ext.wicketDeps = [
@@ -168,7 +168,7 @@ subprojects {
 
     ext.testDeps = [
             "org.springframework:spring-test:$springVersion",
-            "org.springframework.boot:spring-boot-starter-test",
+            //"org.springframework.boot:spring-boot-starter-test",
             "junit:junit:$junitVersion",
             "org.mockito:mockito-all:$mockitoVersion",
             "com.github.fakemongo:fongo:$fongoVersion",
