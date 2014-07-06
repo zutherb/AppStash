@@ -106,6 +106,7 @@ subprojects {
                         "org.parboiled:parboiled-scala_2.10:1.1.6",
                         "org.parboiled:parboiled-core:1.1.6",
                         "com.typesafe.akka:akka-actor_2.10:2.3.3",
+                        "com.typesafe.akka:akka-testkit_2.10:2.3.3",
                         "org.scala-lang:scala-reflect:2.10.4"
             }
         }
