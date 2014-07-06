@@ -2,6 +2,7 @@ include 'agent'
 include 'memory-leak'
 
 include 'microservice:service:user'
+include 'microservice:service:product'
 
 include 'monolithic:common:util'
 include 'monolithic:common:dataloader'

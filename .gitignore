@@ -8,10 +8,8 @@ logs/
 .metadata/
 .sonar/
 .vagrant/
-
-rebel.xml
-
 out/
+
 *.iml
 *.ipr
 *.iws
@@ -28,3 +26,12 @@ dist
 .tmp
 .sass-cache
 bower_components
+
+/.idea/
+/project/boot/
+/project/plugins/project
+target/
+lib_managed/
+src_managed/
+test-output/
+*.iml
