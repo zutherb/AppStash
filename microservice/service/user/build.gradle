@@ -1,4 +1,14 @@
 apply plugin: 'groovy'
+apply plugin: 'spring-boot'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.3.RELEASE")
+    }
+}
 
 jar.baseName = "user-microservice"
 
@@ -27,5 +37,10 @@ dependencies {
     compile commonDeps
     compile mongoDeps
     compile springDeps
+    compile("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: "spring-boot-starter-tomcat"
+    }
+    compile("org.springframework.boot:spring-boot-starter-jetty")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
     testCompile testDeps
 }
