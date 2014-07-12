@@ -7,7 +7,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     elasticsearch.vm.box = "precise64"
     elasticsearch.vm.provider "virtualbox" do |v|
       v.name = "elasticsearch-node"
-      v.customize ["modifyvm", :id, "--memory", "2048"]
+      v.customize ["modifyvm", :id, "--memory", "1024"]
     end
     elasticsearch.vm.synced_folder "provision", "/provision"
     elasticsearch.vm.network :private_network, ip: "10.211.55.100"
@@ -48,8 +48,15 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     appserver1.vm.synced_folder "provision", "/provision"
     appserver1.vm.network :private_network, ip: "10.211.55.101"
     appserver1.vm.hostname = "app-server-node-1"
-    appserver1.vm.provision :shell, :path => "provision/appserver.sh"
     appserver1.vm.network :forwarded_port, host: 8080, guest: 8080, auto_correct: true
+    appserver1.vm.provision "ansible" do |ansible|
+      ansible.playbook = "provision/monolitic_appserver.yml"
+      ansible.inventory_path = "provision/hosts"
+      ansible.limit = 'app-server-node-1'
+      ansible.ask_vault_pass = false
+      ansible.raw_arguments  = "--user=vagrant"
+      ansible.raw_arguments  = "--private-key=~/.vagrant.d/insecure_private_key"
+    end
   end
 
   config.vm.define :appserver2 do |appserver2|

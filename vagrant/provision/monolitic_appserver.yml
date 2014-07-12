@@ -1,5 +1,5 @@
 ---
-- hosts: buildservers
+- hosts: monolitic_appservers
   user: vagrant
   sudo: yes
 
@@ -7,6 +7,4 @@
     - hosts
     - eu-sources
     - oracle-java
-    - jenkins
-    - sonar
-    - vnc
+    - tomcat

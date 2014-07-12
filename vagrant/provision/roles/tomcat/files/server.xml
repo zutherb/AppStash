@@ -3,7 +3,6 @@
     <Listener className="org.apache.catalina.core.JasperListener"/>
     <Listener className="org.apache.catalina.core.JreMemoryLeakPreventionListener"/>
     <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener"/>
-    <Listener className="org.apache.catalina.core.ThreadLocalLeakPreventionListener"/>
 
     <GlobalNamingResources>
         <Resource name="UserDatabase" auth="Container"
