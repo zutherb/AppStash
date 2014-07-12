@@ -68,7 +68,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     appserver2.vm.synced_folder "provision", "/provision"
     appserver2.vm.network :private_network, ip: "10.211.55.102"
     appserver2.vm.hostname = "app-server-node-2"
-    appserver2.vm.provision :shell, :path => "provision/appserver.sh"
     appserver2.vm.network :forwarded_port, host: 8081, guest: 8080, auto_correct: true
+    appserver2.vm.provision "ansible" do |ansible|
+      ansible.playbook = "provision/monolitic_appserver.yml"
+      ansible.inventory_path = "provision/hosts"
+      ansible.limit = 'app-server-node-1'
+      ansible.ask_vault_pass = false
+      ansible.raw_arguments  = "--user=vagrant"
+      ansible.raw_arguments  = "--private-key=~/.vagrant.d/insecure_private_key"
+    end
   end
 end

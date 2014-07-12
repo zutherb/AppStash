@@ -1,0 +1,5 @@
+---
+- name: install mongodb
+  apt: pkg=mongodb state=present force=yes
+
+
