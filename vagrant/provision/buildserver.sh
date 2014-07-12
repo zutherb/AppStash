@@ -36,7 +36,7 @@ mkdir ~/.vnc/
 cp -f /provision/vnc/* ~/.vnc/
 cp /provision/jenkins/config.xml /var/lib/jenkins/config.xml
 wget http://localhost:8080/jnlpJars/jenkins-cli.jar
-java -jar jenkins-cli.jar -s http://localhost:8080/ install-plugin git git-client chucknorris greenballs build-pipeline-plugin copyartifact performance jacoco buildgraph-view xvnc -restart
+java -jar jenkins-cli.jar -s http://localhost:8080/ install-plugin git git-client chucknorris greenballs build-pipeline-plugin copyartifact performance jacoco buildgraph-view xvnc
 cat /provision/jenkins/pizza-build.xml | java -jar jenkins-cli.jar -s http://localhost:8080/ create-job pizza-build
 cat /vagrant/provision/jenkins/pizza-test-deployment.xml | java -jar jenkins-cli.jar -s http://localhost:8080/ create-job pizza-test-deployment
 java -jar jenkins-cli.jar -s http://localhost:8080/ restart

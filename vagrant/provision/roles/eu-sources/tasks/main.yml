@@ -1,0 +1,7 @@
+---
+- name: install eu sources list
+  copy: src=sources.list dest=/etc/apt/sources.list mode=0755
+- name: update cache
+  apt: update_cache=yes
+
+

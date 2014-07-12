@@ -26,10 +26,17 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     buildserver.vm.synced_folder "provision", "/provision"
     buildserver.vm.network :private_network, ip: "10.211.55.200"
     buildserver.vm.hostname = "ci-node"
-    buildserver.vm.provision :shell, :path => "provision/buildserver.sh"
     buildserver.vm.network :forwarded_port, host: 10000, guest: 8080, auto_correct: true
     buildserver.vm.network :forwarded_port, host: 9000, guest: 9000, auto_correct: true
     buildserver.vm.network :forwarded_port, host: 5432, guest: 5432, auto_correct: true
+    buildserver.vm.provision "ansible" do |ansible|
+      ansible.playbook = "provision/buildserver.yml"
+      ansible.inventory_path = "provision/hosts"
+      ansible.limit = 'all,localhost'
+      ansible.ask_vault_pass = false
+      ansible.raw_arguments  = "--user=vagrant"
+      ansible.raw_arguments  = "--private-key=~/.vagrant.d/insecure_private_key"
+    end
   end
 
   config.vm.define :appserver1 do |appserver1|

@@ -1,0 +1,11 @@
+---
+- hosts: buildservers
+  user: vagrant
+  sudo: yes
+
+  roles:
+    - hosts
+    - eu-sources
+    - jenkins
+    - sonar
+    - vnc
