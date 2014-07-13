@@ -129,9 +129,9 @@ subprojects {
             "org.slf4j:slf4j-api:$slf4jVersion",
             "ch.qos.logback:logback-classic:$logbackVersion",
             "org.codehaus.groovy:groovy-all:$groovyVersion", // required for logback logger
-            "org.projectlombok:lombok:1.14.2",
             "commons-collections:commons-collections:$commonsCollectionsVersion",
             "commons-io:commons-io:$commonsIoVersion",
+            "commons-lang:commons-lang:2.6",
             "org.reflections:reflections:$reflectionsVersion",
             "net.sf.dozer:dozer:$dozerVersion",
             "net.sf.opencsv:opencsv:$opencsvVersion",
@@ -147,7 +147,7 @@ subprojects {
 
     ext.mongoDeps = [
             "org.mongodb:mongo-java-driver:$mongodbDriverVersion",
-            "org.mongodb:bson:$mongodbDriverVersion",
+            "org.mongodb:bson:$mongodbDriverVersion"
     ]
 
     ext.springDeps = [
@@ -157,9 +157,13 @@ subprojects {
             "org.springframework.security:spring-security-web:$springSecurityVersion",
             "org.springframework.security:spring-security-config:$springSecurityVersion",
             "org.springframework.mobile:spring-mobile-device:$springMobileVersion",
-            "org.springframework.data:spring-data-mongodb:$springDataMongoVersion",
-            "org.springframework.data:spring-data-hadoop:$springDataHadoopVersion",
-            //"org.springframework.boot:spring-boot-starter-web"
+            "org.springframework.data:spring-data-mongodb:$springDataMongoVersion"
+    ]
+
+    ext.springSecurityDeps = [
+            "org.springframework.security:spring-security-core:$springSecurityVersion",
+            "org.springframework.security:spring-security-web:$springSecurityVersion",
+            "org.springframework.security:spring-security-config:$springSecurityVersion"
     ]
 
     ext.wicketDeps = [

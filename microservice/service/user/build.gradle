@@ -12,6 +12,8 @@ buildscript {
 
 jar.baseName = "user-microservice"
 
+mainClassName = "io.github.appstash.shop.service.user.ApplicationConfiguration"
+
 idea {
     module {
         name='user-microservice'
