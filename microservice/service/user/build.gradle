@@ -18,6 +18,10 @@ idea {
     }
 }
 
+configurations {
+    all*.exclude group: 'org.springframework', module: 'spring-asm'
+}
+
 sourceSets {
     main {
         resources {
