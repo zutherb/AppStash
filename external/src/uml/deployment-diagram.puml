@@ -1,0 +1,15 @@
+@startuml
+node "Elasticsearch Node" {
+  REST <--> [Elasticsearch]
+  [Kibana] <--> REST
+} 
+
+node "Application Server Node" {
+  Logfile <-- [Tomcat]
+  [Logstash] <-- Logfile
+  [Logstash] --> REST
+  node "Tomcat" {
+    [Webapp]
+  } 
+}
+@enduml

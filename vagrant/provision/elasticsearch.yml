@@ -1,0 +1,15 @@
+---
+- hosts: elasticsearchservers
+  user: vagrant
+  sudo: yes
+
+  vars_files:
+     - vars/default.yml
+
+  roles:
+    - hosts
+    - eu-sources
+    - oracle-java
+    - elasticsearch
+    - apache
+    - kibana
