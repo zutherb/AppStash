@@ -17,8 +17,7 @@ dependencies {
     compile "org.slf4j:slf4j-api:$slf4jVersion"
     compile "ch.qos.logback:logback-classic:$logbackVersion"
     compile "joda-time:joda-time:$jodaTimeVersion"
-    compile "com.fasterxml.jackson.core:jackson-mapper-asl:$jacksonVersion"
-    compile "com.fasterxml.jackson.core:jackson-core-asl:$jacksonVersion"
+    compile jacksonDeps
     testCompile testDeps
 }
 

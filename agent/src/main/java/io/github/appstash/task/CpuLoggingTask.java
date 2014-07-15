@@ -1,7 +1,7 @@
 package io.github.appstash.task;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.github.appstash.model.MemoryUsageInfo;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

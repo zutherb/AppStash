@@ -85,8 +85,9 @@ subprojects {
                         "commons-collections:commons-collections:$commonsCollectionsVersion",
                         "org.apache.commons:commons-math:$commonsMathVersion",
                         "com.google.guava:guava:$guavaVersion",
+                        "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion",
                         "com.fasterxml.jackson.core:jackson-core:$jacksonVersion",
-                        "com.fasterxml.jackson.coren:jackson-core-asl:$jacksonVersion",
+                        "com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion",
                         "com.github.stephenc.high-scale-lib:high-scale-lib:$stephecHighScaleVersion",
                         "xml-apis:xml-apis:$xmlApisVersion",
                         "junit:junit:$junitVersion",
@@ -137,6 +138,12 @@ subprojects {
             "net.sf.dozer:dozer:$dozerVersion",
             "net.sf.opencsv:opencsv:$opencsvVersion",
             "joda-time:joda-time:$jodaTimeVersion",
+    ]
+
+    ext.jacksonDeps = [
+            "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion",
+            "com.fasterxml.jackson.core:jackson-core:$jacksonVersion",
+            "com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion"
     ]
 
     ext.webAppDeps = [

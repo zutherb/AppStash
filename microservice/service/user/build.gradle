@@ -12,7 +12,7 @@ buildscript {
 
 jar.baseName = "user-microservice"
 
-mainClassName = "io.github.appstash.shop.service.user.ApplicationConfiguration"
+mainClassName = "io.github.appstash.shop.service.user.UserServiceDriver"
 
 idea {
     module {
@@ -43,7 +43,7 @@ dependencies {
     compile commonDeps
     compile mongoDeps
     compile springDeps
-    compile("com.fasterxml.jackson.core:jackson-core:2.4.1.1")
+    compile jacksonDeps
     compile("org.springframework.boot:spring-boot-starter-data-mongodb")
     compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"

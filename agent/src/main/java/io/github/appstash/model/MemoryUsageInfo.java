@@ -1,8 +1,8 @@
 package io.github.appstash.model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import io.github.appstash.json.JsonDateSerializer;
-import org.codehaus.jackson.annotate.JsonProperty;
-import org.codehaus.jackson.map.annotate.JsonSerialize;
 
 import java.lang.management.MemoryUsage;
 import java.util.Date;
