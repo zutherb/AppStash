@@ -1,5 +1,6 @@
 package io.github.appstash.shop.runner;
 
+import ch.qos.logback.classic.util.ContextInitializer;
 import org.apache.commons.lang.Validate;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
@@ -14,7 +15,7 @@ public class JettyStart {
     private static final Logger LOGGER = LoggerFactory.getLogger(JettyStart.class);
 
     static {
-        System.setProperty("logback.configurationFile", "logback-test.groovy");
+        System.setProperty(ContextInitializer.CONFIG_FILE_PROPERTY, "logback-test.groovy");
         System.setProperty("spring.profiles.active", "default");
     }
 
