@@ -5,14 +5,17 @@
 <wicket:head />
 <body>
     <wicket:panel>
-        <div wicket:id="feedback" ></div>
-        <form class="well" wicket:id="loginForm">
-            <label>Username:</label>
-            <input wicket:id="username" type="text" class="col-md-5">
-            <label>Password:</label>
-            <input wicket:id="password" type="password" class="col-md-5">
-            <br />
-            <button wicket:id="submitLink" type="submit" class="btn">Sign in</button>
+        <div wicket:id="feedback"></div>
+        <form class="well" wicket:id="loginForm" role="form">
+            <div class="form-group">
+                <label wicket:for="username">Username:</label>
+                <input type="text" class="form-control col-md-5" wicket:id="username" placeholder="Enter username">
+            </div>
+            <div class="form-group">
+                <label wicket:for="password">Password</label>
+                <input type="password" class="form-control col-md-5" wicket:id="password" placeholder="Password">
+            </div>
+            <button type="submit" class="btn btn-default" wicket:id="submitLink">Sign in</button>
         </form>
     </wicket:panel>
 </body>

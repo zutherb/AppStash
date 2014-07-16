@@ -33,15 +33,11 @@
 </script>
 <![endif]-->
 
-<div class="row" wicket:id="header">
-    <div>
-        <div wicket:id="navigation"></div>
-    </div>
-</div>
+<header role="banner" id="top" class="navbar navbar-static-top bs-docs-nav" wicket:id="header">
+    <div class="container" wicket:id="navigation" />
+</header>
 <wicket:container wicket:id="loginModal"/>
-<div class="container main-container" >
-    <div class="row">&nbsp;</div>
-    <div class="row">&nbsp;</div>
+<div class="container" >
     <div wicket:id="feedback"></div>
     <wicket:child>
         <h2>Subheading</h2>

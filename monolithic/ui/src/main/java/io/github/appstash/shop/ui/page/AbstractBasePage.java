@@ -83,20 +83,11 @@ public abstract class AbstractBasePage extends WebPage {
         MapVariableInterpolator variableInterpolator = new MapVariableInterpolator(FAVICON_HEADER, replacements);
         response.render(StringHeaderItem.forString(variableInterpolator.toString()));
 
-        response.render(CssHeaderItem.forUrl(contextPath + "/assets/css/bootstrap.css"));
-        response.render(CssHeaderItem.forUrl(contextPath + "/assets/css/bootstrap-responsive.css"));
+        response.render(CssHeaderItem.forUrl(contextPath + "/assets/css/bootstrap.min.css"));
+        response.render(CssHeaderItem.forUrl(contextPath + "/assets/css/bootstrap-responsive.min.css"));
+        response.render(CssHeaderItem.forUrl(contextPath + "/assets/css/bootstrap-theme.min.css"));
 
-        response.render(JavaScriptHeaderItem.forUrl(contextPath + "/assets/js/bootstrap-modal.js"));
-        response.render(JavaScriptHeaderItem.forUrl(contextPath + "/assets/js/bootstrap-dropdown.js"));
-        response.render(JavaScriptHeaderItem.forUrl(contextPath + "/assets/js/bootstrap-scrollspy.js"));
-        response.render(JavaScriptHeaderItem.forUrl(contextPath + "/assets/js/bootstrap-tab.js"));
-        response.render(JavaScriptHeaderItem.forUrl(contextPath + "/assets/js/bootstrap-tooltip.js"));
-        response.render(JavaScriptHeaderItem.forUrl(contextPath + "/assets/js/bootstrap-popover.js"));
-        response.render(JavaScriptHeaderItem.forUrl(contextPath + "/assets/js/bootstrap-alert.js"));
-        response.render(JavaScriptHeaderItem.forUrl(contextPath + "/assets/js/bootstrap-button.js"));
-        response.render(JavaScriptHeaderItem.forUrl(contextPath + "/assets/js/bootstrap-carousel.js"));
-        response.render(JavaScriptHeaderItem.forUrl(contextPath + "/assets/js/bootstrap-typeahead.js"));
-
+        response.render(JavaScriptHeaderItem.forUrl(contextPath + "/assets/js/bootstrap.min.js"));
     }
 
     public AuthenticationService getAuthenticationService() {

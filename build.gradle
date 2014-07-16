@@ -100,7 +100,7 @@ subprojects {
                         "xml-apis:xml-apis:1.4.01",
                         "cglib:cglib-nodep:3.1",
                         "cglib:cglib:3.1",
-                        "org.codehaus.groovy:groovy-all:2.1.3",
+                        "org.codehaus.groovy:groovy-all:$groovyVersion",
                         "org.eclipse.jetty.orbit:javax.servlet.jsp:2.2.0.v201112011158",
                         "org.apache.httpcomponents:httpclient:4.3.2",
                         "org.apache.httpcomponents:httpcore:4.3.2",
