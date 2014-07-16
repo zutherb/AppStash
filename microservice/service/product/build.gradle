@@ -25,8 +25,9 @@ dependencies {
     compile "com.typesafe.akka:akka-actor_2.10:2.3.0"
     compile "io.spray:spray-can:1.3.1"
     compile "io.spray:spray-routing:1.3.1"
-    compile "io.spray:spray-json_2.10:1.3.1"
-    compile 'com.typesafe:config:1.0.2'
+    compile "org.scalaz:scalaz-core_2.10:7.0.6"
+    compile "io.argonaut:argonaut_2.10:6.0.4"
+    compile "com.typesafe:config:1.0.2"
     testCompile "com.typesafe.akka:akka-testkit_2.10:2.3.0"
     testCompile "org.specs2:specs2_2.10:2.3.12"
     testCompile "io.spray:spray-testkit:1.3.1"

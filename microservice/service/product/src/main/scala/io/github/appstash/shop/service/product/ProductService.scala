@@ -3,6 +3,8 @@ package io.github.appstash.shop.service.product
 import akka.actor.Actor
 import spray.http.MediaTypes._
 import spray.routing._
+import argonaut._, Argonaut._
+
 
 // we don't implement our route structure directly in the service actor because
 // we want to be able to test it independently, without having to spin up an actor
@@ -22,12 +24,19 @@ class ProductServiceActor extends Actor with ProductService {
 // this trait defines our service behavior independently from the service actor
 trait ProductService extends HttpService {
 
+  case class Product(articleId: String, name: String) {
 
+  }
 
-val myRoute =
+  implicit def PersonEncodeJson: EncodeJson[Product] =
+    EncodeJson((p: Product) =>
+      ("name" := p.name) ->: ("articleId" := p.articleId) ->: jEmptyObject)
+
+  val myRoute =
     path("products") {
       get {
-        respondWithMediaType(`application/json`) { // XML is marshalled to `text/xml` by default, so we simply override here
+        respondWithMediaType(`application/json`) {
+          // XML is marshalled to `text/xml` by default, so we simply override here
           complete {
             """[
               |	{

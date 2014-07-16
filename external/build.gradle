@@ -10,7 +10,7 @@ apply plugin: 'plantuml'
 sourceSets {
     main {
         resources {
-            srcDir 'src/uml'
+            srcDir 'src/puml'
         }
     }
 }

@@ -1,12 +1,17 @@
 apply plugin: 'groovy'
 apply plugin: 'spring-boot'
+apply plugin: 'pkg-debian'
 
 buildscript {
     repositories {
         mavenCentral()
+        maven {
+            url "http://dl.bintray.com/gesellix/gradle-plugins"
+        }
     }
     dependencies {
         classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.3.RELEASE")
+        classpath "de.gesellix:gradle-debian-plugin:14"
     }
 }
 
@@ -51,4 +56,34 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-jetty")
     compile("org.springframework.boot:spring-boot-starter-actuator")
     testCompile testDeps
+}
+
+debian {
+  packagename = "packagename"
+  publications = ['webapp']
+  controlDirectory = "${buildDir}"
+  changelogFile = "${buildDir}"
+
+  data {
+    def baseDir = "/path/to/data"
+    dir {
+      name = baseDir
+      exclusions = [
+          "etc/init.d/packagename"]
+      mapper {
+        filename = { path -> "opt/" + path }
+      }
+    }
+    file {
+      name = "${baseDir}/etc/init.d/packagename"
+      target = "etc/init.d/packagename"
+      mapper {
+        fileMode = "755"
+      }
+    }
+    link {
+      path = "/etc/packagename/"
+      name = "var/lib/packagename/conf"
+    }
+  }
 }
