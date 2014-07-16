@@ -6,7 +6,7 @@ apply plugin: 'war'
 apply plugin: 'jetty'
 apply plugin: 'jmeter'
 
-war{
+war {
     archiveName = "monolithic-shop.war"
 }
 
@@ -38,7 +38,6 @@ sourceSets {
         resources {
             srcDir 'src/test/java'
             srcDir 'src/test/resources'
-            srcDir 'src/ui-test/groovy'
             srcDir 'src/test/load'
         }
     }
@@ -46,14 +45,14 @@ sourceSets {
         compileClasspath = sourceSets.main.output + configurations.testRuntime
         runtimeClasspath = output + sourceSets.main.output + configurations.testRuntime
         groovy {
-              srcDir 'src/uitest/groovy'
+            srcDir 'src/uitest/groovy'
         }
     }
 }
 
 configurations {
-        uitestCompile.extendsFrom testCompile
-        uitestRuntime.extendsFrom testRuntime
+    uitestCompile.extendsFrom testCompile
+    uitestRuntime.extendsFrom testRuntime
 }
 
 repositories {
@@ -83,7 +82,6 @@ dependencies {
     testCompile jettyDeps
     testCompile testDeps
 
-
     //If using Spock, need to depend on geb-spock
     testCompile "org.gebish:geb-spock:$gebVersion"
     testCompile "org.gebish:geb-junit4:$gebVersion"
@@ -103,12 +101,14 @@ dependencies {
 }
 
 jettyRun.doFirst {
-    if(!Boolean.getBoolean('spring.profiles.active')){
+    if (!Boolean.getBoolean('spring.profiles.active')) {
         System.setProperty("spring.profiles.active", "default")
     }
 }
 
 task uiTest(type: Test) {
+    finalizedBy "uiTestJettyStop"
+
     testClassesDir = sourceSets.uitest.output.classesDir
     classpath = sourceSets.uitest.runtimeClasspath
 
@@ -120,25 +120,22 @@ task uiTest(type: Test) {
     systemProperty "geb.build.reportsDir", reporting.file("$name/geb")
     systemProperty "geb.env", "firefox"
 
-        // If you wanted to set the baseUrl in your build…
-        // systemProperty "geb.build.baseUrl", "http://myapp.com"
+    // If you wanted to set the baseUrl in your build…
+    // systemProperty "geb.build.baseUrl", "http://myapp.com"
 
     doFirst {
-            systemProperty "spring.profiles.active", "test"
+        systemProperty "spring.profiles.active", "test"
+        jettyRun.httpPort = 8888    // Port for test
+        jettyRun.stopPort = 8889    // Port for test
+        jettyRun.daemon = true
+        jettyRun.execute()
+    }
+}
 
-            jettyRun.stopPort = 8888
-            jettyRun.stopKey = 'stopKey'
-
-            jettyRun.daemon = true
-            jettyRun.execute()
-        }
-
-        doLast {
-            jettyStop.stopPort = 8888
-            jettyStop.stopKey = 'stopKey'
-
-            jettyStop.execute()
-        }
+task uiTestJettyStop {
+    jettyStop.stopPort = 8889
+    jettyStop.stopKey = 'stopKey'
+    jettyStop.execute()
 }
 
 jmeterRun.configure {
