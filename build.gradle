@@ -33,6 +33,7 @@ def props = new Properties();
 file("gradle.properties").withInputStream { props.load(it) }
 props.each({ project.ext[it.key] = it.value })
 
+
 allprojects {
     sourceCompatibility = org.gradle.api.JavaVersion.VERSION_1_8
     targetCompatibility = org.gradle.api.JavaVersion.VERSION_1_6
@@ -191,7 +192,6 @@ subprojects {
 
     ext.testDeps = [
             "org.springframework:spring-test:$springVersion",
-            //"org.springframework.boot:spring-boot-starter-test",
             "junit:junit:$junitVersion",
             "org.mockito:mockito-all:$mockitoVersion",
             "com.github.fakemongo:fongo:$fongoVersion",
