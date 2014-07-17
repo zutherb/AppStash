@@ -1,5 +1,6 @@
 @startuml
-() REST
+scale 1
+
 () REST
 
 node "Elasticsearch Server" {

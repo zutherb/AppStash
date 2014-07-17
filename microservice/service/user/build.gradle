@@ -10,7 +10,7 @@ buildscript {
         }
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.3.RELEASE")
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.1.3.RELEASE"
         classpath "de.gesellix:gradle-debian-plugin:14"
     }
 }
@@ -58,32 +58,22 @@ dependencies {
     testCompile testDeps
 }
 
+def debName = jar.baseName
 debian {
-  packagename = "packagename"
-  publications = ['webapp']
-  controlDirectory = "${buildDir}"
-  changelogFile = "${buildDir}"
+    packagename = debName
+    publications = []
+    controlDirectory = "${projectDir}/debian/"
+    //changelogFile = "${projectDir}/debian/changelog"
+    outputFile = "${buildDir}/${debName}_${version}_all.deb"
 
-  data {
-    def baseDir = "/path/to/data"
-    dir {
-      name = baseDir
-      exclusions = [
-          "etc/init.d/packagename"]
-      mapper {
-        filename = { path -> "opt/" + path }
-      }
+    data {
+//        dir {
+//            name = "${projectDir}/debian/data"
+//            excludes = ["**/.DS_Store"]
+//        }
+//        file {
+//            name = "${buildDir}/blog-${project.version}.war"
+//            target = "usr/share/${debName}/application.war"
+//        }
     }
-    file {
-      name = "${baseDir}/etc/init.d/packagename"
-      target = "etc/init.d/packagename"
-      mapper {
-        fileMode = "755"
-      }
-    }
-    link {
-      path = "/etc/packagename/"
-      name = "var/lib/packagename/conf"
-    }
-  }
 }

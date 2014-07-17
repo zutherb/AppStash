@@ -16,35 +16,39 @@
         <a class="navbar-brand" wicket:id="home">Monolithic architecture</a>
     </div>
     <nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
-        <ul class="nav navbar-nav" wicket:id="mainNavigation">
-            <li wicket:id="item">
-                <a href="#" wicket:id="link">
-                    <wicket:container wicket:id="name">Link</wicket:container>
-                </a>
-            </li>
+        <ul class="nav navbar-nav">
+            <wicket:container wicket:id="mainNavigation">
+                <li wicket:id="item">
+                    <a href="#" wicket:id="link">
+                        <wicket:container wicket:id="name">Link</wicket:container>
+                    </a>
+                </li>
+            </wicket:container>
         </ul>
 
-        <ul class="nav navbar-nav navbar-right" wicket:id="otherNavigation">
-            <li class="dropdown" id="menu1" wicket:id="dropdown">
-                <a href="#menu1"
-                   class="dropdown-toggle"
-                   data-toggle="dropdown"
-                   wicket:id="link">
-                    <wicket:container wicket:id="name">Label</wicket:container>
-                    <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <wicket:container wicket:id="items">
-                        <li wicket:id="item">
-                            <a href="#" wicket:id="link">
-                                <wicket:container wicket:id="name">Link</wicket:container>
-                            </a>
-                        </li>
-                    </wicket:container>
-                </ul>
-            </li>
+        <ul class="nav navbar-nav navbar-right">
+            <wicket:container wicket:id="otherNavigation">
+                <li class="dropdown" id="menu1" wicket:id="dropdown">
+                    <a href="#menu1"
+                       class="dropdown-toggle"
+                       data-toggle="dropdown"
+                       wicket:id="link">
+                        <wicket:container wicket:id="name">Label</wicket:container>
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <wicket:container wicket:id="items">
+                            <li wicket:id="item">
+                                <a href="#" wicket:id="link">
+                                    <wicket:container wicket:id="name">Link</wicket:container>
+                                </a>
+                            </li>
+                        </wicket:container>
+                    </ul>
+                </li>
+            </wicket:container>
         </ul>
-        <div wicket:id="loginInfoPanel" />
+        <wicket:container wicket:id="loginInfoPanel" />
     </nav>
 </wicket:panel>
 </body>
