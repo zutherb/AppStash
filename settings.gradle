@@ -4,6 +4,7 @@ include 'memory-leak'
 
 include 'microservice:service:user'
 include 'microservice:service:product'
+include 'microservice:service:navigation'
 
 include 'monolithic:common:util'
 include 'monolithic:common:dataloader'
