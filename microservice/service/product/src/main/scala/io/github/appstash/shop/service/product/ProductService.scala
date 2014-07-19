@@ -39,10 +39,12 @@ trait ProductService extends HttpService {
     } ~
       path("search") {
         get {
-          parameter("productType".?){ productType =>
+          parameter("productType".?, "id".?, "articleId".?, "name".?, "urlname".?){
+            (productType, id, articleId, name, urlname) =>
             respondWithMediaType(MediaTypes.`application/json`) {
               complete {
-                Products.findBy(new ProductQuery(productType.get))
+                val query: ProductQuery = new ProductQuery(id, productType, articleId, name, urlname)
+                Products.findBy(query)
               }
             }
           }
