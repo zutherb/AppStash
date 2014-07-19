@@ -20,8 +20,6 @@ class ApplicationConfiguration extends WebMvcConfigurationSupport {
 
     @Bean
     MappingJackson2HttpMessageConverter converter() {
-        MappingJackson2HttpMessageConverter converter = new MappingJackson2HttpMessageConverter()
-        //do your customizations here...
-        return converter
+        new MappingJackson2HttpMessageConverter()
     }
 }

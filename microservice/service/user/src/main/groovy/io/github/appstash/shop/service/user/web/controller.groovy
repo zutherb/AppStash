@@ -4,8 +4,8 @@ import io.github.appstash.shop.service.user.domain.User
 import io.github.appstash.shop.service.user.domain.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.MediaType
-import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.RestController
 
@@ -15,16 +15,16 @@ class UserController {
     @Autowired
     def UserRepository userRepository;
 
-    @RequestMapping(value = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/all", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     List<User> users() {
-        userRepository.findAll();
+        userRepository.findAll()
     }
 
-    @RequestMapping(value = "/user/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/search", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
-    User userById(@PathVariable String id) {
-        userRepository.findById(id);
+    User userById(@RequestParam String id) {
+        userRepository.findById(id)
     }
 
 }

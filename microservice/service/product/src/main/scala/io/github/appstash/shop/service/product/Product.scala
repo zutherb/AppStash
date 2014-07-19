@@ -81,8 +81,8 @@ object Products extends Mongo {
     .cursor[Product]
     .collect[List]()
 
-  def findBy(query: ProductQuery) = productCollection.find(query)
-      .cursor[Product]
-      .collect[List]()
+  def findByQuery(query: ProductQuery) = productCollection.find(query)
+    .cursor[Product]
+    .collect[List]()
 }
 

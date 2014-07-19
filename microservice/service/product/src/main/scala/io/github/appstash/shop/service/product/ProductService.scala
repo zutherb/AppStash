@@ -44,7 +44,7 @@ trait ProductService extends HttpService {
             respondWithMediaType(MediaTypes.`application/json`) {
               complete {
                 val query: ProductQuery = new ProductQuery(id, productType, articleId, name, urlname)
-                Products.findBy(query)
+                Products.findByQuery(query)
               }
             }
           }

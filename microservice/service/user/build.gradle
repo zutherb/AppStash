@@ -17,7 +17,7 @@ buildscript {
 
 jar.baseName = "user-microservice"
 
-mainClassName = "io.github.appstash.shop.service.user.UserServiceDriver"
+mainClassName = "io.github.appstash.shop.service.user.Boot"
 
 idea {
     module {
@@ -26,7 +26,7 @@ idea {
 }
 
 configurations {
-    all*.exclude group: 'org.springframework', module: 'spring-asm'
+    all*.exclude group: 'org.springframework.security'
 }
 
 sourceSets {

@@ -7,7 +7,7 @@ import org.springframework.context.ApplicationContext
 /**
  * @author zutherb
  */
-class UserServiceDriver implements CommandLineRunner {
+class Boot implements CommandLineRunner {
 
     public static void main(String[] args) {
         ApplicationContext ctx = SpringApplication.run(ApplicationConfiguration.class, args)
