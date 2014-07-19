@@ -39,12 +39,23 @@ object Product extends DefaultJsonProtocol {
       Product(id.stringify, articleId, name, urlname, description, productType, price)
     }
   }
+
 }
 
-object Products extends Mongo{
+case class ProductQuery(productType: String)
+
+object Products extends Mongo {
   private val products = db("product")
+
   def findAll() = products.find(BSONDocument.empty)
+    .cursor[Product]
+    .collect[List]()
+
+  def findBy(query: ProductQuery) = {
+    val document: BSONDocument = BSONDocument("type" -> query.productType)
+    products.find(document)
       .cursor[Product]
       .collect[List]()
+  }
 }
 

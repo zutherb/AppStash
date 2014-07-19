@@ -28,13 +28,24 @@ class ProductServiceActor extends Actor with ProductService {
 // this trait defines our service behavior independently from the service actor
 trait ProductService extends HttpService {
   val myRoute =
-    path("products") {
+    path("all") {
       get {
         respondWithMediaType(MediaTypes.`application/json`) {
           complete {
             Products.findAll()
           }
         }
+      }
+    } ~
+      path("search") {
+        get {
+          parameter("productType".?){ productType =>
+            respondWithMediaType(MediaTypes.`application/json`) {
+              complete {
+                Products.findBy(new ProductQuery(productType.get))
+              }
+            }
+          }
       }
     }
 }
