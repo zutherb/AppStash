@@ -1,18 +1,14 @@
 package io.github.appstash.shop.service.product
 
 import akka.actor.Actor
+import reactivemongo.api.MongoDriver
 import spray.http.MediaTypes
-import spray.routing.HttpService
-import reactivemongo.bson.BSONDocument
-import reactivemongo.core.commands.LastError
 import spray.httpx.SprayJsonSupport.sprayJsonMarshaller
 import spray.httpx.SprayJsonSupport.sprayJsonUnmarshaller
 import spray.json.pimpAny
 import spray.routing.HttpService
 
-import Mongo.Products
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.Future
 
 // we don't implement our route structure directly in the service actor because
 // we want to be able to test it independently, without having to spin up an actor
@@ -31,7 +27,6 @@ class ProductServiceActor extends Actor with ProductService {
 
 // this trait defines our service behavior independently from the service actor
 trait ProductService extends HttpService {
-
   val myRoute =
     path("products") {
       get {

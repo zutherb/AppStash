@@ -20,15 +20,6 @@ repositories {
     maven {
         url 'http://repo.typesafe.com/typesafe/releases/'
     }
-    maven {
-        url 'http://markschaake.github.com/releases'
-    }
-    maven {
-        url "http://markschaake.github.io/snapshots"
-    }
-    maven {
-        url 'https://oss.sonatype.org/content/repositories/snapshots/'
-    }
 }
 
 dependencies {
@@ -40,9 +31,6 @@ dependencies {
     compile "org.scalaz:scalaz-core_2.10:7.0.6"
     compile "com.typesafe:config:1.0.2"
     compile "org.reactivemongo:reactivemongo_2.10:0.10.0"
-    compile "sprest:sprest-reactivemongo_2.10:0.3.0"
-    compile "org.mongodb:mongo-java-driver:$mongodbDriverVersion"
-    compile "org.mongodb:bson:$mongodbDriverVersion"
     testCompile "com.typesafe.akka:akka-testkit_2.10:$akkaVersion"
     testCompile "org.specs2:specs2_2.10:2.3.12"
     testCompile "io.spray:spray-testkit:$sprayVersion"
