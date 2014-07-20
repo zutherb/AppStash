@@ -129,7 +129,7 @@ public class OrderListPanel extends AbstractPizzaShopBasePanel {
         columns.add(new AbstractColumn<OrderInfo, String>(new Model<>("Sum")) {
             @Override
             public void populateItem(Item<ICellPopulator<OrderInfo>> cellItem, String componentId, IModel<OrderInfo> rowModel) {
-                cellItem.add(formattedValueLabel(componentId, rowModel.getObject().getTotalSum()));
+                cellItem.add(formattedValueLabel(componentId, rowModel.getObject().getTotalSum().doubleValue()));
             }
         });
 

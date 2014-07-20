@@ -3,6 +3,7 @@ package io.github.appstash.shop.service.order.model;
 import io.github.appstash.shop.service.product.model.ProductInfo;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 /**
  * @author zutherb
@@ -24,9 +25,9 @@ public class OrderItemInfo implements Serializable {
         return product;
     }
 
-    public Double getTotalSum() {
-        Double totalSum = 0.0;
-        totalSum += product.getPrice();
+    public BigDecimal getTotalSum() {
+        BigDecimal totalSum = BigDecimal.ZERO;
+        totalSum = totalSum.add(product.getPrice());
         return totalSum;
     }
 

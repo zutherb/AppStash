@@ -3,6 +3,7 @@ package io.github.appstash.shop.service.basket.api;
 import io.github.appstash.shop.service.basket.model.BasketItem;
 import io.github.appstash.shop.service.product.model.ProductInfo;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -14,6 +15,5 @@ public interface Basket {
     List<BasketItem> getAll();
     void clearAll();
     boolean isEmpty();
-
-    double getTotalSum();
+    BigDecimal getTotalSum();
 }

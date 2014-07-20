@@ -13,6 +13,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mock;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class CheckoutImplTest {
     public void setUp() throws Exception {
         initMocks(this);
         when(basket.getAll()).thenReturn(createBasketItems());
-        when(basket.getTotalSum()).thenReturn(2.0);
+        when(basket.getTotalSum()).thenReturn(BigDecimal.valueOf(2));
         checkout = new CheckoutImpl(basket, new DozerBeanMapper(Arrays.asList("io/github/appstash/shop/service/checkout/dozer-mapping.xml")));
     }
 

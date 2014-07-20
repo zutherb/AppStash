@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -56,10 +57,10 @@ public class BasketBean implements Basket {
     }
 
     @Override
-    public double getTotalSum(){
-        double sum = 0;
+    public BigDecimal getTotalSum(){
+        BigDecimal sum = BigDecimal.ZERO;
         for (BasketItem basketItem : items){
-            sum += basketItem.getTotalSum();
+            sum = sum.add(basketItem.getTotalSum());
         }
         return sum;
     }

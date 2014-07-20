@@ -3,6 +3,7 @@ package io.github.appstash.shop.service.basket.model;
 import io.github.appstash.shop.service.product.model.ProductInfo;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.UUID;
 
 /**
@@ -43,9 +44,9 @@ public class BasketItem implements Serializable {
         return uuid.hashCode();
     }
 
-    public double getTotalSum() {
-        double sum = 0;
-        sum += productInfo.getPrice();
+    public BigDecimal getTotalSum() {
+        BigDecimal sum = BigDecimal.ZERO;
+        sum = sum.add(productInfo.getPrice());
         return sum;
     }
 }

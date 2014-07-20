@@ -2,6 +2,7 @@ package io.github.appstash.shop.service.checkout.api;
 
 import io.github.appstash.shop.service.order.model.OrderItemInfo;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -9,5 +10,5 @@ import java.util.List;
  */
 public interface Checkout {
     List<OrderItemInfo> getOrderItemInfos();
-    Double getTotalSum();
+    BigDecimal getTotalSum();
 }

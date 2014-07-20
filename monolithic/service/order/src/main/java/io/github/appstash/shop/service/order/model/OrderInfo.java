@@ -3,6 +3,7 @@ package io.github.appstash.shop.service.order.model;
 import io.github.appstash.shop.service.user.model.UserInfo;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -67,10 +68,10 @@ public class OrderInfo implements Serializable {
         return deliveryAddress;
     }
 
-    public Double getTotalSum() {
-        Double totalSum = 0.0;
+    public BigDecimal getTotalSum() {
+        BigDecimal totalSum = BigDecimal.ZERO;
         for (OrderItemInfo orderItemInfo : orderItems) {
-            totalSum += orderItemInfo.getTotalSum();
+            totalSum = totalSum.add(orderItemInfo.getTotalSum());
         }
         return totalSum;
     }

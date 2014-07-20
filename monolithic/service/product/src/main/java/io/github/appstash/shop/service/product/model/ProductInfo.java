@@ -4,6 +4,7 @@ package io.github.appstash.shop.service.product.model;
 import io.github.appstash.shop.repository.product.model.ProductType;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public class ProductInfo implements Serializable, Comparable<ProductInfo> {
 
@@ -14,7 +15,7 @@ public class ProductInfo implements Serializable, Comparable<ProductInfo> {
     private String category;
     private String description;
     private ProductType type;
-    private double price;
+    private BigDecimal price;
 
     private ProductInfo() {
     }
@@ -27,7 +28,7 @@ public class ProductInfo implements Serializable, Comparable<ProductInfo> {
         this.urlname = urlname;
         this.description = description;
         this.type = type;
-        this.price = price;
+        this.price = BigDecimal.valueOf(price);
         this.category = category;
     }
 
@@ -51,7 +52,7 @@ public class ProductInfo implements Serializable, Comparable<ProductInfo> {
         return urlname;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 

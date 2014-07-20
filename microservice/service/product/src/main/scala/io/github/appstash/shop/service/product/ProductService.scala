@@ -57,8 +57,7 @@ trait ProductService extends HttpService {
           complete {
             val products = Products.findAll()
             products map { products =>
-              products match {
-                case _ =>
+
                   <rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
                     <channel>
                       <title>Name Ihres Daten-Feeds</title>
@@ -76,8 +75,6 @@ trait ProductService extends HttpService {
                       </item>}
                     </channel>
                   </rss>
-//                case _ => HttpResponse(StatusCodes.BadRequest)
-              }
             }
           }
         }

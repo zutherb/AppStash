@@ -11,6 +11,7 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,7 +42,7 @@ public class CheckoutImpl implements Checkout {
     }
 
     @Override
-    public Double getTotalSum() {
+    public BigDecimal getTotalSum() {
         return basket.getTotalSum();
     }
 }
