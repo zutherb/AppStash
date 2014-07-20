@@ -113,13 +113,14 @@ task uiTest(type: Test) {
 
     systemProperty "geb.build.reportsDir", reporting.file("$name/geb")
     systemProperty "geb.env", "firefox"
-    systemProperty "spring.profiles.active", "test"
 
     // If you wanted to set the baseUrl in your build…
     // systemProperty "geb.build.baseUrl", "http://myapp.com"
 
     doFirst {
         systemProperty "spring.profiles.active", "test"
+        systemProperty "logback.configurationFile", "logback-test.groovy"
+
         jettyRun.httpPort = 8888    // Port for test
         jettyRun.stopPort = 8889    // Port for test
         jettyRun.daemon = true
