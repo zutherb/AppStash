@@ -1,0 +1,1 @@
+{ "indexes" : [ { "v" : 1, "key" : { "_id" : 1 }, "name" : "_id_", "ns" : "pizza.user" }, { "v" : 1, "unique" : true, "key" : { "username" : 1 }, "name" : "username", "ns" : "pizza.user" }, { "v" : 1, "unique" : true, "key" : { "email" : 1 }, "name" : "email", "ns" : "pizza.user" } ] }

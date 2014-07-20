@@ -1,5 +1,21 @@
 apply plugin: 'scala'
 apply plugin: 'application'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+apply plugin: 'pkg-debian'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url "http://dl.bintray.com/gesellix/gradle-plugins"
+        }
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.1.3.RELEASE"
+        classpath "de.gesellix:gradle-debian-plugin:14"
+    }
+}
  
 jar.baseName = "product-microservice"
 
@@ -38,3 +54,39 @@ dependencies {
 }
  
 task stage(dependsOn: ['clean', 'installApp'])
+
+def debName = "product"
+debian {
+    packagename = debName
+    publications = ['mavenStuff']
+    controlDirectory = "${projectDir}/debian/control"
+    changelogFile = "${projectDir}/debian/changelog"
+    outputFile = "${buildDir}/debian/${debName}_${version}.deb"
+
+    data {
+        dir {
+            name = "${projectDir}/debian/data"
+            exclusions = ["**/.DS_Store", "changelog"]
+        }
+        dir {
+            name = "${buildDir}/debian-data/"
+            exclusions = ["**/.DS_Store"]
+        }
+        file {
+            name = "${projectDir}/src/main/resources/application.conf"
+            target = "etc/product/application.conf"
+            mapper {
+                fileMode = "755"
+            }
+        }
+    }
+}
+
+task prepareDeb {
+    dependsOn installApp
+
+    copy {
+        from "${buildDir}/install/"
+        into "${buildDir}/debian-data/usr/share/"
+    }
+}

@@ -1,6 +1,6 @@
 apply plugin: 'groovy'
 apply plugin: 'spring-boot'
-apply plugin: 'pkg-debian'
+//apply plugin: 'pkg-debian'
 
 buildscript {
     repositories {
@@ -60,21 +60,17 @@ dependencies {
 }
 
 def debName = jar.baseName
-debian {
-    packagename = debName
-    publications = []
-    controlDirectory = "${projectDir}/debian/"
-    //changelogFile = "${projectDir}/debian/changelog"
-    outputFile = "${buildDir}/${debName}_${version}_all.deb"
-
-    data {
+//debian {
+//    packagename = debName
+//    publications = []
+//    controlDirectory = "${projectDir}/debian/control"
+//    changelogFile = "${projectDir}/debian/changelog"
+//    outputFile = "${buildDir}/${debName}_${version}_all.deb"
+//
+//    data {
 //        dir {
 //            name = "${projectDir}/debian/data"
 //            excludes = ["**/.DS_Store"]
 //        }
-//        file {
-//            name = "${buildDir}/blog-${project.version}.war"
-//            target = "usr/share/${debName}/application.war"
-//        }
-    }
-}
+//    }
+//}

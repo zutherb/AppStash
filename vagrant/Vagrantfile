@@ -85,4 +85,23 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       ansible.raw_arguments  = "--private-key=~/.vagrant.d/insecure_private_key"
     end
   end
+
+  config.vm.define :appserver3 do |appserver3|
+    appserver3.vm.box = "precise64"
+    appserver3.vm.provider "virtualbox" do |v|
+      v.name = "app-server-node-3"
+      v.customize ["modifyvm", :id, "--memory", "1024"]
+    end
+    appserver3.vm.synced_folder "provision", "/provision"
+    appserver3.vm.network :private_network, ip: "10.211.55.103"
+    appserver3.vm.hostname = "app-server-node-3"
+    appserver3.vm.provision "ansible" do |ansible|
+      ansible.playbook = "provision/micro_appserver.yml"
+      ansible.inventory_path = "provision/hosts"
+      ansible.limit = 'app-server-node-3'
+      ansible.ask_vault_pass = false
+      ansible.raw_arguments  = "--user=vagrant"
+      ansible.raw_arguments  = "--private-key=~/.vagrant.d/insecure_private_key"
+    end
+  end
 end
