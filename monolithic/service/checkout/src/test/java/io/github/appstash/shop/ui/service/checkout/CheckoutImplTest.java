@@ -50,6 +50,7 @@ public class CheckoutImplTest {
 
     @Test
     public void testGetTotalSum() throws Exception {
-        assertEquals(2.0, checkout.getTotalSum());
+        int compareTo = BigDecimal.valueOf(2.0).compareTo(checkout.getTotalSum());
+        assertEquals(compareTo, 0);
     }
 }

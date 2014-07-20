@@ -7,6 +7,8 @@ import org.bson.types.ObjectId;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.math.BigDecimal;
+
 import static junit.framework.Assert.assertEquals;
 
 /**
@@ -23,6 +25,6 @@ public class BasketItemTest {
 
     @Test
     public void testGetTotalSum() {
-        assertEquals(2.5, basketItem.getTotalSum());
+        assertEquals(BigDecimal.valueOf(2.5), basketItem.getTotalSum());
     }
 }
