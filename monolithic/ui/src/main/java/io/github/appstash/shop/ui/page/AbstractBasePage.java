@@ -84,9 +84,7 @@ public abstract class AbstractBasePage extends WebPage {
         response.render(StringHeaderItem.forString(variableInterpolator.toString()));
 
         response.render(CssHeaderItem.forUrl(contextPath + "/assets/css/bootstrap.min.css"));
-        response.render(CssHeaderItem.forUrl(contextPath + "/assets/css/bootstrap-responsive.min.css"));
         response.render(CssHeaderItem.forUrl(contextPath + "/assets/css/bootstrap-theme.min.css"));
-//        response.render(CssHeaderItem.forUrl(contextPath + "/assets/css/docs.min.css"));
 
         response.render(JavaScriptHeaderItem.forUrl(contextPath + "/assets/js/bootstrap.min.js"));
     }

@@ -3,6 +3,8 @@ package io.github.appstash.shop.service.user.domain
 import com.fasterxml.jackson.databind.annotation.JsonSerialize
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.index.Indexed
+import org.springframework.hateoas.ResourceSupport
+
 /**
  * @author zutherb
  */
