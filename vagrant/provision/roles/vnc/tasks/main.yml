@@ -5,6 +5,8 @@
     - xfce4
     - firefox
     - vnc4server
+    - imagemagick
+    - imagemagick-doc
 
 - name: install vnc configuration
   sudo: yes
