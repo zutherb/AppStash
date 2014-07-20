@@ -100,12 +100,6 @@ dependencies {
     contextPath = "pizza"
 }
 
-jettyRun.doFirst {
-    if (!Boolean.getBoolean('spring.profiles.active')) {
-        System.setProperty("spring.profiles.active", "default")
-    }
-}
-
 task uiTest(type: Test) {
     finalizedBy "uiTestJettyStop"
 
@@ -119,6 +113,7 @@ task uiTest(type: Test) {
 
     systemProperty "geb.build.reportsDir", reporting.file("$name/geb")
     systemProperty "geb.env", "firefox"
+    systemProperty "spring.profiles.active", "test"
 
     // If you wanted to set the baseUrl in your build…
     // systemProperty "geb.build.baseUrl", "http://myapp.com"
