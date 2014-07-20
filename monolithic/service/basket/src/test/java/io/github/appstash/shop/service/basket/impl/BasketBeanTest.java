@@ -9,6 +9,7 @@ import org.bson.types.ObjectId;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import static junit.framework.Assert.*;
@@ -29,7 +30,7 @@ public class BasketBeanTest {
     @Test
     public void testAddItem() throws Exception {
         assertFalse(basket.isEmpty());
-        assertEquals(2.0, basket.getTotalSum());
+        assertEquals(BigDecimal.valueOf(2.0), basket.getTotalSum());
     }
 
     @Test
