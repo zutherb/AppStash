@@ -1,0 +1,82 @@
+//apply plugin: 'pkg-debian'
+apply plugin: 'com.moowork.grunt'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url "http://dl.bintray.com/gesellix/gradle-plugins"
+        }
+        jcenter()
+    }
+    dependencies {
+        classpath "de.gesellix:gradle-debian-plugin:14"
+        classpath 'com.moowork.gradle:gradle-grunt-plugin:0.6'
+    }
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDir 'app'
+        }
+    }
+    test {
+        resources {
+            srcDir 'test'
+        }
+    }
+}
+ 
+jar.baseName = "shop-frontend"
+
+idea {
+    module {
+        name='shop-frontend'
+    }
+}
+
+//def debName = "product"
+//debian {
+//    packagename = debName
+//    publications = ['mavenStuff']
+//    controlDirectory = "${projectDir}/debian/control"
+//    changelogFile = "${projectDir}/debian/changelog"
+//    outputFile = "${buildDir}/debian/${debName}_${version}.deb"
+//
+//    data {
+//        dir {
+//            name = "${projectDir}/debian/data"
+//            exclusions = ["**/.DS_Store", "changelog"]
+//        }
+//        dir {
+//            name = "${buildDir}/debian-data/"
+//            exclusions = ["**/.DS_Store"]
+//        }
+//        file {
+//            name = "${projectDir}/src/main/resources/application.conf"
+//            target = "etc/product/application.conf"
+//            mapper {
+//                fileMode = "755"
+//            }
+//        }
+//    }
+//}
+//
+//task prepareDeb {
+//    dependsOn installApp
+//
+//    copy {
+//        from "${buildDir}/install/"
+//        into "${buildDir}/debian-data/usr/share/"
+//    }
+//}
+
+// makes sure on each build that grunt is installed
+grunt_build.dependsOn 'installGrunt'
+
+// processes your package.json before running grunt build
+grunt_build.dependsOn 'npmInstall'
+
+// runs "grunt build" as part of your gradle build
+build.dependsOn grunt_build
