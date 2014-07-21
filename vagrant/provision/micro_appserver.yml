@@ -11,3 +11,5 @@
     - eu-sources
     - oracle-java
     - mongodb
+    - nginx
+    - rstats

@@ -68,7 +68,7 @@ idea {
 //
 //    copy {
 //        from "${buildDir}/install/"
-//        into "${buildDir}/debian-data/usr/share/"
+//        into "${buildDir}/debian-data/usr/share/nginx/html"
 //    }
 //}
 

@@ -6,6 +6,7 @@ include 'microservice:frontend'
 include 'microservice:service:user'
 include 'microservice:service:product'
 include 'microservice:service:navigation'
+include 'microservice:service:recommendation'
 
 include 'monolithic:common:util'
 include 'monolithic:common:dataloader'

@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e
+
+chmod +x /usr/share/recommendation/createRecommendations.sh
+chmod +x /usr/share/recommendation/recommendation.R
+Rscript  /usr/share/recommendation/installDependencies.R
+sudo touch /var/log/recommendation.log
+echo "*/5 * * * * /usr/share/recommendation/createRecommendations.sh" >> /etc/crontab
+service cron restart

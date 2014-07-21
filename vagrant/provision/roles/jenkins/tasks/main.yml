@@ -1,9 +1,15 @@
 ---
+- name: install python-software-properties
+  apt: pkg=python-software-properties state=present force=yes
+
 - name: install jenkins key file
   apt_key: url=http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key state=present
 
 - name: add jenkins repository into sources list.
   apt_repository: repo='deb http://pkg.jenkins-ci.org/debian binary/' state=present
+
+- name: add node repository into sources list.
+  apt_repository: repo='ppa:chris-lea/node.js' state=present
 
 - name: update cache
   apt: update_cache=yes force=yes
@@ -14,6 +20,7 @@
     - jenkins
     - git
     - curl
+    - nodejs
 
 - name: install config.xml
   sudo: yes

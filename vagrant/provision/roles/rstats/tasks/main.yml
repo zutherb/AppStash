@@ -1,0 +1,6 @@
+---
+- name: install r
+  apt: pkg={{item}} state=present force=yes
+  with_items:
+    - r-base
+    - r-recommended
