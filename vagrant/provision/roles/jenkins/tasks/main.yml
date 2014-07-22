@@ -84,8 +84,11 @@
   sudo_user: jenkins
   command: '/bin/cat /provision/jenkins/{{item}}.xml | /usr/bin/java -jar /tmp/jenkins-cli.jar -s http://localhost:8080/ create-job {{item}}'
   with_items:
-      - pizza-build
-      - pizza-test-deployment
+      - pizza-monolitic-build
+      - pizza-monolitic-ui-test
+      - pizza-monolitic-test-deployment
+      - pizza-microservice-product-service-build
+      - pizza-microservice-ui-build
   ignore_errors: yes
 
 - name: start jenkins deployment pipeline
