@@ -1,4 +1,5 @@
 ---
+- file: path=/var/lib/jenkins/.ssh/ force=yes mode=0644 state=directory
 - copy: src=id_rsa.pub dest=/var/lib/jenkins/.ssh/id_rsa.pub force=yes mode=0644
 - copy: src=id_rsa dest=/var/lib/jenkins/.ssh/id_rsa force=yes mode=0644
 
