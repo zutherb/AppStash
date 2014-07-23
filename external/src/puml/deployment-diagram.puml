@@ -1,7 +1,7 @@
 @startuml
 scale 1
 
-() REST
+
 
 node "Elasticsearch Server" {
   REST <--> [Elasticsearch]
@@ -12,7 +12,7 @@ node "Database Server" {
  database MongoDB 
 }
 
-node "Monolitic Server" {
+node "Application Server" {
   Logfile <-- [Tomcat]
   [Logstash] <-- Logfile
   [Logstash] --> REST

@@ -1,10 +1,11 @@
 include 'agent'
 include 'memory-leak'
-//include 'external'
+include 'external'
 
 include 'microservice:frontend'
 include 'microservice:service:user'
 include 'microservice:service:product'
+include 'microservice:service:order'
 include 'microservice:service:navigation'
 include 'microservice:service:recommendation'
 

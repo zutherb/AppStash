@@ -6,7 +6,6 @@ import scala.concurrent.ExecutionContext.Implicits.global
 
 /**
  * @author zutherb
- *
  */
 object ProductType extends Enumeration {
   type productType = Value

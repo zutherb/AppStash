@@ -29,7 +29,7 @@
   notify: restart jenkins
 
 # wait 300 seconds for port 8000 to become open on the host, don't start checking for 5 seconds
-- wait_for: port=8080 timeout=300 delay=30
+- wait_for: port=8080 timeout=300 delay=5
 
 - name: download jenkins update-center.js
   sudo: yes
@@ -47,7 +47,7 @@
   raw:  'curl -X POST -H "Accept: application/json" -d @/tmp/update-center.json http://localhost:8080/updateCenter/byId/default/postBack'
 
 # wait 300 seconds for port 8000 to become open on the host, don't start checking for 5 seconds
-- wait_for: port=8080 timeout=300 delay=30
+- wait_for: port=8080 timeout=300 delay=5
 
 - name: download jenkins cli
   sudo: yes
@@ -82,7 +82,7 @@
 - name: install jenkins jobs
   sudo: yes
   sudo_user: jenkins
-  command: '/bin/cat /provision/jenkins/{{item}}.xml | /usr/bin/java -jar /tmp/jenkins-cli.jar -s http://localhost:8080/ create-job {{item}}'
+  raw: 'cat /vagrant/provision/roles/jenkins/files/{{item}}.xml | java -jar /tmp/jenkins-cli.jar -s http://localhost:8080/ create-job {{item}}'
   with_items:
       - pizza-monolitic-build
       - pizza-monolitic-ui-test
@@ -94,4 +94,4 @@
 - name: start jenkins deployment pipeline
   sudo: yes
   sudo_user: jenkins
-  raw:  java -jar /tmp/jenkins-cli.jar -s http://localhost:8080/ build pizza-build
+  command: 'java -jar /tmp/jenkins-cli.jar -s http://localhost:8080/ build pizza-monolitic-build'
