@@ -1,19 +1,5 @@
-//apply plugin: 'pkg-debian'
+apply plugin: 'pkg-debian'
 apply plugin: 'com.moowork.grunt'
-
-buildscript {
-    repositories {
-        mavenCentral()
-        maven {
-            url "http://dl.bintray.com/gesellix/gradle-plugins"
-        }
-        jcenter()
-    }
-    dependencies {
-        classpath "de.gesellix:gradle-debian-plugin:14"
-        classpath 'com.moowork.gradle:gradle-grunt-plugin:0.6'
-    }
-}
 
 sourceSets {
     main {
@@ -36,41 +22,30 @@ idea {
     }
 }
 
-//def debName = "product"
-//debian {
-//    packagename = debName
-//    publications = ['mavenStuff']
-//    controlDirectory = "${projectDir}/debian/control"
-//    changelogFile = "${projectDir}/debian/changelog"
-//    outputFile = "${buildDir}/debian/${debName}_${version}.deb"
-//
-//    data {
-//        dir {
-//            name = "${projectDir}/debian/data"
-//            exclusions = ["**/.DS_Store", "changelog"]
-//        }
-//        dir {
-//            name = "${buildDir}/debian-data/"
-//            exclusions = ["**/.DS_Store"]
-//        }
-//        file {
-//            name = "${projectDir}/src/main/resources/application.conf"
-//            target = "etc/product/application.conf"
-//            mapper {
-//                fileMode = "755"
-//            }
-//        }
-//    }
-//}
-//
-//task prepareDeb {
-//    dependsOn installApp
-//
-//    copy {
-//        from "${buildDir}/install/"
-//        into "${buildDir}/debian-data/usr/share/nginx/html"
-//    }
-//}
+debian {
+    packagename = "shop-frontend"
+    publications = ['mavenStuff']
+    controlDirectory = "${projectDir}/debian/control"
+    changelogFile = "${projectDir}/debian/changelog"
+    outputFile = "${buildDir}/debian/${packagename}_${version}.deb"
+
+    data {
+        dir {
+            name = "${buildDir}/debian-data/"
+            exclusions = ["**/.DS_Store"]
+        }
+    }
+}
+
+task prepareDeb {
+    dependsOn grunt_build
+
+    copy {
+        from "${projectDir}/dist/"
+        into "${buildDir}/debian-data/usr/share/nginx/html"
+    }
+}
+
 
 // makes sure on each build that grunt is installed
 grunt_build.dependsOn 'installGrunt'

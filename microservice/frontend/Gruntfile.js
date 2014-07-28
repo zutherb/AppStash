@@ -374,7 +374,7 @@ module.exports = function (grunt) {
                             '*.ttf',
                             '*.woff'
                     ],
-                    dest: '<%= yeoman.dist %>/styles/fonts'
+                    dest: '<%= yeoman.dist %>/fonts'
                 }]
             },
             styles: {

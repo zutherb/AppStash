@@ -1,0 +1,11 @@
+@startuml
+object Anwendung
+object "Bibliotheken, Infrastruktur" as bibliotheken
+object Anwendungserver
+object "spezielle Konfiguration" as Konfiguration
+
+Anwendung *-- bibliotheken
+bibliotheken *-- Anwendungserver
+Anwendung -- Konfiguration : "Benötigt Konfiguration\ndes Anwendungserver"
+Anwendungserver *-- Konfiguration
+@enduml

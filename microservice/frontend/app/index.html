@@ -21,22 +21,87 @@
 <![endif]-->
 
 <!-- Add your site or application content here -->
-<div class="container">
-    <div class="header">
-        <ul class="nav nav-pills pull-right">
-            <li class="active"><a ng-href="#">Home</a></li>
-            <li><a ng-href="#/about">About</a></li>
-            <li><a ng-href="#">Contact</a></li>
-        </ul>
-        <h3 class="text-muted">client</h3>
-    </div>
 
-    <div ng-view=""></div>
+<header role="banner" id="top" class="navbar navbar-static-top bs-docs-nav">
+    <div class="container" id="navigation68c">
 
-    <div class="footer">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
+        <div class="navbar-header">
+            <button data-target=".bs-navbar-collapse" data-toggle="collapse" type="button" class="navbar-toggle">
+                <span class="sr-only">Microservices architecture</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="./">Microservices architecture</a>
+        </div>
+        <nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
+            <ul class="nav navbar-nav">
+
+                <li class="active">
+                    <a href="./">
+                        Home
+                    </a>
+                </li>
+
+                <li class="">
+                    <a href="./productcatalog/pizza">
+                        Pizza
+                    </a>
+                </li>
+
+                <li class="">
+                    <a href="./productcatalog/pasta">
+                        Pasta
+                    </a>
+                </li>
+
+                <li class="">
+                    <a href="./productcatalog/salad">
+                        Salad
+                    </a>
+                </li>
+
+                <li class="">
+                    <a href="./productcatalog/beverage">
+                        Beverage
+                    </a>
+                </li>
+
+
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+
+                <li class="dropdown" id="menu0">
+                    <a href="#menu0" class="dropdown-toggle" data-toggle="dropdown">
+                        Sign In
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+
+                        <li class="">
+                            <a href="#" id="link683">
+                                Sign In
+                            </a>
+                        </li>
+
+                        <li class="">
+                            <a href="./registration">
+                                New customer? Start here.
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+
+
+            </ul>
+        </nav>
     </div>
-</div>
+</header>
+
+<!--<main class="container" ng-view="" />-->
+<div ng-view=""></div>
 
 <!--[if lt IE 9]>
 <script src="bower_components/es5-shim/es5-shim.js"></script>

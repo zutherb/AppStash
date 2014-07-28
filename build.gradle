@@ -33,6 +33,19 @@ def props = new Properties();
 file("gradle.properties").withInputStream { props.load(it) }
 props.each({ project.ext[it.key] = it.value })
 
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url "http://dl.bintray.com/gesellix/gradle-plugins"
+        }
+        jcenter()
+    }
+    dependencies {
+        classpath "de.gesellix:gradle-debian-plugin:14"
+        classpath 'com.moowork.gradle:gradle-grunt-plugin:0.6'
+    }
+}
 
 allprojects {
     sourceCompatibility = org.gradle.api.JavaVersion.VERSION_1_8

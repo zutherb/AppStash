@@ -31,11 +31,12 @@ public class Boot {
     }
 
     public static void main(String[] args) {
-        put("/submitOrder", (request, response) -> {
+        put("/submitOrder", "application/json", (request, response) -> {
             String body = request.body();
             if (!isNullOrEmpty(body)) {
                 DBObject order = (DBObject) JSON.parse(body);
                 DB_COLLECTION.save(order);
+
                 response.status(HttpStatus.CREATED_201);
                 return "";
             }

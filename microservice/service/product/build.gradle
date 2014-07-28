@@ -4,18 +4,6 @@ apply plugin: 'maven'
 apply plugin: 'maven-publish'
 apply plugin: 'pkg-debian'
 
-buildscript {
-    repositories {
-        mavenCentral()
-        maven {
-            url "http://dl.bintray.com/gesellix/gradle-plugins"
-        }
-    }
-    dependencies {
-        classpath "de.gesellix:gradle-debian-plugin:14"
-    }
-}
- 
 jar.baseName = "product-microservice"
 
 idea {
