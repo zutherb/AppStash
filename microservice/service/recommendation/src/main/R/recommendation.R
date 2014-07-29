@@ -1,6 +1,10 @@
 #!/usr/bin/env Rscript
-require("rjson")
-require("recommenderlab")
+if (!require('rjson')) {
+  install.packages("rjson", repos="http://cran.fhcrc.org", dependencies = TRUE)
+}
+if (!require('recommenderlab')) {
+  install.packages("recommenderlab", repos="http://cran.fhcrc.org", dependencies = TRUE)
+}
 
 args <- commandArgs(TRUE)
 ## Default setting when no arguments passed
