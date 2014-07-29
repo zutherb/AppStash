@@ -50,7 +50,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.define :appserver1 do |appserver1|
     appserver1.vm.box = "precise64"
     appserver1.vm.provider "virtualbox" do |v|
-      v.name = "ci-node"
+      v.name = "app-server-node-1"
       v.customize ["modifyvm", :id, "--memory", "1024"]
     end
     appserver1.vm.synced_folder "provision", "/provision"

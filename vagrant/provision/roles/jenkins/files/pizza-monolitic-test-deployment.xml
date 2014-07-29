@@ -18,7 +18,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>pizza-build,</upstreamProjects>
+      <upstreamProjects>pizza-monolitic-build, </upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>
