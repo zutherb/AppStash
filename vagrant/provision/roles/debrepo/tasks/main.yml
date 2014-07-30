@@ -2,10 +2,12 @@
 - name: install deb repo dependencies
   apt: pkg={{item}} state=present force=yes
   with_items:
+    - nginx
     - gnupg
     - rng-tools
     - reprepro
     - dpkg-sig
+    - dpkg-dev
 
 - copy: src=rng-tools dest=/etc/default/rng-tools force=yes mode=0644
   notify: restart rng-tools
@@ -30,13 +32,21 @@
   sudo_user: root
   file: path=/var/packages/debian/conf state=directory force=yes
 
-- copy: src=distributions dest=/var/packages/debian/conf/distributions force=yes mode=0644
-- file: path=/var/packages/debian/conf/override.testing state=touch force=yes
+- copy: src={{item}} dest=/var/packages/debian/conf/{{item}} force=yes mode=0644
+  with_items:
+      - distributions
+  #    - updates
+
+- file: path=/var/packages/debian/conf/override.pizza state=touch force=yes
 - copy: src=options dest=/var/packages/debian/conf/options force=yes mode=0644
 
-- copy: src=defaults dest=/etc/nginx/sites-available/defaults force=yes mode=0644
+- copy: src=default dest=/etc/nginx/sites-enabled/default force=yes mode=0644
   notify: restart nginx
 
 - sudo: yes
   sudo_user: root
   raw: gpg --armor --output /var/packages/ci-repo.gpg.key --export 18858766
+
+- sudo: yes
+  sudo_user: root
+  raw: reprepro -b /var/packages/debian/ export

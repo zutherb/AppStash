@@ -13,3 +13,4 @@
     - mongodb
     - nginx
     - rstats
+    - appserver

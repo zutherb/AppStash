@@ -1,6 +1,6 @@
 server {
   listen 80;
-  server_name apt.example.com;
+  server_name ci-repo;
 
   access_log /var/log/nginx/packages-error.log;
   error_log /var/log/nginx/packages-error.log;

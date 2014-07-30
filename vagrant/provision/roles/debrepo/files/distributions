@@ -1,9 +1,9 @@
 Origin: ci-repo
 Label: ci-repo
 Codename: pizza
-Architectures: amd64
+Architectures: i386 amd64
 Components: main
 Description: Pizza APT Repository
 SignWith: 18858766
-DebOverride: override.testing
-DscOverride: override.testing
+DebOverride: override.pizza
+DscOverride: override.pizza
