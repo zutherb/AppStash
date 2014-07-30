@@ -47,6 +47,25 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
   end
 
+  config.vm.define :reposerver do |reposerver|
+      reposerver.vm.box = "precise64"
+      reposerver.vm.provider "virtualbox" do |v|
+        v.name = "ci-repo"
+        v.customize ["modifyvm", :id, "--memory", "512"]
+      end
+      reposerver.vm.synced_folder "provision", "/provision"
+      reposerver.vm.network :private_network, ip: "10.211.55.201"
+      reposerver.vm.hostname = "ci-repo"
+      reposerver.vm.provision "ansible" do |ansible|
+        ansible.playbook = "provision/reposerver.yml"
+        ansible.inventory_path = "provision/hosts"
+        ansible.limit = 'all,localhost'
+        ansible.ask_vault_pass = false
+        ansible.raw_arguments  = "--user=vagrant"
+        ansible.raw_arguments  = "--private-key=~/.vagrant.d/insecure_private_key"
+      end
+    end
+
   config.vm.define :appserver1 do |appserver1|
     appserver1.vm.box = "precise64"
     appserver1.vm.provider "virtualbox" do |v|

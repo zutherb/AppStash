@@ -4,6 +4,9 @@ elasticsearch-node
 [buildservers]
 ci-node
 
+[reposervers]
+ci-repo
+
 [monolitic_appservers]
 app-server-node-1
 app-server-node-2

@@ -1,5 +1,5 @@
 ---
-- hosts: buildservers
+- hosts: reposervers
   user: vagrant
   sudo: yes
 
@@ -8,6 +8,5 @@
     - ssh
     - eu-sources
     - oracle-java
-    - jenkins
-    - sonar
-    - vnc
+    - nginx
+    - debrepo
