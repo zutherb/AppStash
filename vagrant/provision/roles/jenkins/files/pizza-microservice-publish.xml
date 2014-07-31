@@ -43,6 +43,15 @@
       <flatten>true</flatten>
       <doNotFingerprintArtifacts>false</doNotFingerprintArtifacts>
     </hudson.plugins.copyartifact.CopyArtifact>
+    <hudson.plugins.copyartifact.CopyArtifact plugin="copyartifact@1.31">
+      <project>pizza-microservice-ui-build</project>
+      <filter>**/*.deb</filter>
+      <target>artifacts</target>
+      <excludes></excludes>
+      <selector class="hudson.plugins.copyartifact.StatusBuildSelector"/>
+      <flatten>true</flatten>
+      <doNotFingerprintArtifacts>false</doNotFingerprintArtifacts>
+    </hudson.plugins.copyartifact.CopyArtifact>
     <hudson.tasks.Shell>
       <command>scp -o StrictHostKeyChecking=no -v $WORKSPACE/artifacts/* vagrant@ci-repo:/tmp/
 ssh vagrant@ci-repo -o StrictHostKeyChecking=no -v &lt;&lt;EOF
