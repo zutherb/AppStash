@@ -2,7 +2,7 @@
 export RAW_FILE=/tmp/export.csv
 export NORMALIZED_RAW_FILE=/tmp/user-item-pref.csv
 export TARGET_DIR=/usr/share/nginx/html/api/recommendation/
-export R_SCRIPT=/usr/share/recommendation/recommendation.R
+export R_SCRIPT=/usr/share/pizza/recommendation/recommendation.R
 
 echo "Recommendation-Generation started:  $(date)"
 rm "$RAW_FILE" "$NORMALIZED_RAW_FILE"

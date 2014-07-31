@@ -1,9 +1,9 @@
 #!/bin/sh
 set -e
 
-chmod +x /usr/share/recommendation/createRecommendations.sh
-chmod +x /usr/share/recommendation/recommendation.R
+chmod +x /usr/share/pizza/recommendation/createRecommendations.sh
+chmod +x /usr/share/pizza/recommendation/recommendation.R
 sudo touch /var/log/recommendation.log
-Rscript  /usr/share/recommendation/installDependencies.R >> /var/log/recommendation.log
-echo "*/5 * * * * /usr/share/recommendation/createRecommendations.sh >> /var/log/recommendation.log" >> /etc/crontab
+Rscript  /usr/share/pizza/recommendation/installDependencies.R >> /var/log/recommendation.log
+echo "*/5 * * * * /usr/share/pizza/recommendation/createRecommendations.sh >> /var/log/recommendation.log" >> /etc/crontab
 service cron restart
