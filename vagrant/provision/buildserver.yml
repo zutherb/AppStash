@@ -5,7 +5,6 @@
 
   roles:
     - hosts
-    - ssh
     - eu-sources
     - oracle-java
     - jenkins

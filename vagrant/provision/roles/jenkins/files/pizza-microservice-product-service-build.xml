@@ -39,12 +39,11 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>./gradlew -p microservice/service/product installApp prepareDeb buildDeb</command>
+      <command>./gradlew -p microservice/service/product installApp
+./gradlew -p microservice/service/product prepareDeb buildDeb</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>cp ${WORKSPACE}/microservice/service/product/build/debian/*deb /usr/share/nginx/html/debian
-dpkg-scanpackages /usr/share/nginx/html/debian/ &gt; /usr/share/nginx/html/debian/Packages &amp;&amp; gzip -f /usr/share/nginx/html/debian/Packages
-
+      <command>
 </command>
     </hudson.tasks.Shell>
   </builders>
