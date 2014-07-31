@@ -1,4 +1,4 @@
-Source: pizza-shop-frontend
+Source: pizza-dataloader
 Section: web
 Priority: optional
 Version: [[version]]
@@ -6,7 +6,7 @@ Maintainer: Bernd Zuther <bernd.zuther@me.com>
 Homepage: http://www.bernd-zuther.de/
 Vcs-Git: https://github.com/zutherb/AppStash.git
 Vcs-Browser: https://github.com/zutherb/AppStash
-Package: pizza-shop-frontend
+Package: pizza-dataloader
 Architecture: amd64
-Depends: pizza-product-service, pizza-recommendation-service, pizza-dataloader
-Description: Pizza Shop Frontend
+Depends: mongodb
+Description: Pizza Dataloader
