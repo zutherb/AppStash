@@ -52,7 +52,7 @@
   <buildWrappers>
     <hudson.plugins.xvnc.Xvnc plugin="xvnc@1.17">
       <takeScreenshot>true</takeScreenshot>
-      <useXauthority>true</useXauthority>
+      <useXauthority>false</useXauthority>
     </hudson.plugins.xvnc.Xvnc>
   </buildWrappers>
 </project>

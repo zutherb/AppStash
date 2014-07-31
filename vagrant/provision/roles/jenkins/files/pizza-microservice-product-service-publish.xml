@@ -44,7 +44,13 @@
       <doNotFingerprintArtifacts>false</doNotFingerprintArtifacts>
     </hudson.plugins.copyartifact.CopyArtifact>
     <hudson.tasks.Shell>
-      <command>scp -o StrictHostKeyChecking=no -v $WORKSPACE/artifacts/* root@ci-repo:/tmp/deb/</command>
+      <command>scp -o StrictHostKeyChecking=no -v $WORKSPACE/artifacts/* vagrant@ci-repo:/tmp/deb/
+ssh vagrant@ci-repo -o StrictHostKeyChecking=no -v &lt;&lt;EOF
+sudo su
+dpkg-sig -k 18858766 --sign builder /tmp/deb/*.deb
+reprepro -vb /var/packages/debian remove pizza product
+reprepro -vb /var/packages/debian includedeb pizza /tmp/deb/*.deb
+EOF</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
