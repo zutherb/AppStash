@@ -8,5 +8,5 @@ Vcs-Git: https://github.com/zutherb/AppStash.git
 Vcs-Browser: https://github.com/zutherb/AppStash
 Package: pizza-shop-frontend
 Architecture: amd64
-Depends: pizza-product-service
+Depends: pizza-product-service, pizza-recommendation-service
 Description: Pizza Shop Frontend

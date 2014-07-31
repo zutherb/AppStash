@@ -35,10 +35,6 @@ debian {
 
     data {
         dir {
-            name = "${projectDir}/debian/data"
-            exclusions = ["**/.DS_Store", "changelog"]
-        }
-        dir {
             name = "${buildDir}/debian-data/"
             exclusions = ["**/.DS_Store"]
         }
@@ -49,7 +45,7 @@ debian {
 task prepareDeb {
     copy {
         from "${projectDir}/src/main/R"
-        into "${buildDir}/debian-data/usr/share/${debName}"
+        into "${buildDir}/debian-data/usr/share/pizza/${debName}"
     }
 }
 

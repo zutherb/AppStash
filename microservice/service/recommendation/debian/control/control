@@ -1,13 +1,12 @@
-Source: recommendation
+Source: pizza-recommendation-service
 Section: web
 Priority: optional
-Version: 42
+Version: [[version]]
 Maintainer: Bernd Zuther <bernd.zuther@me.com>
 Homepage: http://www.bernd-zuther.de/
 Vcs-Git: https://github.com/zutherb/AppStash.git
 Vcs-Browser: https://github.com/zutherb/AppStash
-Package: product
-Architecture: all
+Package: pizza-recommendation-service
+Architecture: amd64
 Depends:
-Description: Package product provides an example of a package.
- And we got some very great detailed description
+Description: Pizza Recommendation Service

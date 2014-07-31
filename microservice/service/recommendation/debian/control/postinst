@@ -3,7 +3,7 @@ set -e
 
 chmod +x /usr/share/recommendation/createRecommendations.sh
 chmod +x /usr/share/recommendation/recommendation.R
-Rscript  /usr/share/recommendation/installDependencies.R
 sudo touch /var/log/recommendation.log
-echo "*/5 * * * * /usr/share/recommendation/createRecommendations.sh" >> /etc/crontab
+Rscript  /usr/share/recommendation/installDependencies.R >> /var/log/recommendation.log
+echo "*/5 * * * * /usr/share/recommendation/createRecommendations.sh >> /var/log/recommendation.log" >> /etc/crontab
 service cron restart
