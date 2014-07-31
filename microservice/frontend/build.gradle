@@ -46,7 +46,12 @@ task prepareDeb {
     }
 }
 
+task bower(type: Exec){
+    commandLine "bower", 'install'
+}
+
 task gruntBuildWithOpts(type: GruntTask) {
+    dependsOn bower
     args = ["--force"]
 }
 
