@@ -37,13 +37,6 @@ debian {
     }
 }
 
-task prepareDeb {
-    copy {
-        from "${projectDir}/dist/"
-        into "${buildDir}/debian-data/usr/share/pizza/frontend/html"
-    }
-}
-
 task bower(type: Exec){
     commandLine "bower", 'install'
 }
@@ -51,6 +44,14 @@ task bower(type: Exec){
 task gruntBuildWithOpts(type: GruntTask) {
     dependsOn bower
     args = ["--force"]
+}
+
+task prepareDeb {
+    dependsOn gruntBuildWithOpts
+    copy {
+        from "${projectDir}/dist/"
+        into "${buildDir}/debian-data/usr/share/pizza/frontend/html"
+    }
 }
 
 // makes sure on each build that grunt is installed
