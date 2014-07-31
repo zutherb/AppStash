@@ -40,7 +40,7 @@ debian {
 task prepareDeb {
     copy {
         from "${projectDir}/dist/"
-        into "${buildDir}/debian-data/usr/share/nginx/html"
+        into "${buildDir}/debian-data/usr/share/pizza/frontend/html"
     }
 }
 

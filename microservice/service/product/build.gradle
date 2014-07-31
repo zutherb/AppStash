@@ -44,7 +44,7 @@ task stage(dependsOn: ['clean', 'installApp'])
 
 def debName = "product"
 debian {
-    packagename = debName
+    packagename = "product-service"
     publications = ['mavenStuff']
     controlDirectory = "${projectDir}/debian/control"
     changelogFile = "${projectDir}/debian/changelog"
@@ -74,6 +74,6 @@ task prepareDeb {
 
     copy {
         from "${buildDir}/install/"
-        into "${buildDir}/debian-data/usr/share/"
+        into "${buildDir}/usr/share/pizza/"
     }
 }
