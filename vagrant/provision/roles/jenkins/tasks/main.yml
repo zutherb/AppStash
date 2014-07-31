@@ -90,6 +90,7 @@
       - pizza-microservice-product-service-build
       - pizza-microservice-ui-build
       - pizza-microservice-product-service-publish
+      - pizza-microservice-test-deployment
   ignore_errors: yes
 
 - name: start jenkins deployment pipeline
