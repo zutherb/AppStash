@@ -43,8 +43,7 @@
 ./gradlew -p microservice/service/product prepareDeb buildDeb</command>
     </hudson.tasks.Shell>
     <hudson.tasks.Shell>
-      <command>
-</command>
+      <command></command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
