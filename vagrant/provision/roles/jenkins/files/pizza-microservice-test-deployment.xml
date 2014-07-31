@@ -18,7 +18,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>pizza-microservice-product-service-publish, </upstreamProjects>
+      <upstreamProjects>pizza-microservice-publish,</upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>

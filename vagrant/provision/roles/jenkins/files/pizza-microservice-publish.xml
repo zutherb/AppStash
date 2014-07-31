@@ -18,7 +18,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>pizza-microservice-product-service-build, </upstreamProjects>
+      <upstreamProjects>pizza-microservice-product-service-build,pizza-microservice-ui-build,</upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>
@@ -49,6 +49,7 @@ ssh vagrant@ci-repo -o StrictHostKeyChecking=no -v &lt;&lt;EOF
 sudo su
 dpkg-sig -k 18858766 --sign builder /tmp/*.deb
 reprepro -vb /var/packages/debian remove pizza product
+reprepro -vb /var/packages/debian remove pizza shop-frontend
 reprepro -vb /var/packages/debian includedeb pizza /tmp/*.deb
 EOF</command>
     </hudson.tasks.Shell>

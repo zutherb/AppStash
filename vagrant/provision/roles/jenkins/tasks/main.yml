@@ -94,7 +94,7 @@
       - pizza-monolitic-test-deployment
       - pizza-microservice-product-service-build
       - pizza-microservice-ui-build
-      - pizza-microservice-product-service-publish
+      - pizza-microservice-publish
       - pizza-microservice-test-deployment
   ignore_errors: yes
 
