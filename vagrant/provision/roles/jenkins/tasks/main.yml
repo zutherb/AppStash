@@ -22,6 +22,11 @@
     - curl
     - nodejs
 
+- npm: name={{item}} global=yes
+  with_items:
+    - grunt-cli
+    - bower
+
 - name: install config.xml
   sudo: yes
   sudo_user: jenkins

@@ -46,6 +46,9 @@ task prepareDeb {
     }
 }
 
+task gruntBuildWithOpts(type: GruntTask) {
+    args = ["--force"]
+}
 
 // makes sure on each build that grunt is installed
 grunt_build.dependsOn 'installGrunt'
