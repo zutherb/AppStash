@@ -9,6 +9,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
+
 import static org.springframework.data.mongodb.core.query.Criteria.where;
 import static org.springframework.data.mongodb.core.query.Query.query;
 import static org.springframework.data.mongodb.core.query.Update.update;
@@ -32,6 +34,14 @@ public class OrderIdProviderImpl implements OrderIdProvider {
         Query query = query(where("id").is(ORDER_SEQUENCE_ID));
         mongoOperations.upsert(query, update("id", ORDER_SEQUENCE_ID).inc("nextVal", 1), OrderSequence.class);
         return mongoOperations.findOne(query, OrderSequence.class).getNextVal();
+    }
+
+    @PostConstruct
+    public void init() {
+        Query query = query(where("id").is(ORDER_SEQUENCE_ID));
+        if (mongoOperations.findOne(query, OrderSequence.class) == null) {
+            mongoOperations.save(new OrderSequence());
+        }
     }
 
     @Document(collection = "sequence.order")
