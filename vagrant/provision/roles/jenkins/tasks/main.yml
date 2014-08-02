@@ -78,6 +78,7 @@
       - copyartifact
       - performance
       - jacoco
+      - sonar
       - buildgraph-view
       - xvnc
   notify: restart jenkins
@@ -97,6 +98,7 @@
   with_items:
       - pizza-monolitic-build
       - pizza-monolitic-ui-test
+      - pizza-monolitic-sonar
       - pizza-monolitic-test-deployment
       - pizza-microservice-product-service-build
       - pizza-microservice-ui-build

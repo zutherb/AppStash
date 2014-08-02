@@ -11,7 +11,6 @@ sonarRunner {
         property "sonar.jdbc.username", "sonar"
         property "sonar.jdbc.password", "sonar"
         property "sonar.projectName", "pizza"
-        property "sonar.jacoco.reportPath", "$buildDir/jacoco/test.exec"
     }
 }
 
@@ -44,6 +43,7 @@ buildscript {
         classpath "de.gesellix:gradle-debian-plugin:14"
         classpath "com.moowork.gradle:gradle-grunt-plugin:0.6"
         classpath "org.kt3k.gradle.plugin:coveralls-gradle-plugin:1.0.2"
+        classpath 'se.transmode.gradle:gradle-docker:1.2'
     }
 }
 
@@ -57,16 +57,6 @@ allprojects {
 
     if (System.getenv("BUILD_NUMBER") != null)
         version += ".${System.getenv("BUILD_NUMBER")}"
-
-    jacoco {
-        destinationFile = file("$buildDir/jacoco/test.exec")
-    }
-
-    test {
-        jacoco {
-            destinationFile = file("$buildDir/jacoco/test.exec")
-        }
-    }
 }
 
 subprojects {
