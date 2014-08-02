@@ -12,8 +12,6 @@ sonarRunner {
         property "sonar.jdbc.username", "sonar"
         property "sonar.jdbc.password", "sonar"
         property "sonar.projectName", "pizza"
-        property "sonar.core.codeCoveragePlugin", "jacoco"
-        property "sonar.jacoco.reportPath", jacocoFile
     }
 }
 
@@ -64,7 +62,7 @@ subprojects {
     sonarRunner {
         sonarProperties {
             property "sonar.sourceEncoding", "UTF-8"
-            property "sonar.jacoco.reportPath", jacocoFile
+//            property "sonar.jacoco.reportPath", jacocoFile
         }
     }
 

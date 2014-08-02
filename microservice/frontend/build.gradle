@@ -43,7 +43,6 @@ task bower(type: Exec){
 
 task gruntBuildWithOpts(type: GruntTask) {
     dependsOn 'npmInstall', bower, 'installGrunt'
-    args = ["--force"]
 }
 
 task prepareDeb {

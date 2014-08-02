@@ -1,0 +1,20 @@
+@startuml
+scale 1
+
+
+node "Build Server" as node1 {
+    component jenkins
+}
+node "Test Server" as node3 {
+    node Tomcat as bla{
+        component Shop
+    }
+}
+jenkins -- bla : sd
+
+node "Production Server" as node4 {
+  node "Tomcat "
+}
+node1 -- node3
+node1 -- node4
+@enduml

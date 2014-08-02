@@ -21,11 +21,17 @@
     - git
     - curl
     - nodejs
+    - ruby
+    - rubygems
 
 - npm: name={{item}} global=yes
   with_items:
     - grunt-cli
     - bower
+
+- sudo: yes
+  sudo_user: jenkins
+  gem: name=compass state=latest
 
 - name: install config.xml
   sudo: yes
