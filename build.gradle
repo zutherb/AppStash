@@ -47,11 +47,26 @@ buildscript {
 }
 
 allprojects {
+    apply plugin: 'java'
+    apply plugin: 'jacoco'
+
     sourceCompatibility = org.gradle.api.JavaVersion.VERSION_1_8
     targetCompatibility = org.gradle.api.JavaVersion.VERSION_1_6
 
     if (System.getenv("BUILD_NUMBER") != null)
         version += ".${System.getenv("BUILD_NUMBER")}"
+
+    test {
+        jacoco {
+            destinationFile = file("$buildDir/jacoco/jacocoTest.exec")
+        }
+    }
+
+    sonarRunner {
+        sonarProperties {
+            property "sonar.jacoco.reportPath", "$buildDir/jacoco/jacocoTest.exec"
+        }
+    }
 }
 
 subprojects {
