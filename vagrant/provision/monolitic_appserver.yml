@@ -10,6 +10,5 @@
     - hosts
     - eu-sources
     - oracle-java
-    - mongodb
     - tomcat
     - logstash

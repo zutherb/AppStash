@@ -1,5 +1,5 @@
 ---
-- hosts: micro_appservers
+- hosts: databaseservers
   user: vagrant
   sudo: yes
 
@@ -9,7 +9,4 @@
   roles:
     - hosts
     - eu-sources
-    - oracle-java
-    - nginx
-    - rstats
-    - appserver
+    - mongodb

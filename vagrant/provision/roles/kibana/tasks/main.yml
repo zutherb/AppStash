@@ -15,7 +15,7 @@
 - name: unarchive kibana
   sudo : yes
   sudo_user: vagrant
-  raw: tar -xf /tmp/kibana.tar.gz --directory=/var/www/
-  notify: httpd restart
+  raw: tar -xf /tmp/kibana.tar.gz --directory=/tmp/
 
-- file: src=/var/www/kibana-3.1.0/index.html dest=/var/www/index.html owner=vagrant group=www state=link force=yes
+- raw: cp -r /tmp/kibana-3.1.0/* /var/www/
+  notify: httpd restart

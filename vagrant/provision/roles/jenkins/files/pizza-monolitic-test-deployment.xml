@@ -9,7 +9,13 @@
     <artifactNumToKeep>-1</artifactNumToKeep>
   </logRotator>
   <keepDependencies>false</keepDependencies>
-  <properties/>
+  <properties>
+    <hudson.plugins.copyartifact.CopyArtifactPermissionProperty plugin="copyartifact@1.31">
+      <projectNameList>
+        <string>pizza-monolitic-build</string>
+      </projectNameList>
+    </hudson.plugins.copyartifact.CopyArtifactPermissionProperty>
+  </properties>
   <scm class="hudson.scm.NullSCM"/>
   <canRoam>true</canRoam>
   <disabled>false</disabled>
@@ -30,10 +36,25 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>ssh vagrant@app-server-node-1 -o StrictHostKeyChecking=no -v &lt;&lt;EOF
+      <command></command>
+    </hudson.tasks.Shell>
+    <hudson.plugins.copyartifact.CopyArtifact plugin="copyartifact@1.31">
+      <project>pizza-monolitic-build</project>
+      <filter>**/*.war</filter>
+      <target>artifacts</target>
+      <excludes></excludes>
+      <selector class="hudson.plugins.copyartifact.StatusBuildSelector">
+        <stable>true</stable>
+      </selector>
+      <flatten>true</flatten>
+      <doNotFingerprintArtifacts>false</doNotFingerprintArtifacts>
+    </hudson.plugins.copyartifact.CopyArtifact>
+    <hudson.tasks.Shell>
+      <command>scp -v ${WORKSPACE}/artifacts/monolithic-shop.war vagrant@app-server-node-1:/tmp/pizza.war 
+ssh vagrant@app-server-node-1 -o StrictHostKeyChecking=no -v &lt;&lt;EOF
 sudo service tomcat6 stop
 sudo rm -rf /var/lib/tomcat6/webapps/pizza*
-sudo wget -O /var/lib/tomcat6/webapps/pizza.war http://ci-node:8080/job/pizza-build/lastSuccessfulBuild/artifact/shop/ui/build/libs/ui-0.4-DEV.war
+sudo cp /tmp/pizza.war /var/lib/tomcat6/webapps/pizza.war
 sudo service tomcat6 start
 cd /var/lib/tomcat6/webapps/pizza/WEB-INF/classes
 sudo rm logback.groovy

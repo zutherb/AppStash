@@ -14,3 +14,4 @@ ff02::2 ip6-allrouters
 10.211.55.104   app-server-node-4
 10.211.55.200   ci-node
 10.211.55.201   ci-repo
+10.211.55.202   mongodb-node

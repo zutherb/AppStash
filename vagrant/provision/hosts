@@ -7,6 +7,9 @@ ci-node
 [reposervers]
 ci-repo
 
+[databaseservers]
+mongodb-node
+
 [monolitic_appservers]
 app-server-node-1
 app-server-node-2

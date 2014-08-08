@@ -76,10 +76,10 @@ module.exports = function (grunt) {
                 {
                     context: '/product',
                     host: 'localhost',
-                    port: 8080,
+                    port: 18080,
                     changeOrigin: true,
                     rewrite: {
-                        '/product' : ''
+                        '/api/product' : ''
                     }
                 }
             ],
