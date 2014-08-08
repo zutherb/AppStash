@@ -30,7 +30,7 @@
     - bower
 
 - sudo: yes
-  sudo_user: jenkins
+  sudo_user: root
   gem: name=compass state=latest
 
 - name: install config.xml
@@ -94,7 +94,7 @@
 - name: install jenkins jobs
   sudo: yes
   sudo_user: jenkins
-  raw: 'cat /vagrant/provision/roles/jenkins/files/{{item}}.xml | java -jar /tmp/jenkins-cli.jar -s http://localhost:8080/ create-job {{item}}'
+  command: 'cat /vagrant/provision/roles/jenkins/files/{{item}}.xml | java -jar /tmp/jenkins-cli.jar -s http://localhost:8080/ create-job {{item}}'
   with_items:
       - pizza-monolitic-build
       - pizza-monolitic-ui-test

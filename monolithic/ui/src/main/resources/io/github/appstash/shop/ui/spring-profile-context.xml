@@ -19,6 +19,20 @@
         </property>
     </bean>
 
+    <bean id="productionValues" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="properties">
+            <props>
+                <prop key="authentication.salt">4e6ab01864d726077691caa0d19a2d3f</prop>
+                <prop key="generator.generate.orders">0</prop>
+                <prop key="generator.drop.collections">0</prop>
+                <prop key="generator.generationJob.rate">0</prop>
+                <prop key="mongo.db">pizza</prop>
+                <prop key="mongo.host">mongodb-node</prop>
+                <prop key="mongo.port">27017</prop>
+            </props>
+        </property>
+    </bean>
+
     <bean id="testValues" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
         <property name="properties">
             <props>
@@ -39,6 +53,13 @@
                                       ignore-resource-not-found="false"
                                       properties-ref="defaultValues"/>
     </beans>
+
+    <beans profile="production">
+        <context:property-placeholder system-properties-mode="OVERRIDE"
+                                      ignore-resource-not-found="false"
+                                      properties-ref="productionValues"/>
+    </beans>
+
     <beans profile="test">
         <context:property-placeholder system-properties-mode="OVERRIDE"
                                       ignore-resource-not-found="false"
