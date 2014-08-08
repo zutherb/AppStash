@@ -10,3 +10,6 @@
 
 - name: install elasticsearch
   apt: pkg=elasticsearch state=present force=yes
+  notify: elasticsearch
+
+- service: name=elasticsearch state=enabled

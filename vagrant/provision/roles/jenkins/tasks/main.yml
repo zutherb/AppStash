@@ -101,6 +101,8 @@
       - pizza-monolitic-sonar
       - pizza-monolitic-test-deployment
       - pizza-microservice-product-service-build
+      - pizza-microservice-recommendation-service-build
+      - pizza-microservice-dataloader-build
       - pizza-microservice-ui-build
       - pizza-microservice-publish
       - pizza-microservice-test-deployment
@@ -109,7 +111,13 @@
 - name: start jenkins deployment pipeline
   sudo: yes
   sudo_user: jenkins
-  command: 'java -jar /tmp/jenkins-cli.jar -s http://localhost:8080/ build pizza-monolitic-build'
+  command: 'java -jar /tmp/jenkins-cli.jar -s http://localhost:8080/ build {{item}}'
+  with_items:
+    - pizza-monolitic-build
+    - pizza-microservice-product-service-build
+    - pizza-microservice-recommendation-service-build
+    - pizza-microservice-dataloader-build
+    - pizza-microservice-ui-build
   ignore_errors: yes
 
 - file: path=/var/lib/jenkins/.ssh/ mode=0755 owner=jenkins group=jenkins state=directory
