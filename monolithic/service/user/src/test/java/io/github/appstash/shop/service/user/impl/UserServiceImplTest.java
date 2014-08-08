@@ -5,6 +5,7 @@ import io.github.appstash.shop.service.user.api.UserService;
 import io.github.appstash.shop.service.user.model.AddressInfo;
 import io.github.appstash.shop.service.user.model.RoleInfo;
 import io.github.appstash.shop.service.user.model.UserInfo;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
@@ -31,6 +32,7 @@ public class UserServiceImplTest extends AbstractJUnit4SpringContextTests {
     private MongoOperations mongoOperations;
 
     @Test
+    @Ignore
     public void testFindByUsername() {
         mongoOperations.dropCollection(User.class);
         userService.save(new UserInfo("found", "securepw", Collections.<RoleInfo>emptySet(), new AddressInfo("", "", "", "", "", "", "", "", 0, 0)));
