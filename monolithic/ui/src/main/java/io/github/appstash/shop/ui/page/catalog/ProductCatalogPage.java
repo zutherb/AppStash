@@ -6,10 +6,12 @@ import io.github.appstash.shop.service.product.api.ProductService;
 import io.github.appstash.shop.service.product.model.ProductInfo;
 import io.github.appstash.shop.ui.navigation.EnumProductTypeNavigationItem;
 import io.github.appstash.shop.ui.page.AbstractBasePage;
+import io.github.appstash.shop.ui.panel.base.HighLightBehavior;
 import io.github.appstash.shop.ui.panel.basket.BasketPanel;
 import io.github.appstash.shop.ui.panel.product.ProductItemPanel;
 import io.github.appstash.shop.ui.panel.product.TopSellerRecommendationPanel;
 import org.apache.wicket.Component;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.IDataProvider;
@@ -21,8 +23,6 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -44,10 +44,17 @@ public class ProductCatalogPage extends AbstractBasePage {
         productTypeModel = productTypeModel();
         productListModel = productListModel();
         basketPanel = basketPanel();
-        add(productView());
+        add(productsWrapper());
         add(basketPanel);
         add(recommendationPanel());
         setOutputMarkupId(true);
+    }
+
+    private Component productsWrapper() {
+        WebMarkupContainer productsWrapper = new WebMarkupContainer("productsWrapper");
+        productsWrapper.add(productView());
+        productsWrapper.add(new HighLightBehavior());
+        return productsWrapper;
     }
 
     private IModel<ProductType> productTypeModel() {

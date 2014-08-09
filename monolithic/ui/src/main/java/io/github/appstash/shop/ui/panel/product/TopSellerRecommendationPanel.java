@@ -6,7 +6,9 @@ import io.github.appstash.shop.service.recommendation.api.RecommendationService;
 import io.github.appstash.shop.ui.event.AjaxEvent;
 import io.github.appstash.shop.ui.event.basket.AddToBasketEvent;
 import io.github.appstash.shop.ui.event.basket.RemoveFromBasketEvent;
+import io.github.appstash.shop.ui.mbean.FeatureTooglesBean;
 import io.github.appstash.shop.ui.panel.base.AbstractPizzaShopBasePanel;
+import io.github.appstash.shop.ui.panel.base.HighLightBehavior;
 import org.apache.wicket.Component;
 import org.apache.wicket.event.IEvent;
 import org.apache.wicket.model.IModel;
@@ -25,6 +27,9 @@ public class TopSellerRecommendationPanel extends AbstractPizzaShopBasePanel {
     @SpringBean(name = "recommendationService")
     private RecommendationService recommendationService;
 
+    @SpringBean
+    private FeatureTooglesBean featureTooglesBean;
+
     private IModel<ProductType> productTypeModel;
     private IModel<ProductInfo> pizzaInfoModel;
 
@@ -37,6 +42,7 @@ public class TopSellerRecommendationPanel extends AbstractPizzaShopBasePanel {
         add(recommendationItemPanel());
         setOutputMarkupId(true);
         setOutputMarkupPlaceholderTag(true);
+        add(new HighLightBehavior());
     }
 
     private Component recommendationItemPanel() {
@@ -50,7 +56,7 @@ public class TopSellerRecommendationPanel extends AbstractPizzaShopBasePanel {
     @Override
     protected void onConfigure() {
         super.onConfigure();
-        setVisible(pizzaInfoModel.getObject() != null);
+        setVisible(featureTooglesBean.isTopSellerFeatureEnabled() && pizzaInfoModel.getObject() != null);
     }
 
 

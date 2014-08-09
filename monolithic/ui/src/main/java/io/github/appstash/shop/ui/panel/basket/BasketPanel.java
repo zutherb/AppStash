@@ -1,13 +1,14 @@
 package io.github.appstash.shop.ui.panel.basket;
 
 
-import io.github.appstash.shop.ui.model.PriceModel;
 import io.github.appstash.shop.service.basket.api.Basket;
 import io.github.appstash.shop.service.basket.model.BasketItem;
 import io.github.appstash.shop.ui.event.basket.BasketChangeEvent;
 import io.github.appstash.shop.ui.event.basket.RemoveFromBasketEvent;
+import io.github.appstash.shop.ui.model.PriceModel;
 import io.github.appstash.shop.ui.page.checkout.CheckoutPage;
 import io.github.appstash.shop.ui.panel.base.AbstractPizzaShopBasePanel;
+import io.github.appstash.shop.ui.panel.base.HighLightBehavior;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.event.Broadcast;
@@ -35,6 +36,8 @@ public class BasketPanel extends AbstractPizzaShopBasePanel {
         add(basketView());
 
         setOutputMarkupId(true);
+
+        add(new HighLightBehavior());
     }
 
     private Label totalSum() {

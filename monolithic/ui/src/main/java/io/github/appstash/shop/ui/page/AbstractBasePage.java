@@ -1,6 +1,7 @@
 package io.github.appstash.shop.ui.page;
 
 import io.github.appstash.shop.service.authentication.api.AuthenticationService;
+import io.github.appstash.shop.ui.mbean.DesignSelectorBean;
 import io.github.appstash.shop.ui.panel.NavigationPanel;
 import io.github.appstash.shop.ui.panel.base.FeedbackPanel;
 import io.github.appstash.shop.ui.panel.login.LoginModalPanel;
@@ -32,7 +33,7 @@ public abstract class AbstractBasePage extends WebPage {
     private AuthenticationService authenticationService;
 
     @SpringBean(name = "designSelector")
-    private DesignSelector designSelector;
+    private DesignSelectorBean designSelector;
 
     protected LoginModalPanel loginModal;
     protected WebMarkupContainer header;
@@ -89,6 +90,7 @@ public abstract class AbstractBasePage extends WebPage {
         String designUrl = String.format("/assets/css/bootstrap-%s.min.css", designSelector.getDesignType());
         response.render(CssHeaderItem.forUrl(contextPath + designUrl));
 //        response.render(CssHeaderItem.forUrl(contextPath + "/assets/css/bootstrap-theme.min.css"));
+        response.render(CssHeaderItem.forUrl(contextPath + "/assets/css/bootstrap-theme-shop.css"));
 
         response.render(JavaScriptHeaderItem.forUrl(contextPath + "/assets/js/bootstrap.min.js"));
     }

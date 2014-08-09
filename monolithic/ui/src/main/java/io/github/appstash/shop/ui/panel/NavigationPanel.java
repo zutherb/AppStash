@@ -6,6 +6,7 @@ import io.github.appstash.shop.ui.event.basket.AddToBasketEvent;
 import io.github.appstash.shop.ui.event.basket.RemoveFromBasketEvent;
 import io.github.appstash.shop.ui.event.login.LoginEvent;
 import io.github.appstash.shop.ui.navigation.*;
+import io.github.appstash.shop.ui.panel.base.HighLightBehavior;
 import io.github.appstash.shop.ui.panel.login.LoginInfoPanel;
 import io.github.appstash.shop.ui.panel.login.LoginModalPanel;
 import org.apache.commons.collections.CollectionUtils;
@@ -64,7 +65,8 @@ public class NavigationPanel extends Panel {
     }
 
     private Component otherNavigation() {
-        return new ListView<NavigationGroup>("otherNavigation", otherNavigationModel()) {
+        WebMarkupContainer otherNavigationWrapper = new WebMarkupContainer("otherNavigationWrapper");
+        otherNavigationWrapper.add(new ListView<NavigationGroup>("otherNavigation", otherNavigationModel()) {
             private static final long serialVersionUID = 5452289050410685190L;
 
             public int counter = 0;
@@ -110,7 +112,9 @@ public class NavigationPanel extends Panel {
                     }
                 };
             }
-        };
+        });
+        otherNavigationWrapper.add(new HighLightBehavior());
+        return otherNavigationWrapper;
     }
 
     private IModel<List<NavigationGroup>> otherNavigationModel() {
@@ -127,7 +131,10 @@ public class NavigationPanel extends Panel {
     }
 
     private Component mainNavigation() {
-        return navigationEntryView("mainNavigation", mainNavigationEntriesModel());
+        WebMarkupContainer mainNavigationWrapper = new WebMarkupContainer("mainNavigationWrapper");
+        mainNavigationWrapper.add(navigationEntryView("mainNavigation", mainNavigationEntriesModel()));
+        mainNavigationWrapper.add(new HighLightBehavior());
+        return mainNavigationWrapper;
     }
 
     private ListView<NavigationEntry> navigationEntryView(final String id, final IModel<List<NavigationEntry>> listModel) {

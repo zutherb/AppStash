@@ -1,7 +1,6 @@
-package io.github.appstash.shop.ui.page;
+package io.github.appstash.shop.ui.mbean;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 

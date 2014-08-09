@@ -16,7 +16,7 @@
         <a class="navbar-brand" wicket:id="home">Monolithic architecture</a>
     </div>
     <nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav" wicket:id="mainNavigationWrapper">
             <wicket:container wicket:id="mainNavigation">
                 <li wicket:id="item">
                     <a href="#" wicket:id="link">
@@ -26,7 +26,7 @@
             </wicket:container>
         </ul>
 
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right" wicket:id="otherNavigationWrapper">
             <wicket:container wicket:id="otherNavigation">
                 <li class="dropdown" id="menu1" wicket:id="dropdown">
                     <a href="#menu1"

@@ -2,8 +2,10 @@ package io.github.appstash.shop.ui.panel.product;
 
 import io.github.appstash.shop.service.product.model.ProductInfo;
 import io.github.appstash.shop.ui.panel.base.AbstractPizzaShopBasePanel;
+import io.github.appstash.shop.ui.panel.base.HighLightBehavior;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.wicket.Component;
+import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
@@ -25,13 +27,20 @@ public class ProductItemListPanel extends AbstractPizzaShopBasePanel {
 
         super(id, productListModel);
 
+
         this.containerTopic = containerTopic;
         this.productListModel = productListModel;
 
-        add(topicLabel());
-        add(productList(recommenderType));
+        add(listWrapper(recommenderType));
 
         setOutputMarkupId(true);
+    }
+
+    private Component listWrapper(String recommenderType) {
+        WebMarkupContainer listWrapper = new WebMarkupContainer("listWrapper");
+        listWrapper.add(topicLabel());
+        listWrapper.add(productList(recommenderType));
+        return listWrapper.add(new HighLightBehavior());
     }
 
     @Override
@@ -44,12 +53,14 @@ public class ProductItemListPanel extends AbstractPizzaShopBasePanel {
     }
 
     private DataView<ProductInfo> productList(final String parentTag) {
-        return new DataView<ProductInfo>("products", productsProvider()) {
+        DataView<ProductInfo> productsView = new DataView<ProductInfo>("products", productsProvider()) {
             @Override
             protected void populateItem(Item<ProductInfo> item) {
                 item.add(newProductItemPanel("product", parentTag, item.getModel()));
             }
         };
+        productsView.add(new HighLightBehavior());
+        return productsView;
     }
 
     protected Component newProductItemPanel(String id, String parentTag, IModel<ProductInfo> model) {

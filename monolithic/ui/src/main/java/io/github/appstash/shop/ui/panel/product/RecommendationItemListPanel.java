@@ -1,6 +1,7 @@
 package io.github.appstash.shop.ui.panel.product;
 
 import io.github.appstash.shop.service.product.model.ProductInfo;
+import io.github.appstash.shop.ui.panel.base.HighLightBehavior;
 import org.apache.wicket.Component;
 import org.apache.wicket.model.IModel;
 
