@@ -1,6 +1,7 @@
 package io.github.appstash.shop.runner;
 
 import ch.qos.logback.classic.util.ContextInitializer;
+import net.logstash.logback.encoder.org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
@@ -15,7 +16,9 @@ public class JettyStart {
     private static final Logger LOGGER = LoggerFactory.getLogger(JettyStart.class);
 
     static {
-        System.setProperty("spring.profiles.active", "default");
+        if (StringUtils.isEmpty(System.getProperty("spring.profiles.active"))) {
+            System.setProperty("spring.profiles.active", "default");
+        }
     }
 
     public static void main(final String[] args) {
