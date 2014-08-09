@@ -73,7 +73,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         end
         dbserver.vm.synced_folder "provision", "/provision"
         dbserver.vm.network :private_network, ip: "10.211.55.202"
-        dbserver.vm.network :forwarded_port, host: 27017, guest: 27017
+        dbserver.vm.network :forwarded_port, host: 27017, guest: 27017, auto_correct: true
         dbserver.vm.hostname = "mongodb-node"
         dbserver.vm.provision "ansible" do |ansible|
           ansible.playbook = "provision/databaseserver.yml"
@@ -83,7 +83,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           ansible.raw_arguments  = "--user=vagrant"
           ansible.raw_arguments  = "--private-key=~/.vagrant.d/insecure_private_key"
         end
-   end
+  end
 
   config.vm.define :appserver1 do |appserver1|
     appserver1.vm.box = "precise64"

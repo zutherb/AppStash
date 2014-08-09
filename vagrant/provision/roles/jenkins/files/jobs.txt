@@ -1,0 +1,10 @@
+pizza-monolitic-build
+pizza-monolitic-ui-test
+pizza-monolitic-sonar
+pizza-monolitic-test-deployment
+pizza-microservice-product-service-build
+pizza-microservice-recommendation-service-build
+pizza-microservice-dataloader-build
+pizza-microservice-ui-build
+pizza-microservice-publish
+pizza-microservice-test-deployment

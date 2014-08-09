@@ -93,19 +93,7 @@
 - name: install jenkins jobs
   sudo: yes
   sudo_user: jenkins
-  raw: 'cat /vagrant/provision/roles/jenkins/files/{{item}}.xml | java -jar /tmp/jenkins-cli.jar -s http://localhost:8080/ create-job {{item}}'
-  with_items:
-      - pizza-monolitic-build
-      - pizza-monolitic-ui-test
-      - pizza-monolitic-sonar
-      - pizza-monolitic-test-deployment
-      - pizza-microservice-product-service-build
-      - pizza-microservice-recommendation-service-build
-      - pizza-microservice-dataloader-build
-      - pizza-microservice-ui-build
-      - pizza-microservice-publish
-      - pizza-microservice-test-deployment
-      - pizza-backup-jenkins-jobs
+  raw: '/provision/roles/jenkins/files/restoreAllJobs.sh'
   ignore_errors: yes
 
 - name: start jenkins deployment pipeline
