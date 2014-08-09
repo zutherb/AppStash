@@ -27,7 +27,7 @@
                 <prop key="generator.drop.collections">0</prop>
                 <prop key="generator.generationJob.rate">0</prop>
                 <prop key="mongo.db">pizza</prop>
-                <prop key="mongo.host">mongodb-node</prop>
+                <prop key="mongo.host">10.211.55.202</prop>
                 <prop key="mongo.port">27017</prop>
             </props>
         </property>
@@ -47,7 +47,7 @@
         </property>
     </bean>
 
-
+    <!-- /Users/berndzuther/development/appstash/monolithic/repository/common/src/main/resources/io/github/appstash/common/repository/spring-mongo-context.xml -->
     <beans profile="default">
         <context:property-placeholder system-properties-mode="OVERRIDE"
                                       ignore-resource-not-found="false"

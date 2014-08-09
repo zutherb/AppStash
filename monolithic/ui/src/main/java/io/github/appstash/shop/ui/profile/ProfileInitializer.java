@@ -22,7 +22,10 @@ public class ProfileInitializer implements ApplicationContextInitializer<Configu
         if (!hasActiveProfile(environment)) {
             environment.setActiveProfiles("default");
         }
-        LOGGER.info("active profiles are {}", StringUtils.join(environment.getActiveProfiles(), ","));
+        LOGGER.info("Active profiles are {}", StringUtils.join(environment.getActiveProfiles(), ","));
+        LOGGER.info("Database: {}", environment.getProperty("mongo.db"));
+        LOGGER.info("Host: {}", environment.getProperty("mongo.host"));
+        LOGGER.info("Port: {}", environment.getProperty("mongo.port"));
     }
 
     private boolean hasActiveProfile(ConfigurableEnvironment environment) {

@@ -20,6 +20,13 @@
         </mongo:mongo>
     </beans>
 
+    <beans profile="production">
+        <mongo:mongo id="mongo" host="localhost">
+            <mongo:options auto-connect-retry="true"
+                           threads-allowed-to-block-for-connection-multiplier="20"/>
+        </mongo:mongo>
+    </beans>
+
     <beans profile="test">
         <bean name="fongo" class="com.github.fakemongo.Fongo">
             <constructor-arg value="pizza"/>
