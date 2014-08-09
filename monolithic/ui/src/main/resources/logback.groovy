@@ -1,13 +1,44 @@
 import ch.qos.logback.classic.encoder.PatternLayoutEncoder
 import ch.qos.logback.core.ConsoleAppender
+import net.logstash.logback.encoder.LogstashEncoder
 import static ch.qos.logback.classic.Level.*
 
 def defaultPattern = "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
 
-appender("stdout", ConsoleAppender) {
-    encoder(PatternLayoutEncoder) {
-        pattern = defaultPattern
+if (System.properties.find { it.key == "spring.profiles.active" } == "production") {
+    appender("stdout", ConsoleAppender) {
+        encoder(PatternLayoutEncoder) {
+            pattern = defaultPattern
+        }
     }
+
+    root(INFO, ["stdout"])
+} else {
+    appender("stdout", ConsoleAppender) {
+        encoder(LogstashEncoder) {
+        }
+    }
+
+    appender("readable", FileAppender) {
+        file = "/var/log/tomcat6/appstash-readable.log"
+        encoder(PatternLayoutEncoder) {
+            pattern = defaultPattern
+        }
+    }
+
+    appender("logstash", FileAppender) {
+        if (new File("/var/log/tomcat6/").exists()) {
+            file = "/var/log/tomcat6/appstash.log"
+        } else {
+            file = "appstash.log"
+        }
+        append = true
+        encoder(PatternLayoutEncoder) {
+            pattern = "%msg%n"
+        }
+    }
+
+    root(INFO, ["stdout", "readable", "logstash"])
 }
 
-root(INFO, ["stdout"])
+
