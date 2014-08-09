@@ -14,14 +14,14 @@
 
 
     <beans profile="default">
-        <mongo:mongo id="mongo" host="localhost">
+        <mongo:mongo id="mongo" host="${mongo.host}" port="${mongo.port}">
             <mongo:options auto-connect-retry="true"
                            threads-allowed-to-block-for-connection-multiplier="20"/>
         </mongo:mongo>
     </beans>
 
     <beans profile="production">
-        <mongo:mongo id="mongo" host="localhost">
+        <mongo:mongo id="mongo" host="${mongo.host}" port="${mongo.port}">
             <mongo:options auto-connect-retry="true"
                            threads-allowed-to-block-for-connection-multiplier="20"/>
         </mongo:mongo>
