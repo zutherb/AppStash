@@ -7,3 +7,5 @@
 
 - name: update cache
   apt: update_cache=yes force=yes
+
+- apt: upgrade=dist update_cache=yes dpkg_options='force-confold,force-confdef'

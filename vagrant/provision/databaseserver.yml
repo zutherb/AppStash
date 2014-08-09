@@ -9,4 +9,5 @@
   roles:
     - hosts
     - eu-sources
+    - common
     - mongodb

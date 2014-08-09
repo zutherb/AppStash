@@ -10,6 +10,6 @@
 
 - name: install elasticsearch
   apt: pkg=elasticsearch state=present force=yes
-  notify: elasticsearch
 
-- service: name=elasticsearch state=enabled
+- raw: sudo update-rc.d elasticsearch defaults
+- raw: sudo service elasticsearch start

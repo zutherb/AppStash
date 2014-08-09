@@ -1,0 +1,7 @@
+---
+- apt: pkg={{item}} state=present force=yes
+  with_items:
+    - vim
+    - mongodb-clients
+    - curl
+    - tree

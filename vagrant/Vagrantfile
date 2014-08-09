@@ -39,7 +39,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     buildserver.vm.provision "ansible" do |ansible|
       ansible.playbook = "provision/buildserver.yml"
       ansible.inventory_path = "provision/hosts"
-      ansible.limit = 'all,localhost'
+      ansible.limit = 'ci-node'
       ansible.ask_vault_pass = false
       ansible.raw_arguments  = "--user=vagrant"
       ansible.raw_arguments  = "--private-key=~/.vagrant.d/insecure_private_key"
@@ -58,7 +58,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       reposerver.vm.provision "ansible" do |ansible|
         ansible.playbook = "provision/reposerver.yml"
         ansible.inventory_path = "provision/hosts"
-        ansible.limit = 'all,localhost'
+        ansible.limit = 'ci-repo'
         ansible.ask_vault_pass = false
         ansible.raw_arguments  = "--user=vagrant"
         ansible.raw_arguments  = "--private-key=~/.vagrant.d/insecure_private_key"
@@ -78,7 +78,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         dbserver.vm.provision "ansible" do |ansible|
           ansible.playbook = "provision/databaseserver.yml"
           ansible.inventory_path = "provision/hosts"
-          ansible.limit = 'all,localhost'
+          ansible.limit = 'mongodb-node'
           ansible.ask_vault_pass = false
           ansible.raw_arguments  = "--user=vagrant"
           ansible.raw_arguments  = "--private-key=~/.vagrant.d/insecure_private_key"
