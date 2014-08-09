@@ -1,4 +1,4 @@
-//include 'agent'
+include 'agent'
 //include 'memory-leak'
 include 'external'
 

@@ -7,6 +7,8 @@ import org.apache.wicket.Page;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.settings.IRequestCycleSettings;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
+import org.springframework.jmx.export.annotation.ManagedOperation;
+import org.springframework.jmx.export.annotation.ManagedResource;
 import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 
 /**
@@ -28,7 +30,6 @@ public class ShopApplication extends WebApplication {
         setJavaScriptLibrarySettings(new JavaScriptLibrarySettings());
 
     }
-
 
     @Override
     public Class<? extends Page> getHomePage() {

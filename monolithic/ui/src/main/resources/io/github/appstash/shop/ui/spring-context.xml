@@ -46,4 +46,6 @@
     </task:scheduled-tasks>
 
     <task:scheduler id="appStashScheduler" pool-size="10"/>
+
+    <context:mbean-export/>
 </beans>

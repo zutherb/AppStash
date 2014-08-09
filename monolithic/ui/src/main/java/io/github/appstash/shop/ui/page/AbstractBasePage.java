@@ -31,6 +31,9 @@ public abstract class AbstractBasePage extends WebPage {
     @SpringBean(name = "authenticationService")
     private AuthenticationService authenticationService;
 
+    @SpringBean(name = "designSelector")
+    private DesignSelector designSelector;
+
     protected LoginModalPanel loginModal;
     protected WebMarkupContainer header;
     protected WebMarkupContainer navigation;
@@ -83,8 +86,9 @@ public abstract class AbstractBasePage extends WebPage {
         MapVariableInterpolator variableInterpolator = new MapVariableInterpolator(FAVICON_HEADER, replacements);
         response.render(StringHeaderItem.forString(variableInterpolator.toString()));
 
-        response.render(CssHeaderItem.forUrl(contextPath + "/assets/css/bootstrap.min.css"));
-        response.render(CssHeaderItem.forUrl(contextPath + "/assets/css/bootstrap-theme.min.css"));
+        String designUrl = String.format("/assets/css/bootstrap-%s.min.css", designSelector.getDesignType());
+        response.render(CssHeaderItem.forUrl(contextPath + designUrl));
+//        response.render(CssHeaderItem.forUrl(contextPath + "/assets/css/bootstrap-theme.min.css"));
 
         response.render(JavaScriptHeaderItem.forUrl(contextPath + "/assets/js/bootstrap.min.js"));
     }
