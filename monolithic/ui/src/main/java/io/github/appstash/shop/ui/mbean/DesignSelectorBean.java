@@ -30,6 +30,11 @@ public class DesignSelectorBean {
     }
 
     @ManagedOperation
+    public synchronized void standard() {
+        designType = DesignType.standard;
+    }
+
+    @ManagedOperation
     public synchronized void next() {
         designType = DesignType.values()[DESIGN_COUNTER.incrementAndGet() % DesignType.values().length];
     }
