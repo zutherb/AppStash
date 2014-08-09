@@ -1,31 +1,57 @@
-Aug 09, 2014 9:40:03 AM hudson.remoting.SynchronousCommandTransport$ReaderThread run
-SEVERE: I/O error in channel Chunked connection to http://localhost:8080/cli
-java.io.StreamCorruptedException: invalid stream header: 0A0A0A0A
-	at java.io.ObjectInputStream.readStreamHeader(ObjectInputStream.java:806)
-	at java.io.ObjectInputStream.<init>(ObjectInputStream.java:299)
-	at hudson.remoting.ObjectInputStreamEx.<init>(ObjectInputStreamEx.java:40)
-	at hudson.remoting.AbstractSynchronousByteArrayCommandTransport.read(AbstractSynchronousByteArrayCommandTransport.java:34)
-	at hudson.remoting.SynchronousCommandTransport$ReaderThread.run(SynchronousCommandTransport.java:48)
-
-Exception in thread "main" hudson.remoting.RequestAbortedException: hudson.remoting.RequestAbortedException: java.io.StreamCorruptedException: invalid stream header: 0A0A0A0A
-	at hudson.remoting.RequestAbortedException.wrapForRethrow(RequestAbortedException.java:41)
-	at hudson.remoting.RequestAbortedException.wrapForRethrow(RequestAbortedException.java:34)
-	at hudson.remoting.Request.call(Request.java:174)
-	at hudson.remoting.Channel.call(Channel.java:739)
-	at hudson.remoting.RemoteInvocationHandler.invoke(RemoteInvocationHandler.java:168)
-	at hudson.remoting.$Proxy1.waitForProperty(Unknown Source)
-	at hudson.remoting.Channel.waitForRemoteProperty(Channel.java:1122)
-	at hudson.cli.CLI.<init>(CLI.java:145)
-	at hudson.cli.CLIConnectionFactory.connect(CLIConnectionFactory.java:72)
-	at hudson.cli.CLI._main(CLI.java:459)
-	at hudson.cli.CLI.main(CLI.java:382)
-Caused by: hudson.remoting.RequestAbortedException: java.io.StreamCorruptedException: invalid stream header: 0A0A0A0A
-	at hudson.remoting.Request.abort(Request.java:299)
-	at hudson.remoting.Channel.terminate(Channel.java:802)
-	at hudson.remoting.SynchronousCommandTransport$ReaderThread.run(SynchronousCommandTransport.java:69)
-Caused by: java.io.StreamCorruptedException: invalid stream header: 0A0A0A0A
-	at java.io.ObjectInputStream.readStreamHeader(ObjectInputStream.java:806)
-	at java.io.ObjectInputStream.<init>(ObjectInputStream.java:299)
-	at hudson.remoting.ObjectInputStreamEx.<init>(ObjectInputStreamEx.java:40)
-	at hudson.remoting.AbstractSynchronousByteArrayCommandTransport.read(AbstractSynchronousByteArrayCommandTransport.java:34)
-	at hudson.remoting.SynchronousCommandTransport$ReaderThread.run(SynchronousCommandTransport.java:48)
+[WARN] Failed to authenticate with your SSH keys. Proceeding as anonymous
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
+  <actions/>
+  <description></description>
+  <logRotator class="hudson.tasks.LogRotator">
+    <daysToKeep>5</daysToKeep>
+    <numToKeep>5</numToKeep>
+    <artifactDaysToKeep>-1</artifactDaysToKeep>
+    <artifactNumToKeep>-1</artifactNumToKeep>
+  </logRotator>
+  <keepDependencies>false</keepDependencies>
+  <properties/>
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.2">
+    <configVersion>2</configVersion>
+    <userRemoteConfigs>
+      <hudson.plugins.git.UserRemoteConfig>
+        <url>https://github.com/zutherb/AppStash.git</url>
+      </hudson.plugins.git.UserRemoteConfig>
+    </userRemoteConfigs>
+    <branches>
+      <hudson.plugins.git.BranchSpec>
+        <name>ci-server</name>
+      </hudson.plugins.git.BranchSpec>
+    </branches>
+    <doGenerateSubmoduleConfigurations>false</doGenerateSubmoduleConfigurations>
+    <submoduleCfg class="list"/>
+    <extensions/>
+  </scm>
+  <canRoam>true</canRoam>
+  <disabled>false</disabled>
+  <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
+  <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <triggers>
+    <hudson.triggers.SCMTrigger>
+      <spec>H/60 * * * *</spec>
+      <ignorePostCommitHooks>false</ignorePostCommitHooks>
+    </hudson.triggers.SCMTrigger>
+  </triggers>
+  <concurrentBuild>false</concurrentBuild>
+  <builders>
+    <hudson.tasks.Shell>
+      <command>./gradlew -p microservice/service/dataloader installApp
+./gradlew -p microservice/service/dataloader prepareDeb buildDeb</command>
+    </hudson.tasks.Shell>
+  </builders>
+  <publishers>
+    <hudson.tasks.ArtifactArchiver>
+      <artifacts>**/*.deb</artifacts>
+      <latestOnly>false</latestOnly>
+      <allowEmptyArchive>false</allowEmptyArchive>
+      <onlyIfSuccessful>false</onlyIfSuccessful>
+      <defaultExcludes>true</defaultExcludes>
+    </hudson.tasks.ArtifactArchiver>
+  </publishers>
+  <buildWrappers/>
+</project>

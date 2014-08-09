@@ -15,7 +15,6 @@ public class JettyStart {
     private static final Logger LOGGER = LoggerFactory.getLogger(JettyStart.class);
 
     static {
-        System.setProperty(ContextInitializer.CONFIG_FILE_PROPERTY, "logback-test.groovy");
         System.setProperty("spring.profiles.active", "default");
     }
 
