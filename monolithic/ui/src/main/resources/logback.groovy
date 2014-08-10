@@ -38,6 +38,8 @@ if (System.properties.find { it.key == "spring.profiles.active" } == "production
         }
     }
 
+    logger("io.github.appstash.task.MemoryLoggingTask", ERROR, ["stdout"])
+
     root(INFO, ["stdout", "readable", "logstash"])
 }
 

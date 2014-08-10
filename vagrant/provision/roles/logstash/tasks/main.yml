@@ -11,10 +11,15 @@
   apt_key: url="http://packages.elasticsearch.org/GPG-KEY-elasticsearch" state=present
 
 - name: Install Logstash from repository
-  apt: pkg={{ item }} update_cache=yes state=present
+  apt: pkg={{item}} update_cache=yes state=present
   with_items:
    - logstash
    - logstash-contrib
 
+- raw: sudo chgrp -R tomcat6 /var/log/tomcat6/
+- raw: sudo chmod -R 755 /var/log/tomcat6
+
+- copy: src=default dest=/etc/default/logstash force=yes mode=0644
 - copy: src=logstash.conf dest=/etc/logstash/conf.d force=yes mode=0644
   notify: restart logstash
+
