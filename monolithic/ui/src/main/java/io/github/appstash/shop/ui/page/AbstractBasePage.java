@@ -6,13 +6,17 @@ import io.github.appstash.shop.ui.panel.NavigationPanel;
 import io.github.appstash.shop.ui.panel.base.FeedbackPanel;
 import io.github.appstash.shop.ui.panel.login.LoginModalPanel;
 import org.apache.wicket.Component;
-import org.apache.wicket.markup.head.CssHeaderItem;
-import org.apache.wicket.markup.head.IHeaderResponse;
-import org.apache.wicket.markup.head.JavaScriptHeaderItem;
-import org.apache.wicket.markup.head.StringHeaderItem;
+import org.apache.wicket.ajax.AbstractDefaultAjaxBehavior;
+import org.apache.wicket.ajax.AjaxEventBehavior;
+import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.ajax.attributes.AjaxCallListener;
+import org.apache.wicket.ajax.attributes.AjaxRequestAttributes;
+import org.apache.wicket.ajax.attributes.IAjaxCallListener;
+import org.apache.wicket.markup.head.*;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.request.Request;
 import org.apache.wicket.request.cycle.RequestCycle;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -59,6 +63,7 @@ public abstract class AbstractBasePage extends WebPage {
         add(loginModalPanel());
         add(headerContainer());
         add(pizzaShopFeedbackPanel());
+        add(new KeyPressBehavior(this));
     }
 
     private Component loginModalPanel() {

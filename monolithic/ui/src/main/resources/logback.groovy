@@ -5,7 +5,7 @@ import static ch.qos.logback.classic.Level.*
 
 def defaultPattern = "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
 
-if (System.properties.find { it.key == "spring.profiles.active" } == "production") {
+if (System.properties.find { it.key == "spring.profiles.active" } != "production") {
     appender("stdout", ConsoleAppender) {
         encoder(PatternLayoutEncoder) {
             pattern = defaultPattern
@@ -27,11 +27,7 @@ if (System.properties.find { it.key == "spring.profiles.active" } == "production
     }
 
     appender("logstash", FileAppender) {
-        if (new File("/var/log/tomcat6/").exists()) {
-            file = "/var/log/tomcat6/appstash.log"
-        } else {
-            file = "appstash.log"
-        }
+        file = "/var/log/tomcat6/appstash.log"
         append = true
         encoder(PatternLayoutEncoder) {
             pattern = "%msg%n"

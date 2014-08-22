@@ -40,4 +40,14 @@ public class FeatureTooglesBean {
     public boolean isHighlightingFeatureEnabled() {
         return highlightingFeatureEnabled;
     }
+
+    @ManagedOperation
+    public void toogleHighlightingFeature() {
+        highlightingFeatureEnabled = !highlightingFeatureEnabled;
+    }
+
+    @ManagedOperation
+    public void toogleTopSellerFeature() {
+        topSellerFeatureEnabled = !topSellerFeatureEnabled;
+    }
 }
