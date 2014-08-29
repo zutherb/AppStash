@@ -8,7 +8,7 @@ idea {
     }
 }
 
-mainClassName = "io.github.appstash.shop.service.navigation.Boot"
+mainClassName = "io.github.appstash.shop.service.navigation.AppServer"
 
 sourceSets {
     main {

@@ -12,6 +12,8 @@ idea {
     }
 }
 
+sourceCompatibility = org.gradle.api.JavaVersion.VERSION_1_7
+targetCompatibility = org.gradle.api.JavaVersion.VERSION_1_7
 
 mainClassName = "io.github.appstash.shop.service.product.Boot"
  

@@ -23,7 +23,9 @@ public class NavigationResource {
 
     @GET("/all")
     public List<Navigation> navigation() {
-        return product.get().aggregate("{$group: {_id : \"$type\", sum : {$sum : 1}}}").as(Navigation.class);
+        return product.get()
+                .aggregate("{$group: {_id : \"$type\", sum : {$sum : 1}}}")
+                .as(Navigation.class);
     }
 
 

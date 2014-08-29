@@ -24,7 +24,7 @@
 
 
     <header role="banner" id="top" class="navbar navbar-static-top bs-docs-nav">
-        <div class="container">
+        <div class="container" ng-controller="NaviCtrl">
             <div class="navbar-header">
                 <button data-target=".bs-navbar-collapse" data-toggle="collapse" type="button" class="navbar-toggle">
                     <span class="sr-only">Microservices architecture</span>
@@ -35,7 +35,7 @@
                 <a class="navbar-brand" href="./">Microservices architecture</a>
             </div>
             <nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
-                <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav" >
 
                     <li class="active">
                         <a href="./">
@@ -43,31 +43,11 @@
                         </a>
                     </li>
 
-                    <li class="">
-                        <a href="./productcatalog/pizza">
-                            Pizza
+                    <li ng-repeat="item in items">
+                        <a href="./#/productcatalog/{{item.urlname}}">
+                            {{item.name}}
                         </a>
                     </li>
-
-                    <li class="">
-                        <a href="./productcatalog/pasta">
-                            Pasta
-                        </a>
-                    </li>
-
-                    <li class="">
-                        <a href="./productcatalog/salad">
-                            Salad
-                        </a>
-                    </li>
-
-                    <li class="">
-                        <a href="./productcatalog/beverage">
-                            Beverage
-                        </a>
-                    </li>
-
-
                 </ul>
 
                 <ul class="nav navbar-nav navbar-right">
@@ -136,8 +116,10 @@
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
+    <script src="scripts/services.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/controllers/about.js"></script>
+    <script src="scripts/controllers/navi.js"></script>
     <!-- endbuild -->
 </body>
 </html>

@@ -16,7 +16,11 @@ public class Navigation {
 
     @JsonProperty("name")
     public String getName() {
-        return name;
+        return Character.toString(name.charAt(0)).toUpperCase()+name.substring(1).toLowerCase();
+    }
+
+    public String getUrlname() {
+        return name.toLowerCase();
     }
 
     public long getSum() {

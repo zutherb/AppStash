@@ -74,12 +74,21 @@ module.exports = function (grunt) {
             },
             proxies: [
                 {
-                    context: '/product',
+                    context: '/api/product',
                     host: 'localhost',
                     port: 18080,
                     changeOrigin: true,
                     rewrite: {
                         '/api/product' : ''
+                    }
+                },
+                {
+                    context: '/api/navigation',
+                    host: 'localhost',
+                    port: 18090,
+                    changeOrigin: true,
+                    rewrite: {
+                        '/api/navigation' : ''
                     }
                 }
             ],
