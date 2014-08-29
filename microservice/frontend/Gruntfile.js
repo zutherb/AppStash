@@ -28,6 +28,23 @@ module.exports = function (grunt) {
         // Project settings
         yeoman: appConfig,
 
+        typescript: {
+            base: {
+                src: ['<%= yeoman.app %>/scripts/{,*/}*.ts'],
+                options: {
+                    target: 'es5',
+                    sourceMap: true
+                }
+            },
+            test: {
+                src: ['test/spec/{,*/}*.ts'],
+                options: {
+                    target: 'es5',
+                    sourceMap: true
+                }
+            }
+        },
+
         // Watches files for changes and runs tasks based on the changed files
         watch: {
             bower: {
@@ -44,6 +61,14 @@ module.exports = function (grunt) {
             jsTest: {
                 files: ['test/spec/{,*/}*.js'],
                 tasks: ['newer:jshint:test', 'karma']
+            },
+            ts: {
+                files: ['<%= yeoman.app %>/scripts/{,*/}*.ts'],
+                tasks: ['typescript']
+            },
+            tsTest: {
+                files: ['test/spec/{,*/}*.ts'],
+                tasks: ['typescript:test']
             },
             compass: {
                 files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
