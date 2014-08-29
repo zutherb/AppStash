@@ -1,5 +1,7 @@
 package io.github.appstash.shop.ui;
 
+import io.github.appstash.shop.ui.mbean.DesignSelectorBean;
+import io.github.appstash.shop.ui.mbean.FeatureTooglesBean;
 import io.github.appstash.shop.ui.navigation.NavigationEntry;
 import io.github.appstash.shop.ui.navigation.NavigationGroup;
 import io.github.appstash.shop.ui.navigation.Navigation;
@@ -55,6 +57,10 @@ public abstract class AbstractWicketTest {
     protected NavigationProvider navigationProvider;
     @Mock
     protected UserService userService;
+    @Mock
+    protected FeatureTooglesBean featureTooglesBean;
+    @Mock
+    protected DesignSelectorBean designSelectorBean;
 
     @Before
     public void initializeWicketTester() throws Exception {
@@ -79,6 +85,8 @@ public abstract class AbstractWicketTest {
         appctx.putBean("fakeAuthenticationService", fakeAuthenticationService);
         appctx.putBean("navigationProvider", navigationProvider);
         appctx.putBean("userService", userService);
+        appctx.putBean("featureTooglesBean", featureTooglesBean);
+        appctx.putBean("designSelector", designSelectorBean);
         appctx.putBean("dozerMapper", createDozerMapper());
 
         return appctx;

@@ -2,9 +2,10 @@ package io.github.appstash.shop.ui.panel.product;
 
 import io.github.appstash.shop.service.product.model.ProductInfo;
 import io.github.appstash.shop.ui.event.basket.AddToBasketEvent;
+import io.github.appstash.shop.ui.model.ImageLinkModel;
 import io.github.appstash.shop.ui.model.PriceModel;
 import io.github.appstash.shop.ui.page.detail.ProductDetailPage;
-import io.github.appstash.shop.ui.panel.base.AbstractPizzaShopBasePanel;
+import io.github.appstash.shop.ui.panel.base.AbstractShopBasePanel;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -23,7 +24,7 @@ import java.util.List;
 /**
  * @author zutherb
  */
-public class ProductItemPanel extends AbstractPizzaShopBasePanel {
+public class ProductItemPanel extends AbstractShopBasePanel {
 
     private IModel<ProductInfo> productInfoModel;
     private IModel<List<String>> additionalTagsModel;
@@ -72,13 +73,7 @@ public class ProductItemPanel extends AbstractPizzaShopBasePanel {
             }
         };
         WebMarkupContainer image = new WebMarkupContainer("image");
-        image.add(new AttributeModifier("src", new AbstractReadOnlyModel<String>() {
-            @Override
-            public String getObject() {
-                String contextPath = getRequestCycle().getRequest().getContextPath();
-                return contextPath + "/assets/img/Pizza/" + productInfoModel.getObject().getUrlname() + ".jpg";
-            }
-        }));
+        image.add(new AttributeModifier("src", new ImageLinkModel(productInfoModel, this)));
         image.add(new AttributeModifier("title", new PropertyModel<String>(productInfoModel, "description")));
         image.add(new AttributeModifier("alt", new PropertyModel<String>(productInfoModel, "name")));
         image.setOutputMarkupId(true);

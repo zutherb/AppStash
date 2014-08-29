@@ -1,7 +1,7 @@
 package io.github.appstash.shop.ui.panel.product;
 
 import io.github.appstash.shop.service.product.model.ProductInfo;
-import io.github.appstash.shop.ui.panel.base.AbstractPizzaShopBasePanel;
+import io.github.appstash.shop.ui.panel.base.AbstractShopBasePanel;
 import io.github.appstash.shop.ui.panel.base.HighLightBehavior;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.wicket.Component;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-public class ProductItemListPanel extends AbstractPizzaShopBasePanel {
+public class ProductItemListPanel extends AbstractShopBasePanel {
 
     private IModel<?> containerTopic;
     private IModel<List<ProductInfo>> productListModel;

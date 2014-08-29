@@ -5,18 +5,18 @@ add vm params: -Dgeb.build.reportsDir="/tmp/geb" -Dgeb.env="firefox"
  */
 class ShoppingFlowSpec extends GebReportingSpec {
 
-    def "ordering a pizza"() {
+    def "ordering"() {
         when:
-        to PizzaHomePage
+        to HomePage
 
         and:
-        pizzaCatalogLink.click()
+        catalogLink.click()
 
         then:
         at ProductCatalogPage
 
         and:
-        pizzaDetailPageLink.click()
+        detailPageLink.click()
 
         then:
         at ProductDetailPage

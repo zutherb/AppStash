@@ -9,7 +9,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
  */
 object ProductType extends Enumeration {
   type productType = Value
-  val PIZZA, PASTA, SALAD, BEVERAGE = Value
+  val HANDY, TABLET = Value
 }
 
 

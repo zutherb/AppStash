@@ -7,7 +7,7 @@ import io.github.appstash.shop.ui.event.basket.BasketChangeEvent;
 import io.github.appstash.shop.ui.event.basket.RemoveFromBasketEvent;
 import io.github.appstash.shop.ui.model.PriceModel;
 import io.github.appstash.shop.ui.page.checkout.CheckoutPage;
-import io.github.appstash.shop.ui.panel.base.AbstractPizzaShopBasePanel;
+import io.github.appstash.shop.ui.panel.base.AbstractShopBasePanel;
 import io.github.appstash.shop.ui.panel.base.HighLightBehavior;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -23,7 +23,7 @@ import org.apache.wicket.markup.repeater.data.ListDataProvider;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
-public class BasketPanel extends AbstractPizzaShopBasePanel {
+public class BasketPanel extends AbstractShopBasePanel {
 
     @SpringBean(name = "basket")
     private Basket basket;

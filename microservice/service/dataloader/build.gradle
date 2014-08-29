@@ -42,6 +42,6 @@ task prepareDeb {
 
     copy {
         from "${buildDir}/install/"
-        into "${buildDir}/debian-data/usr/share/pizza/"
+        into "${buildDir}/debian-data/usr/share/shop/"
     }
 }

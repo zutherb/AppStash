@@ -97,7 +97,7 @@ dependencies {
 [jettyRun, jettyRunWar]*.with {
     httpPort = 8080
     stopPort = 8081
-    contextPath = "pizza"
+    contextPath = "shop"
 }
 
 test {

@@ -28,7 +28,7 @@ import java.util.List;
 
 
 @MountPath("productcatalog/${type}")
-@EnumProductTypeNavigationItem(enumClazz = ProductType.class, defaultEnum = "PIZZA", sortOrder = 2)
+@EnumProductTypeNavigationItem(enumClazz = ProductType.class, defaultEnum = "HANDY", sortOrder = 2)
 public class ProductCatalogPage extends AbstractBasePage {
 
     @SpringBean(name = "productService")
@@ -66,7 +66,7 @@ public class ProductCatalogPage extends AbstractBasePage {
             public ProductType getObject() {
                 if (productType == null) {
                     if (getPageParameters() == null || getPageParameters().get("type") == null) {
-                        productType = ProductType.PIZZA;
+                        productType = ProductType.HANDY;
                     } else {
                         productType = ProductType.fromUrlname(getPageParameters().get("type").toString());
                     }
@@ -95,8 +95,8 @@ public class ProductCatalogPage extends AbstractBasePage {
 
             @Override
             protected void populateItem(final Item<ProductInfo> item) {
-                ProductItemPanel pizzaItem = new ProductItemPanel("productItem", item.getModel());
-                item.add(pizzaItem.setOutputMarkupId(true));
+                ProductItemPanel productItem = new ProductItemPanel("productItem", item.getModel());
+                item.add(productItem.setOutputMarkupId(true));
             }
         };
     }

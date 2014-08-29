@@ -37,7 +37,7 @@
       - distributions
   #    - updates
 
-- file: path=/var/packages/debian/conf/override.pizza state=touch force=yes
+- file: path=/var/packages/debian/conf/override.shop state=touch force=yes
 - copy: src=options dest=/var/packages/debian/conf/options force=yes mode=0644
 
 - copy: src=default dest=/etc/nginx/sites-enabled/default force=yes mode=0644

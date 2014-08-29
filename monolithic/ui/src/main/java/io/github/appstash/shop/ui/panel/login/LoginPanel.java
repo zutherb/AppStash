@@ -1,11 +1,11 @@
 package io.github.appstash.shop.ui.panel.login;
 
 import io.github.appstash.shop.ui.event.login.LoginEvent;
+import io.github.appstash.shop.ui.panel.base.AbstractShopBasePanel;
 import io.github.appstash.shop.ui.panel.base.FeedbackPanel;
 import io.github.appstash.shop.service.authentication.model.LoginInfo;
 import io.github.appstash.shop.service.user.api.UserService;
 import io.github.appstash.shop.service.user.model.UserInfo;
-import io.github.appstash.shop.ui.panel.base.AbstractPizzaShopBasePanel;
 import org.apache.wicket.Application;
 import org.apache.wicket.Component;
 import org.apache.wicket.Session;
@@ -28,7 +28,7 @@ import java.util.Collections;
 /**
  * @author zutherb.
  */
-public class LoginPanel extends AbstractPizzaShopBasePanel {
+public class LoginPanel extends AbstractShopBasePanel {
     private static final long serialVersionUID = 4143808726154574329L;
 
     @SpringBean(name = "userService")

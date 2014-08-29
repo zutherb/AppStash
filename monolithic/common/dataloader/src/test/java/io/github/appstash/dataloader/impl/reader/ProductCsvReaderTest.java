@@ -9,6 +9,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import static io.github.appstash.shop.repository.product.model.ProductType.*;
@@ -27,39 +28,24 @@ public class ProductCsvReaderTest {
 
     @Test
     public void testAllProductsParsed() throws IOException {
-        assertEquals( 32, parsedProducts.size( ));
+        assertEquals( 20, parsedProducts.size( ));
     }
 
     @Test
-    public void testParsedPizza() {
-        checkCountAndArticleIds( PIZZA, 8, 100 );
+    public void testParsedHandy() {
+        checkCountAndArticleIds(HANDY, 16);
     }
 
     @Test
-    public void testParsedPasta() {
-        checkCountAndArticleIds( PASTA, 8, 200 );
+    public void testParsedTablet() {
+        checkCountAndArticleIds(TABLET, 4);
     }
 
-    @Test
-    public void testParsedSalad() {
-        checkCountAndArticleIds( SALAD, 8, 300 );
-    }
-
-    @Test
-    public void testParsedBeverages() {
-        checkCountAndArticleIds( BEVERAGE, 8, 400 );
-    }
-
-
-    private void checkCountAndArticleIds( ProductType type, int expectedProductCount, int startingArticleNumber ) {
-        int actualProductCount = 0;
-
-        for ( Product parsedProduct : parsedProducts ) {
-            if( parsedProduct.getType() == type ) {
-                int expectedArticleNumber = startingArticleNumber + actualProductCount++;
-                assertEquals( expectedArticleNumber + "", parsedProduct.getArticleId( ));
-            }
-        }
-        assertEquals( expectedProductCount, actualProductCount );
+    private void checkCountAndArticleIds( ProductType type, int expectedProductCount) {
+        List<Product> copyOfparsedProducts = new ArrayList<>(parsedProducts);
+        assertEquals( expectedProductCount, copyOfparsedProducts.stream()
+            .filter( product -> type.equals(product.getType()))
+            .count()
+        );
     }
 }

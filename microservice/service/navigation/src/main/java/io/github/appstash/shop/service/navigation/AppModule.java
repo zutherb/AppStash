@@ -30,7 +30,7 @@ public class AppModule {
 
     @Provides @Named(MongoModule.MONGO_DB_NAME)
     public String dbName() {
-        return "pizza";
+        return "shop";
     }
 
     @Provides

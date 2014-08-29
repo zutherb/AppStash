@@ -1,4 +1,4 @@
-Source: pizza-dataloader
+Source: shop-dataloader
 Section: web
 Priority: optional
 Version: [[version]]
@@ -6,7 +6,7 @@ Maintainer: Bernd Zuther <bernd.zuther@me.com>
 Homepage: http://www.bernd-zuther.de/
 Vcs-Git: https://github.com/zutherb/AppStash.git
 Vcs-Browser: https://github.com/zutherb/AppStash
-Package: pizza-dataloader
+Package: shop-dataloader
 Architecture: amd64
 Depends: mongodb
-Description: Pizza Dataloader
+Description: shop Dataloader

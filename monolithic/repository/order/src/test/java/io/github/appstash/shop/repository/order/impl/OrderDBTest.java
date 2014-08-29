@@ -81,6 +81,6 @@ public class OrderDBTest extends AbstractJUnit4SpringContextTests {
     }
 
     private static Product createSampleProduct() {
-        return new Product("4242", ProductType.PIZZA, "Pizza Sampliziosa", 5.95);
+        return new Product("4242", ProductType.HANDY, "Nexus S", 5.95);
     }
 }

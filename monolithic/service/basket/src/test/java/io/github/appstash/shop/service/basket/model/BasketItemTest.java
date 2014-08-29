@@ -20,7 +20,7 @@ public class BasketItemTest {
 
     @Before
     public void setup() {
-        basketItem = new BasketItem(new ProductInfo(new ObjectId().toString(), "B2", "Salami", SeoUtils.urlFriendly("Salami"), "", ProductType.PIZZA, 2.5, "category"));
+        basketItem = new BasketItem(new ProductInfo(new ObjectId().toString(), "B2", "Salami", SeoUtils.urlFriendly("Salami"), "", ProductType.HANDY, 2.5, "category"));
     }
 
     @Test

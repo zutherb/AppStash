@@ -12,7 +12,7 @@
                 <prop key="generator.generate.orders">100</prop>
                 <prop key="generator.drop.collections">0</prop>
                 <prop key="generator.generationJob.rate">0</prop>
-                <prop key="mongo.db">pizza</prop>
+                <prop key="mongo.db">shop</prop>
                 <prop key="mongo.host">localhost</prop>
                 <prop key="mongo.port">27017</prop>
             </props>

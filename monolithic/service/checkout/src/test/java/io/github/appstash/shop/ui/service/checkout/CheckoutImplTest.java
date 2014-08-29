@@ -39,7 +39,7 @@ public class CheckoutImplTest {
     }
 
     private List<BasketItem> createBasketItems() {
-        return Arrays.asList(new BasketItem( new ProductInfo(new ObjectId().toString(), "1", "test", "test", "null", ProductType.PIZZA, 3.5,"test") ));
+        return Arrays.asList(new BasketItem( new ProductInfo(new ObjectId().toString(), "1", "test", "test", "null", ProductType.HANDY, 3.5,"test") ));
     }
 
     @Test

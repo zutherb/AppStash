@@ -13,7 +13,7 @@
     <bean id="testValues" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
         <property name="properties">
             <props>
-                <prop key="mongo.db">pizza-test</prop>
+                <prop key="mongo.db">shop-test</prop>
                 <prop key="mongo.host">localhost</prop>
                 <prop key="mongo.port">27017</prop>
             </props>

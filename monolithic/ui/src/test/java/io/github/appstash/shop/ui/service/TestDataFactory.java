@@ -33,7 +33,7 @@ public class TestDataFactory {
     }
 
     public static ProductInfo createProductInfo() {
-        return new ProductInfo(new ObjectId().toString(), "P1", "Salami", SeoUtils.urlFriendly("Salami"), "", ProductType.PIZZA, 5.90, "");
+        return new ProductInfo(new ObjectId().toString(), "P1", "Salami", SeoUtils.urlFriendly("Salami"), "", ProductType.HANDY, 5.90, "");
     }
 
     public static DeliveryAddressInfo createDeliveryAdressInfo() {

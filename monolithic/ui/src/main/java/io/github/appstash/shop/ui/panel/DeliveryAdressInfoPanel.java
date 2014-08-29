@@ -1,7 +1,7 @@
 package io.github.appstash.shop.ui.panel;
 
 import io.github.appstash.shop.service.order.model.OrderInfo;
-import io.github.appstash.shop.ui.panel.base.AbstractPizzaShopBasePanel;
+import io.github.appstash.shop.ui.panel.base.AbstractShopBasePanel;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;
@@ -9,7 +9,7 @@ import org.apache.wicket.model.PropertyModel;
 /**
  * @author zutherb
  */
-public class DeliveryAdressInfoPanel extends AbstractPizzaShopBasePanel {
+public class DeliveryAdressInfoPanel extends AbstractShopBasePanel {
 
     private static final long serialVersionUID = -1278005494199018828L;
 

@@ -45,7 +45,7 @@ debian {
 task prepareDeb {
     copy {
         from "${projectDir}/src/main/R"
-        into "${buildDir}/debian-data/usr/share/pizza/${debName}"
+        into "${buildDir}/debian-data/usr/share/shop/${debName}"
     }
 }
 

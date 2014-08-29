@@ -3,7 +3,7 @@ package io.github.appstash.shop.ui.panel.login;
 import io.github.appstash.shop.ui.event.login.LoginEvent;
 import io.github.appstash.shop.ui.navigation.ModalPanel;
 import io.github.appstash.shop.service.authentication.model.LoginInfo;
-import io.github.appstash.shop.ui.panel.base.AbstractPizzaShopBasePanel;
+import io.github.appstash.shop.ui.panel.base.AbstractShopBasePanel;
 import org.apache.wicket.Component;
 import org.apache.wicket.Session;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -19,7 +19,7 @@ import org.apache.wicket.model.LoadableDetachableModel;
 /**
  * @author zutherb.
  */
-public class LoginModalPanel extends AbstractPizzaShopBasePanel implements ModalPanel {
+public class LoginModalPanel extends AbstractShopBasePanel implements ModalPanel {
 
     private WebMarkupContainer modalContainer;
 

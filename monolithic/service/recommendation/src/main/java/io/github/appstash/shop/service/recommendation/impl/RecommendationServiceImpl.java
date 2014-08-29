@@ -14,13 +14,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Just a dummy implementation.
- * <p/>
- * User: christian.kroemer@comsysto.com
- * Date: 6/21/13
- * Time: 3:35 PM
- */
 @Service("recommendationService")
 public class RecommendationServiceImpl implements RecommendationService {
 
@@ -83,6 +76,6 @@ public class RecommendationServiceImpl implements RecommendationService {
     private List<ProductInfo> getRandomlyChosenProducts(int count, ProductType type) {
         List<ProductInfo> allProducts = productService.findAll(type);
         Collections.shuffle(allProducts);
-        return allProducts.subList(0, count);
+        return (!allProducts.isEmpty()) ? allProducts.subList(0, count) : Collections.emptyList();
     }
 }

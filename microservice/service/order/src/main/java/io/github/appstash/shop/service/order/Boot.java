@@ -23,8 +23,8 @@ public class Boot {
     static {
         try {
             MONGO_CLIENT = new MongoClient("localhost");
-            DB pizzaDB = MONGO_CLIENT.getDB("pizza");
-            DB_COLLECTION = pizzaDB.getCollection("order");
+            DB shopDB = MONGO_CLIENT.getDB("shop");
+            DB_COLLECTION = shopDB.getCollection("order");
         } catch (UnknownHostException e) {
             throw new RuntimeException("Order Service could not be started", e);
         }

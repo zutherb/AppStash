@@ -6,6 +6,7 @@ import io.github.appstash.shop.service.product.api.ProductService;
 import io.github.appstash.shop.service.product.model.ProductInfo;
 import io.github.appstash.shop.service.recommendation.api.RecommendationService;
 import io.github.appstash.shop.ui.event.basket.AddToBasketEvent;
+import io.github.appstash.shop.ui.model.ImageLinkModel;
 import io.github.appstash.shop.ui.model.PriceModel;
 import io.github.appstash.shop.ui.page.AbstractBasePage;
 import io.github.appstash.shop.ui.panel.basket.BasketPanel;
@@ -105,13 +106,7 @@ public class ProductDetailPage extends AbstractBasePage {
 
     private Component productImage() {
         WebMarkupContainer productImage = new WebMarkupContainer("productImage");
-        productImage.add(new AttributeModifier("src", new LoadableDetachableModel<String>() {
-            @Override
-            protected String load() {
-                String contextPath = getRequestCycle().getRequest().getContextPath();
-                return contextPath + "/assets/img/Pizza/" + productInfoModel.getObject().getUrlname() + ".jpg";
-            }
-        }));
+        productImage.add(new AttributeModifier("src", new ImageLinkModel(productInfoModel, this)));
         return productImage;
     }
 

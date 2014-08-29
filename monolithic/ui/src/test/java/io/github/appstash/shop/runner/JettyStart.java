@@ -31,7 +31,7 @@ public class JettyStart {
 
         Server server = new Server(Integer.valueOf(args[0]));
         WebAppContext context = new WebAppContext();
-        context.setContextPath("/pizza");
+        context.setContextPath("/shop");
         context.setResourceBase("src/main/webapp/");
         context.setDescriptor("src/main/webapp/WEB-INF/web.xml");
         context.setParentLoaderPriority(true);

@@ -101,11 +101,11 @@
   sudo_user: jenkins
   command: 'java -jar /tmp/jenkins-cli.jar -s http://localhost:8080/ build {{item}}'
   with_items:
-    - pizza-monolitic-build
-    - pizza-microservice-product-service-build
-    - pizza-microservice-recommendation-service-build
-    - pizza-microservice-dataloader-build
-    - pizza-microservice-ui-build
+    - shop-monolitic-build
+    - shop-microservice-product-service-build
+    - shop-microservice-recommendation-service-build
+    - shop-microservice-dataloader-build
+    - shop-microservice-ui-build
   ignore_errors: yes
 
 - file: path=/var/lib/jenkins/.ssh/ mode=0755 owner=jenkins group=jenkins state=directory

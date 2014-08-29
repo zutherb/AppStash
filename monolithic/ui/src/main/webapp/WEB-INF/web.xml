@@ -7,7 +7,7 @@
          metadata-complete="true">
     <absolute-ordering />
 
-    <display-name>Pizza Examples</display-name>
+    <display-name>Shop Examples</display-name>
 
     <!-- FilterChain proxy for security -->
     <filter>

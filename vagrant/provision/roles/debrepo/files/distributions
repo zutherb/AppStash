@@ -1,9 +1,9 @@
 Origin: ci-repo
 Label: ci-repo
-Codename: pizza
+Codename: shop
 Architectures: i386 amd64
 Components: main
-Description: Pizza APT Repository
+Description: Shop APT Repository
 SignWith: 18858766
-DebOverride: override.pizza
-DscOverride: override.pizza
+DebOverride: override.shop
+DscOverride: override.shop

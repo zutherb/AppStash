@@ -19,7 +19,7 @@ public class OrderTest {
     public void setUp() throws Exception {
         order = new Order();
 
-        Product product = new Product("1", ProductType.PIZZA, "product", 4);
+        Product product = new Product("1", ProductType.HANDY, "product", 4);
 
         OrderItem orderItem1 = new OrderItem(product);
         OrderItem orderItem2 = new OrderItem(product);
@@ -29,7 +29,7 @@ public class OrderTest {
     }
 
     @Test
-    public void testGetPizzaCount() throws Exception {
+    public void testGetProductCount() throws Exception {
         assertEquals(BigDecimal.valueOf(2).compareTo(order.getItemCount()), 0);
     }
 

@@ -51,8 +51,8 @@ public class DataGenerator {
     private static Logger logger = LoggerFactory.getLogger(DataGenerator.class);
 
     private List<Supplier> suppliers;
-    private boolean randomPizzaIds = true;
-    private int salesPizzaId = 0;
+    private boolean randomIds = true;
+    private int salesId = 0;
 
     @Value("${generator.drop.collections}")
     private boolean dropCollections;
@@ -187,14 +187,14 @@ public class DataGenerator {
                                List<OrderItem> orderItems, List<Product> products) {
         int random = getRandom(1, 6);
         for (int i = 0; i < random; i++) {
-            OrderItem orderItem = new OrderItem(getRandomPizza(randomUser, products));
+            OrderItem orderItem = new OrderItem(getRandomProduct(randomUser, products));
             orderItems.add(orderItem);
         }
     }
 
-    private Product getRandomPizza(User randomUser, List<Product> products) {
+    private Product getRandomProduct(User randomUser, List<Product> products) {
         int counter = 0;
-        if (randomPizzaIds) {
+        if (randomIds) {
             int timestamp = (int) (new Date().getTime() / 1000);
             int random2 = getRandom(1, 3);
             timestamp /= random2;
@@ -210,7 +210,7 @@ public class DataGenerator {
                 }
             }
         } else {
-            counter = salesPizzaId % products.size();
+            counter = salesId % products.size();
             return products.get(counter);
         }
         return products.get(counter);
@@ -255,13 +255,13 @@ public class DataGenerator {
     }
 
     @ManagedAttribute
-    public boolean isRandomPizzaIds() {
-        return randomPizzaIds;
+    public boolean isRandomIds() {
+        return randomIds;
     }
 
     @ManagedAttribute
-    public void setRandomPizzaIds(boolean randomPizzaIds) {
-        this.randomPizzaIds = randomPizzaIds;
+    public void setRandomIds(boolean randomIds) {
+        this.randomIds = randomIds;
     }
 
     @ManagedAttribute
@@ -270,13 +270,13 @@ public class DataGenerator {
     }
 
     @ManagedAttribute
-    public int getSalesPizzaId() {
-        return salesPizzaId;
+    public int getSalesId() {
+        return salesId;
     }
 
     @ManagedAttribute
-    public void setSalesPizzaId(int salesPizzaId) {
-        this.salesPizzaId = salesPizzaId;
+    public void setSalesId(int salesId) {
+        this.salesId = salesId;
     }
 
     @ManagedAttribute

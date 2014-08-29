@@ -2,10 +2,8 @@ package io.github.appstash.shop.repository.product.model;
 
 
 public enum ProductType {
-    PIZZA("Pizza", "pizza"),
-    PASTA("Pasta", "pasta"),
-    SALAD("Salad", "salad"),
-    BEVERAGE("Beverage", "beverage");
+    TABLET("Tablet", "tablet"),
+    HANDY("Handy", "handy");
 
     private String name;
     private String urlname;

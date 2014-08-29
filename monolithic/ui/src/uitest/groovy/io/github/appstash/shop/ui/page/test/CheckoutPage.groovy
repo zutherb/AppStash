@@ -3,8 +3,8 @@ package io.github.appstash.shop.ui.page.test
 import geb.Page
 
 class CheckoutPage extends Page {
-    static url = "http://localhost:8888/pizza/checkout"
-    static at = { title == "Pizza Shop" }
+    static url = "http://localhost:8888/shop/checkout"
+    static at = { title == "Shop" }
     static content = {
         results(wait: true) { $("div.container") }
         result { i -> results[i] }

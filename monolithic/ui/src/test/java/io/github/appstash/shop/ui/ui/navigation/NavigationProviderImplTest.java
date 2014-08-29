@@ -49,16 +49,16 @@ public class NavigationProviderImplTest {
     @Test
     public void testGetNavigation() throws Exception {
         assertNotNull(navigation);
-        assertEquals(3, navigation.getNavigationGroups().size());
+        assertEquals(2, navigation.getNavigationGroups().size());
     }
 
     @Test
     public void getMainNavigationGroup() {
         NavigationGroup mainGroup = navigation.getMainNavigationGroup();
         assertNotNull(mainGroup);
-        assertEquals(6, mainGroup.getNavigationEntries().size());
+        assertEquals(4, mainGroup.getNavigationEntries().size());
         assertEquals("Home", mainGroup.getNavigationEntries().get(0).getName());
-        assertEquals("Proceed to Checkout", mainGroup.getNavigationEntries().get(5).getName());
+        assertEquals("Proceed to Checkout", mainGroup.getNavigationEntries().get(3).getName());
     }
 
     @Test

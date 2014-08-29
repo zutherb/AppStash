@@ -1,5 +1,5 @@
 #!/bin/sh
 set -e
 
-chmod +x /usr/share/pizza/dataloader/bin/dataloader
-/usr/share/pizza/dataloader/bin/dataloader
+chmod +x /usr/share/shop/dataloader/bin/dataloader
+/usr/share/shop/dataloader/bin/dataloader

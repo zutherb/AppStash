@@ -7,7 +7,7 @@ import io.github.appstash.shop.ui.event.AjaxEvent;
 import io.github.appstash.shop.ui.event.basket.AddToBasketEvent;
 import io.github.appstash.shop.ui.event.basket.RemoveFromBasketEvent;
 import io.github.appstash.shop.ui.mbean.FeatureTooglesBean;
-import io.github.appstash.shop.ui.panel.base.AbstractPizzaShopBasePanel;
+import io.github.appstash.shop.ui.panel.base.AbstractShopBasePanel;
 import io.github.appstash.shop.ui.panel.base.HighLightBehavior;
 import org.apache.wicket.Component;
 import org.apache.wicket.event.IEvent;
@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * @author zutherb
  */
-public class TopSellerRecommendationPanel extends AbstractPizzaShopBasePanel {
+public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
 
     @SpringBean(name = "recommendationService")
     private RecommendationService recommendationService;
@@ -31,14 +31,14 @@ public class TopSellerRecommendationPanel extends AbstractPizzaShopBasePanel {
     private FeatureTooglesBean featureTooglesBean;
 
     private IModel<ProductType> productTypeModel;
-    private IModel<ProductInfo> pizzaInfoModel;
+    private IModel<ProductInfo> productInfoModel;
 
     public TopSellerRecommendationPanel(String id, IModel<ProductType> productTypeModel) {
         super(id);
 
         this.productTypeModel = productTypeModel;
 
-        pizzaInfoModel = productInfoModel();
+        productInfoModel = productInfoModel();
         add(recommendationItemPanel());
         setOutputMarkupId(true);
         setOutputMarkupPlaceholderTag(true);
@@ -48,7 +48,7 @@ public class TopSellerRecommendationPanel extends AbstractPizzaShopBasePanel {
     private Component recommendationItemPanel() {
         ArrayList<String> tagListe = new ArrayList<>(2);
         IModel<List<String>> tagsModel = new ListModel<>(tagListe);
-        RecommendationItemPanel recommendationItemPanel = new RecommendationItemPanel("recPizzaItem", pizzaInfoModel, tagsModel);
+        RecommendationItemPanel recommendationItemPanel = new RecommendationItemPanel("recProductItem", productInfoModel, tagsModel);
         recommendationItemPanel.setOutputMarkupId(true);
         return recommendationItemPanel;
     }
@@ -56,7 +56,7 @@ public class TopSellerRecommendationPanel extends AbstractPizzaShopBasePanel {
     @Override
     protected void onConfigure() {
         super.onConfigure();
-        setVisible(featureTooglesBean.isTopSellerFeatureEnabled() && pizzaInfoModel.getObject() != null);
+        setVisible(featureTooglesBean.isTopSellerFeatureEnabled() && productInfoModel.getObject() != null);
     }
 
 

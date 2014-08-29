@@ -3,7 +3,7 @@ package io.github.appstash.shop.ui.panel.login;
 import io.github.appstash.shop.ui.event.login.LoginEvent;
 import io.github.appstash.shop.service.user.model.UserInfo;
 import io.github.appstash.shop.service.basket.api.Basket;
-import io.github.appstash.shop.ui.panel.base.AbstractPizzaShopBasePanel;
+import io.github.appstash.shop.ui.panel.base.AbstractShopBasePanel;
 import io.github.appstash.shop.ui.application.ShopApplication;
 import org.apache.wicket.Component;
 import org.apache.wicket.Session;
@@ -18,7 +18,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 /**
  * @author zutherb
  */
-public class LoginInfoPanel extends AbstractPizzaShopBasePanel {
+public class LoginInfoPanel extends AbstractShopBasePanel {
 
     private static final long serialVersionUID = 3975460848647745910L;
 

@@ -15,7 +15,7 @@ public class CheckoutPageTest extends AbstractWicketTest {
 
     @Test
     @Ignore
-    public void testPizzaListPage(){
+    public void testPageRending(){
         wicketTester.startPage(CheckoutPage.class);
         wicketTester.assertRenderedPage(CheckoutPage.class);
     }

@@ -29,7 +29,7 @@
 
     <beans profile="test">
         <bean name="fongo" class="com.github.fakemongo.Fongo">
-            <constructor-arg value="pizza"/>
+            <constructor-arg value="shop"/>
         </bean>
 
         <bean id="mongo" class="com.mongodb.Mongo" factory-bean="fongo" factory-method="getMongo"/>
