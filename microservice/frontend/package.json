@@ -26,6 +26,7 @@
     "grunt-svgmin": "^0.4.0",
     "grunt-usemin": "^2.1.1",
     "grunt-wiredep": "^1.7.0",
+    "grunt-typescript": "^0.3.8",
     "jshint-stylish": "^0.2.0",
     "karma-chrome-launcher": "^0.1.4",
     "karma-jasmine": "^0.1.5",

@@ -31,3 +31,4 @@ angular
         redirectTo: '/'
       });
   });
+console.log("info", "Hello World")
