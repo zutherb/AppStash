@@ -12,6 +12,8 @@ import io.github.appstash.shop.ui.panel.product.ProductItemPanel;
 import io.github.appstash.shop.ui.panel.product.TopSellerRecommendationPanel;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.list.ListItem;
+import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.IDataProvider;
@@ -23,6 +25,8 @@ import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -35,7 +39,7 @@ public class ProductCatalogPage extends AbstractBasePage {
     private ProductService productService;
 
     private IModel<ProductType> productTypeModel;
-    private IModel<List<ProductInfo>> productListModel;
+    private IModel<List<List<ProductInfo>>> productListModel;
     private Component basketPanel;
 
     public ProductCatalogPage(PageParameters pageParameters) {
@@ -52,9 +56,18 @@ public class ProductCatalogPage extends AbstractBasePage {
 
     private Component productsWrapper() {
         WebMarkupContainer productsWrapper = new WebMarkupContainer("productsWrapper");
-        productsWrapper.add(productView());
+        productsWrapper.add(rowView());
         productsWrapper.add(new HighLightBehavior());
         return productsWrapper;
+    }
+
+    private Component rowView() {
+        return new ListView<List<ProductInfo>>("row", productListModel) {
+            @Override
+            protected void populateItem(ListItem<List<ProductInfo>> item) {
+                item.add(productView(item.getModel()));
+            }
+        };
     }
 
     private IModel<ProductType> productTypeModel() {
@@ -81,37 +94,46 @@ public class ProductCatalogPage extends AbstractBasePage {
         basketPanel.setVisible(productListModel.getObject().iterator().hasNext());
     }
 
-    private IModel<List<ProductInfo>> productListModel() {
-        return new LoadableDetachableModel<List<ProductInfo>>() {
+    private IModel<List<List<ProductInfo>>> productListModel() {
+        return new LoadableDetachableModel<List<List<ProductInfo>>>() {
             @Override
-            protected List<ProductInfo> load() {
-                return productService.findAll(productTypeModel.getObject());
+            protected List<List<ProductInfo>> load() {
+                List<List<ProductInfo>> lists = new ArrayList<>();
+                List<ProductInfo> allProductInfos = new ArrayList<>(productService.findAll(productTypeModel.getObject()));
+                while (allProductInfos.size() > 4) {
+                    List<ProductInfo> subList = allProductInfos.subList(0, 4);
+                    lists.add(new ArrayList<>(subList));
+                    allProductInfos.removeAll(subList);
+                }
+                lists.add(allProductInfos);
+                return lists;
             }
         };
     }
 
-    private Component productView() {
-        return new DataView<ProductInfo>("products", productDataProvider()) {
+    private Component productView(IModel<List<ProductInfo>> model) {
+        return new DataView<ProductInfo>("products", productDataProvider(model)) {
 
             @Override
             protected void populateItem(final Item<ProductInfo> item) {
                 ProductItemPanel productItem = new ProductItemPanel("productItem", item.getModel());
-                item.add(productItem.setOutputMarkupId(true));
+                productItem.setOutputMarkupId(true);
+                item.add(productItem);
             }
         };
     }
 
 
-    private IDataProvider<ProductInfo> productDataProvider() {
+    private IDataProvider<ProductInfo> productDataProvider(IModel<List<ProductInfo>> model) {
         return new IDataProvider<ProductInfo>() {
             @Override
             public Iterator<ProductInfo> iterator(long first, long count) {
-                return productListModel.getObject().iterator();
+                return model.getObject().iterator();
             }
 
             @Override
             public long size() {
-                return productListModel.getObject().size();
+                return model.getObject().size();
             }
 
             @Override
