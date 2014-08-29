@@ -31,6 +31,7 @@ module.exports = function (grunt) {
         typescript: {
             base: {
                 src: ['<%= yeoman.app %>/scripts/{,*/}*.ts'],
+                dest: '.tmp/scripts/app.js',
                 options: {
                     target: 'es5',
                     sourceMap: true
