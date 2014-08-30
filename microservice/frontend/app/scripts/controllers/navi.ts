@@ -1,25 +1,16 @@
-'use strict';
+/// <reference path="../services/navigation.ts"/>
 
-angular.module('shopApplication')
-  .controller('NaviCtrl', function ($scope, $http) {
-    $scope.items = [
-        {
-            'sum': 33,
-            'name': 'Handy',
-            'urlname': 'handy',
-            '_id': 'handy'
-        },
-        {
-            'sum': 1,
-            'name': 'Tablet',
-            'urlname': 'tablet',
-            '_id': 'tablet'
-        }
-    ];
-    $http.get('/api/navigation/all').success(function(data) {
-        console.log('info', JSON.stringify(data));
-        $scope.items = data;
-    });
+interface INavigationScope extends ng.IScope {
+    items: INavigationItem[];
+}
 
+class NavigationController {
+    static $inject = ['$scope', 'navigationService'];
 
-  });
+    constructor(private $scope:INavigationScope, private navigationService:INavigationService) {
+        $scope.items = navigationService.getNavigation();
+    }
+}
+
+eshop.controller('NavigationController', NavigationController);
+

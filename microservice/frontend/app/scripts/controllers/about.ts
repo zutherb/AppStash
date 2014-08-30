@@ -1,10 +1,11 @@
-'use strict';
-
-angular.module('shopApplication')
-  .controller('AboutCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+class AboutCtrl {
+    static $inject = ['$scope'];
+    constructor($scope){
+        $scope.awesomeThings = [
+            'HTML5 Boilerplate',
+            'AngularJS',
+            'Karma'
+        ];
+    }
+}
+eshop.controller('AboutCtrl', AboutCtrl);

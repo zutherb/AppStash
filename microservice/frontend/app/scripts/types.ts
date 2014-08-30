@@ -2,9 +2,11 @@
 /// <reference path='../../bower_components/DefinitelyTyped/angularjs/angular-resource.d.ts' />
 /// <reference path='../../bower_components/DefinitelyTyped/jquery/jquery.d.ts' />
 /// <reference path='../../bower_components/DefinitelyTyped/bootstrap/bootstrap.d.ts' />
-/// <reference path='app.ts' />
-/// <reference path='controllers/main.ts' />
-/// <reference path='controllers/navi.ts' />
-/// <reference path='controllers/about.ts' />
-/// <reference path='services/productservice.ts' />
-/// <reference path='services/navigationservice.ts' />
+
+
+interface INavigationItem{
+    'sum': number;
+    'name': string;
+    'urlname': string;
+    '_id': string;
+}
