@@ -1,1 +1,0 @@
-{ "indexes" : [ { "v" : 1, "key" : { "_id" : 1 }, "name" : "_id_", "ns" : "pizza.product" }, { "v" : 1, "unique" : true, "key" : { "articleId" : 1 }, "name" : "articleId", "ns" : "pizza.product" }, { "v" : 1, "unique" : true, "key" : { "urlname" : 1 }, "name" : "urlname", "ns" : "pizza.product" }, { "v" : 1, "key" : { "type" : 1 }, "name" : "type", "ns" : "pizza.product" } ] }

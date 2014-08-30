@@ -1,1 +1,0 @@
-{ "indexes" : [ { "v" : 1, "key" : { "_id" : 1 }, "name" : "_id_", "ns" : "pizza.recommendation.preference" }, { "v" : 1, "key" : { "userId" : 1 }, "name" : "userId", "ns" : "pizza.recommendation.preference" }, { "v" : 1, "key" : { "articleId" : 1 }, "name" : "articleId", "ns" : "pizza.recommendation.preference" } ] }

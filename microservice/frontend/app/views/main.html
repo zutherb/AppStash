@@ -1,241 +1,28 @@
-<!--<div class="row">-->
-<!--<div class="col-md-8">-->
-    <!--<div id="topSellerProductsContainer694">-->
-        <!--<h2>Most ordered products in each category</h2>-->
+<div class="row">
+    <div class="col-md-8">
+        <div id="topSellerProductsContainer694" ng-controller="ProductController">
+            <h2>Most ordered products in each category</h2>
 
-        <!--<div class="thumbnails">-->
-            <!--<div class="col-md-3">-->
-                <!--<div id="product695">-->
-                    <!--<div class="thumbnail">-->
-                        <!--<a href="./?46-1.ILinkListener-topSellerProductsContainer-products-1-product-productDetailLink">-->
-                            <!--<img id="image696" src="/images/pizza/milano.jpg"-->
-                                 <!--title="milan pepperoni, fresh tomato, genuine mozzarella and rocket"-->
-                                 <!--alt="Milano"/>-->
-                        <!--</a>-->
+            <div class="thumbnails" ng-repeat="product in products">
+                <div class="col-md-3">
+                    <div class="thumbnail">
+                        <a href="/">
+                            <img src="/images/pizza/milano.jpg"
+                                 title="{{product.name}}}"
+                                 alt="{{product.name}}}"/>
+                        </a>
 
-                        <!--<div class="caption">-->
-                            <!--<div class="text">Milano</div>-->
-                            <!--<a class="btn btn-primary" id="addToBasketIcon684" href="javascript:;"><span-->
-                                    <!--class="glyphicon glyphicon-shopping-cart"></span></a><span-->
-                                <!--style="display:none;" class="wicket-ajax-indicator"-->
-                                <!--id="addToBasketIcon684--ajax-indicator"><img-->
-                                <!--src="./wicket/resource/org.apache.wicket.ajax.AbstractDefaultAjaxBehavior/indicator-ver-1400408955000.gif"-->
-                                <!--alt=""/></span>-->
-                            <!--<span class="price">6,50 €</span>-->
-                        <!--</div>-->
+                        <div class="caption">
+                            <div class="text">{{product.name}}}</div>
+                            <a class="btn btn-primary">
+                                <span class="glyphicon glyphicon-shopping-cart" />
+                            </a>
+                            <span class="price">{{product.price | currency}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="col-md-3">-->
-                <!--<div id="product697">-->
-                    <!--<div class="thumbnail">-->
-                        <!--<a href="./?46-1.ILinkListener-topSellerProductsContainer-products-2-product-productDetailLink">-->
-                            <!--<img id="image698" src="/images/pizza/penne-vodka.jpg"-->
-                                 <!--title="pink sauce with a touch of vodka, prosciutto and onions"-->
-                                 <!--alt="Penne Vodka"/>-->
-                        <!--</a>-->
-
-                        <!--<div class="caption">-->
-                            <!--<div class="text">Penne Vodka</div>-->
-                            <!--<a class="btn btn-primary" id="addToBasketIcon685" href="javascript:;"><span-->
-                                    <!--class="glyphicon glyphicon-shopping-cart"></span></a><span-->
-                                <!--style="display:none;" class="wicket-ajax-indicator"-->
-                                <!--id="addToBasketIcon685--ajax-indicator"><img-->
-                                <!--src="./wicket/resource/org.apache.wicket.ajax.AbstractDefaultAjaxBehavior/indicator-ver-1400408955000.gif"-->
-                                <!--alt=""/></span>-->
-                            <!--<span class="price">7,00 €</span>-->
-                        <!--</div>-->
-
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="col-md-3">-->
-                <!--<div id="product699">-->
-                    <!--<div class="thumbnail">-->
-                        <!--<a href="./?46-1.ILinkListener-topSellerProductsContainer-products-3-product-productDetailLink">-->
-                            <!--<img id="image69a" src="/images/pizza/house-salad.jpg"-->
-                                 <!--title="crisp romaine, pepper jack, olives, shredded carrots, tomatoe slices and sunflower seeds"-->
-                                 <!--alt="House Salad"/>-->
-                        <!--</a>-->
-
-                        <!--<div class="caption">-->
-                            <!--<div class="text">House Salad</div>-->
-                            <!--<a class="btn btn-primary" id="addToBasketIcon686" href="javascript:;"><span-->
-                                    <!--class="glyphicon glyphicon-shopping-cart"></span></a><span-->
-                                <!--style="display:none;" class="wicket-ajax-indicator"-->
-                                <!--id="addToBasketIcon686--ajax-indicator"><img-->
-                                <!--src="./wicket/resource/org.apache.wicket.ajax.AbstractDefaultAjaxBehavior/indicator-ver-1400408955000.gif"-->
-                                <!--alt=""/></span>-->
-                            <!--<span class="price">5,50 €</span>-->
-                        <!--</div>-->
-
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="col-md-3">-->
-                <!--<div id="product69b">-->
-                    <!--<div class="thumbnail">-->
-                        <!--<a href="./?46-1.ILinkListener-topSellerProductsContainer-products-4-product-productDetailLink">-->
-                            <!--<img id="image69c" src="/images/pizza/orange-juice-0-33l.jpg"-->
-                                 <!--title="Freshly sqeezed orange juice without preservative."-->
-                                 <!--alt="Orange Juice 0.33l"/>-->
-                        <!--</a>-->
-
-                        <!--<div class="caption">-->
-                            <!--<div class="text">Orange Juice 0.33l</div>-->
-                            <!--<a class="btn btn-primary" id="addToBasketIcon687" href="javascript:;"><span-->
-                                    <!--class="glyphicon glyphicon-shopping-cart"></span></a><span-->
-                                <!--style="display:none;" class="wicket-ajax-indicator"-->
-                                <!--id="addToBasketIcon687--ajax-indicator"><img-->
-                                <!--src="./wicket/resource/org.apache.wicket.ajax.AbstractDefaultAjaxBehavior/indicator-ver-1400408955000.gif"-->
-                                <!--alt=""/></span>-->
-                            <!--<span class="price">2,80 €</span>-->
-                        <!--</div>-->
-
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--<div class="row"></div>-->
-    <!--<div id="youMayAlsoLikeProductsContainer69d">-->
-        <!--<h2>You may also like</h2>-->
-
-        <!--<div class="thumbnails">-->
-            <!--<div class="col-md-3">-->
-                <!--<div id="product69e">-->
-                    <!--<div class="thumbnail">-->
-                        <!--<a href="./?46-1.ILinkListener-youMayAlsoLikeProductsContainer-products-1-product-productDetailLink">-->
-                            <!--<img id="image69f" src="/images/pizza/bangkok-thai-salad.jpg"-->
-                                 <!--title="crisp romaine, shredded carrots, grilled chicken breast, crunch noodles, water chestnuts, sunflower seeds topped with sesame oriental dressing"-->
-                                 <!--alt="Bangkok Thai Salad"/>-->
-                        <!--</a>-->
-
-                        <!--<div class="caption">-->
-                            <!--<div class="text">Bangkok Thai Salad</div>-->
-                            <!--<a class="btn btn-primary" id="addToBasketIcon688" href="javascript:;"><span-->
-                                    <!--class="glyphicon glyphicon-shopping-cart"></span></a><span-->
-                                <!--style="display:none;" class="wicket-ajax-indicator"-->
-                                <!--id="addToBasketIcon688--ajax-indicator"><img-->
-                                <!--src="./wicket/resource/org.apache.wicket.ajax.AbstractDefaultAjaxBehavior/indicator-ver-1400408955000.gif"-->
-                                <!--alt=""/></span>-->
-                            <!--<span class="price">6,50 €</span>-->
-                        <!--</div>-->
-
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="col-md-3">-->
-                <!--<div id="product6a0">-->
-                    <!--<div class="thumbnail">-->
-                        <!--<a href="./?46-1.ILinkListener-youMayAlsoLikeProductsContainer-products-2-product-productDetailLink">-->
-                            <!--<img id="image6a1" src="/images/pizza/strawberry-shrimp-salad.jpg"-->
-                                 <!--title="Grilled shrimps, sliced strawberries, cubed fresh cottage cheese, green onions, chopped romaine heart, shredded carrots, sundried tomatoes, and toasted pecans tossed with balsamic-honey mustard dressing"-->
-                                 <!--alt="Strawberry Shrimp Salad"/>-->
-                        <!--</a>-->
-
-                        <!--<div class="caption">-->
-                            <!--<div class="text">Strawberry Shrimp Salad</div>-->
-                            <!--<a class="btn btn-primary" id="addToBasketIcon689" href="javascript:;"><span-->
-                                    <!--class="glyphicon glyphicon-shopping-cart"></span></a><span-->
-                                <!--style="display:none;" class="wicket-ajax-indicator"-->
-                                <!--id="addToBasketIcon689--ajax-indicator"><img-->
-                                <!--src="./wicket/resource/org.apache.wicket.ajax.AbstractDefaultAjaxBehavior/indicator-ver-1400408955000.gif"-->
-                                <!--alt=""/></span>-->
-                            <!--<span class="price">6,50 €</span>-->
-                        <!--</div>-->
-
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="col-md-3">-->
-                <!--<div id="product6a2">-->
-                    <!--<div class="thumbnail">-->
-                        <!--<a href="./?46-1.ILinkListener-youMayAlsoLikeProductsContainer-products-3-product-productDetailLink">-->
-                            <!--<img id="image6a3" src="/images/pizza/vegetaria.jpg"-->
-                                 <!--title="light and sunny: fresh mushrooms, colorful peppers mix and fresh tomato slices"-->
-                                 <!--alt="Vegetaria"/>-->
-                        <!--</a>-->
-
-                        <!--<div class="caption">-->
-                            <!--<div class="text">Vegetaria</div>-->
-                            <!--<a class="btn btn-primary" id="addToBasketIcon68a" href="javascript:;"><span-->
-                                    <!--class="glyphicon glyphicon-shopping-cart"></span></a><span-->
-                                <!--style="display:none;" class="wicket-ajax-indicator"-->
-                                <!--id="addToBasketIcon68a--ajax-indicator"><img-->
-                                <!--src="./wicket/resource/org.apache.wicket.ajax.AbstractDefaultAjaxBehavior/indicator-ver-1400408955000.gif"-->
-                                <!--alt=""/></span>-->
-                            <!--<span class="price">4,90 €</span>-->
-                        <!--</div>-->
-
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-            <!--<div class="col-md-3">-->
-                <!--<div id="product6a4">-->
-                    <!--<div class="thumbnail">-->
-                        <!--<a href="./?46-1.ILinkListener-youMayAlsoLikeProductsContainer-products-4-product-productDetailLink">-->
-                            <!--<img id="image6a5" src="/images/pizza/pepperoni.jpg"-->
-                                 <!--title="our special salami, hot pepperoni and black olives" alt="Pepperoni"/>-->
-                        <!--</a>-->
-
-                        <!--<div class="caption">-->
-                            <!--<div class="text">Pepperoni</div>-->
-                            <!--<a class="btn btn-primary" id="addToBasketIcon68b" href="javascript:;"><span-->
-                                    <!--class="glyphicon glyphicon-shopping-cart"></span></a><span-->
-                                <!--style="display:none;" class="wicket-ajax-indicator"-->
-                                <!--id="addToBasketIcon68b--ajax-indicator"><img-->
-                                <!--src="./wicket/resource/org.apache.wicket.ajax.AbstractDefaultAjaxBehavior/indicator-ver-1400408955000.gif"-->
-                                <!--alt=""/></span>-->
-                            <!--<span class="price">4,90 €</span>-->
-                        <!--</div>-->
-
-                    <!--</div>-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
-<!--<style>-->
-    <!--/*<![CDATA[*/-->
-
-    <!--.basket .wicket-ajax-indicator {-->
-        <!--position: absolute;-->
-        <!--right: -25px;-->
-        <!--top: 3px;-->
-    <!--}-->
-
-    <!--/*]]>*/-->
-<!--</style>-->
-<!--<div class="col-md-4 basket" id="basketPanel6a6">-->
-    <!--<h2>Shopping Cart</h2>-->
-
-    <!--<div class="well">-->
-        <!--<table class="table table-striped">-->
-            <!--<thead>-->
-            <!--<tr class="well">-->
-                <!--<th>Name</th>-->
-                <!--<th style="text-align: right;">Price</th>-->
-                <!--<th>&nbsp;</th>-->
-            <!--</tr>-->
-            <!--</thead>-->
-
-            <!--<tfoot>-->
-            <!--<tr>-->
-                <!--<td>Subtotal</td>-->
-                <!--<td style="text-align: right;">-->
-                    <!--0,00 €-->
-                <!--</td>-->
-                <!--<td></td>-->
-            <!--</tr>-->
-            <!--<tr>-->
-                <!--<td colspan="3">-->
-                    <!--<a class="btn btn-primary" href="./checkout">Proceed to Checkout</a>-->
-                <!--</td>-->
-            <!--</tr>-->
-            <!--</tfoot>-->
-        <!--</table>-->
-    <!--</div>-->
-<!--</div>-->
-<!--</div>-->
+    </div>
+</div>
