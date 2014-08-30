@@ -8,7 +8,11 @@ class NavigationController {
     static $inject = ['$scope', 'navigationService'];
 
     constructor(private $scope:INavigationScope, private navigationService:INavigationService) {
-        $scope.items = navigationService.getNavigation();
+        navigationService.getNavigation().then(
+            function (data: INavigationItem[]) {
+                $scope.items = data;
+            }
+        );
     }
 }
 
