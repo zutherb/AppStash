@@ -1,4 +1,4 @@
-Source: shop-recommendation-service
+Source: recommendation-service
 Section: web
 Priority: optional
 Version: [[version]]
@@ -6,7 +6,7 @@ Maintainer: Bernd Zuther <bernd.zuther@me.com>
 Homepage: http://www.bernd-zuther.de/
 Vcs-Git: https://github.com/zutherb/AppStash.git
 Vcs-Browser: https://github.com/zutherb/AppStash
-Package: shop-recommendation-service
+Package: recommendation-service
 Architecture: amd64
 Depends:
 Description: shop Recommendation Service

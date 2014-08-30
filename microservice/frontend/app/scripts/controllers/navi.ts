@@ -1,13 +1,6 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name clientApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the clientApp
- */
-angular.module('clientApp')
+angular.module('shopApplication')
   .controller('NaviCtrl', function ($scope, $http) {
     $scope.items = [
         {

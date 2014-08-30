@@ -1,33 +1,28 @@
-'use strict';
+module shop {
 
-/**
- * @ngdoc overview
- * @name clientApp
- * @description
- * # clientApp
- *
- * Main module of the application.
- */
-angular
-  .module('clientApp', [
-    'ngAnimate',
-    'ngCookies',
-    'ngResource',
-    'ngRoute',
-    'ngSanitize',
-    'ngTouch'
-  ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/', {
-        templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
-      })
-      .when('/about', {
-        templateUrl: 'views/about.html',
-        controller: 'AboutCtrl'
-      })
-      .otherwise({
-        redirectTo: '/'
-      });
-  });
+    'use strict';
+
+    angular
+        .module('shopApplication', [
+            'ngAnimate',
+            'ngCookies',
+            'ngResource',
+            'ngRoute',
+            'ngSanitize',
+            'ngTouch'
+        ])
+        .config(function ($routeProvider:ng.route.IRouteProvider) {
+            $routeProvider
+                .when('/', {
+                    templateUrl: 'views/main.html',
+                    controller: 'MainCtrl'
+                })
+                .when('/about', {
+                    templateUrl: 'views/about.html',
+                    controller: 'AboutCtrl'
+                })
+                .otherwise({
+                    redirectTo: '/'
+                });
+        });
+}

@@ -6,9 +6,8 @@ class HomePage extends Page {
     static url = "http://localhost:8888/shop/"
     static at = { title == "Shop" }
     static content = {
-        results(wait: true) { $("li.active") }
+        results(wait: true) { $("li a.tabletLink") }
         result { i -> results[i] }
-        resultLink { i -> result(i).find("a")[0] }
-        catalogLink { resultLink(0) }
+        catalogLink { result(0) }
     }
 }

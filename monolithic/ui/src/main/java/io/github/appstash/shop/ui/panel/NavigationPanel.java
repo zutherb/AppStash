@@ -16,6 +16,7 @@ import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.ajax.AjaxEventBehavior;
 import org.apache.wicket.ajax.AjaxRequestTarget;
+import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.event.IEvent;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
@@ -57,6 +58,7 @@ public class NavigationPanel extends Panel {
 
     private Component homePageLink() {
         BookmarkablePageLink<Void> pageLink = new BookmarkablePageLink<>("home", ShopApplication.get().getHomePage());
+        pageLink.add(new AttributeAppender("class", Model.of("homePageLink"), " "));
         return pageLink;
     }
 
@@ -147,7 +149,15 @@ public class NavigationPanel extends Panel {
                 NavigationEntry navigationEntry = listItem.getModelObject();
                 BookmarkablePageLink<? extends Page> pageLink = new BookmarkablePageLink<>("link",
                         navigationEntry.getPageClass(), navigationEntry.getPageParameters());
+                pageLink.add(new AttributeAppender("class", new AbstractReadOnlyModel<String>() {
 
+                    final String template = "%sLink";
+
+                    @Override
+                    public String getObject() {
+                        return String.format(template, navigationEntry.getName().toLowerCase());
+                    }
+                }, " "));
                 pageLink.add(new Label("name", Model.of(navigationEntry.getName())));
                 if (navigationEntry.getPageClass().isAnnotationPresent(ModalPanelItem.class)) {
                     pageLink.add(new AjaxEventBehavior("onclick") {
