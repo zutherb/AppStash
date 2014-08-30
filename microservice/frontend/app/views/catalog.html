@@ -1,0 +1,12 @@
+<div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+        <div ng-controller="ProductController">
+            <h2>Choose your product</h2>
+            <div class="row">
+                <div class="thumbnails" ng-repeat="product in products | filter:productType">
+                    <product-item />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

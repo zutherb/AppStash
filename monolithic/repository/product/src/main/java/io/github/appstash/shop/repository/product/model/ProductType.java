@@ -2,8 +2,8 @@ package io.github.appstash.shop.repository.product.model;
 
 
 public enum ProductType {
-    TABLET("Tablet", "tablet"),
-    HANDY("Handy", "handy");
+    HANDY("Handy", "handy"),
+    TABLET("Tablet", "tablet");
 
     private String name;
     private String urlname;

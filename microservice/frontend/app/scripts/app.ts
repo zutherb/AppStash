@@ -8,11 +8,15 @@ var eshop = angular.module('eshop', [
     'ngSanitize',
     'ngTouch',
 ])
-    .config(function ($routeProvider) {
+    .config(function ($routeProvider:ng.route.IRouteProvider) {
         $routeProvider
             .when('/', {
                 templateUrl: 'views/main.html',
-                controller: 'NavigationController'
+                controller: 'ProductService'
+            })
+            .when('/productcatalog/:productType', {
+                templateUrl: 'views/catalog.html',
+                controller: 'ProductService'
             })
             .when('/about', {
                 templateUrl: 'views/about.html',
@@ -22,3 +26,4 @@ var eshop = angular.module('eshop', [
                 redirectTo: '/'
             });
     });
+

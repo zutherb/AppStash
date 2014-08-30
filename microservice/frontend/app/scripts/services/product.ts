@@ -212,3 +212,4 @@ class ProductService implements IProductService {
 }
 
 eshop.service('productService', ProductService);
+
