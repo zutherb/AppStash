@@ -8,7 +8,7 @@ node "Monolitic Application Server" {
     [Wicket Monolitic Shop] --> MongoDB
 }
 
-node "Monolitic Server" {
+node "Microservice Application Server" {
     [AngularJS Frontend] --> [NavigationService]
     [AngularJS Frontend] --> [ProductService]
     [AngularJS Frontend] --> [RecommendationService]
