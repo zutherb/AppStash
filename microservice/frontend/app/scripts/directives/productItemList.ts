@@ -11,6 +11,3 @@ eshop.directive("shopProductItemList", function(){
 });
 
 
-
-
-
