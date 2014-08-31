@@ -452,6 +452,7 @@ module.exports = function (grunt) {
 
         grunt.task.run([
             'clean:server',
+            'typescript',
             'wiredep',
             'configureProxies',
             'concurrent:server',
@@ -476,6 +477,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
+        'typescript',
         'wiredep',
         'useminPrepare',
         'concurrent:dist',

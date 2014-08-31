@@ -189,7 +189,8 @@ class RecommendationService implements IRecommendationService {
                 "price": 209
             }
         ];
-        console.log(result);
+        result = _.shuffle(result);
+        result = _.first(result, count);
         return  result;
     }
 }
