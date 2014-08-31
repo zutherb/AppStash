@@ -3,7 +3,7 @@
 ## Overview
 
 This application gives architects and developer an running example, how a microservice web-application can be build. 
-The application is based on the **AngularJS Phone Catalog** and **MongoDB Pizza Shop**, which can be seen on Github: 
+The application is based on the **AngularJS Phone Catalog** and **MongoDB Pizza Shop**, which can be found on Github: 
 - [AngularJS Phone Catalog Tutorial Application](https://github.com/angular/angular-phonecat)
 - [MongoDB Pizza Shop](https://github.com/comsysto/mongodb-onlineshop)
 
@@ -13,10 +13,16 @@ The application is based on the **AngularJS Phone Catalog** and **MongoDB Pizza 
 
 ### Vagrant
 
-- You must be learn much about vagrant, but you should be able to install vagrant and to use the commandline: vagrant up
-- Vagrant [home](https://www.vagrantup.com/) (download, documentation)
+- You must be not learn much about vagrant, but you should be able to install vagrant and execute the following 
+  commandline: vagrant up
+- [Vagrant](https://www.vagrantup.com/) (download, documentation)
 
-###Devolopment
+### Ansible
+
+- You must not know Ansible, but it must be to installed that vagrant be create Visualmachines.
+- [Ansible](http://www.ansible.com/) (download, documentation)
+
+###Development
 
 #### Git
 
