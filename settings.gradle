@@ -1,6 +1,4 @@
 include 'agent'
-include 'memory-leak'
-include 'external'
 
 include 'microservice:frontend'
 include 'microservice:service:dataloader'

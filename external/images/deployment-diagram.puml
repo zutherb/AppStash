@@ -1,0 +1,28 @@
+@startuml
+scale 2
+
+database "MongoDB" {
+}
+
+node "Monolitic Application Server" {
+    [Wicket Monolitic Shop] --> MongoDB
+}
+
+node "Monolitic Server" {
+    [AngularJS Frontend] --> [UserService]
+    [AngularJS Frontend] --> [NavigationService]
+    [AngularJS Frontend] --> [ProductService]
+    [AngularJS Frontend] --> [RecommendationService]
+    [AngularJS Frontend] --> [OrderService]
+    [AngularJS Frontend] --> [UserService]
+
+    [UserService] --> MongoDB
+    [NavigationService] --> MongoDB
+    [ProductService] --> MongoDB
+    [RecommendationService] --> MongoDB
+    [OrderService] --> MongoDB
+    [UserService] --> MongoDB
+}
+
+
+@enduml

@@ -1,6 +1,0 @@
-@startuml
-alice->bob:sdl
-bob->clere:bla
-clere->bob
-bob->alice
-@enduml
