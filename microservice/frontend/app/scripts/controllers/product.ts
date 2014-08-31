@@ -1,8 +1,9 @@
 /// <reference path="../services/product.ts"/>
 
-interface IProductScope extends ng.IScope {
+interface IProductCatalogScope extends ng.IScope {
     products: IProduct[];
     productType: String;
+    headline: String;
 }
 
 interface ICatalogRouteParams {
@@ -12,8 +13,11 @@ interface ICatalogRouteParams {
 class ProductController {
     static $inject = ['$scope', '$routeParams', 'productService'];
 
-    constructor(private $scope:IProductScope, private $routeParams:ICatalogRouteParams, private productService:IProductService) {
+    constructor(private $scope: IProductCatalogScope,
+                private $routeParams: ICatalogRouteParams,
+                private productService: IProductService) {
         $scope.productType = $routeParams.productType;
+        $scope.headline = "Choose your product";
 
         productService.getProducts().then(
             function (data: IProduct[]) {

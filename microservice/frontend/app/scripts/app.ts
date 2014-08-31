@@ -1,5 +1,8 @@
 /// <reference path="types.ts"/>
 
+var _: UnderscoreStatic;
+var $: JQueryStatic;
+
 var eshop = angular.module('eshop', [
     'ngAnimate',
     'ngCookies',
@@ -11,19 +14,14 @@ var eshop = angular.module('eshop', [
     .config(function ($routeProvider:ng.route.IRouteProvider) {
         $routeProvider
             .when('/', {
-                templateUrl: 'views/main.html',
-                controller: 'ProductService'
+                templateUrl: 'views/main.html'
             })
             .when('/productcatalog/:productType', {
-                templateUrl: 'views/catalog.html',
-                controller: 'ProductService'
-            })
-            .when('/about', {
-                templateUrl: 'views/about.html',
-                controller: 'AboutCtrl'
+                templateUrl: 'views/catalog.html'
             })
             .otherwise({
                 redirectTo: '/'
             });
     });
+
 

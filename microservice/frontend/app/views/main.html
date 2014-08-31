@@ -1,26 +1,10 @@
 <div class="row">
     <div class="col-md-8">
-        <div id="topSellerProductsContainer694" ng-controller="ProductController">
+        <div ng-controller="RecommendationController">
             <h2>Most ordered products in each category</h2>
 
             <div class="thumbnails" ng-repeat="product in products">
-                <div class="col-md-3">
-                    <div class="thumbnail">
-                        <a href="/">
-                            <img src="/images/{{product.productType | lowercase}}/{{product.urlname}}.0.jpg"
-                                 title="{{product.name}}"
-                                 alt="{{product.name}}"/>
-                        </a>
-
-                        <div class="caption">
-                            <div class="text">{{product.name}}}</div>
-                            <a class="btn btn-primary">
-                                <span class="glyphicon glyphicon-shopping-cart" />
-                            </a>
-                            <span class="price">{{product.price | currency}}</span>
-                        </div>
-                    </div>
-                </div>
+                <shop-product-item/>
             </div>
         </div>
 

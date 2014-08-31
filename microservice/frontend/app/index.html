@@ -15,14 +15,12 @@
     <!-- endbuild -->
 </head>
 <body ng-app="eshop">
-<!--[if lt IE 7]>
-<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
-    your browser</a> to improve your experience.</p>
-<![endif]-->
+    <!--[if lt IE 7]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+        your browser</a> to improve your experience.</p>
+    <![endif]-->
 
-<!-- Add your site or application content here -->
-
-
+    <!-- Add your site or application content here -->
     <header role="banner" id="top" class="navbar navbar-static-top bs-docs-nav">
         <div class="container" ng-controller="NavigationController">
             <div class="navbar-header">
@@ -105,6 +103,7 @@
     <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal.js"></script>
     <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip.js"></script>
     <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/popover.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
@@ -116,6 +115,9 @@
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/eshop.js"></script>
+    <!--<script type="text/ng-template" id="/partials/navigation.html"></script>-->
+    <!--<script type="text/ng-template" id="/partials/productItem.html"></script>-->
+    <!--<script type="text/ng-template" id="/partials/productItemList.html"></script>-->
     <!-- endbuild -->
 </body>
 </html>

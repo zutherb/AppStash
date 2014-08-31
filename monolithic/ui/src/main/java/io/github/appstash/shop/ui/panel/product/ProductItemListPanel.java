@@ -90,11 +90,6 @@ public class ProductItemListPanel extends AbstractShopBasePanel {
         };
     }
 
-
-    protected List<String> getTags(String parentTag) {
-        return new ArrayList<>();
-    }
-
     protected ListModel<String> createTags(String parentTag) {
         ArrayList<String> tagList = new ArrayList<>(1);
         tagList.add(parentTag);
