@@ -412,6 +412,19 @@ module.exports = function (grunt) {
                     dest: '<%= yeoman.dist %>/fonts'
                 }]
             },
+            glyphicons: {
+                files: [{
+                    expand: true,
+                    cwd: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap/',
+                    src: [
+                        '*.eot',
+                        '*.svg',
+                        '*.ttf',
+                        '*.woff'
+                    ],
+                    dest: '.tmp/fonts'
+                }]
+            },
             styles: {
                 expand: true,
                 cwd: '<%= yeoman.app %>/styles',
@@ -453,6 +466,7 @@ module.exports = function (grunt) {
         grunt.task.run([
             'clean:server',
             'typescript',
+            'copy:glyphicons',
             'wiredep',
             'configureProxies',
             'concurrent:server',
