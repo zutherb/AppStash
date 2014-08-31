@@ -26,8 +26,8 @@ The application is based on the **AngularJS Phone Catalog** and **MongoDB Pizza 
 
 #### Git
 
-- A good place to learn about setting up git is [here][git-github]
-- Git [home][git-home] (download, documentation)
+- A good place to learn about setting up git is [here](https://help.github.com/articles/set-up-git)
+- Git [home](http://git-scm.com/) (download, documentation)
 
 ## Workings of the application
 
