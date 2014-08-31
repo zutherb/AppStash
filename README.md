@@ -7,6 +7,8 @@ The application is based on the **AngularJS Phone Catalog** and **MongoDB Pizza 
 - [AngularJS Phone Catalog Tutorial Application](https://github.com/angular/angular-phonecat)
 - [MongoDB Pizza Shop](https://github.com/comsysto/mongodb-onlineshop)
 
+![Architecture Overview](https://raw.githubusercontent.com/zutherb/AppStash/ci-server/external/images/deployment-diagram.png)
+
 ## Prerequisites
 
 ###Running 

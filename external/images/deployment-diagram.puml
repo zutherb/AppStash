@@ -9,7 +9,6 @@ node "Monolitic Application Server" {
 }
 
 node "Monolitic Server" {
-    [AngularJS Frontend] --> [UserService]
     [AngularJS Frontend] --> [NavigationService]
     [AngularJS Frontend] --> [ProductService]
     [AngularJS Frontend] --> [RecommendationService]
