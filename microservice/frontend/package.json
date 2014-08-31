@@ -30,6 +30,7 @@
     "jshint-stylish": "^0.2.0",
     "karma-chrome-launcher": "^0.1.4",
     "karma-jasmine": "^0.1.5",
+    "karma-typescript-preprocessor": "0.0.7",
     "karma-phantomjs-launcher": "^0.1.4",
     "load-grunt-tasks": "^0.4.0",
     "time-grunt": "^0.3.1",
