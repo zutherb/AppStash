@@ -18,12 +18,12 @@ jar.baseName = "shop-checkout-frontend"
 
 idea {
     module {
-        name='shop-frontend'
+        name='shop-checkout-frontend'
     }
 }
 
 debian {
-    packagename = "shop-frontend"
+    packagename = "shop-checkout-frontend"
     publications = ['mavenStuff']
     controlDirectory = "${projectDir}/debian/control"
     changelogFile = "${projectDir}/debian/changelog"

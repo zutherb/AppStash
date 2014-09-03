@@ -15,11 +15,11 @@ sourceSets {
     }
 }
  
-jar.baseName = "shop-frontend"
+jar.baseName = "shop-catalog-frontend"
 
 idea {
     module {
-        name='shop-frontend'
+        name='shop-catalog-frontend'
     }
 }
 
