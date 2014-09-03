@@ -1,0 +1,76 @@
+apply plugin: 'pkg-debian'
+apply plugin: 'docker'
+apply plugin: 'com.moowork.grunt'
+
+sourceSets {
+    main {
+        resources {
+            srcDir 'app'
+        }
+    }
+    test {
+        resources {
+            srcDir 'test'
+        }
+    }
+}
+ 
+jar.baseName = "shop-frontend"
+
+idea {
+    module {
+        name='shop-frontend'
+    }
+}
+
+debian {
+    packagename = "shop-catalog-frontend"
+    publications = ['mavenStuff']
+    controlDirectory = "${projectDir}/debian/control"
+    changelogFile = "${projectDir}/debian/changelog"
+    outputFile = "${buildDir}/debian/${packagename}_${version}.deb"
+
+    data {
+        dir {
+            name = "${buildDir}/debian-data/"
+            exclusions = ["**/.DS_Store"]
+        }
+    }
+}
+
+task bower(type: Exec){
+    commandLine "bower", 'install'
+}
+
+task gruntBuildWithOpts(type: GruntTask) {
+    dependsOn 'npmInstall', bower, 'installGrunt'
+}
+
+task prepareDeb {
+    dependsOn gruntBuildWithOpts
+    copy {
+        from "${projectDir}/dist/"
+        into "${buildDir}/debian-data/usr/share/pizza/frontend/html"
+    }
+}
+
+// makes sure on each build that grunt is installed
+grunt_build.dependsOn 'installGrunt'
+
+// processes your package.json before running grunt build
+grunt_build.dependsOn 'npmInstall'
+
+// runs "grunt build" as part of your gradle build
+build.dependsOn grunt_build
+
+docker {
+    baseImage "ubuntu"
+    maintainer 'Bernd Zuther "bernd.zuther@me.com"'
+}
+
+task nginxDocker(type: Docker) {
+    applicationName = "nginx"
+    runCommand 'echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list'
+    runCommand "apt-get update"
+    runCommand "apt-get install -y inotify-tools nginx apache2 openssh-server"
+}

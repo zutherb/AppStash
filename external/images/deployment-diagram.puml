@@ -23,5 +23,4 @@ node "Microservice Application Server" {
     [UserService] --> MongoDB
 }
 
-
 @enduml

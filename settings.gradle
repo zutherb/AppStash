@@ -1,6 +1,7 @@
 include 'agent'
 
-include 'microservice:frontend'
+include 'microservice:frontend/catalog'
+include 'microservice:frontend/checkout'
 include 'microservice:service:dataloader'
 include 'microservice:service:user'
 include 'microservice:service:product'
