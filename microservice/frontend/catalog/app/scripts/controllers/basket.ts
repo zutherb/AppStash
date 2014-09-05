@@ -1,33 +1,20 @@
 interface IBasketScope extends ng.IScope{
-    basketItems: IBasketItem[];
     vm: BasketController;
-    basketVersion: number;
 }
 
 class BasketController {
-    private basketItems: IBasketItem[];
-
     static $inject = ['$scope', 'basketService'];
 
-    constructor(private $scope: IBasketScope, private basketService:IBasketService) {
-        this.basketItems = this.getAll();
-
+    constructor(private $scope: IBasketScope, private basketService: BasketService) {
         $scope.vm = this;
-        $scope.basketVersion = 0;
-
-        $scope.$watch("basketVersion", (newValue, oldValue) => $scope.basketItems = this.getAll())
     }
 
     add(product:IProduct) {
-        console.log(product)
         this.basketService.add(product);
-        this.$scope.basketVersion++;
     }
 
     remove(uuid:String) {
-        console.log(uuid)
         this.basketService.remove(uuid);
-        this.$scope.basketVersion++;
     }
 
     getAll():IBasketItem[] {

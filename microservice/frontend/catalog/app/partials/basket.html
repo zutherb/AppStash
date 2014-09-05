@@ -10,15 +10,13 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="basketItem in vm.basketItems">
+            <tr ng-repeat="basketItem in vm.getAll() track by basketItem.uuid">
                 <td>{{basketItem.product.name}}</td>
                 <td style="text-align: right;">{{basketItem.product.price | currency}}</td>
                 <td>
-                    <span style="position: relative;">
-                        <a class="btn btn-danger" ng-click="vm.remove(basketItem.uuid)">
-                            <span class="glyphicon glyphicon-trash" />
-                        </a>
-                    </span>
+                    <a class="btn btn-danger" ng-click="vm.remove(basketItem.uuid)">
+                        <span class="glyphicon glyphicon-trash"></span>
+                    </a>
                 </td>
             </tr>
         </tbody>

@@ -3,6 +3,7 @@ eshop.directive("shopBasket", () => {
 
     directive.restrict = "AE";
     directive.templateUrl = "/partials/basket.html";
+    directive.replace = false;
 
     return directive;
 });

@@ -1,10 +1,17 @@
 /// <reference path="../services/product.ts"/>
 
 class RecommendationController {
-    static $inject = ['$scope', 'recommendationService'];
+    products: any[] = [];
 
-    constructor(private $scope:IProductCatalogScope, private recommendationService:IRecommendationService) {
-        $scope.products = recommendationService.getProducts(2);
+    static $inject = ['$scope', 'productService'];
+
+    constructor(private $scope, private productService:IProductService) {
+         productService.getProducts().then((data: IProduct[]) => {
+           var result = _.shuffle(data);
+           this.products = _.first(result, 2);
+        });
+
+        $scope.vm = this;
     }
 }
 

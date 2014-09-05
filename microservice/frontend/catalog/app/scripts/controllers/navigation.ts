@@ -1,21 +1,16 @@
 /// <reference path="../services/navigation.ts"/>
 
 interface INavigationScope extends ng.IScope {
-    items: INavigationItem[];
     vm: NavigationController;
 }
 
 class NavigationController {
-    private items: INavigationItem[];
+    items: INavigationItem[] = [];
 
     static $inject = ['$scope', 'navigationService'];
 
     constructor(private $scope:INavigationScope, private navigationService:INavigationService) {
-        navigationService.getNavigation().then(
-            function (data: INavigationItem[]) {
-                $scope.items = data;
-            }
-        );
+        navigationService.getNavigation().then((data: INavigationItem[]) => this.items = data);
 
         $scope.vm = this;
     }

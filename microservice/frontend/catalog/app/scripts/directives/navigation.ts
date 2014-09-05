@@ -1,7 +1,7 @@
 eshop.directive("shopNavigation", () => {
     var directive: ng.IDirective = {};
 
-    directive.restrict = "E";
+    directive.restrict = "AE";
     directive.templateUrl = "/partials/navigation.html";
     directive.replace = true;
 

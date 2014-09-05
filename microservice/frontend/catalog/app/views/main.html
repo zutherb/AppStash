@@ -3,8 +3,8 @@
         <div class="row" ng-controller="RecommendationController">
             <h2>Most ordered products in each category</h2>
 
-            <div class="thumbnails" ng-repeat="product in products">
-                <div shop-product-item product="product" />
+            <div class="thumbnails" ng-repeat="product in vm.products track by product.id">
+                <div shop-product-item product="product"></div>
             </div>
         </div>
     </div>

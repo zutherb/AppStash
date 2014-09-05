@@ -6,7 +6,6 @@ class NavigationService implements INavigationService{
     private httpService: ng.IHttpService;
     private qService: ng.IQService;
 
-
     static $inject = ['$http', '$q'];
 
     constructor($http: ng.IHttpService, $q: ng.IQService) {
@@ -16,26 +15,14 @@ class NavigationService implements INavigationService{
 
     getNavigation() : ng.IPromise <INavigationItem[]> {
         var deferred = this.qService.defer();
-        this.httpService.get("api/navigation/all")
-                        .success(function (data :INavigationItem[]){
+        var failed = false;
+        this.httpService.get("/mock-data/navigation.json")
+//        this.httpService.get("api/navigation/all")
+          .success((data :INavigationItem[]) => {
                 deferred.resolve(data)
             })
-            .error(function (error:any){
+          .error((error:any) => {
                 console.error("Navigation Service Mock was loaded", error);
-                deferred.resolve([
-                    {
-                        'sum': 33,
-                        'name': 'Handy',
-                        'urlname': 'handy',
-                        '_id': 'handy'
-                    },
-                    {
-                        'sum': 1,
-                        'name': 'Tablet',
-                        'urlname': 'tablet',
-                        '_id': 'tablet'
-                    }
-                ])
             });
         return deferred.promise;
     }
