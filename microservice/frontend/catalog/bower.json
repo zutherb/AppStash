@@ -13,7 +13,8 @@
     "angular-sanitize": "1.2.23",
     "angular-animate": "1.2.23",
     "angular-touch": "1.2.23",
-    "angular-route": "1.2.23"
+    "angular-route": "1.2.23",
+    "angular-local-storage": "0.0.7"
   },
   "devDependencies": {
     "angular-mocks": "1.2.23",
