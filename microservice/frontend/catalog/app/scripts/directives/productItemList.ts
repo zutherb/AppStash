@@ -1,4 +1,4 @@
-eshop.directive("shopProductItemList", function(){
+eshop.directive("shopProductItemList", () => {
     scope: true;
 
     var directive: ng.IDirective = {};

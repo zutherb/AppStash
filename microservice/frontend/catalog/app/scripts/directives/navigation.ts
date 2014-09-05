@@ -1,6 +1,4 @@
-eshop.directive("shopNavigation", function(){
-    scope: true;
-
+eshop.directive("shopNavigation", () => {
     var directive: ng.IDirective = {};
 
     directive.restrict = "E";

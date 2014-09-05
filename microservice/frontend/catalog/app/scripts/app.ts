@@ -10,8 +10,9 @@ var eshop = angular.module('eshop', [
     'ngRoute',
     'ngSanitize',
     'ngTouch',
+    'LocalStorageModule',
 ])
-    .config(function ($routeProvider:ng.route.IRouteProvider) {
+    .config(($routeProvider:ng.route.IRouteProvider) => {
         $routeProvider
             .when('/', {
                 templateUrl: 'views/main.html'
@@ -22,6 +23,8 @@ var eshop = angular.module('eshop', [
             .otherwise({
                 redirectTo: '/'
             });
-    });
+    }).config(['localStorageServiceProvider', (localStorageServiceProvider) =>{
+        localStorageServiceProvider.setPrefix('eshop');
+    }]);
 
 

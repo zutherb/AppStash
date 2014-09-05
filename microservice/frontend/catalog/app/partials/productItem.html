@@ -8,8 +8,8 @@
 
         <div class="caption">
             <div class="text">{{product.name}}</div>
-            <a class="btn btn-primary">
-                <span class="glyphicon glyphicon-shopping-cart"/>
+            <a class="btn btn-primary" ng-controller="BasketController as basketController" ng-click="basketController.add(product)">
+                <span class="glyphicon glyphicon-shopping-cart" />
             </a>
             <span class="price">{{product.price | currency}}</span>
         </div>
