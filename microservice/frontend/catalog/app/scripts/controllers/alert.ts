@@ -1,12 +1,16 @@
 /// <reference path="../services/alert.ts"/>
 
+interface IAlertScope extends ng.IScope {
+    vm: AlertController;
+}
+
 class AlertController {
 
     alerts: IAlertItem[];
 
     static $inject = ['$scope', 'alertService'];
 
-    constructor(private $scope, private alertService: AlertService) {
+    constructor(private $scope: IAlertScope, private alertService: AlertService) {
         this.alerts = this.getAll();
 
         $scope.vm = this;

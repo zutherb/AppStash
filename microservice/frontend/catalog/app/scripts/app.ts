@@ -12,6 +12,8 @@ var eshop = angular.module('eshop', [
     'ngTouch',
     'eshop.config',
     'ui.bootstrap',
+    'ui.bootstrap.tpls',
+    'ui.bootstrap.transition',
     'LocalStorageModule'
 ]).config(($routeProvider:ng.route.IRouteProvider) => {
     $routeProvider

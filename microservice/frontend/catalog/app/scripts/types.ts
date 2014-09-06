@@ -1,3 +1,7 @@
+class Events{
+    public static UPDATE_BASKET: string = "UPDATE_BASKET";
+}
+
 interface INavigationItem{
     'sum': number;
     'name': string;
