@@ -8,5 +8,5 @@ Vcs-Git: https://github.com/zutherb/AppStash.git
 Vcs-Browser: https://github.com/zutherb/AppStash
 Package: shop-catalog-frontend
 Architecture: amd64
-Depends: shop-product-service, shop-recommendation-service
+Depends:
 Description: Shop Frontend

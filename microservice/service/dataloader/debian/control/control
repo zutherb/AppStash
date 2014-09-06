@@ -8,5 +8,5 @@ Vcs-Git: https://github.com/zutherb/AppStash.git
 Vcs-Browser: https://github.com/zutherb/AppStash
 Package: shop-dataloader
 Architecture: amd64
-Depends: mongodb
-Description: shop Dataloader
+Depends:
+Description: Shop Dataloader
