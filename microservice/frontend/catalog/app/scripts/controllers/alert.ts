@@ -1,3 +1,5 @@
+/// <reference path="../services/alert.ts"/>
+
 class AlertController {
 
     alerts: IAlertItem[];
@@ -6,6 +8,7 @@ class AlertController {
 
     constructor(private $scope, private alertService: AlertService) {
         this.alerts = this.getAll();
+
         $scope.vm = this;
     }
 
