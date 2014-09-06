@@ -6,12 +6,16 @@ interface INavigationItem{
 }
 
 interface IProduct {
-    'id' : String;
-    'articleId' : String;
-    'name' : String;
-    'urlname' : String;
-    'description': String;
-    'productType': String;
+    'id' : string;
+    'articleId' : string;
+    'name' : string;
+    'urlname' : string;
+    'description': string;
+    'productType': string;
     'price' : number;
 }
 
+interface IConfiguration {
+    "NAVIGATION_SERVICE_URL": string;
+    "PRODUCT_SERVICE_URL": string;
+}

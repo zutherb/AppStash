@@ -52,6 +52,10 @@ module.exports = function (grunt) {
                 files: ['bower.json'],
                 tasks: ['wiredep']
             },
+            config: {
+                files: ['config/{,*/}*.{js,json}'],
+                tasks: ['replace:development']
+            },
             js: {
                 files: ['<%= yeoman.app %>/scripts/{,*/}*.js'],
                 tasks: ['newer:jshint:all'],
@@ -317,6 +321,42 @@ module.exports = function (grunt) {
         // concat: {
         //   dist: {}
         // },
+        replace: {
+            development: {
+                options: {
+                    patterns: [
+                        {
+                            json: grunt.file.readJSON('./config/environments/development.json')
+                        }
+                    ]
+                },
+                files: [
+                    {
+                        expand: true,
+                        flatten: true,
+                        src: ['./config/config.js'],
+                        dest: '.tmp/scripts/'
+                    }
+                ]
+            },
+            production: {
+                options: {
+                    patterns: [
+                        {
+                            json: grunt.file.readJSON('./config/environments/production.json')
+                        }
+                    ]
+                },
+                files: [
+                    {
+                        expand: true,
+                        flatten: true,
+                        src: ['./config/config.js'],
+                        dest: '.tmp/scripts/'
+                    }
+                ]
+            }
+        },
 
         imagemin: {
             dist: {
@@ -486,6 +526,7 @@ module.exports = function (grunt) {
 
         grunt.task.run([
             'clean:server',
+            'replace:development',
             'typescript',
             'copy:glyphicons',
             'wiredep',
@@ -514,6 +555,7 @@ module.exports = function (grunt) {
     grunt.registerTask('build', [
         'clean:dist',
         'typescript',
+        'replace:production',
         'wiredep',
         'useminPrepare',
         'concurrent:dist',

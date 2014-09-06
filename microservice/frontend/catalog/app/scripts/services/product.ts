@@ -5,26 +5,26 @@ interface IProductService {
 }
 
 class ProductService implements IProductService {
-    private httpService:ng.IHttpService;
-    private qService:ng.IQService;
+    private httpService: ng.IHttpService;
+    private qService: ng.IQService;
     private alertService: AlertService;
-    private SERVICE_URL:string;
+    private configuration: IConfiguration;
 
-    static $inject = ['$http', '$q', 'alertService', 'PRODUCT_SERVICE_URL'];
+    static $inject = ['$http', '$q', 'alertService', 'configuration'];
 
     constructor($http:ng.IHttpService,
                 $q:ng.IQService,
                 alertService: AlertService,
-                PRODUCT_SERVICE_URL:string) {
+                configuration:IConfiguration) {
         this.httpService = $http;
         this.qService = $q;
         this.alertService = alertService;
-        this.SERVICE_URL = PRODUCT_SERVICE_URL;
+        this.configuration = configuration;
     }
 
     getProducts():ng.IPromise <IProduct[]> {
         var deferred = this.qService.defer();
-        this.httpService.get(this.SERVICE_URL)
+        this.httpService.get(this.configuration.PRODUCT_SERVICE_URL)
             .success((data) => deferred.resolve(data))
             .error((error:any) => {
                 this.alertService.add({type : "danger", message : "Products can nots be loaded, product backend seems to be unreachable."});

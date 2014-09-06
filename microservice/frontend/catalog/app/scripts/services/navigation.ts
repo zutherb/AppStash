@@ -8,24 +8,24 @@ class NavigationService implements INavigationService{
     private httpService: ng.IHttpService;
     private qService: ng.IQService;
     private alertService: AlertService;
-    private SERVICE_URL:string;
+    private configuration:IConfiguration;
 
-    static $inject = ['$http', '$q', 'alertService','NAVIGATION_SERVICE_URL'];
+    static $inject = ['$http', '$q', 'alertService','configuration'];
 
     constructor($http: ng.IHttpService,
                 $q: ng.IQService,
                 alertService: AlertService,
-                NAVIGATION_SERVICE_URL:string) {
+                configuration:IConfiguration) {
         this.httpService = $http;
         this.qService = $q;
         this.alertService = alertService;
-        this.SERVICE_URL = NAVIGATION_SERVICE_URL;
+        this.configuration = configuration;
     }
 
     getNavigation() : ng.IPromise <INavigationItem[]> {
         var deferred = this.qService.defer();
         var failed = false;
-        this.httpService.get(this.SERVICE_URL)
+        this.httpService.get(this.configuration.NAVIGATION_SERVICE_URL)
           .success((data :INavigationItem[]) => deferred.resolve(data))
           .error((error:any) => {
                 this.alertService.add({type : "danger", message : "Navigation can not be loaded, navigation backend seems to be unreachable."});

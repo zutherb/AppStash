@@ -3,11 +3,6 @@
 var _:UnderscoreStatic;
 var $:JQueryStatic;
 
-var config_module = angular.module('eshop.config', [])
-$.getJSON("/config/config.json").then((data) =>
-    angular.forEach(data, (key,value) => config_module.constant(value,key))
-);
-
 var eshop = angular.module('eshop', [
     'ngAnimate',
     'ngCookies',
@@ -29,7 +24,6 @@ var eshop = angular.module('eshop', [
 }).config(['localStorageServiceProvider', (localStorageServiceProvider) => {
     localStorageServiceProvider.setPrefix('eshop');
 }]);
-
 
 
 
