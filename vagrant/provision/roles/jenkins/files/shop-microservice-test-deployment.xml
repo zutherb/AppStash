@@ -36,7 +36,7 @@
       <command>ssh vagrant@app-server-node-3 -o StrictHostKeyChecking=no -v &lt;&lt;EOF
 sudo su
 apt-get update
-apt-get -y -f upgrade
+#apt-get -y -f upgrade
 apt-get install shop-catalog-frontend
 EOF</command>
     </hudson.tasks.Shell>

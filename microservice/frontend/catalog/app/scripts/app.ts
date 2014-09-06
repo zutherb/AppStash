@@ -20,11 +20,13 @@ var eshop = angular.module('eshop', [
         .when('/productcatalog/:productType', {
             templateUrl: 'views/catalog.html'
         });
-//        .otherwise({
-//            redirectTo: '/'
-//        });
 }).config(['localStorageServiceProvider', (localStorageServiceProvider) => {
     localStorageServiceProvider.setPrefix('eshop');
 }]);
+
+var config_module = angular.module('eshop.config', [])
+var config_data = $.getJSON("/config/config.json");
+
+angular.forEach(config_data, (key,value) => config_module.constant(value,key));
 
 

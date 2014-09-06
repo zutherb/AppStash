@@ -1,7 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<project>
+<?xml version="1.0" encoding="UTF-8"?><project>
   <actions/>
-  <description></description>
+  <description/>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>5</daysToKeep>
     <numToKeep>5</numToKeep>
@@ -17,7 +16,7 @@
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
-      <spec></spec>
+      <spec/>
       <upstreamProjects>shop-microservice-product-service-build,shop-microservice-catalog-ui-build,shop-microservice-recommendation-service-build, shop-microservice-dataloader-build, </upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
@@ -30,13 +29,13 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command></command>
+      <command/>
     </hudson.tasks.Shell>
     <hudson.plugins.copyartifact.CopyArtifact plugin="copyartifact@1.31">
       <project>shop-microservice-product-service-build</project>
       <filter>**/*.deb</filter>
       <target>artifacts</target>
-      <excludes></excludes>
+      <excludes/>
       <selector class="hudson.plugins.copyartifact.StatusBuildSelector">
         <stable>true</stable>
       </selector>
@@ -47,7 +46,7 @@
       <project>shop-microservice-catalog-ui-build</project>
       <filter>**/*.deb</filter>
       <target>artifacts</target>
-      <excludes></excludes>
+      <excludes/>
       <selector class="hudson.plugins.copyartifact.StatusBuildSelector">
         <stable>true</stable>
       </selector>
@@ -58,7 +57,7 @@
       <project>shop-microservice-recommendation-service-build</project>
       <filter>**/*.deb</filter>
       <target>artifacts</target>
-      <excludes></excludes>
+      <excludes/>
       <selector class="hudson.plugins.copyartifact.StatusBuildSelector">
         <stable>true</stable>
       </selector>
@@ -69,7 +68,7 @@
       <project>shop-microservice-dataloader-build</project>
       <filter>**/*.deb</filter>
       <target>artifacts</target>
-      <excludes></excludes>
+      <excludes/>
       <selector class="hudson.plugins.copyartifact.StatusBuildSelector">
         <stable>true</stable>
       </selector>

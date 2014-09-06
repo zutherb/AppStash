@@ -1,0 +1,4 @@
+{
+    "NAVIGATION_SERVICE_URL": "/api/navigation/all",
+    "PRODUCT_SERVICE_URL": "/api/product/all"
+}
