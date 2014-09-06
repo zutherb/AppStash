@@ -1,6 +1,6 @@
 class AlertController {
 
-    private alerts: IAlertItem[];
+    alerts: IAlertItem[];
 
     static $inject = ['$scope', 'alertService'];
 
@@ -18,7 +18,7 @@ class AlertController {
     }
 
     closeAlert(index: number) {
-        this.alertService.closeAlert(index);
+        this.alertService.clearAlert(index);
     }
 }
 

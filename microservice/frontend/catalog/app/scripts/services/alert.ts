@@ -7,7 +7,7 @@ interface IAlertItem {
 interface IAlertService {
     add(item:IAlertItem);
     getAll():IAlertItem[];
-    closeAlert(index: number);
+    clearAlert(index: number);
 }
 
 class AlertService implements IAlertService {
@@ -31,7 +31,7 @@ class AlertService implements IAlertService {
         return this.alerts;
     }
 
-    closeAlert(index: number) {
+    clearAlert(index: number) {
         this.alerts.slice(index, index+1);
     }
 }
