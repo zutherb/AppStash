@@ -9,6 +9,7 @@ import io.github.appstash.shop.service.product.rest.ProductServiceActor
 import spray.can.Http
 
 object Boot extends App {
+//  LoggingAdapter log = Logging.getLogger(getContext().system(), this);
 
   private val config = ConfigFactory.load()
 
@@ -18,6 +19,9 @@ object Boot extends App {
       config.getString("mongodb.host"),
       config.getString("mongodb.db"),
       config.getString("mongodb.collection"))
+
+//  log.debug(systemConfig)
+
   // we need an ActorSystem to host our application in
   implicit val system = ActorSystem("on-spray-can")
 

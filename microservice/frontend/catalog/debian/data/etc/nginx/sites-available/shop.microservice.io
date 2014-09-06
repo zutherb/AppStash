@@ -1,8 +1,3 @@
-http {
-    proxy_cache_path /data/nginx/cache keys_zone=one:10m;
-
-    proxy_cache one;
-
     server {
             listen   80; ## listen for ipv4; this line is default and implied
             #listen   [::]:80 default ipv6only=on; ## listen for ipv6
@@ -23,4 +18,3 @@ http {
                 proxy_pass http://localhost:18080;
             }
     }
-}
