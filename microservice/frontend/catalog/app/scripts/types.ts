@@ -14,3 +14,4 @@ interface IProduct {
     'productType': String;
     'price' : number;
 }
+

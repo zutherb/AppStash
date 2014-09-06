@@ -23,7 +23,14 @@
     <!-- Add your site or application content here -->
     <header role="banner" id="top" class="navbar navbar-static-top bs-docs-nav" shop-navigation></header>
 
-    <main ng-view="" class="container" ></main>
+    <!--<div ng-view="" class="container" ></div>-->
+    <main class="ng-cloak container" >
+        <div ng-controller="AlertController">
+            <alert ng-repeat="alert in vm.alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.message}}</alert>
+        </div>
+
+        <div ng-view></div>
+    </main>
 
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
