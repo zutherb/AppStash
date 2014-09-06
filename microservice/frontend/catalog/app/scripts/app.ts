@@ -11,9 +11,7 @@ var eshop = angular.module('eshop', [
     'ngSanitize',
     'ngTouch',
     'eshop.config',
-    'ui.bootstrap',
     'ui.bootstrap.tpls',
-    'ui.bootstrap.transition',
     'LocalStorageModule'
 ]).config(($routeProvider:ng.route.IRouteProvider) => {
     $routeProvider
@@ -22,6 +20,8 @@ var eshop = angular.module('eshop', [
         })
         .when('/productcatalog/:productType', {
             templateUrl: 'views/catalog.html'
+        }).when('/productdetail/:urlname', {
+            templateUrl: 'views/detail.html'
         });
 }).config(['localStorageServiceProvider', (localStorageServiceProvider) => {
     localStorageServiceProvider.setPrefix('eshop');

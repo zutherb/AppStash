@@ -1,7 +1,7 @@
 /// <reference path="../services/product.ts"/>
 
 interface IProductCatalogScope extends ng.IScope {
-    vm: ProductController;
+    vm: ProductListController;
 }
 
 interface ICatalogRouteParams {
@@ -14,7 +14,7 @@ interface IProductController {
     products: IProduct[];
 }
 
-class ProductController {
+class ProductListController {
     productType: String;
     headline: String;
     products: IProduct[];
@@ -35,4 +35,4 @@ class ProductController {
     }
 }
 
-eshop.controller('productController', ProductController);
+eshop.controller('productListController', ProductListController);
