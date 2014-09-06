@@ -1,4 +1,4 @@
 {
     "NAVIGATION_SERVICE_URL": "/mock-data/navigation.json",
-    "PRODUCT_SERVICE_URL": "/mock-data/product.json"
+    "PRODUCT_SERVICE_URL": "/mock-data/products.json"
 }

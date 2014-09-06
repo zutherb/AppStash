@@ -5,25 +5,22 @@ interface INavigationService{
 class NavigationService implements INavigationService{
     private httpService: ng.IHttpService;
     private qService: ng.IQService;
+    private SERVICE_URL:string;
 
-    static $inject = ['$http', '$q'];
+    static $inject = ['$http', '$q', 'NAVIGATION_SERVICE_URL'];
 
-    constructor($http: ng.IHttpService, $q: ng.IQService) {
+    constructor($http: ng.IHttpService, $q: ng.IQService, NAVIGATION_SERVICE_URL:string) {
         this.httpService = $http;
         this.qService = $q;
+        this.SERVICE_URL = NAVIGATION_SERVICE_URL;
     }
 
     getNavigation() : ng.IPromise <INavigationItem[]> {
         var deferred = this.qService.defer();
         var failed = false;
-        this.httpService.get("/mock-data/navigation.json")
-//        this.httpService.get("api/navigation/all")
-          .success((data :INavigationItem[]) => {
-                deferred.resolve(data)
-            })
-          .error((error:any) => {
-                console.error("Navigation Service Mock was loaded", error);
-            });
+        this.httpService.get(this.SERVICE_URL)
+          .success((data :INavigationItem[]) => deferred.resolve(data))
+          .error((error:any) => console.error("Navigation Service Mock was loaded", error));
         return deferred.promise;
     }
 }

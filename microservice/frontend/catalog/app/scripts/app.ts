@@ -3,6 +3,11 @@
 var _:UnderscoreStatic;
 var $:JQueryStatic;
 
+var config_module = angular.module('eshop.config', [])
+$.getJSON("/config/config.json").then((data) =>
+    angular.forEach(data, (key,value) => config_module.constant(value,key))
+);
+
 var eshop = angular.module('eshop', [
     'ngAnimate',
     'ngCookies',
@@ -10,6 +15,7 @@ var eshop = angular.module('eshop', [
     'ngRoute',
     'ngSanitize',
     'ngTouch',
+    'eshop.config',
     'ui.bootstrap',
     'LocalStorageModule'
 ]).config(($routeProvider:ng.route.IRouteProvider) => {
@@ -24,9 +30,6 @@ var eshop = angular.module('eshop', [
     localStorageServiceProvider.setPrefix('eshop');
 }]);
 
-var config_module = angular.module('eshop.config', [])
-var config_data = $.getJSON("/config/config.json");
 
-angular.forEach(config_data, (key,value) => config_module.constant(value,key));
 
 
