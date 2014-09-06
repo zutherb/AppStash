@@ -3,7 +3,7 @@ eshop.directive("shopNavigation", () => {
 
     directive.restrict = "AE";
     directive.templateUrl = "/partials/navigation.html";
-    directive.replace = true;
+    directive.replace = false;
 
     return directive;
 });

@@ -27,13 +27,13 @@ class BasketController {
         this.$scope.$emit(Events.UPDATE_BASKET);
     }
 
-    private getAll(): IBasketItem[] {
-        return this.basketService.getAll();
+    getAll(): IBasketItem[] {
+        return this.basketItems;
     }
 
     getTotalSum(): number {
         var sum:number = 0;
-        _.each(this.getAll(), function(elem:IBasketItem){
+        _.each(this.basketItems, function(elem:IBasketItem){
             sum += elem.product.price;
         });
         return sum;

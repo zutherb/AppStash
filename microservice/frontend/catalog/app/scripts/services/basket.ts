@@ -18,7 +18,7 @@ class BasketService implements IBasketService {
 
     constructor(private localStorageService: ng.localStorage.ILocalStorageService) {}
 
-    add(product: IProduct) {
+    add(product: IProduct): IBasketItem {
         var uuid: string = this.newUUID();
         var basketItem: IBasketItem = {uuid: uuid, product : product};
 
@@ -26,6 +26,7 @@ class BasketService implements IBasketService {
         basketItems.push(basketItem);
 
         this.localStorageService.set(this.BASKET_ITEMS_KEY, basketItems)
+        return basketItem
     }
 
     remove(uuid: string) {

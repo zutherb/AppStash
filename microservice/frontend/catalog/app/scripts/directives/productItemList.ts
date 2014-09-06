@@ -3,7 +3,7 @@ eshop.directive("shopProductItemList", () => {
 
     directive.restrict = "AE";
     directive.templateUrl = "/partials/productItemList.html";
-    directive.replace = true;
+    directive.replace = false;
     directive.scope = {
         products: '=products',
         headline: '=headline'
