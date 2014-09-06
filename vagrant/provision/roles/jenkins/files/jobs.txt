@@ -5,6 +5,6 @@ shop-monolitic-test-deployment
 shop-microservice-product-service-build
 shop-microservice-recommendation-service-build
 shop-microservice-dataloader-build
-shop-microservice-ui-build
+shop-microservice-catalog-ui-build
 shop-microservice-publish
 shop-microservice-test-deployment

@@ -39,8 +39,8 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>./gradlew -p microservice/frontend gruntBuildWithOpts
-./gradlew -p microservice/frontend prepareDeb buildDeb</command>
+      <command>./gradlew -p microservice/frontend/catalog bower grunt_build
+./gradlew -p microservice/frontend/catalog prepareDeb buildDeb</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>

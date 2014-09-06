@@ -28,6 +28,7 @@
   with_items:
     - grunt-cli
     - bower
+    - typescript
 
 #gem plugin does'nt work correct
 - raw: sudo gem install compass
@@ -105,7 +106,7 @@
     - shop-microservice-product-service-build
     - shop-microservice-recommendation-service-build
     - shop-microservice-dataloader-build
-    - shop-microservice-ui-build
+    - shop-microservice-catalog-ui-build
   ignore_errors: yes
 
 - file: path=/var/lib/jenkins/.ssh/ mode=0755 owner=jenkins group=jenkins state=directory

@@ -18,7 +18,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>shop-microservice-product-service-build,shop-microservice-ui-build,shop-microservice-recommendation-service-build, shop-microservice-dataloader-build, </upstreamProjects>
+      <upstreamProjects>shop-microservice-product-service-build,shop-microservice-catalog-ui-build,shop-microservice-recommendation-service-build, shop-microservice-dataloader-build, </upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>
@@ -44,7 +44,7 @@
       <doNotFingerprintArtifacts>false</doNotFingerprintArtifacts>
     </hudson.plugins.copyartifact.CopyArtifact>
     <hudson.plugins.copyartifact.CopyArtifact plugin="copyartifact@1.31">
-      <project>shop-microservice-ui-build</project>
+      <project>shop-microservice-catalog-ui-build</project>
       <filter>**/*.deb</filter>
       <target>artifacts</target>
       <excludes></excludes>
