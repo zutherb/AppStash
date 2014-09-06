@@ -17,10 +17,7 @@ class AlertService implements IAlertService {
     static $inject = [];
 
     constructor() {
-        this.alerts = [
-            { type: 'danger', message: 'Oh snap! Change a few things up and try submitting again.' },
-            { type: 'success', message: 'Well done! You successfully read this important alert message.' }
-        ];
+        this.alerts = [];
     }
 
     add(item:IAlertItem) {

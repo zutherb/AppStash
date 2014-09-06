@@ -22,6 +22,8 @@ var eshop = angular.module('eshop', [
             templateUrl: 'views/catalog.html'
         }).when('/productdetail/:urlname', {
             templateUrl: 'views/detail.html'
+        }).otherwise({
+            templateUrl: 'views/404.html'
         });
 }).config(['localStorageServiceProvider', (localStorageServiceProvider) => {
     localStorageServiceProvider.setPrefix('eshop');

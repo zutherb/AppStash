@@ -4,16 +4,6 @@ interface IProductCatalogScope extends ng.IScope {
     vm: ProductListController;
 }
 
-interface ICatalogRouteParams {
-    productType: String;
-}
-
-interface IProductController {
-    productType: String;
-    headline: String;
-    products: IProduct[];
-}
-
 class ProductListController {
     productType: String;
     headline: String;
