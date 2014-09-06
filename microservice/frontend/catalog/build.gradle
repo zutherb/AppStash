@@ -38,7 +38,7 @@ debian {
     }
 }
 
-// processes your bower.json 
+// processes your bower.json
 task bower(type: Exec){
     commandLine "bower", 'install'
 }
@@ -50,7 +50,7 @@ task gruntBuildWithOpts(type: GruntTask) {
 task prepareDeb {
     copy {
         from "${projectDir}/dist/"
-        into "${buildDir}/debian-data/usr/share/pizza/frontend/html"
+        into "${buildDir}/debian-data/usr/share/shop/frontend/catalog/html"
     }
 }
 
