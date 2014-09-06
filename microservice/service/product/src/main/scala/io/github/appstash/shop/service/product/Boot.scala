@@ -1,17 +1,23 @@
 package io.github.appstash.shop.service.product
 
-import java.net.InetAddress
-
 import akka.actor.{ActorSystem, Props}
 import akka.io.IO
-import io.github.appstash.shop.service.product.api.{ConfigurationModule, MongoDBModule}
-import io.github.appstash.shop.service.product.impl.{ShopProductRepositoryModule, ShopDBModule}
+import com.typesafe.config.ConfigFactory
+import io.github.appstash.shop.service.product.model.{SystemConfiguration}
 import io.github.appstash.shop.service.product.rest.ProductServiceActor
 
 import spray.can.Http
 
 object Boot extends App {
 
+  private val config = ConfigFactory.load()
+
+  val systemConfig = new SystemConfiguration(
+      config.getString("http.host"),
+      config.getInt("http.port"),
+      config.getString("mongodb.host"),
+      config.getString("mongodb.db"),
+      config.getString("mongodb.collection"))
   // we need an ActorSystem to host our application in
   implicit val system = ActorSystem("on-spray-can")
 
@@ -19,5 +25,5 @@ object Boot extends App {
   val service = system.actorOf(Props[ProductServiceActor], "demo-service")
 
   // start a new HTTP server on port 8080 with our service actor as the handler
-  IO(Http) ! Http.Bind(service, interface = "localhost", port = 18080)
+  IO(Http) ! Http.Bind(service, interface = systemConfig.httpHost, port = systemConfig.httpPort)
 }

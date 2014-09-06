@@ -7,4 +7,8 @@ server {
 
         # Make site accessible from http://localhost/
         server_name shop.microservice.io;
+
+        location /api/product/ {
+            proxy_pass http://localhost:18080;
+        }
 }

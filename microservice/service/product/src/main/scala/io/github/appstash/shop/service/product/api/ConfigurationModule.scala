@@ -1,6 +1,6 @@
 package io.github.appstash.shop.service.product.api
 
-import io.github.appstash.shop.service.product.model.ServiceConfiguration
+import io.github.appstash.shop.service.product.model.SystemConfiguration
 
 trait ConfigurationModule {
 
@@ -9,7 +9,7 @@ trait ConfigurationModule {
   def Configuration(): Configuration
 
   trait ConfigurationLike {
-    def get() : ServiceConfiguration
+    def get() : SystemConfiguration
   }
 
 }

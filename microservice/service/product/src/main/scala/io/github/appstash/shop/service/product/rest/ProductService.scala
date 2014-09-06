@@ -2,10 +2,11 @@ package io.github.appstash.shop.service.product.rest
 
 import akka.actor.{ActorSystem => AkkaActorSystem, Actor}
 import akka.util.Helpers.Requiring
+import com.typesafe.config.ConfigFactory
 import io.github.appstash.shop.service.product.Boot
 import io.github.appstash.shop.service.product.api.{ConfigurationModule, ProductRepositoryModule}
 import io.github.appstash.shop.service.product.impl.{ShopDBModule, ShopProductRepositoryModule}
-import io.github.appstash.shop.service.product.model.{Product, ProductQuery, ServiceConfiguration}
+import io.github.appstash.shop.service.product.model.{SystemConfiguration, ProductQuery}
 import spray.http.{StatusCodes, HttpResponse, MediaTypes}
 import spray.httpx.SprayJsonSupport.sprayJsonMarshaller
 import spray.httpx.SprayJsonSupport.sprayJsonUnmarshaller
@@ -33,10 +34,11 @@ trait ProductService extends HttpService with ConfigurationModule
                                          with ShopDBModule
                                          with ShopProductRepositoryModule {
 
-  override def Configuration(): Configuration = new Configuration
+  override def Configuration() = new Configuration
 
   class Configuration extends ConfigurationLike{
-    override def get(): ServiceConfiguration = new ServiceConfiguration("localhost","shop", "product")
+
+    override def get(): SystemConfiguration = Boot.systemConfig
   }
 
   val myRoute =
