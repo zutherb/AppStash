@@ -6,5 +6,5 @@ server {
         index index.html index.htm;
 
         # Make site accessible from http://localhost/
-        server_name shop.example.com;
+        server_name shop.microservice.io;
 }
