@@ -1,10 +1,10 @@
+shop-microservice-catalog-ui-build
+shop-microservice-dataloader-build
+shop-microservice-product-service-build
+shop-microservice-publish
+shop-microservice-recommendation-service-build
+shop-microservice-test-deployment
 shop-monolitic-build
-shop-monolitic-ui-test
 shop-monolitic-sonar
 shop-monolitic-test-deployment
-shop-microservice-product-service-build
-shop-microservice-recommendation-service-build
-shop-microservice-dataloader-build
-shop-microservice-catalog-ui-build
-shop-microservice-publish
-shop-microservice-test-deployment
+shop-monolitic-ui-test

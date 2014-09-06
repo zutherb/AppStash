@@ -32,6 +32,10 @@ debian {
 
     data {
         dir {
+            name = "${projectDir}/debian/data"
+            exclusions = ["**/.DS_Store", "changelog"]
+        }
+        dir {
             name = "${buildDir}/debian-data/"
             exclusions = ["**/.DS_Store"]
         }

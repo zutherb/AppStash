@@ -37,6 +37,7 @@
 sudo su
 apt-get update
 apt-get -y -f upgrade
+apt-get install shop-catalog-frontend
 EOF</command>
     </hudson.tasks.Shell>
   </builders>
