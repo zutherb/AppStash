@@ -1,4 +1,4 @@
-<div class="container" ng-controller="NavigationController">
+<div class="container">
     <div class="navbar-header">
         <button data-target=".bs-navbar-collapse" data-toggle="collapse" type="button" class="navbar-toggle">
             <span class="sr-only">Microservices architecture</span>
@@ -9,7 +9,7 @@
         <a class="navbar-brand" href="./">Microservices architecture</a>
     </div>
     <nav role="navigation" class="collapse navbar-collapse bs-navbar-collapse">
-        <ul class="nav navbar-nav">
+        <ul class="nav navbar-nav" ng-controller="NavigationController">
 
             <li class="active">
                 <a href="./">
@@ -24,10 +24,10 @@
             </li>
         </ul>
 
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-nav navbar-right" ng-controller="DropdownController">
 
             <li class="dropdown">
-                <a href="#menu0" class="dropdown-toggle" data-toggle="dropdown">
+                <a href="#menu0" class="dropdown-toggle" on-toggle="toggled(open)">
                     Sign In
                     <b class="caret"></b>
                 </a>

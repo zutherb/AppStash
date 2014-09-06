@@ -18,3 +18,16 @@ class NavigationController {
 
 eshop.controller('navigationController', NavigationController);
 
+class DropdownController {
+    static $inject = ['$scope'];
+
+    constructor(private $scope) {
+        $scope.vm = this;
+    }
+
+    toggled(open) {
+        console.log('Dropdown is now: ', open);
+    }
+}
+
+eshop.controller('dropdownController', DropdownController);
