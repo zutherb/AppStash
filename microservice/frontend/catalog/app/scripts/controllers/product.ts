@@ -27,7 +27,9 @@ class ProductController {
         this.productType = $routeParams.productType;
         this.headline = "Choose your product";
 
-        productService.getProducts().then((data: IProduct[]) =>  this.products = data);
+        productService.getProducts().then((data: IProduct[]) =>  {
+            this.products = _.filter(data, (item) => item.productType.toLowerCase() == this.productType)
+        });
 
         $scope.vm = this;
     }
