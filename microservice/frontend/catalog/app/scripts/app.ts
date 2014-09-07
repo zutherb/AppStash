@@ -4,6 +4,7 @@ var _:UnderscoreStatic;
 var $:JQueryStatic;
 
 var eshop = angular.module('eshop', [
+    'ui.bootstrap',
     'ngAnimate',
     'ngCookies',
     'ngResource',
@@ -11,7 +12,6 @@ var eshop = angular.module('eshop', [
     'ngSanitize',
     'ngTouch',
     'eshop.config',
-    'ui.bootstrap.tpls',
     'LocalStorageModule'
 ]).config(($routeProvider:ng.route.IRouteProvider) => {
     $routeProvider
