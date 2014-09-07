@@ -1,10 +1,8 @@
 {
-  "name": "client",
+  "name": "eshop-catalog",
   "version": "0.0.0",
-  "dependencies": {
-    "chalk": "^0.5.1"
-  },
   "devDependencies": {
+    "chalk": "^0.5.1",
     "grunt": "^0.4.1",
     "grunt-autoprefixer": "^0.7.3",
     "grunt-concurrent": "^0.5.0",
