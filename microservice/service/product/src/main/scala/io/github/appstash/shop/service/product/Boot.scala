@@ -5,12 +5,11 @@ import akka.io.IO
 import com.typesafe.config.ConfigFactory
 import io.github.appstash.shop.service.product.model.{SystemConfiguration}
 import io.github.appstash.shop.service.product.rest.ProductServiceActor
+import org.apache.logging.log4j.{Logger, core, LogManager}
 
 import spray.can.Http
 
 object Boot extends App {
-//  LoggingAdapter log = Logging.getLogger(getContext().system(), this);
-
   private val config = ConfigFactory.load()
 
   val systemConfig = new SystemConfiguration(

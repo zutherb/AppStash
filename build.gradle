@@ -136,6 +136,7 @@ subprojects {
             }
         }
 
+//        all*.exclude group: "org.apache.logging.log4j"
         all*.exclude group: "org.mortbay.jetty"
         all*.exclude group: "tomcat"
 

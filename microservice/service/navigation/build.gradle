@@ -27,6 +27,7 @@ sourceSets {
 dependencies {
     //please extract version numbers and don't forget main gradle
     compile commonDeps
+
     compile "io.restx:restx-core:$restxVersion"
     compile "io.restx:restx-core-annotation-processor:$restxVersion"
     compile "io.restx:restx-factory:$restxVersion"
