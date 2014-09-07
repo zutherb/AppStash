@@ -28,7 +28,7 @@ public class FeedbackPanel extends Panel {
             @Override
             protected String load() {
                 if (feedbackPanel.anyMessage(FeedbackMessage.ERROR)) {
-                    return "alert-error";
+                    return "alert-danger";
                 }
                 if (feedbackPanel.anyMessage(FeedbackMessage.SUCCESS)) {
                     return "alert-success";
