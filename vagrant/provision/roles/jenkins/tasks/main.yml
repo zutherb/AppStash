@@ -81,6 +81,7 @@
       - sonar
       - buildgraph-view
       - xvnc
+      - ws-cleanup
   notify: restart jenkins
 
 - name: restart jenkins
