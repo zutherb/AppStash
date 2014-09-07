@@ -2,11 +2,21 @@
 
 ## Overview
 
-This application gives architects and developer an running example, how a microservice web-application can be build. 
-The application is based on the **AngularJS Phone Catalog** and **MongoDB Pizza Shop**, which can be found on Github: 
+This application will give architects and developer an example how a microservice web application architecture can 
+looks like. The application is based on the **AngularJS Phone Catalog** and **MongoDB Pizza Shop**, which can be found 
+on Github: 
 - [AngularJS Phone Catalog Tutorial Application](https://github.com/angular/angular-phonecat)
 - [MongoDB Pizza Shop](https://github.com/comsysto/mongodb-onlineshop)
 
+The application shows a small online shop for mobile devices that implements the following use cases. An user is able to
+see different catalogs of mobile devices and is able to order them.
+
+In a future phase the online shop will be deployed on the following cluster nodes:
+
+    Catalog Application Server    --> angular frontend for catalog data and create a basket
+    Checkout Application Server   --> react frontend for ordering a basket
+    Backend Server                --> all services that are needed from both frontends are deployed on this server 
+    
 ![Architecture Overview](https://raw.githubusercontent.com/zutherb/AppStash/ci-server/external/images/deployment-diagram.png)
 
 ## Prerequisites
@@ -21,8 +31,15 @@ The application is based on the **AngularJS Phone Catalog** and **MongoDB Pizza 
 
 ### Ansible
 
-- You must not know Ansible, but it must be to installed that vagrant be create Visualmachines.
+- You must not know Ansible, but it must be to installed that vagrant be create virtual machines.
 - [Ansible](http://www.ansible.com/) (download, documentation)
+
+###Run the Cluster 
+
+``
+cd vagrant
+vagrant up
+``
 
 ###Development
 
