@@ -36,10 +36,21 @@ In a future phase the online shop will be deployed on the following cluster node
 
 ###Run the Cluster 
 
-``
+You only have to execute the following command if you want to run a development cluster: 
+
+```bash
+git clone git@github.com:zutherb/AppStash.git appstash
+cd appstash
 cd vagrant
 vagrant up
-``
+```
+
+The Cluster contains of the following nodes:
+
+Name        | IP            | Hostname | Application | Forward
+------------|---------------|----------|-------------|------------------------
+Buildserver | 10.211.55.200 | ci-node  | Jenkins     |http://localhost:10000/
+Buildserver | 10.211.55.200 | ci-node  | Sonar       |http://localhost:9000/
 
 ###Development
 
@@ -70,4 +81,6 @@ vagrant up
 
 ## Contact
 
+
+[Bernd Zuther](mailto:bernd.zuther@me.com)
 

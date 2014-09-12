@@ -13,7 +13,7 @@
             <tr ng-repeat="basketItem in vm.getAll() track by basketItem.uuid">
                 <td>{{basketItem.product.name}}</td>
                 <td style="text-align: right;">{{basketItem.product.price | currency}}</td>
-                <td>
+                <td style="text-align: right;">
                     <a class="btn btn-danger" ng-click="vm.remove(basketItem.uuid)" id="{{basketItem.uuid}}">
                         <span class="glyphicon glyphicon-trash"></span>
                     </a>
@@ -23,10 +23,9 @@
         <tfoot>
             <tr>
                 <td>Subtotal</td>
-                <td>
+                <td style="text-align: right;" colspan="2">
                     {{vm.getTotalSum() | currency}}
                 </td>
-                <td></td>
             </tr>
             <tr>
                 <td colspan="3">

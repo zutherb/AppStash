@@ -5,7 +5,7 @@ interface IBasketItem {
 
 
 interface IBasketService {
-    add(product: IProduct);
+    add(product: IProduct): IBasketItem;
     remove(uuid: string);
     getAll(): IBasketItem[];
 }
