@@ -133,6 +133,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     end
     appserver3.vm.synced_folder "provision", "/provision"
     appserver3.vm.network :private_network, ip: "10.211.55.103"
+    appserver3.vm.network :forwarded_port, host: 8082, guest: 80, auto_correct: true
     appserver3.vm.hostname = "app-server-node-3"
     appserver3.vm.provision "ansible" do |ansible|
       ansible.playbook = "provision/micro_appserver.yml"
