@@ -49,8 +49,8 @@ The Cluster contains of the following nodes:
 
 Name        | IP            | Hostname | Application | Forward
 ------------|---------------|----------|-------------|------------------------
-Buildserver | 10.211.55.200 | ci-node  | Jenkins     |http://localhost:10000/
-Buildserver | 10.211.55.200 | ci-node  | Sonar       |http://localhost:9000/
+Buildserver | 10.211.55.200 | ci-node  | Jenkins     |(http://localhost:10000/)
+Buildserver | 10.211.55.200 | ci-node  | Sonar       |(http://localhost:9000/)
 
 ###Development
 

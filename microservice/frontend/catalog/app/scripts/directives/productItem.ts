@@ -1,4 +1,4 @@
-eshop.directive("shopProductItem", ()=>{
+eshop.directive("shopProductItem", () => {
     var directive: ng.IDirective = {};
 
     directive.restrict = "AE";
