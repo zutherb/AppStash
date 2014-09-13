@@ -18,6 +18,7 @@
   apt: pkg={{item}} state=present force=yes
   with_items:
     - jenkins
+    - xvfb
     - git
     - curl
     - nodejs
@@ -80,7 +81,7 @@
       - jacoco
       - sonar
       - buildgraph-view
-      - xvnc
+      - xvfb
       - ws-cleanup
   notify: restart jenkins
 

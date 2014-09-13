@@ -50,9 +50,16 @@
   </builders>
   <publishers/>
   <buildWrappers>
-    <hudson.plugins.xvnc.Xvnc plugin="xvnc@1.17">
-      <takeScreenshot>true</takeScreenshot>
-      <useXauthority>true</useXauthority>
-    </hudson.plugins.xvnc.Xvnc>
+    <org.jenkinsci.plugins.xvfb.XvfbBuildWrapper plugin="xvfb@1.0.12">
+      <installationName>default</installationName>
+      <displayName>1</displayName>
+      <screen>1024x768x24</screen>
+      <debug>true</debug>
+      <timeout>0</timeout>
+      <displayNameOffset>1</displayNameOffset>
+      <additionalOptions></additionalOptions>
+      <shutdownWithBuild>false</shutdownWithBuild>
+      <autoDisplayName>false</autoDisplayName>
+    </org.jenkinsci.plugins.xvfb.XvfbBuildWrapper>
   </buildWrappers>
 </project>

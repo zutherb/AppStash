@@ -50,7 +50,7 @@
     <hudson.tasks.ArtifactArchiver>
       <artifacts>**/*.deb</artifacts>
       <allowEmptyArchive>false</allowEmptyArchive>
-      <onlyIfSuccessful>true</onlyIfSuccessful>
+      <onlyIfSuccessful>false</onlyIfSuccessful>
       <fingerprint>false</fingerprint>
       <defaultExcludes>true</defaultExcludes>
     </hudson.tasks.ArtifactArchiver>
@@ -68,7 +68,7 @@
         </hudson.plugins.ws__cleanup.Pattern>
         <hudson.plugins.ws__cleanup.Pattern>
           <pattern>**/.bowerrc</pattern>
-          <type>INCLUDE</type>
+          <type>EXCLUDE</type>
         </hudson.plugins.ws__cleanup.Pattern>
       </patterns>
       <deleteDirs>false</deleteDirs>
