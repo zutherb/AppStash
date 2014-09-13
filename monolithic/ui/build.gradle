@@ -141,14 +141,4 @@ task uiTestJettyStop {
 jmeterRun.configure {
     jmeterPropertyFile = file("${projectDir}/src/test/load/jmeter.properties")
     jmeterTestFiles = [file("src/test/load/loadtest.jmx")]
-
-//    doFirst {
-//        def scheduledThreadPool = Executors.newScheduledThreadPool(0)
-//        scheduledThreadPool.schedule(new Runnable() {
-//            @Override
-//            void run() {
-//                org.apache.jmeter.util.ShutdownClient.main('StopTestNow')
-//            }
-//        }, 60, TimeUnit.SECONDS)
-//    }
 }
