@@ -73,6 +73,7 @@ Vargrant-Name | IP            | Hostname           | Application | Forward
 --------------|---------------|--------------------|-------------|------------------------
 buildserver   | 10.211.55.200 | ci-node            | Jenkins     |http://localhost:10000/
 buildserver   | 10.211.55.200 | ci-node            | Sonar       |http://localhost:9000/
+buildserver   | 10.211.55.200 | ci-node            | VNC         |vnc://jenkins@ci-node:5901
 reposerver    | 10.211.55.201 | ci-repo            | Artifact Repository (NGINX) |
 dbserver      | 10.211.55.202 | mongodb-node       | MongoDB     | localhost:27017
 appserver1    | 10.211.55.101 | app-server-node-1  | Legacy Shop | localhost:8080/shop/
@@ -90,10 +91,9 @@ appserver3    | 10.211.55.103 | app-server-node-3  | Microservice Shop | localho
 
 ### Installing dependencies
 
+##Deployment Pipeline
 
-
-
-
+![VNC View](https://raw.githubusercontent.com/zutherb/AppStash/ci-server/external/images/vnc-jenkins.png)
 
 ## Contact
 
