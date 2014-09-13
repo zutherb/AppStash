@@ -1,7 +1,7 @@
 <h2>Shopping Cart</h2>
 
 <div class="well">
-    <table class="table table-striped" ng-controller="BasketController">
+    <table class="table table-striped" ng-controller="CardController">
         <thead>
             <tr>
                 <th>Name</th>
@@ -10,11 +10,11 @@
             </tr>
         </thead>
         <tbody>
-            <tr ng-repeat="basketItem in vm.basketItems track by basketItem.uuid">
-                <td>{{basketItem.product.name}}</td>
-                <td style="text-align: right;">{{basketItem.product.price | currency}}</td>
+            <tr ng-repeat="cardItem in vm.cardItems track by cardItem.uuid">
+                <td>{{cardItem.product.name}}</td>
+                <td style="text-align: right;">{{cardItem.product.price | currency}}</td>
                 <td style="text-align: right;">
-                    <a class="btn btn-danger" ng-click="vm.remove(basketItem.uuid)" id="{{basketItem.uuid}}">
+                    <a class="btn btn-danger" ng-click="vm.remove(cardItem.uuid)" id="{{cardItem.uuid}}">
                         <span class="glyphicon glyphicon-trash"></span>
                     </a>
                 </td>

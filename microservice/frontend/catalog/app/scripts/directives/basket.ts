@@ -1,8 +1,8 @@
-eshop.directive("shopBasket", () => {
+eshop.directive("shopCard", () => {
     var directive: ng.IDirective = {};
 
     directive.restrict = "AE";
-    directive.templateUrl = "/partials/basket.html";
+    directive.templateUrl = "/partials/card.html";
     directive.replace = false;
 
     directive.scope = {};
