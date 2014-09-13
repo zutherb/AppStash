@@ -39,13 +39,6 @@ debian {
             name = "${buildDir}/debian-data/"
             exclusions = ["**/.DS_Store"]
         }
-        file {
-            name = "${projectDir}/debian/config/config.json"
-            target = "/usr/share/shop/frontend/catalog/html/config/config.json"
-            mapper {
-                fileMode = "755"
-            }
-        }
     }
 }
 

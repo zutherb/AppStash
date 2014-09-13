@@ -31,6 +31,10 @@ debian {
 
     data {
         dir {
+            name = "${projectDir}/debian/data"
+            exclusions = ["**/.DS_Store", "changelog"]
+        }
+        dir {
             name = "${buildDir}/debian-data/"
             exclusions = ["**/.DS_Store"]
         }
@@ -46,3 +50,10 @@ grunt_build.dependsOn 'npmInstall'
 
 // runs "grunt build" as part of your gradle build
 build.dependsOn grunt_build
+
+task prepareDeb {
+    copy {
+        from "${projectDir}/dist/"
+        into "${buildDir}/debian-data/usr/share/shop/frontend/checkout/html"
+    }
+}
