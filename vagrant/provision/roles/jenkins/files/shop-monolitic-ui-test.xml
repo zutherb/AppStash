@@ -45,7 +45,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>./gradlew -p monolithic/ui uiTest --stacktrace -Dspring.profiles.active=test</command>
+      <command>./gradlew -p monolithic/ui uiTest --stacktrace -Dspring.profiles.active=test -Dorg.gradle.daemon=false</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
