@@ -1,11 +1,16 @@
 ---
+- raw: sudo chgrp -R logstash /var/log/nginx/
+- raw: sudo chmod -R 755 /var/log/nginx/
+
+- copy: src=logstash.conf dest=/etc/logstash/conf.d force=yes mode=0644
+  notify: restart logstash
+
 - name: install shop shop file
   apt_key: url=http://ci-repo/ci-repo.gpg.key state=present
+
 
 - name: add shop repository into sources list.
   apt_repository: repo='deb http://ci-repo/debian/ shop main' state=present
 
 - name: update cache
   apt: update_cache=yes force=yes
-
-#- raw: sudo DEBIAN_FRONTEND=noninteractive apt-get -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade

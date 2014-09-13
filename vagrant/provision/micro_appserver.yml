@@ -13,4 +13,5 @@
     - oracle-java
     - nginx
     - rstats
-    - appserver
+    - logstash
+    - microservice-appserver

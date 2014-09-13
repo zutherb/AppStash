@@ -13,3 +13,4 @@
     - oracle-java
     - tomcat
     - logstash
+    - oldschool-appserver
