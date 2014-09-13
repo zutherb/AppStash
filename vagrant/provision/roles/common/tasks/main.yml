@@ -5,3 +5,5 @@
     - mongodb-clients
     - curl
     - tree
+    - htop
+    - curl

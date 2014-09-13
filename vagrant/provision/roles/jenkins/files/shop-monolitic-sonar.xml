@@ -3,8 +3,8 @@
   <actions/>
   <description></description>
   <logRotator class="hudson.tasks.LogRotator">
-    <daysToKeep>5</daysToKeep>
-    <numToKeep>5</numToKeep>
+    <daysToKeep>1</daysToKeep>
+    <numToKeep>1</numToKeep>
     <artifactDaysToKeep>-1</artifactDaysToKeep>
     <artifactNumToKeep>1</artifactNumToKeep>
   </logRotator>
@@ -45,7 +45,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>./gradlew sonarRunner --stacktrace</command>
+      <command>./gradlew sonarRunner -info</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>
