@@ -186,7 +186,6 @@ subprojects {
             "org.springframework.security:spring-security-core:$springSecurityVersion",
             "org.springframework.security:spring-security-web:$springSecurityVersion",
             "org.springframework.security:spring-security-config:$springSecurityVersion",
-            "org.springframework.mobile:spring-mobile-device:$springMobileVersion",
             "org.springframework.data:spring-data-mongodb:$springDataMongoVersion"
     ]
 
