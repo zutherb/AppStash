@@ -1,5 +1,6 @@
 class Events{
-    public static UPDATE_CARD: string = "UPDATE_CARD";
+    public static ADD_TO_CARD: string = "ADD_TO_CARD";
+    public static REMOVE_FROM_CARD: string = "REMOVE_FROM_CARD";
 }
 
 interface INavigationItem{

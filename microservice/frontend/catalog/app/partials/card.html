@@ -14,9 +14,7 @@
                 <td>{{cardItem.product.name}}</td>
                 <td style="text-align: right;">{{cardItem.product.price | currency}}</td>
                 <td style="text-align: right;">
-                    <a class="btn btn-danger" ng-click="vm.remove(cardItem.uuid)" id="{{cardItem.uuid}}">
-                        <span class="glyphicon glyphicon-trash"></span>
-                    </a>
+                    <shop-remove-from-card uuid="cardItem.uuid" />
                 </td>
             </tr>
         </tbody>

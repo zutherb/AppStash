@@ -5,27 +5,31 @@ interface ICardScope extends ng.IScope {
 class CardController {
     private cardItems: ICardItem[] = [];
 
-    static $inject = ['$scope', 'cardService', '$rootScope'];
+    static $inject = ['$scope', '$rootScope', 'cardService'];
 
-    constructor(private $scope: ICardScope, private cardService: CardService, private $rootScope: ng.IScope) {
+    constructor(private $scope: ICardScope, private $rootScope: ng.IScope, private cardService: CardService) {
         this.cardItems = this.cardService.getAll();
 
         $scope.vm = this;
 
-        $scope.$on(Events.UPDATE_CARD, (event) => {
+        $scope.$on(Events.ADD_TO_CARD, (event: ng.IAngularEvent, product: IProduct) => {
+            this.add(product);
+            this.cardItems = this.cardService.getAll();
+        });
+
+        $scope.$on(Events.REMOVE_FROM_CARD, (event: ng.IAngularEvent, uuid: string) => {
+            this.remove(uuid);
             this.cardItems = this.cardService.getAll();
         });
     }
 
     add(product: IProduct) {
         this.cardService.add(product);
-        this.$rootScope.$broadcast(Events.UPDATE_CARD);
 
     }
 
     remove(uuid: string) {
         this.cardService.remove(uuid);
-        this.$rootScope.$broadcast(Events.UPDATE_CARD);
     }
 
     getAll(): ICardItem[] {

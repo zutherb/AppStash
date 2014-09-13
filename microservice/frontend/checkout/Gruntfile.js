@@ -4,8 +4,8 @@ var mountFolder = function (connect, dir) {
   return connect.static(require('path').resolve(dir));
 };
 
-var webpackDistConfig = require('./webpack.dist.config.js'),
-    webpackDevConfig = require('./webpack.config.js');
+var webpackDistConfig = require('./config/webpack.dist.config.js'),
+    webpackDevConfig = require('./config/webpack.config.js');
 
 module.exports = function (grunt) {
   // Let *load-grunt-tasks* require everything
@@ -27,20 +27,20 @@ module.exports = function (grunt) {
 
     'webpack-dev-server': {
       options: {
-        port: 8000,
+        port: 9002,
         webpack: webpackDevConfig,
         publicPath: '/assets/',
-        contentBase: './<%= pkg.src %>/',
+        contentBase: './<%= pkg.src %>/'
       },
 
       start: {
-        keepAlive: true,
+        keepAlive: true
       }
     },
 
     connect: {
       options: {
-        port: 8000
+        port: 9002
       },
 
       dist: {
