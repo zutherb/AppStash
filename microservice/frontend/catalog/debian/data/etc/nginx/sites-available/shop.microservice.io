@@ -8,11 +8,6 @@ server {
     # Make site accessible from http://localhost/
     server_name shop.microservice.io;
 
-    location /checkout/ {
-        root /usr/share/shop/frontend/checkout/html;
-        index index.html index.htm;
-    }
-
     location /api/product/ {
         rewrite /api/product/(.*) /$1  break;
 
