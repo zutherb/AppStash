@@ -24,6 +24,7 @@
     "grunt-newer": "^0.7.0",
     "grunt-ngmin": "0.0.3",
     "grunt-replace": "^0.7.9",
+    "grunt-sonar-runner": "^2.3.1",
     "grunt-svgmin": "^1.0.0",
     "grunt-typescript": "^0.3.8",
     "grunt-usemin": "^2.4.0",

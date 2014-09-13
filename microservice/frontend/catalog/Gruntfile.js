@@ -515,6 +515,31 @@ module.exports = function (grunt) {
             transformPath: function(path) {
                 return path.replace(/\.ts$/, '.js');
             }
+        },
+        sonarRunner: {
+            analysis: {
+                options: {
+                    debug: true,
+                    separator: '\n',
+                    sonar: {
+                        host: {
+                            url: 'http://localhost:9000'
+                        },
+                        jdbc: {
+                            url: 'jdbc:postgresql://ci-node/sonar',
+                            username: 'sonar',
+                            password: 'sonar'
+                        },
+
+                        projectKey: 'sonar:shop-catalog-frontend:0.1.0',
+                        projectName: 'Shop Catalog Frontend',
+                        projectVersion: '0.1',
+                        sources: ['test'].join(','),
+                        language: 'js',
+                        sourceEncoding: 'UTF-8'
+                    }
+                }
+            }
         }
     });
 
