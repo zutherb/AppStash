@@ -39,8 +39,8 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>./gradlew -p microservice/service/dataloader installApp
-./gradlew -p microservice/service/dataloader prepareDeb buildDeb</command>
+      <command>./gradlew -p microservice/frontend/checkout grunt_build
+./gradlew -p microservice/frontend/checkout prepareDeb buildDeb</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
@@ -50,13 +50,27 @@
     <hudson.tasks.ArtifactArchiver>
       <artifacts>**/*.deb</artifacts>
       <allowEmptyArchive>false</allowEmptyArchive>
-      <onlyIfSuccessful>false</onlyIfSuccessful>
+      <onlyIfSuccessful>true</onlyIfSuccessful>
       <fingerprint>false</fingerprint>
       <defaultExcludes>true</defaultExcludes>
     </hudson.tasks.ArtifactArchiver>
   </publishers>
   <buildWrappers>
     <hudson.plugins.ws__cleanup.PreBuildCleanup plugin="ws-cleanup@0.23">
+      <patterns>
+        <hudson.plugins.ws__cleanup.Pattern>
+          <pattern>**/bower_components/**</pattern>
+          <type>EXCLUDE</type>
+        </hudson.plugins.ws__cleanup.Pattern>
+        <hudson.plugins.ws__cleanup.Pattern>
+          <pattern>**/node_modules/**</pattern>
+          <type>EXCLUDE</type>
+        </hudson.plugins.ws__cleanup.Pattern>
+        <hudson.plugins.ws__cleanup.Pattern>
+          <pattern>**/.bowerrc</pattern>
+          <type>INCLUDE</type>
+        </hudson.plugins.ws__cleanup.Pattern>
+      </patterns>
       <deleteDirs>false</deleteDirs>
       <cleanupParameter></cleanupParameter>
       <externalDelete></externalDelete>

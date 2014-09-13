@@ -108,6 +108,7 @@
     - shop-microservice-recommendation-service-build
     - shop-microservice-dataloader-build
     - shop-microservice-catalog-ui-build
+    - shop-microservice-checkout-ui-build
   ignore_errors: yes
 
 - file: path=/var/lib/jenkins/.ssh/ mode=0755 owner=jenkins group=jenkins state=directory

@@ -37,6 +37,7 @@
 sudo su
 apt-get update
 apt-get -y install shop-catalog-frontend
+apt-get -y install shop-checkout-frontend
 apt-get -y install shop-product-service
 EOF</command>
     </hudson.tasks.Shell>
