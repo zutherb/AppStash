@@ -101,9 +101,11 @@
 ssh vagrant@ci-repo -o StrictHostKeyChecking=no -v &lt;&lt;EOF
 sudo su
 dpkg-sig -k 18858766 --sign builder /tmp/*.deb
+reprepro -vb /var/packages/debian remove shop shop-catalog-frontend
+reprepro -vb /var/packages/debian remove shop shop-checkout-frontend
 reprepro -vb /var/packages/debian remove shop shop-product-service
-reprepro -vb /var/packages/debian remove shop shop-shop-frontend
-reprepro -vb /var/packages/debian remove shop shop-recommendation-frontend
+reprepro -vb /var/packages/debian remove shop shop-navigation-service
+reprepro -vb /var/packages/debian remove shop shop-recommendation-service
 reprepro -vb /var/packages/debian includedeb shop /tmp/*.deb
 rm -f /tmp/*.deb
 EOF</command>
