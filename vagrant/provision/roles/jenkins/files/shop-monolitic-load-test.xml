@@ -3,8 +3,8 @@
   <actions/>
   <description></description>
   <logRotator class="hudson.tasks.LogRotator">
-    <daysToKeep>1</daysToKeep>
-    <numToKeep>1</numToKeep>
+    <daysToKeep>5</daysToKeep>
+    <numToKeep>5</numToKeep>
     <artifactDaysToKeep>-1</artifactDaysToKeep>
     <artifactNumToKeep>-1</artifactNumToKeep>
   </logRotator>
@@ -12,7 +12,7 @@
   <properties>
     <hudson.plugins.copyartifact.CopyArtifactPermissionProperty plugin="copyartifact@1.31">
       <projectNameList>
-        <string>shop-microservice-test-deployment</string>
+        <string>shop-monolitic-ui-test</string>
       </projectNameList>
     </hudson.plugins.copyartifact.CopyArtifactPermissionProperty>
   </properties>
@@ -39,7 +39,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>shop-monolitic-test-deployment,</upstreamProjects>
+      <upstreamProjects>shop-monolitic-ui-test, </upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>
@@ -51,37 +51,53 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.plugins.copyartifact.CopyArtifact plugin="copyartifact@1.31">
-      <project>shop-monolitic-test-deployment</project>
+      <project>shop-monolitic-ui-test</project>
       <filter>artifacts/*.war</filter>
       <target></target>
       <excludes></excludes>
-      <selector class="hudson.plugins.copyartifact.StatusBuildSelector"/>
+      <selector class="hudson.plugins.copyartifact.StatusBuildSelector">
+        <stable>true</stable>
+      </selector>
+      <flatten>true</flatten>
       <doNotFingerprintArtifacts>false</doNotFingerprintArtifacts>
     </hudson.plugins.copyartifact.CopyArtifact>
     <hudson.tasks.Shell>
-      <command>./gradlew -p monolithic/ui uiTest --stacktrace -Dspring.profiles.active=test -Dorg.gradle.daemon=false</command>
+      <command>./gradlew -p monolithic/ui jmeterRun</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
+    <hudson.plugins.chucknorris.CordellWalkerRecorder plugin="chucknorris@0.5">
+      <factGenerator/>
+    </hudson.plugins.chucknorris.CordellWalkerRecorder>
+    <hudson.plugins.performance.PerformancePublisher plugin="performance@1.11">
+      <errorFailedThreshold>0</errorFailedThreshold>
+      <errorUnstableThreshold>0</errorUnstableThreshold>
+      <errorUnstableResponseTimeThreshold></errorUnstableResponseTimeThreshold>
+      <relativeFailedThresholdPositive>0.0</relativeFailedThresholdPositive>
+      <relativeFailedThresholdNegative>0.0</relativeFailedThresholdNegative>
+      <relativeUnstableThresholdPositive>0.0</relativeUnstableThresholdPositive>
+      <relativeUnstableThresholdNegative>0.0</relativeUnstableThresholdNegative>
+      <nthBuildNumber>0</nthBuildNumber>
+      <modeRelativeThresholds>false</modeRelativeThresholds>
+      <configType>ART</configType>
+      <modeOfThreshold>false</modeOfThreshold>
+      <compareBuildPrevious>true</compareBuildPrevious>
+      <xml></xml>
+      <modePerformancePerTestCase>true</modePerformancePerTestCase>
+      <parsers>
+        <hudson.plugins.performance.JMeterParser>
+          <glob>**/loadtest.*.xml</glob>
+        </hudson.plugins.performance.JMeterParser>
+      </parsers>
+      <modeThroughput>true</modeThroughput>
+    </hudson.plugins.performance.PerformancePublisher>
     <hudson.tasks.ArtifactArchiver>
-      <artifacts>**/*.war</artifacts>
+      <artifacts>artifacts/*.war</artifacts>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>false</onlyIfSuccessful>
       <fingerprint>false</fingerprint>
       <defaultExcludes>true</defaultExcludes>
     </hudson.tasks.ArtifactArchiver>
   </publishers>
-  <buildWrappers>
-    <org.jenkinsci.plugins.xvfb.XvfbBuildWrapper plugin="xvfb@1.0.12">
-      <installationName>default</installationName>
-      <displayName>1</displayName>
-      <screen>1024x768x24</screen>
-      <debug>true</debug>
-      <timeout>0</timeout>
-      <displayNameOffset>1</displayNameOffset>
-      <additionalOptions></additionalOptions>
-      <shutdownWithBuild>false</shutdownWithBuild>
-      <autoDisplayName>false</autoDisplayName>
-    </org.jenkinsci.plugins.xvfb.XvfbBuildWrapper>
-  </buildWrappers>
+  <buildWrappers/>
 </project>

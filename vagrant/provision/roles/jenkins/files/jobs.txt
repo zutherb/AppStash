@@ -6,6 +6,8 @@ shop-microservice-publish
 shop-microservice-recommendation-service-build
 shop-microservice-test-deployment
 shop-monolitic-build
+shop-monolitic-load-test
+shop-monolitic-production-deployment
 shop-monolitic-sonar
 shop-monolitic-test-deployment
 shop-monolitic-ui-test

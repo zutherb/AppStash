@@ -12,7 +12,7 @@
   <properties>
     <hudson.plugins.copyartifact.CopyArtifactPermissionProperty plugin="copyartifact@1.31">
       <projectNameList>
-        <string>shop-monolitic-build</string>
+        <string>shop-monolitic-load-test</string>
       </projectNameList>
     </hudson.plugins.copyartifact.CopyArtifactPermissionProperty>
   </properties>
@@ -21,25 +21,14 @@
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <triggers>
-    <jenkins.triggers.ReverseBuildTrigger>
-      <spec></spec>
-      <upstreamProjects>shop-monolitic-build,</upstreamProjects>
-      <threshold>
-        <name>SUCCESS</name>
-        <ordinal>0</ordinal>
-        <color>BLUE</color>
-        <completeBuild>true</completeBuild>
-      </threshold>
-    </jenkins.triggers.ReverseBuildTrigger>
-  </triggers>
+  <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
       <command></command>
     </hudson.tasks.Shell>
     <hudson.plugins.copyartifact.CopyArtifact plugin="copyartifact@1.31">
-      <project>shop-monolitic-build</project>
+      <project>shop-monolitic-load-test</project>
       <filter>**/*.war</filter>
       <target>artifacts</target>
       <excludes></excludes>
@@ -50,8 +39,8 @@
       <doNotFingerprintArtifacts>false</doNotFingerprintArtifacts>
     </hudson.plugins.copyartifact.CopyArtifact>
     <hudson.tasks.Shell>
-      <command>scp -o StrictHostKeyChecking=no -v ${WORKSPACE}/artifacts/monolithic-shop.war vagrant@app-server-node-1:/tmp/shop.war 
-ssh vagrant@app-server-node-1 -o StrictHostKeyChecking=no -v &lt;&lt;EOF
+      <command>scp -o StrictHostKeyChecking=no -v ${WORKSPACE}/artifacts/monolithic-shop.war vagrant@app-server-node-2:/tmp/shop.war 
+ssh vagrant@app-server-node-2 -o StrictHostKeyChecking=no -v &lt;&lt;EOF
 sudo service tomcat6 stop
 sudo rm -rf /var/lib/tomcat6/webapps/shop*
 sudo cp /tmp/shop.war /var/lib/tomcat6/webapps/shop.war
