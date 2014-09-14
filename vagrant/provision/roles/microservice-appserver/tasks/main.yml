@@ -1,6 +1,7 @@
 ---
-- raw: sudo chgrp -R logstash /var/log/nginx/
+- raw: sudo chown -R www-data:www-data /var/log/nginx
 - raw: sudo chmod -R 755 /var/log/nginx/
+- raw: sudo usermod -a -G www-data logstash
 
 - copy: src=logstash.conf dest=/etc/logstash/conf.d force=yes mode=0644
   notify: restart logstash
