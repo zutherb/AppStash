@@ -4,9 +4,7 @@ interface IShopRemoveFromCardScope extends ng.IScope {
 }
 
 
-eshop.directive("shopRemoveFromCard", ($rootScope): ng.IDirective => {
-    this.$inject = ['$rootScope'];
-
+eshop.directive("shopRemoveFromCard",['$rootScope',  ($rootScope): ng.IDirective => {
     var directive: ng.IDirective = {};
 
     directive.restrict = "AE";
@@ -24,4 +22,4 @@ eshop.directive("shopRemoveFromCard", ($rootScope): ng.IDirective => {
     };
 
     return directive;
-});
+}]);

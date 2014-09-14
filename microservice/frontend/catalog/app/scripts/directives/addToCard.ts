@@ -3,9 +3,7 @@ interface IShopAddToCardScope extends ng.IScope {
     add(product :IProduct);
 }
 
-eshop.directive("shopAddToCard", ($rootScope):ng.IDirective => {
-    this.$inject = ['$rootScope'];
-
+eshop.directive("shopAddToCard", ['$rootScope', ($rootScope):ng.IDirective => {
     var directive:ng.IDirective = {};
 
     directive.restrict = "AE";
@@ -23,4 +21,4 @@ eshop.directive("shopAddToCard", ($rootScope):ng.IDirective => {
     };
 
     return directive;
-});
+}]);
