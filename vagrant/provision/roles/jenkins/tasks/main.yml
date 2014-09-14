@@ -106,6 +106,7 @@
   with_items:
     - shop-monolitic-build
     - shop-microservice-product-service-build
+    - shop-microservice-navigation-service-build
     - shop-microservice-recommendation-service-build
     - shop-microservice-dataloader-build
     - shop-microservice-catalog-ui-build

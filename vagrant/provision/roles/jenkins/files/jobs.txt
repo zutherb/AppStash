@@ -1,6 +1,7 @@
 shop-microservice-catalog-ui-build
 shop-microservice-checkout-ui-build
 shop-microservice-dataloader-build
+shop-microservice-navigation-service-build
 shop-microservice-product-service-build
 shop-microservice-publish
 shop-microservice-recommendation-service-build

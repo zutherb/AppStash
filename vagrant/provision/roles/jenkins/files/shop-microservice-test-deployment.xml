@@ -39,6 +39,7 @@ apt-get update
 apt-get -y install shop-catalog-frontend
 apt-get -y install shop-checkout-frontend
 apt-get -y install shop-product-service
+apt-get -y install shop-navigation-service
 EOF</command>
     </hudson.tasks.Shell>
   </builders>

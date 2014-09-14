@@ -6,14 +6,16 @@ PATH=/sbin:/bin:/usr/sbin:/usr/bin:/etc/init.d
 case "$1" in
     start)
         log_daemon_msg "Starting navigation service"
-        nohup /usr/share/shop/navigation/bin/navigation > /var/log/navigation.log 2>&1 &
+        cd /usr/share/shop/navigation/bin/
+        nohup ./navigation > /var/log/navigation.log 2>&1 &
         sleep 1
         log_end_msg 0 || true
         ;;
     restart|reload|force-reload)
         log_daemon_msg "Restart navigation service"
+        cd /usr/share/shop/navigation/bin/
         kill `ps ax|grep navigation|sed 's/\(.*\)pts.*/\1/g'|head -n 1`
-        nohup /usr/share/shop/navigation/bin/navigation > /var/log/navigation.log 2>&1 &
+        nohup ./navigation > /var/log/navigation.log 2>&1 &
         sleep 1
         log_end_msg 0 || true
         ;;
