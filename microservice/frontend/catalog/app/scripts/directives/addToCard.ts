@@ -3,9 +3,10 @@ interface IShopAddToCardScope extends ng.IScope {
     add(product :IProduct);
 }
 
+eshop.directive("shopAddToCard", ($rootScope):ng.IDirective => {
+    this.$inject = ['$rootScope'];
 
-eshop.directive("shopAddToCard", ($rootScope): ng.IDirective => {
-    var directive: ng.IDirective = {};
+    var directive:ng.IDirective = {};
 
     directive.restrict = "AE";
     directive.templateUrl = "/partials/addtocard.html";
@@ -15,8 +16,8 @@ eshop.directive("shopAddToCard", ($rootScope): ng.IDirective => {
         product: "=product"
     };
 
-    directive.link = (scope: IShopAddToCardScope) => {
-        scope.add = (product :IProduct) => {
+    directive.link = (scope:IShopAddToCardScope) => {
+        scope.add = (product:IProduct) => {
             $rootScope.$broadcast(Events.ADD_TO_CARD, product);
         }
     };

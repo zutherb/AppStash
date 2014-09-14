@@ -5,6 +5,8 @@ interface IShopRemoveFromCardScope extends ng.IScope {
 
 
 eshop.directive("shopRemoveFromCard", ($rootScope): ng.IDirective => {
+    this.$inject = ['$rootScope'];
+
     var directive: ng.IDirective = {};
 
     directive.restrict = "AE";
