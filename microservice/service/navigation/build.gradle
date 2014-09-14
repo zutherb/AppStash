@@ -1,4 +1,7 @@
 apply plugin: 'application'
+apply plugin: 'maven'
+apply plugin: 'maven-publish'
+apply plugin: 'pkg-debian'
  
 jar.baseName = "navigation-microservice"
 
@@ -9,6 +12,14 @@ idea {
 }
 
 mainClassName = "io.github.appstash.shop.service.navigation.AppServer"
+
+applicationDefaultJvmArgs = [
+    "-Drestx.mode=prod",
+    "-Drestx.web-inf.location=../webapp/WEB-INF/web.xml",
+    "-Drestx.web-app.location=../webapp",
+    "-Dmongo.host=mongodb-node",
+    "-Dlogs.base=../logs",
+]
 
 sourceSets {
     main {
@@ -42,5 +53,36 @@ dependencies {
     testCompile "io.restx:restx-jongo-specs-tests:$restxVersion"
     testCompile testDeps
 }
- 
-task stage(dependsOn: ['clean', 'installApp'])
+
+applicationDistribution.from("src/main/webapp") {
+    into "webapp"
+}
+
+def debName = "navigation"
+debian {
+    packagename = "navigation-service"
+    publications = ['mavenStuff']
+    controlDirectory = "${projectDir}/debian/control"
+    changelogFile = "${projectDir}/debian/changelog"
+    outputFile = "${buildDir}/debian/${debName}_${version}.deb"
+
+    data {
+        dir {
+            name = "${projectDir}/debian/data"
+            exclusions = ["**/.DS_Store", "changelog"]
+        }
+        dir {
+            name = "${buildDir}/debian-data/"
+            exclusions = ["**/.DS_Store"]
+        }
+    }
+}
+
+task prepareDeb {
+    dependsOn installApp
+
+    copy {
+        from "${buildDir}/install/"
+        into "${buildDir}/debian-data/usr/share/shop/"
+    }
+}

@@ -61,13 +61,6 @@ debian {
             name = "${buildDir}/debian-data/"
             exclusions = ["**/.DS_Store"]
         }
-//        file {
-//            name = "${projectDir}/src/main/resources/application.conf"
-//            target = "/etc/product/application.conf"
-//            mapper {
-//                fileMode = "755"
-//            }
-//        }
     }
 }
 

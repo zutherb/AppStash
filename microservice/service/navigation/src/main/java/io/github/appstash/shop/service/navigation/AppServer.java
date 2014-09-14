@@ -17,7 +17,11 @@ public class AppServer {
 
     public static void main(String[] args) throws Exception {
         int port = Integer.valueOf(Optional.fromNullable(System.getenv("PORT")).or("18090"));
-        WebServer server = new JettyWebServer(WEB_INF_LOCATION, WEB_APP_LOCATION, port, "0.0.0.0");
+        WebServer server = new JettyWebServer(
+                System.getProperty("restx.web-inf.location", WEB_INF_LOCATION),
+                System.getProperty("restx.web-app.location", WEB_APP_LOCATION),
+                port,
+                "0.0.0.0");
 
         /*
          * load mode from system property if defined, or default to dev
