@@ -2,6 +2,8 @@ include 'agent'
 
 include 'microservice:frontend/catalog'
 include 'microservice:frontend/checkout'
+include 'microservice:frontend/registration'
+
 include 'microservice:service:dataloader'
 include 'microservice:service:user'
 include 'microservice:service:product'
@@ -11,10 +13,12 @@ include 'microservice:service:recommendation'
 
 include 'monolithic:common:util'
 include 'monolithic:common:dataloader'
+
 include 'monolithic:repository:common'
 include 'monolithic:repository:order'
 include 'monolithic:repository:product'
 include 'monolithic:repository:user'
+
 include 'monolithic:service:common'
 include 'monolithic:service:authentication'
 include 'monolithic:service:basket'
@@ -23,4 +27,5 @@ include 'monolithic:service:order'
 include 'monolithic:service:product'
 include 'monolithic:service:recommendation'
 include 'monolithic:service:user'
+
 include 'monolithic:ui'

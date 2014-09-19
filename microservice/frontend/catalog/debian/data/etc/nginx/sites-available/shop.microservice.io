@@ -8,15 +8,6 @@ server {
     # Make site accessible from http://localhost/
     server_name shop.microservice.io;
 
-    location /checkout/ {
-        proxy_pass       http://checkout.microservice.io;
-        proxy_redirect   default;
-
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    }
-
     location /api/product/ {
         rewrite /api/product/(.*) /$1  break;
 

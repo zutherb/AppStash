@@ -21,18 +21,19 @@ import org.apache.wicket.event.IEvent;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
+import org.apache.wicket.markup.html.link.ExternalLink;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.html.panel.Panel;
-import org.apache.wicket.model.AbstractReadOnlyModel;
-import org.apache.wicket.model.IModel;
-import org.apache.wicket.model.Model;
-import org.apache.wicket.model.PropertyModel;
+import org.apache.wicket.model.*;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.apache.wicket.util.string.interpolator.MapVariableInterpolator;
 
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author zutherb
@@ -147,8 +148,7 @@ public class NavigationPanel extends Panel {
             protected void populateItem(ListItem<NavigationEntry> listItem) {
                 WebMarkupContainer item = new WebMarkupContainer("item");
                 NavigationEntry navigationEntry = listItem.getModelObject();
-                BookmarkablePageLink<? extends Page> pageLink = new BookmarkablePageLink<>("link",
-                        navigationEntry.getPageClass(), navigationEntry.getPageParameters());
+                WebMarkupContainer pageLink = navigationLink(navigationEntry);
                 pageLink.add(new AttributeAppender("class", new AbstractReadOnlyModel<String>() {
 
                     final String template = "%sLink";
@@ -203,6 +203,19 @@ public class NavigationPanel extends Panel {
         };
     }
 
+    private WebMarkupContainer navigationLink(NavigationEntry navigationEntry) {
+        if("registration.microservice.io".equals(getRequest().getUrl().getHost())){
+            switch (navigationEntry.getPageClass().getName()){
+                case "io.github.appstash.shop.ui.page.catalog.ProductCatalogPage" :
+                    return new ExternalLink("link", new ProductCatalogPageStringResourceModel(new StringResourceModel(navigationEntry.getPageClass().getName(), this, null), Model.of(navigationEntry)));
+                default :
+                    return new ExternalLink("link", new StringResourceModel(navigationEntry.getPageClass().getName(), this, null));
+            }
+        }
+        return new BookmarkablePageLink<>("link",
+                navigationEntry.getPageClass(), navigationEntry.getPageParameters());
+    }
+
     private IModel<List<NavigationEntry>> mainNavigationEntriesModel() {
         return new AbstractReadOnlyModel<List<NavigationEntry>>() {
             private static final long serialVersionUID = 145705329210928083L;
@@ -220,6 +233,26 @@ public class NavigationPanel extends Panel {
                 || event.getPayload() instanceof RemoveFromBasketEvent
                 || event.getPayload() instanceof LoginEvent) {
             ((AjaxEvent) event.getPayload()).getTarget().add(this);
+        }
+    }
+
+    private static class ProductCatalogPageStringResourceModel extends AbstractReadOnlyModel<String> {
+
+        public static final String TYPE = "type";
+        private final IModel<String> linkTemplateModel;
+        private Model<NavigationEntry> navigationEntryModel;
+
+        public ProductCatalogPageStringResourceModel(IModel<String> linkTemplateModel, Model<NavigationEntry> navigationEntryModel){
+            this.linkTemplateModel = linkTemplateModel;
+            this.navigationEntryModel = navigationEntryModel;
+        }
+
+        @Override
+        public String getObject() {
+            NavigationEntry navigationEntry = this.navigationEntryModel.getObject();
+            String type = navigationEntry.getPageParameters().get(TYPE).toString();
+            Map<String, String> replacements = Collections.singletonMap(TYPE, type);
+            return new MapVariableInterpolator(linkTemplateModel.getObject(), replacements).toString();
         }
     }
 }

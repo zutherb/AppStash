@@ -84,8 +84,6 @@ appserver3    | 10.211.55.103 | app-server-node-3  | Microservice Shop | localho
 
 ###Development
 
-
-
 ## Workings with the application
 
 

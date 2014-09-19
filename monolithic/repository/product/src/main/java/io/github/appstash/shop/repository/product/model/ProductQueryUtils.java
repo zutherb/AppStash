@@ -1,6 +1,6 @@
 package io.github.appstash.shop.repository.product.model;
 
-import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.data.mongodb.core.query.Query;
 
 import static org.springframework.data.mongodb.core.query.Criteria.where;
