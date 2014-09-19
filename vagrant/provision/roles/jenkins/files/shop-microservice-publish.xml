@@ -64,6 +64,15 @@
       <doNotFingerprintArtifacts>false</doNotFingerprintArtifacts>
     </hudson.plugins.copyartifact.CopyArtifact>
     <hudson.plugins.copyartifact.CopyArtifact plugin="copyartifact@1.31">
+      <project>shop-microservice-registration-ui-build</project>
+      <filter>**/*.deb</filter>
+      <target>artifacts</target>
+      <excludes></excludes>
+      <selector class="hudson.plugins.copyartifact.StatusBuildSelector"/>
+      <flatten>true</flatten>
+      <doNotFingerprintArtifacts>false</doNotFingerprintArtifacts>
+    </hudson.plugins.copyartifact.CopyArtifact>
+    <hudson.plugins.copyartifact.CopyArtifact plugin="copyartifact@1.31">
       <project>shop-microservice-checkout-ui-build</project>
       <filter>**/*.deb</filter>
       <target>artifacts</target>
@@ -102,6 +111,7 @@ ssh vagrant@ci-repo -o StrictHostKeyChecking=no -v &lt;&lt;EOF
 sudo su
 dpkg-sig -k 18858766 --sign builder /tmp/*.deb
 reprepro -vb /var/packages/debian remove shop shop-catalog-frontend
+reprepro -vb /var/packages/debian remove shop shop-registration-frontend
 reprepro -vb /var/packages/debian remove shop shop-checkout-frontend
 reprepro -vb /var/packages/debian remove shop shop-product-service
 reprepro -vb /var/packages/debian remove shop shop-navigation-service
@@ -111,19 +121,12 @@ rm -f /tmp/*.deb
 EOF</command>
     </hudson.tasks.Shell>
   </builders>
-  <publishers>
-    <hudson.plugins.ws__cleanup.WsCleanup plugin="ws-cleanup@0.24">
+  <publishers/>
+  <buildWrappers>
+    <hudson.plugins.ws__cleanup.PreBuildCleanup plugin="ws-cleanup@0.24">
       <deleteDirs>false</deleteDirs>
-      <skipWhenFailed>false</skipWhenFailed>
-      <cleanWhenSuccess>true</cleanWhenSuccess>
-      <cleanWhenUnstable>true</cleanWhenUnstable>
-      <cleanWhenFailure>true</cleanWhenFailure>
-      <cleanWhenNotBuilt>true</cleanWhenNotBuilt>
-      <cleanWhenAborted>true</cleanWhenAborted>
-      <notFailBuild>false</notFailBuild>
-      <cleanupMatrixParent>false</cleanupMatrixParent>
+      <cleanupParameter></cleanupParameter>
       <externalDelete></externalDelete>
-    </hudson.plugins.ws__cleanup.WsCleanup>
-  </publishers>
-  <buildWrappers/>
+    </hudson.plugins.ws__cleanup.PreBuildCleanup>
+  </buildWrappers>
 </project>

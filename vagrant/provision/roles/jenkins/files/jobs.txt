@@ -5,6 +5,7 @@ shop-microservice-navigation-service-build
 shop-microservice-product-service-build
 shop-microservice-publish
 shop-microservice-recommendation-service-build
+shop-microservice-registration-ui-build
 shop-microservice-test-deployment
 shop-monolitic-build
 shop-monolitic-load-test
