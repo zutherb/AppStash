@@ -206,7 +206,8 @@ public class NavigationPanel extends Panel {
 
     private WebMarkupContainer navigationLink(NavigationEntry navigationEntry) {
         if (REGISTRATION_SERVER_URL.equals(getRequest().getUrl().getHost()) ||
-                REGISTRATION_SERVER_URL.equals(getRequest().getClientUrl().getHost())) {
+                "10.211.55.103".equals(getRequest().getClientUrl().getHost()) ||
+                "app-server-node-3".equals(getRequest().getClientUrl().getHost())) {
             switch (navigationEntry.getPageClass().getName()) {
                 case "io.github.appstash.shop.ui.page.catalog.ProductCatalogPage":
                     return new ExternalLink("link", new ProductCatalogPageStringResourceModel(new StringResourceModel(navigationEntry.getPageClass().getName(), this, null), Model.of(navigationEntry)));
