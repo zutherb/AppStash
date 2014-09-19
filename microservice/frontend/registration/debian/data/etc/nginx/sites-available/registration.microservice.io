@@ -6,8 +6,9 @@ server {
     server_name registration.microservice.io;
 
     location / {
-        rewrite /shop/(.*) /shop/$1  break;
-        rewrite /(.*) /shop/$1  break;
+        rewrite /shop/(.*)  /shop/$1            break;
+        rewrite /           /shop/registration  break;
+        rewrite /(.*)       /shop/$1            break;
 
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;

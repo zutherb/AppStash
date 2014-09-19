@@ -40,6 +40,7 @@ import java.util.Map;
  */
 public class NavigationPanel extends Panel {
     private static final long serialVersionUID = 6989676548448303645L;
+    public static final String REGISTRATION_SERVER_URL = "registration.microservice.io";
 
     @SpringBean(name = "navigationProvider")
     private NavigationProvider navigationProvider;
@@ -204,11 +205,12 @@ public class NavigationPanel extends Panel {
     }
 
     private WebMarkupContainer navigationLink(NavigationEntry navigationEntry) {
-        if("registration.microservice.io".equals(getRequest().getUrl().getHost())){
-            switch (navigationEntry.getPageClass().getName()){
-                case "io.github.appstash.shop.ui.page.catalog.ProductCatalogPage" :
+        if (REGISTRATION_SERVER_URL.equals(getRequest().getUrl().getHost()) ||
+                REGISTRATION_SERVER_URL.equals(getRequest().getClientUrl().getHost())) {
+            switch (navigationEntry.getPageClass().getName()) {
+                case "io.github.appstash.shop.ui.page.catalog.ProductCatalogPage":
                     return new ExternalLink("link", new ProductCatalogPageStringResourceModel(new StringResourceModel(navigationEntry.getPageClass().getName(), this, null), Model.of(navigationEntry)));
-                default :
+                default:
                     return new ExternalLink("link", new StringResourceModel(navigationEntry.getPageClass().getName(), this, null));
             }
         }
@@ -242,7 +244,7 @@ public class NavigationPanel extends Panel {
         private final IModel<String> linkTemplateModel;
         private Model<NavigationEntry> navigationEntryModel;
 
-        public ProductCatalogPageStringResourceModel(IModel<String> linkTemplateModel, Model<NavigationEntry> navigationEntryModel){
+        public ProductCatalogPageStringResourceModel(IModel<String> linkTemplateModel, Model<NavigationEntry> navigationEntryModel) {
             this.linkTemplateModel = linkTemplateModel;
             this.navigationEntryModel = navigationEntryModel;
         }
