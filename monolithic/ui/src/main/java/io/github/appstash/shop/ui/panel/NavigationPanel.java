@@ -1,6 +1,7 @@
 package io.github.appstash.shop.ui.panel;
 
 import io.github.appstash.shop.ui.application.ShopApplication;
+import io.github.appstash.shop.ui.application.ShopSession;
 import io.github.appstash.shop.ui.event.AjaxEvent;
 import io.github.appstash.shop.ui.event.basket.AddToBasketEvent;
 import io.github.appstash.shop.ui.event.basket.RemoveFromBasketEvent;
@@ -40,7 +41,6 @@ import java.util.Map;
  */
 public class NavigationPanel extends Panel {
     private static final long serialVersionUID = 6989676548448303645L;
-    public static final String REGISTRATION_SERVER_URL = "registration.microservice.io";
 
     @SpringBean(name = "navigationProvider")
     private NavigationProvider navigationProvider;
@@ -205,9 +205,7 @@ public class NavigationPanel extends Panel {
     }
 
     private WebMarkupContainer navigationLink(NavigationEntry navigationEntry) {
-        if (REGISTRATION_SERVER_URL.equals(getRequest().getUrl().getHost()) ||
-                "10.211.55.103".equals(getRequest().getClientUrl().getHost()) ||
-                "app-server-node-3".equals(getRequest().getClientUrl().getHost())) {
+        if (((ShopSession) ShopSession.get()).isMicroServiceMode()) {
             switch (navigationEntry.getPageClass().getName()) {
                 case "io.github.appstash.shop.ui.page.catalog.ProductCatalogPage":
                     return new ExternalLink("link", new ProductCatalogPageStringResourceModel(new StringResourceModel(navigationEntry.getPageClass().getName(), this, null), Model.of(navigationEntry)));
