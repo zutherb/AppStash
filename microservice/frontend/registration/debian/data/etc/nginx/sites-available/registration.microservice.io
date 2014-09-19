@@ -7,7 +7,7 @@ server {
 
     location / {
         rewrite /shop/(.*)  /shop/$1            break;
-        rewrite /           /shop/registration  break;
+        rewrite /           /shop/registration  permanent;
         rewrite /(.*)       /shop/$1            break;
 
         proxy_set_header Host $host;
