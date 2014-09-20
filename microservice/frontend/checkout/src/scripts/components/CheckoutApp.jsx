@@ -22,7 +22,7 @@ var CheckoutApp = React.createClass({
       <div className='main'>
         <ReactTransitionGroup transitionName="fade">
           <h1>Under Construction</h1>
-          <a href="http://checkout.microservice.io">
+          <a href="http://shop.microservice.io">
             <img src={imageURL} />
           </a>
         </ReactTransitionGroup>
