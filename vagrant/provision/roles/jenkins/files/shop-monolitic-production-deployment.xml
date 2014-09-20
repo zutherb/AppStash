@@ -32,9 +32,7 @@
       <filter>**/*.war</filter>
       <target>artifacts</target>
       <excludes></excludes>
-      <selector class="hudson.plugins.copyartifact.StatusBuildSelector">
-        <stable>true</stable>
-      </selector>
+      <selector class="hudson.plugins.copyartifact.WorkspaceSelector"/>
       <flatten>true</flatten>
       <doNotFingerprintArtifacts>false</doNotFingerprintArtifacts>
     </hudson.plugins.copyartifact.CopyArtifact>
@@ -45,6 +43,9 @@ sudo service tomcat6 stop
 sudo rm -rf /var/lib/tomcat6/webapps/shop*
 sudo cp /tmp/shop.war /var/lib/tomcat6/webapps/shop.war
 sudo service tomcat6 start
+echo &quot;Wait 2s for war file extracting&quot;
+sleep 2s
+cat /var/lib/tomcat6/webapps/shop/META-INF/MANIFEST.MF
 EOF</command>
     </hudson.tasks.Shell>
   </builders>
