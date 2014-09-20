@@ -61,6 +61,9 @@ public class NavigationPanel extends Panel {
     private Component homePageLink() {
         BookmarkablePageLink<Void> pageLink = new BookmarkablePageLink<>("home", ShopApplication.get().getHomePage());
         pageLink.add(new AttributeAppender("class", Model.of("homePageLink"), " "));
+        if(((ShopSession) ShopSession.get()).isMicroServiceMode()){
+            return new ExternalLink("home", "shop.microservice.io");
+        }
         return pageLink;
     }
 
