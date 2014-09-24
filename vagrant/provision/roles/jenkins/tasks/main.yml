@@ -19,6 +19,7 @@
   with_items:
     - jenkins
     - xvfb
+    - firefox
     - git
     - curl
     - nodejs
