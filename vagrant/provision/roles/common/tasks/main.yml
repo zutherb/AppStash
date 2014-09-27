@@ -6,4 +6,5 @@
     - curl
     - tree
     - htop
+    - nagios-nrpe-server
     - curl
