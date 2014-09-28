@@ -1,7 +1,7 @@
 package io.github.appstash.shop.ui.navigation;
 
 import io.github.appstash.shop.service.authentication.api.AuthenticationService;
-import io.github.appstash.shop.service.basket.api.Basket;
+import io.github.appstash.shop.service.cart.api.Cart;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.spring.test.ApplicationContextMock;
 import org.junit.After;
@@ -26,7 +26,7 @@ public class NavigationProviderImplTest {
     private AuthenticationService authenticationService;
 
     @Mock
-    private Basket basket;
+    private Cart cart;
 
     @Before
     public void setup() {
@@ -35,7 +35,7 @@ public class NavigationProviderImplTest {
         when(authenticationService.isAuthorized(anyString())).thenReturn(true);
         ApplicationContextMock applicationContext = new ApplicationContextMock();
         applicationContext.putBean("authenticationService", authenticationService);
-        applicationContext.putBean("basket", basket);
+        applicationContext.putBean("cart", cart);
         NavigationProvider navigationProvider = new NavigationProviderImpl(applicationContext, authenticationService);
         navigation = navigationProvider.getNavigation();
     }
@@ -64,7 +64,7 @@ public class NavigationProviderImplTest {
     @Test
     public void testRealNavigation() {
         ApplicationContextMock applicationContext = new ApplicationContextMock();
-        applicationContext.putBean("basket", mock(Basket.class));
+        applicationContext.putBean("cart", mock(Cart.class));
         applicationContext.putBean("authenticationService", mock(AuthenticationService.class));
         NavigationProvider navigationProvider = new NavigationProviderImpl(applicationContext, authenticationService);
         Navigation realNavigation = navigationProvider.getNavigation();

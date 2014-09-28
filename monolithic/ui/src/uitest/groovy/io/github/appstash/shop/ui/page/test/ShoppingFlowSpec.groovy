@@ -42,7 +42,7 @@ class ShoppingFlowSpec extends GebReportingSpec {
         at ProductDetailPage
 
         and:
-        addToBasketLink.click()
+        addToCartLink.click()
 
         then:
         at ProductDetailPage

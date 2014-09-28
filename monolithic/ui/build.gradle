@@ -54,7 +54,7 @@ dependencies {
 
     compile project(':agent')
     compile project(':monolithic:service:authentication')
-    compile project(':monolithic:service:basket')
+    compile project(':monolithic:service:cart')
     compile project(':monolithic:service:checkout')
     compile project(':monolithic:service:order')
     compile project(':monolithic:service:product')

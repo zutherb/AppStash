@@ -6,7 +6,7 @@ import io.github.appstash.shop.repository.order.api.OrderIdProvider;
 import io.github.appstash.shop.repository.order.api.OrderRepository;
 import io.github.appstash.shop.repository.order.model.Order;
 import io.github.appstash.shop.repository.order.model.Supplier;
-import io.github.appstash.shop.service.basket.api.Basket;
+import io.github.appstash.shop.service.cart.api.Cart;
 import io.github.appstash.shop.service.order.api.OrderService;
 import io.github.appstash.shop.service.order.model.OrderInfo;
 import io.github.appstash.shop.service.user.api.UserService;
@@ -39,7 +39,7 @@ public class OrderServiceImpl extends AbstractServiceImpl<OrderInfo, Order> impl
     private OrderRepository orderRepository;
     private Mapper dozerMapper;
     private OrderIdProvider orderIdProvider;
-    private Basket basket;
+    private Cart cart;
     private SupplierCsvReader supplierCsvReader;
     private UserService userService;
 
@@ -49,14 +49,14 @@ public class OrderServiceImpl extends AbstractServiceImpl<OrderInfo, Order> impl
     public OrderServiceImpl(@Qualifier("orderRepository") OrderRepository repository,
                             @Qualifier("dozerMapper") Mapper dozerMapper,
                             @Qualifier("orderIdProvider") OrderIdProvider orderIdProvider,
-                            @Qualifier("basket") Basket basket,
+                            @Qualifier("cart") Cart cart,
                             @Qualifier("supplierCsvReader") SupplierCsvReader supplierCsvReader,
                             @Qualifier("userService") UserService userService) {
         super(repository, dozerMapper, OrderInfo.class, Order.class);
         orderRepository = repository;
         this.dozerMapper = dozerMapper;
         this.orderIdProvider = orderIdProvider;
-        this.basket = basket;
+        this.cart = cart;
         this.supplierCsvReader = supplierCsvReader;
         this.userService = userService;
     }
@@ -72,7 +72,7 @@ public class OrderServiceImpl extends AbstractServiceImpl<OrderInfo, Order> impl
         OrderInfo orderInfoToSave = new OrderInfo(orderId, sessionId, orderInfo);
         save(orderInfoToSave);
         logger.info(String.format("Order %d was submited", orderInfoToSave.getOrderId()));
-        basket.clearAll();
+        cart.clearAll();
         return orderInfoToSave;
     }
 

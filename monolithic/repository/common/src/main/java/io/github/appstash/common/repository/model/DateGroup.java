@@ -15,7 +15,7 @@ public class DateGroup implements Serializable {
     private Integer month;
     private Integer year;
 
-    public DateGroup() {/** MONGO-DB */}
+    public DateGroup() {/* MONGO-DB */}
 
     public DateGroup(Integer year) {
         this.year = year;

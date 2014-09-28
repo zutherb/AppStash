@@ -13,8 +13,8 @@ see different catalogs of mobile devices and is able to order them.
 
 The online shop will be deployed on the following cluster nodes:
 
-    Catalog Application Server    --> angular frontend for catalog data and create a basket
-    Checkout Application Server   --> react frontend for ordering a basket
+    Catalog Application Server    --> angular frontend for catalog data and create a cart
+    Checkout Application Server   --> react frontend for ordering a cart
     Backend Server                --> all services that are needed from both frontends are deployed on this server 
     
 ![Architecture Overview](https://raw.githubusercontent.com/zutherb/AppStash/ci-server/external/images/deployment-diagram.png)
@@ -23,7 +23,7 @@ The online shop will be deployed on the following cluster nodes:
 
     microservice/       --> all files of the microservice applications are located in this directory
         frontend/       --> all frontend applications are located in this directory
-            catalog/    --> the frontend application that shows the product catalog and is used to create a card is located in this directory
+            catalog/    --> the frontend application that shows the product catalog and is used to create a cart is located in this directory
             checkout/   --> the frontend application that that is used to create an order is located in this directory
         service/        --> css files
     monolithic/         --> all files of the monolithic applications are located in this directory

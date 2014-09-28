@@ -8,7 +8,7 @@
     <context:component-scan base-package="io.github.appstash.shop.service.order" />
 
     <import resource="classpath:io/github/appstash/shop/repository/order/spring-context.xml"/>
-    <import resource="classpath:io/github/appstash/shop/service/basket/spring-context.xml"/>
+    <import resource="classpath:io/github/appstash/shop/service/cart/spring-context.xml"/>
     <import resource="classpath:io/github/appstash/shop/service/product/spring-context.xml"/>
     <import resource="classpath:io/github/appstash/shop/service/user/spring-context.xml"/>
 

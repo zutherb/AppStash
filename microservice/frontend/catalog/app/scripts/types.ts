@@ -1,5 +1,5 @@
 class Events{
-    public static ADD_TO_CARD: string = "ADD_TO_CARD";
+    public static ADD_TO_CART: string = "ADD_TO_CART";
     public static REMOVE_FROM_CARD: string = "REMOVE_FROM_CARD";
 }
 

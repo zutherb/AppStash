@@ -21,7 +21,7 @@ include 'monolithic:repository:user'
 
 include 'monolithic:service:common'
 include 'monolithic:service:authentication'
-include 'monolithic:service:basket'
+include 'monolithic:service:cart'
 include 'monolithic:service:checkout'
 include 'monolithic:service:order'
 include 'monolithic:service:product'

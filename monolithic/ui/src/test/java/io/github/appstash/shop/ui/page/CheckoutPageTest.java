@@ -23,7 +23,7 @@ public class CheckoutPageTest extends AbstractWicketTest {
     @Override
     public void initMockData() {
         when(authenticationService.isAuthorized()).thenReturn(true);
-        when(basket.isEmpty()).thenReturn(false);
+        when(cart.isEmpty()).thenReturn(false);
         when(checkout.getOrderItemInfos()).thenReturn(createOrderItems());
     }
 }

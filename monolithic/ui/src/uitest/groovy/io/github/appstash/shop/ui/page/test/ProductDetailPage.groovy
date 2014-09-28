@@ -8,6 +8,6 @@ class ProductDetailPage extends Page {
         results(wait: true) { $("div.container div.col-md-8") }
         result { i -> results[i] }
         resultLink { i -> result(i).find("a")[0] }
-        addToBasketLink { resultLink(0) }
+        addToCartLink { resultLink(0) }
     }
 }

@@ -73,15 +73,6 @@ General Hints
 - For convenience, a random customer is automatically logged in as soon as the user proceeds to the checkout.
 - Any particular customer can be logged in with the password "customer123"
 
-
-Recommendations
----------------
-
-All recommendations except for "You may also like" are randomized in this application. The "You may also like"
-recommendations are implemented with mahout and its collaborative filtering functionality. To be more precise,
-a combination of item-based and user-based similarity measures is used to suggest unknown products a certain
-user is likely to be interested in.
-
 MongoDB Collections
 -------------------
 

@@ -17,7 +17,7 @@
     </security:http>
 
     <import resource="classpath:io/github/appstash/shop/service/authentication/spring-context.xml"/>
-    <import resource="classpath:io/github/appstash/shop/service/basket/spring-context.xml"/>
+    <import resource="classpath:io/github/appstash/shop/service/cart/spring-context.xml"/>
     <import resource="classpath:io/github/appstash/shop/service/checkout/spring-context.xml"/>
     <import resource="classpath:io/github/appstash/shop/service/order/spring-context.xml"/>
     <import resource="classpath:io/github/appstash/shop/service/product/spring-context.xml"/>

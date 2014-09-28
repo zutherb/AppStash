@@ -1,8 +1,8 @@
 package io.github.appstash.shop.service.checkout;
 
 import io.github.appstash.shop.repository.product.model.ProductType;
-import io.github.appstash.shop.service.basket.api.Basket;
-import io.github.appstash.shop.service.basket.model.BasketItem;
+import io.github.appstash.shop.service.cart.api.Cart;
+import io.github.appstash.shop.service.cart.model.CartItem;
 import io.github.appstash.shop.service.checkout.api.Checkout;
 import io.github.appstash.shop.service.checkout.impl.CheckoutImpl;
 import io.github.appstash.shop.service.order.model.OrderItemInfo;
@@ -27,19 +27,19 @@ import static org.mockito.MockitoAnnotations.initMocks;
 public class CheckoutImplTest {
 
     @Mock
-    Basket basket;
+    Cart cart;
     private Checkout checkout;
 
     @Before
     public void setUp() throws Exception {
         initMocks(this);
-        when(basket.getAll()).thenReturn(createBasketItems());
-        when(basket.getTotalSum()).thenReturn(BigDecimal.valueOf(2));
-        checkout = new CheckoutImpl(basket, new DozerBeanMapper(Arrays.asList("io/github/appstash/shop/service/checkout/dozer-mapping.xml")));
+        when(cart.getAll()).thenReturn(createCartItems());
+        when(cart.getTotalSum()).thenReturn(BigDecimal.valueOf(2));
+        checkout = new CheckoutImpl(cart, new DozerBeanMapper(Arrays.asList("io/github/appstash/shop/service/checkout/dozer-mapping.xml")));
     }
 
-    private List<BasketItem> createBasketItems() {
-        return Arrays.asList(new BasketItem( new ProductInfo(new ObjectId().toString(), "1", "test", "test", "null", ProductType.HANDY, 3.5,"test") ));
+    private List<CartItem> createCartItems() {
+        return Arrays.asList(new CartItem( new ProductInfo(new ObjectId().toString(), "1", "test", "test", "null", ProductType.HANDY, 3.5,"test") ));
     }
 
     @Test

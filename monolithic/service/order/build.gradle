@@ -24,7 +24,7 @@ sourceSets {
 dependencies {
     compile project(':monolithic:service:common')
     compile project(':monolithic:repository:order')
-    compile project(':monolithic:service:basket')
+    compile project(':monolithic:service:cart')
     compile project(':monolithic:service:product')
     compile project(':monolithic:service:user')
     // required for automatic supplier generation

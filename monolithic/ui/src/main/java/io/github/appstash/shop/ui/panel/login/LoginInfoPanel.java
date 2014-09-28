@@ -2,7 +2,7 @@ package io.github.appstash.shop.ui.panel.login;
 
 import io.github.appstash.shop.ui.event.login.LoginEvent;
 import io.github.appstash.shop.service.user.model.UserInfo;
-import io.github.appstash.shop.service.basket.api.Basket;
+import io.github.appstash.shop.service.cart.api.Cart;
 import io.github.appstash.shop.ui.panel.base.AbstractShopBasePanel;
 import io.github.appstash.shop.ui.application.ShopApplication;
 import org.apache.wicket.Component;
@@ -23,7 +23,7 @@ public class LoginInfoPanel extends AbstractShopBasePanel {
     private static final long serialVersionUID = 3975460848647745910L;
 
     @SpringBean
-    private Basket basket;
+    private Cart cart;
 
     IModel<Boolean> isAuthorizedModel;
     IModel<UserInfo> userInfoModel;
@@ -46,7 +46,7 @@ public class LoginInfoPanel extends AbstractShopBasePanel {
             public void onClick() {
                 getAuthenticationService().clearAuthentication();
                 setResponsePage(ShopApplication.get().getHomePage());
-                basket.clearAll();
+                cart.clearAll();
                 Session.get().clear();
             }
         };

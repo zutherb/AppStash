@@ -10,7 +10,7 @@ import io.github.appstash.shop.service.authentication.api.AuthenticationService;
 import io.github.appstash.shop.service.authentication.api.FakeAuthenticationService;
 import io.github.appstash.shop.service.user.api.UserService;
 import io.github.appstash.shop.repository.product.api.ProductRepository;
-import io.github.appstash.shop.service.basket.api.Basket;
+import io.github.appstash.shop.service.cart.api.Cart;
 import io.github.appstash.shop.service.checkout.api.Checkout;
 import io.github.appstash.shop.service.product.api.ProductService;
 import io.github.appstash.shop.service.recommendation.api.RecommendationService;
@@ -40,7 +40,7 @@ public abstract class AbstractWicketTest {
     @Mock
     protected AuthenticationService authenticationService;
     @Mock
-    protected Basket basket;
+    protected Cart cart;
     @Mock
     protected Checkout checkout;
     @Mock
@@ -76,7 +76,7 @@ public abstract class AbstractWicketTest {
 
         ApplicationContextMock appctx = new ApplicationContextMock();
         appctx.putBean("authenticationService", authenticationService);
-        appctx.putBean("basket", basket);
+        appctx.putBean("cart", cart);
         appctx.putBean("checkout", checkout);
         appctx.putBean("productRepository", productRepository);
         appctx.putBean("productService", productService);

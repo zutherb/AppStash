@@ -1,15 +1,15 @@
 package io.github.appstash.shop.ui.page.detail;
 
 
-import io.github.appstash.shop.service.basket.api.Basket;
+import io.github.appstash.shop.service.cart.api.Cart;
 import io.github.appstash.shop.service.product.api.ProductService;
 import io.github.appstash.shop.service.product.model.ProductInfo;
 import io.github.appstash.shop.service.recommendation.api.RecommendationService;
-import io.github.appstash.shop.ui.event.basket.AddToBasketEvent;
+import io.github.appstash.shop.ui.event.cart.AddToCartEvent;
 import io.github.appstash.shop.ui.model.ImageLinkModel;
 import io.github.appstash.shop.ui.model.PriceModel;
 import io.github.appstash.shop.ui.page.AbstractBasePage;
-import io.github.appstash.shop.ui.panel.basket.BasketPanel;
+import io.github.appstash.shop.ui.panel.cart.CartPanel;
 import io.github.appstash.shop.ui.panel.product.RecommendationItemListPanel;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
@@ -18,6 +18,7 @@ import org.apache.wicket.event.Broadcast;
 import org.apache.wicket.extensions.ajax.markup.html.IndicatingAjaxLink;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.AbstractLink;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.model.Model;
@@ -33,8 +34,8 @@ import java.util.List;
 @MountPath("productdetail/${urlname}")
 public class ProductDetailPage extends AbstractBasePage {
 
-    @SpringBean(name = "basket")
-    private Basket basket;
+    @SpringBean(name = "cart")
+    private Cart cart;
 
     @SpringBean(name = "recommendationService")
     private RecommendationService recommendationService;
@@ -75,9 +76,9 @@ public class ProductDetailPage extends AbstractBasePage {
         add(productNameLabel());
         add(productDescriptionLabel());
         add(productPriceLabel());
-        add(addToBasketLink());
+        add(addToCartLink());
         add(productImage());
-        add(basketPanel());
+        add(cartPanel());
         add(otherUsersAlsoViewedPanel());
 
         setOutputMarkupId(true);
@@ -95,11 +96,11 @@ public class ProductDetailPage extends AbstractBasePage {
         return new Label("productPrice", new PriceModel(new PropertyModel<>(productInfoModel, "price")));
     }
 
-    private IndicatingAjaxLink<Void> addToBasketLink() {
-        return new IndicatingAjaxLink<Void>("addToBasket") {
+    private AbstractLink addToCartLink() {
+        return new IndicatingAjaxLink<Void>("addToCart") {
             @Override
             public void onClick(AjaxRequestTarget target) {
-                send(getPage(), Broadcast.BREADTH, new AddToBasketEvent(target, getPage(), productInfoModel.getObject(), getTags()));
+                send(getPage(), Broadcast.BREADTH, new AddToCartEvent(target, getPage(), productInfoModel.getObject(), getTags()));
             }
         };
     }
@@ -110,8 +111,8 @@ public class ProductDetailPage extends AbstractBasePage {
         return productImage;
     }
 
-    private BasketPanel basketPanel() {
-        return new BasketPanel("basketPanel");
+    private CartPanel cartPanel() {
+        return new CartPanel("cartPanel");
     }
 
     private RecommendationItemListPanel otherUsersAlsoViewedPanel() {

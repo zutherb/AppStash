@@ -7,7 +7,7 @@ import io.github.appstash.shop.service.product.model.ProductInfo;
 import io.github.appstash.shop.ui.navigation.EnumProductTypeNavigationItem;
 import io.github.appstash.shop.ui.page.AbstractBasePage;
 import io.github.appstash.shop.ui.panel.base.HighLightBehavior;
-import io.github.appstash.shop.ui.panel.basket.BasketPanel;
+import io.github.appstash.shop.ui.panel.cart.CartPanel;
 import io.github.appstash.shop.ui.panel.product.ProductItemPanel;
 import io.github.appstash.shop.ui.panel.product.TopSellerRecommendationPanel;
 import org.apache.wicket.Component;
@@ -26,7 +26,6 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -40,16 +39,16 @@ public class ProductCatalogPage extends AbstractBasePage {
 
     private IModel<ProductType> productTypeModel;
     private IModel<List<List<ProductInfo>>> productListModel;
-    private Component basketPanel;
+    private Component cartPanel;
 
     public ProductCatalogPage(PageParameters pageParameters) {
         super(pageParameters);
 
         productTypeModel = productTypeModel();
         productListModel = productListModel();
-        basketPanel = basketPanel();
+        cartPanel = cartPanel();
         add(productsWrapper());
-        add(basketPanel);
+        add(cartPanel);
         add(recommendationPanel());
         setOutputMarkupId(true);
     }
@@ -91,7 +90,7 @@ public class ProductCatalogPage extends AbstractBasePage {
 
     @Override
     protected void onConfigure() {
-        basketPanel.setVisible(productListModel.getObject().iterator().hasNext());
+        cartPanel.setVisible(productListModel.getObject().iterator().hasNext());
     }
 
     private IModel<List<List<ProductInfo>>> productListModel() {
@@ -147,8 +146,8 @@ public class ProductCatalogPage extends AbstractBasePage {
         };
     }
 
-    private Component basketPanel() {
-        return new BasketPanel("basketPanel");
+    private Component cartPanel() {
+        return new CartPanel("cartPanel");
     }
 
     private TopSellerRecommendationPanel recommendationPanel() {

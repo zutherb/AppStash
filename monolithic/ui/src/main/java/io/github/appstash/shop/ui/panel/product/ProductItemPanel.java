@@ -1,7 +1,7 @@
 package io.github.appstash.shop.ui.panel.product;
 
 import io.github.appstash.shop.service.product.model.ProductInfo;
-import io.github.appstash.shop.ui.event.basket.AddToBasketEvent;
+import io.github.appstash.shop.ui.event.cart.AddToCartEvent;
 import io.github.appstash.shop.ui.model.ImageLinkModel;
 import io.github.appstash.shop.ui.model.PriceModel;
 import io.github.appstash.shop.ui.page.detail.ProductDetailPage;
@@ -11,7 +11,6 @@ import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.event.Broadcast;
 import org.apache.wicket.extensions.ajax.markup.html.IndicatingAjaxLink;
-import org.apache.wicket.markup.IMarkupFragment;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
@@ -43,7 +42,7 @@ public class ProductItemPanel extends AbstractShopBasePanel {
         add(productNameLabel());
         add(productPriceLabel());
         add(productDetailImageLink());
-        add(addToBasketLink());
+        add(addToCartLink());
 
         setOutputMarkupId(true);
     }
@@ -83,16 +82,16 @@ public class ProductItemPanel extends AbstractShopBasePanel {
         return detailPageLink;
     }
 
-    private IndicatingAjaxLink<Void> addToBasketLink() {
-        IndicatingAjaxLink<Void> result = new IndicatingAjaxLink<Void>("addToBasketIcon") {
+    private IndicatingAjaxLink<Void> addToCartLink() {
+        IndicatingAjaxLink<Void> result = new IndicatingAjaxLink<Void>("addToCartIcon") {
 
             @Override
             public void onClick(AjaxRequestTarget target) {
-                //send wicket event for add to basket
-                send(getPage(), Broadcast.BREADTH, new AddToBasketEvent(target, getPage(), productInfoModel.getObject(), getTags()));
+                //send wicket event for add to cart
+                send(getPage(), Broadcast.BREADTH, new AddToCartEvent(target, getPage(), productInfoModel.getObject(), getTags()));
             }
         };
-        result.setVisible(showAddToBasketLink());
+        result.setVisible(showAddToCartLink());
         return result;
     }
 
@@ -100,7 +99,7 @@ public class ProductItemPanel extends AbstractShopBasePanel {
         return additionalTagsModel.getObject();
     }
 
-    protected boolean showAddToBasketLink() {
+    protected boolean showAddToCartLink() {
         return true;
     }
 }

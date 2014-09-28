@@ -5,7 +5,7 @@
           http://dozer.sourceforge.net/schema/beanmapping.xsd">
 
     <mapping type="one-way">
-        <class-a>io.github.appstash.shop.service.basket.model.BasketItem</class-a>
+        <class-a>io.github.appstash.shop.service.cart.model.CartItem</class-a>
         <class-b>io.github.appstash.shop.service.order.model.OrderItemInfo</class-b>
         <field>
             <a>product</a>

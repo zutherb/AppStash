@@ -1,7 +1,7 @@
 package io.github.appstash.shop.service.checkout.impl;
 
-import io.github.appstash.shop.service.basket.api.Basket;
-import io.github.appstash.shop.service.basket.model.BasketItem;
+import io.github.appstash.shop.service.cart.api.Cart;
+import io.github.appstash.shop.service.cart.model.CartItem;
 import io.github.appstash.shop.service.checkout.api.Checkout;
 import io.github.appstash.shop.service.order.model.OrderItemInfo;
 import org.dozer.Mapper;
@@ -22,27 +22,27 @@ import java.util.List;
 @Scope(value = "singleton", proxyMode = ScopedProxyMode.INTERFACES)
 public class CheckoutImpl implements Checkout {
 
-    private Basket basket;
+    private Cart cart;
     private Mapper mapper;
 
     @Autowired
-    public CheckoutImpl(@Qualifier("basket") Basket basket,
+    public CheckoutImpl(@Qualifier("cart") Cart cart,
                         @Qualifier("dozerMapper") Mapper mapper) {
-        this.basket = basket;
+        this.cart = cart;
         this.mapper = mapper;
     }
 
     @Override
     public List<OrderItemInfo> getOrderItemInfos() {
         ArrayList<OrderItemInfo> orderItemInfos = new ArrayList<>();
-        for (BasketItem basketItem : basket.getAll()) {
-            orderItemInfos.add(mapper.map(basketItem, OrderItemInfo.class));
+        for (CartItem cartItem : cart.getAll()) {
+            orderItemInfos.add(mapper.map(cartItem, OrderItemInfo.class));
         }
         return orderItemInfos;
     }
 
     @Override
     public BigDecimal getTotalSum() {
-        return basket.getTotalSum();
+        return cart.getTotalSum();
     }
 }

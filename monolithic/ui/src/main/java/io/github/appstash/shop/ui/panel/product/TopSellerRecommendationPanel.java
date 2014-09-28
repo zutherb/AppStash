@@ -4,8 +4,8 @@ import io.github.appstash.shop.repository.product.model.ProductType;
 import io.github.appstash.shop.service.product.model.ProductInfo;
 import io.github.appstash.shop.service.recommendation.api.RecommendationService;
 import io.github.appstash.shop.ui.event.AjaxEvent;
-import io.github.appstash.shop.ui.event.basket.AddToBasketEvent;
-import io.github.appstash.shop.ui.event.basket.RemoveFromBasketEvent;
+import io.github.appstash.shop.ui.event.cart.AddToCartEvent;
+import io.github.appstash.shop.ui.event.cart.RemoveFromCartEvent;
 import io.github.appstash.shop.ui.mbean.FeatureTooglesBean;
 import io.github.appstash.shop.ui.panel.base.AbstractShopBasePanel;
 import io.github.appstash.shop.ui.panel.base.HighLightBehavior;
@@ -73,7 +73,7 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
 
     @Override
     public void onEvent(IEvent<?> event) {
-        if (event.getPayload() instanceof AddToBasketEvent || event.getPayload() instanceof RemoveFromBasketEvent) {
+        if (event.getPayload() instanceof AddToCartEvent || event.getPayload() instanceof RemoveFromCartEvent) {
             ((AjaxEvent) event.getPayload()).getTarget().add(this);
         }
     }

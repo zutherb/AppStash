@@ -5,8 +5,7 @@ import io.github.appstash.shop.service.product.model.ProductInfo;
 import io.github.appstash.shop.service.recommendation.api.RecommendationService;
 import io.github.appstash.shop.ui.navigation.NavigationItem;
 import io.github.appstash.shop.ui.page.AbstractBasePage;
-import io.github.appstash.shop.ui.panel.base.HighLightBehavior;
-import io.github.appstash.shop.ui.panel.basket.BasketPanel;
+import io.github.appstash.shop.ui.panel.cart.CartPanel;
 import io.github.appstash.shop.ui.panel.product.RecommendationItemListPanel;
 import org.apache.wicket.Component;
 import org.apache.wicket.model.LoadableDetachableModel;
@@ -29,7 +28,7 @@ public class HomePage extends AbstractBasePage {
 
         add(topSellerPanel());
         add(youMayAlsoLikeProductsPanel());
-        add(basketPanel());
+        add(cartPanel());
 
         setOutputMarkupId(true);
     }
@@ -60,8 +59,8 @@ public class HomePage extends AbstractBasePage {
         };
     }
 
-    private Component basketPanel() {
-        return new BasketPanel("basketPanel");
+    private Component cartPanel() {
+        return new CartPanel("cartPanel");
     }
 
     private boolean isUserAuthorized() {

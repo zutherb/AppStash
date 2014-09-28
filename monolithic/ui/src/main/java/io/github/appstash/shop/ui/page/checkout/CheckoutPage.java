@@ -1,7 +1,7 @@
 package io.github.appstash.shop.ui.page.checkout;
 
 import io.github.appstash.shop.service.authentication.api.FakeAuthenticationService;
-import io.github.appstash.shop.service.basket.api.Basket;
+import io.github.appstash.shop.service.cart.api.Cart;
 import io.github.appstash.shop.service.checkout.api.Checkout;
 import io.github.appstash.shop.service.order.api.OrderService;
 import io.github.appstash.shop.service.order.model.DeliveryAddressInfo;
@@ -10,7 +10,7 @@ import io.github.appstash.shop.service.order.model.OrderItemInfo;
 import io.github.appstash.shop.service.product.model.ProductInfo;
 import io.github.appstash.shop.service.recommendation.api.RecommendationService;
 import io.github.appstash.shop.service.user.model.UserInfo;
-import io.github.appstash.shop.ui.event.basket.BasketChangeEvent;
+import io.github.appstash.shop.ui.event.cart.CartChangeEvent;
 import io.github.appstash.shop.ui.navigation.NavigationItem;
 import io.github.appstash.shop.ui.page.AbstractBasePage;
 import io.github.appstash.shop.ui.page.home.HomePage;
@@ -40,12 +40,12 @@ import java.util.List;
  */
 @SuppressWarnings("UnusedDeclaration")
 @MountPath("checkout")
-@NavigationItem(name = "Proceed to Checkout", sortOrder = 3, visible = "!@basket.isEmpty()")
+@NavigationItem(name = "Proceed to Checkout", sortOrder = 3, visible = "!@cart.isEmpty()")
 public class CheckoutPage extends AbstractBasePage {
     private static final long serialVersionUID = -6793984194989062010L;
 
-    @SpringBean(name = "basket")
-    private Basket basket;
+    @SpringBean(name = "cart")
+    private Cart cart;
 
     @SpringBean(name = "checkout")
     private Checkout checkout;
@@ -147,8 +147,8 @@ public class CheckoutPage extends AbstractBasePage {
 
             @Override
             public void onEvent(IEvent<?> event) {
-                if (event.getPayload() instanceof BasketChangeEvent) {
-                    ((BasketChangeEvent) event.getPayload()).getTarget().add(this);
+                if (event.getPayload() instanceof CartChangeEvent) {
+                    ((CartChangeEvent) event.getPayload()).getTarget().add(this);
                 }
             }
         };

@@ -3,8 +3,8 @@ package io.github.appstash.shop.ui.panel;
 import io.github.appstash.shop.ui.application.ShopApplication;
 import io.github.appstash.shop.ui.application.ShopSession;
 import io.github.appstash.shop.ui.event.AjaxEvent;
-import io.github.appstash.shop.ui.event.basket.AddToBasketEvent;
-import io.github.appstash.shop.ui.event.basket.RemoveFromBasketEvent;
+import io.github.appstash.shop.ui.event.cart.AddToCartEvent;
+import io.github.appstash.shop.ui.event.cart.RemoveFromCartEvent;
 import io.github.appstash.shop.ui.event.login.LoginEvent;
 import io.github.appstash.shop.ui.navigation.*;
 import io.github.appstash.shop.ui.panel.base.HighLightBehavior;
@@ -233,8 +233,8 @@ public class NavigationPanel extends Panel {
 
     @Override
     public void onEvent(IEvent<?> event) {
-        if (event.getPayload() instanceof AddToBasketEvent
-                || event.getPayload() instanceof RemoveFromBasketEvent
+        if (event.getPayload() instanceof AddToCartEvent
+                || event.getPayload() instanceof RemoveFromCartEvent
                 || event.getPayload() instanceof LoginEvent) {
             ((AjaxEvent) event.getPayload()).getTarget().add(this);
         }

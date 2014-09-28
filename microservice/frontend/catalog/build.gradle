@@ -1,5 +1,4 @@
 apply plugin: 'pkg-debian'
-apply plugin: 'docker'
 apply plugin: 'com.moowork.grunt'
 
 sourceSets {
@@ -66,15 +65,3 @@ grunt_build.dependsOn 'npmInstall'
 
 // runs "grunt build" as part of your gradle build
 build.dependsOn grunt_build
-
-docker {
-    baseImage "ubuntu"
-    maintainer 'Bernd Zuther "bernd.zuther@me.com"'
-}
-
-task nginxDocker(type: Docker) {
-    applicationName = "nginx"
-    runCommand 'echo "deb http://archive.ubuntu.com/ubuntu precise main universe" > /etc/apt/sources.list'
-    runCommand "apt-get update"
-    runCommand "apt-get install -y inotify-tools nginx apache2 openssh-server"
-}
