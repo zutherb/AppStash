@@ -456,7 +456,7 @@ module.exports = function (grunt) {
             glyphicons: {
                 files: [{
                     expand: true,
-                    cwd: 'bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap',
+                    cwd: 'bower_components/bootstrap-sass-official/assets/fonts/bootstrap',
                     src: [
                         '*.eot',
                         '*.svg',
