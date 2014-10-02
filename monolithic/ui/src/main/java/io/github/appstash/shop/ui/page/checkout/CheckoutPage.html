@@ -4,21 +4,20 @@
     <title>Shop</title>
 </head>
 <body>
-    <wicket:extend>
-        <div class="row">
-            <div class="col-md-12">
-                <div wicket:id="orderContainer">
-                    <div wicket:id="delieferyInfomation" ></div>
-                    <div wicket:id="orderItems" ></div>
-                    <a class="btn btn-primary" wicket:id="submitOrder">Submit Order</a>
-                    <a class="btn btn-primary" wicket:id="backToShopLink">Back to Shop</a>
-                </div>
-            </div>
+<wicket:extend>
+    <div class="col-md-12">
+        <div wicket:id="orderContainer">
+            <div wicket:id="delieferyInfomation"></div>
+            <div wicket:id="orderItems"></div>
+            <a class="btn btn-primary" wicket:id="submitOrder">Submit Order</a>
+            <a class="btn btn-primary" wicket:id="backToShopLink">Back to Shop</a>
         </div>
-        <p></p>
-        <div class="row">
-            <div class="col-md-12" wicket:id="frequentlyBoughtWithProducts"></div>
-        </div>
-    </wicket:extend>
+    </div>
+    <p></p>
+
+    <div class="row">
+        <div class="col-md-12" wicket:id="frequentlyBoughtWithProducts"></div>
+    </div>
+</wicket:extend>
 </body>
 </html>

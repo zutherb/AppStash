@@ -23,8 +23,8 @@ The online shop will be deployed on the following cluster nodes:
 
     microservice/       --> all files of the microservice applications are located in this directory
         frontend/       --> all frontend applications are located in this directory
-            catalog/    --> the frontend application that shows the product catalog and is used to create a cart is located in this directory
-            checkout/   --> the frontend application that that is used to create an order is located in this directory
+            catalog/    --> an angularjs frontend application that shows the product catalog and is used to create a cart is located in this directory
+            checkout/   --> the react frontend application that that is used to create an order is located in this directory
         service/        --> css files
     monolithic/         --> all files of the monolithic applications are located in this directory
         common/         --> css files
@@ -95,5 +95,5 @@ appserver3    | 10.211.55.103 | app-server-node-3  | Microservice Shop | localho
 
 ## Contact
 
-[Bernd Zuther](mailto:bernd.zuther@me.com)
+[Bernd Zuther] (mailto:bernd.zuther@codecentric.de)
 

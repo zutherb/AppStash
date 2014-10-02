@@ -11,3 +11,4 @@ for BUILD in $(cat /provision/roles/jenkins/files/jobs.txt)
 do
 	java -jar /tmp/jenkins-cli.jar -s http://localhost:8080 get-job $BUILD &> /provision/roles/jenkins/files/$BUILD.xml
 done
+echo "All Jenkins Jobs are saved"
