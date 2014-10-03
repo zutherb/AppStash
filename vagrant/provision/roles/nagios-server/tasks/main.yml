@@ -10,6 +10,7 @@
       - app-server-node-1.cfg
       - app-server-node-2.cfg
       - app-server-node-3.cfg
+      - app-server-node-4.cfg
       - ci-node.cfg
       - ci-repo.cfg
       - elasticsearch-node.cfg

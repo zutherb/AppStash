@@ -1,7 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<project>
+<?xml version="1.0" encoding="UTF-8"?><project>
   <actions/>
-  <description></description>
+  <description/>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>5</daysToKeep>
     <numToKeep>5</numToKeep>
@@ -25,13 +24,13 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command></command>
+      <command/>
     </hudson.tasks.Shell>
     <hudson.plugins.copyartifact.CopyArtifact plugin="copyartifact@1.31">
       <project>shop-monolitic-load-test</project>
       <filter>**/*.war</filter>
       <target>artifacts</target>
-      <excludes></excludes>
+      <excludes/>
       <selector class="hudson.plugins.copyartifact.WorkspaceSelector"/>
       <flatten>true</flatten>
       <doNotFingerprintArtifacts>false</doNotFingerprintArtifacts>
@@ -42,8 +41,10 @@ ssh vagrant@app-server-node-2 -o StrictHostKeyChecking=no -v &lt;&lt;EOF
 sudo service tomcat6 stop
 sudo rm -rf /var/lib/tomcat6/webapps/shop*
 sudo cp /tmp/shop.war /var/lib/tomcat6/webapps/shop.war
+sudo chown tomcat6 /var/lib/tomcat6/webapps/shop.war
+sudo chgrp tomcat6 /var/lib/tomcat6/webapps/shop.war
 sudo service tomcat6 start
-echo &quot;Wait 2s for war file extracting&quot;
+echo "Wait 2s for war file extracting"
 sleep 2s
 cat /var/lib/tomcat6/webapps/shop/META-INF/MANIFEST.MF
 EOF</command>

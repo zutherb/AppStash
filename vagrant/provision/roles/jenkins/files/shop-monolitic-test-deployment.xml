@@ -55,6 +55,8 @@ ssh vagrant@app-server-node-1 -o StrictHostKeyChecking=no -v &lt;&lt;EOF
 sudo service tomcat6 stop
 sudo rm -rf /var/lib/tomcat6/webapps/shop*
 sudo cp /tmp/shop.war /var/lib/tomcat6/webapps/shop.war
+sudo chown tomcat6 /var/lib/tomcat6/webapps/shop.war
+sudo chgrp tomcat6 /var/lib/tomcat6/webapps/shop.war
 sudo service tomcat6 start
 EOF</command>
     </hudson.tasks.Shell>

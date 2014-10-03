@@ -16,7 +16,7 @@
       </projectNameList>
     </hudson.plugins.copyartifact.CopyArtifactPermissionProperty>
   </properties>
-  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.5">
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.6">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
@@ -52,8 +52,8 @@
   <builders>
     <hudson.plugins.copyartifact.CopyArtifact plugin="copyartifact@1.31">
       <project>shop-monolitic-ui-test</project>
-      <filter>artifacts/*.war</filter>
-      <target></target>
+      <filter>**/*.war</filter>
+      <target>artifacts/</target>
       <excludes></excludes>
       <selector class="hudson.plugins.copyartifact.StatusBuildSelector">
         <stable>true</stable>

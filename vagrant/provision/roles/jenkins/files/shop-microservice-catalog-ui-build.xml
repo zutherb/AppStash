@@ -10,7 +10,7 @@
   </logRotator>
   <keepDependencies>false</keepDependencies>
   <properties/>
-  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.5">
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.6">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
@@ -39,7 +39,8 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>./gradlew -p microservice/frontend/catalog bower grunt_build
+      <command>rm -rf /var/lib/jenkins/.npm/
+./gradlew -p microservice/frontend/catalog bower grunt_build
 ./gradlew -p microservice/frontend/catalog prepareDeb buildDeb</command>
     </hudson.tasks.Shell>
   </builders>
