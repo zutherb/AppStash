@@ -50,12 +50,23 @@ If you want to run the application you has to install the following programs on 
 - You must be not learn much about vagrant, but you should be able to install vagrant and execute the following 
   commandline: vagrant up
 - [Vagrant](https://www.vagrantup.com/) (download, documentation)
-- ```sudo gem install vagrant-vbguest```
 
 #### Ansible
 
 - You must not know Ansible, but it must be to installed that vagrant be create virtual machines.
 - [Ansible](http://www.ansible.com/) (download, documentation)
+
+#### Apt-Cacher-Ng
+
+- Apt-Cacher-Ng runs on your Mac without opening port 80 to everyone on the internet and become some zombie relay.
+- [Apt-Cacher-Ng](https://github.com/stephen-mw/mac-apt-cacher) (download, documentation)
+
+Installation:
+```bash
+brew install apt-cacher-ng
+sudo cp -fv /usr/local/opt/apt-cacher-ng/*.plist /Library/LaunchDaemons
+sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.apt-cacher-ng.plist
+```
 
 ####Run the Cluster 
 
@@ -70,20 +81,19 @@ vagrant up
 
 The Cluster contains of the following nodes:
 
-Vargrant-Name | IP            | Hostname           | Application | Forward
---------------|---------------|--------------------|-------------|------------------------
-buildserver   | 10.211.55.200 | ci-node            | Jenkins     |http://localhost:10000/
-buildserver   | 10.211.55.200 | ci-node            | Sonar       |http://localhost:9000/
-buildserver   | 10.211.55.200 | ci-node            | VNC         |vnc://jenkins@ci-node:5901
+Vargrant-Name | IP            | Hostname           | Application        | Forward
+--------------|---------------|--------------------|--------------------|------------------------
+buildserver   | 10.211.55.200 | ci-node            | Jenkins            |http://localhost:10000/
+buildserver   | 10.211.55.200 | ci-node            | Sonar              |http://localhost:9000/
 reposerver    | 10.211.55.201 | ci-repo            | Artifact Repository (NGINX) |
-dbserver      | 10.211.55.202 | mongodb-node       | MongoDB     | localhost:27017
-appserver1    | 10.211.55.101 | app-server-node-1  | Legacy Shop | localhost:8080/shop/
-appserver1    | 10.211.55.101 | app-server-node-1  | Probe       | localhost:8080/probe/ (admin / topsecret)
-appserver2    | 10.211.55.102 | app-server-node-2  | Legacy Shop | localhost:8081/shop/
-appserver2    | 10.211.55.102 | app-server-node-2  | Probe             | localhost:8081/probe/ (admin / topsecret)
-appserver3    | 10.211.55.103 | app-server-node-3  | Microservice Shop | localhost:8082
-
-###Development
+dbserver      | 10.211.55.202 | mongodb-node       | MongoDB            | localhost:27017
+appserver1    | 10.211.55.101 | app-server-node-1  | Legacy Shop        | localhost:8080/shop/
+appserver1    | 10.211.55.101 | app-server-node-1  | Probe              | localhost:8080/probe/ (admin / topsecret)
+appserver2    | 10.211.55.102 | app-server-node-2  | Legacy Shop        | localhost:8081/shop/
+appserver2    | 10.211.55.102 | app-server-node-2  | Probe              | localhost:8081/probe/ (admin / topsecret)
+appserver3    | 10.211.55.103 | app-server-node-3  | Microservice Shop  | localhost:8082/
+elasticsearch | 10.211.55.100 | elasticsearch-node | Kibana             | http://localhost:8000/
+elasticsearch | 10.211.55.100 | elasticsearch-node | Nagios             | http://localhost:8000/nagios3/ (nagiosadmin / admin123)
 
 ## Workings with the application
 

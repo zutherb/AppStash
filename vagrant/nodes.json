@@ -3,6 +3,7 @@
         {
             "node": "elasticsearch",
             "box": "precise64",
+            "box_url": "http://files.vagrantup.com/precise64.box",
             "hostname": "elasticsearch-node",
             "memory": "1024",
             "ip": "10.211.55.100",
@@ -15,6 +16,7 @@
         {
             "node": "buildserver",
             "box": "precise64",
+            "box_url": "http://files.vagrantup.com/precise64.box",
             "hostname": "ci-node",
             "memory": "1024",
             "ip": "10.211.55.200",
@@ -28,6 +30,7 @@
         {
             "node": "reposerver",
             "box": "precise64",
+            "box_url": "http://files.vagrantup.com/precise64.box",
             "hostname": "ci-repo",
             "memory": "512",
             "ip": "10.211.55.201",
@@ -37,6 +40,7 @@
         {
             "node": "dbserver",
             "box": "precise64",
+            "box_url": "http://files.vagrantup.com/precise64.box",
             "hostname": "mongodb-node",
             "memory": "1024",
             "ip": "10.211.55.202",
@@ -48,6 +52,7 @@
         {
             "node": "appserver1",
             "box": "precise64",
+            "box_url": "http://files.vagrantup.com/precise64.box",
             "hostname": "app-server-node-1",
             "memory": "1024",
             "ip": "10.211.55.101",
@@ -59,6 +64,7 @@
         {
             "node": "appserver2",
             "box": "precise64",
+            "box_url": "http://files.vagrantup.com/precise64.box",
             "hostname": "app-server-node-2",
             "memory": "1024",
             "ip": "10.211.55.102",
@@ -70,6 +76,7 @@
         {
             "node": "appserver3",
             "box": "precise64",
+            "box_url": "http://files.vagrantup.com/precise64.box",
             "hostname": "app-server-node-3",
             "memory": "1024",
             "ip": "10.211.55.103",
@@ -81,6 +88,7 @@
         {
             "node": "appserver4",
             "box": "precise64",
+            "box_url": "http://files.vagrantup.com/precise64.box",
             "hostname": "app-server-node-4",
             "memory": "1024",
             "ip": "10.211.55.104",

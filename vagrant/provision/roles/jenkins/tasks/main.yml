@@ -38,7 +38,10 @@
 - name: install config.xml
   sudo: yes
   sudo_user: jenkins
-  copy: src=config.xml dest=/var/lib/jenkins/config.xml owner=jenkins
+  copy: src={{item}} dest=/var/lib/jenkins/{{item}} owner=jenkins
+  with_items:
+    - config.xml
+    - org.jenkinsci.plugins.xvfb.XvfbBuildWrapper.xml
   notify: restart jenkins
 
 # wait 300 seconds for port 8000 to become open on the host, don't start checking for 5 seconds

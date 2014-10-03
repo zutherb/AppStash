@@ -1,4 +1,6 @@
 ---
+- raw: echo 'Acquire::http { proxy "http://10.0.2.2:3142"; };' > /etc/apt/apt.conf.d/02proxy
+- apt: update_cache=yes
 - apt: pkg={{item}} state=present force=yes
   with_items:
     - vim
