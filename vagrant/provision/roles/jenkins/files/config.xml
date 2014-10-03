@@ -14,7 +14,7 @@
   <jdks>
     <jdk>
       <name>java 8</name>
-      <home>/usr/local/jdk1.8.0_05/</home>
+      <home>/usr/local/jdk1.8.0_20/</home>
       <properties/>
     </jdk>
   </jdks>

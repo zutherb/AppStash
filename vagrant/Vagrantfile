@@ -1,148 +1,44 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+nodes_config = (JSON.parse(File.read("nodes.json")))['nodes']
+
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-  config.vm.box_url = "http://files.vagrantup.com/precise64.box"
-  config.vm.define :elasticsearch do |elasticsearch|
-    elasticsearch.vm.box = "precise64"
-    elasticsearch.vm.provider "virtualbox" do |v|
-      v.name = "elasticsearch-node"
-      v.customize ["modifyvm", :id, "--memory", "1024"]
-    end
-    elasticsearch.vm.synced_folder "provision", "/provision"
-    elasticsearch.vm.network :private_network, ip: "10.211.55.100"
-    elasticsearch.vm.hostname = "elasticsearch-node"
-    elasticsearch.vm.network :forwarded_port, host: 9200, guest: 9200, auto_correct: true
-    elasticsearch.vm.network :forwarded_port, host: 8000, guest: 80, auto_correct: true
-    elasticsearch.vm.provision "ansible" do |ansible|
-      ansible.playbook = "provision/elasticsearch.yml"
-      ansible.inventory_path = "provision/hosts"
-      ansible.limit = 'elasticsearch-node'
-      ansible.ask_vault_pass = false
-      ansible.raw_arguments  = "--user=vagrant"
-      ansible.raw_arguments  = "--private-key=~/.vagrant.d/insecure_private_key"
-    end
-  end
+    config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
-  config.vm.define :buildserver do |buildserver|
-    buildserver.vm.box = "precise64"
-    buildserver.vm.provider "virtualbox" do |v|
-      v.name = "ci-node"
-      v.customize ["modifyvm", :id, "--memory", "1024"]
-    end
-    buildserver.vm.synced_folder "provision", "/provision"
-    buildserver.vm.network :private_network, ip: "10.211.55.200"
-    buildserver.vm.hostname = "ci-node"
-    buildserver.vm.network :forwarded_port, host: 10000, guest: 8080, auto_correct: true
-    buildserver.vm.network :forwarded_port, host: 9000, guest: 9000, auto_correct: true
-    buildserver.vm.network :forwarded_port, host: 5432, guest: 5432, auto_correct: true
-    buildserver.vm.provision "ansible" do |ansible|
-      ansible.playbook = "provision/buildserver.yml"
-      ansible.inventory_path = "provision/hosts"
-      ansible.limit = 'ci-node'
-      ansible.ask_vault_pass = false
-      ansible.raw_arguments  = "--user=vagrant"
-      ansible.raw_arguments  = "--private-key=~/.vagrant.d/insecure_private_key"
-    end
-  end
+    nodes_config.each do |node|
+        node_name = node["node"] # name of node
 
-  config.vm.define :reposerver do |reposerver|
-      reposerver.vm.box = "precise64"
-      reposerver.vm.provider "virtualbox" do |v|
-        v.name = "ci-repo"
-        v.customize ["modifyvm", :id, "--memory", "512"]
-      end
-      reposerver.vm.synced_folder "provision", "/provision"
-      reposerver.vm.network :private_network, ip: "10.211.55.201"
-      reposerver.vm.hostname = "ci-repo"
-      reposerver.vm.provision "ansible" do |ansible|
-        ansible.playbook = "provision/reposerver.yml"
-        ansible.inventory_path = "provision/hosts"
-        ansible.limit = 'ci-repo'
-        ansible.ask_vault_pass = false
-        ansible.raw_arguments  = "--user=vagrant"
-        ansible.raw_arguments  = "--private-key=~/.vagrant.d/insecure_private_key"
-      end
-  end
+        # configures all forwarding ports in JSON array
+        config.vm.define node_name do |config|
+            ports = node['ports']
+            ports.each do |port|
+                config.vm.network :forwarded_port,
+                host: port['host'],
+                guest: port['guest'],
+                auto_correct: port['auto_correct']
+            end
 
-  config.vm.define :dbserver do |dbserver|
-        dbserver.vm.box = "precise64"
-        dbserver.vm.provider "virtualbox" do |v|
-          v.name = "mongodb-node"
-          v.customize ["modifyvm", :id, "--memory", "1024"]
+            config.vm.hostname = node['hostname']
+            config.vm.box = node['box']
+            config.vm.network :private_network, ip: node['ip']
+
+            config.vm.synced_folder "provision", "/provision"
+
+            config.vm.provider :virtualbox do |vb|
+                vb.customize ["modifyvm", :id, "--memory", node['memory']]
+                vb.customize ["modifyvm", :id, "--name", node['node']]
+            end
+
+            config.vm.provision "ansible" do |ansible|
+                  ansible.playbook = node['playbook']
+                  ansible.inventory_path = "provision/hosts"
+                  ansible.limit = node['hostname']
+                  ansible.ask_vault_pass = false
+                  ansible.raw_arguments  = "--user=vagrant"
+                  ansible.raw_arguments  = "--private-key=~/.vagrant.d/insecure_private_key"
+            end
         end
-        dbserver.vm.synced_folder "provision", "/provision"
-        dbserver.vm.network :private_network, ip: "10.211.55.202"
-        dbserver.vm.network :forwarded_port, host: 27017, guest: 27017, auto_correct: true
-        dbserver.vm.hostname = "mongodb-node"
-        dbserver.vm.provision "ansible" do |ansible|
-          ansible.playbook = "provision/databaseserver.yml"
-          ansible.inventory_path = "provision/hosts"
-          ansible.limit = 'mongodb-node'
-          ansible.ask_vault_pass = false
-          ansible.raw_arguments  = "--user=vagrant"
-          ansible.raw_arguments  = "--private-key=~/.vagrant.d/insecure_private_key"
-        end
-  end
-
-  config.vm.define :appserver1 do |appserver1|
-    appserver1.vm.box = "precise64"
-    appserver1.vm.provider "virtualbox" do |v|
-      v.name = "app-server-node-1"
-      v.customize ["modifyvm", :id, "--memory", "1024"]
     end
-    appserver1.vm.synced_folder "provision", "/provision"
-    appserver1.vm.network :private_network, ip: "10.211.55.101"
-    appserver1.vm.hostname = "app-server-node-1"
-    appserver1.vm.network :forwarded_port, host: 8080, guest: 8080, auto_correct: true
-    appserver1.vm.provision "ansible" do |ansible|
-      ansible.playbook = "provision/monolitic_appserver.yml"
-      ansible.inventory_path = "provision/hosts"
-      ansible.limit = 'app-server-node-1'
-      ansible.ask_vault_pass = false
-      ansible.raw_arguments  = "--user=vagrant"
-      ansible.raw_arguments  = "--private-key=~/.vagrant.d/insecure_private_key"
-    end
-  end
-
-  config.vm.define :appserver2 do |appserver2|
-    appserver2.vm.box = "precise64"
-    appserver2.vm.provider "virtualbox" do |v|
-      v.name = "app-server-node-2"
-      v.customize ["modifyvm", :id, "--memory", "1024"]
-    end
-    appserver2.vm.synced_folder "provision", "/provision"
-    appserver2.vm.network :private_network, ip: "10.211.55.102"
-    appserver2.vm.hostname = "app-server-node-2"
-    appserver2.vm.network :forwarded_port, host: 8081, guest: 8080, auto_correct: true
-    appserver2.vm.provision "ansible" do |ansible|
-      ansible.playbook = "provision/monolitic_appserver.yml"
-      ansible.inventory_path = "provision/hosts"
-      ansible.limit = 'app-server-node-2'
-      ansible.ask_vault_pass = false
-      ansible.raw_arguments  = "--user=vagrant"
-      ansible.raw_arguments  = "--private-key=~/.vagrant.d/insecure_private_key"
-    end
-  end
-
-  config.vm.define :appserver3 do |appserver3|
-    appserver3.vm.box = "precise64"
-    appserver3.vm.provider "virtualbox" do |v|
-      v.name = "app-server-node-3"
-      v.customize ["modifyvm", :id, "--memory", "1024"]
-    end
-    appserver3.vm.synced_folder "provision", "/provision"
-    appserver3.vm.network :private_network, ip: "10.211.55.103"
-    appserver3.vm.network :forwarded_port, host: 8082, guest: 80, auto_correct: true
-    appserver3.vm.hostname = "app-server-node-3"
-    appserver3.vm.provision "ansible" do |ansible|
-      ansible.playbook = "provision/micro_appserver.yml"
-      ansible.inventory_path = "provision/hosts"
-      ansible.limit = 'app-server-node-3'
-      ansible.ask_vault_pass = false
-      ansible.raw_arguments  = "--user=vagrant"
-      ansible.raw_arguments  = "--private-key=~/.vagrant.d/insecure_private_key"
-    end
-  end
 end

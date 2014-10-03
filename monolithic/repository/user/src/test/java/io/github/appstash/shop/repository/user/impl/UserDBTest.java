@@ -18,14 +18,8 @@ import java.util.Random;
 
 import static org.junit.Assert.assertEquals;
 
-/**
- * User: christian.kroemer@comsysto.com
- * Date: 6/27/13
- * Time: 5:03 PM
- */
 @ActiveProfiles("test")
 @ContextConfiguration(locations = "classpath:io/github/appstash/shop/repository/user/spring-context.xml")
-@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class UserDBTest extends AbstractJUnit4SpringContextTests {
 
     @Autowired

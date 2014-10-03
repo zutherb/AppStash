@@ -1,5 +1,5 @@
 TOMCAT7_USER=tomcat6
 TOMCAT7_GROUP=tomcat6
-JAVA_HOME=/usr/local/jdk1.8.0_05
+JAVA_HOME=/usr/local/jdk1.8.0_20
 JAVA_OPTS="-Djava.awt.headless=true -Xmx1024M -Xms512M -Dspring.profiles.active=production"
 CATALINA_OPTS="-Dcom.sun.management.jmxremote.port=11001 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false"

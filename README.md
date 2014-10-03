@@ -50,6 +50,7 @@ If you want to run the application you has to install the following programs on 
 - You must be not learn much about vagrant, but you should be able to install vagrant and execute the following 
   commandline: vagrant up
 - [Vagrant](https://www.vagrantup.com/) (download, documentation)
+- ```sudo gem install vagrant-vbguest```
 
 #### Ansible
 
