@@ -4,3 +4,6 @@
 - raw: 'sudo update-alternatives --install "/usr/bin/java" "java" "/usr/local/jdk1.8.0_20/bin/java" 1'
 - raw: 'sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/local/jdk1.8.0_20/bin/javac" 1'
 - raw: 'sudo update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/local/jdk1.8.0_20/bin/javaws" 1'
+- raw: 'sudo update-alternatives --set "java" "/usr/local/jdk1.8.0_20/bin/java"'
+- raw: 'sudo update-alternatives --set "javac" "/usr/local/jdk1.8.0_20/bin/javac"'
+- raw: 'sudo update-alternatives --set "javaws" "/usr/local/jdk1.8.0_20/bin/javaws"'

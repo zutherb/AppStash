@@ -86,6 +86,7 @@
       - sonar
       - buildgraph-view
       - xvfb
+      - http_request
       - ws-cleanup
   notify: restart jenkins
 
