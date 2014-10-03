@@ -24,7 +24,7 @@ public class CartBeanTest {
     @Before
     public void setUp() throws Exception {
         cart = new CartBean();
-        cart.addItem( new ProductInfo(new ObjectId().toString(), "A1", "Salami", SeoUtils.urlFriendly("Salami"), "", ProductType.HANDY, 2.0,"category") );
+        cart.addItem(new ProductInfo(new ObjectId().toString(), "A1", "Salami", SeoUtils.urlFriendly("Salami"), "", ProductType.HANDY, 2.0, "category"));
     }
 
     @Test
