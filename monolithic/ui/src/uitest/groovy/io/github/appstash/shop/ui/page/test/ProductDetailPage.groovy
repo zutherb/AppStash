@@ -5,9 +5,8 @@ import geb.Page
 class ProductDetailPage extends Page {
     static at = { title == "Shop" }
     static content = {
-        results(wait: true) { $("div.container div.col-md-8") }
+        results(wait: true) { $("a.addToCart") }
         result { i -> results[i] }
-        resultLink { i -> result(i).find("a")[0] }
-        addToCartLink { resultLink(0) }
+        addToCartLink { result(0) }
     }
 }
