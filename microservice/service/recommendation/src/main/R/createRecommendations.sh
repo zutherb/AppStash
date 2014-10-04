@@ -1,7 +1,7 @@
 #!/bin/sh
 export RAW_FILE=/tmp/export.csv
 export NORMALIZED_RAW_FILE=/tmp/user-item-pref.csv
-export TARGET_DIR=/usr/share/shop/recommendation/output/
+export TARGET_DIR=/usr/share/shop/recommendation/output/api/recommendation/
 export R_SCRIPT=/usr/share/shop/recommendation/recommendation.R
 
 echo "Recommendation-Generation started:  $(date)"
