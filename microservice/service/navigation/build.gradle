@@ -3,8 +3,6 @@ apply plugin: 'maven'
 apply plugin: 'maven-publish'
 apply plugin: 'pkg-debian'
  
-jar.baseName = "navigation-microservice"
-
 idea {
     module {
         name='navigation-microservice'
@@ -85,5 +83,21 @@ task prepareDeb {
     copy {
         from "${buildDir}/install/"
         into "${buildDir}/debian-data/usr/share/shop/"
+    }
+}
+
+jar {
+    baseName = "navigation-microservice"
+    def manifestClasspath = configurations.compile.collect { it.getName() }.join(',')
+    manifest {
+        attributes("Manifest-Version"       : "1.0",
+                "Created-By"             : vendor,
+                "Specification-Title"    : appName,
+                "Specification-Version"  : version,
+                "Specification-Vendor"   : vendor,
+                "Implementation-Title"   : appName,
+                "Implementation-Version" : version,
+                "Implementation-Vendor"  : vendor,
+                "Class-Path"             : manifestClasspath)
     }
 }

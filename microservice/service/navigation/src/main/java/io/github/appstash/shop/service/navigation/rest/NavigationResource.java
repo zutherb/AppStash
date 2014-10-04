@@ -1,6 +1,7 @@
 package io.github.appstash.shop.service.navigation.rest;
 
 import io.github.appstash.shop.service.navigation.domain.Navigation;
+import org.apache.commons.io.FileUtils;
 import restx.annotations.GET;
 import restx.annotations.RestxResource;
 import restx.factory.Component;
@@ -8,6 +9,9 @@ import restx.jongo.JongoCollection;
 import restx.security.PermitAll;
 
 import javax.inject.Named;
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
 import java.util.List;
 
 @Component
@@ -26,6 +30,14 @@ public class NavigationResource {
         return product.get()
                 .aggregate("{$group: {_id : \"$type\", sum : {$sum : 1}}}")
                 .as(Navigation.class);
+    }
+
+    @GET("/version")
+    public String version() throws IOException {
+        URL manifestFileUrl = getClass().getClassLoader().getResource("META-INF/MANIFEST.MF");
+        File manifestFile = new File(manifestFileUrl.getFile());
+        String fileContentAsString = FileUtils.readFileToString(manifestFile);
+        return fileContentAsString;
     }
 
 
