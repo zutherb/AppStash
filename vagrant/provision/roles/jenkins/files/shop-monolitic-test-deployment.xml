@@ -58,6 +58,7 @@ sudo cp /tmp/shop.war /var/lib/tomcat6/webapps/shop.war
 sudo chown tomcat6 /var/lib/tomcat6/webapps/shop.war
 sudo chgrp tomcat6 /var/lib/tomcat6/webapps/shop.war
 sudo service tomcat6 start
+curl --connect-timeout 60 http://app-server-node-1:8080/shop/version
 EOF</command>
     </hudson.tasks.Shell>
   </builders>

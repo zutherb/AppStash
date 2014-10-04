@@ -63,7 +63,7 @@
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>shop-monolitic-build</firstJob>
       </gridBuilder>
-      <noOfDisplayedBuilds>1</noOfDisplayedBuilds>
+      <noOfDisplayedBuilds>3</noOfDisplayedBuilds>
       <buildViewTitle></buildViewTitle>
       <consoleOutputLinkStyle>Lightbox</consoleOutputLinkStyle>
       <cssUrl></cssUrl>
@@ -84,7 +84,7 @@
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>shop-microservice-product-service-build</firstJob>
       </gridBuilder>
-      <noOfDisplayedBuilds>1</noOfDisplayedBuilds>
+      <noOfDisplayedBuilds>3</noOfDisplayedBuilds>
       <buildViewTitle></buildViewTitle>
       <consoleOutputLinkStyle>Lightbox</consoleOutputLinkStyle>
       <cssUrl></cssUrl>

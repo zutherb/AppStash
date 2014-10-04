@@ -32,7 +32,7 @@
             "box": "precise64",
             "box_url": "http://files.vagrantup.com/precise64.box",
             "hostname": "ci-repo",
-            "memory": "512",
+            "memory": "256",
             "ip": "10.211.55.201",
             "ports":[ ],
             "playbook": "provision/reposerver.yml"
@@ -42,7 +42,7 @@
             "box": "trusty64",
             "box_url": "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box",
             "hostname": "mongodb-node",
-            "memory": "1024",
+            "memory": "512",
             "ip": "10.211.55.202",
             "ports":[
                 {"host": 27017, "guest": 27017, "auto_correct": true}
@@ -54,7 +54,7 @@
             "box": "trusty64",
             "box_url": "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box",
             "hostname": "app-server-node-1",
-            "memory": "1024",
+            "memory": "1536",
             "ip": "10.211.55.101",
             "ports":[
                 {"host": 8080, "guest": 8080, "auto_correct": true}
@@ -66,7 +66,7 @@
             "box": "trusty64",
             "box_url": "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box",
             "hostname": "app-server-node-2",
-            "memory": "1024",
+            "memory": "1536",
             "ip": "10.211.55.102",
             "ports":[
                 {"host": 8081, "guest": 8080, "auto_correct": true}
@@ -78,7 +78,7 @@
             "box": "trusty64",
             "box_url": "http://files.vagrantup.com/precise64.box",
             "hostname": "app-server-node-3",
-            "memory": "1024",
+            "memory": "1536",
             "ip": "10.211.55.103",
             "ports":[
                 {"host": 8082, "guest": 80, "auto_correct": true}
@@ -90,7 +90,7 @@
             "box": "trusty64",
             "box_url": "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box",
             "hostname": "app-server-node-4",
-            "memory": "1024",
+            "memory": "1536",
             "ip": "10.211.55.104",
             "ports":[
                 {"host": 8083, "guest": 80, "auto_correct": true}
