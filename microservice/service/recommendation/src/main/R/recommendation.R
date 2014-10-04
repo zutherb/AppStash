@@ -31,7 +31,7 @@ csv = read.csv(srcFile, sep=",", header = TRUE)
 ratingMatrix <- as(csv, "realRatingMatrix")
 userIds <- dimnames(ratingMatrix)[[1]]
 recommender <- Recommender(ratingMatrix, method="POPULAR")
-recommendations <- predict(recommender, ratingMatrix, n=4)
+recommendations <- predict(recommender, ratingMatrix, n=3)
 recommendationsAsList <- as(recommendations, "list")
 frame <- data.frame(recommendationsAsList)
 colnames(frame) <- userIds

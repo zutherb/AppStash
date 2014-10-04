@@ -5,5 +5,10 @@ chmod +x /usr/share/shop/recommendation/createRecommendations.sh
 chmod +x /usr/share/shop/recommendation/recommendation.R
 sudo touch /var/log/recommendation.log
 Rscript  /usr/share/shop/recommendation/installDependencies.R >> /var/log/recommendation.log
+
+if [ ! -z $(cat /etc/crontab | grep '/usr/share/shop/recommendation/createRecommendations.sh') ]
+then
 echo "*/5 * * * * /usr/share/shop/recommendation/createRecommendations.sh >> /var/log/recommendation.log" >> /etc/crontab
+fi
+
 service cron restart
