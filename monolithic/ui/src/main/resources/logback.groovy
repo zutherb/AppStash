@@ -5,7 +5,7 @@ import static ch.qos.logback.classic.Level.*
 
 def defaultPattern = "%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
 
-if (System.properties.find { it.key == "spring.profiles.active" } != "production") {
+if (System.getProperty("spring.profiles.active") != "production") {
     appender("stdout", ConsoleAppender) {
         encoder(PatternLayoutEncoder) {
             pattern = defaultPattern
