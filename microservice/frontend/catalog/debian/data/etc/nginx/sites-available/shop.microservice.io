@@ -27,4 +27,8 @@ server {
 
         proxy_pass http://localhost:18090;
     }
+
+    location /api/recommendation/ {
+        root /usr/share/shop/recommendation/output/;
+    }
 }
