@@ -42,15 +42,24 @@ trait ProductService extends HttpService with ConfigurationModule
   }
 
   val myRoute =
-    path("all") {
+    path("version") {
       get {
-        respondWithMediaType(MediaTypes.`application/json`) {
+        respondWithMediaType(MediaTypes.`text/plain`) {
           complete {
-            ProductRepository.findAll()
+            scala.io.Source.fromInputStream(getClass.getResourceAsStream("/META-INF/MANIFEST.MF")).mkString
           }
         }
       }
     } ~
+      path("all") {
+        get {
+          respondWithMediaType(MediaTypes.`application/json`) {
+            complete {
+              ProductRepository.findAll()
+            }
+          }
+        }
+      } ~
       path("search") {
         get {
           parameter("productType".?, "id".?, "articleId".?, "name".?, "urlname".?) {
