@@ -56,18 +56,6 @@ If you want to run the application you has to install the following programs on 
 - You must not know Ansible, but it must be to installed that vagrant be create virtual machines.
 - [Ansible](http://www.ansible.com/) (download, documentation)
 
-#### Apt-Cacher-Ng
-
-- Apt-Cacher-Ng runs on your Mac without opening port 80 to everyone on the internet and become some zombie relay.
-- [Apt-Cacher-Ng](https://github.com/stephen-mw/mac-apt-cacher) (download, documentation)
-
-Installation:
-```bash
-brew install apt-cacher-ng
-sudo cp -fv /usr/local/opt/apt-cacher-ng/*.plist /Library/LaunchDaemons
-sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.apt-cacher-ng.plist
-```
-
 ####Run the Cluster 
 
 You only have to execute the following command if you want to run a development cluster: 

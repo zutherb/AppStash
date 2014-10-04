@@ -1,6 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><project>
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
   <actions/>
-  <description/>
+  <description></description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>5</daysToKeep>
     <numToKeep>5</numToKeep>
@@ -16,7 +17,7 @@
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
-      <spec/>
+      <spec></spec>
       <upstreamProjects>shop-microservice-product-service-build,shop-microservice-catalog-ui-build,shop-microservice-checkout-ui-build,shop-microservice-recommendation-service-build, shop-microservice-dataloader-build, </upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
@@ -29,13 +30,13 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command/>
+      <command></command>
     </hudson.tasks.Shell>
     <hudson.plugins.copyartifact.CopyArtifact plugin="copyartifact@1.31">
       <project>shop-microservice-product-service-build</project>
       <filter>**/*.deb</filter>
       <target>artifacts</target>
-      <excludes/>
+      <excludes></excludes>
       <selector class="hudson.plugins.copyartifact.StatusBuildSelector">
         <stable>true</stable>
       </selector>
@@ -46,7 +47,7 @@
       <project>shop-microservice-navigation-service-build</project>
       <filter>**/*.deb</filter>
       <target>artifacts</target>
-      <excludes/>
+      <excludes></excludes>
       <selector class="hudson.plugins.copyartifact.StatusBuildSelector"/>
       <flatten>true</flatten>
       <doNotFingerprintArtifacts>false</doNotFingerprintArtifacts>
@@ -55,7 +56,7 @@
       <project>shop-microservice-catalog-ui-build</project>
       <filter>**/*.deb</filter>
       <target>artifacts</target>
-      <excludes/>
+      <excludes></excludes>
       <selector class="hudson.plugins.copyartifact.StatusBuildSelector">
         <stable>true</stable>
       </selector>
@@ -66,7 +67,7 @@
       <project>shop-microservice-registration-ui-build</project>
       <filter>**/*.deb</filter>
       <target>artifacts</target>
-      <excludes/>
+      <excludes></excludes>
       <selector class="hudson.plugins.copyartifact.StatusBuildSelector"/>
       <flatten>true</flatten>
       <doNotFingerprintArtifacts>false</doNotFingerprintArtifacts>
@@ -75,7 +76,7 @@
       <project>shop-microservice-checkout-ui-build</project>
       <filter>**/*.deb</filter>
       <target>artifacts</target>
-      <excludes/>
+      <excludes></excludes>
       <selector class="hudson.plugins.copyartifact.StatusBuildSelector">
         <stable>true</stable>
       </selector>
@@ -86,7 +87,7 @@
       <project>shop-microservice-recommendation-service-build</project>
       <filter>**/*.deb</filter>
       <target>artifacts</target>
-      <excludes/>
+      <excludes></excludes>
       <selector class="hudson.plugins.copyartifact.StatusBuildSelector">
         <stable>true</stable>
       </selector>
@@ -97,7 +98,7 @@
       <project>shop-microservice-dataloader-build</project>
       <filter>**/*.deb</filter>
       <target>artifacts</target>
-      <excludes/>
+      <excludes></excludes>
       <selector class="hudson.plugins.copyartifact.StatusBuildSelector">
         <stable>true</stable>
       </selector>
@@ -108,14 +109,26 @@
       <command>scp -o StrictHostKeyChecking=no -v $WORKSPACE/artifacts/* vagrant@ci-repo:/tmp/
 ssh vagrant@ci-repo -o StrictHostKeyChecking=no -v &lt;&lt;EOF
 sudo su
+echo *****************************************
+echo *           SIGN ARTIFACTS              *
+echo *****************************************
 dpkg-sig -k 18858766 --sign builder /tmp/*.deb
+echo *****************************************
+echo *        REMOVE OLD ARTIFACTS           *
+echo *****************************************
 reprepro -vb /var/packages/debian remove shop shop-catalog-frontend
 reprepro -vb /var/packages/debian remove shop shop-registration-frontend
 reprepro -vb /var/packages/debian remove shop shop-checkout-frontend
 reprepro -vb /var/packages/debian remove shop shop-product-service
 reprepro -vb /var/packages/debian remove shop shop-navigation-service
 reprepro -vb /var/packages/debian remove shop shop-recommendation-service
+echo *****************************************
+echo *          PUBLISH ARTIFACTS            *
+echo *****************************************
 reprepro -vb /var/packages/debian includedeb shop /tmp/*.deb
+echo *****************************************
+echo *        REMOVE TMP ARTIFACTS           *
+echo *****************************************
 rm -f /tmp/*.deb
 EOF</command>
     </hudson.tasks.Shell>
@@ -124,8 +137,8 @@ EOF</command>
   <buildWrappers>
     <hudson.plugins.ws__cleanup.PreBuildCleanup plugin="ws-cleanup@0.24">
       <deleteDirs>false</deleteDirs>
-      <cleanupParameter/>
-      <externalDelete/>
+      <cleanupParameter></cleanupParameter>
+      <externalDelete></externalDelete>
     </hudson.plugins.ws__cleanup.PreBuildCleanup>
   </buildWrappers>
 </project>

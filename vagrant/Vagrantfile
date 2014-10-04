@@ -5,10 +5,10 @@ nodes_config = (JSON.parse(File.read("nodes.json")))['nodes']
 VAGRANTFILE_API_VERSION = "2"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
-    config.vm.box_url = "http://files.vagrantup.com/precise64.box"
 
     nodes_config.each do |node|
         node_name = node["node"] # name of node
+        config.vm.box_url = node["box_url"]
 
         # configures all forwarding ports in JSON array
         config.vm.define node_name do |config|

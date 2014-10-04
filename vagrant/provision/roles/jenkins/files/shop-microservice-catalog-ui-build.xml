@@ -39,9 +39,8 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>rm -rf /var/lib/jenkins/.npm/
-./gradlew -p microservice/frontend/catalog bower grunt_build
-./gradlew -p microservice/frontend/catalog prepareDeb buildDeb</command>
+      <command>./gradlew -p microservice/frontend/catalog bower grunt_build --stacktrace
+./gradlew -p microservice/frontend/catalog prepareDeb buildDeb --stacktrace</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>

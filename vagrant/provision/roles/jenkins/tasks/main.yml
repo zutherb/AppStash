@@ -23,8 +23,7 @@
     - git
     - curl
     - nodejs
-    - ruby
-    - rubygems
+    - ruby1.9.1-full
 
 - npm: name={{item}} global=yes
   with_items:

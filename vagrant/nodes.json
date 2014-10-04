@@ -2,8 +2,8 @@
     "nodes" : [
         {
             "node": "elasticsearch",
-            "box": "precise64",
-            "box_url": "http://files.vagrantup.com/precise64.box",
+            "box": "trusty64",
+            "box_url": "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box",
             "hostname": "elasticsearch-node",
             "memory": "1024",
             "ip": "10.211.55.100",
@@ -15,10 +15,10 @@
         },
         {
             "node": "buildserver",
-            "box": "precise64",
-            "box_url": "http://files.vagrantup.com/precise64.box",
+            "box": "trusty64",
+            "box_url": "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box",
             "hostname": "ci-node",
-            "memory": "1024",
+            "memory": "2048",
             "ip": "10.211.55.200",
             "ports":[
                 {"host": 10000, "guest": 8080, "auto_correct": true},
@@ -39,8 +39,8 @@
         },
         {
             "node": "dbserver",
-            "box": "precise64",
-            "box_url": "http://files.vagrantup.com/precise64.box",
+            "box": "trusty64",
+            "box_url": "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box",
             "hostname": "mongodb-node",
             "memory": "1024",
             "ip": "10.211.55.202",
@@ -51,8 +51,8 @@
         },
         {
             "node": "appserver1",
-            "box": "precise64",
-            "box_url": "http://files.vagrantup.com/precise64.box",
+            "box": "trusty64",
+            "box_url": "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box",
             "hostname": "app-server-node-1",
             "memory": "1024",
             "ip": "10.211.55.101",
@@ -63,8 +63,8 @@
         },
         {
             "node": "appserver2",
-            "box": "precise64",
-            "box_url": "http://files.vagrantup.com/precise64.box",
+            "box": "trusty64",
+            "box_url": "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box",
             "hostname": "app-server-node-2",
             "memory": "1024",
             "ip": "10.211.55.102",
@@ -75,7 +75,7 @@
         },
         {
             "node": "appserver3",
-            "box": "precise64",
+            "box": "trusty64",
             "box_url": "http://files.vagrantup.com/precise64.box",
             "hostname": "app-server-node-3",
             "memory": "1024",
@@ -87,8 +87,8 @@
         },
         {
             "node": "appserver4",
-            "box": "precise64",
-            "box_url": "http://files.vagrantup.com/precise64.box",
+            "box": "trusty64",
+            "box_url": "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box",
             "hostname": "app-server-node-4",
             "memory": "1024",
             "ip": "10.211.55.104",

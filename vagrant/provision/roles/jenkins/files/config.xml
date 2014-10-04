@@ -104,6 +104,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>shop-microservice-production-deployment</string>
         <string>shop-monolitic-production-deployment</string>
       </jobNames>
       <jobFilters/>

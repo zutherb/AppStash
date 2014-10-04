@@ -8,7 +8,6 @@
 
   roles:
     - hosts
-    - eu-sources
     - common
     - oracle-java
     - tomcat

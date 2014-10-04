@@ -17,5 +17,5 @@
   sudo_user: vagrant
   raw: tar -xf /tmp/kibana.tar.gz --directory=/tmp/
 
-- raw: cp -r /tmp/kibana-{{kibana_version}}/* /var/www/
+- raw: cp -r /tmp/kibana-{{kibana_version}}/* /var/www/html/
   notify: httpd restart
