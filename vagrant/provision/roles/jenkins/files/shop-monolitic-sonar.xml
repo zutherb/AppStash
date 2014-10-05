@@ -1,6 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><project>
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
   <actions/>
-  <description/>
+  <description></description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>1</daysToKeep>
     <numToKeep>1</numToKeep>
@@ -9,7 +10,7 @@
   </logRotator>
   <keepDependencies>false</keepDependencies>
   <properties/>
-  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.5">
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.6">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
@@ -31,7 +32,7 @@
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
-      <spec/>
+      <spec></spec>
       <upstreamProjects>shop-monolitic-build, </upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
@@ -44,7 +45,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>./gradlew sonarRunner -info</command>
+      <command>./gradlew sonarRunner --stacktrace</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>

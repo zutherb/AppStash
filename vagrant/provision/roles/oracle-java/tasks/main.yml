@@ -1,6 +1,15 @@
 ---
+- command: test -e /tmp/jdk-8u20-linux-x64.tar.gz
+  register: java_exist
+  ignore_errors: true
 - raw: 'wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u20-b26/jdk-8u20-linux-x64.tar.gz" -O /tmp/jdk-8u20-linux-x64.tar.gz'
+  when: java_exist.rc != 0
+  ignore_errors: true
+- command: test -e /usr/local/jdk1.8.0_20/
+  register: java_installed
+  ignore_errors: true
 - raw: 'sudo tar xzf /tmp/jdk-8u20-linux-x64.tar.gz --directory=/usr/local/'
+  when: java_installed.rc != 0
 - raw: 'sudo update-alternatives --install "/usr/bin/java" "java" "/usr/local/jdk1.8.0_20/bin/java" 1'
 - raw: 'sudo update-alternatives --install "/usr/bin/javac" "javac" "/usr/local/jdk1.8.0_20/bin/javac" 1'
 - raw: 'sudo update-alternatives --install "/usr/bin/javaws" "javaws" "/usr/local/jdk1.8.0_20/bin/javaws" 1'

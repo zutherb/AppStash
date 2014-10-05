@@ -16,15 +16,10 @@
       - ci-repo.cfg
       - elasticsearch-node.cfg
       - mongodb-node.cfg
-
-#- sudo: yes
-#  command: rm /etc/nagios3/conf.d/{{item}}
-#  with_items:
-#    - localhost_nagios2.cfg
-#    - hostgroups_nagios2.cfg
-#    - services_nagios2.cfg
-#    - extinfo_nagios2.cfg
-#  ignore_errors: yes
+      - localhost_nagios2.cfg
+      - services_nagios2.cfg
+      - extinfo_nagios2.cfg
+      - hostgroups_nagios2.cfg
 
 - sudo: yes
   copy: src=htpasswd.users dest=/etc/nagios3/htpasswd.users force=yes mode=0644
