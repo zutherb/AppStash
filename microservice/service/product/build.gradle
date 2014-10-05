@@ -37,7 +37,7 @@ dependencies {
     compile "com.typesafe.akka:akka-actor_2.10:$akkaVersion"
     compile "io.spray:spray-can:$sprayVersion"
     compile "io.spray:spray-routing:$sprayVersion"
-    compile "io.spray:spray-json_2.10:1.2.6"
+    compile "io.spray:spray-json_2.10:1.3.0"
     compile "org.scalaz:scalaz-core_2.10:7.0.6"
     compile "com.typesafe:config:1.0.2"
     compile "org.reactivemongo:reactivemongo_2.10:0.10.0"

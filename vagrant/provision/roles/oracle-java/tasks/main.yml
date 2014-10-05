@@ -2,7 +2,7 @@
 - command: test -e /usr/local/jdk1.8.0_20/
   register: java_exist
   ignore_errors: true
-  
+
 - raw: 'wget --no-cookies --no-check-certificate --header "Cookie: gpw_e24=http%3A%2F%2Fwww.oracle.com%2F; oraclelicense=accept-securebackup-cookie" "http://download.oracle.com/otn-pub/java/jdk/8u20-b26/jdk-8u20-linux-x64.tar.gz" -O /tmp/jdk-8u20-linux-x64.tar.gz'
   when: java_exist.rc != 0
 

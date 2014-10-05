@@ -22,6 +22,9 @@
       - hostgroups_nagios2.cfg
 
 - sudo: yes
+  copy: src=nagios.cfg dest=/etc/nagios3/nagios.cfg force=yes mode=0644
+
+- sudo: yes
   copy: src=htpasswd.users dest=/etc/nagios3/htpasswd.users force=yes mode=0644
   notify: restart nagios3
 
