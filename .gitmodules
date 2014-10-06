@@ -1,0 +1,3 @@
+[submodule "appstash"]
+	path = appstash
+	url = git@github.com:zutherb/AppStash.git

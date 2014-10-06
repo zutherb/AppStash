@@ -2,6 +2,17 @@
 
 You need the following dependencies to run the presentation.
 
+### Appstash Showcase
+
+```
+git submodule init
+git submodule update
+cd appstash/vagrant
+vagrant up
+```
+
+### Http-Server
+
 ```
 npm install http-server -g
 ```
