@@ -32,7 +32,9 @@ public class ShopApplication extends WebApplication {
         getDebugSettings().setAjaxDebugModeEnabled(true);
 
         setJavaScriptLibrarySettings(new JavaScriptLibrarySettings());
+
         getRequestCycleListeners().add(new MicroserviceRequestCycleListener());
+        getRequestCycleListeners().add(new DirectBuyRequestCycleListener());
     }
 
     @Override
