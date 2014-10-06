@@ -11,7 +11,7 @@ npm install http-server -g
 If you want to run the presentation you has to execute the following command.
 
 ```
-http-serve 8000 
+http-server 8000 
 open http://localhost:8000
 ```
 
