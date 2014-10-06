@@ -100,3 +100,8 @@
   margin-top: 1em;
   font-weight: bold;
 }
+
+.note {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.75);
+    color: #ffffff;
+}
