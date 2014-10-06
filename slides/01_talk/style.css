@@ -1,3 +1,7 @@
+aside.gdbar {
+  background: -moz-linear-gradient(left center , #f1f1f1, #f1f1f1) no-repeat scroll 0 0 / 0 100% rgba(0, 0, 0, 0);
+}
+
 .speakers {
   list-style-type: none;
   padding-left: 0;
@@ -23,20 +27,23 @@
 
 .speakers .avatar {
   display: block;
-  margin: 5px auto;
+  margin: 1em 1.5em;
   border-radius: 5px;
 }
 
 .speakers .name {
-  text-align: center;
   display: block;
   font-size: 1.3em;
   margin-top: 0.5em;
+  margin-left: 1em;
+}
+
+.speakers .social {
+    margin: 3em 0;
 }
 
 .speakers ul {
   list-style-type: none;
-  /*padding-left: 60px;*/
 }
 
 .speakers i {
@@ -104,4 +111,14 @@
 .note {
     background: none repeat scroll 0 0 rgba(0, 0, 0, 0.75);
     color: #ffffff;
+}
+
+section.footer q {
+    font-size: 12px;
+}
+
+section.footer q:before,
+section.footer q:after,
+section.footer blockquote:before, section.footer blockquote:after {
+    content: none;
 }

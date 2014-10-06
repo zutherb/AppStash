@@ -22,8 +22,7 @@ npm install http-server -g
 If you want to run the presentation you has to execute the following command.
 
 ```
-vagrant up
-http-server 8000 
+http-server -p 8000
 open http://localhost:8000
 ```
 
