@@ -122,3 +122,9 @@ section.footer q:after,
 section.footer blockquote:before, section.footer blockquote:after {
     content: none;
 }
+
+.thank-you-slide {
+    background-image: url("images/footer-bckg.png");
+    background-repeat: repeat;
+    color: #779ba6;
+}
