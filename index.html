@@ -1,0 +1,89 @@
+<html ng-app>
+<head>
+  <link rel="shortcut icon" href="/favicon.ico">
+  <meta charset="UTF-8">
+  <title>Die Jagd nach mehr Konversion - Fluch oder Segen für den Entwickler</title>
+  <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css">
+
+  <script src="vendor/angularjs/angular.js"></script>
+  <script>
+    function TrainingCtrl($scope) {
+      $scope.sections = [
+        {
+          title: 'Die Jagd nach mehr Konversion - Fluch oder Segen für den Entwickler',
+          directory: '01_introduction',
+          tasks: false,
+          solutions: false
+        }
+      ];
+    }
+  </script>
+  <style>
+    .ng-cloak {
+      display: none !important;
+    }
+
+    dl.dl-horizontal.wide dt { width: 230px; }
+    dl.dl-horizontal.wide dd { margin-left: 250px; }
+  </style>
+</head>
+<body>
+<div class="container" style="max-width: 700px">
+  <div class="page-header">
+    <h1>Die Jagd nach mehr Konversion - Fluch oder Segen für den Entwickler <small>by codecentric AG</small></h1>
+
+  </div>
+
+  <dl class="dl-horizontal ng-cloak wide" ng-controller="TrainingCtrl">
+
+    <dt ng-repeat-start="section in sections">
+      <span ng-hide="section.extra">
+        {{$index + 1}}:
+      </span>
+      <span ng-show="section.extra">
+        Extra:
+      </span>
+      {{section.title}}
+    </dt>
+    <dd ng-repeat-end>
+      <ul>
+        <li>
+          <a href="slides/{{section.directory}}">Slides</a>
+        </li>
+        <li ng-show="section.tasks">
+          <a href="tasks/{{section.directory}}">Tasks</a>
+        </li>
+        <li ng-show="section.solutions">
+          <a href="solutions/{{section.directory}}">Solutions</a>
+        </li>
+      </ul>
+    </dd>
+  </dl>
+
+  <h2>Slide Shortcuts</h2>
+  <ul>
+    <li>
+      Pressing 'b' brings you back here
+    </li>
+    <li>
+      Pressing 'h' highlights code snippets
+    </li>
+    <li>
+      Pressing 'p' toggles speaker notes (if they're on the current slide)
+    </li>
+    <li>
+      Pressing 'f' toggles fullscreen viewing
+    </li>
+    <li>
+      Pressing 'w' toggles widescreen
+    </li>
+    <li>
+      Pressing 'o' toggles overview mode
+    </li>
+    <li>
+      Pressing 'ESC' toggles off these goodies
+    </li>
+  </ul>
+</div>
+</body>
+</html>
