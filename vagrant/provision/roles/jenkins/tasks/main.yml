@@ -41,6 +41,7 @@
   with_items:
     - config.xml
     - org.jenkinsci.plugins.xvfb.XvfbBuildWrapper.xml
+    - org.jenkins.ci.plugins.xframe_filter.XFrameFilterPageDecorator.xml
   notify: restart jenkins
 
 # wait 300 seconds for port 8000 to become open on the host, don't start checking for 5 seconds
@@ -85,8 +86,8 @@
       - sonar
       - buildgraph-view
       - xvfb
-      - http_request
       - ws-cleanup
+      - xframe-filter-plugin
   notify: restart jenkins
 
 - name: restart jenkins

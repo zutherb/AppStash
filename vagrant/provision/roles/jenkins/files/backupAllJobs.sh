@@ -2,6 +2,7 @@
 echo "Copy Jenkins Configuration"
 cp -f /var/lib/jenkins/config.xml /provision/roles/jenkins/files/config.xml
 cp -f /var/lib/jenkins/org.jenkinsci.plugins.xvfb.XvfbBuildWrapper.xml /provision/roles/jenkins/files/org.jenkinsci.plugins.xvfb.XvfbBuildWrapper.xml
+cp -f /var/lib/jenkins/org.jenkins.ci.plugins.xframe_filter.XFrameFilterPageDecorator.xml /provision/roles/jenkins/files/org.jenkins.ci.plugins.xframe_filter.XFrameFilterPageDecorator.xml
 
 echo "Download Jenkins Cli"
 wget http://localhost:8080/jnlpJars/jenkins-cli.jar -O /tmp/jenkins-cli.jar
