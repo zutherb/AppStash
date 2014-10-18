@@ -31,6 +31,21 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                 vb.customize ["modifyvm", :id, "--name", node['node']]
             end
 
+            if Vagrant.has_plugin?("vagrant-hostsupdater")
+                config.hostsupdater.aliases = node['aliases']
+            end
+
+            if Vagrant.has_plugin?("vagrant-cachier")
+                config.cache.scope = :machine
+                config.cache.enable :generic, {
+                    "wget" => { cache_dir: "/var/cache/wget" },
+                }
+                config.cache.enable :apt
+                config.cache.enable :gem
+                config.cache.enable :bower
+                config.cache.enable :npm
+            end
+
             config.vm.provision "ansible" do |ansible|
                   ansible.playbook = node['playbook']
                   ansible.inventory_path = "provision/hosts"

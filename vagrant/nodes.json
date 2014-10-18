@@ -11,7 +11,8 @@
                 {"host": 9200, "guest": 9200, "auto_correct": true},
                 {"host": 8000, "guest": 80, "auto_correct": true}
             ],
-            "playbook": "provision/elasticsearch.yml"
+            "playbook": "provision/elasticsearch.yml",
+            "aliases" : ["monitoring.microservice.io"]
         },
         {
             "node": "buildserver",
@@ -25,7 +26,8 @@
                 {"host": 9000, "guest": 9000, "auto_correct": true},
                 {"host": 5432, "guest": 5432, "auto_correct": true}
             ],
-            "playbook": "provision/buildserver.yml"
+            "playbook": "provision/buildserver.yml",
+            "aliases" : ["ci.microservice.io"]
         },
         {
             "node": "reposerver",
@@ -35,7 +37,8 @@
             "memory": "256",
             "ip": "10.211.55.201",
             "ports":[ ],
-            "playbook": "provision/reposerver.yml"
+            "playbook": "provision/reposerver.yml",
+            "aliases" : ["ci-repo.microservice.io"]
         },
         {
             "node": "dbserver",
@@ -47,7 +50,8 @@
             "ports":[
                 {"host": 27017, "guest": 27017, "auto_correct": true}
             ],
-            "playbook": "provision/databaseserver.yml"
+            "playbook": "provision/databaseserver.yml",
+            "aliases" : ["mongo.microservice.io"]
         },
         {
             "node": "appserver1",
@@ -59,7 +63,8 @@
             "ports":[
                 {"host": 8080, "guest": 8080, "auto_correct": true}
             ],
-            "playbook": "provision/monolitic_appserver.yml"
+            "playbook": "provision/monolitic_appserver.yml",
+            "aliases" : ["test.monolith.io"]
         },
         {
             "node": "appserver2",
@@ -71,7 +76,8 @@
             "ports":[
                 {"host": 8081, "guest": 8080, "auto_correct": true}
             ],
-            "playbook": "provision/monolitic_appserver.yml"
+            "playbook": "provision/monolitic_appserver.yml",
+            "aliases" : ["monolith.io"]
         },
         {
             "node": "appserver3",
@@ -83,7 +89,12 @@
             "ports":[
                 {"host": 8082, "guest": 80, "auto_correct": true}
             ],
-            "playbook": "provision/micro_appserver.yml"
+            "playbook": "provision/micro_appserver.yml",
+            "aliases" : [
+                "test-shop.microservice.io",
+                "test-checkout.microservice.io",
+                "test-registration.microservice.io"
+            ]
         },
         {
             "node": "appserver4",
@@ -95,7 +106,12 @@
             "ports":[
                 {"host": 8083, "guest": 80, "auto_correct": true}
             ],
-            "playbook": "provision/micro_appserver.yml"
+            "playbook": "provision/micro_appserver.yml",
+            "aliases" : [
+                "shop.microservice.io",
+                "checkout.microservice.io",
+                "registration.microservice.io"
+            ]
         }
     ]
 }

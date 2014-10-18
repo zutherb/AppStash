@@ -47,13 +47,14 @@ If you want to run the application you has to install the following programs on 
 
 #### Vagrant
 
-- You must be not learn much about vagrant, but you should be able to install vagrant and execute the following 
-  commandline: vagrant up
+- Vagrant creates and configures lightweight, reproducible, and portable development environments. You must be not learn 
+  much about vagrant, but you should be able to install vagrant and execute the following commandline: ```vagrant up```
 - [Vagrant](https://www.vagrantup.com/) (download, documentation)
 
 #### Ansible
 
-- You must not know Ansible, but it must be to installed that vagrant be create virtual machines.
+- Ansible is the simplest way to automate IT. You must not know Ansible, but it must be able to installed Ansible 
+  otherwise vagrant is not able to created the virtual machines.
 - [Ansible](http://www.ansible.com/) (download, documentation)
 
 ####Run the Cluster 
@@ -64,6 +65,8 @@ You only have to execute the following command if you want to run a development 
 git clone git@github.com:zutherb/AppStash.git appstash
 cd appstash
 cd vagrant
+vagrant plugin install vagrant-cachier
+vagrant plugin install vagrant-hostsupdater
 vagrant up
 ```
 

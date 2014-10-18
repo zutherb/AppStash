@@ -1,0 +1,59 @@
+apply plugin: 'groovy'
+apply plugin: 'spring-boot'
+//apply plugin: 'pkg-debian'
+
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url "http://dl.bintray.com/gesellix/gradle-plugins"
+        }
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.1.3.RELEASE"
+        classpath "de.gesellix:gradle-debian-plugin:14"
+    }
+}
+
+jar.baseName = "cart-microservice"
+
+mainClassName = "io.github.appstash.shop.service.cart.Boot"
+
+idea {
+    module {
+        name='cart-microservice'
+    }
+}
+
+configurations {
+    all*.exclude group: 'org.springframework.security'
+}
+
+sourceSets {
+    main {
+        resources {
+            srcDir 'src/main/groovy'
+            srcDir 'src/main/resources'
+        }
+    }
+    test {
+        resources {
+            srcDir 'src/test/groovy'
+        }
+    }
+}
+
+
+dependencies {
+    compile commonDeps
+    compile springDeps
+    compile jacksonDeps
+    compile("org.springframework.boot:spring-boot-starter-data-redis")
+    compile("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: "spring-boot-starter-tomcat"
+    }
+    compile("org.springframework.boot:spring-boot-starter-jetty")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("org.springframework.hateoas:spring-hateoas")
+    testCompile testDeps
+}
