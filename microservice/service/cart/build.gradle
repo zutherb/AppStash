@@ -2,19 +2,6 @@ apply plugin: 'groovy'
 apply plugin: 'spring-boot'
 //apply plugin: 'pkg-debian'
 
-buildscript {
-    repositories {
-        mavenCentral()
-        maven {
-            url "http://dl.bintray.com/gesellix/gradle-plugins"
-        }
-    }
-    dependencies {
-        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.1.3.RELEASE"
-        classpath "de.gesellix:gradle-debian-plugin:14"
-    }
-}
-
 jar.baseName = "cart-microservice"
 
 mainClassName = "io.github.appstash.shop.service.cart.Boot"
@@ -48,7 +35,8 @@ dependencies {
     compile commonDeps
     compile springDeps
     compile jacksonDeps
-    compile("org.springframework.boot:spring-boot-starter-data-redis")
+    compile("org.springframework.data:spring-data-redis:$springDataRedisVersion")
+    compile("org.springframework.boot:spring-boot-starter-redis")
     compile("org.springframework.boot:spring-boot-starter-web") {
         exclude module: "spring-boot-starter-tomcat"
     }

@@ -4,6 +4,10 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.ComponentScan
 import org.springframework.context.annotation.Configuration
+import org.springframework.data.redis.connection.RedisConnectionFactory
+import org.springframework.data.redis.connection.jedis.JedisConnectionFactory
+import org.springframework.data.redis.core.RedisTemplate
+import org.springframework.data.redis.core.StringRedisTemplate
 import org.springframework.http.converter.HttpMessageConverter
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport
@@ -13,13 +17,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 @ComponentScan
 class ApplicationConfiguration extends WebMvcConfigurationSupport {
 
-    void configureMessageConverters(List<HttpMessageConverter<?>> converters) {
-        converters.add(converter())
-        addDefaultHttpMessageConverters(converters)
+    @Bean
+    RedisConnectionFactory connectionFactory(){
+        new JedisConnectionFactory();
     }
 
     @Bean
-    MappingJackson2HttpMessageConverter converter() {
-        new MappingJackson2HttpMessageConverter()
+    RedisTemplate redisTemplate() {
+        new StringRedisTemplate(connectionFactory())
     }
 }
