@@ -45,13 +45,18 @@
             "box": "trusty64",
             "box_url": "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box",
             "hostname": "mongodb-node",
-            "memory": "512",
+            "memory": "1024",
             "ip": "10.211.55.202",
             "ports":[
-                {"host": 27017, "guest": 27017, "auto_correct": true}
+                {"host": 27017, "guest": 27017, "auto_correct": true},  //Mongo
+                {"host": 6379, "guest": 6379, "auto_correct": true}     //Redis
             ],
             "playbook": "provision/databaseserver.yml",
-            "aliases" : ["mongo.microservice.io"]
+            "aliases" : [
+                "redis-node",
+                "redis.microservice.io",
+                "mongo.microservice.io"
+            ]
         },
         {
             "node": "appserver1",

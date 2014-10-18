@@ -1,0 +1,8 @@
+---
+- apt_repository: repo='ppa:chris-lea/redis-server' state=present
+
+- apt: update_cache=yes force=yes
+
+- name: install redis
+  apt: pkg=redis-server state=present force=yes
+
