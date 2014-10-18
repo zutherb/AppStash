@@ -1,12 +1,12 @@
 package io.github.appstash.shop.service.cart.domain
 
 class Product {
-    private String id;
-    private String articleId;
-    private String name;
-    private String urlname;
-    private String category;
-    private String description;
-    private String type;
-    private BigDecimal price;
+    def String id;
+    def String articleId;
+    def String name;
+    def String urlname;
+    def String category;
+    def String description;
+    def String type;
+    def BigDecimal price;
 }

@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
+import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.RestController
 
@@ -19,25 +20,33 @@ class CartController {
 
     @RequestMapping(value = "/create", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.PUT)
     @ResponseBody
-    String create() {
-        cartRepository.create()
+    def UUID create(@RequestBody CartItem item) {
+        cartRepository.create(item)
     }
 
     @RequestMapping(value = "/get/{id}", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     @ResponseBody
-    List<CartItem> cart(@PathVariable String id) {
-       cartRepository.cart(id)
+    def List<CartItem> cart(@PathVariable String id) {
+        cartRepository.cart(id)
     }
 
-    @RequestMapping(value = "/add/{cartId}", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
+    @RequestMapping(value = "/add", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
     @ResponseBody
-    List<CartItem> addToCart(@PathVariable String cartId, @RequestBody CartItem item) {
+    def addToCart(@RequestParam(required = true) String cartId,
+                             @RequestBody CartItem item) {
         cartRepository.add(cartId, item)
     }
 
-    @RequestMapping(value = "/remove/{cartId}/{itemId}", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.DELETE)
+    @RequestMapping(value = "/removeItemFromCart", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.DELETE)
     @ResponseBody
-    List<CartItem> removeFromCart(@PathVariable String cartId, @PathVariable String itemId) {
-        cartRepository.remove(cartId, itemId)
+    def removeFromCart(@RequestParam(required = true) String cartId,
+                       @RequestParam(required = true) String itemId) {
+        cartRepository.removeFromCart(cartId, itemId)
+    }
+
+    @RequestMapping(value = "/clear", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.DELETE)
+    @ResponseBody
+    def clearCart(@RequestParam(required = true) String cartId) {
+        cartRepository.clear(cartId)
     }
 }

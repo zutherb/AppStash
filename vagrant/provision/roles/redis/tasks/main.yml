@@ -6,3 +6,5 @@
 - name: install redis
   apt: pkg=redis-server state=present force=yes
 
+- copy: src=redis.conf dest=/etc/redis/redis.conf force=true owner=root
+
