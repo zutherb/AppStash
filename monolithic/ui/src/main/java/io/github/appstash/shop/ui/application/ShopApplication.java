@@ -12,13 +12,12 @@ import org.apache.wicket.settings.IRequestCycleSettings;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 import org.springframework.jmx.export.annotation.ManagedOperation;
 import org.springframework.jmx.export.annotation.ManagedResource;
+import org.springframework.stereotype.Component;
 import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 
-/**
- * @author zutherb
- */
+@Component
+@ManagedResource(objectName = "io.github.appstash.ui:name=ShopApplication")
 public class ShopApplication extends WebApplication {
-
 
     @Override
     protected void init() {
@@ -29,7 +28,7 @@ public class ShopApplication extends WebApplication {
                 IRequestCycleSettings.RenderStrategy.REDIRECT_TO_RENDER);
         getComponentInstantiationListeners().add(new SpringComponentInjector(this));
         getSecuritySettings().setAuthorizationStrategy(new SpringSecurityAuthorizationStrategy());
-        getDebugSettings().setAjaxDebugModeEnabled(true);
+        getDebugSettings().setAjaxDebugModeEnabled(false);
 
         setJavaScriptLibrarySettings(new JavaScriptLibrarySettings());
 
@@ -45,5 +44,15 @@ public class ShopApplication extends WebApplication {
     @Override
     public Session newSession(Request request, Response response) {
         return new ShopSession(request);
+    }
+
+    @ManagedOperation
+    public void enableAjaxDebugMode(){
+        ShopApplication.get().getDebugSettings().setAjaxDebugModeEnabled(true);
+    }
+
+    @ManagedOperation
+    public void disableAjaxDebugMode(){
+        ShopApplication.get().getDebugSettings().setAjaxDebugModeEnabled(false);
     }
 }

@@ -1,8 +1,7 @@
 package io.github.appstash.shop.service.cart.impl;
 
-import io.github.appstash.shop.service.cart.api.Cart;
+import io.github.appstash.shop.service.cart.api.CartFulfillmentProvider;
 import io.github.appstash.shop.service.cart.model.CartItem;
-import io.github.appstash.shop.service.cart.api.Cart;
 import io.github.appstash.shop.service.product.model.ProductInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -17,53 +16,48 @@ import java.util.List;
 /**
  * @author zutherb
  */
-@Component("cart")
+@Component("inMemoryCart")
 @Scope(value = "session", proxyMode = ScopedProxyMode.INTERFACES)
-public class CartBean implements Cart {
+public class InMemoryCartFulfillmentProvider extends AbstractFulfillmentProvider implements CartFulfillmentProvider {
 
-    private Logger logger = LoggerFactory.getLogger(CartBean.class);
+    private Logger logger = LoggerFactory.getLogger(InMemoryCartFulfillmentProvider.class);
 
     private List<CartItem> items;
 
-    public CartBean(){
+    public InMemoryCartFulfillmentProvider() {
         items = new ArrayList<>();
     }
 
     @Override
     public CartItem addItem(ProductInfo productInfo) {
         CartItem cartItem = new CartItem(productInfo);
-        items.add(cartItem);
+        getItems().add(cartItem);
         return cartItem;
     }
 
     @Override
     public boolean removeItem(CartItem item) {
-        return items.remove(item);
+        return getItems().remove(item);
     }
 
     @Override
     public List<CartItem> getAll() {
-        return items;
+        return getItems();
     }
 
     @Override
-    public void clearAll(){
-        items.clear();
+    public void clearAll() {
+        getItems().clear();
         logger.info("Cart was cleared");
     }
 
     @Override
-    public boolean isEmpty(){
-        return items.isEmpty();
+    public boolean isEmpty() {
+        return getItems().isEmpty();
     }
 
     @Override
-    public BigDecimal getTotalSum(){
-        BigDecimal sum = BigDecimal.ZERO;
-        for (CartItem cartItem : items){
-            sum = sum.add(cartItem.getTotalSum());
-        }
-        return sum;
+    public List<CartItem> getItems() {
+        return items;
     }
-
 }

@@ -3,6 +3,7 @@ package io.github.appstash.shop.service.cart.impl;
 import io.github.appstash.common.util.SeoUtils;
 import io.github.appstash.shop.repository.product.model.ProductType;
 import io.github.appstash.shop.service.cart.api.Cart;
+import io.github.appstash.shop.service.cart.api.CartFulfillmentProvider;
 import io.github.appstash.shop.service.cart.model.CartItem;
 import io.github.appstash.shop.service.product.model.ProductInfo;
 import org.bson.types.ObjectId;
@@ -17,13 +18,13 @@ import static junit.framework.Assert.*;
 /**
  * @author zutherb
  */
-public class CartBeanTest {
+public class InMemoryCartFulfillmentProviderTest {
 
-    private Cart cart;
+    private CartFulfillmentProvider cart;
 
     @Before
     public void setUp() throws Exception {
-        cart = new CartBean();
+        cart = new InMemoryCartFulfillmentProvider();
         cart.addItem(new ProductInfo(new ObjectId().toString(), "A1", "Salami", SeoUtils.urlFriendly("Salami"), "", ProductType.HANDY, 2.0, "category"));
     }
 
