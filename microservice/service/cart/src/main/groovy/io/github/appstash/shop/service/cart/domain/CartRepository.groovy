@@ -42,11 +42,11 @@ class CartRepository {
         });
     }
 
+    def List<CartItem> clear(String cartId) {
+        redisTemplate.delete(getKey(cartId))
+    }
+    
     def getKey(String key) {
         BASKET_UUID_PREFIX + key
-    }
-
-    def List<CartItem> clear(String cartId) {
-        redisTemplate.delete(cartId)
     }
 }
