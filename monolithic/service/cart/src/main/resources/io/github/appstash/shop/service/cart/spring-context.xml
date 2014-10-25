@@ -7,5 +7,6 @@
 
     <context:component-scan base-package="io.github.appstash.shop.service.cart" />
 
+    <import resource="classpath:io/github/appstash/shop/repository/cart/spring-context.xml"/>
     <import resource="classpath:io/github/appstash/shop/service/product/spring-context.xml"/>
 </beans>

@@ -47,7 +47,6 @@
         </property>
     </bean>
 
-    <!-- /Users/berndzuther/development/appstash/monolithic/repository/common/src/main/resources/io/github/appstash/common/repository/spring-mongo-context.xml -->
     <beans profile="default">
         <context:property-placeholder system-properties-mode="OVERRIDE"
                                       ignore-resource-not-found="false"

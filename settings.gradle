@@ -16,6 +16,7 @@ include 'monolithic:common:util'
 include 'monolithic:common:dataloader'
 
 include 'monolithic:repository:common'
+include 'monolithic:repository:cart'
 include 'monolithic:repository:order'
 include 'monolithic:repository:product'
 include 'monolithic:repository:user'

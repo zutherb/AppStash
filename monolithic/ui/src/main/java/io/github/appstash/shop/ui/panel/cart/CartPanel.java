@@ -2,7 +2,7 @@ package io.github.appstash.shop.ui.panel.cart;
 
 
 import io.github.appstash.shop.service.cart.api.Cart;
-import io.github.appstash.shop.service.cart.model.CartItem;
+import io.github.appstash.shop.service.cart.model.CartItemInfo;
 import io.github.appstash.shop.ui.event.cart.CartChangeEvent;
 import io.github.appstash.shop.ui.event.cart.RemoveFromCartEvent;
 import io.github.appstash.shop.ui.model.PriceModel;
@@ -49,9 +49,9 @@ public class CartPanel extends AbstractShopBasePanel {
     }
 
     private Component cartView() {
-        DataView<CartItem> cartView = new DataView<CartItem>("cart", cartDataProvider()) {
+        DataView<CartItemInfo> cartView = new DataView<CartItemInfo>("cart", cartDataProvider()) {
             @Override
-            protected void populateItem(final Item<CartItem> item) {
+            protected void populateItem(final Item<CartItemInfo> item) {
                 WebMarkupContainer cartItem = new WebMarkupContainer("item");
                 cartItem.add(new Label("name", new PropertyModel<String>(item.getModel(), "product.name")));
                 cartItem.add(new IndicatingAjaxLink<Void>("delete") {
@@ -68,7 +68,7 @@ public class CartPanel extends AbstractShopBasePanel {
         return cartView;
     }
 
-    private ListDataProvider<CartItem> cartDataProvider() {
+    private ListDataProvider<CartItemInfo> cartDataProvider() {
         return new ListDataProvider<>(cart.getAll());
     }
 

@@ -14,17 +14,17 @@ import static junit.framework.Assert.assertEquals;
 /**
  * @author zutherb
  */
-public class CartItemTest {
+public class CartItemInfoTest {
 
-    private CartItem cartItem;
+    private CartItemInfo cartItemInfo;
 
     @Before
     public void setup() {
-        cartItem = new CartItem(new ProductInfo(new ObjectId().toString(), "B2", "Salami", SeoUtils.urlFriendly("Salami"), "", ProductType.HANDY, 2.5, "category"));
+        cartItemInfo = new CartItemInfo(new ProductInfo(new ObjectId().toString(), "B2", "Salami", SeoUtils.urlFriendly("Salami"), "", ProductType.HANDY, 2.5, "category"));
     }
 
     @Test
     public void testGetTotalSum() {
-        assertEquals(BigDecimal.valueOf(2.5), cartItem.getTotalSum());
+        assertEquals(BigDecimal.valueOf(2.5), cartItemInfo.getTotalSum());
     }
 }

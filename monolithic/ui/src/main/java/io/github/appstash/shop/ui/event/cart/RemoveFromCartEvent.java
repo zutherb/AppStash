@@ -2,7 +2,7 @@ package io.github.appstash.shop.ui.event.cart;
 
 
 import io.github.appstash.shop.service.cart.api.Cart;
-import io.github.appstash.shop.service.cart.model.CartItem;
+import io.github.appstash.shop.service.cart.model.CartItemInfo;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.injection.Injector;
 import org.apache.wicket.spring.injection.annot.SpringBean;
@@ -14,10 +14,10 @@ public class RemoveFromCartEvent implements CartChangeEvent {
     @SpringBean
     private Cart cart;
 
-    public RemoveFromCartEvent(CartItem cartItem, AjaxRequestTarget target) {
+    public RemoveFromCartEvent(CartItemInfo cartItemInfo, AjaxRequestTarget target) {
         this.target = target;
         Injector.get().inject(this);
-        cart.removeItem(cartItem);
+        cart.removeItem(cartItemInfo);
     }
 
     public AjaxRequestTarget getTarget() {

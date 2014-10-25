@@ -23,6 +23,7 @@ sourceSets {
 
 dependencies {
     compile project(':monolithic:common:util')
+    compile project(':monolithic:repository:cart')
     compile project(':monolithic:service:common')
     compile project(':monolithic:service:product')
 

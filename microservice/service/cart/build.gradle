@@ -1,10 +1,15 @@
 apply plugin: 'groovy'
 apply plugin: 'spring-boot'
-//apply plugin: 'pkg-debian'
+apply plugin: 'pkg-debian'
 
 jar.baseName = "cart-microservice"
 
 mainClassName = "io.github.appstash.shop.service.cart.Boot"
+
+applicationDefaultJvmArgs = [
+    "-Dspring.profiles.active=production",
+    "-Dmanagement.port=18100"
+]
 
 idea {
     module {
@@ -30,7 +35,6 @@ sourceSets {
     }
 }
 
-
 dependencies {
     compile commonDeps
     compile springDeps
@@ -44,4 +48,48 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-actuator")
     compile("org.springframework.hateoas:spring-hateoas")
     testCompile testDeps
+}
+
+def debName = "cart"
+debian {
+    packagename = "cart-service"
+    publications = ['mavenStuff']
+    controlDirectory = "${projectDir}/debian/control"
+    changelogFile = "${projectDir}/debian/changelog"
+    outputFile = "${buildDir}/debian/${debName}_${version}.deb"
+
+    data {
+        dir {
+            name = "${projectDir}/debian/data"
+            exclusions = ["**/.DS_Store", "changelog"]
+        }
+        dir {
+            name = "${buildDir}/debian-data/"
+            exclusions = ["**/.DS_Store"]
+        }
+    }
+}
+
+task prepareDeb {
+    dependsOn installApp
+
+    copy {
+        from "${buildDir}/install/"
+        into "${buildDir}/debian-data/usr/share/shop/"
+    }
+}
+
+jar {
+    def manifestClasspath = configurations.compile.collect { it.getName() }.join(',')
+    manifest {
+        attributes("Manifest-Version"       : "1.0",
+                "Created-By"             : vendor,
+                "Specification-Title"    : appName,
+                "Specification-Version"  : version,
+                "Specification-Vendor"   : vendor,
+                "Implementation-Title"   : appName,
+                "Implementation-Version" : version,
+                "Implementation-Vendor"  : vendor,
+                "Class-Path"             : manifestClasspath)
+    }
 }

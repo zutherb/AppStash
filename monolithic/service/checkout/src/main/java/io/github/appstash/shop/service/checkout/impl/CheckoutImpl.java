@@ -1,7 +1,6 @@
 package io.github.appstash.shop.service.checkout.impl;
 
 import io.github.appstash.shop.service.cart.api.Cart;
-import io.github.appstash.shop.service.cart.model.CartItem;
 import io.github.appstash.shop.service.checkout.api.Checkout;
 import io.github.appstash.shop.service.order.model.OrderItemInfo;
 import org.dozer.Mapper;
@@ -12,8 +11,8 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * @author zutherb
@@ -34,11 +33,9 @@ public class CheckoutImpl implements Checkout {
 
     @Override
     public List<OrderItemInfo> getOrderItemInfos() {
-        ArrayList<OrderItemInfo> orderItemInfos = new ArrayList<>();
-        for (CartItem cartItem : cart.getAll()) {
-            orderItemInfos.add(mapper.map(cartItem, OrderItemInfo.class));
-        }
-        return orderItemInfos;
+        return cart.getAll().stream()
+                .map(cartItemInfo -> mapper.map(cartItemInfo, OrderItemInfo.class))
+                .collect(Collectors.toList());
     }
 
     @Override

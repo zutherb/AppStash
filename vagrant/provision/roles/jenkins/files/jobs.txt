@@ -1,3 +1,4 @@
+shop-microservice-cart-service-build
 shop-microservice-catalog-ui-build
 shop-microservice-checkout-ui-build
 shop-microservice-dataloader-build
@@ -11,6 +12,5 @@ shop-microservice-test-deployment
 shop-monolitic-build
 shop-monolitic-load-test
 shop-monolitic-production-deployment
-shop-monolitic-sonar
 shop-monolitic-test-deployment
 shop-monolitic-ui-test

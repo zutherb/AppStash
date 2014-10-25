@@ -33,7 +33,7 @@ class CartController {
     @RequestMapping(value = "/add", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
     @ResponseBody
     def addToCart(@RequestParam(required = true) String cartId,
-                             @RequestBody CartItem item) {
+                  @RequestBody CartItem item) {
         cartRepository.add(cartId, item)
     }
 

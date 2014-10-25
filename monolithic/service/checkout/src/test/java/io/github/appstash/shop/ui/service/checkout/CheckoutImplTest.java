@@ -2,7 +2,7 @@ package io.github.appstash.shop.service.checkout;
 
 import io.github.appstash.shop.repository.product.model.ProductType;
 import io.github.appstash.shop.service.cart.api.Cart;
-import io.github.appstash.shop.service.cart.model.CartItem;
+import io.github.appstash.shop.service.cart.model.CartItemInfo;
 import io.github.appstash.shop.service.checkout.api.Checkout;
 import io.github.appstash.shop.service.checkout.impl.CheckoutImpl;
 import io.github.appstash.shop.service.order.model.OrderItemInfo;
@@ -38,8 +38,8 @@ public class CheckoutImplTest {
         checkout = new CheckoutImpl(cart, new DozerBeanMapper(Arrays.asList("io/github/appstash/shop/service/checkout/dozer-mapping.xml")));
     }
 
-    private List<CartItem> createCartItems() {
-        return Arrays.asList(new CartItem( new ProductInfo(new ObjectId().toString(), "1", "test", "test", "null", ProductType.HANDY, 3.5,"test") ));
+    private List<CartItemInfo> createCartItems() {
+        return Arrays.asList(new CartItemInfo( new ProductInfo(new ObjectId().toString(), "1", "test", "test", "null", ProductType.HANDY, 3.5,"test") ));
     }
 
     @Test

@@ -2,9 +2,8 @@ package io.github.appstash.shop.service.cart.impl;
 
 import io.github.appstash.common.util.SeoUtils;
 import io.github.appstash.shop.repository.product.model.ProductType;
-import io.github.appstash.shop.service.cart.api.Cart;
 import io.github.appstash.shop.service.cart.api.CartFulfillmentProvider;
-import io.github.appstash.shop.service.cart.model.CartItem;
+import io.github.appstash.shop.service.cart.model.CartItemInfo;
 import io.github.appstash.shop.service.product.model.ProductInfo;
 import org.bson.types.ObjectId;
 import org.junit.Before;
@@ -36,9 +35,9 @@ public class InMemoryCartFulfillmentProviderTest {
 
     @Test
     public void testRemoveItem() throws Exception {
-        List<CartItem> cartItems = cart.getAll();
-        assertEquals(1, cartItems.size());
-        cart.removeItem(cartItems.get(0));
+        List<CartItemInfo> cartItemInfos = cart.getAll();
+        assertEquals(1, cartItemInfos.size());
+        cart.removeItem(cartItemInfos.get(0));
         assertTrue(cart.isEmpty());
     }
 

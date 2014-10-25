@@ -1,9 +1,8 @@
-package io.github.appstash.shop.service.cart.model;
+package io.github.appstash.shop.repository.cart.model;
 
-import io.github.appstash.shop.service.product.model.ProductInfo;
+import io.github.appstash.shop.repository.product.model.Product;
 
 import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.UUID;
 
 /**
@@ -12,19 +11,19 @@ import java.util.UUID;
 public class CartItem implements Serializable {
 
     private String uuid;
-    private ProductInfo productInfo;
+    private Product product;
 
-    public CartItem(ProductInfo productInfo) {
-        this.productInfo = productInfo;
-        uuid = UUID.randomUUID().toString();
+    public CartItem(Product product) {
+        this.product = product;
+        this.uuid = UUID.randomUUID().toString();
     }
 
     public String getUuid() {
         return uuid;
     }
 
-    public ProductInfo getProduct() {
-        return productInfo;
+    public Product getProduct() {
+        return product;
     }
 
     @Override
@@ -44,9 +43,4 @@ public class CartItem implements Serializable {
         return uuid.hashCode();
     }
 
-    public BigDecimal getTotalSum() {
-        BigDecimal sum = BigDecimal.ZERO;
-        sum = sum.add(productInfo.getPrice());
-        return sum;
-    }
 }

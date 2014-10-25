@@ -1,9 +1,8 @@
 package io.github.appstash.shop.service.cart.impl;
 
-import io.github.appstash.shop.service.cart.model.CartItem;
+import io.github.appstash.shop.service.cart.model.CartItemInfo;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,11 +13,11 @@ public abstract class AbstractFulfillmentProvider {
 
     public BigDecimal getTotalSum() {
         BigDecimal sum = BigDecimal.ZERO;
-        for (CartItem cartItem : getItems()) {
-            sum = sum.add(cartItem.getTotalSum());
+        for (CartItemInfo cartItemInfo : getItems()) {
+            sum = sum.add(cartItemInfo.getTotalSum());
         }
         return sum;
     }
 
-    public abstract List<CartItem> getItems();
+    public abstract List<CartItemInfo> getItems();
 }
