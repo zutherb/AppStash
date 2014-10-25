@@ -25,7 +25,7 @@ class ApplicationConfiguration extends WebMvcConfigurationSupport {
     @Bean
     RedisConnectionFactory connectionFactory() {
         def factory = new JedisConnectionFactory();
-        factory.setHostName(environment.getProperty("cart.service.redis.url","localhost"))
+        factory.setHostName(environment.getProperty("CART_SERVICE_REDIS_URL", "localhost"))
         factory
     }
 
