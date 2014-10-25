@@ -10,6 +10,9 @@ PATH=/sbin:/bin:/usr/sbin:/usr/bin:/etc/init.d
 
 if [ -r /etc/default/cart ]; then
         . /etc/default/cart
+        export CART_SERVICE_PROFILES
+        export CART_SERVICE_PORT
+        export CART_SERVICE_REDIS_URL
 fi
 
 case "$1" in
