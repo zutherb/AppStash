@@ -1,5 +1,7 @@
 #! /bin/sh
 
+source /etc/default/cart
+
 PATH=/sbin:/bin:/usr/sbin:/usr/bin:/etc/init.d
 . /lib/lsb/init-functions
 
