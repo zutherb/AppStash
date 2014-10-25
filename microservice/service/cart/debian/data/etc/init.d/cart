@@ -2,8 +2,17 @@
 
 source /etc/default/cart
 
+if [ `id -u` -ne 0 ]; then
+    echo "You need root privileges to run this script"
+    exit 1
+fi
+
 PATH=/sbin:/bin:/usr/sbin:/usr/bin:/etc/init.d
 . /lib/lsb/init-functions
+
+if [ -r /etc/default/cart ]; then
+        . /etc/default/cart
+fi
 
 case "$1" in
     start)
