@@ -41,6 +41,7 @@ apt-get -y install shop-catalog-frontend
 apt-get -y install shop-checkout-frontend
 apt-get -y install shop-product-service
 apt-get -y install shop-navigation-service
+apt-get -y install shop-cart-service
 apt-get -y install shop-recommendation-service
 EOF</command>
     </hudson.tasks.Shell>
