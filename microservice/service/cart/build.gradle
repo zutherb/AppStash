@@ -7,8 +7,8 @@ jar.baseName = "cart-microservice"
 mainClassName = "io.github.appstash.shop.service.cart.Boot"
 
 applicationDefaultJvmArgs = [
-    "-Dspring.profiles.active=\$CART_SERVICE_PROFILES",
-    "-Dserver.port=\$CART_SERVICE_PORT"
+    '-Dspring.profiles.active=$CART_SERVICE_PROFILES',
+    '-Dserver.port=$CART_SERVICE_PORT'
 ]
 
 idea {
