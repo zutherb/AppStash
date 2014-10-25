@@ -1,6 +1,8 @@
 package io.github.appstash.shop.service.cart
 
 import io.github.appstash.shop.service.cart.domain.CartItem
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
 import org.springframework.context.annotation.Bean
@@ -19,13 +21,17 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupp
 @ComponentScan
 class ApplicationConfiguration extends WebMvcConfigurationSupport {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(ApplicationConfiguration.class)
+
     @Autowired
     Environment environment;
 
     @Bean
     RedisConnectionFactory connectionFactory() {
         def factory = new JedisConnectionFactory();
-        factory.setHostName(environment.getProperty("CART_SERVICE_REDIS_URL", "localhost"))
+        def hostName = environment.getProperty("CART_SERVICE_REDIS_URL", "localhost")
+        LOGGER.info("Redis Hostname is $hostName")
+        factory.setHostName(hostName)
         factory
     }
 

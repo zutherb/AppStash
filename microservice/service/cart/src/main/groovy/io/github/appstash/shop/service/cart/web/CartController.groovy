@@ -3,6 +3,7 @@ package io.github.appstash.shop.service.cart.web
 import io.github.appstash.shop.service.cart.domain.CartItem
 import io.github.appstash.shop.service.cart.domain.CartRepository
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.core.io.ClassPathResource
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestBody
@@ -55,6 +56,7 @@ class CartController {
     @RequestMapping(value = "/manifest", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     @ResponseBody
     def manifest() {
-        new Manifest()
+        def manifestResource = new ClassPathResource("META-INF/MANIFEST.MF");
+        new Manifest(manifestResource.getInputStream())
     }
 }
