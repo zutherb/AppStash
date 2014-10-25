@@ -8,5 +8,5 @@ server {
     # Make site accessible from http://localhost/
     server_name test-shop.microservice.io;
 
-    include /etc/nginx/conf.d/shop-routes.conf;
+    include proxy/shop-routes.conf;
 }
