@@ -6,7 +6,7 @@ server {
     index index.html index.htm;
 
     # Make site accessible from http://localhost/
-    server_name shop.microservice.io;
+    server_name test-shop.microservice.io;
 
     include /etc/nginx/conf.d/shop-routes.conf;
 }
