@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.ResponseBody
 import org.springframework.web.bind.annotation.RestController
 
+import java.util.jar.Manifest
+
 @RestController
 class CartController {
 
@@ -48,5 +50,11 @@ class CartController {
     @ResponseBody
     def clearCart(@RequestParam(required = true) String cartId) {
         cartRepository.clear(cartId)
+    }
+
+    @RequestMapping(value = "/manifest", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    @ResponseBody
+    def manifest() {
+        new Manifest()
     }
 }
