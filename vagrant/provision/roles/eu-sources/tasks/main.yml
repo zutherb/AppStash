@@ -1,5 +1,0 @@
----
-- copy: src=sources.list dest=/etc/apt/sources.list force=yes
-- apt: update_cache=yes
-
-

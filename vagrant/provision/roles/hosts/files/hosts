@@ -27,3 +27,4 @@ ff02::2 ip6-allrouters
 10.211.55.201   ci-repo.microservice.io
 10.211.55.202   mongodb-node
 10.211.55.202   mongo.microservice.io
+10.211.55.202   redis.microservice.io

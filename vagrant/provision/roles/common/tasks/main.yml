@@ -2,6 +2,7 @@
 - apt: pkg={{item}} state=present force=yes
   with_items:
     - vim
+    - redis-tools
     - mongodb-clients
     - curl
     - tree

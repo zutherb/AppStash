@@ -31,8 +31,8 @@
         },
         {
             "node": "reposerver",
-            "box": "precise64",
-            "box_url": "http://files.vagrantup.com/precise64.box",
+            "box": "trusty64",
+            "box_url": "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box",
             "hostname": "ci-repo",
             "memory": "256",
             "ip": "10.211.55.201",

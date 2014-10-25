@@ -5,7 +5,6 @@
 
   roles:
     - hosts
-    - eu-sources
     - common
     - nginx
     - debrepo
