@@ -1,0 +1,7 @@
+---
+- name: install nginx
+  apt: pkg={{item}} state=present force=yes
+  with_items:
+    - icinga
+    - icinga-web
+
