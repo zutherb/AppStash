@@ -21,16 +21,19 @@ The online shop will be deployed on the following cluster nodes:
 
 ## Directory Layout
 
-    microservice/       --> all files of the microservice applications are located in this directory
-        frontend/       --> all frontend applications are located in this directory
-            catalog/    --> an angularjs frontend application that shows the product catalog and is used to create a cart is located in this directory
-            checkout/   --> the react frontend application that that is used to create an order is located in this directory
-        service/        --> css files
-    monolithic/         --> all files of the monolithic applications are located in this directory
-        common/         --> css files
-        repository/     --> css files
-        service/        --> css files
-        ui/             --> css files
+    microservice/           --> all files of the microservice applications are located in this folder
+        frontend/           --> all frontend applications are located in this folder
+            catalog/        --> an angularjs frontend application that shows the product catalog and is used to create a cart is located in this directory
+            registration/   --> all files that are needed to glue the registration form of the monolithic with the microservice application
+        service/            --> all business services are located in the folder
+            cart/           --> a spring boot cart rest service is located in the folder
+            dataloader/     --> a spring boot application that prepares the initial mongodb dataset is located in the folder
+            navigation/     --> a java rest x navigation rest service is located in the folder
+            order/          --> a java spark order rest service is located in the folder
+            product/        --> a scala spray product rest service is located in the folder
+            recommendation/ --> a R recommendation rest service is located in the folder
+            user/           --> a spring boot user rest service is located in the folder
+    monolithic/             --> all files of the monolithic application are located in this directory
 
 ## Prerequisites
 
@@ -74,17 +77,19 @@ The Cluster contains of the following nodes:
 
 Vargrant-Name | IP            | Hostname           | Application        | Forward
 --------------|---------------|--------------------|--------------------|------------------------
-buildserver   | 10.211.55.200 | ci-node            | Jenkins            |http://localhost:10000/
-buildserver   | 10.211.55.200 | ci-node            | Sonar              |http://localhost:9000/
+buildserver   | 10.211.55.200 | ci-node            | Jenkins            | http://ci.microservice.io:10000/
+buildserver   | 10.211.55.200 | ci-node            | Sonar              | http://ci.microservice.io:9000/
 reposerver    | 10.211.55.201 | ci-repo            | Artifact Repository (NGINX) |
 dbserver      | 10.211.55.202 | mongodb-node       | MongoDB            | localhost:27017
-appserver1    | 10.211.55.101 | app-server-node-1  | Legacy Shop        | localhost:8080/shop/
-appserver1    | 10.211.55.101 | app-server-node-1  | Probe              | localhost:8080/probe/ (admin / topsecret)
-appserver2    | 10.211.55.102 | app-server-node-2  | Legacy Shop        | localhost:8081/shop/
-appserver2    | 10.211.55.102 | app-server-node-2  | Probe              | localhost:8081/probe/ (admin / topsecret)
-appserver3    | 10.211.55.103 | app-server-node-3  | Microservice Shop  | localhost:8082/
-elasticsearch | 10.211.55.100 | elasticsearch-node | Kibana             | http://localhost:8000/
-elasticsearch | 10.211.55.100 | elasticsearch-node | Nagios             | http://localhost:8000/nagios3/ (nagiosadmin / admin123)
+dbserver      | 10.211.55.202 | redis-node         | Redis              | localhost:6379
+appserver1    | 10.211.55.101 | app-server-node-1  | Legacy Shop        | app-server-node-1:8080/shop/
+appserver1    | 10.211.55.101 | app-server-node-1  | Probe              | app-server-node-1:8080/probe/ (admin / topsecret)
+appserver2    | 10.211.55.102 | app-server-node-2  | Legacy Shop        | shop.monolith.io:8081/shop/
+appserver2    | 10.211.55.102 | app-server-node-2  | Probe              | shop.monolith.io:8081/probe/ (admin / topsecret)
+appserver3    | 10.211.55.103 | app-server-node-3  | Microservice Shop  | test-shop.microservice.io/
+appserver3    | 10.211.55.104 | app-server-node-4  | Microservice Shop  | shop.microservice.io/
+elasticsearch | 10.211.55.100 | elasticsearch-node | Kibana             | http://monitoring.microservice.io/
+elasticsearch | 10.211.55.100 | elasticsearch-node | Nagios             | http://monitoring.microservice.io/nagios3/ (nagiosadmin / admin123)
 
 ## Workings with the application
 
