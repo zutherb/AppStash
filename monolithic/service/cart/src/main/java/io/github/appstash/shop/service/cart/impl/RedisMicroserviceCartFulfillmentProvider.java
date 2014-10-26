@@ -78,7 +78,7 @@ public class RedisMicroserviceCartFulfillmentProvider extends AbstractFulfillmen
     @Override
     public void clearAll() {
         synchronized (LOCK) {
-            getItems().clear();
+            cartRepository.clear(cartId);
             logger.info("Cart was cleared");
         }
     }

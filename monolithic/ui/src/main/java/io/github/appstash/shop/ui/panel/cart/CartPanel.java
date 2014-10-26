@@ -34,6 +34,8 @@ public class CartPanel extends AbstractShopBasePanel {
     @SpringBean(name = "cart")
     private Cart cart;
 
+    private ListView<CartItemInfo> cartView;
+
     public CartPanel(String id) {
         super(id);
 
@@ -55,7 +57,7 @@ public class CartPanel extends AbstractShopBasePanel {
     }
 
     private Component cartView() {
-        ListView<CartItemInfo> cartView = new ListView<CartItemInfo>("cart", cartListModel()) {
+        cartView = new ListView<CartItemInfo>("cart", cartListModel()) {
             @Override
             protected void populateItem(ListItem<CartItemInfo> item) {
                 WebMarkupContainer cartItem = new WebMarkupContainer("item");
@@ -63,13 +65,15 @@ public class CartPanel extends AbstractShopBasePanel {
                 cartItem.add(new IndicatingAjaxLink<Void>("delete") {
                     @Override
                     public void onClick(AjaxRequestTarget target) {
-                        send(CartPanel.this, Broadcast.BREADTH, new RemoveFromCartEvent(item.getModel().getObject(), target));
+                        IModel<CartItemInfo> model = item.getModel();
+                        send(CartPanel.this, Broadcast.BREADTH, new RemoveFromCartEvent(model.getObject(), target));
                     }
                 });
                 cartItem.add(new Label("price", new PriceModel(new PropertyModel<>(item.getModel(), "totalSum"))));
                 item.add(cartItem);
             }
         };
+        cartView.setReuseItems(false);
         cartView.setOutputMarkupId(true);
         return cartView;
     }
@@ -86,6 +90,7 @@ public class CartPanel extends AbstractShopBasePanel {
     @Override
     public void onEvent(IEvent<?> event) {
         if (event.getPayload() instanceof CartChangeEvent) {
+            cartView.getModel().detach();
             ((CartChangeEvent) event.getPayload()).getTarget().add(this);
         }
     }
