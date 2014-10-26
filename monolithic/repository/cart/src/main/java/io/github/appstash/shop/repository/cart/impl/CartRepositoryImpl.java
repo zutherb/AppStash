@@ -8,6 +8,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.util.Assert;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriTemplate;
 
@@ -32,7 +33,7 @@ public class CartRepositoryImpl implements CartRepository {
     private RestTemplate restTemplate;
 
     @Autowired
-    public CartRepositoryImpl(@Value("redis.cart.microservice.url") String baseUrl,
+    public CartRepositoryImpl(@Value("${redis.cart.microservice.url}") String baseUrl,
                               RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
         CREATE_TEMPLATE = new UriTemplate(baseUrl + CREATE);
@@ -69,6 +70,7 @@ public class CartRepositoryImpl implements CartRepository {
 
     @Override
     public List<CartItem> getCartItems(String cartId) {
+        Assert.notNull(cartId, "CartId mustn't be null");
         URI get_uri = GET_TEMPLATE.expand(cartId);
         return (List<CartItem>) restTemplate.getForEntity(get_uri, List.class);
     }

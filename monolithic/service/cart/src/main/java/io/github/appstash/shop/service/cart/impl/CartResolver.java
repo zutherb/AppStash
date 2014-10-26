@@ -33,8 +33,7 @@ public class CartResolver implements Cart {
                 .stream()
                 .map(entry -> new CartDelegator(entry.getKey(), entry.getValue()))
                 .collect(Collectors.toList()));
-        //TODO: test‚
-        cardCounter = new CyclicCounter(this.cartFulfillmentProviders.size() - 1);
+        cardCounter = new CyclicCounter(this.cartFulfillmentProviders.size());
     }
 
     @Override

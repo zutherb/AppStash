@@ -5,6 +5,7 @@ import io.github.appstash.shop.repository.cart.model.CartItem;
 import io.github.appstash.shop.service.cart.api.CartFulfillmentProvider;
 import io.github.appstash.shop.service.cart.model.CartItemInfo;
 import io.github.appstash.shop.service.product.model.ProductInfo;
+import org.apache.commons.lang3.StringUtils;
 import org.dozer.Mapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -15,6 +16,7 @@ import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,6 +27,7 @@ import java.util.stream.Collectors;
 @Scope(value = "session", proxyMode = ScopedProxyMode.INTERFACES)
 public class RedisMicroserviceCartFulfillmentProvider extends AbstractFulfillmentProvider implements CartFulfillmentProvider {
 
+    private static final Object LOCK = new Object();
     private Logger logger = LoggerFactory.getLogger(RedisMicroserviceCartFulfillmentProvider.class);
     private CartRepository cartRepository;
     private Mapper mapper;
@@ -39,37 +42,54 @@ public class RedisMicroserviceCartFulfillmentProvider extends AbstractFulfillmen
 
     @Override
     public CartItemInfo addItem(ProductInfo productInfo) {
-        CartItemInfo cartItemInfo = new CartItemInfo(productInfo);
-        getItems().add(cartItemInfo);
-        return cartItemInfo;
+        synchronized (LOCK) {
+            CartItemInfo cartItemInfo = new CartItemInfo(productInfo);
+            if (StringUtils.isEmpty(cartId)) {
+                cartId = cartRepository.create(mapper.map(cartItemInfo, CartItem.class));
+            } else {
+                cartRepository.add(cartId, mapper.map(cartItemInfo, CartItem.class));
+            }
+            return cartItemInfo;
+        }
     }
 
     @Override
     public boolean removeItem(CartItemInfo item) {
-        return getItems().remove(item);
+        synchronized (LOCK) {
+            return getItems().remove(item);
+        }
     }
 
     @Override
     public List<CartItemInfo> getAll() {
-        return getItems();
+        synchronized (LOCK) {
+            return getItems();
+        }
     }
 
     @Override
     public void clearAll() {
-        getItems().clear();
-        logger.info("Cart was cleared");
+        synchronized (LOCK) {
+            getItems().clear();
+            logger.info("Cart was cleared");
+        }
     }
 
     @Override
     public boolean isEmpty() {
-        return getItems().isEmpty();
+        synchronized (LOCK) {
+            return getItems().isEmpty();
+        }
     }
 
     @Override
     public List<CartItemInfo> getItems() {
-        return cartRepository.getCartItems(cartId)
-                .stream()
-                .map(cardItem -> mapper.map(cardItem, CartItemInfo.class))
-                .collect(Collectors.toList());
+        if (StringUtils.isNotEmpty(cartId)) {
+            return cartRepository.getCartItems(cartId)
+                    .stream()
+                    .map(cardItem -> mapper.map(cardItem, CartItemInfo.class))
+                    .collect(Collectors.toList());
+        }
+        return Collections.emptyList();
     }
 }
