@@ -35,7 +35,7 @@ class CartRepository {
 
     def removeFromCart(String cartId, String itemId) {
         //don't use getKey here
-        def cartItems = cart(cartId)
+        def cartItems = cart(cartId).cartItems
         cartItems.forEach({
             cardItem ->
                 if (cardItem.uuid == itemId)

@@ -62,9 +62,9 @@ public class RedisMicroserviceCartFulfillmentProvider extends AbstractFulfillmen
     }
 
     @Override
-    public boolean removeItem(CartItemInfo item) {
+    public void removeItem(CartItemInfo item) {
         synchronized (LOCK) {
-            return getItems().remove(item);
+            cartRepository.removeFromCart(cartId, item.getUuid());
         }
     }
 

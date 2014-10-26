@@ -14,6 +14,8 @@ public class CartItemInfo implements Serializable {
     private String uuid;
     private ProductInfo productInfo;
 
+    private CartItemInfo() {/*NOOP*/}
+
     public CartItemInfo(ProductInfo productInfo) {
         this.productInfo = productInfo;
         uuid = UUID.randomUUID().toString();

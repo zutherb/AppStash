@@ -55,7 +55,7 @@ public class CartRepositoryImpl implements CartRepository {
     @Override
     public void add(String cartId, CartItem cartItem) {
         URI add_uri = ADD_TEMPLATE.expand(cartId);
-        restTemplate.postForObject(add_uri, cartItem, Void.class);
+        restTemplate.postForObject(add_uri, cartItem, String.class);
     }
 
     @Override

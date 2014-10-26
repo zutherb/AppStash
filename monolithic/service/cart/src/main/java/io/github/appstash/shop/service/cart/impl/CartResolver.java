@@ -42,8 +42,8 @@ public class CartResolver implements Cart {
     }
 
     @Override
-    public boolean removeItem(CartItemInfo item) {
-        return getCartDelegator().getProvider().removeItem(item);
+    public void removeItem(CartItemInfo item) {
+        getCartDelegator().getProvider().removeItem(item);
     }
 
     @Override

@@ -17,11 +17,17 @@ import org.apache.wicket.extensions.ajax.markup.html.IndicatingAjaxLink;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
+import org.apache.wicket.markup.html.list.ListItem;
+import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.markup.repeater.Item;
 import org.apache.wicket.markup.repeater.data.DataView;
 import org.apache.wicket.markup.repeater.data.ListDataProvider;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+
+import java.util.List;
 
 public class CartPanel extends AbstractShopBasePanel {
 
@@ -49,9 +55,9 @@ public class CartPanel extends AbstractShopBasePanel {
     }
 
     private Component cartView() {
-        DataView<CartItemInfo> cartView = new DataView<CartItemInfo>("cart", cartDataProvider()) {
+        ListView<CartItemInfo> cartView = new ListView<CartItemInfo>("cart", cartListModel()) {
             @Override
-            protected void populateItem(final Item<CartItemInfo> item) {
+            protected void populateItem(ListItem<CartItemInfo> item) {
                 WebMarkupContainer cartItem = new WebMarkupContainer("item");
                 cartItem.add(new Label("name", new PropertyModel<String>(item.getModel(), "product.name")));
                 cartItem.add(new IndicatingAjaxLink<Void>("delete") {
@@ -68,8 +74,13 @@ public class CartPanel extends AbstractShopBasePanel {
         return cartView;
     }
 
-    private ListDataProvider<CartItemInfo> cartDataProvider() {
-        return new ListDataProvider<>(cart.getAll());
+    private IModel<List<CartItemInfo>> cartListModel() {
+        return new LoadableDetachableModel<List<CartItemInfo>>() {
+            @Override
+            protected List<CartItemInfo> load() {
+                return cart.getAll();
+            }
+        };
     }
 
     @Override

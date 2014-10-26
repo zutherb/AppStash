@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface CartFulfillmentProvider {
     CartItemInfo addItem(ProductInfo product);
-    boolean removeItem(CartItemInfo item);
+    void removeItem(CartItemInfo item);
     List<CartItemInfo> getAll();
     void clearAll();
     boolean isEmpty();

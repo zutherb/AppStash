@@ -35,8 +35,8 @@ public class InMemoryCartFulfillmentProvider extends AbstractFulfillmentProvider
     }
 
     @Override
-    public boolean removeItem(CartItemInfo item) {
-        return getItems().remove(item);
+    public void removeItem(CartItemInfo item) {
+        getItems().remove(item);
     }
 
     @Override
