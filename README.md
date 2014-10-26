@@ -88,8 +88,8 @@ appserver2    | 10.211.55.102 | app-server-node-2  | Legacy Shop        | http:/
 appserver2    | 10.211.55.102 | app-server-node-2  | Probe              | http://shop.monolith.io:8081/probe/ (admin / topsecret)
 appserver3    | 10.211.55.103 | app-server-node-3  | Microservice Shop  | http://test-shop.microservice.io/
 appserver3    | 10.211.55.104 | app-server-node-4  | Microservice Shop  | http://shop.microservice.io/
-elasticsearch | 10.211.55.100 | elasticsearch-node | Kibana             | http://monitoring.microservice.io/
-elasticsearch | 10.211.55.100 | elasticsearch-node | Nagios             | http://monitoring.microservice.io/nagios3/ (nagiosadmin / admin123)
+elasticsearch | 10.211.55.100 | monitoring-node    | Kibana             | http://monitoring.microservice.io/
+elasticsearch | 10.211.55.100 | monitoring-node    | Nagios             | http://monitoring.microservice.io/nagios3/ (nagiosadmin / admin123)
 
 ## Workings with the application
 

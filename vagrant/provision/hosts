@@ -1,5 +1,5 @@
 [elasticsearchservers]
-elasticsearch-node
+monitoring-node
 
 [buildservers]
 ci-node

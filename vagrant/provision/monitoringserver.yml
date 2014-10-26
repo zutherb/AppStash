@@ -14,3 +14,4 @@
     - apache
     - kibana
     - nagios-server
+    - icinga

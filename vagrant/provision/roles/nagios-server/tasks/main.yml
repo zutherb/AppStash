@@ -14,7 +14,7 @@
       - app-server-node-4.cfg
       - ci-node.cfg
       - ci-repo.cfg
-      - elasticsearch-node.cfg
+      - monitoring-node.cfg
       - mongodb-node.cfg
       - localhost_nagios2.cfg
       - services_nagios2.cfg

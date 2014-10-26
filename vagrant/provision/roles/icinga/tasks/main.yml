@@ -8,7 +8,7 @@
   copy: src=htpasswd.users dest=/etc/icinga/htpasswd.users force=yes mode=0644
   notify: restart icinga
 
-- file: src=/etc/nagios3/conf.d/{{item.path}} dest=/etc/icinga/objects/{{item}} state=link
+- file: src=/etc/nagios3/conf.d/{{item}} dest=/etc/icinga/objects/{{item}} state=link
   with_items:
       - app-server-node-1.cfg
       - app-server-node-2.cfg
@@ -16,5 +16,5 @@
       - app-server-node-4.cfg
       - ci-node.cfg
       - ci-repo.cfg
-      - elasticsearch-node.cfg
+      - monitoring-node.cfg
       - mongodb-node.cfg
