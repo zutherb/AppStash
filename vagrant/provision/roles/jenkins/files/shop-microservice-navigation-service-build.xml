@@ -1,7 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<project>
+<?xml version="1.0" encoding="UTF-8"?><project>
   <actions/>
-  <description></description>
+  <description/>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>5</daysToKeep>
     <numToKeep>5</numToKeep>
@@ -14,7 +13,7 @@
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>https://github.com/zutherb/AppStash.git</url>
+        <url>/var/lib/jenkins/repo-cache/appstash</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
@@ -65,8 +64,8 @@
         </hudson.plugins.ws__cleanup.Pattern>
       </patterns>
       <deleteDirs>false</deleteDirs>
-      <cleanupParameter></cleanupParameter>
-      <externalDelete></externalDelete>
+      <cleanupParameter/>
+      <externalDelete/>
     </hudson.plugins.ws__cleanup.PreBuildCleanup>
   </buildWrappers>
 </project>

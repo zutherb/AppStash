@@ -25,7 +25,9 @@
     - nodejs
     - ruby1.9.1-full
 
-- npm: name={{item}} global=yes
+- sudo: yes
+  sudo_user: root
+  npm: name={{item}} global=yes
   with_items:
     - grunt-cli
     - bower
@@ -97,6 +99,16 @@
 
 # wait 300 seconds for port 8000 to become open on the host, don't start checking for 5 seconds
 - wait_for: port=8080 timeout=300 delay=30
+
+- file: dest=/var/lib/jenkins/repo-cache/appstash mode=755 owner=jenkins group=jenkins state=directory
+
+- sudo: yes
+  sudo_user: jenkins
+  git: repo=https://github.com/zutherb/AppStash.git dest=/var/lib/jenkins/repo-cache/appstash update=no
+
+- sudo: yes
+  sudo_user: jenkins
+  cron: name="Update AppStash Git Repository" minute="*/60" job="git -C /var/lib/jenkins/repo-cache/appstash pull --rebase"
 
 - name: install jenkins jobs
   sudo: yes

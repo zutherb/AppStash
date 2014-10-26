@@ -1,7 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<project>
+<?xml version="1.0" encoding="UTF-8"?><project>
   <actions/>
-  <description></description>
+  <description/>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>5</daysToKeep>
     <numToKeep>5</numToKeep>
@@ -25,13 +24,13 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command></command>
+      <command/>
     </hudson.tasks.Shell>
     <hudson.plugins.copyartifact.CopyArtifact plugin="copyartifact@1.31">
       <project>shop-monolitic-load-test</project>
       <filter>**/*.war</filter>
       <target>artifacts</target>
-      <excludes></excludes>
+      <excludes/>
       <selector class="hudson.plugins.copyartifact.WorkspaceSelector"/>
       <flatten>true</flatten>
       <doNotFingerprintArtifacts>false</doNotFingerprintArtifacts>

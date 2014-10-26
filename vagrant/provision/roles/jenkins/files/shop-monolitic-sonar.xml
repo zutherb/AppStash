@@ -14,7 +14,7 @@
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
-        <url>https://github.com/zutherb/AppStash.git</url>
+        <url>/var/lib/jenkins/repo-cache/appstash</url>
       </hudson.plugins.git.UserRemoteConfig>
     </userRemoteConfigs>
     <branches>
