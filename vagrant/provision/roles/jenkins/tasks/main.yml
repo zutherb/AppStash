@@ -108,7 +108,7 @@
 
 - sudo: yes
   sudo_user: jenkins
-  cron: name="Update AppStash Git Repository" minute="*/60" job="git fetch --tags --progress /var/lib/jenkins/repo-cache/appstash +refs/heads/*:refs/remotes/origin/*"
+  cron: name="Update AppStash Git Repository" minute="*/60" job="cd /var/lib/jenkins/repo-cache/appstash; git fetch origin +refs/heads/*:refs/heads/* --prune"
 
 - name: install jenkins jobs
   sudo: yes
