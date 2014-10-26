@@ -1,5 +1,6 @@
 package io.github.appstash.shop.service.cart.web
 
+import io.github.appstash.shop.service.cart.domain.Cart
 import io.github.appstash.shop.service.cart.domain.CartItem
 import io.github.appstash.shop.service.cart.domain.CartRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -29,7 +30,7 @@ class CartController {
 
     @RequestMapping(value = "/get/{id}", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     @ResponseBody
-    def List<CartItem> cart(@PathVariable String id) {
+    def Cart cart(@PathVariable String id) {
         cartRepository.cart(id)
     }
 
