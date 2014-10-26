@@ -14,7 +14,7 @@ public class Product implements Serializable {
     private String name;
     private String urlname;
     private String description;
-    private ProductType type;
+    private String type;
     private String category;
     private double price;
 
@@ -53,11 +53,11 @@ public class Product implements Serializable {
         this.urlname = urlname;
     }
 
-    public ProductType getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(ProductType type) {
+    public void setType(String type) {
         this.type = type;
     }
 
