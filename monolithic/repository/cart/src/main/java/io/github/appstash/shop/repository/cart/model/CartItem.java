@@ -13,6 +13,8 @@ public class CartItem implements Serializable {
     private String uuid;
     private Product product;
 
+    private CartItem() {}
+
     public CartItem(Product product) {
         this.product = product;
         this.uuid = UUID.randomUUID().toString();

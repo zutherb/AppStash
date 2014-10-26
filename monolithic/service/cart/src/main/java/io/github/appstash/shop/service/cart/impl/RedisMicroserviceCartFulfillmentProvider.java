@@ -15,7 +15,6 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -43,14 +42,23 @@ public class RedisMicroserviceCartFulfillmentProvider extends AbstractFulfillmen
     @Override
     public CartItemInfo addItem(ProductInfo productInfo) {
         synchronized (LOCK) {
-            CartItemInfo cartItemInfo = new CartItemInfo(productInfo);
+            CartItemInfo cartItemInfo = createCartItemInfo(productInfo);
+            CartItem map = mapToCartItem(cartItemInfo);
             if (StringUtils.isEmpty(cartId)) {
-                cartId = cartRepository.create(mapper.map(cartItemInfo, CartItem.class));
+                cartId = cartRepository.create(map);
             } else {
-                cartRepository.add(cartId, mapper.map(cartItemInfo, CartItem.class));
+                cartRepository.add(cartId, map);
             }
             return cartItemInfo;
         }
+    }
+
+    private CartItemInfo createCartItemInfo(ProductInfo productInfo) {
+        return new CartItemInfo(productInfo);
+    }
+
+    private CartItem mapToCartItem(CartItemInfo cartItemInfo) {
+        return mapper.map(cartItemInfo, CartItem.class);
     }
 
     @Override

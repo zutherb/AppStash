@@ -35,6 +35,7 @@
                 <value>io/github/appstash/shop/service/checkout/dozer-mapping.xml</value>
                 <value>io/github/appstash/shop/service/order/dozer-mapping.xml</value>
                 <value>io/github/appstash/shop/service/product/dozer-mapping.xml</value>
+                <value>io/github/appstash/shop/service/cart/dozer-mapping.xml</value>
             </list>
         </property>
     </bean>

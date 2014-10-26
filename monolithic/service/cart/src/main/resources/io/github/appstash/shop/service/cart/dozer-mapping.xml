@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+    <mapping>
+        <class-a>io.github.appstash.shop.repository.cart.model.CartItem</class-a>
+        <class-b>io.github.appstash.shop.service.cart.model.CartItemInfo</class-b>
+        <field>
+            <a is-accessible="true">uuid</a>
+            <b is-accessible="true">uuid</b>
+        </field>
+        <field>
+            <a is-accessible="true">product</a>
+            <b is-accessible="true">productInfo</b>
+        </field>
+    </mapping>
+
+</mappings>
