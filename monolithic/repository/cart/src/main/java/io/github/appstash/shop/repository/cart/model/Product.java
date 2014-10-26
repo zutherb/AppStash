@@ -1,11 +1,5 @@
 package io.github.appstash.shop.repository.cart.model;
 
-import io.github.appstash.shop.repository.product.model.ProductType;
-import org.bson.types.ObjectId;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.Document;
-
 import java.io.Serializable;
 
 public class Product implements Serializable {
