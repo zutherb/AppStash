@@ -104,11 +104,11 @@
 
 - sudo: yes
   sudo_user: jenkins
-  git: repo=https://github.com/zutherb/AppStash.git dest=/var/lib/jenkins/repo-cache/appstash update=no
+  git: repo=https://github.com/zutherb/AppStash.git dest=/var/lib/jenkins/repo-cache/appstash bare=yes
 
 - sudo: yes
   sudo_user: jenkins
-  cron: name="Update AppStash Git Repository" minute="*/60" job="git -C /var/lib/jenkins/repo-cache/appstash pull --rebase"
+  cron: name="Update AppStash Git Repository" minute="*/60" job="git fetch --tags --progress /var/lib/jenkins/repo-cache/appstash +refs/heads/*:refs/remotes/origin/*"
 
 - name: install jenkins jobs
   sudo: yes
