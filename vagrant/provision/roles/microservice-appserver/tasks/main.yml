@@ -15,3 +15,5 @@
 
 - name: update cache
   apt: update_cache=yes force=yes
+
+- file: path=/var/log/syslog owner=logstash
