@@ -1,6 +1,7 @@
 package io.github.appstash.shop.repository.cart.impl;
 
 import io.github.appstash.shop.repository.cart.api.CartRepository;
+import io.github.appstash.shop.repository.cart.model.Cart;
 import io.github.appstash.shop.repository.cart.model.CartItem;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -13,6 +14,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriTemplate;
 
 import java.net.URI;
+import java.util.Collections;
 import java.util.List;
 
 @Component
@@ -72,6 +74,7 @@ public class CartRepositoryImpl implements CartRepository {
     public List<CartItem> getCartItems(String cartId) {
         Assert.notNull(cartId, "CartId mustn't be null");
         URI get_uri = GET_TEMPLATE.expand(cartId);
-        return (List<CartItem>) restTemplate.getForEntity(get_uri, List.class);
+        Cart cart = restTemplate.getForObject(get_uri, Cart.class);
+        return cart.getCartItems();
     }
 }

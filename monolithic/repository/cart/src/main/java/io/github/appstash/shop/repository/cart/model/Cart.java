@@ -1,30 +1,23 @@
 package io.github.appstash.shop.repository.cart.model;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.UUID;
 
-/**
- * @author zutherb
- */
-public class CartItem implements Serializable {
+public class Cart implements Serializable {
 
     private String uuid;
-    private Product product;
+    private List<CartItem> cartItems;
 
-    private CartItem() {
-    }
-
-    public CartItem(Product product) {
-        this.product = product;
-        this.uuid = UUID.randomUUID().toString();
+    private Cart() {
     }
 
     public String getUuid() {
         return uuid;
     }
 
-    public Product getProduct() {
-        return product;
+    public List<CartItem> getCartItems() {
+        return cartItems;
     }
 
     @Override
@@ -32,9 +25,9 @@ public class CartItem implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CartItem that = (CartItem) o;
+        Cart cart = (Cart) o;
 
-        if (!uuid.equals(that.uuid)) return false;
+        if (!uuid.equals(cart.uuid)) return false;
 
         return true;
     }
@@ -43,5 +36,4 @@ public class CartItem implements Serializable {
     public int hashCode() {
         return uuid.hashCode();
     }
-
 }

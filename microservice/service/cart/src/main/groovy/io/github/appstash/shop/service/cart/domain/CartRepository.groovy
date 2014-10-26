@@ -15,9 +15,10 @@ class CartRepository {
         this.redisTemplate = redisTemplate
     }
 
-    def List<CartItem> cart(String id) {
+    def Cart cart(String id) {
         def opsForList = redisTemplate.opsForList()
-        opsForList.range(getKey(id), 0, opsForList.size(id) - 1)
+        def cartItems = opsForList.range(getKey(id), 0, opsForList.size(id) - 1)
+        new Cart(id, cartItems)
     }
 
     def UUID create(CartItem cartItem) {
@@ -45,7 +46,7 @@ class CartRepository {
     def clear(String cartId) {
         redisTemplate.delete(getKey(cartId))
     }
-    
+
     def getKey(String key) {
         BASKET_UUID_PREFIX + key
     }

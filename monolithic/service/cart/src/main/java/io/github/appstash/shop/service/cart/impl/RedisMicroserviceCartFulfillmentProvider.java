@@ -45,7 +45,7 @@ public class RedisMicroserviceCartFulfillmentProvider extends AbstractFulfillmen
             CartItemInfo cartItemInfo = createCartItemInfo(productInfo);
             CartItem map = mapToCartItem(cartItemInfo);
             if (StringUtils.isEmpty(cartId)) {
-                cartId = cartRepository.create(map);
+                cartId = StringUtils.strip(cartRepository.create(map), "\"");
             } else {
                 cartRepository.add(cartId, map);
             }

@@ -17,4 +17,42 @@
         </field>
     </mapping>
 
+
+    <mapping>
+        <class-a>io.github.appstash.shop.repository.cart.model.Product</class-a>
+        <class-b>io.github.appstash.shop.service.product.model.ProductInfo</class-b>
+        <field>
+            <a is-accessible="true">id</a>
+            <b is-accessible="true">id</b>
+        </field>
+        <field>
+            <a>articleId</a>
+            <b is-accessible="true">articleId</b>
+        </field>
+        <field>
+            <a>urlname</a>
+            <b is-accessible="true">urlname</b>
+        </field>
+        <field>
+            <a>name</a>
+            <b is-accessible="true">name</b>
+        </field>
+        <field>
+            <a>description</a>
+            <b is-accessible="true">description</b>
+        </field>
+        <field>
+            <a>type</a>
+            <b is-accessible="true">type</b>
+        </field>
+        <field>
+            <a>price</a>
+            <b is-accessible="true">price</b>
+        </field>
+        <field>
+            <a>category</a>
+            <b is-accessible="true">category</b>
+        </field>
+    </mapping>
+
 </mappings>
