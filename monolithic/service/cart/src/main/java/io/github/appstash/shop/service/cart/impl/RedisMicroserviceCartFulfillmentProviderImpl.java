@@ -85,6 +85,7 @@ public class RedisMicroserviceCartFulfillmentProviderImpl extends AbstractFulfil
         synchronized (lock) {
             if (StringUtils.isNotEmpty(cartId)) {
                 cartRepository.clear(cartId);
+                cartId = null;
                 logger.info("Cart was cleared");
             }
         }
