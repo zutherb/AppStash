@@ -83,8 +83,10 @@ public class RedisMicroserviceCartFulfillmentProviderImpl extends AbstractFulfil
     @Override
     public void clear() {
         synchronized (lock) {
-            cartRepository.clear(cartId);
-            logger.info("Cart was cleared");
+            if (StringUtils.isNotEmpty(cartId)) {
+                cartRepository.clear(cartId);
+                logger.info("Cart was cleared");
+            }
         }
     }
 
