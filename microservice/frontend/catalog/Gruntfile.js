@@ -120,6 +120,15 @@ module.exports = function (grunt) {
                     rewrite: {
                         '/api/navigation' : ''
                     }
+                },
+                {
+                    context: '/api/cart',
+                    host: 'localhost',
+                    port: 18100,
+                    changeOrigin: true,
+                    rewrite: {
+                        '/api/cart' : ''
+                    }
                 }
             ],
             livereload: {

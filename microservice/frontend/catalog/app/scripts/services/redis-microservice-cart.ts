@@ -20,22 +20,30 @@ class RedisMircoserviceCartService extends AbstractCartService implements ICartS
         var uuid: string = this.newUUID();
         var cartItem: ICartItem = {uuid: uuid, product : product};
 
-
-
-//        this.localStorageService.set(this.CART_ID, cartItems)
+        if(!this.hasCardId()) {
+            this.httpService.put(this.configuration.CART_SERVICE_PUT_URL, cartItem)
+                .success((cartId: string) => {
+                    this.localStorageService.set(this.CART_ID, cartId.replace(/\"/g, ""));
+                })
+                .error((error) => console.log(error));
+        }else {
+            this.httpService.post(this.configuration.CART_SERVICE_POST_URL, cartItem, {params : {cartId: this.getCardId()}})
+                .error((error) => console.log(error));
+        }
     }
 
-    remove(uuid: string) {
-
-//        this.localStorageService.set(this.CART_ID, cartItems)
+    remove(itemId: string) {
+        if(this.hasCardId()){
+            this.httpService.delete(this.configuration.CART_SERVICE_DELETE_URL, {params : {cartId: this.getCardId(), itemId: itemId}})
+                .error((error) => console.log(error));
+        }
     }
 
     getAll(): ng.IPromise<ICartItem[]> {
         var deferred = this.qService.defer();
-        var cardId = this.localStorageService.get(this.CART_ID);
 
-        if(!this.isEmpty(cardId) && !this.isBlank(cardId)){
-            this.httpService.get(this.configuration.CART_SERVICE_GET_URL)
+        if(this.hasCardId()){
+            this.httpService.get(this.configuration.CART_SERVICE_GET_URL + this.getCardId())
                 .success((data: ICart) => deferred.resolve(data.cartItems))
                 .error((error:any) => console.error(error));
         }else{
@@ -45,6 +53,14 @@ class RedisMircoserviceCartService extends AbstractCartService implements ICartS
         return deferred.promise;
     }
 
+    hasCardId(): boolean {
+        var cardId:string = this.getCardId();
+        return !this.isEmpty(cardId) && !this.isBlank(cardId);
+    }
+
+    getCardId(): string {
+        return this.localStorageService.get(this.CART_ID);
+    }
 
 }
 
