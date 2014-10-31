@@ -26,7 +26,7 @@ import java.util.stream.Collectors;
 @Scope(value = "session", proxyMode = ScopedProxyMode.INTERFACES)
 public class RedisMicroserviceCartFulfillmentProvider extends AbstractFulfillmentProvider implements CartFulfillmentProvider {
 
-    private static final Object LOCK = new Object();
+    private final Object lock = new Object();
     private Logger logger = LoggerFactory.getLogger(RedisMicroserviceCartFulfillmentProvider.class);
     private CartRepository cartRepository;
     private Mapper mapper;
@@ -41,7 +41,7 @@ public class RedisMicroserviceCartFulfillmentProvider extends AbstractFulfillmen
 
     @Override
     public CartItemInfo addItem(ProductInfo productInfo) {
-        synchronized (LOCK) {
+        synchronized (lock) {
             CartItemInfo cartItemInfo = createCartItemInfo(productInfo);
             CartItem map = mapToCartItem(cartItemInfo);
             if (StringUtils.isEmpty(cartId)) {
@@ -63,21 +63,21 @@ public class RedisMicroserviceCartFulfillmentProvider extends AbstractFulfillmen
 
     @Override
     public void removeItem(CartItemInfo item) {
-        synchronized (LOCK) {
+        synchronized (lock) {
             cartRepository.removeFromCart(cartId, item.getUuid());
         }
     }
 
     @Override
     public List<CartItemInfo> getAll() {
-        synchronized (LOCK) {
+        synchronized (lock) {
             return getItems();
         }
     }
 
     @Override
     public void clearAll() {
-        synchronized (LOCK) {
+        synchronized (lock) {
             cartRepository.clear(cartId);
             logger.info("Cart was cleared");
         }
@@ -85,7 +85,7 @@ public class RedisMicroserviceCartFulfillmentProvider extends AbstractFulfillmen
 
     @Override
     public boolean isEmpty() {
-        synchronized (LOCK) {
+        synchronized (lock) {
             return getItems().isEmpty();
         }
     }
