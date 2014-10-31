@@ -1,50 +1,41 @@
-interface ICartItem {
-    uuid: string;
-    product: IProduct;
+/// <reference path="../services/localstorage-cart.ts"/>
+/// <reference path="../services/redis-microservice-cart.ts"/>
+
+interface ICartServiceResolver extends ICartService {
+    resolve(): ICartService;
 }
 
-
-interface ICartService {
-    add(product: IProduct);
-    remove(uuid: string);
-    getAll(): ICartItem[];
-}
-
-class CartService implements ICartService {
+class CartServiceResolver implements ICartServiceResolver {
 
     private CART_ITEMS_KEY = 'cartItems';
 
-    static $inject = ['localStorageService'];
+    static $inject = ['localStorageCartService', 'redisMircoserviceCartService', 'configuration'];
 
-    constructor(private localStorageService: ng.localStorage.ILocalStorageService) {}
-
-    add(product: IProduct) {
-        var uuid: string = this.newUUID();
-        var cartItem: ICartItem = {uuid: uuid, product : product};
-
-        var cartItems: ICartItem[] = this.getAll();
-        cartItems.push(cartItem);
-
-        this.localStorageService.set(this.CART_ITEMS_KEY, cartItems)
+    constructor(private localStorageCartService:ICartService,
+                private redisMircoserviceCartService:ICartService,
+                private configuration:IConfiguration) {
     }
 
-    remove(uuid: string) {
-        var cartItems: ICartItem[] = this.getAll();
-        cartItems = _.without(cartItems, _.findWhere(cartItems, {uuid: uuid}));
-
-        this.localStorageService.set(this.CART_ITEMS_KEY, cartItems)
+    add(product:IProduct) {
+        return this.resolve().add(product);
     }
 
-    getAll(): ICartItem[] {
-        return this.localStorageService.get(this.CART_ITEMS_KEY) || [];
+    remove(uuid:string) {
+        return this.resolve().remove(uuid);
     }
 
-    private newUUID(): string {
-        return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
-            var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
-            return v.toString(16);
-        });
+    getAll():ng.IPromise<ICartItem[]> {
+        return this.resolve().getAll();
+    }
+
+    resolve():ICartService {
+        switch (this.configuration.CART_SERVICE_IMPL) {
+            case "redis-microservice" :
+                return this.redisMircoserviceCartService;
+            default:
+                return this.localStorageCartService;
+        }
     }
 }
 
-eshop.service('cartService', CartService);
+eshop.service('cartServiceResolver', CartServiceResolver);

@@ -1,3 +1,5 @@
+// <reference path="../services/cart.ts"/>
+
 interface ICartScope extends ng.IScope {
     vm: CartController;
 }
@@ -5,21 +7,23 @@ interface ICartScope extends ng.IScope {
 class CartController {
     private cartItems: ICartItem[] = [];
 
-    static $inject = ['$scope', '$rootScope', 'cartService'];
+    static $inject = ['$scope', '$rootScope', 'cartServiceResolver'];
 
-    constructor(private $scope: ICartScope, private $rootScope: ng.IScope, private cartService: CartService) {
-        this.cartItems = this.cartService.getAll();
+    constructor(private $scope: ICartScope,
+                private $rootScope: ng.IScope,
+                private cartService: ICartService) {
+        this.cartService.getAll().then((data: ICartItem[]) => this.cartItems = data );
 
         $scope.vm = this;
 
         $scope.$on(Events.ADD_TO_CART, (event: ng.IAngularEvent, product: IProduct) => {
             this.add(product);
-            this.cartItems = this.cartService.getAll();
+            this.cartService.getAll().then((data: ICartItem[]) => this.cartItems = data );
         });
 
         $scope.$on(Events.REMOVE_FROM_CARD, (event: ng.IAngularEvent, uuid: string) => {
             this.remove(uuid);
-            this.cartItems = this.cartService.getAll();
+            this.cartService.getAll().then((data: ICartItem[]) => this.cartItems = data );
         });
     }
 
@@ -32,7 +36,7 @@ class CartController {
         this.cartService.remove(uuid);
     }
 
-    getAll(): ICartItem[] {
+    getAll(): ng.IPromise<ICartItem[]> {
         return this.cartService.getAll();
     }
 

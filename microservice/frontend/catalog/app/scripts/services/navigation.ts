@@ -10,7 +10,7 @@ class NavigationService implements INavigationService{
     private alertService: AlertService;
     private configuration:IConfiguration;
 
-    static $inject = ['$http', '$q', 'alertService','configuration'];
+    static $inject = ['$http', '$q', 'alertService', 'configuration'];
 
     constructor($http: ng.IHttpService,
                 $q: ng.IQService,
@@ -24,7 +24,6 @@ class NavigationService implements INavigationService{
 
     getNavigation() : ng.IPromise <INavigationItem[]> {
         var deferred = this.qService.defer();
-        var failed = false;
         this.httpService.get(this.configuration.NAVIGATION_SERVICE_URL)
           .success((data :INavigationItem[]) => deferred.resolve(data))
           .error((error:any) => {

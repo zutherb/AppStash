@@ -1,4 +1,6 @@
 {
     "NAVIGATION_SERVICE_URL": "/api/navigation/all",
-    "PRODUCT_SERVICE_URL": "/api/product/all"
+    "PRODUCT_SERVICE_URL": "/api/product/all",
+    "CART_SERVICE_IMPL": "redis-microservice",
+    "CART_SERVICE_GET_URL": "/mock-data/products.json"
 }
