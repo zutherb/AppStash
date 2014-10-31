@@ -10,11 +10,11 @@ public abstract class AbstractFulfillmentProvider {
 
     public BigDecimal getTotalSum() {
         BigDecimal sum = BigDecimal.ZERO;
-        for (CartItemInfo cartItemInfo : getItems()) {
+        for (CartItemInfo cartItemInfo : getAllItems()) {
             sum = sum.add(cartItemInfo.getTotalSum());
         }
         return sum;
     }
 
-    public abstract List<CartItemInfo> getItems();
+    public abstract List<CartItemInfo> getAllItems();
 }

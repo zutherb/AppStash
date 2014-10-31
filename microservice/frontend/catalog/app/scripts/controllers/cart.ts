@@ -5,6 +5,7 @@ interface ICartScope extends ng.IScope {
 }
 
 class CartController {
+    private cartId: string;
     private cartItems: ICartItem[] = [];
 
     static $inject = ['$scope', '$rootScope', 'cartServiceResolver'];
@@ -12,6 +13,7 @@ class CartController {
     constructor(private $scope: ICartScope,
                 private $rootScope: ng.IScope,
                 private cartService: ICartService) {
+        this.cartId = cartService.getCartId();
         this.cartService.getAll().then((data: ICartItem[]) => this.cartItems = data );
 
         $scope.vm = this;

@@ -1,5 +1,4 @@
 class LocalStorageCartService extends AbstractCartService implements ICartService {
-
     private CART_ITEMS_KEY = 'cartItems';
     private qService: ng.IQService;
 
@@ -36,6 +35,10 @@ class LocalStorageCartService extends AbstractCartService implements ICartServic
 
     getCartItems(): ICartItem[] {
         return this.localStorageService.get(this.CART_ITEMS_KEY) || []
+    }
+
+    getCartId():string {
+        return "localStorageCartService is not intend for production usage";
     }
 }
 

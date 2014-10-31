@@ -10,7 +10,7 @@ public interface CartFulfillmentProvider {
     CartItemInfo addItem(ProductInfo product);
     void removeItem(CartItemInfo item);
     List<CartItemInfo> getAll();
-    void clearAll();
+    void clear();
     boolean isEmpty();
     BigDecimal getTotalSum();
 }

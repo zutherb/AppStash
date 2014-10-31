@@ -17,46 +17,46 @@ import java.util.List;
  */
 @Component("inMemoryCart")
 @Scope(value = "session", proxyMode = ScopedProxyMode.INTERFACES)
-public class InMemoryCartFulfillmentProvider extends AbstractFulfillmentProvider implements CartFulfillmentProvider {
+public class InMemoryCartFulfillmentProviderImpl extends AbstractFulfillmentProvider implements CartFulfillmentProvider {
 
-    private Logger logger = LoggerFactory.getLogger(InMemoryCartFulfillmentProvider.class);
+    private Logger logger = LoggerFactory.getLogger(InMemoryCartFulfillmentProviderImpl.class);
 
     private List<CartItemInfo> items;
 
-    public InMemoryCartFulfillmentProvider() {
+    public InMemoryCartFulfillmentProviderImpl() {
         items = new ArrayList<>();
     }
 
     @Override
     public CartItemInfo addItem(ProductInfo productInfo) {
         CartItemInfo cartItemInfo = new CartItemInfo(productInfo);
-        getItems().add(cartItemInfo);
+        getAllItems().add(cartItemInfo);
         return cartItemInfo;
     }
 
     @Override
     public void removeItem(CartItemInfo item) {
-        getItems().remove(item);
+        getAllItems().remove(item);
     }
 
     @Override
     public List<CartItemInfo> getAll() {
-        return getItems();
+        return getAllItems();
     }
 
     @Override
-    public void clearAll() {
-        getItems().clear();
+    public void clear() {
+        getAllItems().clear();
         logger.info("Cart was cleared");
     }
 
     @Override
     public boolean isEmpty() {
-        return getItems().isEmpty();
+        return getAllItems().isEmpty();
     }
 
     @Override
-    public List<CartItemInfo> getItems() {
+    public List<CartItemInfo> getAllItems() {
         return items;
     }
 }

@@ -2,8 +2,11 @@ package io.github.appstash.shop.service.cart.impl;
 
 import io.github.appstash.shop.service.cart.api.Cart;
 import io.github.appstash.shop.service.cart.api.CartFulfillmentProvider;
+import io.github.appstash.shop.service.cart.api.CartResolver;
 import io.github.appstash.shop.service.cart.model.CartItemInfo;
 import io.github.appstash.shop.service.product.model.ProductInfo;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jmx.export.annotation.ManagedOperation;
 import org.springframework.jmx.export.annotation.ManagedResource;
@@ -20,14 +23,16 @@ import static java.util.Collections.unmodifiableList;
 
 @Component("cart")
 @ManagedResource(objectName = "io.github.appstash.shop.service.cart:name=CartResolver")
-public class CartResolver implements Cart {
+public class CartResolverImpl implements CartResolver {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(CartResolverImpl.class);
 
     private final List<CartDelegator> cartFulfillmentProviders;
     private final CyclicCounter cardCounter;
 
 
     @Autowired
-    public CartResolver(Map<String, CartFulfillmentProvider> cartFulfillmentProviders) {
+    public CartResolverImpl(Map<String, CartFulfillmentProvider> cartFulfillmentProviders) {
         Assert.notEmpty(cartFulfillmentProviders, "No CartFulfillmentProviders found");
         this.cartFulfillmentProviders = unmodifiableList(cartFulfillmentProviders.entrySet()
                 .stream()
@@ -52,8 +57,8 @@ public class CartResolver implements Cart {
     }
 
     @Override
-    public void clearAll() {
-        getCartDelegator().getProvider().clearAll();
+    public void clear() {
+        getCartDelegator().getProvider().clear();
     }
 
     @Override
@@ -67,13 +72,16 @@ public class CartResolver implements Cart {
     }
 
     @ManagedOperation
+    @Override
     public String getActiveCartFulfillmentProviderName() {
         return getCartDelegator().getName();
     }
 
     @ManagedOperation
+    @Override
     public void next() {
         cardCounter.cyclicallyIncrementAndGet();
+        LOGGER.info(String.format("Switch Cart to '%s'", getActiveCartFulfillmentProviderName()));
     }
 
     private CartDelegator getCartDelegator() {

@@ -2,7 +2,7 @@ package io.github.appstash.shop.service.cart.impl;
 
 import io.github.appstash.shop.repository.cart.api.CartRepository;
 import io.github.appstash.shop.repository.cart.model.CartItem;
-import io.github.appstash.shop.service.cart.api.CartFulfillmentProvider;
+import io.github.appstash.shop.service.cart.api.RedisMicroserviceCartFulfillmentProvider;
 import io.github.appstash.shop.service.cart.model.CartItemInfo;
 import io.github.appstash.shop.service.product.model.ProductInfo;
 import org.apache.commons.lang3.StringUtils;
@@ -19,22 +19,27 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static org.apache.commons.lang3.StringUtils.strip;
+
 /**
  * @author zutherb
  */
-@Component("redisMicroserviceCart")
+@Component(RedisMicroserviceCartFulfillmentProviderImpl.BEAN_NAME)
 @Scope(value = "session", proxyMode = ScopedProxyMode.INTERFACES)
-public class RedisMicroserviceCartFulfillmentProvider extends AbstractFulfillmentProvider implements CartFulfillmentProvider {
+public class RedisMicroserviceCartFulfillmentProviderImpl extends AbstractFulfillmentProvider implements RedisMicroserviceCartFulfillmentProvider {
+    public static final String BEAN_NAME = "redisMicroserviceCart";
 
+    private Logger logger = LoggerFactory.getLogger(RedisMicroserviceCartFulfillmentProviderImpl.class);
     private final Object lock = new Object();
-    private Logger logger = LoggerFactory.getLogger(RedisMicroserviceCartFulfillmentProvider.class);
+
     private CartRepository cartRepository;
     private Mapper mapper;
+
     private String cartId;
 
     @Autowired
-    public RedisMicroserviceCartFulfillmentProvider(CartRepository cartRepository,
-                                                    @Qualifier("dozerMapper") Mapper mapper) {
+    public RedisMicroserviceCartFulfillmentProviderImpl(CartRepository cartRepository,
+                                                        @Qualifier("dozerMapper") Mapper mapper) {
         this.cartRepository = cartRepository;
         this.mapper = mapper;
     }
@@ -45,7 +50,7 @@ public class RedisMicroserviceCartFulfillmentProvider extends AbstractFulfillmen
             CartItemInfo cartItemInfo = createCartItemInfo(productInfo);
             CartItem map = mapToCartItem(cartItemInfo);
             if (StringUtils.isEmpty(cartId)) {
-                cartId = StringUtils.strip(cartRepository.create(map), "\"");
+                cartId = strip(cartRepository.create(map), "\"");
             } else {
                 cartRepository.add(cartId, map);
             }
@@ -71,12 +76,12 @@ public class RedisMicroserviceCartFulfillmentProvider extends AbstractFulfillmen
     @Override
     public List<CartItemInfo> getAll() {
         synchronized (lock) {
-            return getItems();
+            return getAllItems();
         }
     }
 
     @Override
-    public void clearAll() {
+    public void clear() {
         synchronized (lock) {
             cartRepository.clear(cartId);
             logger.info("Cart was cleared");
@@ -86,12 +91,12 @@ public class RedisMicroserviceCartFulfillmentProvider extends AbstractFulfillmen
     @Override
     public boolean isEmpty() {
         synchronized (lock) {
-            return getItems().isEmpty();
+            return getAllItems().isEmpty();
         }
     }
 
     @Override
-    public List<CartItemInfo> getItems() {
+    public List<CartItemInfo> getAllItems() {
         if (StringUtils.isNotEmpty(cartId)) {
             return cartRepository.getCartItems(cartId)
                     .stream()
@@ -99,5 +104,12 @@ public class RedisMicroserviceCartFulfillmentProvider extends AbstractFulfillmen
                     .collect(Collectors.toList());
         }
         return Collections.emptyList();
+    }
+
+    @Override
+    public void setCartId(String cartId) {
+        synchronized (lock) {
+            this.cartId = cartId;
+        }
     }
 }

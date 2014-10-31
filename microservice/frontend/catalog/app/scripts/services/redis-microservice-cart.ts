@@ -1,5 +1,6 @@
 class RedisMircoserviceCartService extends AbstractCartService implements ICartService {
 
+
     private CART_ID = 'cartId';
 
     private qService: ng.IQService;
@@ -27,14 +28,14 @@ class RedisMircoserviceCartService extends AbstractCartService implements ICartS
                 })
                 .error((error) => console.log(error));
         }else {
-            this.httpService.post(this.configuration.CART_SERVICE_POST_URL, cartItem, {params : {cartId: this.getCardId()}})
+            this.httpService.post(this.configuration.CART_SERVICE_POST_URL, cartItem, {params : {cartId: this.getCartId()}})
                 .error((error) => console.log(error));
         }
     }
 
     remove(itemId: string) {
         if(this.hasCardId()){
-            this.httpService.delete(this.configuration.CART_SERVICE_DELETE_URL, {params : {cartId: this.getCardId(), itemId: itemId}})
+            this.httpService.delete(this.configuration.CART_SERVICE_DELETE_URL, {params : {cartId: this.getCartId(), itemId: itemId}})
                 .error((error) => console.log(error));
         }
     }
@@ -43,7 +44,7 @@ class RedisMircoserviceCartService extends AbstractCartService implements ICartS
         var deferred = this.qService.defer();
 
         if(this.hasCardId()){
-            this.httpService.get(this.configuration.CART_SERVICE_GET_URL + this.getCardId())
+            this.httpService.get(this.configuration.CART_SERVICE_GET_URL + this.getCartId())
                 .success((data: ICart) => deferred.resolve(data.cartItems))
                 .error((error:any) => console.error(error));
         }else{
@@ -54,11 +55,11 @@ class RedisMircoserviceCartService extends AbstractCartService implements ICartS
     }
 
     hasCardId(): boolean {
-        var cardId:string = this.getCardId();
+        var cardId: string = this.getCartId();
         return !this.isEmpty(cardId) && !this.isBlank(cardId);
     }
 
-    getCardId(): string {
+    getCartId(): string {
         return this.localStorageService.get(this.CART_ID);
     }
 

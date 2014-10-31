@@ -35,6 +35,7 @@ interface ICartService {
     add(product: IProduct);
     remove(uuid: string);
     getAll(): ng.IPromise <ICartItem[]>;
+    getCartId():string;
 }
 
 interface IConfiguration {

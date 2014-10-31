@@ -28,6 +28,10 @@ class CartServiceResolver implements ICartServiceResolver {
         return this.resolve().getAll();
     }
 
+    getCartId():string {
+        return this.resolve().getCartId();
+    }
+
     resolve():ICartService {
         switch (this.configuration.CART_SERVICE_IMPL) {
             case "redis-microservice" :

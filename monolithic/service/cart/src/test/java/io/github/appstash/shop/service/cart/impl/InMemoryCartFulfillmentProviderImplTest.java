@@ -17,13 +17,13 @@ import static junit.framework.Assert.*;
 /**
  * @author zutherb
  */
-public class InMemoryCartFulfillmentProviderTest {
+public class InMemoryCartFulfillmentProviderImplTest {
 
     private CartFulfillmentProvider cart;
 
     @Before
     public void setUp() throws Exception {
-        cart = new InMemoryCartFulfillmentProvider();
+        cart = new InMemoryCartFulfillmentProviderImpl();
         cart.addItem(new ProductInfo(new ObjectId().toString(), "A1", "Salami", SeoUtils.urlFriendly("Salami"), "", ProductType.HANDY, 2.0, "category"));
     }
 
@@ -43,7 +43,7 @@ public class InMemoryCartFulfillmentProviderTest {
 
     @Test
     public void testClearAll() throws Exception {
-        cart.clearAll();
+        cart.clear();
         assertTrue(cart.isEmpty());
     }
 }

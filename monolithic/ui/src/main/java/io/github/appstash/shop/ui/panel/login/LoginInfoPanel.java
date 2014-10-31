@@ -46,7 +46,7 @@ public class LoginInfoPanel extends AbstractShopBasePanel {
             public void onClick() {
                 getAuthenticationService().clearAuthentication();
                 setResponsePage(ShopApplication.get().getHomePage());
-                cart.clearAll();
+                cart.clear();
                 Session.get().clear();
             }
         };

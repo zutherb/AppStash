@@ -72,7 +72,7 @@ public class OrderServiceImpl extends AbstractServiceImpl<OrderInfo, Order> impl
         OrderInfo orderInfoToSave = new OrderInfo(orderId, sessionId, orderInfo);
         save(orderInfoToSave);
         logger.info(String.format("Order %d was submited", orderInfoToSave.getOrderId()));
-        cart.clearAll();
+        cart.clear();
         return orderInfoToSave;
     }
 

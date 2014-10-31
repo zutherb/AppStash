@@ -34,6 +34,7 @@ public class ShopApplication extends WebApplication {
 
         getRequestCycleListeners().add(new MicroserviceRequestCycleListener());
         getRequestCycleListeners().add(new DirectBuyRequestCycleListener());
+        getRequestCycleListeners().add(new CartRequestCycleListener());
     }
 
     @Override
@@ -47,12 +48,12 @@ public class ShopApplication extends WebApplication {
     }
 
     @ManagedOperation
-    public void enableAjaxDebugMode(){
+    public void enableAjaxDebugMode() {
         ShopApplication.get().getDebugSettings().setAjaxDebugModeEnabled(true);
     }
 
     @ManagedOperation
-    public void disableAjaxDebugMode(){
+    public void disableAjaxDebugMode() {
         ShopApplication.get().getDebugSettings().setAjaxDebugModeEnabled(false);
     }
 }
