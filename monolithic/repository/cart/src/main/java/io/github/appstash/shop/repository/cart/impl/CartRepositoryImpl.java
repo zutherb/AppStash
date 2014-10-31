@@ -24,7 +24,7 @@ public class CartRepositoryImpl implements CartRepository {
     private static final String GET = "/get/{id}";
     private static final String ADD = "/add?cartId={cartId}";
     private static final String REMOVE = "/removeItemFromCart?cartId={cartId}&itemId={itemId}";
-    private static final String CLEAR = "/clear";
+    private static final String CLEAR = "/clear?cartId={cartId}";
 
     private final UriTemplate CREATE_TEMPLATE;
     private final UriTemplate GET_TEMPLATE;

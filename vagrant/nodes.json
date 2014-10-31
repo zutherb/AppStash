@@ -16,7 +16,7 @@
             "box": "trusty64",
             "box_url": "http://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box",
             "hostname": "ci-node",
-            "memory": "2048",
+            "memory": "2560",
             "ip": "10.211.55.200",
             "ports":[],
             "playbook": "provision/buildserver.yml",
