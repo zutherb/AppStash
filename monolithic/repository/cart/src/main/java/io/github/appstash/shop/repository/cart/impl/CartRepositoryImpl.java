@@ -38,6 +38,7 @@ public class CartRepositoryImpl implements CartRepository {
     public CartRepositoryImpl(@Value("${redis.cart.microservice.url}") String baseUrl,
                               RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
+
         CREATE_TEMPLATE = new UriTemplate(baseUrl + CREATE);
         GET_TEMPLATE = new UriTemplate(baseUrl + GET);
         ADD_TEMPLATE = new UriTemplate(baseUrl + ADD);
