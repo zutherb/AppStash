@@ -89,6 +89,8 @@ task prepareDeb {
 jar {
     baseName = "navigation-microservice"
     def manifestClasspath = configurations.compile.collect { it.getName() }.join(',')
+    def cmd = "git rev-parse HEAD"
+    def proc = cmd.execute()
     manifest {
         attributes("Manifest-Version"       : "1.0",
                 "Created-By"             : vendor,
@@ -98,6 +100,9 @@ jar {
                 "Implementation-Title"   : appName,
                 "Implementation-Version" : version,
                 "Implementation-Vendor"  : vendor,
+                "Git-Revision"           : proc.text.trim(),
+                "Build"                  : "${System.getenv("JOB_NAME")}",
+                "Build-Number"           : "${System.getenv("BUILD_NUMBER")}",
                 "Class-Path"             : manifestClasspath)
     }
 }
