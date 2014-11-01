@@ -51,6 +51,15 @@ task gruntBuildWithOpts(type: GruntTask) {
 }
 
 task prepareDeb {
+    build.dependsOn jar
+
+    copy {
+        from ("${buildDir}/tmp/jar/MANIFEST.MF") {
+            rename 'MANIFEST.MF', 'version.txt'
+        }
+        into "${buildDir}/debian-data/usr/share/shop/frontend/catalog/html/"
+    }
+
     copy {
         from "${projectDir}/dist/"
         into "${buildDir}/debian-data/usr/share/shop/frontend/catalog/html"
@@ -65,3 +74,21 @@ grunt_build.dependsOn 'npmInstall'
 
 // runs "grunt build" as part of your gradle build
 build.dependsOn grunt_build
+
+jar {
+    def cmd = "git rev-parse HEAD"
+    def proc = cmd.execute()
+    manifest {
+        attributes("Manifest-Version"       : "1.0",
+                "Created-By"             : vendor,
+                "Specification-Title"    : appName,
+                "Specification-Version"  : version,
+                "Specification-Vendor"   : vendor,
+                "Implementation-Title"   : appName,
+                "Implementation-Version" : version,
+                "Implementation-Vendor"  : vendor,
+                "Git-Revision"           : proc.text.trim(),
+                "Build"                  : "${System.getenv("JOB_NAME")}",
+                "Build-Number"           : "${System.getenv("BUILD_NUMBER")}")
+    }
+}
