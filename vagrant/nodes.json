@@ -9,6 +9,7 @@
             "ip": "10.211.55.100",
             "ports":[],
             "playbook": "provision/monitoringserver.yml",
+            "apt_cache": true,
             "aliases" : ["monitoring.microservice.io"]
         },
         {
@@ -20,6 +21,7 @@
             "ip": "10.211.55.200",
             "ports":[],
             "playbook": "provision/buildserver.yml",
+            "apt_cache": true,
             "aliases" : ["ci.microservice.io"]
         },
         {
@@ -31,6 +33,7 @@
             "ip": "10.211.55.201",
             "ports":[ ],
             "playbook": "provision/reposerver.yml",
+            "apt_cache": true,
             "aliases" : ["ci-repo.microservice.io"]
         },
         {
@@ -45,6 +48,7 @@
                 {"host": 6379, "guest": 6379, "auto_correct": true}     //Redis
             ],
             "playbook": "provision/databaseserver.yml",
+            "apt_cache": true,
             "aliases" : [
                 "redis-node",
                 "redis.microservice.io",
@@ -60,6 +64,7 @@
             "ip": "10.211.55.101",
             "ports":[],
             "playbook": "provision/monolitic_appserver.yml",
+            "apt_cache": true,
             "aliases" : ["test.monolith.io"]
         },
         {
@@ -71,6 +76,7 @@
             "ip": "10.211.55.102",
             "ports":[],
             "playbook": "provision/monolitic_appserver.yml",
+            "apt_cache": true,
             "aliases" : ["shop.monolith.io"]
         },
         {
@@ -82,6 +88,7 @@
             "ip": "10.211.55.103",
             "ports":[],
             "playbook": "provision/micro_appserver.yml",
+            "apt_cache": false,
             "aliases" : [
                 "test-shop.microservice.io",
                 "test-checkout.microservice.io",
@@ -97,6 +104,7 @@
             "ip": "10.211.55.104",
             "ports":[],
             "playbook": "provision/micro_appserver.yml",
+            "apt_cache": false,
             "aliases" : [
                 "shop.microservice.io",
                 "checkout.microservice.io",

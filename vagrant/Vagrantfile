@@ -35,7 +35,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
                 config.hostsupdater.aliases = node['aliases']
             end
 
-            if Vagrant.has_plugin?("vagrant-cachier")
+            if Vagrant.has_plugin?("vagrant-cachier") && node['apt_cache']
                 config.cache.scope = :machine
                 config.cache.enable :generic, {
                     "wget" => { cache_dir: "/var/cache/wget" },
