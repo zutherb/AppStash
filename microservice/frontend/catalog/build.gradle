@@ -50,19 +50,30 @@ task gruntBuildWithOpts(type: GruntTask) {
     dependsOn 'npmInstall', bower, 'installGrunt'
 }
 
-task prepareDeb {
-    build.dependsOn jar
+task prepareDeb (type: VersionTxtTask) {
+    def htmlFolder = "${buildDir}/debian-data/usr/share/shop/frontend/catalog/html"
+    def cmd = "git rev-parse HEAD"
+    def proc = cmd.execute()
 
-    copy {
-        from ("${buildDir}/tmp/jar/MANIFEST.MF") {
-            rename 'MANIFEST.MF', 'version.txt'
-        }
-        into "${buildDir}/debian-data/usr/share/shop/frontend/catalog/html/"
+    filename = "${htmlFolder}/version.txt"
+
+    manifest = manifest {
+        attributes("Manifest-Version"       : "1.0",
+                "Created-By"             : vendor,
+                "Specification-Title"    : appName,
+                "Specification-Version"  : version,
+                "Specification-Vendor"   : vendor,
+                "Implementation-Title"   : appName,
+                "Implementation-Version" : version,
+                "Implementation-Vendor"  : vendor,
+                "Git-Revision"           : proc.text.trim(),
+                "Build"                  : "${System.getenv("JOB_NAME")}",
+                "Build-Number"           : "${System.getenv("BUILD_NUMBER")}")
     }
 
     copy {
         from "${projectDir}/dist/"
-        into "${buildDir}/debian-data/usr/share/shop/frontend/catalog/html"
+        into htmlFolder
     }
 }
 
@@ -75,20 +86,16 @@ grunt_build.dependsOn 'npmInstall'
 // runs "grunt build" as part of your gradle build
 build.dependsOn grunt_build
 
-jar {
-    def cmd = "git rev-parse HEAD"
-    def proc = cmd.execute()
-    manifest {
-        attributes("Manifest-Version"       : "1.0",
-                "Created-By"             : vendor,
-                "Specification-Title"    : appName,
-                "Specification-Version"  : version,
-                "Specification-Vendor"   : vendor,
-                "Implementation-Title"   : appName,
-                "Implementation-Version" : version,
-                "Implementation-Vendor"  : vendor,
-                "Git-Revision"           : proc.text.trim(),
-                "Build"                  : "${System.getenv("JOB_NAME")}",
-                "Build-Number"           : "${System.getenv("BUILD_NUMBER")}")
+class VersionTxtTask extends DefaultTask {
+
+    @Input
+    Manifest manifest
+
+    @Input
+    String filename
+
+    @TaskAction
+    def create() {
+        manifest.writeTo(filename)
     }
 }
