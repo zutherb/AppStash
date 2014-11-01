@@ -1,7 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<project>
+<?xml version="1.0" encoding="UTF-8"?><project>
   <actions/>
-  <description></description>
+  <description/>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>1</daysToKeep>
     <numToKeep>1</numToKeep>
@@ -38,7 +37,7 @@
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
-      <spec></spec>
+      <spec/>
       <upstreamProjects>shop-monolitic-test-deployment,</upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
@@ -53,8 +52,8 @@
     <hudson.plugins.copyartifact.CopyArtifact plugin="copyartifact@1.31">
       <project>shop-monolitic-test-deployment</project>
       <filter>artifacts/*.war</filter>
-      <target></target>
-      <excludes></excludes>
+      <target/>
+      <excludes/>
       <selector class="hudson.plugins.copyartifact.StatusBuildSelector"/>
       <doNotFingerprintArtifacts>false</doNotFingerprintArtifacts>
     </hudson.plugins.copyartifact.CopyArtifact>
@@ -79,7 +78,7 @@
       <debug>true</debug>
       <timeout>0</timeout>
       <displayNameOffset>1</displayNameOffset>
-      <additionalOptions></additionalOptions>
+      <additionalOptions/>
       <shutdownWithBuild>false</shutdownWithBuild>
       <autoDisplayName>false</autoDisplayName>
     </org.jenkinsci.plugins.xvfb.XvfbBuildWrapper>
