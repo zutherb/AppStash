@@ -85,17 +85,3 @@ grunt_build.dependsOn 'npmInstall'
 
 // runs "grunt build" as part of your gradle build
 build.dependsOn grunt_build
-
-class VersionTxtTask extends DefaultTask {
-
-    @Input
-    Manifest manifest
-
-    @Input
-    String filename
-
-    @TaskAction
-    def create() {
-        manifest.writeTo(filename)
-    }
-}
