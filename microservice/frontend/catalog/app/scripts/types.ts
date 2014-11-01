@@ -1,6 +1,12 @@
-class Events{
+class Eventnames{
     public static ADD_TO_CART: string = "ADD_TO_CART";
     public static REMOVE_FROM_CARD: string = "REMOVE_FROM_CARD";
+    public static ADD_ALERT_MESSAGE: string = "ADD_ALERT_MESSAGE";
+}
+
+interface IAlertItem {
+    type: string;
+    message: string;
 }
 
 interface INavigationItem{

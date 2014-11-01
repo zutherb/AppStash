@@ -3,12 +3,12 @@
 class ProductDetailController {
     product: IProduct;
 
-    static $inject = ['$scope', '$routeParams', 'productService'];
+    static $inject = ['$scope', '$routeParams', '$rootScope', 'productService'];
 
     constructor(private $scope,
                 private $routeParams,
-                private productService: IProductService,
-                private alertService: IAlertService
+                private $rootScope: ng.IScope,
+                private productService: IProductService
         ) {
 
         productService.getProducts().then((data: IProduct[]) =>  {
@@ -16,7 +16,7 @@ class ProductDetailController {
             if(!_.isEmpty(products)){
                 this.product = products[0];
             }else{
-                alertService.add({type : "danger", message : "Could not find Product"})
+                this.$rootScope.$emit(Eventnames.ADD_ALERT_MESSAGE, {type : "danger", message : "Could not find Product"});
             }
         });
 

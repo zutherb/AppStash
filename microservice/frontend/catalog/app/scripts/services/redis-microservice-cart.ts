@@ -1,6 +1,5 @@
 class RedisMircoserviceCartService extends AbstractCartService implements ICartService {
 
-
     private CART_ID = 'cartId';
 
     private qService: ng.IQService;

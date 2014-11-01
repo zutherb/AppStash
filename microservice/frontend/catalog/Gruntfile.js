@@ -109,7 +109,7 @@ module.exports = function (grunt) {
                     port: 18080,
                     changeOrigin: true,
                     rewrite: {
-                        '/api/product' : ''
+                        'api/product' : ''
                     }
                 },
                 {
@@ -118,7 +118,7 @@ module.exports = function (grunt) {
                     port: 18090,
                     changeOrigin: true,
                     rewrite: {
-                        '/api/navigation' : ''
+                        'api/navigation' : ''
                     }
                 },
                 {
@@ -127,7 +127,7 @@ module.exports = function (grunt) {
                     port: 18100,
                     changeOrigin: true,
                     rewrite: {
-                        '/api/cart' : ''
+                        'api/cart' : ''
                     }
                 }
             ],

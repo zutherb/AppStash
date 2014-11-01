@@ -17,7 +17,7 @@ eshop.directive("shopRemoveFromCart",['$rootScope',  ($rootScope): ng.IDirective
 
     directive.link = (scope: IShopRemoveFromCartScope) => {
         scope.remove = (uuid: string) => {
-            $rootScope.$broadcast(Events.REMOVE_FROM_CARD, uuid);
+            $rootScope.$broadcast(Eventnames.REMOVE_FROM_CARD, uuid);
         }
     };
 

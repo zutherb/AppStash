@@ -18,12 +18,12 @@ class CartController {
 
         $scope.vm = this;
 
-        $scope.$on(Events.ADD_TO_CART, (event: ng.IAngularEvent, product: IProduct) => {
+        $scope.$on(Eventnames.ADD_TO_CART, (event: ng.IAngularEvent, product: IProduct) => {
             this.add(product);
             this.cartService.getAll().then((data: ICartItem[]) => this.cartItems = data );
         });
 
-        $scope.$on(Events.REMOVE_FROM_CARD, (event: ng.IAngularEvent, uuid: string) => {
+        $scope.$on(Eventnames.REMOVE_FROM_CARD, (event: ng.IAngularEvent, uuid: string) => {
             this.remove(uuid);
             this.cartService.getAll().then((data: ICartItem[]) => this.cartItems = data );
         });

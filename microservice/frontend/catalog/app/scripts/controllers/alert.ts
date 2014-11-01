@@ -1,33 +1,31 @@
-/// <reference path="../services/alert.ts"/>
-
 interface IAlertScope extends ng.IScope {
-    vm: AlertController;
+    vm: ShopAlertController;
 }
 
-class AlertController {
+class ShopAlertController {
 
-    alerts: IAlertItem[];
+    alerts:IAlertItem[] = [];
 
-    static $inject = ['$scope', 'alertService'];
+    static $inject = ['$scope', '$rootScope'];
 
-    constructor(private $scope: IAlertScope, private alertService: AlertService) {
-        this.alerts = this.getAll();
+    constructor(private $scope: IAlertScope,
+                private $rootScope: ng.IScope) {
+
+        $rootScope.$on(Eventnames.ADD_ALERT_MESSAGE, (event:ng.IAngularEvent, alert:IAlertItem) => {
+            this.alerts.push(alert);
+        });
 
         $scope.vm = this;
     }
 
-    add(item: IAlertItem) {
-        this.alertService.add(item);
-    }
-
     getAll():IAlertItem[] {
-        return this.alertService.getAll();
+        return this.alerts;
     }
 
-    closeAlert(index: number) {
-        this.alertService.clearAlert(index);
+    closeAlert(index:number) {
+        this.alerts = this.alerts.slice(index);
     }
 }
 
-eshop.controller('alertController', AlertController);
+eshop.controller('shopAlertController', ShopAlertController);
 

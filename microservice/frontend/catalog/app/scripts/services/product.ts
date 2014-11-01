@@ -1,24 +1,21 @@
-/// <reference path="../services/alert.ts"/>
-
 interface IProductService {
     getProducts(): ng.IPromise <IProduct[]>
 }
 
 class ProductService implements IProductService {
-    private httpService: ng.IHttpService;
-    private qService: ng.IQService;
-    private alertService: AlertService;
-    private configuration: IConfiguration;
+    private httpService:ng.IHttpService;
+    private qService:ng.IQService;
+    private rootScope:ng.IScope
 
-    static $inject = ['$http', '$q', 'alertService', 'configuration'];
+    static $inject = ['$http', '$q', '$rootScope', 'configuration'];
 
-    constructor($http:ng.IHttpService,
-                $q:ng.IQService,
-                alertService: AlertService,
-                configuration:IConfiguration) {
+    constructor(private $http:ng.IHttpService,
+                private $q:ng.IQService,
+                private $rootScope:ng.IScope,
+                private configuration:IConfiguration) {
         this.httpService = $http;
         this.qService = $q;
-        this.alertService = alertService;
+        this.rootScope = $rootScope;
         this.configuration = configuration;
     }
 
@@ -27,8 +24,7 @@ class ProductService implements IProductService {
         this.httpService.get(this.configuration.PRODUCT_SERVICE_URL)
             .success((data) => deferred.resolve(data))
             .error((error:any) => {
-                this.alertService.add({type : "danger", message : "Products can nots be loaded, product backend seems to be unreachable."});
-                console.error(error);
+                this.rootScope.$emit(Eventnames.ADD_ALERT_MESSAGE, {type: "danger", message: "Products can not be loaded, product backend seems to be unreachable."});
             });
         return deferred.promise;
     }

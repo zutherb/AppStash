@@ -16,7 +16,7 @@ eshop.directive("shopAddToCart", ['$rootScope', ($rootScope):ng.IDirective => {
 
     directive.link = (scope:IShopAddToCartScope) => {
         scope.add = (product:IProduct) => {
-            $rootScope.$broadcast(Events.ADD_TO_CART, product);
+            $rootScope.$broadcast(Eventnames.ADD_TO_CART, product);
         }
     };
 

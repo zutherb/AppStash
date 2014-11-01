@@ -1,25 +1,22 @@
-/// <reference path="../services/alert.ts"/>
-
 interface INavigationService{
     getNavigation(): ng.IPromise <INavigationItem[]>
 }
 
 class NavigationService implements INavigationService{
+
+    private rootScope: ng.IScope
     private httpService: ng.IHttpService;
     private qService: ng.IQService;
-    private alertService: AlertService;
-    private configuration:IConfiguration;
 
-    static $inject = ['$http', '$q', 'alertService', 'configuration'];
+    static $inject = ['$rootScope', '$http', '$q', 'configuration'];
 
-    constructor($http: ng.IHttpService,
-                $q: ng.IQService,
-                alertService: AlertService,
-                configuration:IConfiguration) {
+    constructor(private $rootScope: ng.IScope,
+                private $http: ng.IHttpService,
+                private $q: ng.IQService,
+                private configuration:IConfiguration) {
+        this.rootScope = $rootScope;
         this.httpService = $http;
         this.qService = $q;
-        this.alertService = alertService;
-        this.configuration = configuration;
     }
 
     getNavigation() : ng.IPromise <INavigationItem[]> {
@@ -27,8 +24,7 @@ class NavigationService implements INavigationService{
         this.httpService.get(this.configuration.NAVIGATION_SERVICE_URL)
           .success((data :INavigationItem[]) => deferred.resolve(data))
           .error((error:any) => {
-                this.alertService.add({type : "danger", message : "Navigation can not be loaded, navigation backend seems to be unreachable."});
-                console.error(error);
+                this.rootScope.$emit(Eventnames.ADD_ALERT_MESSAGE, {type : "danger", message : "Navigation can not be loaded, navigation backend seems to be unreachable."});
             });
         return deferred.promise;
     }
