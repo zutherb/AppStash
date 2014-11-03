@@ -1,0 +1,37 @@
+@startuml
+scale 1.5
+
+() "REST" as REST4
+
+node "Microservice Node" {
+() "REST" as REST1
+() "REST" as REST2
+() "REST" as REST3
+
+[Frontend] --> REST1
+[Frontend] --> REST3
+[Frontend] --> REST2
+
+REST1 - [Product Service]
+REST2 - [Card Service]
+REST4 - [Card Service]
+REST3 - [Navigation Service]
+
+[Product Service] --> MongoDB
+[Navigation Service] --> MongoDB
+[Card Service] --> Redis
+}
+
+node "Monolith Server" {
+[Shop Application] --> MongoDB
+[Shop Application] --> REST4
+}
+
+database MongoDB {
+}
+
+database Redis {
+}
+
+@enduml
+

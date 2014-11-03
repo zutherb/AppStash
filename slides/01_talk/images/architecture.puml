@@ -1,0 +1,13 @@
+@startuml
+scale 1.5
+
+node "Application Server" {
+[Shop Application] -> MongoDB
+
+}
+
+database "MongoDB" {
+}
+
+center footer Monolith
+@enduml
