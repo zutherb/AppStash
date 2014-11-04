@@ -1,8 +1,9 @@
 apply plugin: 'application'
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
+apply plugin: 'docker'
 apply plugin: 'pkg-debian'
- 
+
 idea {
     module {
         name='navigation-microservice'
@@ -105,4 +106,8 @@ jar {
                 "Build-Number"           : "${System.getenv("BUILD_NUMBER")}",
                 "Class-Path"             : manifestClasspath)
     }
+}
+
+distDocker {
+    exposePort 18090
 }

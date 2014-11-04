@@ -1,5 +1,6 @@
 apply plugin: 'scala'
 apply plugin: 'application'
+apply plugin: 'docker'
 apply plugin: 'maven'
 apply plugin: 'maven-publish'
 apply plugin: 'pkg-debian'
@@ -97,4 +98,8 @@ jar {
                 "Build-Number"           : "${System.getenv("BUILD_NUMBER")}",
                 "Class-Path"             : manifestClasspath)
     }
+}
+
+distDocker {
+    exposePort 18080
 }

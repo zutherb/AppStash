@@ -1,4 +1,5 @@
 apply plugin: 'pkg-debian'
+apply plugin: 'docker'
 apply plugin: 'com.moowork.grunt'
 
 sourceSets {
@@ -39,6 +40,11 @@ debian {
             exclusions = ["**/.DS_Store"]
         }
     }
+}
+
+docker {
+    baseImage "ubuntu"
+    maintainer 'Bernd Zuther "bernd.zuther@me.com"'
 }
 
 // processes your bower.json

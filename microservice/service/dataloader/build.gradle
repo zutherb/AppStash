@@ -2,6 +2,7 @@ apply plugin: 'groovy'
 apply plugin: 'spring-boot'
 apply plugin: 'application'
 apply plugin: 'pkg-debian'
+apply plugin: 'docker'
 
 jar.baseName = "dataloader-microservice"
 

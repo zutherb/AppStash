@@ -1,14 +1,16 @@
 apply plugin: 'groovy'
 apply plugin: 'spring-boot'
+apply plugin: 'docker'
 apply plugin: 'pkg-debian'
 
 jar.baseName = "cart-microservice"
 
 mainClassName = "io.github.appstash.shop.service.cart.Boot"
+def cardPort = 18100
 
 applicationDefaultJvmArgs = [
     '-Dspring.profiles.active=production',
-    "-Dserver.port=18100"
+    "-Dserver.port=$cardPort"
 ]
 
 idea {
@@ -98,4 +100,8 @@ jar {
                 "Build-Number"           : "${System.getenv("BUILD_NUMBER")}",
                 "Class-Path"             : manifestClasspath)
     }
+}
+
+distDocker {
+    exposePort cardPort
 }
