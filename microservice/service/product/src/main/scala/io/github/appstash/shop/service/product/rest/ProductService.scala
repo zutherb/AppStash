@@ -13,6 +13,7 @@ import spray.httpx.SprayJsonSupport.sprayJsonUnmarshaller
 import spray.json.pimpAny
 import spray.routing.HttpService
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.Future
 
 // we don't implement our route structure directly in the service actor because
 // we want to be able to test it independently, without having to spin up an actor
@@ -42,7 +43,7 @@ trait ProductService extends HttpService with ConfigurationModule
   }
 
   val myRoute =
-    path("version") {
+    path("manifest") {
       get {
         respondWithMediaType(MediaTypes.`text/plain`) {
           complete {
@@ -51,6 +52,15 @@ trait ProductService extends HttpService with ConfigurationModule
         }
       }
     } ~
+      path("env") {
+        get {
+          respondWithMediaType(MediaTypes.`application/json`) {
+            complete {
+              config
+            }
+          }
+        }
+      } ~
       path("all") {
         get {
           respondWithMediaType(MediaTypes.`application/json`) {

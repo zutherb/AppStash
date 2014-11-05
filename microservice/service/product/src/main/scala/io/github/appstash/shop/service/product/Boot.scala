@@ -3,23 +3,26 @@ package io.github.appstash.shop.service.product
 import akka.actor.{ActorSystem, Props}
 import akka.io.IO
 import com.typesafe.config.ConfigFactory
-import io.github.appstash.shop.service.product.model.{SystemConfiguration}
+import io.github.appstash.shop.service.product.model.SystemConfiguration
 import io.github.appstash.shop.service.product.rest.ProductServiceActor
-import org.apache.logging.log4j.{Logger, core, LogManager}
 
 import spray.can.Http
+import scala.collection.JavaConversions._
 
 object Boot extends App {
   private val config = ConfigFactory.load()
 
+  val hostUri = sys.env.getOrElse("MONGODB_PORT_27017_TCP_ADDR", config.getString("mongodb.host")) + ":" +
+    sys.env.getOrElse("MONGODB_PORT_27017_TCP_PORT", config.getString("mongodb.port"))
+
   val systemConfig = new SystemConfiguration(
       config.getString("http.host"),
       config.getInt("http.port"),
-      config.getString("mongodb.host"),
+      hostUri,
       config.getString("mongodb.db"),
-      config.getString("mongodb.collection"))
-
-//  log.debug(systemConfig)
+      config.getString("mongodb.collection"),
+      propertiesAsScalaMap(System.getProperties).toMap,
+      sys.env)
 
   // we need an ActorSystem to host our application in
   implicit val system = ActorSystem("on-spray-can")

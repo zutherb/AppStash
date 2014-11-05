@@ -1,6 +1,7 @@
 package io.github.appstash.shop.dataloader
 
 import org.springframework.context.ApplicationContext
+import org.springframework.core.env.Environment
 
 import static org.springframework.boot.SpringApplication.run
 

@@ -19,7 +19,7 @@ targetCompatibility = org.gradle.api.JavaVersion.VERSION_1_7
 mainClassName = "io.github.appstash.shop.service.product.Boot"
 
 applicationDefaultJvmArgs = [
-        "-javaagent:../lib/aspectjweaver-1.7.4.jar"
+//        "-javaagent:../lib/aspectjweaver-1.7.4.jar"
 ]
  
 repositories {
@@ -42,7 +42,7 @@ dependencies {
     compile "org.scalaz:scalaz-core_2.10:7.0.6"
     compile "com.typesafe:config:1.0.2"
     compile "org.reactivemongo:reactivemongo_2.10:0.10.0"
-    compile "io.kamon:kamon-core_2.10:0.3.2"
+//    compile "io.kamon:kamon-core_2.10:0.3.2"
     testCompile "com.typesafe.akka:akka-testkit_2.10:$akkaVersion"
     testCompile "org.specs2:specs2_2.10:2.3.12"
     testCompile "io.spray:spray-testkit:$sprayVersion"
