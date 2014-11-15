@@ -7,9 +7,11 @@ import io.github.appstash.shop.service.product.Boot
 import io.github.appstash.shop.service.product.api.{ConfigurationModule, ProductRepositoryModule}
 import io.github.appstash.shop.service.product.impl.{ShopDBModule, ShopProductRepositoryModule}
 import io.github.appstash.shop.service.product.model.{SystemConfiguration, ProductQuery}
-import spray.http.{StatusCodes, HttpResponse, MediaTypes}
+import spray.http.{DateTime, StatusCodes, HttpResponse, MediaTypes}
 import spray.httpx.SprayJsonSupport.sprayJsonMarshaller
 import spray.httpx.SprayJsonSupport.sprayJsonUnmarshaller
+import spray.httpx.encoding.Gzip
+import spray.httpx.marshalling.ToResponseMarshallable
 import spray.json.pimpAny
 import spray.routing.HttpService
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -42,30 +44,44 @@ trait ProductService extends HttpService with ConfigurationModule
     override def get(): SystemConfiguration = Boot.systemConfig
   }
 
+  private def getAllProducts = ProductRepository.findAll()
+
+  private def getAllProductsHashcodeAsString : String = getAllProducts.hashCode()+""
+
   val myRoute =
     path("manifest") {
       get {
-        respondWithMediaType(MediaTypes.`text/plain`) {
-          complete {
-            scala.io.Source.fromInputStream(getClass.getResourceAsStream("/META-INF/MANIFEST.MF")).mkString
+        respondWithLastModifiedHeader(config.serverStartedAt) {
+          encodeResponse(Gzip) {
+            respondWithMediaType(MediaTypes.`text/plain`) {
+              complete {
+                scala.io.Source.fromInputStream(getClass.getResourceAsStream("/META-INF/MANIFEST.MF")).mkString
+              }
+            }
           }
         }
       }
     } ~
       path("env") {
-        get {
-          respondWithMediaType(MediaTypes.`application/json`) {
-            complete {
-              config
+        respondWithLastModifiedHeader(config.serverStartedAt) {
+          encodeResponse(Gzip) {
+            get {
+              respondWithMediaType(MediaTypes.`application/json`) {
+                complete {
+                  config
+                }
+              }
             }
           }
         }
       } ~
       path("all") {
-        get {
-          respondWithMediaType(MediaTypes.`application/json`) {
-            complete {
-              ProductRepository.findAll()
+        conditional(new spray.http.EntityTag(getAllProductsHashcodeAsString, false), DateTime.now){
+          get {
+            respondWithMediaType(MediaTypes.`application/json`) {
+              encodeResponse(Gzip) {
+                  complete(getAllProducts)
+              }
             }
           }
         }
@@ -88,7 +104,7 @@ trait ProductService extends HttpService with ConfigurationModule
           respondWithMediaType(MediaTypes.`application/xml`) {
             // XML is marshalled to `text/xml` by default, so we simply override here
             complete {
-              val products = ProductRepository.findAll()
+              val products = getAllProducts
               products map { products =>
 
                 <rss version="2.0" xmlns:g="http://base.google.com/ns/1.0">
