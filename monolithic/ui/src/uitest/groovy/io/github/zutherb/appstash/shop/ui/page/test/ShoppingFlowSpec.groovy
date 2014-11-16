@@ -5,27 +5,12 @@ import geb.spock.GebReportingSpec
 import org.openqa.selenium.remote.DesiredCapabilities
 import org.openqa.selenium.remote.RemoteWebDriver
 
+
 /*
 add vm params: -Dgeb.build.reportsDir="/tmp/geb" -Dgeb.env="firefox"
  */
 class ShoppingFlowSpec extends GebReportingSpec {
 
-
-//    environments {
-//        // when system property 'geb.env' is set to 'win-ie' use a remote IE driver
-//        'iphone' {
-//            driver = {
-//                DesiredCapabilities capabilities = new DesiredCapabilities();
-//                capabilities.setCapability("deviceName", "iPhone Simulator");
-//                capabilities.setCapability("platformName", "iOS");
-//                capabilities.setCapability("platformVersion", "7.1");
-//                capabilities.setCapability("browserName", "safari");
-//                driver = new RemoteWebDriver(new URL("http://127.0.0.1:4723/wd/hub"),
-//                        capabilities);
-//                driver
-//            }
-//        }
-//    }
 
     def "ordering"() {
         when:
@@ -35,7 +20,7 @@ class ShoppingFlowSpec extends GebReportingSpec {
         catalogLink.click()
 
         then:
-        Page.at ProductCatalogPage
+        at ProductCatalogPage
 
         and:
         detailPageLink.click()
@@ -53,13 +38,13 @@ class ShoppingFlowSpec extends GebReportingSpec {
         to CheckoutPage
 
         then:
-        Page.at CheckoutPage
+        at CheckoutPage
 
         and:
         submitOrderLink.click()
 
         then:
-        Page.at OrderConfirmationPage
+        at OrderConfirmationPage
     }
 
 }
