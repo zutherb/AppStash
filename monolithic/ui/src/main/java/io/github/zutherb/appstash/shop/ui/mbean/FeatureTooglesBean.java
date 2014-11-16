@@ -1,11 +1,11 @@
-package io.github.appstash.shop.ui.mbean;
+package io.github.zutherb.appstash.shop.ui.mbean;
 
 import org.springframework.jmx.export.annotation.ManagedOperation;
 import org.springframework.jmx.export.annotation.ManagedResource;
 import org.springframework.stereotype.Component;
 
 @Component
-@ManagedResource(objectName = "io.github.appstash.ui:name=FeatureToogles")
+@ManagedResource(objectName = "io.github.zutherb.appstash.ui:name=FeatureToogles")
 public class FeatureTooglesBean {
 
     private boolean topSellerFeatureEnabled = true;

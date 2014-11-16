@@ -1,16 +1,14 @@
 package io.github.zutherb.appstash.shop.ui.page.catalog;
 
 
-import io.github.appstash.shop.repository.product.model.ProductType;
-import io.github.appstash.shop.service.product.api.ProductService;
-import io.github.appstash.shop.service.product.model.ProductInfo;
-import io.github.appstash.shop.ui.navigation.EnumProductTypeNavigationItem;
-import io.github.appstash.shop.ui.page.AbstractBasePage;
+import io.github.zutherb.appstash.shop.repository.product.model.ProductType;
+import io.github.zutherb.appstash.shop.service.product.api.ProductService;
+import io.github.zutherb.appstash.shop.service.product.model.ProductInfo;
+import io.github.zutherb.appstash.shop.ui.navigation.EnumProductTypeNavigationItem;
+import io.github.zutherb.appstash.shop.ui.page.AbstractBasePage;
 import io.github.zutherb.appstash.shop.ui.panel.base.HighLightBehavior;
-import io.github.appstash.shop.ui.panel.cart.CartPanel;
-import io.github.appstash.shop.ui.panel.product.ProductItemPanel;
-import io.github.zutherb.appstash.shop.ui.panel.product.TopSellerRecommendationPanel;
-import io.github.zutherb.appstash.shop.ui.panel.base.HighLightBehavior;
+import io.github.zutherb.appstash.shop.ui.panel.cart.CartPanel;
+import io.github.zutherb.appstash.shop.ui.panel.product.ProductItemPanel;
 import io.github.zutherb.appstash.shop.ui.panel.product.TopSellerRecommendationPanel;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;

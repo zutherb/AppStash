@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Component("productCsvReader")
 public class ProductCsvReader extends AbstractCsvReader<Product> {
 
-    private String filePath = "io/github/appstash/dataloader/product.csv";
+    private String filePath = "io/github/zutherb/appstash/dataloader/product.csv";
 
     @Override
     protected String getClassPathFilePath() {

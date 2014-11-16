@@ -16,7 +16,7 @@ idea {
 sourceCompatibility = org.gradle.api.JavaVersion.VERSION_1_7
 targetCompatibility = org.gradle.api.JavaVersion.VERSION_1_7
 
-mainClassName = "io.github.appstash.shop.service.product.Boot"
+mainClassName = "io.github.zutherb.appstash.shop.service.product.Boot"
 
 applicationDefaultJvmArgs = [
 //        "-javaagent:../lib/aspectjweaver-1.7.4.jar"

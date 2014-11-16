@@ -2,17 +2,13 @@ package io.github.zutherb.appstash.shop.repository.user.impl;
 
 import io.github.zutherb.appstash.shop.repository.user.api.UserRepository;
 import io.github.zutherb.appstash.shop.repository.user.model.Address;
-import io.github.appstash.shop.repository.user.model.Role;
-import io.github.zutherb.appstash.shop.repository.user.model.User;
-import io.github.zutherb.appstash.shop.repository.user.api.UserRepository;
-import io.github.zutherb.appstash.shop.repository.user.model.Address;
+import io.github.zutherb.appstash.shop.repository.user.model.Role;
 import io.github.zutherb.appstash.shop.repository.user.model.User;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
-import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
@@ -20,10 +16,8 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 import java.util.Collections;
 import java.util.Random;
 
-import static org.junit.Assert.assertEquals;
-
 @ActiveProfiles("test")
-@ContextConfiguration(locations = "classpath:io/github/appstash/shop/repository/user/spring-context.xml")
+@ContextConfiguration(locations = "classpath:io/github/zutherb/appstash/shop/repository/user/spring-context.xml")
 public class UserDBTest extends AbstractJUnit4SpringContextTests {
 
     @Autowired

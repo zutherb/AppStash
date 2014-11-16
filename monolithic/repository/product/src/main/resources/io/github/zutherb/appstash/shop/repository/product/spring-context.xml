@@ -5,9 +5,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
-    <context:component-scan base-package="io.github.appstash.shop.repository.product" />
+    <context:component-scan base-package="io.github.zutherb.appstash.shop.repository.product" />
 
-    <import resource="classpath:io/github/appstash/common/repository/spring-mongo-context.xml"/>
+    <import resource="classpath:io/github/zutherb/appstash/common/repository/spring-mongo-context.xml"/>
 
 
     <bean id="testValues" class="org.springframework.beans.factory.config.PropertiesFactoryBean">

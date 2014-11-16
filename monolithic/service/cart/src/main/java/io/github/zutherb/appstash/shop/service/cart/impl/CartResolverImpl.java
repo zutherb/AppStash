@@ -1,12 +1,8 @@
 package io.github.zutherb.appstash.shop.service.cart.impl;
 
-import io.github.appstash.shop.service.cart.api.Cart;
 import io.github.zutherb.appstash.shop.service.cart.api.CartFulfillmentProvider;
 import io.github.zutherb.appstash.shop.service.cart.api.CartResolver;
-import io.github.appstash.shop.service.cart.model.CartItemInfo;
-import io.github.zutherb.appstash.shop.service.product.model.ProductInfo;
-import io.github.zutherb.appstash.shop.service.cart.api.CartFulfillmentProvider;
-import io.github.zutherb.appstash.shop.service.cart.api.CartResolver;
+import io.github.zutherb.appstash.shop.service.cart.model.CartItemInfo;
 import io.github.zutherb.appstash.shop.service.product.model.ProductInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,7 +21,7 @@ import java.util.stream.Collectors;
 import static java.util.Collections.unmodifiableList;
 
 @Component("cart")
-@ManagedResource(objectName = "io.github.appstash.shop.service.cart:name=CartResolver")
+@ManagedResource(objectName = "io.github.zutherb.appstash.shop.service.cart:name=CartResolver")
 public class CartResolverImpl implements CartResolver {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CartResolverImpl.class);

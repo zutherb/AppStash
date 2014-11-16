@@ -1,4 +1,4 @@
-package io.github.appstash.shop.service.authentication.api;
+package io.github.zutherb.appstash.shop.service.authentication.api;
 
 /**
  * @author zutherb

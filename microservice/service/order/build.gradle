@@ -1,6 +1,6 @@
 jar.baseName = "order-microservice"
 
-//mainClassName = "io.github.appstash.shop.service.order.Boot"
+//mainClassName = "io.github.zutherb.appstash.shop.service.order.Boot"
 
 idea {
     module {

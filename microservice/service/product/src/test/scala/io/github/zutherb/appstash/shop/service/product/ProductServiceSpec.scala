@@ -1,6 +1,6 @@
-package io.github.appstash.shop.service.product
+package io.github.zutherb.appstash.shop.service.product
 
-//import io.github.appstash.shop.service.product.rest.ProductService
+//import io.github.zutherb.appstash.shop.service.product.rest.ProductService
 //import org.specs2.mutable.Specification
 //import spray.http.StatusCodes._
 //import spray.http._

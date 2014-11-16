@@ -1,6 +1,6 @@
 package io.github.zutherb.appstash.shop.ui.panel.base;
 
-import io.github.appstash.shop.ui.mbean.FeatureTooglesBean;
+import io.github.zutherb.appstash.shop.ui.mbean.FeatureTooglesBean;
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;
 import org.apache.wicket.spring.injection.annot.SpringBean;

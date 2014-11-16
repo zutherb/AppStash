@@ -2,12 +2,7 @@ package io.github.zutherb.appstash.shop.ui.panel.product;
 
 import io.github.zutherb.appstash.shop.service.product.model.ProductInfo;
 import io.github.zutherb.appstash.shop.ui.event.cart.AddToCartEvent;
-import io.github.appstash.shop.ui.model.ImageLinkModel;
-import io.github.zutherb.appstash.shop.ui.model.PriceModel;
-import io.github.zutherb.appstash.shop.ui.page.detail.ProductDetailPage;
-import io.github.zutherb.appstash.shop.ui.panel.base.AbstractShopBasePanel;
-import io.github.zutherb.appstash.shop.service.product.model.ProductInfo;
-import io.github.zutherb.appstash.shop.ui.event.cart.AddToCartEvent;
+import io.github.zutherb.appstash.shop.ui.model.ImageLinkModel;
 import io.github.zutherb.appstash.shop.ui.model.PriceModel;
 import io.github.zutherb.appstash.shop.ui.page.detail.ProductDetailPage;
 import io.github.zutherb.appstash.shop.ui.panel.base.AbstractShopBasePanel;
@@ -19,7 +14,9 @@ import org.apache.wicket.extensions.ajax.markup.html.IndicatingAjaxLink;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
-import org.apache.wicket.model.*;
+import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
+import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.model.util.ListModel;
 import org.apache.wicket.request.mapper.parameter.PageParameters;
 

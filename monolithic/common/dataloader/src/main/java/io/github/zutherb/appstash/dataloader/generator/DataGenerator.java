@@ -50,7 +50,7 @@ import java.util.*;
  * @author zutherb
  */
 @Component("dataGenerator")
-@ManagedResource(objectName = "io.github.appstash.generator:name=DataGenerator")
+@ManagedResource(objectName = "io.github.zutherb.appstash.generator:name=DataGenerator")
 public class DataGenerator {
 
     private static Logger logger = LoggerFactory.getLogger(DataGenerator.class);

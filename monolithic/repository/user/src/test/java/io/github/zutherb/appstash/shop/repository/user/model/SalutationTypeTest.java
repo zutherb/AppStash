@@ -1,6 +1,6 @@
 package io.github.zutherb.appstash.shop.repository.user.model;
 
-import io.github.appstash.shop.repository.user.model.SalutationType;
+import io.github.zutherb.appstash.shop.repository.user.model.SalutationType;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;

@@ -1,20 +1,16 @@
 package io.github.zutherb.appstash.shop.ui.page.detail;
 
 
-import io.github.appstash.shop.service.cart.api.Cart;
-import io.github.appstash.shop.service.product.api.ProductService;
+import io.github.zutherb.appstash.shop.service.cart.api.Cart;
+import io.github.zutherb.appstash.shop.service.product.api.ProductService;
 import io.github.zutherb.appstash.shop.service.product.model.ProductInfo;
 import io.github.zutherb.appstash.shop.service.recommendation.api.RecommendationService;
 import io.github.zutherb.appstash.shop.ui.event.cart.AddToCartEvent;
-import io.github.appstash.shop.ui.model.ImageLinkModel;
+import io.github.zutherb.appstash.shop.ui.model.ImageLinkModel;
 import io.github.zutherb.appstash.shop.ui.model.PriceModel;
-import io.github.appstash.shop.ui.page.AbstractBasePage;
-import io.github.appstash.shop.ui.panel.cart.CartPanel;
-import io.github.appstash.shop.ui.panel.product.RecommendationItemListPanel;
-import io.github.zutherb.appstash.shop.service.product.model.ProductInfo;
-import io.github.zutherb.appstash.shop.service.recommendation.api.RecommendationService;
-import io.github.zutherb.appstash.shop.ui.event.cart.AddToCartEvent;
-import io.github.zutherb.appstash.shop.ui.model.PriceModel;
+import io.github.zutherb.appstash.shop.ui.page.AbstractBasePage;
+import io.github.zutherb.appstash.shop.ui.panel.cart.CartPanel;
+import io.github.zutherb.appstash.shop.ui.panel.product.RecommendationItemListPanel;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;

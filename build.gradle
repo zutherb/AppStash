@@ -23,7 +23,7 @@ tasks.withType(JavaCompile) {
     options.compilerArgs << "-Xlint:unchecked -Xlint:deprecation"
 }
 
-group = 'io.github.appstash'
+group = 'io.github.zutherb.appstash'
 
 compileJava.options.encoding = 'UTF-8'
 compileTestJava.options.encoding = 'UTF-8'

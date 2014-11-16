@@ -1,6 +1,6 @@
 package io.github.zutherb.appstash.dataloader.impl.reader;
 
-import io.github.appstash.dataloader.reader.UserCsvReader;
+import io.github.zutherb.appstash.dataloader.reader.UserCsvReader;
 import org.junit.Test;
 
 import static junit.framework.Assert.assertEquals;

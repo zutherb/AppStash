@@ -10,7 +10,7 @@ idea {
     }
 }
 
-mainClassName = "io.github.appstash.shop.service.navigation.AppServer"
+mainClassName = "io.github.zutherb.appstash.shop.service.navigation.AppServer"
 
 applicationDefaultJvmArgs = [
     "-Drestx.mode=prod",

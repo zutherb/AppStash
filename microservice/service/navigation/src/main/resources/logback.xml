@@ -86,7 +86,7 @@
     <logger name="restx.factory.Factory" level="WARN" />
 
     <!-- app logs - set DEBUG level, in prod it will go to a dedicated file -->
-    <logger name="io.github.appstash.shop.service.navigation" level="DEBUG" />
+    <logger name="io.github.zutherb.appstash.shop.service.navigation" level="DEBUG" />
 
     <root level="INFO">
         <appender-ref ref="errorFile" />

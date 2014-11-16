@@ -1,9 +1,9 @@
-package io.github.appstash.shop.service.product.impl
+package io.github.zutherb.appstash.shop.service.product.impl
 
 import akka.actor.{ActorSystem => AkkaActorSystem}
-import io.github.appstash.shop.service.product.Boot
-import io.github.appstash.shop.service.product.api.{MongoDBModule, ConfigurationModule}
-import io.github.appstash.shop.service.product.model.SystemConfiguration
+import io.github.zutherb.appstash.shop.service.product.Boot
+import io.github.zutherb.appstash.shop.service.product.api.{MongoDBModule, ConfigurationModule}
+import io.github.zutherb.appstash.shop.service.product.model.SystemConfiguration
 
 import reactivemongo.api.MongoDriver
 

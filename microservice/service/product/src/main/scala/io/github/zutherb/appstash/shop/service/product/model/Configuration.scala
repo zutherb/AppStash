@@ -1,4 +1,4 @@
-package io.github.appstash.shop.service.product.model
+package io.github.zutherb.appstash.shop.service.product.model
 
 import spray.json._
 

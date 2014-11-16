@@ -1,4 +1,4 @@
-package io.github.appstash.shop.service.user.domain
+package io.github.zutherb.appstash.shop.service.user.domain
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize
 

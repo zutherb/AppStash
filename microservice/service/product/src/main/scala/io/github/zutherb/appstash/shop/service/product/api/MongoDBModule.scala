@@ -1,4 +1,4 @@
-package io.github.appstash.shop.service.product.api
+package io.github.zutherb.appstash.shop.service.product.api
 
 import akka.actor.{ActorSystem => AkkaActorSystem}
 

@@ -4,13 +4,7 @@ import io.github.zutherb.appstash.shop.service.authentication.api.Authentication
 import io.github.zutherb.appstash.shop.service.product.model.ProductInfo;
 import io.github.zutherb.appstash.shop.service.recommendation.api.RecommendationService;
 import io.github.zutherb.appstash.shop.ui.navigation.NavigationItem;
-import io.github.appstash.shop.ui.page.AbstractBasePage;
-import io.github.zutherb.appstash.shop.ui.panel.cart.CartPanel;
-import io.github.zutherb.appstash.shop.ui.panel.product.RecommendationItemListPanel;
-import io.github.zutherb.appstash.shop.service.authentication.api.AuthenticationService;
-import io.github.zutherb.appstash.shop.service.product.model.ProductInfo;
-import io.github.zutherb.appstash.shop.service.recommendation.api.RecommendationService;
-import io.github.zutherb.appstash.shop.ui.navigation.NavigationItem;
+import io.github.zutherb.appstash.shop.ui.page.AbstractBasePage;
 import io.github.zutherb.appstash.shop.ui.panel.cart.CartPanel;
 import io.github.zutherb.appstash.shop.ui.panel.product.RecommendationItemListPanel;
 import org.apache.wicket.Component;

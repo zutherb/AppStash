@@ -1,7 +1,7 @@
 package io.github.zutherb.appstash.shop.service.cart.api;
 
-import io.github.appstash.shop.service.cart.model.CartItemInfo;
-import io.github.appstash.shop.service.product.model.ProductInfo;
+import io.github.zutherb.appstash.shop.service.cart.model.CartItemInfo;
+import io.github.zutherb.appstash.shop.service.product.model.ProductInfo;
 
 import java.math.BigDecimal;
 import java.util.List;

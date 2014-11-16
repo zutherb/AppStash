@@ -1,4 +1,4 @@
-package io.github.appstash.shop.ui.model;
+package io.github.zutherb.appstash.shop.ui.model;
 
 import org.apache.wicket.model.IModel;
 

@@ -1,13 +1,9 @@
 package io.github.zutherb.appstash.shop.ui.panel.login;
 
-import io.github.appstash.shop.ui.event.login.LoginEvent;
-import io.github.zutherb.appstash.shop.ui.panel.base.AbstractShopBasePanel;
-import io.github.zutherb.appstash.shop.ui.panel.base.FeedbackPanel;
 import io.github.zutherb.appstash.shop.service.authentication.model.LoginInfo;
-import io.github.appstash.shop.service.user.api.UserService;
+import io.github.zutherb.appstash.shop.service.user.api.UserService;
 import io.github.zutherb.appstash.shop.service.user.model.UserInfo;
-import io.github.zutherb.appstash.shop.service.authentication.model.LoginInfo;
-import io.github.zutherb.appstash.shop.service.user.model.UserInfo;
+import io.github.zutherb.appstash.shop.ui.event.login.LoginEvent;
 import io.github.zutherb.appstash.shop.ui.panel.base.AbstractShopBasePanel;
 import io.github.zutherb.appstash.shop.ui.panel.base.FeedbackPanel;
 import org.apache.wicket.Application;

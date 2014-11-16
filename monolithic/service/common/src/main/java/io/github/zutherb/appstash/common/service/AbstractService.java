@@ -1,4 +1,4 @@
-package io.github.appstash.common.service;
+package io.github.zutherb.appstash.common.service;
 
 import java.util.List;
 

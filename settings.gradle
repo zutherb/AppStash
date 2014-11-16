@@ -1,5 +1,3 @@
-include 'agent'
-
 include 'microservice:frontend/catalog'
 include 'microservice:frontend/checkout'
 include 'microservice:frontend/registration'

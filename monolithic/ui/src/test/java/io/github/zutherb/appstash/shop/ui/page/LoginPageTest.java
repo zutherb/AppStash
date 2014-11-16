@@ -1,9 +1,7 @@
 package io.github.zutherb.appstash.shop.ui.page;
 
-import io.github.zutherb.appstash.shop.ui.ui.AbstractWicketTest;
+import io.github.zutherb.appstash.shop.ui.AbstractWicketTest;
 import io.github.zutherb.appstash.shop.ui.page.user.LoginPage;
-import io.github.zutherb.appstash.shop.ui.page.user.LoginPage;
-import io.github.zutherb.appstash.shop.ui.ui.AbstractWicketTest;
 import org.junit.Test;
 
 /**

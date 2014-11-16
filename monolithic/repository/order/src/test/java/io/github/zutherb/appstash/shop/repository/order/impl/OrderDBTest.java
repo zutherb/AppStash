@@ -41,7 +41,7 @@ import static org.junit.Assert.assertEquals;
  * Time: 4:58 PM
  */
 @ActiveProfiles("test")
-@ContextConfiguration(locations = "classpath:io/github/appstash/shop/repository/order/spring-context.xml")
+@ContextConfiguration(locations = "classpath:io.github.zutherb.appstash/shop/repository/order/spring-context.xml")
 public class OrderDBTest extends AbstractJUnit4SpringContextTests {
 
     @Autowired

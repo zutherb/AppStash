@@ -1,12 +1,12 @@
-package io.github.appstash.shop.service.product
+package io.github.zutherb.appstash.shop.service.product
 
 import java.util.Date
 
 import akka.actor.{ActorSystem, Props}
 import akka.io.IO
 import com.typesafe.config.ConfigFactory
-import io.github.appstash.shop.service.product.model.SystemConfiguration
-import io.github.appstash.shop.service.product.rest.ProductServiceActor
+import io.github.zutherb.appstash.shop.service.product.model.SystemConfiguration
+import io.github.zutherb.appstash.shop.service.product.rest.ProductServiceActor
 
 import spray.can.Http
 import scala.collection.JavaConversions._

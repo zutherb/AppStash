@@ -1,6 +1,6 @@
 package io.github.zutherb.appstash.shop.ui.panel.login;
 
-import io.github.appstash.shop.ui.event.login.LoginEvent;
+import io.github.zutherb.appstash.shop.ui.event.login.LoginEvent;
 import io.github.zutherb.appstash.shop.ui.navigation.ModalPanel;
 import io.github.zutherb.appstash.shop.service.authentication.model.LoginInfo;
 import io.github.zutherb.appstash.shop.ui.panel.base.AbstractShopBasePanel;

@@ -2,8 +2,6 @@ package io.github.zutherb.appstash.shop.service.authentication.api;
 
 import io.github.zutherb.appstash.shop.service.authentication.model.LoginInfo;
 import io.github.zutherb.appstash.shop.service.user.model.UserInfo;
-import io.github.zutherb.appstash.shop.service.authentication.model.LoginInfo;
-import io.github.zutherb.appstash.shop.service.user.model.UserInfo;
 
 /**
  * @author zutherb

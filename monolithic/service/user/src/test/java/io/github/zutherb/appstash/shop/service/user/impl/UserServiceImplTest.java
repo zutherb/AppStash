@@ -1,11 +1,8 @@
 package io.github.zutherb.appstash.shop.service.user.impl;
 
 import io.github.zutherb.appstash.shop.repository.user.model.User;
-import io.github.appstash.shop.service.user.api.UserService;
-import io.github.appstash.shop.service.user.model.AddressInfo;
-import io.github.zutherb.appstash.shop.service.user.model.RoleInfo;
-import io.github.zutherb.appstash.shop.service.user.model.UserInfo;
-import io.github.zutherb.appstash.shop.repository.user.model.User;
+import io.github.zutherb.appstash.shop.service.user.api.UserService;
+import io.github.zutherb.appstash.shop.service.user.model.AddressInfo;
 import io.github.zutherb.appstash.shop.service.user.model.RoleInfo;
 import io.github.zutherb.appstash.shop.service.user.model.UserInfo;
 import org.junit.Ignore;
@@ -25,7 +22,7 @@ import static junit.framework.Assert.assertNull;
  * @author zutherb
  */
 @ActiveProfiles("test")
-@ContextConfiguration(locations = "classpath:io/github/appstash/shop/service/user/spring-context.xml")
+@ContextConfiguration(locations = "classpath:io/github/zutherb/appstash/shop/service/user/spring-context.xml")
 public class UserServiceImplTest extends AbstractJUnit4SpringContextTests {
 
     @Autowired

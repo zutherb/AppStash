@@ -1,10 +1,10 @@
 package io.github.zutherb.appstash.shop.ui.page.user;
 
-import io.github.appstash.shop.ui.navigation.ModalPanelItem;
-import io.github.appstash.shop.ui.navigation.NavigationItem;
-import io.github.appstash.shop.ui.page.AbstractBasePage;
-import io.github.appstash.shop.ui.panel.login.LoginModalPanel;
-import io.github.appstash.shop.ui.panel.login.LoginPanel;
+import io.github.zutherb.appstash.shop.ui.navigation.ModalPanelItem;
+import io.github.zutherb.appstash.shop.ui.navigation.NavigationItem;
+import io.github.zutherb.appstash.shop.ui.page.AbstractBasePage;
+import io.github.zutherb.appstash.shop.ui.panel.login.LoginModalPanel;
+import io.github.zutherb.appstash.shop.ui.panel.login.LoginPanel;
 import org.wicketstuff.annotation.mount.MountPath;
 
 /**

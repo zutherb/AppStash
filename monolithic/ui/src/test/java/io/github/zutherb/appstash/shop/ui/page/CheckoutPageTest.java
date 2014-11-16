@@ -1,12 +1,11 @@
 package io.github.zutherb.appstash.shop.ui.page;
 
-import io.github.appstash.shop.ui.AbstractWicketTest;
-import io.github.zutherb.appstash.shop.ui.page.checkout.CheckoutPage;
+import io.github.zutherb.appstash.shop.ui.AbstractWicketTest;
 import io.github.zutherb.appstash.shop.ui.page.checkout.CheckoutPage;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import static io.github.appstash.shop.service.TestDataFactory.createOrderItems;
+import static io.github.zutherb.appstash.shop.ui.service.TestDataFactory.createOrderItems;
 import static org.mockito.Mockito.when;
 
 /**

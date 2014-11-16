@@ -1,10 +1,7 @@
-package io.github.zutherb.appstash.shop.ui.ui.navigation;
+package io.github.zutherb.appstash.shop.ui.navigation;
 
 import io.github.zutherb.appstash.shop.service.authentication.api.AuthenticationService;
 import io.github.zutherb.appstash.shop.service.cart.api.Cart;
-import io.github.zutherb.appstash.shop.service.authentication.api.AuthenticationService;
-import io.github.zutherb.appstash.shop.service.cart.api.Cart;
-import io.github.zutherb.appstash.shop.ui.navigation.*;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.spring.test.ApplicationContextMock;
 import org.junit.After;
@@ -46,7 +43,7 @@ public class NavigationProviderImplTest {
     @After
     public void tearDown() {
         NavigationProvider navigationProvider = new NavigationProviderImpl(new ApplicationContextMock(), authenticationService);
-        navigationProvider.setClassPathToScan("io.github.appstash.shop.ui.page");
+        navigationProvider.setClassPathToScan("io.github.zutherb.appstash.shop.ui.page");
     }
 
     @Test

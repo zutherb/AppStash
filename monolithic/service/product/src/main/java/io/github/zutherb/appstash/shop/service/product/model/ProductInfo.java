@@ -1,7 +1,7 @@
 package io.github.zutherb.appstash.shop.service.product.model;
 
 
-import io.github.appstash.shop.repository.product.model.ProductType;
+import io.github.zutherb.appstash.shop.repository.product.model.ProductType;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

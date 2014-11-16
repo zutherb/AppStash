@@ -1,6 +1,6 @@
 package io.github.zutherb.appstash.shop.ui.page;
 
-import io.github.appstash.shop.ui.mbean.DesignSelectorBean;
+import io.github.zutherb.appstash.shop.ui.mbean.DesignSelectorBean;
 import io.github.zutherb.appstash.shop.ui.mbean.FeatureTooglesBean;
 import io.github.zutherb.appstash.shop.ui.mbean.FeatureTooglesBean;
 import org.apache.wicket.Component;

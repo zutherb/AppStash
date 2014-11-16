@@ -1,14 +1,8 @@
 package io.github.zutherb.appstash.shop.ui.panel.cart;
 
 
-import io.github.appstash.shop.service.cart.api.Cart;
-import io.github.appstash.shop.service.cart.model.CartItemInfo;
-import io.github.zutherb.appstash.shop.ui.event.cart.CartChangeEvent;
-import io.github.zutherb.appstash.shop.ui.event.cart.RemoveFromCartEvent;
-import io.github.zutherb.appstash.shop.ui.model.PriceModel;
-import io.github.zutherb.appstash.shop.ui.page.checkout.CheckoutPage;
-import io.github.zutherb.appstash.shop.ui.panel.base.AbstractShopBasePanel;
-import io.github.zutherb.appstash.shop.ui.panel.base.HighLightBehavior;
+import io.github.zutherb.appstash.shop.service.cart.api.Cart;
+import io.github.zutherb.appstash.shop.service.cart.model.CartItemInfo;
 import io.github.zutherb.appstash.shop.ui.event.cart.CartChangeEvent;
 import io.github.zutherb.appstash.shop.ui.event.cart.RemoveFromCartEvent;
 import io.github.zutherb.appstash.shop.ui.model.PriceModel;
@@ -25,9 +19,6 @@ import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
-import org.apache.wicket.markup.repeater.Item;
-import org.apache.wicket.markup.repeater.data.DataView;
-import org.apache.wicket.markup.repeater.data.ListDataProvider;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.model.PropertyModel;

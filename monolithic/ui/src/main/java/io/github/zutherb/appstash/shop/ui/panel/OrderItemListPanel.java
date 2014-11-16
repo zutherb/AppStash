@@ -1,8 +1,7 @@
 package io.github.zutherb.appstash.shop.ui.panel;
 
-import io.github.appstash.shop.service.order.model.OrderInfo;
-import io.github.appstash.shop.service.order.model.OrderItemInfo;
-import io.github.zutherb.appstash.shop.ui.model.PriceModel;
+import io.github.zutherb.appstash.shop.service.order.model.OrderInfo;
+import io.github.zutherb.appstash.shop.service.order.model.OrderItemInfo;
 import io.github.zutherb.appstash.shop.ui.model.PriceModel;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.basic.Label;

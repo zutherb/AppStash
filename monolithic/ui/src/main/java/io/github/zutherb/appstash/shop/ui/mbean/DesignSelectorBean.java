@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Component("designSelector")
-@ManagedResource(objectName = "io.github.appstash.ui:name=DesignSelector")
+@ManagedResource(objectName = "io.github.zutherb.appstash.ui:name=DesignSelector")
 public class DesignSelectorBean {
 
     private static final AtomicInteger DESIGN_COUNTER = new AtomicInteger();

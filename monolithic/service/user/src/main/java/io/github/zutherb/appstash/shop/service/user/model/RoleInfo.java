@@ -1,4 +1,4 @@
-package io.github.appstash.shop.service.user.model;
+package io.github.zutherb.appstash.shop.service.user.model;
 
 import java.io.Serializable;
 

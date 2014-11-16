@@ -1,4 +1,4 @@
-package io.github.appstash.shop.ui.panel.base;
+package io.github.zutherb.appstash.shop.ui.panel.base;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.AttributeAppender;

@@ -1,4 +1,4 @@
-package io.github.appstash.shop.ui.event;
+package io.github.zutherb.appstash.shop.ui.event;
 
 import org.apache.wicket.ajax.AjaxRequestTarget;
 

@@ -1,13 +1,14 @@
 package io.github.zutherb.appstash.shop.ui.panel;
 
-import io.github.appstash.shop.service.TestDataFactory;
-import io.github.appstash.shop.service.order.model.DeliveryAddressInfo;
-import io.github.appstash.shop.service.order.model.OrderInfo;
-import io.github.appstash.shop.service.order.model.OrderItemInfo;
-import io.github.appstash.shop.service.user.model.AddressInfo;
-import io.github.appstash.shop.service.user.model.RoleInfo;
-import io.github.appstash.shop.service.user.model.UserInfo;
-import io.github.appstash.shop.ui.AbstractWicketTest;
+
+import io.github.zutherb.appstash.shop.service.order.model.DeliveryAddressInfo;
+import io.github.zutherb.appstash.shop.service.order.model.OrderInfo;
+import io.github.zutherb.appstash.shop.service.order.model.OrderItemInfo;
+import io.github.zutherb.appstash.shop.service.user.model.AddressInfo;
+import io.github.zutherb.appstash.shop.service.user.model.RoleInfo;
+import io.github.zutherb.appstash.shop.service.user.model.UserInfo;
+import io.github.zutherb.appstash.shop.ui.service.TestDataFactory;
+import io.github.zutherb.appstash.shop.ui.AbstractWicketTest;
 import org.apache.wicket.model.Model;
 import org.junit.Ignore;
 import org.junit.Test;

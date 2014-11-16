@@ -1,13 +1,11 @@
 package io.github.zutherb.appstash.shop.ui.page.user;
 
 import io.github.zutherb.appstash.shop.service.authentication.model.LoginInfo;
-import io.github.appstash.shop.service.user.api.UserService;
+import io.github.zutherb.appstash.shop.service.user.api.UserService;
 import io.github.zutherb.appstash.shop.service.user.model.UserInfo;
-import io.github.appstash.shop.ui.navigation.NavigationItem;
-import io.github.appstash.shop.ui.page.AbstractBasePage;
-import io.github.appstash.shop.ui.page.home.HomePage;
-import io.github.zutherb.appstash.shop.service.authentication.model.LoginInfo;
-import io.github.zutherb.appstash.shop.service.user.model.UserInfo;
+import io.github.zutherb.appstash.shop.ui.navigation.NavigationItem;
+import io.github.zutherb.appstash.shop.ui.page.AbstractBasePage;
+import io.github.zutherb.appstash.shop.ui.page.home.HomePage;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.form.*;
 import org.apache.wicket.markup.html.form.validation.EqualPasswordInputValidator;

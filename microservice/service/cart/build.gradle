@@ -5,7 +5,7 @@ apply plugin: 'pkg-debian'
 
 jar.baseName = "cart-microservice"
 
-mainClassName = "io.github.appstash.shop.service.cart.Boot"
+mainClassName = "io.github.zutherb.appstash.shop.service.cart.Boot"
 def cardPort = 18100
 
 applicationDefaultJvmArgs = [

@@ -1,14 +1,14 @@
 package io.github.zutherb.appstash.shop.ui.panel.product;
 
-import io.github.appstash.shop.repository.product.model.ProductType;
-import io.github.appstash.shop.service.product.model.ProductInfo;
-import io.github.appstash.shop.service.recommendation.api.RecommendationService;
-import io.github.appstash.shop.ui.event.AjaxEvent;
-import io.github.appstash.shop.ui.event.cart.AddToCartEvent;
-import io.github.appstash.shop.ui.event.cart.RemoveFromCartEvent;
-import io.github.appstash.shop.ui.mbean.FeatureTooglesBean;
-import io.github.appstash.shop.ui.panel.base.AbstractShopBasePanel;
-import io.github.appstash.shop.ui.panel.base.HighLightBehavior;
+import io.github.zutherb.appstash.shop.repository.product.model.ProductType;
+import io.github.zutherb.appstash.shop.service.product.model.ProductInfo;
+import io.github.zutherb.appstash.shop.service.recommendation.api.RecommendationService;
+import io.github.zutherb.appstash.shop.ui.event.AjaxEvent;
+import io.github.zutherb.appstash.shop.ui.event.cart.AddToCartEvent;
+import io.github.zutherb.appstash.shop.ui.event.cart.RemoveFromCartEvent;
+import io.github.zutherb.appstash.shop.ui.mbean.FeatureTooglesBean;
+import io.github.zutherb.appstash.shop.ui.panel.base.AbstractShopBasePanel;
+import io.github.zutherb.appstash.shop.ui.panel.base.HighLightBehavior;
 import org.apache.wicket.Component;
 import org.apache.wicket.event.IEvent;
 import org.apache.wicket.model.IModel;

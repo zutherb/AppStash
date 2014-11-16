@@ -1,27 +1,19 @@
-package io.github.zutherb.appstash.shop.ui.ui;
+package io.github.zutherb.appstash.shop.ui;
 
-import io.github.appstash.shop.ui.mbean.DesignSelectorBean;
-import io.github.zutherb.appstash.shop.ui.mbean.FeatureTooglesBean;
-import io.github.appstash.shop.ui.navigation.NavigationEntry;
-import io.github.appstash.shop.ui.navigation.NavigationGroup;
-import io.github.zutherb.appstash.shop.ui.navigation.Navigation;
-import io.github.zutherb.appstash.shop.ui.navigation.NavigationProvider;
+import io.github.zutherb.appstash.shop.repository.product.api.ProductRepository;
 import io.github.zutherb.appstash.shop.service.authentication.api.AuthenticationService;
 import io.github.zutherb.appstash.shop.service.authentication.api.FakeAuthenticationService;
-import io.github.appstash.shop.service.user.api.UserService;
-import io.github.appstash.shop.repository.product.api.ProductRepository;
-import io.github.appstash.shop.service.cart.api.Cart;
+import io.github.zutherb.appstash.shop.service.cart.api.Cart;
 import io.github.zutherb.appstash.shop.service.checkout.api.Checkout;
 import io.github.zutherb.appstash.shop.service.product.api.ProductService;
 import io.github.zutherb.appstash.shop.service.recommendation.api.RecommendationService;
-import io.github.appstash.shop.ui.application.TestShopApplication;
-import io.github.zutherb.appstash.shop.service.authentication.api.AuthenticationService;
-import io.github.zutherb.appstash.shop.service.authentication.api.FakeAuthenticationService;
-import io.github.zutherb.appstash.shop.service.checkout.api.Checkout;
-import io.github.zutherb.appstash.shop.service.product.api.ProductService;
-import io.github.zutherb.appstash.shop.service.recommendation.api.RecommendationService;
+import io.github.zutherb.appstash.shop.service.user.api.UserService;
+import io.github.zutherb.appstash.shop.ui.application.TestShopApplication;
+import io.github.zutherb.appstash.shop.ui.mbean.DesignSelectorBean;
 import io.github.zutherb.appstash.shop.ui.mbean.FeatureTooglesBean;
 import io.github.zutherb.appstash.shop.ui.navigation.Navigation;
+import io.github.zutherb.appstash.shop.ui.navigation.NavigationEntry;
+import io.github.zutherb.appstash.shop.ui.navigation.NavigationGroup;
 import io.github.zutherb.appstash.shop.ui.navigation.NavigationProvider;
 import org.apache.wicket.spring.test.ApplicationContextMock;
 import org.apache.wicket.util.tester.WicketTester;
@@ -101,12 +93,12 @@ public abstract class AbstractWicketTest {
     }
 
     private Mapper createDozerMapper() {
-        return new DozerBeanMapper(Arrays.asList("io/github/appstash/shop/service/user/dozer-mapping.xml",
-                "io/github/appstash/shop/service/checkout/dozer-mapping.xml",
-                "io/github/appstash/shop/service/order/dozer-mapping.xml",
-                "io/github/appstash/shop/service/product/dozer-mapping.xml",
-                "io/github/appstash/shop/service/rule/dozer-mapping.xml",
-                "io/github/appstash/shop/ui/dozer-mapping.xml"));
+        return new DozerBeanMapper(Arrays.asList("/io/github/zutherb/appstash/shop/service/user/dozer-mapping.xml",
+                "/io/github/zutherb/appstash/shop/service/checkout/dozer-mapping.xml",
+                "/io/github/zutherb/appstash/shop/service/order/dozer-mapping.xml",
+                "/io/github/zutherb/appstash/shop/service/product/dozer-mapping.xml",
+                "/io/github/zutherb/appstash/shop/service/rule/dozer-mapping.xml",
+                "/io/github/zutherb/appstash/shop/ui/dozer-mapping.xml"));
     }
 
     private Navigation createNavigationMock() {

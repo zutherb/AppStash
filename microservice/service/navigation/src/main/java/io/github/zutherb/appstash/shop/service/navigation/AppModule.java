@@ -1,4 +1,4 @@
-package io.github.appstash.shop.service.navigation;
+package io.github.zutherb.appstash.shop.service.navigation;
 
 import restx.config.ConfigLoader;
 import restx.config.ConfigSupplier;
@@ -35,7 +35,7 @@ public class AppModule {
 
     @Provides
     public ConfigSupplier appConfigSupplier(ConfigLoader configLoader) {
-        // Load settings.properties in io.github.appstash.shop.service.navigation package as a set of config entries
-        return configLoader.fromResource("io/github/appstash/shop/service/navigation/settings");
+        // Load settings.properties in io.github.zutherb.appstash.shop.service.navigation package as a set of config entries
+        return configLoader.fromResource("io.github.zutherb.appstash/shop/service/navigation/settings");
     }
 }

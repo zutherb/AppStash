@@ -1,12 +1,9 @@
 package io.github.zutherb.appstash.shop.service.cart.impl;
 
 import io.github.zutherb.appstash.common.util.SeoUtils;
-import io.github.appstash.shop.repository.product.model.ProductType;
+import io.github.zutherb.appstash.shop.repository.product.model.ProductType;
 import io.github.zutherb.appstash.shop.service.cart.api.CartFulfillmentProvider;
-import io.github.appstash.shop.service.cart.model.CartItemInfo;
-import io.github.zutherb.appstash.shop.service.product.model.ProductInfo;
-import io.github.zutherb.appstash.common.util.SeoUtils;
-import io.github.zutherb.appstash.shop.service.cart.api.CartFulfillmentProvider;
+import io.github.zutherb.appstash.shop.service.cart.model.CartItemInfo;
 import io.github.zutherb.appstash.shop.service.product.model.ProductInfo;
 import org.bson.types.ObjectId;
 import org.junit.Before;

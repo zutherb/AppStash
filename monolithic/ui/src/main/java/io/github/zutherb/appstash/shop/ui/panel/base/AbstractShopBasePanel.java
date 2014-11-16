@@ -1,7 +1,6 @@
 package io.github.zutherb.appstash.shop.ui.panel.base;
 
-import io.github.appstash.shop.service.authentication.api.AuthenticationService;
-import io.github.zutherb.appstash.shop.service.authentication.model.LoginInfo;
+import io.github.zutherb.appstash.shop.service.authentication.api.AuthenticationService;
 import io.github.zutherb.appstash.shop.service.authentication.model.LoginInfo;
 import org.apache.wicket.markup.html.panel.Panel;
 import org.apache.wicket.model.IModel;

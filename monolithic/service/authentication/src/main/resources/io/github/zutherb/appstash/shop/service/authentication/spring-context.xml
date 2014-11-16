@@ -7,10 +7,10 @@
             http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
 
-    <context:component-scan base-package="io.github.appstash.shop.service.authentication"/>
+    <context:component-scan base-package="io.github.zutherb.appstash.shop.service.authentication"/>
 
-    <import resource="classpath:io/github/appstash/shop/service/user/spring-context.xml"/>
-    <import resource="classpath:io/github/appstash/dataloader/spring-context.xml"/>
+    <import resource="classpath:io/github/zutherb/appstash/shop/service/user/spring-context.xml"/>
+    <import resource="classpath:io/github/zutherb/appstash/dataloader/spring-context.xml"/>
 
 
     <security:authentication-manager>

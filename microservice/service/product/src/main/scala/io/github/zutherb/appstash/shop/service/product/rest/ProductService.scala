@@ -1,12 +1,12 @@
-package io.github.appstash.shop.service.product.rest
+package io.github.zutherb.appstash.shop.service.product.rest
 
 import akka.actor.{ActorSystem => AkkaActorSystem, Actor}
 import akka.util.Helpers.Requiring
 import com.typesafe.config.ConfigFactory
-import io.github.appstash.shop.service.product.Boot
-import io.github.appstash.shop.service.product.api.{ConfigurationModule, ProductRepositoryModule}
-import io.github.appstash.shop.service.product.impl.{ShopDBModule, ShopProductRepositoryModule}
-import io.github.appstash.shop.service.product.model.{SystemConfiguration, ProductQuery}
+import io.github.zutherb.appstash.shop.service.product.Boot
+import io.github.zutherb.appstash.shop.service.product.api.{ConfigurationModule, ProductRepositoryModule}
+import io.github.zutherb.appstash.shop.service.product.impl.{ShopDBModule, ShopProductRepositoryModule}
+import io.github.zutherb.appstash.shop.service.product.model.{SystemConfiguration, ProductQuery}
 import spray.http.{DateTime, EntityTag, StatusCodes, HttpResponse, MediaTypes}
 import spray.httpx.SprayJsonSupport.sprayJsonMarshaller
 import spray.httpx.SprayJsonSupport.sprayJsonUnmarshaller

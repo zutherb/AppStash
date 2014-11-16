@@ -29,7 +29,7 @@ public class AppServer {
          * it with -Drestx.mode=prod or change the default here
          */
         System.setProperty("restx.mode", System.getProperty("restx.mode", "dev"));
-        System.setProperty("restx.app.package", "io.github.appstash.shop.service.navigation");
+        System.setProperty("restx.app.package", "io.github.zutherb.appstash.shop.service.navigation");
 
         server.startAndAwait();
     }

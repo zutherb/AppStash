@@ -1,8 +1,8 @@
 package io.github.zutherb.appstash.shop.repository.cart.impl;
 
-import io.github.appstash.shop.repository.cart.api.CartRepository;
+import io.github.zutherb.appstash.shop.repository.cart.api.CartRepository;
 import io.github.zutherb.appstash.shop.repository.cart.model.Cart;
-import io.github.appstash.shop.repository.cart.model.CartItem;
+import io.github.zutherb.appstash.shop.repository.cart.model.CartItem;
 import io.github.zutherb.appstash.shop.repository.cart.model.Cart;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;

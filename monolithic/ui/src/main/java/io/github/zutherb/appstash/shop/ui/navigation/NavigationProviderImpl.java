@@ -1,7 +1,7 @@
 package io.github.zutherb.appstash.shop.ui.navigation;
 
-import io.github.appstash.shop.service.authentication.api.AuthenticationService;
-import io.github.appstash.shop.repository.product.model.ProductType;
+import io.github.zutherb.appstash.shop.service.authentication.api.AuthenticationService;
+import io.github.zutherb.appstash.shop.repository.product.model.ProductType;
 import org.apache.commons.collections.Predicate;
 import org.apache.commons.collections.SetUtils;
 import org.apache.commons.lang.StringUtils;
@@ -30,7 +30,7 @@ public class NavigationProviderImpl implements NavigationProvider {
 
     private static final Predicate PAGE_PREDICATE = pageCandidate -> Page.class.isAssignableFrom((Class<?>) pageCandidate);
 
-    private static final String[] PACKAGE_SCAN_PATH = {"io.github.appstash.shop.ui.page"};
+    private static final String[] PACKAGE_SCAN_PATH = {"io.github.zutherb.appstash.shop.ui.page"};
 
     private static final Set<Class<? extends Page>> PAGES_WITH_NAVIGATION_ANNOTATION;
     private static final Set<Class<? extends Page>> PAGES_WITH_ENUM_NAVIGATION_ANNOTATION;

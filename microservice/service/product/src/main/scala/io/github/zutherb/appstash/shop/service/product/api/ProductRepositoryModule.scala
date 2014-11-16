@@ -1,7 +1,7 @@
-package io.github.appstash.shop.service.product.api
+package io.github.zutherb.appstash.shop.service.product.api
 
-import io.github.appstash.shop.service.product.model.Product
-import io.github.appstash.shop.service.product.model.ProductQuery
+import io.github.zutherb.appstash.shop.service.product.model.Product
+import io.github.zutherb.appstash.shop.service.product.model.ProductQuery
 
 import scala.concurrent.Future
 

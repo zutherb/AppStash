@@ -1,8 +1,8 @@
 package io.github.zutherb.appstash.shop.ui.application;
 
-import io.github.appstash.shop.ui.application.security.SpringSecurityAuthorizationStrategy;
-import io.github.appstash.shop.ui.application.settings.JavaScriptLibrarySettings;
-import io.github.appstash.shop.ui.page.home.HomePage;
+import io.github.zutherb.appstash.shop.ui.application.security.SpringSecurityAuthorizationStrategy;
+import io.github.zutherb.appstash.shop.ui.application.settings.JavaScriptLibrarySettings;
+import io.github.zutherb.appstash.shop.ui.page.home.HomePage;
 import org.apache.wicket.Page;
 import org.apache.wicket.Session;
 import org.apache.wicket.protocol.http.WebApplication;
@@ -16,13 +16,13 @@ import org.springframework.stereotype.Component;
 import org.wicketstuff.annotation.scan.AnnotatedMountScanner;
 
 @Component
-@ManagedResource(objectName = "io.github.appstash.ui:name=ShopApplication")
+@ManagedResource(objectName = "io.github.zutherb.appstash.ui:name=ShopApplication")
 public class ShopApplication extends WebApplication {
 
     @Override
     protected void init() {
         super.init();
-        new AnnotatedMountScanner().scanPackage("io.github.appstash.shop.ui.page").mount(this);
+        new AnnotatedMountScanner().scanPackage("io.github.zutherb.appstash.shop.ui.page").mount(this);
         getMarkupSettings().setStripWicketTags(true);
         getRequestCycleSettings().setRenderStrategy(
                 IRequestCycleSettings.RenderStrategy.REDIRECT_TO_RENDER);

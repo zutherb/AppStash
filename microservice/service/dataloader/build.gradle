@@ -12,7 +12,7 @@ idea {
     }
 }
 
-mainClassName = "io.github.appstash.shop.dataloader.Boot"
+mainClassName = "io.github.zutherb.appstash.shop.dataloader.Boot"
 
 dependencies {
     compile project(':monolithic:common:util')

@@ -12,7 +12,7 @@ if (System.getProperty("spring.profiles.active") != "production") {
         }
     }
 
-    logger("io.github.appstash.task.MemoryLoggingTask", ERROR, ["stdout"])
+    logger("io.github.zutherb.appstash.task.MemoryLoggingTask", ERROR, ["stdout"])
 
     root(INFO, ["stdout"])
 } else {
@@ -36,7 +36,7 @@ if (System.getProperty("spring.profiles.active") != "production") {
         }
     }
 
-    logger("io.github.appstash.task.MemoryLoggingTask", ERROR, ["stdout"])
+    logger("io.github.zutherb.appstash.task.MemoryLoggingTask", ERROR, ["stdout"])
 
     root(INFO, ["stdout", "readable", "logstash"])
 }

@@ -5,8 +5,8 @@
           http://dozer.sourceforge.net/schema/beanmapping.xsd">
     
     <mapping map-null="false">
-        <class-a>io.github.appstash.shop.service.order.model.OrderInfo</class-a>
-        <class-b>io.github.appstash.shop.repository.order.model.Order</class-b>
+        <class-a>io.github.zutherb.appstash.shop.service.order.model.OrderInfo</class-a>
+        <class-b>io.github.zutherb.appstash.shop.repository.order.model.Order</class-b>
         <field>
             <a is-accessible="true">orderId</a>
             <b>orderId</b>
@@ -18,8 +18,8 @@
         <field relationship-type="cumulative">
             <a is-accessible="true">orderItems</a>
             <b>orderItems</b>
-            <a-hint>io.github.appstash.shop.service.order.model.OrderItemInfo</a-hint>
-            <b-hint>io.github.appstash.shop.repository.order.model.OrderItem</b-hint>
+            <a-hint>io.github.zutherb.appstash.shop.service.order.model.OrderItemInfo</a-hint>
+            <b-hint>io.github.zutherb.appstash.shop.repository.order.model.OrderItem</b-hint>
         </field>
         <field>
             <a is-accessible="true">deliveryAddress</a>
@@ -36,14 +36,14 @@
         <field>
             <a is-accessible="true">deliveryAddress</a>
             <b>deliveryAddress</b>
-            <a-hint>io.github.appstash.shop.service.order.model.DeliveryAddressInfo</a-hint>
-            <b-hint>io.github.appstash.shop.repository.order.model.DeliveryAddress</b-hint>
+            <a-hint>io.github.zutherb.appstash.shop.service.order.model.DeliveryAddressInfo</a-hint>
+            <b-hint>io.github.zutherb.appstash.shop.repository.order.model.DeliveryAddress</b-hint>
         </field>
     </mapping>
 
     <mapping>
-        <class-a>io.github.appstash.shop.service.order.model.DeliveryAddressInfo</class-a>
-        <class-b>io.github.appstash.shop.repository.order.model.DeliveryAddress</class-b>
+        <class-a>io.github.zutherb.appstash.shop.service.order.model.DeliveryAddressInfo</class-a>
+        <class-b>io.github.zutherb.appstash.shop.repository.order.model.DeliveryAddress</class-b>
         <field>
             <a is-accessible="true">firstname</a>
             <b>firstname</b>
@@ -95,13 +95,13 @@
     </mapping>
 
     <mapping>
-        <class-a>io.github.appstash.shop.service.order.model.OrderItemInfo</class-a>
-        <class-b>io.github.appstash.shop.repository.order.model.OrderItem</class-b>
+        <class-a>io.github.zutherb.appstash.shop.service.order.model.OrderItemInfo</class-a>
+        <class-b>io.github.zutherb.appstash.shop.repository.order.model.OrderItem</class-b>
         <field>
             <a is-accessible="true">product</a>
             <b>product</b>
-            <a-hint>io.github.appstash.shop.service.product.model.ProductInfo</a-hint>
-            <b-hint>io.github.appstash.shop.repository.product.model.Product</b-hint>
+            <a-hint>io.github.zutherb.appstash.shop.service.product.model.ProductInfo</a-hint>
+            <b-hint>io.github.zutherb.appstash.shop.repository.product.model.Product</b-hint>
         </field>
         <field>
             <a is-accessible="true">uuid</a>

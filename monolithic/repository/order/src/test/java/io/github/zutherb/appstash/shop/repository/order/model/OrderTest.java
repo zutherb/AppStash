@@ -1,8 +1,7 @@
 package io.github.zutherb.appstash.shop.repository.order.model;
 
 import io.github.zutherb.appstash.shop.repository.product.model.Product;
-import io.github.appstash.shop.repository.product.model.ProductType;
-import io.github.zutherb.appstash.shop.repository.product.model.Product;
+import io.github.zutherb.appstash.shop.repository.product.model.ProductType;
 import org.junit.Before;
 import org.junit.Test;
 

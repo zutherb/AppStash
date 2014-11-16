@@ -5,8 +5,8 @@
           http://dozer.sourceforge.net/schema/beanmapping.xsd">
 
     <mapping>
-        <class-a>io.github.appstash.shop.repository.cart.model.CartItem</class-a>
-        <class-b>io.github.appstash.shop.service.cart.model.CartItemInfo</class-b>
+        <class-a>io.github.zutherb.appstash.shop.repository.cart.model.CartItem</class-a>
+        <class-b>io.github.zutherb.appstash.shop.service.cart.model.CartItemInfo</class-b>
         <field>
             <a is-accessible="true">uuid</a>
             <b is-accessible="true">uuid</b>
@@ -19,8 +19,8 @@
 
 
     <mapping>
-        <class-a>io.github.appstash.shop.repository.cart.model.Product</class-a>
-        <class-b>io.github.appstash.shop.service.product.model.ProductInfo</class-b>
+        <class-a>io.github.zutherb.appstash.shop.repository.cart.model.Product</class-a>
+        <class-b>io.github.zutherb.appstash.shop.service.product.model.ProductInfo</class-b>
         <field>
             <a is-accessible="true">id</a>
             <b is-accessible="true">id</b>

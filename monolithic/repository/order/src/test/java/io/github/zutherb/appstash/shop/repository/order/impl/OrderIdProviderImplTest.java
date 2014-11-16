@@ -1,6 +1,6 @@
 package io.github.zutherb.appstash.shop.repository.order.impl;
 
-import io.github.appstash.shop.repository.order.api.OrderIdProvider;
+import io.github.zutherb.appstash.shop.repository.order.api.OrderIdProvider;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ActiveProfiles;
@@ -13,7 +13,7 @@ import static junit.framework.Assert.assertEquals;
  * @author zutherb
  */
 @ActiveProfiles("test")
-@ContextConfiguration(locations = "classpath:io/github/appstash/shop/repository/order/spring-context.xml")
+@ContextConfiguration(locations = "classpath:io/github/zutherb/appstash/shop/repository/order/spring-context.xml")
 public class OrderIdProviderImplTest extends AbstractJUnit4SpringContextTests {
 
     @Autowired

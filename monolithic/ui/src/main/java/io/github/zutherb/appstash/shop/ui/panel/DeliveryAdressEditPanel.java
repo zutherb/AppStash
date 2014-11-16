@@ -1,7 +1,6 @@
 package io.github.zutherb.appstash.shop.ui.panel;
 
-import io.github.appstash.shop.service.order.model.OrderInfo;
-import io.github.zutherb.appstash.shop.ui.panel.base.AbstractShopBasePanel;
+import io.github.zutherb.appstash.shop.service.order.model.OrderInfo;
 import io.github.zutherb.appstash.shop.ui.panel.base.AbstractShopBasePanel;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.form.Form;

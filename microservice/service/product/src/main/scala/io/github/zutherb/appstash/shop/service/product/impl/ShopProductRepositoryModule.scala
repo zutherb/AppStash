@@ -1,7 +1,7 @@
-package io.github.appstash.shop.service.product.impl
+package io.github.zutherb.appstash.shop.service.product.impl
 
-import io.github.appstash.shop.service.product.api.{ConfigurationModule, ProductRepositoryModule}
-import io.github.appstash.shop.service.product.model.{Product, ProductQuery}
+import io.github.zutherb.appstash.shop.service.product.api.{ConfigurationModule, ProductRepositoryModule}
+import io.github.zutherb.appstash.shop.service.product.model.{Product, ProductQuery}
 import reactivemongo.bson.{BSONDocument, BSONDocumentReader, BSONDocumentWriter, BSONObjectID}
 import spray.json._
 import scala.concurrent.ExecutionContext.Implicits.global

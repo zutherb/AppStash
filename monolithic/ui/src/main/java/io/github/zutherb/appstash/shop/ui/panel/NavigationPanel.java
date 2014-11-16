@@ -1,15 +1,8 @@
 package io.github.zutherb.appstash.shop.ui.panel;
 
-import io.github.zutherb.appstash.shop.ui.application.ShopApplication;
-import io.github.zutherb.appstash.shop.ui.application.ShopSession;
-import io.github.zutherb.appstash.shop.ui.event.AjaxEvent;
-import io.github.zutherb.appstash.shop.ui.event.cart.AddToCartEvent;
-import io.github.zutherb.appstash.shop.ui.event.cart.RemoveFromCartEvent;
-import io.github.appstash.shop.ui.event.login.LoginEvent;
-import io.github.appstash.shop.ui.navigation.*;
-import io.github.zutherb.appstash.shop.ui.panel.base.HighLightBehavior;
-import io.github.zutherb.appstash.shop.ui.panel.login.LoginInfoPanel;
-import io.github.appstash.shop.ui.panel.login.LoginModalPanel;
+import io.github.zutherb.appstash.shop.ui.event.login.LoginEvent;
+import io.github.zutherb.appstash.shop.ui.navigation.*;
+import io.github.zutherb.appstash.shop.ui.panel.login.LoginModalPanel;
 import io.github.zutherb.appstash.shop.ui.application.ShopApplication;
 import io.github.zutherb.appstash.shop.ui.application.ShopSession;
 import io.github.zutherb.appstash.shop.ui.event.AjaxEvent;
@@ -70,7 +63,7 @@ public class NavigationPanel extends Panel {
     private Component homePageLink() {
         BookmarkablePageLink<Void> pageLink = new BookmarkablePageLink<>("home", ShopApplication.get().getHomePage());
         pageLink.add(new AttributeAppender("class", Model.of("homePageLink"), " "));
-        if(((ShopSession) ShopSession.get()).isMicroServiceMode()){
+        if (((ShopSession) ShopSession.get()).isMicroServiceMode()) {
             return new ExternalLink("home", "http://shop.microservice.io");
         }
         return pageLink;
@@ -219,7 +212,7 @@ public class NavigationPanel extends Panel {
     private WebMarkupContainer navigationLink(NavigationEntry navigationEntry) {
         if (((ShopSession) ShopSession.get()).isMicroServiceMode()) {
             switch (navigationEntry.getPageClass().getName()) {
-                case "io.github.appstash.shop.ui.page.catalog.ProductCatalogPage":
+                case "io.github.zutherb.appstash.shop.ui.page.catalog.ProductCatalogPage":
                     return new ExternalLink("link", new ProductCatalogPageStringResourceModel(new StringResourceModel(navigationEntry.getPageClass().getName(), this, null), Model.of(navigationEntry)));
                 default:
                     return new ExternalLink("link", new StringResourceModel(navigationEntry.getPageClass().getName(), this, null));

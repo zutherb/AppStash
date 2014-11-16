@@ -1,8 +1,8 @@
 package io.github.zutherb.appstash.shop.ui.event.cart;
 
 
-import io.github.appstash.shop.service.cart.api.Cart;
-import io.github.appstash.shop.service.product.model.ProductInfo;
+import io.github.zutherb.appstash.shop.service.cart.api.Cart;
+import io.github.zutherb.appstash.shop.service.product.model.ProductInfo;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.injection.Injector;

@@ -2,11 +2,7 @@ package io.github.zutherb.appstash.shop.service.authentication.impl;
 
 import io.github.zutherb.appstash.shop.repository.user.api.UserRepository;
 import io.github.zutherb.appstash.shop.repository.user.model.Address;
-import io.github.appstash.shop.repository.user.model.Role;
-import io.github.zutherb.appstash.shop.repository.user.model.User;
-import io.github.appstash.shop.service.authentication.impl.UserDetailsServiceImpl;
-import io.github.zutherb.appstash.shop.repository.user.api.UserRepository;
-import io.github.zutherb.appstash.shop.repository.user.model.Address;
+import io.github.zutherb.appstash.shop.repository.user.model.Role;
 import io.github.zutherb.appstash.shop.repository.user.model.User;
 import org.junit.Before;
 import org.junit.Test;

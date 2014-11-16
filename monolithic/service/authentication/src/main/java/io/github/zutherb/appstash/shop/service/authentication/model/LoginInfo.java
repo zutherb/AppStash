@@ -1,4 +1,4 @@
-package io.github.appstash.shop.service.authentication.model;
+package io.github.zutherb.appstash.shop.service.authentication.model;
 
 import java.io.Serializable;
 

@@ -1,10 +1,10 @@
 package io.github.zutherb.appstash.shop.service.cart.impl;
 
-import io.github.appstash.shop.repository.cart.api.CartRepository;
-import io.github.appstash.shop.repository.cart.model.CartItem;
-import io.github.appstash.shop.service.cart.api.RedisMicroserviceCartFulfillmentProvider;
-import io.github.appstash.shop.service.cart.model.CartItemInfo;
-import io.github.appstash.shop.service.product.model.ProductInfo;
+import io.github.zutherb.appstash.shop.repository.cart.api.CartRepository;
+import io.github.zutherb.appstash.shop.repository.cart.model.CartItem;
+import io.github.zutherb.appstash.shop.service.cart.api.RedisMicroserviceCartFulfillmentProvider;
+import io.github.zutherb.appstash.shop.service.cart.model.CartItemInfo;
+import io.github.zutherb.appstash.shop.service.product.model.ProductInfo;
 import org.apache.commons.lang3.StringUtils;
 import org.dozer.Mapper;
 import org.slf4j.Logger;

@@ -1,4 +1,4 @@
-package io.github.appstash.shop.ui.navigation;
+package io.github.zutherb.appstash.shop.ui.navigation;
 
 /**
  * @author zutherb
