@@ -15,6 +15,7 @@ import org.springframework.data.redis.connection.jedis.JedisConnectionFactory
 import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer
 import org.springframework.data.redis.serializer.StringRedisSerializer
+import org.springframework.web.filter.CommonsRequestLoggingFilter
 import org.springframework.web.filter.ShallowEtagHeaderFilter
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport
 
@@ -46,12 +47,4 @@ class ApplicationConfiguration extends WebMvcConfigurationSupport {
         redisTemplate
     }
 
-    @Bean
-    public FilterRegistrationBean etagHeaderFilter() {
-        FilterRegistrationBean registrationBean = new FilterRegistrationBean();
-        ShallowEtagHeaderFilter etagHeaderFilter = new ShallowEtagHeaderFilter();
-        registrationBean.setFilter(etagHeaderFilter);
-        registrationBean.setOrder(1);
-        return registrationBean;
-    }
 }
