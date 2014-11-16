@@ -7,8 +7,6 @@ interface ICartServiceResolver extends ICartService {
 
 class CartServiceResolver implements ICartServiceResolver {
 
-    private CART_ITEMS_KEY = 'cartItems';
-
     static $inject = ['localStorageCartService', 'redisMircoserviceCartService', 'configuration'];
 
     constructor(private localStorageCartService:ICartService,

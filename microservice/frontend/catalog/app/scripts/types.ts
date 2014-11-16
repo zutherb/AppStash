@@ -38,8 +38,8 @@ interface ICart {
 
 
 interface ICartService {
-    add(product: IProduct);
-    remove(uuid: string);
+    add(product: IProduct): ng.IPromise<boolean>;
+    remove(uuid: string): ng.IPromise<boolean>;
     getAll(): ng.IPromise <ICartItem[]>;
     getCartId():string;
 }

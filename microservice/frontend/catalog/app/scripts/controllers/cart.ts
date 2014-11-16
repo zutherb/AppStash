@@ -19,23 +19,22 @@ class CartController {
         $scope.vm = this;
 
         $scope.$on(Eventnames.ADD_TO_CART, (event: ng.IAngularEvent, product: IProduct) => {
-            this.add(product);
-            this.cartService.getAll().then((data: ICartItem[]) => this.cartItems = data );
+            this.add(product).then((data:any)  => this.cartService.getAll().then((data: ICartItem[]) => this.cartItems = data ));
         });
 
         $scope.$on(Eventnames.REMOVE_FROM_CARD, (event: ng.IAngularEvent, uuid: string) => {
-            this.remove(uuid);
-            this.cartService.getAll().then((data: ICartItem[]) => this.cartItems = data );
+            this.remove(uuid).then((data)  => {
+              this.cartService.getAll().then((data: ICartItem[]) => this.cartItems = data );
+            });
         });
     }
 
-    add(product: IProduct) {
-        this.cartService.add(product);
-
+    add(product: IProduct): ng.IPromise<boolean> {
+        return this.cartService.add(product);
     }
 
-    remove(uuid: string) {
-        this.cartService.remove(uuid);
+    remove(uuid: string): ng.IPromise<boolean> {
+      return this.cartService.remove(uuid);
     }
 
     getAll(): ng.IPromise<ICartItem[]> {

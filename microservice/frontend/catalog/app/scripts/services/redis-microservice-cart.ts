@@ -16,7 +16,8 @@ class RedisMircoserviceCartService extends AbstractCartService implements ICartS
         this.qService = $q;
     }
 
-    add(product: IProduct) {
+    add(product: IProduct): ng.IPromise<boolean> {
+      var deferred = this.qService.defer();
         var uuid: string = this.newUUID();
         var cartItem: ICartItem = {uuid: uuid, product : product};
 
@@ -24,19 +25,34 @@ class RedisMircoserviceCartService extends AbstractCartService implements ICartS
             this.httpService.put(this.configuration.CART_SERVICE_PUT_URL, cartItem)
                 .success((cartId: string) => {
                     this.localStorageService.set(this.CART_ID, cartId.replace(/\"/g, ""));
+                    deferred.resolve(true);
                 })
-                .error((error) => console.log(error));
+                .error((error) => {
+                  console.log(error)
+                  deferred.resolve(false);
+                });
         }else {
             this.httpService.post(this.configuration.CART_SERVICE_POST_URL, cartItem, {params : {cartId: this.getCartId()}})
-                .error((error) => console.log(error));
+                .success((data) => deferred.resolve(true))
+                .error((error) => {
+                  console.log(error)
+                  deferred.resolve(false);
+                });
         }
+      return deferred.promise;
     }
 
-    remove(itemId: string) {
+    remove(itemId: string): ng.IPromise<boolean> {
+        var deferred = this.qService.defer();
         if(this.hasCardId()){
             this.httpService.delete(this.configuration.CART_SERVICE_DELETE_URL, {params : {cartId: this.getCartId(), itemId: itemId}})
-                .error((error) => console.log(error));
+                .success((data) => deferred.resolve(true))
+                .error((error) => {
+                  console.log(error)
+                  deferred.resolve(false);
+                });
         }
+      return deferred.promise;
     }
 
     getAll(): ng.IPromise<ICartItem[]> {

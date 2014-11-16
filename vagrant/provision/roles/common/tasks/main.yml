@@ -1,5 +1,5 @@
 ---
-- apt: pkg={{item}} state=present force=yes
+- apt: pkg={{item}} state=present force=yes update_cache=yes
   with_items:
     - vim
     - redis-tools

@@ -10,7 +10,7 @@ class LocalStorageCartService extends AbstractCartService implements ICartServic
         this.qService = $q;
     }
 
-    add(product: IProduct) {
+    add(product: IProduct): ng.IPromise<boolean> {
         var uuid: string = this.newUUID();
         var cartItem: ICartItem = {uuid: uuid, product : product};
 
@@ -18,18 +18,28 @@ class LocalStorageCartService extends AbstractCartService implements ICartServic
         cartItems.push(cartItem);
 
         this.localStorageService.set(this.CART_ITEMS_KEY, cartItems)
+
+        return this.truePromise();
     }
 
-    remove(uuid: string) {
+    remove(uuid: string): ng.IPromise<boolean> {
         var cartItems: ICartItem[] = this.getCartItems();
         cartItems = _.without(cartItems, _.findWhere(cartItems, {uuid: uuid}));
 
         this.localStorageService.set(this.CART_ITEMS_KEY, cartItems)
+
+        return this.truePromise();
+    }
+
+    truePromise(): ng.IPromise<boolean>  {
+        var deferred = this.qService.defer();
+        deferred.resolve(true);
+        return deferred.promise;
     }
 
     getAll(): ng.IPromise <ICartItem[]> {
         var deferred = this.qService.defer();
-         deferred.resolve(this.getCartItems());
+      deferred.resolve(this.getCartItems());
         return deferred.promise;
     }
 
