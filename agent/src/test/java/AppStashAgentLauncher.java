@@ -1,4 +1,4 @@
-import io.github.appstash.AppStashAgent;
+import io.github.zutherb.appstash.AppStashAgent;
 
 import java.io.File;
 import java.io.FileOutputStream;
