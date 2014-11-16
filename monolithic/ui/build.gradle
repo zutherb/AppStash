@@ -52,7 +52,6 @@ dependencies {
     compile wicketDeps
     compile webAppDeps
 
-    compile project(':agent')
     compile project(':monolithic:service:authentication')
     compile project(':monolithic:service:cart')
     compile project(':monolithic:service:checkout')
