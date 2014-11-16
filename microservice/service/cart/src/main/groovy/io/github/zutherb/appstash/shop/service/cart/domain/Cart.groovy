@@ -1,6 +1,6 @@
 package io.github.zutherb.appstash.shop.service.cart.domain
 
-class Cart {
+class Cart implements Serializable {
     def String uuid;
     def List<CartItem> cartItems;
 

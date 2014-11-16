@@ -1,7 +1,5 @@
 package io.github.zutherb.appstash.common.util;
 
-import org.apache.commons.lang3.StringUtils;
-
 /**
  * @author zutherb
  */
@@ -21,7 +19,7 @@ public class SeoUtils {
         urlFriendly = urlFriendly.replaceAll("\\s", "-");
         urlFriendly = urlFriendly.replaceAll("[^a-z0-9\\-]+", "");
         urlFriendly = urlFriendly.replaceAll("\\-+", "-");
-        if (StringUtils.endsWith(urlFriendly, "-")) {
+        if (urlFriendly.endsWith("-")) {
             return urlFriendly.substring(0, urlFriendly.length() - 1);
         }
         return urlFriendly;

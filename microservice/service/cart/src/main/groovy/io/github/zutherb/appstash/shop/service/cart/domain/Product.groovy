@@ -1,6 +1,6 @@
 package io.github.zutherb.appstash.shop.service.cart.domain
 
-class Product {
+class Product implements Serializable {
     def String id;
     def String articleId;
     def String name;
