@@ -1,4 +1,5 @@
 #! /bin/sh
+PIDFILE=/var/run/product.pid
 
 PATH=/sbin:/bin:/usr/sbin:/usr/bin:/etc/init.d
 . /lib/lsb/init-functions
@@ -9,18 +10,19 @@ case "$1" in
     start)
         log_daemon_msg "Starting product service"
         nohup ./product -Dconfig.file=/etc/product/application.conf > /var/log/product.log 2>&1 &
+        echo $! > $PIDFILE
         sleep 1
         log_end_msg 0 || true
         ;;
     restart|reload|force-reload)
         log_daemon_msg "Restart product service"
-        kill `ps ax|grep product|sed 's/\(.*\)pts.*/\1/g'|head -n 1`
+        kill `cat $PIDFILE|sed 's/\(.*\)pts.*/\1/g'|head -n 1`
         nohup ./product/bin/product -f /etc/product/application.conf > /var/log/product.log 2>&1 &
         sleep 1
         log_end_msg 0 || true
         ;;
     stop)
-        kill `ps ax|grep product|sed 's/\(.*\)pts.*/\1/g'|head -n 1`
+        kill `cat $PIDFILE|sed 's/\(.*\)pts.*/\1/g'|head -n 1`
         ;;
     *)
         echo "Usage: $0 start|restart|stop" >&2
