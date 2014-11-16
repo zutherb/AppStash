@@ -1,10 +1,17 @@
-import java.util.concurrent.Executors
-import java.util.concurrent.TimeUnit
-
 apply plugin: 'groovy'
 apply plugin: 'war'
 apply plugin: 'jetty'
 apply plugin: 'jmeter'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        //don't move this in root script or slf4j deps will be lost
+        classpath "com.github.kulya:jmeter-gradle-plugin:1.3.2-2.9"
+    }
+}
 
 idea {
     module {
@@ -24,7 +31,7 @@ sourceSets {
         resources {
             srcDir 'src/test/java'
             srcDir 'src/test/resources'
-            srcDir 'src/test/load'
+            srcDir 'src/loadtest'
         }
     }
     uitest {
@@ -124,8 +131,9 @@ task uiTestJettyStop {
 }
 
 jmeterRun.configure {
-    jmeterPropertyFile = file("${projectDir}/src/test/load/jmeter.properties")
-    jmeterTestFiles = [file("src/test/load/loadtest.jmx")]
+    jmeterPropertyFile = file("${projectDir}/src/loadtest/jmeter.properties")
+    jmeterTestFiles = [file("src/loadtest/loadtest.jmx")]
+    enableReports = true
 }
 
 war {
