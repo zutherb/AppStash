@@ -6,4 +6,4 @@ chmod +x /etc/init.d/navigation
 
 update-rc.d navigation defaults
 
-service navigation start
+service navigation force-reload

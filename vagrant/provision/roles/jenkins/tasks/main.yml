@@ -23,7 +23,8 @@
     - git
     - curl
     - nodejs
-    - ruby1.9.1-full
+    - ruby2.1
+    - ruby2.1-dev
 
 - sudo: yes
   sudo_user: root

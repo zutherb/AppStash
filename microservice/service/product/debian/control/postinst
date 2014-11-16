@@ -6,4 +6,4 @@ chmod +x /etc/init.d/product
 
 update-rc.d product defaults
 
-service product start
+service product force-reload

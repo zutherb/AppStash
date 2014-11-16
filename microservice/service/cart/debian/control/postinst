@@ -6,4 +6,4 @@ chmod +x /etc/init.d/cart
 
 update-rc.d cart defaults
 
-service cart start
+service cart force-reload

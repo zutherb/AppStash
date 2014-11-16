@@ -4,10 +4,6 @@
     - icinga
     - icinga-web
 
-- sudo: yes
-  copy: src=htpasswd.users dest=/etc/icinga/htpasswd.users force=yes mode=0644
-  notify: restart icinga
-
 - file: src=/etc/nagios3/conf.d/{{item}} dest=/etc/icinga/objects/{{item}} state=link
   with_items:
       - app-server-node-1.cfg
@@ -18,3 +14,7 @@
       - ci-repo.cfg
       - monitoring-node.cfg
       - mongodb-node.cfg
+
+- sudo: yes
+  copy: src=htpasswd.users dest=/etc/icinga/htpasswd.users force=yes mode=0644
+  notify: restart icinga

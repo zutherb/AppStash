@@ -3,7 +3,8 @@
   with_items:
     - nagios3
     - nagios-nrpe-plugin
-    - ruby1.9.1-full
+    - ruby2.1
+    - ruby2.1-dev
 
 - sudo: yes
   copy: src={{item}} dest=/etc/nagios3/conf.d/{{item}} force=yes mode=0644
