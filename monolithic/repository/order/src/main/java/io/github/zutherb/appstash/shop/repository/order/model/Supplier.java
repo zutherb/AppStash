@@ -1,4 +1,4 @@
-package io.github.appstash.shop.repository.order.model;
+package io.github.zutherb.appstash.shop.repository.order.model;
 
 import java.io.Serializable;
 

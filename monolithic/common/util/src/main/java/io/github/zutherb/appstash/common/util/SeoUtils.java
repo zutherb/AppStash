@@ -1,4 +1,4 @@
-package io.github.appstash.common.util;
+package io.github.zutherb.appstash.common.util;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -6,6 +6,8 @@ import org.apache.commons.lang3.StringUtils;
  * @author zutherb
  */
 public class SeoUtils {
+
+    private SeoUtils() { /* NOOP */ }
 
     public static String urlFriendly(String urlUnfriendly) {
         String urlFriendly = urlUnfriendly.toLowerCase();

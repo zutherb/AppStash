@@ -1,10 +1,9 @@
 package io.github.zutherb.appstash.shop.repository.order.impl;
 
 import io.github.zutherb.appstash.common.repository.AbstractRepositoryImpl;
-import io.github.appstash.shop.repository.order.api.OrderRepository;
-import io.github.appstash.shop.repository.order.model.Order;
-import io.github.appstash.shop.repository.user.api.UserRepository;
-import io.github.zutherb.appstash.common.repository.AbstractRepositoryImpl;
+import io.github.zutherb.appstash.shop.repository.order.api.OrderRepository;
+import io.github.zutherb.appstash.shop.repository.order.model.Order;
+import io.github.zutherb.appstash.shop.repository.user.api.UserRepository;
 import org.apache.commons.lang3.Validate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

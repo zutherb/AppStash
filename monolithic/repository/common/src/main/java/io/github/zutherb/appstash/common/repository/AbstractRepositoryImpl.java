@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @author zutherb
  */
-public abstract class AbstractRepositoryImpl<S> implements io.github.appstash.common.repository.AbstractRepository<S> {
+public abstract class AbstractRepositoryImpl<S> implements AbstractRepository<S> {
 
     protected MongoOperations mongoOperations;
     private Class<S> clazz;

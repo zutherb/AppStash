@@ -1,6 +1,6 @@
 package io.github.zutherb.appstash.shop.repository.order.impl;
 
-import io.github.appstash.shop.repository.order.api.OrderIdProvider;
+import io.github.zutherb.appstash.shop.repository.order.api.OrderIdProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.mongodb.core.MongoOperations;

@@ -1,13 +1,11 @@
 package io.github.zutherb.appstash.shop.repository.product.impl;
 
 import io.github.zutherb.appstash.common.repository.AbstractRepositoryImpl;
-import io.github.appstash.shop.repository.product.api.ProductRepository;
+import io.github.zutherb.appstash.shop.repository.product.api.ProductRepository;
 import io.github.zutherb.appstash.shop.repository.product.model.Product;
-import io.github.appstash.shop.repository.product.model.ProductQuery;
-import io.github.appstash.shop.repository.product.model.ProductQueryUtils;
-import io.github.appstash.shop.repository.product.model.ProductType;
-import io.github.zutherb.appstash.common.repository.AbstractRepositoryImpl;
-import io.github.zutherb.appstash.shop.repository.product.model.Product;
+import io.github.zutherb.appstash.shop.repository.product.model.ProductQuery;
+import io.github.zutherb.appstash.shop.repository.product.model.ProductQueryUtils;
+import io.github.zutherb.appstash.shop.repository.product.model.ProductType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.mongodb.core.MongoOperations;

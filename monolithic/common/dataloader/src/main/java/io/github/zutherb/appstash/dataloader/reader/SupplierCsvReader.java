@@ -1,6 +1,6 @@
 package io.github.zutherb.appstash.dataloader.reader;
 
-import io.github.appstash.shop.repository.order.model.Supplier;
+import io.github.zutherb.appstash.shop.repository.order.model.Supplier;
 import org.springframework.stereotype.Component;
 
 /**
