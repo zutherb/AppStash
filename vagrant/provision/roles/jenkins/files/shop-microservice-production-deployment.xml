@@ -25,13 +25,20 @@
       <command>ssh vagrant@app-server-node-4 -o StrictHostKeyChecking=no -v &lt;&lt;EOF
 sudo su
 apt-get update
+echo ****************************************
+echo *         Remove Application          *
+echo **************************************** 
+apt-get clean
+echo ****************************************
+echo *         Install Application          *
+echo ****************************************
 apt-get -y install shop-registration-frontend
 apt-get -y install shop-catalog-frontend
 apt-get -y install shop-checkout-frontend
 apt-get -y install shop-product-service
 apt-get -y install shop-navigation-service
 apt-get -y install shop-cart-service
-apt-get -y install shop-recommendation-service
+#apt-get -y install shop-recommendation-service
 EOF</command>
     </hudson.tasks.Shell>
   </builders>

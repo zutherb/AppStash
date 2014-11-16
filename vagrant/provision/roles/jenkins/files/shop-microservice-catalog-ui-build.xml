@@ -39,8 +39,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>rm -rf /var/lib/jenkins/.npm/5fd4d489-ins-npm-lodash-2-4-1-package-tgz.lock
-./gradlew -p microservice/frontend/catalog bower grunt_build --stacktrace
+      <command>./gradlew -p microservice/frontend/catalog bower grunt_build --stacktrace
 ./gradlew -p microservice/frontend/catalog prepareDeb buildDeb --stacktrace</command>
     </hudson.tasks.Shell>
   </builders>

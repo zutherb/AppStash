@@ -1,6 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><project>
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
   <actions/>
-  <description/>
+  <description></description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>5</daysToKeep>
     <numToKeep>5</numToKeep>
@@ -9,13 +10,13 @@
   </logRotator>
   <keepDependencies>false</keepDependencies>
   <properties>
-    <hudson.plugins.copyartifact.CopyArtifactPermissionProperty plugin="copyartifact@1.31">
+    <hudson.plugins.copyartifact.CopyArtifactPermissionProperty plugin="copyartifact@1.32.1">
       <projectNameList>
         <string>shop-monolitic-ui-test</string>
       </projectNameList>
     </hudson.plugins.copyartifact.CopyArtifactPermissionProperty>
   </properties>
-  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.6">
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.7">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
@@ -35,9 +36,10 @@
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>java 7</jdk>
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
-      <spec/>
+      <spec></spec>
       <upstreamProjects>shop-monolitic-ui-test, </upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
@@ -49,11 +51,11 @@
   </triggers>
   <concurrentBuild>false</concurrentBuild>
   <builders>
-    <hudson.plugins.copyartifact.CopyArtifact plugin="copyartifact@1.31">
+    <hudson.plugins.copyartifact.CopyArtifact plugin="copyartifact@1.32.1">
       <project>shop-monolitic-ui-test</project>
       <filter>**/*.war</filter>
       <target>artifacts/</target>
-      <excludes/>
+      <excludes></excludes>
       <selector class="hudson.plugins.copyartifact.StatusBuildSelector">
         <stable>true</stable>
       </selector>
@@ -71,7 +73,7 @@
     <hudson.plugins.performance.PerformancePublisher plugin="performance@1.11">
       <errorFailedThreshold>0</errorFailedThreshold>
       <errorUnstableThreshold>0</errorUnstableThreshold>
-      <errorUnstableResponseTimeThreshold/>
+      <errorUnstableResponseTimeThreshold></errorUnstableResponseTimeThreshold>
       <relativeFailedThresholdPositive>0.0</relativeFailedThresholdPositive>
       <relativeFailedThresholdNegative>0.0</relativeFailedThresholdNegative>
       <relativeUnstableThresholdPositive>0.0</relativeUnstableThresholdPositive>
@@ -81,12 +83,20 @@
       <configType>ART</configType>
       <modeOfThreshold>false</modeOfThreshold>
       <compareBuildPrevious>true</compareBuildPrevious>
-      <xml/>
+      <xml></xml>
       <modePerformancePerTestCase>true</modePerformancePerTestCase>
       <parsers>
-        <hudson.plugins.performance.JMeterParser>
+        <hudson.plugins.performance.JMeterCsvParser>
           <glob>**/loadtest.*.xml</glob>
-        </hudson.plugins.performance.JMeterParser>
+          <skipFirstLine>true</skipFirstLine>
+          <delimiter>,</delimiter>
+          <timestampIdx>0</timestampIdx>
+          <elapsedIdx>1</elapsedIdx>
+          <responseCodeIdx>2</responseCodeIdx>
+          <successIdx>4</successIdx>
+          <urlIdx>8</urlIdx>
+          <pattern>timestamp,elapsed,responseCode,threadName,success,failureMessage,grpThreads,allThreads,URL,Latency,SampleCount,ErrorCount</pattern>
+        </hudson.plugins.performance.JMeterCsvParser>
       </parsers>
       <modeThroughput>true</modeThroughput>
     </hudson.plugins.performance.PerformancePublisher>
