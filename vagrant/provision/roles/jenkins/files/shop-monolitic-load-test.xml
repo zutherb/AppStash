@@ -16,7 +16,7 @@
       </projectNameList>
     </hudson.plugins.copyartifact.CopyArtifactPermissionProperty>
   </properties>
-  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.7">
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.8">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
@@ -36,7 +36,7 @@
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
-  <jdk>java 7</jdk>
+  <jdk>(Default)</jdk>
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
@@ -81,22 +81,14 @@
       <nthBuildNumber>0</nthBuildNumber>
       <modeRelativeThresholds>false</modeRelativeThresholds>
       <configType>ART</configType>
-      <modeOfThreshold>false</modeOfThreshold>
+      <modeOfThreshold>true</modeOfThreshold>
       <compareBuildPrevious>true</compareBuildPrevious>
       <xml></xml>
       <modePerformancePerTestCase>true</modePerformancePerTestCase>
       <parsers>
-        <hudson.plugins.performance.JMeterCsvParser>
+        <hudson.plugins.performance.JMeterParser>
           <glob>**/loadtest.*.xml</glob>
-          <skipFirstLine>true</skipFirstLine>
-          <delimiter>,</delimiter>
-          <timestampIdx>0</timestampIdx>
-          <elapsedIdx>1</elapsedIdx>
-          <responseCodeIdx>2</responseCodeIdx>
-          <successIdx>4</successIdx>
-          <urlIdx>8</urlIdx>
-          <pattern>timestamp,elapsed,responseCode,threadName,success,failureMessage,grpThreads,allThreads,URL,Latency,SampleCount,ErrorCount</pattern>
-        </hudson.plugins.performance.JMeterCsvParser>
+        </hudson.plugins.performance.JMeterParser>
       </parsers>
       <modeThroughput>true</modeThroughput>
     </hudson.plugins.performance.PerformancePublisher>
