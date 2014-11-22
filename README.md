@@ -2,8 +2,8 @@
 
 ## Overview
 
-This application gives architects and developer an example how a microservice web application architecture can 
-looks like. The application is based on the **AngularJS Phone Catalog** and **MongoDB Pizza Shop**, which can be found 
+This application gives architects and developers an example how a microservice web application architecture can
+look like. The application is based on the **AngularJS Phone Catalog** and **MongoDB Pizza Shop**, which can be found
 on Github: 
 - [AngularJS Phone Catalog Tutorial Application](https://github.com/angular/angular-phonecat)
 - [MongoDB Pizza Shop](https://github.com/comsysto/mongodb-onlineshop)
@@ -37,11 +37,11 @@ The online shop will be deployed on the following cluster nodes:
 
 ## Prerequisites
 
-You need same dependencies to run the application or to extends the application.
+You need some dependencies to run the application or to extend the application.
 
 ###Running 
 
-If you want to run the application you has to install the following programs on our machine.
+If you want to run the application you have to install the following programs on your machine.
 
 #### Git
 
@@ -50,14 +50,14 @@ If you want to run the application you has to install the following programs on 
 
 #### Vagrant
 
-- Vagrant creates and configures lightweight, reproducible, and portable development environments. You must be not learn 
-  much about vagrant, but you should be able to install vagrant and execute the following commandline: ```vagrant up```
+- Vagrant creates and configures lightweight, reproducible, and portable development environments. You do not have to
+learn much about Vagrant, but you should be able to install it and execute the following commandline: ```vagrant up```
 - [Vagrant](https://www.vagrantup.com/) (download, documentation)
 
 #### Ansible
 
-- Ansible is the simplest way to automate IT. You must not know Ansible, but it must be able to installed Ansible 
-  otherwise vagrant is not able to created the virtual machines.
+- Ansible is the simplest way to automate IT. You must not know Ansible, but you have to install Ansible
+  otherwise Vagrant is not able to create the virtual machines.
 - [Ansible](http://www.ansible.com/) (download, documentation)
 
 ####Run the Cluster 
@@ -77,8 +77,7 @@ The Cluster contains of the following nodes:
 
 Vargrant-Name | IP            | Hostname           | Application        | Forward
 --------------|---------------|--------------------|--------------------|------------------------
-buildserver   | 10.211.55.200 | ci-node            | Jenkins            | http://http://ci.microservice.io:10000/
-buildserver   | 10.211.55.200 | ci-node            | Sonar              | http://ci.microservice.io:9000/
+buildserver   | 10.211.55.200 | ci-node            | Jenkins            | http://ci.microservice.io:8080/
 reposerver    | 10.211.55.201 | ci-repo            | Artifact Repository (NGINX) |
 dbserver      | 10.211.55.202 | mongodb-node       | MongoDB            | localhost:27017
 dbserver      | 10.211.55.202 | redis-node         | Redis              | localhost:6379
