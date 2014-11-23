@@ -26,5 +26,9 @@
     - extinfo_icinga.cfg
 
 - sudo: yes
-  copy: src=htpasswd.users dest=/etc/icinga/htpasswd.users force=yes mode=0644
+  copy: src={{item}} dest=/etc/icinga/{{item}} force=yes mode=0644
+  with_items:
+    - htpasswd.users
+    - icinga.cfg
+    - cgi.cfg
   notify: restart icinga

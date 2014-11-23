@@ -104,6 +104,11 @@ elasticsearch | 10.211.55.100 | monitoring-node    | Icinga             | http:/
 
 ![Microservice Appserver](https://raw.githubusercontent.com/zutherb/AppStash/ci-server/external/images/microservice-appserver.png)
 
+###Monitoring Server
+
+![Icinga Status Map](https://raw.githubusercontent.com/zutherb/AppStash/ci-server/external/images/icinga-status-map.png)
+![Icinga Status Report](https://raw.githubusercontent.com/zutherb/AppStash/ci-server/external/images/icinga-status.png)
+![Kibana](https://raw.githubusercontent.com/zutherb/AppStash/ci-server/external/images/kibana.png)
 
 ## Contact
 

@@ -33,7 +33,7 @@ public class NavigationResource {
                 .as(Navigation.class);
     }
 
-    @GET("/version")
+    @GET("/manifest")
     public String version() throws IOException {
         URL manifestFileUrl = getClass().getClassLoader().getResource("META-INF/MANIFEST.MF");
         File manifestFile = new File(manifestFileUrl.getFile());
