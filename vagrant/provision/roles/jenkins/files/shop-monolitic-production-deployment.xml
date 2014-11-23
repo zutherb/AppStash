@@ -1,6 +1,15 @@
-<?xml version="1.0" encoding="UTF-8"?><project>
+<?xml version='1.0' encoding='UTF-8'?>
+<project>
   <actions/>
-  <description/>
+  <description>&lt;p&gt;&#xd;
+  After running this build the &lt;a href=&quot;http://shop.monolith.io:8080/shop/&quot; target=&quot;_blank&quot;&gt;Monolith Production Node&lt;/a&gt; should be running. &#xd;
+  You can check the Version with the following urls:&#xd;
+  &lt;ul&gt;&#xd;
+    &lt;li&gt;&lt;a href=&quot;http://shop.monolith.io:8080/shop/version&quot; target=&quot;_blank&quot;&gt;Monolith&lt;/a&gt;&lt;/li&gt;&#xd;
+    &lt;li&gt;&lt;a href=&quot;http://shop.monolith.io:8080/shop/jmx/&quot; target=&quot;_blank&quot;&gt;Monolith (JMX Console)&lt;/a&gt;&lt;/li&gt;&#xd;
+    &lt;li&gt;&lt;a href=&quot;http://shop.monolith.io:8080/shop/performance/&quot; target=&quot;_blank&quot;&gt;Monolith (Performance Console)&lt;/a&gt;&lt;/li&gt;&#xd;
+  &lt;/ul&gt;&#xd;
+&lt;/p&gt;</description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>5</daysToKeep>
     <numToKeep>5</numToKeep>
@@ -9,7 +18,7 @@
   </logRotator>
   <keepDependencies>false</keepDependencies>
   <properties>
-    <hudson.plugins.copyartifact.CopyArtifactPermissionProperty plugin="copyartifact@1.31">
+    <hudson.plugins.copyartifact.CopyArtifactPermissionProperty plugin="copyartifact@1.32.1">
       <projectNameList>
         <string>shop-monolitic-load-test</string>
       </projectNameList>
@@ -20,17 +29,18 @@
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>(Default)</jdk>
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command/>
+      <command></command>
     </hudson.tasks.Shell>
-    <hudson.plugins.copyartifact.CopyArtifact plugin="copyartifact@1.31">
+    <hudson.plugins.copyartifact.CopyArtifact plugin="copyartifact@1.32.1">
       <project>shop-monolitic-load-test</project>
       <filter>**/*.war</filter>
       <target>artifacts</target>
-      <excludes/>
+      <excludes></excludes>
       <selector class="hudson.plugins.copyartifact.WorkspaceSelector"/>
       <flatten>true</flatten>
       <doNotFingerprintArtifacts>false</doNotFingerprintArtifacts>

@@ -10,7 +10,7 @@
   </logRotator>
   <keepDependencies>false</keepDependencies>
   <properties/>
-  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.7">
+  <scm class="hudson.plugins.git.GitSCM" plugin="git@2.2.8">
     <configVersion>2</configVersion>
     <userRemoteConfigs>
       <hudson.plugins.git.UserRemoteConfig>
@@ -30,6 +30,7 @@
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>(Default)</jdk>
   <triggers>
     <hudson.triggers.SCMTrigger>
       <spec>H/60 * * * *</spec>
@@ -39,7 +40,8 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>./gradlew -p microservice/frontend/catalog bower grunt_build --stacktrace
+      <command>rm -f /var/lib/jenkins/.npm/5fd4d489-ins-npm-lodash-2-4-1-package-tgz.lock
+./gradlew -p microservice/frontend/catalog bower grunt_build --stacktrace
 ./gradlew -p microservice/frontend/catalog prepareDeb buildDeb --stacktrace</command>
     </hudson.tasks.Shell>
   </builders>

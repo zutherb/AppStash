@@ -1,7 +1,17 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <project>
   <actions/>
-  <description></description>
+  <description>&lt;p&gt;&#xd;
+  After running this build the &lt;a href=&quot;http://shop.microservice.io/&quot; target=&quot;_blank&quot;&gt;Microservice Production Node&lt;/a&gt; should be running. &#xd;
+  You can check the Version with the following urls:&#xd;
+  &lt;ul&gt;&#xd;
+    &lt;li&gt;&lt;a href=&quot;http://shop.microservice.io/version.txt&quot; target=&quot;_blank&quot;&gt;Catalog Frontend Version&lt;/a&gt;&lt;/li&gt;&#xd;
+    &lt;li&gt;&lt;a href=&quot;http://shop.microservice.io/api/cart/manifest&quot; target=&quot;_blank&quot;&gt;Cart Microservice Manifest&lt;/a&gt;&lt;/li&gt;&#xd;
+    &lt;li&gt;&lt;a href=&quot;http://shop.microservice.io/api/product/manifest&quot; target=&quot;_blank&quot;&gt;Product Microservice Manifest&lt;/a&gt;&lt;/li&gt;&#xd;
+    &lt;li&gt;&lt;a href=&quot;http://shop.microservice.io/api/navigation/manifest&quot; target=&quot;_blank&quot;&gt;Navigation Microservice Manifest&lt;/a&gt;&lt;/li&gt;&#xd;
+  &lt;/ul&gt;&#xd;
+&lt;/p&gt;&#xd;
+</description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>5</daysToKeep>
     <numToKeep>5</numToKeep>
@@ -15,6 +25,7 @@
   <disabled>false</disabled>
   <blockBuildWhenDownstreamBuilding>false</blockBuildWhenDownstreamBuilding>
   <blockBuildWhenUpstreamBuilding>false</blockBuildWhenUpstreamBuilding>
+  <jdk>(Default)</jdk>
   <triggers/>
   <concurrentBuild>false</concurrentBuild>
   <builders>
