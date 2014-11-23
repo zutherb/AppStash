@@ -16,7 +16,7 @@ if [ -r /etc/default/cart ]; then
         export CART_SERVICE_REDIS_URL
 fi
 
-start_service {
+start_service() {
         log_daemon_msg "Starting cart service"
         nohup /usr/share/shop/cart/bin/cart > /var/log/cart.log 2>&1 &
         echo $! > $PIDFILE
@@ -24,8 +24,8 @@ start_service {
         log_end_msg 0 || true
 }
 
-stop_service {
-    if [ -a $PIDFILE ]; then
+stop_service() {
+    if [ -e $PIDFILE ]; then
         kill `cat $PIDFILE|sed 's/\(.*\)pts.*/\1/g'|head -n 1`
         rm $PIDFILE
     fi
