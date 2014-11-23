@@ -56,4 +56,10 @@ class CartController {
         def manifestResource = new ClassPathResource("META-INF/MANIFEST.MF");
         new Manifest(manifestResource.getInputStream())
     }
+
+    @RequestMapping(value = "/shutdown", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    @ResponseBody
+    def shutdown() {
+        System.exit(0)
+    }
 }

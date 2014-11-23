@@ -15,6 +15,16 @@
       - monitoring-node.cfg
       - mongodb-node.cfg
 
+- name: remove unused icinga configuration
+  sudo: yes
+  raw: rm -f /etc/icinga/objects/{{item}}
+  with_items:
+    - localhost_icinga.cfg
+    - ido2db_check_proc.cfg
+    - hostgroups_icinga.cfg
+    - services_icinga.cfg
+    - extinfo_icinga.cfg
+
 - sudo: yes
   copy: src=htpasswd.users dest=/etc/icinga/htpasswd.users force=yes mode=0644
   notify: restart icinga

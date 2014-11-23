@@ -97,6 +97,14 @@ trait ProductService extends HttpService with ConfigurationModule
           }
         }
       } ~
+      path("shutdown") {
+        get {
+          complete {
+            System.exit(0)
+            "ok"
+          }
+        }
+      } ~
       path("feed") {
         get {
           respondWithMediaType(MediaTypes.`application/xml`) {

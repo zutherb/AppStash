@@ -117,6 +117,11 @@
   raw: '/provision/roles/jenkins/files/restoreAllJobs.sh'
   ignore_errors: yes
 
+- file: path=/var/lib/jenkins/.ssh/ mode=0755 owner=jenkins group=jenkins state=directory
+- file: path=/var/lib/jenkins/.ssh/known_hosts mode=0755 owner=jenkins group=jenkins state=touch
+- copy: src=id_rsa.pub dest=/var/lib/jenkins/.ssh/id_rsa.pub mode=600 group=jenkins owner=jenkins
+- copy: src=id_rsa dest=/var/lib/jenkins/.ssh/id_rsa mode=600 group=jenkins owner=jenkins
+
 - name: start jenkins deployment pipeline
   sudo: yes
   sudo_user: jenkins
@@ -124,6 +129,7 @@
   with_items:
     - shop-monolitic-build
     - shop-microservice-product-service-build
+    - shop-microservice-cart-service-build
     - shop-microservice-navigation-service-build
     - shop-microservice-recommendation-service-build
     - shop-microservice-dataloader-build
@@ -131,8 +137,3 @@
     - shop-microservice-checkout-ui-build
     - shop-microservice-registration-ui-build
   ignore_errors: yes
-
-- file: path=/var/lib/jenkins/.ssh/ mode=0755 owner=jenkins group=jenkins state=directory
-- file: path=/var/lib/jenkins/.ssh/known_hosts mode=0755 owner=jenkins group=jenkins state=touch
-- copy: src=id_rsa.pub dest=/var/lib/jenkins/.ssh/id_rsa.pub mode=600 group=jenkins owner=jenkins
-- copy: src=id_rsa dest=/var/lib/jenkins/.ssh/id_rsa mode=600 group=jenkins owner=jenkins

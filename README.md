@@ -93,11 +93,8 @@ elasticsearch | 10.211.55.100 | monitoring-node    | Nagios             | http:/
 ## Workings with the application
 
 
+
 ### Installing dependencies
-
-##Deployment Pipeline
-
-![VNC View](https://raw.githubusercontent.com/zutherb/AppStash/ci-server/external/images/vnc-jenkins.png)
 
 ## Contact
 

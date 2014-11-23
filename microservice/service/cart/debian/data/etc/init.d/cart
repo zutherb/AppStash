@@ -16,23 +16,32 @@ if [ -r /etc/default/cart ]; then
         export CART_SERVICE_REDIS_URL
 fi
 
-case "$1" in
-    start)
+function start_service (){
         log_daemon_msg "Starting cart service"
         nohup /usr/share/shop/cart/bin/cart > /var/log/cart.log 2>&1 &
         echo $! > $PIDFILE
         sleep 1
         log_end_msg 0 || true
+}
+
+function stop_service (){
+    if [ -a $PIDFILE ]; then
+        kill `cat $PIDFILE|sed 's/\(.*\)pts.*/\1/g'|head -n 1`
+        rm $PIDFILE
+    fi
+}
+
+case "$1" in
+    start)
+        start_service
         ;;
     restart|reload|force-reload)
-        log_daemon_msg "Restart cart service"
-        kill `cat $PIDFILE|sed 's/\(.*\)pts.*/\1/g'|head -n 1`
-        nohup /usr/share/shop/cart/bin/cart > /var/log/cart.log 2>&1 &
+        start_service
         sleep 1
-        log_end_msg 0 || true
+        stop_service
         ;;
     stop)
-        kill `cat $PIDFILE|sed 's/\(.*\)pts.*/\1/g'|head -n 1`
+        stop_service
         ;;
     *)
         echo "Usage: $0 start|restart|stop" >&2

@@ -5,6 +5,7 @@
     - redis-tools
     - mongodb-clients
     - curl
+    - gzip
     - tree
     - htop
     - nagios-nrpe-server

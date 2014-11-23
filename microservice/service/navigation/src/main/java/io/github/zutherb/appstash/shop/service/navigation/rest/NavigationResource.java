@@ -41,5 +41,9 @@ public class NavigationResource {
         return fileContentAsString;
     }
 
+    @GET("/shutdown")
+    public void shutdown() throws IOException {
+        System.exit(0);
+    }
 
 }

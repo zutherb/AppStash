@@ -175,6 +175,64 @@
       <refreshFrequency>3</refreshFrequency>
       <showPipelineDefinitionHeader>false</showPipelineDefinitionHeader>
     </au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Monolitic Builds</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator"/>
+        <string>shop-monolitic-build</string>
+        <string>shop-monolitic-load-test</string>
+        <string>shop-monolitic-production-deployment</string>
+        <string>shop-monolitic-test-deployment</string>
+        <string>shop-monolitic-ui-test</string>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <recurse>false</recurse>
+    </listView>
+    <listView>
+      <owner class="hudson" reference="../../.."/>
+      <name>Microservice Builds</name>
+      <filterExecutors>false</filterExecutors>
+      <filterQueue>false</filterQueue>
+      <properties class="hudson.model.View$PropertyList"/>
+      <jobNames>
+        <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[2]/jobNames/comparator"/>
+        <string>shop-microservice-cart-service-build</string>
+        <string>shop-microservice-catalog-ui-build</string>
+        <string>shop-microservice-checkout-ui-build</string>
+        <string>shop-microservice-dataloader-build</string>
+        <string>shop-microservice-navigation-service-build</string>
+        <string>shop-microservice-product-service-build</string>
+        <string>shop-microservice-production-deployment</string>
+        <string>shop-microservice-publish</string>
+        <string>shop-microservice-recommendation-service-build</string>
+        <string>shop-microservice-registration-ui-build</string>
+        <string>shop-microservice-test-deployment</string>
+      </jobNames>
+      <jobFilters/>
+      <columns>
+        <hudson.views.StatusColumn/>
+        <hudson.views.WeatherColumn/>
+        <hudson.views.JobColumn/>
+        <hudson.views.LastSuccessColumn/>
+        <hudson.views.LastFailureColumn/>
+        <hudson.views.LastDurationColumn/>
+        <hudson.views.BuildButtonColumn/>
+      </columns>
+      <recurse>false</recurse>
+    </listView>
   </views>
   <primaryView>All</primaryView>
   <slaveAgentPort>0</slaveAgentPort>
