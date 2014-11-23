@@ -26,8 +26,11 @@ start_service() {
 
 stop_service() {
     if [ -e $PIDFILE ]; then
-        kill `cat $PIDFILE|sed 's/\(.*\)pts.*/\1/g'|head -n 1`
+        SERVICE_PID=`cat $PIDFILE|sed 's/\(.*\)pts.*/\1/g'|head -n 1`
+        log_daemon_msg "Stopping cart service [$SERVICE_PID]"
+        kill $SERVICE_PID
         rm $PIDFILE
+        log_end_msg 0 || true
     fi
 }
 
