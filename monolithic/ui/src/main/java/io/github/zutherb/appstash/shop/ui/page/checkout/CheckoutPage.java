@@ -1,7 +1,6 @@
 package io.github.zutherb.appstash.shop.ui.page.checkout;
 
 import io.github.zutherb.appstash.shop.service.authentication.api.FakeAuthenticationService;
-import io.github.zutherb.appstash.shop.service.cart.api.Cart;
 import io.github.zutherb.appstash.shop.service.checkout.api.Checkout;
 import io.github.zutherb.appstash.shop.service.order.api.OrderService;
 import io.github.zutherb.appstash.shop.service.order.model.DeliveryAddressInfo;
@@ -44,9 +43,6 @@ import java.util.List;
 public class CheckoutPage extends AbstractBasePage {
     private static final long serialVersionUID = -6793984194989062010L;
 
-    @SpringBean(name = "cart")
-    private Cart cart;
-
     @SpringBean(name = "checkout")
     private Checkout checkout;
 
@@ -88,8 +84,13 @@ public class CheckoutPage extends AbstractBasePage {
     }
 
     protected void validateCheckoutPage() {
-        if (checkout.getOrderItemInfos().isEmpty()) {
-            getSession().error(getString("checkout.validation.failed"));
+        try {
+            if (checkout.getOrderItemInfos().isEmpty()) {
+                getSession().error(getString("checkout.validation.failed"));
+                throw new RestartResponseException(Application.get().getHomePage());
+            }
+        } catch (Exception e) {
+            getSession().error("Cart is not available yet, please try again later.");
             throw new RestartResponseException(Application.get().getHomePage());
         }
     }

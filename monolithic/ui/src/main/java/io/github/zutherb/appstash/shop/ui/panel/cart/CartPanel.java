@@ -9,7 +9,9 @@ import io.github.zutherb.appstash.shop.ui.model.PriceModel;
 import io.github.zutherb.appstash.shop.ui.page.checkout.CheckoutPage;
 import io.github.zutherb.appstash.shop.ui.panel.base.AbstractShopBasePanel;
 import io.github.zutherb.appstash.shop.ui.panel.base.HighLightBehavior;
+import org.apache.wicket.Application;
 import org.apache.wicket.Component;
+import org.apache.wicket.RestartResponseException;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 import org.apache.wicket.event.Broadcast;
 import org.apache.wicket.event.IEvent;
@@ -24,6 +26,7 @@ import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.model.PropertyModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
+import java.util.Collections;
 import java.util.List;
 
 public class CartPanel extends AbstractShopBasePanel {
@@ -79,7 +82,12 @@ public class CartPanel extends AbstractShopBasePanel {
         return new LoadableDetachableModel<List<CartItemInfo>>() {
             @Override
             protected List<CartItemInfo> load() {
-                return cart.getAll();
+                try {
+                    return cart.getAll();
+                } catch (Exception e) {
+                    getSession().error("Cart is not available yet, please try again later.");
+                    return Collections.emptyList();
+                }
             }
         };
     }
