@@ -4,10 +4,6 @@ import io.github.zutherb.appstash.shop.repository.product.model.ProductQuery;
 import io.github.zutherb.appstash.shop.service.cart.api.Cart;
 import io.github.zutherb.appstash.shop.service.product.api.ProductService;
 import io.github.zutherb.appstash.shop.service.product.model.ProductInfo;
-import io.github.zutherb.appstash.shop.repository.product.model.ProductQuery;
-import io.github.zutherb.appstash.shop.service.cart.api.Cart;
-import io.github.zutherb.appstash.shop.service.product.api.ProductService;
-import io.github.zutherb.appstash.shop.service.product.model.ProductInfo;
 import org.apache.wicket.injection.Injector;
 import org.apache.wicket.request.Url;
 import org.apache.wicket.request.cycle.AbstractRequestCycleListener;
@@ -18,12 +14,12 @@ import org.apache.wicket.util.string.StringValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.Optional;
 
 
 public class DirectBuyRequestCycleListener extends AbstractRequestCycleListener {
+
+    private static final String DIRECT_BUY_PROCESSING_FAILED_MESSAGE = "DirectBuy processing failed";
 
     private static final Logger LOGGER = LoggerFactory.getLogger(DirectBuyRequestCycleListener.class);
     private static final String DIRECT_BUY_PARAMETER = "directBuy";
@@ -53,7 +49,8 @@ public class DirectBuyRequestCycleListener extends AbstractRequestCycleListener 
                 Url urlWithoutDirectBuy = removeDirectBuyFromUrl(cycle);
                 redirectTo(cycle, urlWithoutDirectBuy);
             } catch (Exception e) {
-                LOGGER.error("DirectBuy processing failed:", e);
+                ShopSession.get().error(DIRECT_BUY_PROCESSING_FAILED_MESSAGE);
+                LOGGER.error(DIRECT_BUY_PROCESSING_FAILED_MESSAGE, e);
             }
         }
     }
