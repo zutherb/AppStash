@@ -14,11 +14,9 @@ see different catalogs of mobile devices and is able to order them.
 The online shop will be deployed on the following cluster nodes:
 
     Catalog Application Server    --> angular frontend for catalog data and create a cart
-    Checkout Application Server   --> react frontend for ordering a cart
+    Checkout Application Server   --> wicket frontend for ordering a cart
     Backend Server                --> all services that are needed from both frontends are deployed on this server 
     
-![Architecture Overview](https://raw.githubusercontent.com/zutherb/AppStash/ci-server/external/images/deployment-diagram.png)
-
 ## Directory Layout
 
     microservice/           --> all files of the microservice applications are located in this folder
@@ -37,11 +35,12 @@ The online shop will be deployed on the following cluster nodes:
 
 ## Prerequisites
 
-You need some dependencies to run the application or to extend the application.
+You need some dependencies to run the application cluster or to extend the application.
 
 ###Running 
 
-If you want to run the application you have to install the following programs on your machine.
+You need at least 16 GB RAM to run the whole cluster and you have to install the following software dependencies
+on your machine.
 
 #### Git
 
@@ -60,9 +59,9 @@ learn much about Vagrant, but you should be able to install it and execute the f
   otherwise Vagrant is not able to create the virtual machines.
 - [Ansible](http://www.ansible.com/) (download, documentation)
 
-####Run the Cluster 
+###Boot up the cluster
 
-You only have to execute the following command if you want to run a development cluster: 
+You only have to execute the following command if you want to run a development cluster:
 
 ```bash
 git clone git@github.com:zutherb/AppStash.git appstash
@@ -72,6 +71,8 @@ vagrant plugin install vagrant-cachier
 vagrant plugin install vagrant-hostsupdater
 vagrant up
 ```
+
+## Workings with the application cluster
 
 The Cluster contains of the following nodes:
 
@@ -89,12 +90,20 @@ appserver3    | 10.211.55.103 | app-server-node-3  | Microservice Shop  | http:/
 appserver3    | 10.211.55.104 | app-server-node-4  | Microservice Shop  | http://shop.microservice.io/
 elasticsearch | 10.211.55.100 | monitoring-node    | Kibana             | http://monitoring.microservice.io/
 elasticsearch | 10.211.55.100 | monitoring-node    | Nagios             | http://monitoring.microservice.io/nagios3/ (nagiosadmin / admin123)
+elasticsearch | 10.211.55.100 | monitoring-node    | Icinga             | http://monitoring.microservice.io/icinga/ (icingaadmin / admin123)
 
-## Workings with the application
+###CI-Node
 
+![CI-Node](https://raw.githubusercontent.com/zutherb/AppStash/ci-server/external/images/ci-node.png)
 
+###Monolith Appserver
 
-### Installing dependencies
+![Monolith Appserver](https://raw.githubusercontent.com/zutherb/AppStash/ci-server/external/images/monolith-appserver.png)
+
+###Microservice Appserver
+
+![Microservice Appserver](https://raw.githubusercontent.com/zutherb/AppStash/ci-server/external/images/microservice-appserver.png)
+
 
 ## Contact
 
