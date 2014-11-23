@@ -7,7 +7,7 @@ import io.github.zutherb.appstash.shop.service.product.Boot
 import io.github.zutherb.appstash.shop.service.product.api.{ConfigurationModule, ProductRepositoryModule}
 import io.github.zutherb.appstash.shop.service.product.impl.{ShopDBModule, ShopProductRepositoryModule}
 import io.github.zutherb.appstash.shop.service.product.model.{SystemConfiguration, ProductQuery}
-import spray.http.{DateTime, EntityTag, StatusCodes, HttpResponse, MediaTypes}
+import spray.http.{DateTime, StatusCodes, HttpResponse, MediaTypes}
 import spray.httpx.SprayJsonSupport.sprayJsonMarshaller
 import spray.httpx.SprayJsonSupport.sprayJsonUnmarshaller
 import spray.httpx.encoding.Gzip
@@ -76,10 +76,12 @@ trait ProductService extends HttpService with ConfigurationModule
         }
       } ~
       path("all") {
-        get {
-          respondWithMediaType(MediaTypes.`application/json`) {
-            encodeResponse(Gzip) {
-              complete(getAllProducts)
+        conditional(new spray.http.EntityTag(getAllProductsHashcodeAsString, false), DateTime.now){
+          get {
+            respondWithMediaType(MediaTypes.`application/json`) {
+              encodeResponse(Gzip) {
+                  complete(getAllProducts)
+              }
             }
           }
         }
