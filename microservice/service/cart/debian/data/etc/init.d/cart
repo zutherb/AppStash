@@ -1,5 +1,6 @@
 #! /bin/sh
 PIDFILE=/var/run/cart.pid
+BASE_DIRECTORY=/usr/share/shop/cart/bin
 
 if [ `id -u` -ne 0 ]; then
     echo "You need root privileges to run this script"
@@ -18,7 +19,7 @@ fi
 
 start_service() {
         log_daemon_msg "Starting cart service"
-        nohup /usr/share/shop/cart/bin/cart > /var/log/cart.log 2>&1 &
+        nohup $BASE_DIRECTORY/cart > /var/log/cart.log 2>&1 &
         echo $! > $PIDFILE
         sleep 1
         log_end_msg 0 || true
