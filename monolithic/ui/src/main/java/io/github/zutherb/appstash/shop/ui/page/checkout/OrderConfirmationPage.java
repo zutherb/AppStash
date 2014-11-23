@@ -1,7 +1,6 @@
 package io.github.zutherb.appstash.shop.ui.page.checkout;
 
 import io.github.zutherb.appstash.shop.service.order.model.OrderInfo;
-import io.github.zutherb.appstash.shop.service.order.model.OrderInfo;
 import org.apache.wicket.model.Model;
 import org.wicketstuff.annotation.mount.MountPath;
 

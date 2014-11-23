@@ -33,8 +33,11 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
     private IModel<ProductType> productTypeModel;
     private IModel<ProductInfo> productInfoModel;
 
-    public TopSellerRecommendationPanel(String id, IModel<ProductType> productTypeModel) {
+    private Component feedback;
+
+    public TopSellerRecommendationPanel(String id, Component feedback, IModel<ProductType> productTypeModel) {
         super(id);
+        this.feedback = feedback;
 
         this.productTypeModel = productTypeModel;
 
@@ -48,7 +51,7 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
     private Component recommendationItemPanel() {
         ArrayList<String> tagListe = new ArrayList<>(2);
         IModel<List<String>> tagsModel = new ListModel<>(tagListe);
-        RecommendationItemPanel recommendationItemPanel = new RecommendationItemPanel("recProductItem", productInfoModel, tagsModel);
+        RecommendationItemPanel recommendationItemPanel = new RecommendationItemPanel("recProductItem", feedback, productInfoModel, tagsModel);
         recommendationItemPanel.setOutputMarkupId(true);
         return recommendationItemPanel;
     }

@@ -28,18 +28,21 @@ import java.util.List;
  */
 public class ProductItemPanel extends AbstractShopBasePanel {
 
+    private Component feedback;
+
     private IModel<ProductInfo> productInfoModel;
     private IModel<List<String>> additionalTagsModel;
     private IModel<String> productUrlModel;
 
-    public ProductItemPanel(String productItem, IModel<ProductInfo> model) {
-        this(productItem, model, new ListModel<>(Collections.<String>emptyList()));
+    public ProductItemPanel(String productItem, Component feedback, IModel<ProductInfo> model) {
+        this(productItem, feedback, model, new ListModel<>(Collections.<String>emptyList()));
     }
 
-    public ProductItemPanel(String id, IModel<ProductInfo> productInfoModel, IModel<List<String>> additionalTagsModel) {
+    public ProductItemPanel(String id, Component feedback, IModel<ProductInfo> productInfoModel, IModel<List<String>> additionalTagsModel) {
         super(id, productInfoModel);
         this.productInfoModel = productInfoModel;
         this.additionalTagsModel = additionalTagsModel;
+        this.feedback = feedback;
 
         add(productNameLabel());
         add(productPriceLabel());
@@ -90,6 +93,7 @@ public class ProductItemPanel extends AbstractShopBasePanel {
             @Override
             public void onClick(AjaxRequestTarget target) {
                 //send wicket event for add to cart
+                target.add(feedback);
                 send(getPage(), Broadcast.BREADTH, new AddToCartEvent(target, getPage(), productInfoModel.getObject(), getTags()));
             }
         };

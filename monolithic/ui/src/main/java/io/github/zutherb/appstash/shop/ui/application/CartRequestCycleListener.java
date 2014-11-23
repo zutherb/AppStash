@@ -2,10 +2,6 @@ package io.github.zutherb.appstash.shop.ui.application;
 
 import io.github.zutherb.appstash.shop.service.cart.api.CartResolver;
 import io.github.zutherb.appstash.shop.service.cart.api.RedisMicroserviceCartFulfillmentProvider;
-import io.github.zutherb.appstash.shop.service.cart.impl.CartResolverImpl;
-import io.github.zutherb.appstash.shop.service.cart.impl.RedisMicroserviceCartFulfillmentProviderImpl;
-import io.github.zutherb.appstash.shop.service.cart.api.CartResolver;
-import io.github.zutherb.appstash.shop.service.cart.api.RedisMicroserviceCartFulfillmentProvider;
 import io.github.zutherb.appstash.shop.service.cart.impl.RedisMicroserviceCartFulfillmentProviderImpl;
 import org.apache.wicket.injection.Injector;
 import org.apache.wicket.request.cycle.AbstractRequestCycleListener;

@@ -1,7 +1,7 @@
 package io.github.zutherb.appstash.shop.ui.navigation;
 
-import io.github.zutherb.appstash.shop.service.authentication.api.AuthenticationService;
 import io.github.zutherb.appstash.shop.repository.product.model.ProductType;
+import io.github.zutherb.appstash.shop.service.authentication.api.AuthenticationService;
 import org.apache.commons.collections.Predicate;
 import org.apache.commons.collections.SetUtils;
 import org.apache.commons.lang.StringUtils;

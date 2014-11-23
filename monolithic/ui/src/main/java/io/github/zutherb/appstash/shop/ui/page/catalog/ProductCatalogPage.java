@@ -115,7 +115,7 @@ public class ProductCatalogPage extends AbstractBasePage {
 
             @Override
             protected void populateItem(final Item<ProductInfo> item) {
-                ProductItemPanel productItem = new ProductItemPanel("productItem", item.getModel());
+                ProductItemPanel productItem = new ProductItemPanel("productItem", feedback, item.getModel());
                 productItem.setOutputMarkupId(true);
                 item.add(productItem);
             }
@@ -151,6 +151,6 @@ public class ProductCatalogPage extends AbstractBasePage {
     }
 
     private TopSellerRecommendationPanel recommendationPanel() {
-        return new TopSellerRecommendationPanel("recommendationPanel", productTypeModel);
+        return new TopSellerRecommendationPanel("recommendationPanel", feedback, productTypeModel);
     }
 }

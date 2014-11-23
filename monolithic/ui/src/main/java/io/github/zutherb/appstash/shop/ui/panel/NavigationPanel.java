@@ -1,17 +1,15 @@
 package io.github.zutherb.appstash.shop.ui.panel;
 
-import io.github.zutherb.appstash.shop.ui.event.login.LoginEvent;
-import io.github.zutherb.appstash.shop.ui.navigation.*;
-import io.github.zutherb.appstash.shop.ui.panel.login.LoginModalPanel;
 import io.github.zutherb.appstash.shop.ui.application.ShopApplication;
 import io.github.zutherb.appstash.shop.ui.application.ShopSession;
 import io.github.zutherb.appstash.shop.ui.event.AjaxEvent;
 import io.github.zutherb.appstash.shop.ui.event.cart.AddToCartEvent;
 import io.github.zutherb.appstash.shop.ui.event.cart.RemoveFromCartEvent;
-import io.github.zutherb.appstash.shop.ui.navigation.NavigationGroup;
-import io.github.zutherb.appstash.shop.ui.navigation.NavigationProvider;
+import io.github.zutherb.appstash.shop.ui.event.login.LoginEvent;
+import io.github.zutherb.appstash.shop.ui.navigation.*;
 import io.github.zutherb.appstash.shop.ui.panel.base.HighLightBehavior;
 import io.github.zutherb.appstash.shop.ui.panel.login.LoginInfoPanel;
+import io.github.zutherb.appstash.shop.ui.panel.login.LoginModalPanel;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.wicket.AttributeModifier;

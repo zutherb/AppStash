@@ -15,8 +15,8 @@ import java.util.List;
 
 
 public class AddToCartEvent implements CartChangeEvent {
-    private static final String DIRECT_BUY_PROCESSING_FAILED_MESSAGE = "DirectBuy processing failed";
     private static final Logger LOGGER = LoggerFactory.getLogger(AddToCartEvent.class);
+    public static final String ADD_TO_CART_ACTION_COULD_NOT_BE_PROCESSED_MESSAGE = "Add to cart action could not be processed";
 
     private final AjaxRequestTarget target;
 
@@ -34,8 +34,8 @@ public class AddToCartEvent implements CartChangeEvent {
         try {
             cart.addItem(product);
         } catch (Exception e) {
-            ShopSession.get().error(DIRECT_BUY_PROCESSING_FAILED_MESSAGE);
-            LOGGER.error(DIRECT_BUY_PROCESSING_FAILED_MESSAGE, e);
+            ShopSession.get().error(ADD_TO_CART_ACTION_COULD_NOT_BE_PROCESSED_MESSAGE);
+            LOGGER.error("Add to cart action could not be processed", e);
         }
     }
 

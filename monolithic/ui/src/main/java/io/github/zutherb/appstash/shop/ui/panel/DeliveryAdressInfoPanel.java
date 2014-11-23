@@ -2,8 +2,6 @@ package io.github.zutherb.appstash.shop.ui.panel;
 
 import io.github.zutherb.appstash.shop.service.order.model.OrderInfo;
 import io.github.zutherb.appstash.shop.ui.panel.base.AbstractShopBasePanel;
-import io.github.zutherb.appstash.shop.service.order.model.OrderInfo;
-import io.github.zutherb.appstash.shop.ui.panel.base.AbstractShopBasePanel;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.PropertyModel;

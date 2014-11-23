@@ -180,7 +180,7 @@ public class CheckoutPage extends AbstractBasePage {
     protected Component prepareFrequentlyBoughtWithPanel(final List<OrderItemInfo> orderItemInfos) {
         IModel<List<ProductInfo>> productListModel = !showFrequentlyBoughtWithPanel()
                 ? emptyListModel() : productListModel(orderItemInfos);
-        return new RecommendationItemListPanel("frequentlyBoughtWithProducts", "FREQUENTLY_BOUGHT",
+        return new RecommendationItemListPanel("frequentlyBoughtWithProducts", feedback, "FREQUENTLY_BOUGHT",
                 new Model<>("Frequently bought with"), productListModel);
     }
 

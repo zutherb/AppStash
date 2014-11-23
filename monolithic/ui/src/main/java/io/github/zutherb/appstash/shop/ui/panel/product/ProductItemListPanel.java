@@ -3,9 +3,6 @@ package io.github.zutherb.appstash.shop.ui.panel.product;
 import io.github.zutherb.appstash.shop.service.product.model.ProductInfo;
 import io.github.zutherb.appstash.shop.ui.panel.base.AbstractShopBasePanel;
 import io.github.zutherb.appstash.shop.ui.panel.base.HighLightBehavior;
-import io.github.zutherb.appstash.shop.service.product.model.ProductInfo;
-import io.github.zutherb.appstash.shop.ui.panel.base.AbstractShopBasePanel;
-import io.github.zutherb.appstash.shop.ui.panel.base.HighLightBehavior;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
@@ -23,14 +20,15 @@ import java.util.List;
 
 public class ProductItemListPanel extends AbstractShopBasePanel {
 
+    private final Component feedback;
     private IModel<?> containerTopic;
     private IModel<List<ProductInfo>> productListModel;
 
-    public ProductItemListPanel(String id, String recommenderType, IModel<?> containerTopic, IModel<List<ProductInfo>> productListModel) {
+    public ProductItemListPanel(String id, Component feedback, String recommenderType, IModel<?> containerTopic, IModel<List<ProductInfo>> productListModel) {
 
         super(id, productListModel);
 
-
+        this.feedback = feedback;
         this.containerTopic = containerTopic;
         this.productListModel = productListModel;
 
@@ -67,7 +65,7 @@ public class ProductItemListPanel extends AbstractShopBasePanel {
     }
 
     protected Component newProductItemPanel(String id, String parentTag, IModel<ProductInfo> model) {
-        return new ProductItemPanel(id, model, createTags(parentTag));
+        return new ProductItemPanel(id, feedback, model, createTags(parentTag));
     }
 
     private IDataProvider<ProductInfo> productsProvider() {

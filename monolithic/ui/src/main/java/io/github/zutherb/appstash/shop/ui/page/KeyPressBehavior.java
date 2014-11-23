@@ -2,7 +2,6 @@ package io.github.zutherb.appstash.shop.ui.page;
 
 import io.github.zutherb.appstash.shop.ui.mbean.DesignSelectorBean;
 import io.github.zutherb.appstash.shop.ui.mbean.FeatureTooglesBean;
-import io.github.zutherb.appstash.shop.ui.mbean.FeatureTooglesBean;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;
 import org.apache.wicket.ajax.AjaxEventBehavior;

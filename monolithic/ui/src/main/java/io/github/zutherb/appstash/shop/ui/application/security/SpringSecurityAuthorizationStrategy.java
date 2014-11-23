@@ -2,8 +2,6 @@ package io.github.zutherb.appstash.shop.ui.application.security;
 
 import io.github.zutherb.appstash.shop.service.authentication.api.AuthenticationService;
 import io.github.zutherb.appstash.shop.ui.page.user.LoginPage;
-import io.github.zutherb.appstash.shop.service.authentication.api.AuthenticationService;
-import io.github.zutherb.appstash.shop.ui.page.user.LoginPage;
 import org.apache.commons.lang.ArrayUtils;
 import org.apache.wicket.Component;
 import org.apache.wicket.Page;

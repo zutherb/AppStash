@@ -1,7 +1,6 @@
 package io.github.zutherb.appstash.shop.ui.page;
 
 import io.github.zutherb.appstash.shop.ui.application.ShopApplication;
-import io.github.zutherb.appstash.shop.ui.application.ShopApplication;
 import net.logstash.logback.encoder.org.apache.commons.io.FileUtils;
 import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.request.http.WebResponse;

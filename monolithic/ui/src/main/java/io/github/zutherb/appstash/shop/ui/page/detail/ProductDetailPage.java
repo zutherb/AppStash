@@ -100,6 +100,7 @@ public class ProductDetailPage extends AbstractBasePage {
         return new IndicatingAjaxLink<Void>("addToCart") {
             @Override
             public void onClick(AjaxRequestTarget target) {
+                target.add(feedback);
                 send(getPage(), Broadcast.BREADTH, new AddToCartEvent(target, getPage(), productInfoModel.getObject(), getTags()));
             }
         };
@@ -116,7 +117,7 @@ public class ProductDetailPage extends AbstractBasePage {
     }
 
     private RecommendationItemListPanel otherUsersAlsoViewedPanel() {
-        return new RecommendationItemListPanel("otherUsersAlsoViewedProducts", "OTHER_UERS_ALSO_VIEWED", new Model<>("Other users also viewed"),
+        return new RecommendationItemListPanel("otherUsersAlsoViewedProducts", feedback, "OTHER_UERS_ALSO_VIEWED", new Model<>("Other users also viewed"),
                 new LoadableDetachableModel<List<ProductInfo>>() {
                     @Override
                     protected List<ProductInfo> load() {

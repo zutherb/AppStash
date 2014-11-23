@@ -1,7 +1,6 @@
 package io.github.zutherb.appstash.shop.ui.event.login;
 
 import io.github.zutherb.appstash.shop.ui.event.AjaxEvent;
-import io.github.zutherb.appstash.shop.ui.event.AjaxEvent;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
 

@@ -38,7 +38,7 @@ public class HomePage extends AbstractBasePage {
         String ressourceKey = userAuthorized ? "your.favorite.products.topic" : "category.top.seller.topic";
         String recommenderType = userAuthorized ? "FAVORITE_PRODUCTS" : "STARTPAGE_TOPSELLER";
 
-        return new RecommendationItemListPanel("topSellerProductsContainer", recommenderType, new ResourceModel(ressourceKey),
+        return new RecommendationItemListPanel("topSellerProductsContainer", feedback,recommenderType, new ResourceModel(ressourceKey),
                 new LoadableDetachableModel<List<ProductInfo>>() {
                     @Override
                     protected List<ProductInfo> load() {
@@ -49,7 +49,7 @@ public class HomePage extends AbstractBasePage {
     }
 
     private Component youMayAlsoLikeProductsPanel() {
-        return new RecommendationItemListPanel("youMayAlsoLikeProductsContainer", "MAY_ALSO_LIKE", new ResourceModel("you.may.also.like.topic"),
+        return new RecommendationItemListPanel("youMayAlsoLikeProductsContainer", feedback, "MAY_ALSO_LIKE", new ResourceModel("you.may.also.like.topic"),
                 new LoadableDetachableModel<List<ProductInfo>>() {
                     @Override
                     protected List<ProductInfo> load() {
