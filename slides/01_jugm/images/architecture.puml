@@ -1,0 +1,11 @@
+@startuml
+scale 1.5
+
+node "Application Server" {
+[Shop Application] -down-> MongoDB
+}
+
+database "MongoDB" {
+}
+
+@enduml

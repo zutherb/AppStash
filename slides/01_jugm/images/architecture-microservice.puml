@@ -1,0 +1,54 @@
+@startuml
+scale 1.5
+
+skinparam component {
+  FontSize 30
+  InterfaceBackgroundColor RosyBrown
+  InterfaceBorderColor orange
+  BackgroundColor<<REST Endpoint>> Red
+  BorderColor<<REST Endpoint>> #FF6655
+  FontName Courier
+  BorderColor black
+  BackgroundColor gold
+  ArrowFontName Impact
+  ArrowColor #FF6655
+  ArrowFontColor #777777
+}
+
+skinparam node {
+  FontSize  30
+}
+
+skinparam database {
+  FontSize 30
+}
+
+skinparam interface {
+  FontSize 30
+}
+
+node "Microservice Node" {
+[Frontend] .down.> () HTTP : use
+
+() HTTP -down- [Product Service]
+() HTTP -down- [Navigation Service]
+() HTTP -down- [Card Service]
+
+[Product Service] <<REST Endpoint>> -down-> MongoDB
+[Navigation Service] <<REST Endpoint>> -down-> MongoDB
+[Card Service] <<REST Endpoint>> -down-> Redis
+}
+
+node "Monolith Node" {
+[Shop Application] -down-> MongoDB
+[Shop Application] .down.> () HTTP : use
+}
+
+database MongoDB {
+}
+
+database Redis {
+}
+
+@enduml
+
