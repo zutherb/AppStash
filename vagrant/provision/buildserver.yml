@@ -11,4 +11,4 @@
     - common
     - oracle-java
     - jenkins
-    - sonar
+    #- sonar

@@ -82,10 +82,10 @@ buildserver   | 10.211.55.200 | ci-node            | Jenkins            | http:/
 reposerver    | 10.211.55.201 | ci-repo            | Artifact Repository (NGINX) |
 dbserver      | 10.211.55.202 | mongodb-node       | MongoDB            | localhost:27017
 dbserver      | 10.211.55.202 | redis-node         | Redis              | localhost:6379
-appserver1    | 10.211.55.101 | app-server-node-1  | Legacy Shop        | http://app-server-node-1:8080/shop/
-appserver1    | 10.211.55.101 | app-server-node-1  | Probe              | http://app-server-node-1:8080/probe/ (admin / topsecret)
-appserver2    | 10.211.55.102 | app-server-node-2  | Legacy Shop        | http://shop.monolith.io:8081/shop/
-appserver2    | 10.211.55.102 | app-server-node-2  | Probe              | http://shop.monolith.io:8081/probe/ (admin / topsecret)
+appserver1    | 10.211.55.101 | app-server-node-1  | Legacy Shop        | http://test-shop.monolith.io:8080/shop/
+appserver1    | 10.211.55.101 | app-server-node-1  | Probe              | http://test-shop.monolith.io:8080/probe/ (admin / topsecret)
+appserver2    | 10.211.55.102 | app-server-node-2  | Legacy Shop        | http://shop.monolith.io:8080/shop/
+appserver2    | 10.211.55.102 | app-server-node-2  | Probe              | http://shop.monolith.io:8080/probe/ (admin / topsecret)
 appserver3    | 10.211.55.103 | app-server-node-3  | Microservice Shop  | http://test-shop.microservice.io/
 appserver3    | 10.211.55.104 | app-server-node-4  | Microservice Shop  | http://shop.microservice.io/
 elasticsearch | 10.211.55.100 | monitoring-node    | Kibana             | http://monitoring.microservice.io/
@@ -93,6 +93,12 @@ elasticsearch | 10.211.55.100 | monitoring-node    | Nagios             | http:/
 elasticsearch | 10.211.55.100 | monitoring-node    | Icinga             | http://monitoring.microservice.io/icinga/ (icingaadmin / admin123)
 
 ###CI-Node
+
+Jenkins is an open source continuous integration tool written in Java. Jenkins provides continuous integration services
+for software development. It supports SCM tools including CVS, Subversion, Git and Mercurial, and can execute Apache Ant,
+Apache Maven and Gradle based projects as well as arbitrary shell scripts and Windows batch commands.
+
+You can reach the jenkins that builds the monolith and the microservice application under http://ci.microservice.io:8080/.
 
 ![CI-Node](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/ci-node.png)
 
