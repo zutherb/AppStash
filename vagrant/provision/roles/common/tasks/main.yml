@@ -1,0 +1,14 @@
+---
+- apt: pkg={{item}} state=present force=yes update_cache=yes
+  with_items:
+    - vim
+    - redis-tools
+    - mongodb-clients
+    - curl
+    - gzip
+    - tree
+    - htop
+    - nagios-nrpe-server
+    - curl
+    - build-essential
+    - g++

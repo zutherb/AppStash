@@ -1,0 +1,59 @@
+apply plugin: 'pkg-debian'
+apply plugin: 'com.moowork.grunt'
+
+sourceSets {
+    main {
+        resources {
+            srcDir 'src'
+        }
+    }
+    test {
+        resources {
+            srcDir 'test'
+        }
+    }
+}
+ 
+jar.baseName = "shop-checkout-frontend"
+
+idea {
+    module {
+        name='shop-checkout-frontend'
+    }
+}
+
+debian {
+    packagename = "shop-checkout-frontend"
+    publications = ['mavenStuff']
+    controlDirectory = "${projectDir}/debian/control"
+    changelogFile = "${projectDir}/debian/changelog"
+    outputFile = "${buildDir}/debian/${packagename}_${version}.deb"
+
+    data {
+        dir {
+            name = "${projectDir}/debian/data"
+            exclusions = ["**/.DS_Store", "changelog"]
+        }
+        dir {
+            name = "${buildDir}/debian-data/"
+            exclusions = ["**/.DS_Store"]
+        }
+    }
+}
+
+
+// makes sure on each build that grunt is installed
+grunt_build.dependsOn 'installGrunt'
+
+// processes your package.json before running grunt build
+grunt_build.dependsOn 'npmInstall'
+
+// runs "grunt build" as part of your gradle build
+build.dependsOn grunt_build
+
+task prepareDeb {
+    copy {
+        from "${projectDir}/dist/"
+        into "${buildDir}/debian-data/usr/share/shop/frontend/checkout/html"
+    }
+}

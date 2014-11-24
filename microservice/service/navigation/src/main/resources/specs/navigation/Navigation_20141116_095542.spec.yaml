@@ -1,0 +1,12 @@
+title: Navigation 20141116 095542
+given:
+  - time: 2014-11-16T09:55:42.614+01:00
+wts:
+  - when: |
+       GET all
+       Cookie: RestxSession-navigation-microservice={"principal":"admin","sessionKey":"02d75bbd-85c4-4676-9cea-3fc5c0b78600","_expires":"2014-12-16T09:55:42.614+01:00"}; RestxSessionSignature-navigation-microservice=YRtZ+C63TDcVF+BJQvIonuUUg7Q=
+    then: |
+       500
+
+        UNEXPECTED SERVER ERROR:
+        Timed out while waiting to connect after 10000 ms

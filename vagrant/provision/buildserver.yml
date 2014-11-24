@@ -1,0 +1,14 @@
+---
+- hosts: buildservers
+  user: vagrant
+  sudo: yes
+
+  vars_files:
+     - vars/default.yml
+
+  roles:
+    - hosts
+    - common
+    - oracle-java
+    - jenkins
+    - sonar

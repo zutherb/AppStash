@@ -1,0 +1,9 @@
+#!/bin/sh
+set -e
+
+chmod +x /usr/share/shop/navigation/bin/navigation
+chmod +x /etc/init.d/navigation
+
+update-rc.d navigation defaults
+
+service navigation force-reload

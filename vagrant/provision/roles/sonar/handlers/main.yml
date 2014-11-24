@@ -1,0 +1,6 @@
+---
+- name: restart sonar
+  service: name=sonar state=restarted
+
+- name: restart postgresql
+  service: name=postgresql state=restarted

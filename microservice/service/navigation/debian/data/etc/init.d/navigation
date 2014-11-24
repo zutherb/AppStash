@@ -1,0 +1,31 @@
+#! /bin/sh
+PIDFILE=/var/run/navigation.pid
+
+PATH=/sbin:/bin:/usr/sbin:/usr/bin:/etc/init.d
+. /lib/lsb/init-functions
+
+case "$1" in
+    start)
+        log_daemon_msg "Starting navigation service"
+        cd /usr/share/shop/navigation/bin/
+        nohup ./navigation > /var/log/navigation.log 2>&1 &
+        echo $! > $PIDFILE
+        sleep 1
+        log_end_msg 0 || true
+        ;;
+    restart|reload|force-reload)
+        log_daemon_msg "Restart navigation service"
+        cd /usr/share/shop/navigation/bin/
+        kill `cat $PIDFILE|sed 's/\(.*\)pts.*/\1/g'|head -n 1`
+        nohup ./navigation > /var/log/navigation.log 2>&1 &
+        sleep 1
+        log_end_msg 0 || true
+        ;;
+    stop)
+        kill `cat $PIDFILE|sed 's/\(.*\)pts.*/\1/g'|head -n 1`
+        ;;
+    *)
+        echo "Usage: $0 start|restart|stop" >&2
+        exit 3
+        ;;
+esac

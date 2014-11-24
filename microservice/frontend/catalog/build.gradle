@@ -1,0 +1,95 @@
+import io.github.zutherb.appstash.shop.gradle.VersionTxtTask
+
+apply plugin: 'pkg-debian'
+apply plugin: 'docker'
+apply plugin: 'com.moowork.grunt'
+
+sourceSets {
+    main {
+        resources {
+            srcDir 'app'
+        }
+    }
+    test {
+        resources {
+            srcDir 'test'
+        }
+    }
+}
+
+jar.baseName = "shop-catalog-frontend"
+
+idea {
+    module {
+        name='shop-catalog-frontend'
+    }
+}
+
+debian {
+    packagename = "shop-catalog-frontend"
+    publications = ['mavenStuff']
+    controlDirectory = "${projectDir}/debian/control"
+    changelogFile = "${projectDir}/debian/changelog"
+    outputFile = "${buildDir}/debian/${packagename}_${version}.deb"
+
+    data {
+        dir {
+            name = "${projectDir}/debian/data"
+            exclusions = ["**/.DS_Store", "changelog"]
+        }
+        dir {
+            name = "${buildDir}/debian-data/"
+            exclusions = ["**/.DS_Store"]
+        }
+    }
+}
+
+docker {
+    baseImage "ubuntu"
+    maintainer 'Bernd Zuther "bernd.zuther@me.com"'
+}
+
+// processes your bower.json
+task bower(type: Exec){
+    commandLine "bower", 'install'
+}
+
+task gruntBuildWithOpts(type: GruntTask) {
+    dependsOn 'npmInstall', bower, 'installGrunt'
+}
+
+task prepareDeb (type: VersionTxtTask) {
+    def htmlFolder = "${buildDir}/debian-data/usr/share/shop/frontend/catalog/html"
+    def cmd = "git rev-parse HEAD"
+    def proc = cmd.execute()
+
+    filename = "${htmlFolder}/version.txt"
+
+    manifest = manifest {
+        attributes("Manifest-Version"       : "1.0",
+                "Created-By"             : vendor,
+                "Specification-Title"    : appName,
+                "Specification-Version"  : version,
+                "Specification-Vendor"   : vendor,
+                "Implementation-Title"   : appName,
+                "Implementation-Version" : version,
+                "Implementation-Vendor"  : vendor,
+                "Git-Revision"           : proc.text.trim(),
+                "Build"                  : "${System.getenv("JOB_NAME")}",
+                "Build-Number"           : "${System.getenv("BUILD_NUMBER")}")
+    }
+
+    copy {
+        from "${projectDir}/dist/"
+        into htmlFolder
+    }
+}
+
+// makes sure on each build that grunt is installed
+grunt_build.dependsOn 'installGrunt'
+
+// processes your package.json before running grunt build
+grunt_build.dependsOn 'npmInstall'
+
+// runs "grunt build" as part of your gradle build
+build.dependsOn grunt_build

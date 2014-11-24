@@ -1,22 +1,19 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
-apply plugin: "jacoco"
 apply plugin: "sonar-runner"
-
-def jacocoReportPath = "$buildDir/jacoco/"
-def jacocoFile = jacocoReportPath + "jacoco.exec"
 
 sonarRunner {
     sonarProperties {
-        property "sonar.host.url", "http://localhost:9000/"
-        property "sonar.jdbc.url", "jdbc:postgresql://localhost/sonar"
+        property "sonar.host.url", "http://ci-node:9000/"
+        property "sonar.jdbc.url", "jdbc:postgresql://ci-node/sonar"
         property "sonar.jdbc.driverClassName", "org.postgresql.Driver"
         property "sonar.jdbc.username", "sonar"
         property "sonar.jdbc.password", "sonar"
-        property "sonar.projectName", "pizza"
-        property "sonar.core.codeCoveragePlugin", "jacoco"
-        property "sonar.jacoco.reportPath", jacocoFile
+        property "sonar.login", "admin"
+        property "sonar.password", "admin"
+        property "sonar.verbose", "true"
+        property "sonar.projectName", "shop"
     }
 }
 
@@ -26,10 +23,7 @@ tasks.withType(JavaCompile) {
     options.compilerArgs << "-Xlint:unchecked -Xlint:deprecation"
 }
 
-group = 'com.comsysto'
-
-sourceCompatibility = 1.6
-targetCompatibility = 1.6
+group = 'io.github.zutherb.appstash'
 
 compileJava.options.encoding = 'UTF-8'
 compileTestJava.options.encoding = 'UTF-8'
@@ -39,21 +33,41 @@ def props = new Properties();
 file("gradle.properties").withInputStream { props.load(it) }
 props.each({ project.ext[it.key] = it.value })
 
-
-subprojects {
-    apply plugin: 'java'
-
-    sonarRunner {
-        sonarProperties {
-            property "sonar.sourceEncoding", "UTF-8"
-            property "sonar.jacoco.reportPath", "$buildDir/jacoco/jacocoTest.exec"
-        }
-    }
-
+buildscript {
     repositories {
         mavenCentral()
-        maven { url 'http://maven.springsource.org/release' }
-        maven { url 'http://repo.springsource.org/milestone' }
+        maven {
+            url "http://dl.bintray.com/gesellix/gradle-plugins"
+        }
+        jcenter()
+    }
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:1.1.8.RELEASE"
+        classpath "de.gesellix:gradle-debian-plugin:14"
+        classpath "com.moowork.gradle:gradle-grunt-plugin:0.6"
+        classpath "org.kt3k.gradle.plugin:coveralls-gradle-plugin:1.0.2"
+        classpath 'se.transmode.gradle:gradle-docker:1.2'
+    }
+}
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'jacoco'
+    apply plugin: 'com.github.kt3k.coveralls'
+
+    sourceCompatibility = org.gradle.api.JavaVersion.VERSION_1_8
+    targetCompatibility = org.gradle.api.JavaVersion.VERSION_1_8
+
+    if (System.getenv("BUILD_NUMBER") != null)
+        version += ".${System.getenv("BUILD_NUMBER")}"
+}
+
+subprojects {
+    repositories {
+        mavenCentral()
+        maven { url 'http://repo.spring.io/release' }
+        maven { url 'http://repo.spring.io/snapshot' }
+        maven { url 'http://repo.spring.io/milestone' }
         maven { url 'http://maven.restlet.org' }
     }
 
@@ -70,7 +84,9 @@ subprojects {
                         "org.springframework:spring-tx:$springVersion",
                         "org.springframework:spring-web:$springVersion",
                         "org.springframework:spring-webmvc:$springVersion",
+                        "org.springframework.data:spring-data-mongodb:$springDataMongoVersion",
                         "org.mongodb:mongo-java-driver:$mongodbDriverVersion",
+                        "org.springframework.data:spring-data-redis:$springDataRedisVersion",
                         "org.mongodb:bson:$mongodbDriverVersion",
                         "commons-beanutils:commons-beanutils:$commonsBeanUtilsVersion",
                         "commons-logging:commons-logging:$commonsLoggingVersion",
@@ -83,8 +99,9 @@ subprojects {
                         "commons-collections:commons-collections:$commonsCollectionsVersion",
                         "org.apache.commons:commons-math:$commonsMathVersion",
                         "com.google.guava:guava:$guavaVersion",
-                        "org.codehaus.jackson:jackson-mapper-asl:$jacksonVersion",
-                        "org.codehaus.jackson:jackson-core-asl:$jacksonVersion",
+                        "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion",
+                        "com.fasterxml.jackson.core:jackson-core:$jacksonVersion",
+                        "com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion",
                         "com.github.stephenc.high-scale-lib:high-scale-lib:$stephecHighScaleVersion",
                         "xml-apis:xml-apis:$xmlApisVersion",
                         "junit:junit:$junitVersion",
@@ -93,16 +110,38 @@ subprojects {
                         "com.github.fakemongo:fongo:$fongoVersion",
                         "org.hamcrest:hamcrest-core:1.3",
                         "org.objenesis:objenesis:1.2",
-                        "xerces:xercesImpl:2.11.0",
+                        "xerces:xercesImpl:2.10.0",
+                        "xerces:xmlParserAPIs:2.6.2",
                         "xml-apis:xml-apis:1.4.01",
                         "cglib:cglib-nodep:3.1",
                         "cglib:cglib:3.1",
-                        "org.apache.httpcomponents:httpclient:4.2.1",
+                        "de.undercouch:bson4jackson:2.3.1",
                         "org.codehaus.groovy:groovy-all:$groovyVersion",
-                        "org.slf4j:jcl-over-slf4j:1.7.6"
+                        "org.eclipse.jetty.orbit:javax.servlet.jsp:2.2.0.v201112011158",
+                        "org.apache.httpcomponents:httpclient:4.3.2",
+                        "org.apache.httpcomponents:httpcore:4.3.2",
+                        "org.slf4j:jcl-over-slf4j:1.7.6",
+                        "io.netty:netty:3.5.9.Final",
+                        "org.scala-lang:scala-compiler:$scalaVersion",
+                        "org.scala-lang:scala-library:$scalaVersion",
+                        "org.parboiled:parboiled-scala_2.10:1.1.6",
+                        "org.parboiled:parboiled-core:1.1.6",
+                        "io.spray:spray-can:$sprayVersion",
+                        "io.spray:spray-routing:$sprayVersion",
+                        "io.spray:spray-json_2.10:1.2.6",
+                        "com.typesafe:config:1.2.1",
+                        "joda-time:joda-time:$jodaTimeVersion",
+                        "com.typesafe.akka:akka-actor_2.10:$akkaVersion",
+                        "com.typesafe.akka:akka-actor_2.10:$akkaVersion",
+                        "com.typesafe.akka:akka-testkit_2.10:$akkaVersion",
+                        "org.reactivemongo:reactivemongo_2.10:0.10.0",
+                        "org.scala-lang.modules:scala-xml_2.10:1.0.2",
+                        "org.scala-lang:scala-reflect:2.10.4",
+                        "org.apache.commons:commons-lang3:3.2.1"
             }
         }
 
+//        all*.exclude group: "org.apache.logging.log4j"
         all*.exclude group: "org.mortbay.jetty"
         all*.exclude group: "tomcat"
 
@@ -118,10 +157,17 @@ subprojects {
             "org.codehaus.groovy:groovy-all:$groovyVersion", // required for logback logger
             "commons-collections:commons-collections:$commonsCollectionsVersion",
             "commons-io:commons-io:$commonsIoVersion",
+            "org.apache.commons:commons-lang3:3.2.1",
             "org.reflections:reflections:$reflectionsVersion",
             "net.sf.dozer:dozer:$dozerVersion",
             "net.sf.opencsv:opencsv:$opencsvVersion",
             "joda-time:joda-time:$jodaTimeVersion",
+    ]
+
+    ext.jacksonDeps = [
+            "com.fasterxml.jackson.core:jackson-databind:$jacksonVersion",
+            "com.fasterxml.jackson.core:jackson-core:$jacksonVersion",
+            "com.fasterxml.jackson.core:jackson-annotations:$jacksonVersion"
     ]
 
     ext.webAppDeps = [
@@ -133,7 +179,7 @@ subprojects {
 
     ext.mongoDeps = [
             "org.mongodb:mongo-java-driver:$mongodbDriverVersion",
-            "org.mongodb:bson:$mongodbDriverVersion",
+            "org.mongodb:bson:$mongodbDriverVersion"
     ]
 
     ext.springDeps = [
@@ -142,10 +188,13 @@ subprojects {
             "org.springframework.security:spring-security-core:$springSecurityVersion",
             "org.springframework.security:spring-security-web:$springSecurityVersion",
             "org.springframework.security:spring-security-config:$springSecurityVersion",
-            "org.springframework.mobile:spring-mobile-device:$springMobileVersion",
-            "org.springframework.data:spring-data-mongodb:$springDataMongoVersion",
-            "org.springframework.data:spring-data-hadoop:$springDataHadoopVersion",
+            "org.springframework.data:spring-data-mongodb:$springDataMongoVersion"
+    ]
 
+    ext.springSecurityDeps = [
+            "org.springframework.security:spring-security-core:$springSecurityVersion",
+            "org.springframework.security:spring-security-web:$springSecurityVersion",
+            "org.springframework.security:spring-security-config:$springSecurityVersion"
     ]
 
     ext.wicketDeps = [
@@ -173,5 +222,5 @@ subprojects {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.12'
+    gradleVersion = '2.2'
 }

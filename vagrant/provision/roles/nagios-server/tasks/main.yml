@@ -1,0 +1,65 @@
+---
+- apt: pkg={{item}} state=present force=yes
+  with_items:
+    - nagios3
+    - nagios-nrpe-plugin
+    - ruby2.1
+    - ruby2.1-dev
+
+- sudo: yes
+  copy: src={{item}} dest=/etc/nagios3/conf.d/{{item}} force=yes mode=0644
+  with_items:
+      - app-server-node-1.cfg
+      - app-server-node-2.cfg
+      - app-server-node-3.cfg
+      - app-server-node-4.cfg
+      - ci-node.cfg
+      - ci-repo.cfg
+      - monitoring-node.cfg
+      - mongodb-node.cfg
+      - localhost_nagios2.cfg
+      - services_nagios2.cfg
+      - extinfo_nagios2.cfg
+      - hostgroups_nagios2.cfg
+
+- sudo: yes
+  copy: src=nagios.cfg dest=/etc/nagios3/nagios.cfg force=yes mode=0644
+
+- sudo: yes
+  copy: src=htpasswd.users dest=/etc/nagios3/htpasswd.users force=yes mode=0644
+  notify: restart nagios3
+
+- sudo: yes
+  raw: mkdir -p /var/log/nagios/
+
+- sudo: yes
+  raw: gem install nagira
+
+- sudo: yes
+  raw: nagira-setup config:all
+
+#- sudo: yes
+#  copy: src=nagira dest=/etc/init.d/nagira force=yes mode=0744
+
+- sudo: yes
+  raw: a2enmod {{item}}
+  with_items:
+    - proxy
+    - proxy_http
+    - proxy_ajp
+    - rewrite
+    - deflate
+    - headers
+    - proxy_balancer
+    - proxy_connect
+    - proxy_html
+
+- sudo: yes
+  copy: src=000-default.conf dest=/etc/apache2/sites-available/000-default.conf force=yes mode=0644
+
+- raw: sudo service nagios3 restart
+- raw: sudo service apache2 restart
+- command: sudo service nagira restart
+  ignore_errors: yes
+
+
