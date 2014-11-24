@@ -106,8 +106,21 @@ elasticsearch | 10.211.55.100 | monitoring-node    | Icinga             | http:/
 
 ###Monitoring Server
 
+Icinga is an open source network and computer system monitoring application. It was originally created as a fork of
+the Nagios system monitoring application. Icinga is attempting to get past perceived short-comings in Nagios development
+process, as well as adding new features such as a modern Web 2.0 style user interface, additional database connectors,
+and a REST API that lets administrators integrate numerous extensions without complicated modification of the Icinga core.
+
 ![Icinga Status Map](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/icinga-status-map.png)
 ![Icinga Status Report](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/icinga-status.png)
+
+Kibana is a browser based analytics and search interface for Elasticsearch that was developed primarily to view
+Logstash event data. Logstash is a tool that can be used to collect, process and forward events and log messages.
+Collection is accomplished via number of configurable input plugins including raw socket/packet communication,
+file tailing and several message bus clients. Once an input plugin has collected data it can be processed by any number
+of filters which modify and annotate the event data. Finally events are routed to output plugins which can forward the
+events to a variety of external programs including Elasticsearch, local files and several message bus implementations.
+
 ![Kibana](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/kibana.png)
 
 ## Contact
