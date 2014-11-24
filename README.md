@@ -8,8 +8,10 @@ on Github:
 - [AngularJS Phone Catalog Tutorial Application](https://github.com/angular/angular-phonecat)
 - [MongoDB Pizza Shop](https://github.com/comsysto/mongodb-onlineshop)
 
-The application shows a small online shop for mobile devices that implements the following use cases. An user is able to
-see different catalogs of mobile devices and is able to order them.
+The application shows a small online shop for mobile devices that implements the following use cases. An user is able to:
+- see different catalogs of mobile devices,
+- create a cart,
+- and is able to order them.
 
 ![Use Case Online Shop](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/use_case_online_shop.png)
 
