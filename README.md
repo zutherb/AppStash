@@ -94,21 +94,21 @@ elasticsearch | 10.211.55.100 | monitoring-node    | Icinga             | http:/
 
 ###CI-Node
 
-![CI-Node](https://raw.githubusercontent.com/zutherb/AppStash/ci-server/external/images/ci-node.png)
+![CI-Node](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/ci-node.png)
 
 ###Monolith Appserver
 
-![Monolith Appserver](https://raw.githubusercontent.com/zutherb/AppStash/ci-server/external/images/monolith-appserver.png)
+![Monolith Appserver](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/monolith-appserver.png)
 
 ###Microservice Appserver
 
-![Microservice Appserver](https://raw.githubusercontent.com/zutherb/AppStash/ci-server/external/images/microservice-appserver.png)
+![Microservice Appserver](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/microservice-appserver.png)
 
 ###Monitoring Server
 
-![Icinga Status Map](https://raw.githubusercontent.com/zutherb/AppStash/ci-server/external/images/icinga-status-map.png)
-![Icinga Status Report](https://raw.githubusercontent.com/zutherb/AppStash/ci-server/external/images/icinga-status.png)
-![Kibana](https://raw.githubusercontent.com/zutherb/AppStash/ci-server/external/images/kibana.png)
+![Icinga Status Map](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/icinga-status-map.png)
+![Icinga Status Report](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/icinga-status.png)
+![Kibana](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/kibana.png)
 
 ## Contact
 
