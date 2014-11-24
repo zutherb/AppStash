@@ -11,6 +11,8 @@ on Github:
 The application shows a small online shop for mobile devices that implements the following use cases. An user is able to
 see different catalogs of mobile devices and is able to order them.
 
+![Use Case Online Shop](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/use_case_online_shop.png)
+
 The online shop will be deployed on the following cluster nodes:
 
     Catalog Application Server    --> angular frontend for catalog data and create a cart
