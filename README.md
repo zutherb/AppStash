@@ -11,16 +11,16 @@ on Github:
 The application shows a small online shop for mobile devices that implements the following use cases. An user is able to:
 - see different catalogs of mobile devices,
 - create a cart,
-- and is able to order them.
+- and order the created cart.
 
 ![Use Case Online Shop](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/use_case_online_shop.png)
 
-The online shop will be deployed on the following cluster nodes:
+This use cases implemented in to way:
 
-    Catalog Application Server    --> angular frontend for catalog data and create a cart
-    Checkout Application Server   --> wicket frontend for ordering a cart
-    Backend Server                --> all services that are needed from both frontends are deployed on this server 
-    
+    [Monolith Webshop](https://github.com/zutherb/AppStash/#monolith-appserver)    --> three layer architecture based online shop on Wicket
+    [Microservice Webshop](https://github.com/zutherb/AppStash/#microservice-appserver)   --> microservice architecture based on AngularJS, Wicket, Scala, Restx and Spring Boot
+
+
 ## Directory Layout
 
     microservice/           --> all files of the microservice applications are located in this folder
@@ -98,17 +98,45 @@ elasticsearch | 10.211.55.100 | monitoring-node    | Icinga             | http:/
 
 ###CI-Node
 
-Jenkins is an open source continuous integration tool written in Java. Jenkins provides continuous integration services
-for software development. It supports SCM tools including CVS, Subversion, Git and Mercurial, and can execute Apache Ant,
-Apache Maven and Gradle based projects as well as arbitrary shell scripts and Windows batch commands.
+A Jenkins build server is running on the CI-Node. Jenkins is an open source continuous integration tool written in Java.
+Jenkins provides continuous integration services for software development and supports SCM tools including CVS,
+Subversion, Git and Mercurial, and can execute Apache Ant, Apache Maven and Gradle based projects as well as arbitrary
+shell scripts and Windows batch commands.
 
-You can reach the jenkins that builds the monolith and the microservice application under http://ci.microservice.io:8080/.
+You can reach the jenkins that builds and deploy the monolith and microservice application under http://ci.microservice.io:8080/.
 
 ![CI-Node](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/ci-node.png)
 
 ###Monolith Appserver
 
+A three layer architecture online shop based on Apache Wicket is deployed on the Monolith Appserver which is a reference
+implementation for the use cases given in the [Overview](https://github.com/zutherb/AppStash/#monolith-appserver). You
+can reach the online shop under the following url http://shop.monolith.io:8080/shop/ .
+
 ![Monolith Appserver](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/monolith-appserver.png)
+
+A [PSI Probe](https://code.google.com/p/psi-probe/) is reachable under http://shop.monolith.io:8080/probe/
+(admin / topsecret) which is a community-driven fork of Lambda Probe. It is intended to replace and extend Tomcat
+Manager, making it easier to manage and monitor an instance of Apache Tomcat.
+
+Unlike many other server monitoring tools, PSI Probe does not require any changes to your existing apps. It provides
+all of its features through a web-accessible interface that becomes available simply by deploying it to your server.
+These features include:
+
+- Requests: Monitor traffic in real-time, even on a per-application basis.
+- Sessions: Browse/search attributes, view last IP, expire, estimate size.
+- JSP: Browse, view source, compile.
+- Data Sources: View pool usage, execute queries.
+- Logs: View contents, download, change levels at runtime.
+- Threads: View execution stack, kill.
+- Connectors: Status, usage charts.
+- Cluster: Status, usage charts.
+- JVM: Memory usage charts, advise GC
+- Java Service Wrapper: Restart JVM.
+- System: CPU usage, memory usage, swap file usage.
+
+![Probe](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/probe.png)
+![Probe](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/probe-log.png)
 
 ###Microservice Appserver
 
