@@ -56,6 +56,9 @@ dependencies {
     compile("org.springframework.boot:spring-boot-starter-jetty")
     compile("org.springframework.boot:spring-boot-starter-actuator")
     compile("org.springframework.hateoas:spring-hateoas")
+
+    compile("de.codecentric:spring-boot-starter-admin-client:1.0.5")
+
     testCompile testDeps
 }
 

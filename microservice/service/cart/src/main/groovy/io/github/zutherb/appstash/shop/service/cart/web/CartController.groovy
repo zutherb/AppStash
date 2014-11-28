@@ -3,14 +3,14 @@ package io.github.zutherb.appstash.shop.service.cart.web
 import io.github.zutherb.appstash.shop.service.cart.domain.Cart
 import io.github.zutherb.appstash.shop.service.cart.domain.CartItem
 import io.github.zutherb.appstash.shop.service.cart.domain.CartRepository
-import io.github.zutherb.appstash.shop.service.cart.domain.CartItem
-import io.github.zutherb.appstash.shop.service.cart.domain.CartRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.core.io.ClassPathResource
 import org.springframework.http.MediaType
 import org.springframework.web.bind.annotation.*
 
 import java.util.jar.Manifest
+
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*
 
 @RestController
 class CartController {
@@ -27,7 +27,9 @@ class CartController {
     @RequestMapping(value = "/get/{id}", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     @ResponseBody
     def Cart cart(@PathVariable String id) {
-        cartRepository.cart(id)
+        def cart = cartRepository.cart(id)
+        cart.add(linkTo(CartController.class, cart).withSelfRel());
+        cart
     }
 
     @RequestMapping(value = "/add", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)

@@ -1,6 +1,8 @@
 package io.github.zutherb.appstash.shop.service.cart.domain
 
-class Cart implements Serializable {
+import org.springframework.hateoas.ResourceSupport
+
+class Cart  extends ResourceSupport implements Serializable {
     def String uuid;
     def List<CartItem> cartItems;
 
