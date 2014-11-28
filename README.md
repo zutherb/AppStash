@@ -17,8 +17,8 @@ The application shows a small online shop for mobile devices that implements the
 
 This use cases implemented in to way:
 
-    [Monolith Webshop](https://github.com/zutherb/AppStash/#monolith-appserver)    --> three layer architecture based online shop on Wicket
-    [Microservice Webshop](https://github.com/zutherb/AppStash/#microservice-appserver)   --> microservice architecture based on AngularJS, Wicket, Scala, Restx and Spring Boot
+- [Monolith Webshop](https://github.com/zutherb/AppStash/#monolith-appserver), which represents a three layer architecture based online shop that is  Wicket
+- [Microservice Webshop](https://github.com/zutherb/AppStash/#microservice-appserver), which represents a microservice architecture based online shop on AngularJS, Wicket, Scala, Restx and Spring Boot
 
 
 ## Directory Layout
