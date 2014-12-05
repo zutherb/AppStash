@@ -15,9 +15,6 @@ import org.apache.wicket.request.component.IRequestableComponent;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springframework.security.access.annotation.Secured;
 
-/**
- * @author zutherb
- */
 public class SpringSecurityAuthorizationStrategy implements IAuthorizationStrategy {
 
     @SpringBean(name = "authenticationService")

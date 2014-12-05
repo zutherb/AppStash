@@ -1,8 +1,5 @@
 package io.github.zutherb.appstash.shop.ui.application.settings;
 
-/**
- * @author zutherb
- */
 public class JavaScriptLibrarySettings extends AbstractJavaScriptLibrarySettings {
 
     public JavaScriptLibrarySettings () {

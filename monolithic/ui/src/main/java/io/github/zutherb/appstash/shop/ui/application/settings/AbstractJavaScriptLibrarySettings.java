@@ -7,9 +7,6 @@ import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
 import org.apache.wicket.settings.IJavaScriptLibrarySettings;
 
-/**
- * @author zutherb
- */
 public class AbstractJavaScriptLibrarySettings implements IJavaScriptLibrarySettings {
 
     private static String jQueryPath = "jquery/jquery-1.9.1.min.js";

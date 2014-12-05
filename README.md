@@ -77,6 +77,16 @@ vagrant plugin install vagrant-hostsupdater
 vagrant up
 ```
 
+### Deploy on production servers
+
+You have to execute the [Production Deployment](http://ci.microservice.io:8080/view/Production%20Deployment/) after you
+have boot up the cluster. Therefore you have to execute the following to builds:
+
+- [Microservice Production Deployment](http://ci.microservice.io:8080/view/Production%20Deployment/job/shop-microservice-production-deployment/build?delay=0sec)
+- [Monolith Production Deployment](http://ci.microservice.io:8080/view/Production%20Deployment/job/shop-monolitic-production-deployment/build?delay=0sec)
+
+![CI-Node](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/ci-node.png)
+
 ## Workings with the application cluster
 
 The Cluster contains of the following nodes:
@@ -111,7 +121,7 @@ You can reach the jenkins that builds and deploy the monolith and microservice a
 ###Monolith Appserver
 
 A three layer architecture online shop based on Apache Wicket is deployed on the Monolith Appserver which is a reference
-implementation for the use cases given in the [Overview](https://github.com/zutherb/AppStash/#monolith-appserver). You
+implementation for the use cases given in the [Overview](https://github.com/zutherb/AppStash/#overview). You
 can reach the online shop under the following url http://shop.monolith.io:8080/shop/ .
 
 ![Monolith Appserver](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/monolith-appserver.png)

@@ -1,21 +1,6 @@
 apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'idea'
-apply plugin: "sonar-runner"
-
-sonarRunner {
-    sonarProperties {
-        property "sonar.host.url", "http://ci-node:9000/"
-        property "sonar.jdbc.url", "jdbc:postgresql://ci-node/sonar"
-        property "sonar.jdbc.driverClassName", "org.postgresql.Driver"
-        property "sonar.jdbc.username", "sonar"
-        property "sonar.jdbc.password", "sonar"
-        property "sonar.login", "admin"
-        property "sonar.password", "admin"
-        property "sonar.verbose", "true"
-        property "sonar.projectName", "shop"
-    }
-}
 
 test.onlyIf { !Boolean.getBoolean('skip.tests') }
 

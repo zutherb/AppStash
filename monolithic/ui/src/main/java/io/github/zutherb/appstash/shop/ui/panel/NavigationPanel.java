@@ -36,9 +36,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
-/**
- * @author zutherb
- */
 public class NavigationPanel extends Panel {
     private static final long serialVersionUID = 6989676548448303645L;
 
