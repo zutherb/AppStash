@@ -1,14 +1,13 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<project>
+<?xml version="1.0" encoding="UTF-8"?><project>
   <actions/>
-  <description>&lt;p&gt;&#xd;
-  After running this build the &lt;a href=&quot;http://shop.monolith.io:8080/shop/&quot; target=&quot;_blank&quot;&gt;Monolith Production Node&lt;/a&gt; should be running. &#xd;
-  You can check the Version with the following urls:&#xd;
-  &lt;ul&gt;&#xd;
-    &lt;li&gt;&lt;a href=&quot;http://shop.monolith.io:8080/shop/version&quot; target=&quot;_blank&quot;&gt;Monolith&lt;/a&gt;&lt;/li&gt;&#xd;
-    &lt;li&gt;&lt;a href=&quot;http://shop.monolith.io:8080/shop/jmx/&quot; target=&quot;_blank&quot;&gt;Monolith (JMX Console)&lt;/a&gt;&lt;/li&gt;&#xd;
-    &lt;li&gt;&lt;a href=&quot;http://shop.monolith.io:8080/shop/performance/&quot; target=&quot;_blank&quot;&gt;Monolith (Performance Console)&lt;/a&gt;&lt;/li&gt;&#xd;
-  &lt;/ul&gt;&#xd;
+  <description>&lt;p&gt;&#13;
+  After running this build the &lt;a href="http://shop.monolith.io:8080/shop/" target="_blank"&gt;Monolith Production Node&lt;/a&gt; should be running. &#13;
+  You can check the Version with the following urls:&#13;
+  &lt;ul&gt;&#13;
+    &lt;li&gt;&lt;a href="http://shop.monolith.io:8080/shop/version" target="_blank"&gt;Monolith&lt;/a&gt;&lt;/li&gt;&#13;
+    &lt;li&gt;&lt;a href="http://shop.monolith.io:8080/shop/jmx/" target="_blank"&gt;Monolith (JMX Console)&lt;/a&gt;&lt;/li&gt;&#13;
+    &lt;li&gt;&lt;a href="http://shop.monolith.io:8080/shop/performance/" target="_blank"&gt;Monolith (Performance Console)&lt;/a&gt;&lt;/li&gt;&#13;
+  &lt;/ul&gt;&#13;
 &lt;/p&gt;</description>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>5</daysToKeep>
@@ -34,13 +33,13 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command></command>
+      <command/>
     </hudson.tasks.Shell>
     <hudson.plugins.copyartifact.CopyArtifact plugin="copyartifact@1.32.1">
       <project>shop-monolitic-load-test</project>
       <filter>**/*.war</filter>
       <target>artifacts</target>
-      <excludes></excludes>
+      <excludes/>
       <selector class="hudson.plugins.copyartifact.WorkspaceSelector"/>
       <flatten>true</flatten>
       <doNotFingerprintArtifacts>false</doNotFingerprintArtifacts>

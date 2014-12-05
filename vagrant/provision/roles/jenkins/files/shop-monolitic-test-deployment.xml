@@ -33,7 +33,7 @@
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
       <spec></spec>
-      <upstreamProjects>shop-monolitic-build,</upstreamProjects>
+      <upstreamProjects>shop-monolitic-build</upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
         <ordinal>0</ordinal>
