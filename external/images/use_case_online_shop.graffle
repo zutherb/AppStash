@@ -52,8 +52,50 @@
 	<key>GraphicsList</key>
 	<array>
 		<dict>
+			<key>AllowLabelDrop</key>
+			<false/>
+			<key>Class</key>
+			<string>LineGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>Helvetica</string>
+				<key>Size</key>
+				<real>21</real>
+			</dict>
+			<key>Head</key>
+			<dict>
+				<key>ID</key>
+				<integer>11</integer>
+			</dict>
+			<key>ID</key>
+			<integer>57</integer>
+			<key>Points</key>
+			<array>
+				<string>{537.55401037003833, 239.93472586689373}</string>
+				<string>{114.89062499999989, 245.84474382385037}</string>
+			</array>
+			<key>Style</key>
+			<dict>
+				<key>stroke</key>
+				<dict>
+					<key>HeadArrow</key>
+					<string>0</string>
+					<key>Legacy</key>
+					<true/>
+					<key>TailArrow</key>
+					<string>0</string>
+				</dict>
+			</dict>
+			<key>Tail</key>
+			<dict>
+				<key>ID</key>
+				<integer>54</integer>
+			</dict>
+		</dict>
+		<dict>
 			<key>Bounds</key>
-			<string>{{495.49998044494055, 322.12555219211401}, {106, 26}}</string>
+			<string>{{495.5000059019734, 322.12555935275805}, {106, 26}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -131,8 +173,8 @@
 			<integer>55</integer>
 			<key>Points</key>
 			<array>
-				<string>{601.32319499614914, 291.39845258016663}</string>
-				<string>{495.67676589373201, 378.85265180406145}</string>
+				<string>{601.32320897927025, 291.39845650882893}</string>
+				<string>{495.67680282467649, 378.85266219668711}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -208,8 +250,8 @@
 			<integer>53</integer>
 			<key>Points</key>
 			<array>
-				<string>{342.22915019060048, 387.89731071853981}</string>
-				<string>{114.89062499999989, 275.11326644786027}</string>
+				<string>{342.22127406643426, 387.90097921316692}</string>
+				<string>{114.89062499999989, 275.14016665613133}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -231,7 +273,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{444.88660783973069, 157.29048102071178}, {106, 26}}</string>
+			<string>{{444.93747696334384, 157.26154097582361}, {106, 26}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -309,8 +351,8 @@
 			<integer>14</integer>
 			<key>Points</key>
 			<array>
-				<string>{428.17222061944864, 142.04545749883019}</string>
-				<string>{567.60099506001268, 198.53550454259337}</string>
+				<string>{428.20195775619277, 142.02856057245472}</string>
+				<string>{567.67299617049491, 198.49452137919252}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -355,8 +397,8 @@
 			<integer>13</integer>
 			<key>Points</key>
 			<array>
-				<string>{244.12466645308288, 147.93183864296523}</string>
-				<string>{114.89062499999989, 216.31065516931923}</string>
+				<string>{244.10820393399521, 147.92463868537189}</string>
+				<string>{114.89062499999989, 216.27087534398768}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -815,7 +857,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2014-11-24 20:24:06 +0000</string>
+	<string>2014-12-05 07:11:37 +0000</string>
 	<key>Modifier</key>
 	<string>Bernd Zuther</string>
 	<key>NotesVisible</key>

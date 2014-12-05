@@ -3,38 +3,39 @@
 ## Overview
 
 This application gives architects and developers an example how a microservice web application architecture can
-look like. The application is based on the **AngularJS Phone Catalog** and **MongoDB Pizza Shop**, which can be found
-on Github: 
+look like. The application is based on the two projects the **AngularJS Phone Catalog** and **MongoDB Pizza Shop**,
+which can be found on Github:
 - [AngularJS Phone Catalog Tutorial Application](https://github.com/angular/angular-phonecat)
 - [MongoDB Pizza Shop](https://github.com/comsysto/mongodb-onlineshop)
 
 The application shows a small online shop for mobile devices that implements the following use cases. An user is able to:
-- see different catalogs of mobile devices,
+- see different kinds of catalogs of mobile devices (e.g. mobiles or tablets),
 - create a cart,
 - and order the created cart.
 
 ![Use Case Online Shop](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/use_case_online_shop.png)
 
-This use cases implemented in to way:
+This use cases implemented in two ways:
 
-- [Monolith Webshop](https://github.com/zutherb/AppStash/#monolith-appserver), which represents a three layer architecture based online shop that is  Wicket
-- [Microservice Webshop](https://github.com/zutherb/AppStash/#microservice-appserver), which represents a microservice architecture based online shop on AngularJS, Wicket, Scala, Restx and Spring Boot
+- [Monolith Webshop](https://github.com/zutherb/AppStash/#monolith-appserver), which represents a three layer
+  architecture Wicket based online shop that implements the three use cases,
+- [Microservice Webshop](https://github.com/zutherb/AppStash/#microservice-appserver), which represents an online shop
+  based on AngularJS, Scala, Restx and Spring Boot an microservice architecture
 
+![Deployment Diagram Online Shop](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/deployment_diagramm_online_shop.png)
 
 ## Directory Layout
 
+The following Directory Layout shows the important
+
     microservice/           --> all files of the microservice applications are located in this folder
         frontend/           --> all frontend applications are located in this folder
-            catalog/        --> an angularjs frontend application that shows the product catalog and is used to create a cart is located in this directory
+            catalog/        --> an AngularJS frontend application that shows the product catalog and is used to create a cart is located in this directory
             registration/   --> all files that are needed to glue the registration form of the monolithic with the microservice application
         service/            --> all business services are located in the folder
             cart/           --> a spring boot cart rest service is located in the folder
-            dataloader/     --> a spring boot application that prepares the initial mongodb dataset is located in the folder
             navigation/     --> a java rest x navigation rest service is located in the folder
-            order/          --> a java spark order rest service is located in the folder
             product/        --> a scala spray product rest service is located in the folder
-            recommendation/ --> a R recommendation rest service is located in the folder
-            user/           --> a spring boot user rest service is located in the folder
     monolithic/             --> all files of the monolithic application are located in this directory
 
 ## Prerequisites
