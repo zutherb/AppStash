@@ -2,9 +2,9 @@
 
 ## Overview
 
-This application gives architects and developers an example how a microservice web application architecture can
-look like. The application is based on the two projects the **AngularJS Phone Catalog** and **MongoDB Pizza Shop**,
-which can be found on Github:
+This application gives software architects and developers an example how a microservice web application architecture can
+be look like. Futhermore how it can be deployed in a multi ci pipeline and how it can be monitored. The application
+is based on the two projects the **AngularJS Phone Catalog** and **MongoDB Pizza Shop**, which can be found on Github:
 - [AngularJS Phone Catalog Tutorial Application](https://github.com/angular/angular-phonecat)
 - [MongoDB Pizza Shop](https://github.com/comsysto/mongodb-onlineshop)
 
@@ -17,35 +17,40 @@ The application shows a small online shop for mobile devices that implements the
 
 This use cases implemented in two ways:
 
-- [Monolith Webshop](https://github.com/zutherb/AppStash/#monolith-appserver), which represents a three layer
-  architecture Wicket based online shop that implements the three use cases,
-- [Microservice Webshop](https://github.com/zutherb/AppStash/#microservice-appserver), which represents an online shop
-  based on AngularJS, Scala, Restx and Spring Boot an microservice architecture
+- A [Monolitic Webshop](https://github.com/zutherb/AppStash/#monolith-appserver), which is represented by a three layered
+  online shop based on [Apache Wicket](http://wicket.apache.org/), the [Spring Framework](http://projects.spring.io/spring-framework/)
+  and [Spring Data](http://projects.spring.io/spring-data/) that implements all given use cases,
+- The Microservice architecture is based on a mix of the Monolitic Webshop and a [Microservice Catalog Frontend](https://github.com/zutherb/AppStash/#microservice-appserver).
+  In the mix the Microservice Catalog Frontend provides the use case that an user should be able to see the different mobile.
+  Finally the Monolitic Webshop is used by the user to create an order. Microservice Catalog Frontend is based on an
+  [AngularJS](https://angularjs.org/) and [Typescript](http://www.typescriptlang.org/) which access different kinds of
+  [REST-Services](http://en.wikipedia.org/wiki/Representational_state_transfer)that are based on [Scala](http://www.scala-lang.org/),
+  [Spray](http://spray.io/), [Restx](http://restx.io/) and [Spring Boot](http://projects.spring.io/spring-boot/).
 
 ![Deployment Diagram Online Shop](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/deployment_diagramm_online_shop.png)
 
 ## Directory Layout
 
-The following Directory Layout shows the important
+The following directory layout shows the important directories for the given use cases in the [overview](https://github.com/zutherb/AppStash/#overview).
 
     microservice/           --> all files of the microservice applications are located in this folder
         frontend/           --> all frontend applications are located in this folder
             catalog/        --> an AngularJS frontend application that shows the product catalog and is used to create a cart is located in this directory
-            registration/   --> all files that are needed to glue the registration form of the monolithic with the microservice application
+            checkout/       --> all files that are needed to glue the checkout form of the monolithic to the microservice catalog frontend
         service/            --> all business services are located in the folder
             cart/           --> a spring boot cart rest service is located in the folder
-            navigation/     --> a java rest x navigation rest service is located in the folder
+            navigation/     --> a java based restx navigation rest service is located in the folder
             product/        --> a scala spray product rest service is located in the folder
     monolithic/             --> all files of the monolithic application are located in this directory
 
 ## Prerequisites
 
-You need some dependencies to run the application cluster or to extend the application.
+You need some dependencies to run the application cluster or to add your own services to the application.
 
 ###Running 
 
-You need at least 16 GB RAM to run the whole cluster and you have to install the following software dependencies
-on your machine.
+You need at least 16 GB RAM to run the whole cluster that emulates a . Furthermore you have to install the following
+software dependencies on your machine.
 
 #### Git
 
@@ -79,8 +84,9 @@ vagrant up
 
 ### Deploy on production servers
 
-You have to execute the [Production Deployment](http://ci.microservice.io:8080/view/Production%20Deployment/) after you
-have boot up the cluster. Therefore you have to execute the following to builds:
+You have to execute the [Production Deployment Builds](http://ci.microservice.io:8080/view/Production%20Deployment/)
+[Jenkins CI Server](http://jenkins-ci.org/) after you have boot up the cluster. Otherwise you can use the production urls
+that are given in the next section. Therefore you have to execute the following to builds:
 
 - [Microservice Production Deployment](http://ci.microservice.io:8080/view/Production%20Deployment/job/shop-microservice-production-deployment/build?delay=0sec)
 - [Monolith Production Deployment](http://ci.microservice.io:8080/view/Production%20Deployment/job/shop-monolitic-production-deployment/build?delay=0sec)
@@ -91,48 +97,48 @@ have boot up the cluster. Therefore you have to execute the following to builds:
 
 The Cluster contains of the following nodes:
 
-Vargrant-Name | IP            | Hostname           | Application        | Forward
---------------|---------------|--------------------|--------------------|------------------------
-buildserver   | 10.211.55.200 | ci-node            | Jenkins            | http://ci.microservice.io:8080/
+Vargrant-Name | IP            | Hostname           | Application                 | Forward
+--------------|---------------|--------------------|-----------------------------|------------------------
+buildserver   | 10.211.55.200 | ci-node            | Jenkins                     | http://ci.microservice.io:8080/
 reposerver    | 10.211.55.201 | ci-repo            | Artifact Repository (NGINX) |
-dbserver      | 10.211.55.202 | mongodb-node       | MongoDB            | localhost:27017
-dbserver      | 10.211.55.202 | redis-node         | Redis              | localhost:6379
-appserver1    | 10.211.55.101 | app-server-node-1  | Legacy Shop        | http://test.monolith.io:8080/shop/
-appserver1    | 10.211.55.101 | app-server-node-1  | Probe              | http://test.monolith.io:8080/probe/ (admin / topsecret)
-appserver2    | 10.211.55.102 | app-server-node-2  | Legacy Shop        | http://shop.monolith.io:8080/shop/
-appserver2    | 10.211.55.102 | app-server-node-2  | Probe              | http://shop.monolith.io:8080/probe/ (admin / topsecret)
-appserver3    | 10.211.55.103 | app-server-node-3  | Microservice Shop  | http://test-shop.microservice.io/
-appserver3    | 10.211.55.104 | app-server-node-4  | Microservice Shop  | http://shop.microservice.io/
-elasticsearch | 10.211.55.100 | monitoring-node    | Kibana             | http://monitoring.microservice.io/
-elasticsearch | 10.211.55.100 | monitoring-node    | Nagios             | http://monitoring.microservice.io/nagios3/ (nagiosadmin / admin123)
-elasticsearch | 10.211.55.100 | monitoring-node    | Icinga             | http://monitoring.microservice.io/icinga/ (icingaadmin / admin123)
+dbserver      | 10.211.55.202 | mongodb-node       | MongoDB                     | localhost:27017
+dbserver      | 10.211.55.202 | redis-node         | Redis                       | localhost:6379
+appserver1    | 10.211.55.101 | app-server-node-1  | Legacy Shop                 | http://test.monolith.io:8080/shop/
+appserver1    | 10.211.55.101 | app-server-node-1  | Probe                       | http://test.monolith.io:8080/probe/ (admin / topsecret)
+appserver2    | 10.211.55.102 | app-server-node-2  | Legacy Shop                 | http://shop.monolith.io:8080/shop/
+appserver2    | 10.211.55.102 | app-server-node-2  | Probe                       | http://shop.monolith.io:8080/probe/ (admin / topsecret)
+appserver3    | 10.211.55.103 | app-server-node-3  | Microservice Shop           | http://test-shop.microservice.io/
+appserver3    | 10.211.55.104 | app-server-node-4  | Microservice Shop           | http://shop.microservice.io/
+elasticsearch | 10.211.55.100 | monitoring-node    | Kibana                      | http://monitoring.microservice.io/
+elasticsearch | 10.211.55.100 | monitoring-node    | Nagios                      | http://monitoring.microservice.io/nagios3/ (nagiosadmin / admin123)
+elasticsearch | 10.211.55.100 | monitoring-node    | Icinga                      | http://monitoring.microservice.io/icinga/ (icingaadmin / admin123)
 
 ###CI-Node
 
-A Jenkins build server is running on the CI-Node. Jenkins is an open source continuous integration tool written in Java.
-Jenkins provides continuous integration services for software development and supports SCM tools including CVS,
-Subversion, Git and Mercurial, and can execute Apache Ant, Apache Maven and Gradle based projects as well as arbitrary
+A Jenkins build server is running on the CI-Node. Jenkins is an open source continuous integration tool written in Java
+and provides a continuous integration services for software development which supports diffent SCM tools. Furthermore
+Jenkins can execute different build scripts like [Gradle](http://gradle.org/) as well as arbitrary
 shell scripts and Windows batch commands.
 
-You can reach the jenkins that builds and deploy the monolith and microservice application under http://ci.microservice.io:8080/.
+You can reach the jenkins that builds and deploy the monolith and microservice application under the following url http://ci.microservice.io:8080/.
 
 ![CI-Node](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/ci-node.png)
 
 ###Monolith Appserver
 
-A three layer architecture online shop based on Apache Wicket is deployed on the Monolith Appserver which is a reference
-implementation for the use cases given in the [Overview](https://github.com/zutherb/AppStash/#overview). You
-can reach the online shop under the following url http://shop.monolith.io:8080/shop/ .
+The monolith online shop is deployed on the Monolith Appserver which is a reference implementation for the given  use
+cases in the [Overview](https://github.com/zutherb/AppStash/#overview). You can reach the online shop under the following
+url http://shop.monolith.io:8080/shop/ .
 
 ![Monolith Appserver](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/monolith-appserver.png)
 
-A [PSI Probe](https://code.google.com/p/psi-probe/) is reachable under http://shop.monolith.io:8080/probe/
-(admin / topsecret) which is a community-driven fork of Lambda Probe. It is intended to replace and extend Tomcat
-Manager, making it easier to manage and monitor an instance of Apache Tomcat.
+Furthermore you can reach the [PSI Probe](https://code.google.com/p/psi-probe/) monitoring and log analysis services
+under the following url http://shop.monolith.io:8080/probe/. The user credentials are admin / topsecret.
 
-Unlike many other server monitoring tools, PSI Probe does not require any changes to your existing apps. It provides
-all of its features through a web-accessible interface that becomes available simply by deploying it to your server.
-These features include:
+PSI Probe is a community-driven fork of Lambda Probe. It is intended to replace and extend Tomcat
+Manager, making it easier to manage and monitor an instance of Apache Tomcat. PSI Probe does not require any changes to
+an existing app and it provides many features through a web-accessible interface that becomes available simply by
+deploying it to your server. These features include:
 
 - Requests: Monitor traffic in real-time, even on a per-application basis.
 - Sessions: Browse/search attributes, view last IP, expire, estimate size.
