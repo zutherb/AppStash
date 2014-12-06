@@ -82,6 +82,10 @@ vagrant plugin install vagrant-hostsupdater
 vagrant up
 ```
 
+Vagrant will provision each machine in the cluster with all the necessary components (e.g. Monitoring, Build, Database,
+Debian repository and Application Server)to run a whole development cluster. The initial setup can take a few minutes to
+complete on each machine.
+
 ### Deploy on production servers
 
 You have to execute the [Production Deployment Builds](http://ci.microservice.io:8080/view/Production%20Deployment/)
@@ -98,7 +102,7 @@ that are given in the next section. Therefore you have to execute the following 
 The Cluster contains of the following nodes:
 
 Vargrant-Name | IP            | Hostname           | Application                 | Forward
---------------|---------------|--------------------|-----------------------------|------------------------
+--------------|---------------|--------------------|-----------------------------|--------------------------------------------------------------------
 buildserver   | 10.211.55.200 | ci-node            | Jenkins                     | http://ci.microservice.io:8080/
 reposerver    | 10.211.55.201 | ci-repo            | Artifact Repository (NGINX) |
 dbserver      | 10.211.55.202 | mongodb-node       | MongoDB                     | localhost:27017
@@ -156,6 +160,13 @@ or declarative with minimal impact on application performance, even in productio
 
 ![JETM Overview](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/performance-overview.png)
 ![JETM Request view](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/performance-request-view.png)
+
+[JMX](http://en.wikipedia.org/wiki/Java_Management_Extensions) is a natural way to have access to technical management,
+e.g. for tuning, statistics, log levels, ... Unfortunately, it lacks a lightweight tool to expose mbeans and to browse
+them securely on any application and environment without heavy infrastructure setup. [JMiniX](https://code.google.com/p/jminix/)
+provides such a feature. You can reach JMiniX under the following url http://shop.monolith.io:8080/shop/jmx/.
+
+![JMiniX](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/jminix.png)
 
 ###Microservice Appserver
 
