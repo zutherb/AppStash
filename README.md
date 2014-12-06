@@ -24,7 +24,7 @@ This use cases implemented in two ways:
   In the mix the Microservice Catalog Frontend provides the use case that an user should be able to see the different mobile.
   Finally the Monolitic Webshop is used by the user to create an order. Microservice Catalog Frontend is based on an
   [AngularJS](https://angularjs.org/) and [Typescript](http://www.typescriptlang.org/) which access different kinds of
-  [REST-Services](http://en.wikipedia.org/wiki/Representational_state_transfer)that are based on [Scala](http://www.scala-lang.org/),
+  [REST-Services](http://en.wikipedia.org/wiki/Representational_state_transfer) that are based on [Scala](http://www.scala-lang.org/),
   [Spray](http://spray.io/), [Restx](http://restx.io/) and [Spring Boot](http://projects.spring.io/spring-boot/).
 
 ![Deployment Diagram Online Shop](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/deployment_diagramm_online_shop.png)
@@ -142,18 +142,20 @@ deploying it to your server. These features include:
 
 - Requests: Monitor traffic in real-time, even on a per-application basis.
 - Sessions: Browse/search attributes, view last IP, expire, estimate size.
-- JSP: Browse, view source, compile.
-- Data Sources: View pool usage, execute queries.
 - Logs: View contents, download, change levels at runtime.
 - Threads: View execution stack, kill.
-- Connectors: Status, usage charts.
-- Cluster: Status, usage charts.
-- JVM: Memory usage charts, advise GC
-- Java Service Wrapper: Restart JVM.
-- System: CPU usage, memory usage, swap file usage.
+- JVM: Memory usage charts, advise GC.
 
 ![Probe](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/probe.png)
 ![Probe](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/probe-log.png)
+
+Moreover you access the performance monitor [JETM](http://jetm.void.fm/) under the following url http://shop.monolith.io:8080/shop/performance/
+which is a small and free library that is included in the monolith online shop, that helps locating performance problems
+in existing Java applications. JETM enables developers to track down performance issues on demand, either programmatic
+or declarative with minimal impact on application performance, even in production.
+
+![JETM Overview](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/performance-overview.png)
+![JETM Request view](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/performance-request-view.png)
 
 ###Microservice Appserver
 
