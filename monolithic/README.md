@@ -1,7 +1,7 @@
-MongoDB Pizza Shop
-==================
+MongoDB Online Shop
+===================
 
-The MongoDB Pizza Shop is a small Sample Application that demonstrates the usage of MongoDB in a Java project
+The MongoDB Online Shop is a small Sample Application that demonstrates the usage of MongoDB in a Java project
 using Spring Data.
 
 System Requirements
@@ -57,14 +57,14 @@ There are two options to start the application:
     2. Run JettyStart.main from the IDE for running on the port specified as a program argument.
 
 For the latter option, make sure to set the working directory to ./shop/ui.
-In both cases, the application will be available at http://localhost:port/pizza.
+In both cases, the application will be available at http://localhost:port/shop.
 
 Data Generator
 ---------------
 
-On startup, the application automatically checks if the database "pizza" exists and generates users, products, and
+On startup, the application automatically checks if the database "shop" exists and generates users, products, and
 random orders for the last 3 years. Hence, the easiest way to re-initialize the data is to delete the entire database
-"pizza" and restart the application.
+"shop" and restart the application.
 
 General Hints
 -------------
