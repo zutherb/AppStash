@@ -90,10 +90,10 @@ public abstract class AbstractBasePage extends WebPage {
 
         String designUrl = String.format("/assets/css/bootstrap-%s.min.css", designSelector.getDesignType());
         response.render(CssHeaderItem.forUrl(contextPath + designUrl));
-//        response.render(CssHeaderItem.forUrl(contextPath + "/assets/css/bootstrap-theme.min.css"));
         response.render(CssHeaderItem.forUrl(contextPath + "/assets/css/bootstrap-theme-shop.css"));
 
         response.render(JavaScriptHeaderItem.forUrl(contextPath + "/assets/js/bootstrap.min.js"));
+        response.render(CssHeaderItem.forUrl(contextPath + "/assets/css/bootstrap-addon.css"));
     }
 
     public AuthenticationService getAuthenticationService() {

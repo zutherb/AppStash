@@ -162,7 +162,7 @@ or declarative with minimal impact on application performance, even in productio
 ![JETM Request view](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/performance-request-view.png)
 
 [JMX](http://en.wikipedia.org/wiki/Java_Management_Extensions) is a natural way to have access to technical management,
-e.g. for tuning, statistics, log levels, ... Unfortunately, it lacks a lightweight tool to expose mbeans and to browse
+e.g. for tuning, statistics, log levels and so on. Unfortunately, it lacks a lightweight tool to expose mbeans and to browse
 them securely on any application and environment without heavy infrastructure setup. [JMiniX](https://code.google.com/p/jminix/)
 provides such a feature. You can reach JMiniX under the following url http://shop.monolith.io:8080/shop/jmx/.
 
