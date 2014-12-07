@@ -1,6 +1,6 @@
 #! /bin/sh
 PIDFILE=/var/run/sprint-boot-admin.pid
-BASE_DIRECTORY=/usr/local/sprint-boot-admin
+BASE_DIRECTORY=/usr/local/spring-boot-admin
 
 if [ `id -u` -ne 0 ]; then
     echo "You need root privileges to run this script"
