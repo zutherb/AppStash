@@ -136,4 +136,5 @@
     - shop-microservice-catalog-ui-build
     - shop-microservice-checkout-ui-build
     - shop-microservice-registration-ui-build
+    - spring-boot-admin
   ignore_errors: yes

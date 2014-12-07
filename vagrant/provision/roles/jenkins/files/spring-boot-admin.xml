@@ -48,7 +48,7 @@
   <reporters/>
   <publishers>
     <hudson.tasks.ArtifactArchiver>
-      <artifacts>**/*.jar</artifacts>
+      <artifacts>**/*.jar,**/*.deb</artifacts>
       <allowEmptyArchive>false</allowEmptyArchive>
       <onlyIfSuccessful>false</onlyIfSuccessful>
       <fingerprint>false</fingerprint>
@@ -57,7 +57,73 @@
   </publishers>
   <buildWrappers/>
   <prebuilders/>
-  <postbuilders/>
+  <postbuilders>
+    <hudson.tasks.Shell>
+      <command>echo [INFO]                                                                         
+echo [INFO] ------------------------------------------------------------------------
+echo [INFO] Create Spring Boot Admin Debian Package
+echo [INFO] ------------------------------------------------------------------------
+echo [INFO] 
+
+TARGET_DIR=${WORKSPACE}/spring-boot-admin-samples/spring-boot-admin-sample/target
+PACKAGE_BASE_DIR=$TARGET_DIR/spring-boot-admin-${BUILD_NUMBER}
+INSTALL_DIR=$PACKAGE_BASE_DIR/usr/local/spring-boot-admin
+
+mkdir -p $PACKAGE_BASE_DIR
+mkdir -p $PACKAGE_BASE_DIR/usr/local/spring-boot-admin
+cp spring-boot-admin-samples/spring-boot-admin-sample/target/spring-boot-admin-sample.jar $INSTALL_DIR/spring-boot-admin.jar
+
+mkdir -p $PACKAGE_BASE_DIR/DEBIAN
+cat &gt; $PACKAGE_BASE_DIR/DEBIAN/control &lt;&lt;EOL
+Package: spring-boot-admin
+Version: ${BUILD_NUMBER}
+Section: base
+Priority: optional
+Architecture: amd64
+Depends: 
+Maintainer: Bernd Zuther &lt;bernd.zuther@codecentric.de&gt;
+Description: Spring Boot Admin
+ This is a simple admin interface for Spring Boot applications.
+EOL
+
+cat &gt; $PACKAGE_BASE_DIR/DEBIAN/control &lt;&lt;EOL
+#!/bin/sh
+set -e
+
+chmod +x /etc/init.d/spring-boot-admin
+
+update-rc.d spring-boot-admin defaults
+
+service spring-boot-admin force-reload
+EOL
+
+cat &gt; $PACKAGE_BASE_DIR/etc/init.d/spring-boot-admin &lt;&lt;EOL
+#!/bin/sh
+set -e
+
+chmod +x /etc/init.d/spring-boot-admin
+
+update-rc.d spring-boot-admin defaults
+
+service spring-boot-admin force-reload
+EOL
+
+BUILD_ARTIFACT_FILENAME=spring-boot-admin.deb
+BUILD_ARTIFACT=$TARGET_DIR/$BUILD_ARTIFACT_FILENAME
+dpkg-deb --build $PACKAGE_BASE_DIR $BUILD_ARTIFACT
+
+echo [INFO]                                                                         
+echo [INFO] ------------------------------------------------------------------------
+echo [INFO] Deploy Spring Boot Admin Debian Package
+echo [INFO] ------------------------------------------------------------------------
+echo [INFO] 
+
+scp -o StrictHostKeyChecking=no -v $BUILD_ARTIFACT vagrant@monitoring-node:/tmp/$BUILD_ARTIFACT_FILENAME 
+ssh vagrant@monitoring-node -o StrictHostKeyChecking=no -v &lt;&lt;EOF
+sudo dpkg --install /tmp/$BUILD_ARTIFACT_FILE 
+EOF</command>
+    </hudson.tasks.Shell>
+  </postbuilders>
   <runPostStepsIfResult>
     <name>FAILURE</name>
     <ordinal>2</ordinal>
