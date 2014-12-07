@@ -12,8 +12,7 @@ PATH=/sbin:/bin:/usr/sbin:/usr/bin:/etc/init.d
 
 start_service() {
         log_daemon_msg "Starting Spring Boot Admin"
-        nohup java -jar $BASE_DIRECTORY/spring-boot-admin.jar > /var/log/cart.log 2>&1 &
-        echo $! > $PIDFILE
+        nohup java -jar $BASE_DIRECTORY/spring-boot-admin.jar -Dapp.pid=$PIDFILE > /var/log/spring-boot-admin.log 2>&1 &
         sleep 1
         log_end_msg 0 || true
 }

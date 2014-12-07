@@ -74,6 +74,8 @@ mkdir -p $PACKAGE_BASE_DIR/usr/local/spring-boot-admin
 cp spring-boot-admin-samples/spring-boot-admin-sample/target/spring-boot-admin-sample.jar $INSTALL_DIR/spring-boot-admin.jar
 
 mkdir -p $PACKAGE_BASE_DIR/DEBIAN
+mkdir -p $PACKAGE_BASE_DIR/etc/init.d/
+
 cat &gt; $PACKAGE_BASE_DIR/DEBIAN/control &lt;&lt;EOL
 Package: spring-boot-admin
 Version: ${BUILD_NUMBER}
@@ -86,7 +88,7 @@ Description: Spring Boot Admin
  This is a simple admin interface for Spring Boot applications.
 EOL
 
-cat &gt; $PACKAGE_BASE_DIR/DEBIAN/control &lt;&lt;EOL
+cat &gt; $PACKAGE_BASE_DIR/DEBIAN/postinst &lt;&lt;EOL
 #!/bin/sh
 set -e
 
@@ -97,16 +99,9 @@ update-rc.d spring-boot-admin defaults
 service spring-boot-admin force-reload
 EOL
 
-cat &gt; $PACKAGE_BASE_DIR/etc/init.d/spring-boot-admin &lt;&lt;EOL
-#!/bin/sh
-set -e
+chmod 0555 $PACKAGE_BASE_DIR/DEBIAN/postinst
 
-chmod +x /etc/init.d/spring-boot-admin
-
-update-rc.d spring-boot-admin defaults
-
-service spring-boot-admin force-reload
-EOL
+wget -O $PACKAGE_BASE_DIR/etc/init.d/spring-boot-admin https://raw.githubusercontent.com/zutherb/AppStash/master/microservice/monitoring/sprint-boot-admin/data/etc/init.d/sprint-boot-admin
 
 BUILD_ARTIFACT_FILENAME=spring-boot-admin.deb
 BUILD_ARTIFACT=$TARGET_DIR/$BUILD_ARTIFACT_FILENAME
@@ -120,7 +115,7 @@ echo [INFO]
 
 scp -o StrictHostKeyChecking=no -v $BUILD_ARTIFACT vagrant@monitoring-node:/tmp/$BUILD_ARTIFACT_FILENAME 
 ssh vagrant@monitoring-node -o StrictHostKeyChecking=no -v &lt;&lt;EOF
-sudo dpkg --install /tmp/$BUILD_ARTIFACT_FILE 
+sudo dpkg --install /tmp/spring-boot-admin.deb 
 EOF</command>
     </hudson.tasks.Shell>
   </postbuilders>
