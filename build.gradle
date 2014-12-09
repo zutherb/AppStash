@@ -69,6 +69,7 @@ subprojects {
                         "org.springframework:spring-tx:$springVersion",
                         "org.springframework:spring-web:$springVersion",
                         "org.springframework:spring-webmvc:$springVersion",
+                        "org.springframework:spring-test:$springVersion",
                         "org.springframework.data:spring-data-mongodb:$springDataMongoVersion",
                         "org.mongodb:mongo-java-driver:$mongodbDriverVersion",
                         "org.springframework.data:spring-data-redis:$springDataRedisVersion",
