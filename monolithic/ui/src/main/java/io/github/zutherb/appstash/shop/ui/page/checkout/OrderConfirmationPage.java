@@ -8,7 +8,7 @@ import org.wicketstuff.annotation.mount.MountPath;
 /**
  * @author zutherb
  */
-@MountPath("bestellbestaetigung")
+@MountPath("orderconfirmation")
 public class OrderConfirmationPage extends CheckoutPage {
     public OrderConfirmationPage(Model<OrderInfo> orderInfoModel) {
         super(orderInfoModel);
