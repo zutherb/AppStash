@@ -237,10 +237,10 @@ This application provides a simple GUI to administrate Spring Boot applications 
 - Show online status
 - Download main logfile
 - Show details, like
--- Java system properties
--- Java environment properties
--- Memory metrics
--- Spring environment properties
+  - Java system properties
+  - Java environment properties
+  - Memory metrics
+  - Spring environment properties
 
 ![Spring Boot Admin](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/spring-boot-admin.png)
 
