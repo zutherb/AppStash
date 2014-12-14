@@ -73,6 +73,14 @@ brew install git
 learn much about Vagrant, but you should be able to install it and execute the following commandline: ```vagrant up```
 - [Vagrant](https://www.vagrantup.com/) (download, documentation)
 
+```
+brew tap caskroom/cask
+brew install brew-cask
+brew cask install virtualbox
+brew cask install vagrant
+brew cask install vagrant-manager
+```
+
 #### Ansible
 
 - [Ansible](http://www.ansible.com/) (download, documentation) is a tool for automating infrastructure orchestration.
@@ -88,6 +96,7 @@ brew install ansible
 You only have to execute the following commands if you want to run the development cluster:
 
 ```bash
+curl -s https://raw.githubusercontent.com/zutherb/AppStash/master/start-cluster.sh | sh
 git clone git@github.com:zutherb/AppStash.git appstash
 cd appstash/vagrant
 vagrant plugin install vagrant-cachier
