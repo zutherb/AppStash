@@ -3,38 +3,42 @@
 ## Overview
 
 This application gives software architects and developers an example how a microservice web application architecture can
-be look like. Futhermore how it can be deployed in a multi ci pipeline and how it can be monitored. The application
-is based on the two projects the **AngularJS Phone Catalog** and **MongoDB Pizza Shop**, which can be found on Github:
-- [AngularJS Phone Catalog Tutorial Application](https://github.com/angular/angular-phonecat)
+look like and it simulates a development cluster, which contains continuous integration infrastructure as well as all
+necessary nodes to run an online shop. Thus it will furthermore shown, how a distributed online shop can deployed with a
+multi continuous integration pipeline and how the distributed system can be monitored. The application is based on
+the following two online shop applications, which can be found on Github:
+- [AngularJS Phone Catalog](https://github.com/angular/angular-phonecat)
 - [MongoDB Pizza Shop](https://github.com/comsysto/mongodb-onlineshop)
 
-The application shows a small online shop for mobile devices that implements the following use cases. An user is able to:
-- see different kinds of catalogs of mobile devices (e.g. mobiles or tablets),
+Both project was combined to an new online shop that is indeed to sell mobile devices and implements the following use
+cases. An user is able to:
+- see different kinds of mobile devices catalogs (e.g. mobiles or tablets),
 - create a cart,
 - and order the created cart.
 
 ![Use Case Online Shop](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/use_case_online_shop.png)
 
-This use cases implemented in two ways:
+This use cases implemented in the following two ways:
 
 - A [Monolitic Webshop](https://github.com/zutherb/AppStash/#monolith-appserver), which is represented by a three layered
   online shop based on [Apache Wicket](http://wicket.apache.org/), the [Spring Framework](http://projects.spring.io/spring-framework/)
   and [Spring Data](http://projects.spring.io/spring-data/) that implements all given use cases,
-- The Microservice architecture is based on a mix of the Monolitic Webshop and a [Microservice Catalog Frontend](https://github.com/zutherb/AppStash/#microservice-appserver).
-  In the mix the Microservice Catalog Frontend provides the use case that an user should be able to see the different mobile.
-  Finally the Monolitic Webshop is used by the user to create an order. Microservice Catalog Frontend is based on an
-  [AngularJS](https://angularjs.org/) and [Typescript](http://www.typescriptlang.org/) which access different kinds of
-  [REST-Services](http://en.wikipedia.org/wiki/Representational_state_transfer) that are based on [Scala](http://www.scala-lang.org/),
-  [Spray](http://spray.io/), [Restx](http://restx.io/) and [Spring Boot](http://projects.spring.io/spring-boot/).
+- The Microservice architecture is based on a mix of the Monolitic Webshop and a [Microservice Catalog Frontend](https://github.com/zutherb/AppStash/#microservice-appserver)
+  as it is shown in the below deployment diagram. In this mix a so called Microservice Catalog Frontend provides the
+  use case that an user should be able to see the different mobile. Finally the Monolitic Webshop is used by the user
+  to create an order. Microservice Catalog Frontend is based on an [AngularJS](https://angularjs.org/) and [Typescript](http://www.typescriptlang.org/)
+  which access different kinds of [REST-Services](http://en.wikipedia.org/wiki/Representational_state_transfer) that are
+  based on [Scala](http://www.scala-lang.org/), [Spray](http://spray.io/), [Restx](http://restx.io/) and [Spring Boot](http://projects.spring.io/spring-boot/).
 
 ![Deployment Diagram Online Shop](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/deployment_diagramm_online_shop.png)
 
 ## Directory Layout
 
-The following directory layout shows the important directories for the given use cases in the [overview](https://github.com/zutherb/AppStash/#overview).
+The following directory layout shows only the important directories that are necessary to implement the given use cases
+in the [overview](https://github.com/zutherb/AppStash/#overview).
 
     microservice/           --> all files of the microservice applications are located in this folder
-        frontend/           --> all frontend applications are located in this folder
+        frontend/           --> all microservice frontend applications are located in this folder
             catalog/        --> an AngularJS frontend application that shows the product catalog and is used to create a cart is located in this directory
             checkout/       --> all files that are needed to glue the checkout form of the monolithic to the microservice catalog frontend
         service/            --> all business services are located in the folder
@@ -45,17 +49,23 @@ The following directory layout shows the important directories for the given use
 
 ## Prerequisites
 
-You need some dependencies to run the application cluster or to add your own services to the application.
+You need some dependencies to run the application cluster or to add add own services to the showcase application.
 
 ###Running 
 
-You need at least 16 GB RAM to run the whole cluster that emulates a . Furthermore you have to install the following
-software dependencies on your machine.
+You need at least 16 GB RAM to run the whole cluster that emulates a whole development environment like you can find it
+in the must professional software development projects. Furthermore you have to install the following software
+dependencies on your machine.
 
 #### Git
 
+- Git [home](http://git-scm.com/) (download, documentation) is a distributed revision control system.
 - A good place to learn about setting up git is [here](https://help.github.com/articles/set-up-git)
-- Git [home](http://git-scm.com/) (download, documentation)
+- You should install Git with [Homebrew](http://brew.sh/)
+
+```
+brew install git
+```
 
 #### Vagrant
 
@@ -65,37 +75,42 @@ learn much about Vagrant, but you should be able to install it and execute the f
 
 #### Ansible
 
-- Ansible is the simplest way to automate IT. You must not know Ansible, but you have to install Ansible
-  otherwise Vagrant is not able to create the virtual machines.
-- [Ansible](http://www.ansible.com/) (download, documentation)
+- [Ansible](http://www.ansible.com/) (download, documentation) is a tool for automating infrastructure orchestration.
+  You must not know Ansible, but you have to install Ansible otherwise Vagrant is not able to create the virtual machines.
+- You should install Git with [Homebrew](http://brew.sh/)
+
+```
+brew install ansible
+```
 
 ###Boot up the cluster
 
-You only have to execute the following command if you want to run a development cluster:
+You only have to execute the following commands if you want to run the development cluster:
 
 ```bash
 git clone git@github.com:zutherb/AppStash.git appstash
-cd appstash
-cd vagrant
+cd appstash/vagrant
 vagrant plugin install vagrant-cachier
 vagrant plugin install vagrant-hostsupdater
 vagrant up
 ```
 
-Vagrant will provision each machine in the cluster with all the necessary components (e.g. Monitoring, Build, Database,
-Debian repository and Application Server)to run a whole development cluster. The initial setup can take a few minutes to
-complete on each machine.
+Vagrant will provision each node in the cluster with all the necessary components (e.g. Monitoring, Build, Database,
+Debian repository and Application Server) to run a whole development cluster. The initial setup can take a few minutes
+until the provisioning on each node is completed.
 
 ### Deploy on production servers
 
 You have to execute the [Production Deployment Builds](http://ci.microservice.io:8080/view/Production%20Deployment/)
 [Jenkins CI Server](http://jenkins-ci.org/) after you have boot up the cluster. Otherwise you can use the production urls
-that are given in the next section. Therefore you have to execute the following to builds:
+that are given in the next section. Therefore you have to execute the following two builds:
 
 - [Microservice Production Deployment](http://ci.microservice.io:8080/view/Production%20Deployment/job/shop-microservice-production-deployment/build?delay=0sec)
 - [Monolith Production Deployment](http://ci.microservice.io:8080/view/Production%20Deployment/job/shop-monolitic-production-deployment/build?delay=0sec)
 
-![CI-Node](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/ci-node.png)
+![CI-Node](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/production-deployment.png)
+
+After the are completed the cluster is fully installed.
 
 ## Workings with the application cluster
 
@@ -120,7 +135,7 @@ elasticsearch | 10.211.55.100 | monitoring-node    | Icinga                     
 ###CI-Node
 
 A Jenkins build server is running on the CI-Node. Jenkins is an open source continuous integration tool written in Java
-and provides a continuous integration services for software development which supports diffent SCM tools. Furthermore
+that provides a continuous integration services for software development which supports diffent SCM tools. Furthermore
 Jenkins can execute different build scripts like [Gradle](http://gradle.org/) as well as arbitrary
 shell scripts and Windows batch commands.
 
@@ -130,7 +145,7 @@ You can reach the jenkins that builds and deploy the monolith and microservice a
 
 ###Monolith Appserver
 
-The monolith online shop is deployed on the Monolith Appserver which is a reference implementation for the given  use
+The monolith online shop is deployed on the Monolith Appserver which is a reference implementation for the given use
 cases in the [Overview](https://github.com/zutherb/AppStash/#overview). You can reach the online shop under the following
 url http://shop.monolith.io:8080/shop/ .
 
@@ -139,10 +154,10 @@ url http://shop.monolith.io:8080/shop/ .
 Furthermore you can reach the [PSI Probe](https://code.google.com/p/psi-probe/) monitoring and log analysis services
 under the following url http://shop.monolith.io:8080/probe/. The user credentials are admin / topsecret.
 
-PSI Probe is a community-driven fork of Lambda Probe. It is intended to replace and extend Tomcat
-Manager, making it easier to manage and monitor an instance of Apache Tomcat. PSI Probe does not require any changes to
-an existing app and it provides many features through a web-accessible interface that becomes available simply by
-deploying it to your server. These features include:
+PSI Probe is a community-driven fork of Lambda Probe, which is intended to replace the Tomcat Manager and should make
+it easier to manage and monitor an instance of Apache Tomcat. PSI Probe does not require any changes to an existing app
+and it provides many features through a web-accessible interface that becomes available simply by deploying it to your
+server. These features include:
 
 - Requests: Monitor traffic in real-time, even on a per-application basis.
 - Sessions: Browse/search attributes, view last IP, expire, estimate size.
@@ -170,9 +185,31 @@ provides such a feature. You can reach JMiniX under the following url http://sho
 
 ###Microservice Appserver
 
+The microservice based online shop is deployed on the Microservice Appserver which is a reference implementation for the
+given use cases in the [Overview](https://github.com/zutherb/AppStash/#overview). You can reach the online shop under the
+following url http://shop.microservice.io/ .
+
 ![Microservice Appserver](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/microservice-appserver.png)
 
+The microservice based online shop consists of two frontend parts as you can see in the deployment diagram in the
+[overview section](https://github.com/zutherb/AppStash/#overview). The first part is an AngularJS Catalog Frontend that
+makes it possible to see a catalog for mobiles as well as a catalog for tablets. Furthermore a user is able to create a
+cart. If a user wants to order a created cart there is same clue logic in the [monolithic web application](https://github.com/zutherb/AppStash/#monolith-appserver)
+that a cart which was created in the AngularJS Catalog Frontend can be order with the checkout of the Wicket online shop
+on the monolith appserver.
+
 ###Monitoring Server
+
+Monitoring a monolithic web application is no major pain as you can see in the [monolith appserver section](https://github.com/zutherb/AppStash/#monolith-appserver).
+A distributed web application, like it is shown in the [microservice appserver section](https://github.com/zutherb/AppStash/#microservice-appserver),
+is not so easy to monitor. In this small example there is a [Ngnix](http://nginx.org/) web server that logs all request
+that comes into it. The Ngnix deliveries a AngularJS Catalog Frontend that represents a A single-page application (SPA).
+A SPA is a web application that fits on a single web page with the goal of providing a more fluid user experience akin to
+a desktop application. In addition to the SPA there are the three rest services a cart, product and a navigation service
+which are need for the different uses cases and are implemented in the programming languages Groovy, Scala and Java.
+This services must be alive that an user can see the products or create a cart. Furthermore there is a legacy JEE web
+application which is deployed in a [Tomcat Webserver](http://tomcat.apache.org/). An user can order its cart with that
+legacy JEE web application.
 
 Icinga is an open source network and computer system monitoring application. It was originally created as a fork of
 the Nagios system monitoring application. Icinga is attempting to get past perceived short-comings in Nagios development
@@ -190,6 +227,22 @@ of filters which modify and annotate the event data. Finally events are routed t
 events to a variety of external programs including Elasticsearch, local files and several message bus implementations.
 
 ![Kibana](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/kibana.png)
+
+The [Spring Boot Admin](https://github.com/codecentric/spring-boot-admin) is a simple admin interface for
+[Spring Boot](http://projects.spring.io/spring-boot/ "Official Spring-Boot website") applications.
+
+This application provides a simple GUI to administrate Spring Boot applications in some ways. At the moment it provides the following features for every registered application.
+
+- Show name/id and version number
+- Show online status
+- Download main logfile
+- Show details, like
+-- Java system properties
+-- Java environment properties
+-- Memory metrics
+-- Spring environment properties
+
+![Spring Boot Admin](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/spring-boot-admin.png)
 
 ## Contact
 

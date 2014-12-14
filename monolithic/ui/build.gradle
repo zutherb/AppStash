@@ -155,7 +155,7 @@ war {
                 "Implementation-Vendor"  : vendor,
                 "Git-Revision"           : proc.text.trim(),
                 "Build"                  : "${System.getenv("JOB_NAME")}",
-                "Build-Number"           : "${System.getenv("BUILD_NUMBER")}",
-                "Class-Path"             : manifestClasspath)
+                "Build-Number"           : "${System.getenv("BUILD_NUMBER")}"
+        )
     }
 }
