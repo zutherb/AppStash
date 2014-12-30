@@ -9,7 +9,7 @@ import org.springframework.context.ApplicationContext
  */
 class Boot implements CommandLineRunner {
 
-    public static void main(String[] args) {
+    static void main(String[] args) {
         SpringApplication.run(ApplicationConfiguration.class, args)
     }
 
