@@ -12,3 +12,4 @@
     - curl
     - build-essential
     - g++
+    - dc
