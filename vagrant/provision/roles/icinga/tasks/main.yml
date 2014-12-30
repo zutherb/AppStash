@@ -14,6 +14,7 @@
       - ci-repo.cfg
       - monitoring-node.cfg
       - mongodb-node.cfg
+      - checkmem.cfg
 
 - name: remove unused icinga configuration
   sudo: yes
