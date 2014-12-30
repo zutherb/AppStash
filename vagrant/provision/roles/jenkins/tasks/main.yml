@@ -43,6 +43,8 @@
   copy: src={{item}} dest=/var/lib/jenkins/{{item}} owner=jenkins
   with_items:
     - config.xml
+    - jenkins.mvn.GlobalMavenConfig.xml
+    - hudson.tasks.Maven.xml
     - org.jenkinsci.plugins.xvfb.XvfbBuildWrapper.xml
     - org.jenkins.ci.plugins.xframe_filter.XFrameFilterPageDecorator.xml
   notify: restart jenkins
@@ -132,6 +134,7 @@
     - shop-microservice-cart-service-build
     - shop-microservice-navigation-service-build
     - shop-microservice-recommendation-service-build
+    - shop-microservice-product-service-build
     - shop-microservice-dataloader-build
     - shop-microservice-catalog-ui-build
     - shop-microservice-checkout-ui-build

@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <hudson>
   <disabledAdministrativeMonitors/>
-  <version>1.589</version>
+  <version>1.595</version>
   <numExecutors>2</numExecutors>
   <mode>NORMAL</mode>
   <useSecurity>true</useSecurity>
@@ -50,7 +50,7 @@
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
     </hudson.model.AllView>
-    <au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView plugin="build-pipeline-plugin@1.4.4">
+    <au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView plugin="build-pipeline-plugin@1.4.5">
       <owner class="hudson" reference="../../.."/>
       <name>Deployment - Pipeline</name>
       <filterExecutors>false</filterExecutors>
@@ -58,6 +58,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>shop-build</firstJob>
+        <firstJobLink></firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>1</noOfDisplayedBuilds>
       <buildViewTitle></buildViewTitle>
@@ -71,7 +72,7 @@
       <refreshFrequency>3</refreshFrequency>
       <showPipelineDefinitionHeader>false</showPipelineDefinitionHeader>
     </au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView>
-    <au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView plugin="build-pipeline-plugin@1.4.4">
+    <au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView plugin="build-pipeline-plugin@1.4.5">
       <owner class="hudson" reference="../../.."/>
       <name>Monolitic Deployment Pipeline</name>
       <filterExecutors>false</filterExecutors>
@@ -79,6 +80,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>shop-monolitic-build</firstJob>
+        <firstJobLink>job/shop-monolitic-build/</firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>1</noOfDisplayedBuilds>
       <buildViewTitle></buildViewTitle>
@@ -92,7 +94,7 @@
       <refreshFrequency>3</refreshFrequency>
       <showPipelineDefinitionHeader>false</showPipelineDefinitionHeader>
     </au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView>
-    <au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView plugin="build-pipeline-plugin@1.4.4">
+    <au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView plugin="build-pipeline-plugin@1.4.5">
       <owner class="hudson" reference="../../.."/>
       <name>Microservice Product Service Pipeline</name>
       <filterExecutors>false</filterExecutors>
@@ -100,6 +102,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>shop-microservice-product-service-build</firstJob>
+        <firstJobLink>job/shop-microservice-product-service-build/</firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>3</noOfDisplayedBuilds>
       <buildViewTitle></buildViewTitle>
@@ -136,7 +139,7 @@
       </columns>
       <recurse>false</recurse>
     </listView>
-    <au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView plugin="build-pipeline-plugin@1.4.4">
+    <au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView plugin="build-pipeline-plugin@1.4.5">
       <owner class="hudson" reference="../../.."/>
       <name>Microservice Catalog UI Pipeline</name>
       <filterExecutors>false</filterExecutors>
@@ -144,6 +147,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>shop-microservice-catalog-ui-build</firstJob>
+        <firstJobLink>job/shop-microservice-catalog-ui-build/</firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>3</noOfDisplayedBuilds>
       <buildViewTitle></buildViewTitle>
@@ -157,7 +161,7 @@
       <refreshFrequency>3</refreshFrequency>
       <showPipelineDefinitionHeader>false</showPipelineDefinitionHeader>
     </au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView>
-    <au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView plugin="build-pipeline-plugin@1.4.4">
+    <au.com.centrumsystems.hudson.plugin.buildpipeline.BuildPipelineView plugin="build-pipeline-plugin@1.4.5">
       <owner class="hudson" reference="../../.."/>
       <name>Microservice Checkout UI Pipeline</name>
       <filterExecutors>false</filterExecutors>
@@ -165,6 +169,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>shop-microservice-checkout-ui-build</firstJob>
+        <firstJobLink>job/shop-microservice-checkout-ui-build/</firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>3</noOfDisplayedBuilds>
       <buildViewTitle></buildViewTitle>

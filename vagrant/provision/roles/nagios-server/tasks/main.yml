@@ -3,8 +3,6 @@
   with_items:
     - nagios3
     - nagios-nrpe-plugin
-    - ruby2.1
-    - ruby2.1-dev
 
 - sudo: yes
   copy: src={{item}} dest=/etc/nagios3/conf.d/{{item}} force=yes mode=0644
@@ -32,34 +30,7 @@
 - sudo: yes
   raw: mkdir -p /var/log/nagios/
 
-- sudo: yes
-  raw: gem install nagira
-
-- sudo: yes
-  raw: nagira-setup config:all
-
-#- sudo: yes
-#  copy: src=nagira dest=/etc/init.d/nagira force=yes mode=0744
-
-- sudo: yes
-  raw: a2enmod {{item}}
-  with_items:
-    - proxy
-    - proxy_http
-    - proxy_ajp
-    - rewrite
-    - deflate
-    - headers
-    - proxy_balancer
-    - proxy_connect
-    - proxy_html
-
-- sudo: yes
-  copy: src=000-default.conf dest=/etc/apache2/sites-available/000-default.conf force=yes mode=0644
-
 - raw: sudo service nagios3 restart
 - raw: sudo service apache2 restart
-- command: sudo service nagira restart
-  ignore_errors: yes
 
 

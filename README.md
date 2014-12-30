@@ -1,11 +1,11 @@
-# Microservice Phone Shop Application
+# AppStash - Microservice Phone Shop Application
 
 ## Overview
 
 This application gives software architects and developers an example how a microservice web application architecture can
 look like and it simulates a development cluster, which contains continuous integration infrastructure as well as all
 necessary nodes to run an online shop. Thus it will furthermore shown, how a distributed online shop can deployed with a
-multi continuous integration pipeline and how the distributed system can be monitored. The application is based on
+multi deployment pipeline and how the distributed system can be monitored. The application is based on
 the following two online shop applications, which can be found on Github:
 - [AngularJS Phone Catalog](https://github.com/angular/angular-phonecat)
 - [MongoDB Pizza Shop](https://github.com/comsysto/mongodb-onlineshop)
@@ -18,17 +18,18 @@ cases. An user is able to:
 
 ![Use Case Online Shop](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/use_case_online_shop.png)
 
-This use cases implemented in the following two ways:
+This use cases are implemented in the following two ways:
 
 - A [Monolitic Webshop](https://github.com/zutherb/AppStash/#monolith-appserver), which is represented by a three layered
   online shop based on [Apache Wicket](http://wicket.apache.org/), the [Spring Framework](http://projects.spring.io/spring-framework/)
   and [Spring Data](http://projects.spring.io/spring-data/) that implements all given use cases,
-- The Microservice architecture is based on a mix of the Monolitic Webshop and a [Microservice Catalog Frontend](https://github.com/zutherb/AppStash/#microservice-appserver)
+- and microservice architecture, which is based on a mix of the Monolitic Webshop and a [Microservice Catalog Frontend](https://github.com/zutherb/AppStash/#microservice-appserver)
   as it is shown in the below deployment diagram. In this mix a so called Microservice Catalog Frontend provides the
   use case that an user should be able to see the different mobile. Finally the Monolitic Webshop is used by the user
-  to create an order. Microservice Catalog Frontend is based on an [AngularJS](https://angularjs.org/) and [Typescript](http://www.typescriptlang.org/)
+  to create an order that means Monolitic Webshop represents a microservice on its own for this specific use case.
+  The Microservice Catalog Frontend is based on an [AngularJS](https://angularjs.org/) and [Typescript](http://www.typescriptlang.org/)
   which access different kinds of [REST-Services](http://en.wikipedia.org/wiki/Representational_state_transfer) that are
-  based on [Scala](http://www.scala-lang.org/), [Spray](http://spray.io/), [Restx](http://restx.io/) and [Spring Boot](http://projects.spring.io/spring-boot/).
+  implemented in [Scala](http://www.scala-lang.org/), [Spray](http://spray.io/), [Restx](http://restx.io/) and [Spring Boot](http://projects.spring.io/spring-boot/).
 
 ![Deployment Diagram Online Shop](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/deployment_diagramm_online_shop.png)
 
@@ -55,7 +56,8 @@ You need some dependencies to run the application cluster or to add add own serv
 
 You need at least 16 GB RAM to run the whole cluster that emulates a whole development environment like you can find it
 in the must professional software development projects. Furthermore you have to install the following software
-dependencies on your machine.
+dependencies on your machine. The provisioning should work on other systems as well but is only tested on MacOSX 10.10.
+That is the reason because the whole instructions that are shown, are related to MacOSX.
 
 #### Git
 
@@ -72,6 +74,7 @@ brew install git
 - Vagrant creates and configures lightweight, reproducible, and portable development environments. You do not have to
 learn much about Vagrant, but you should be able to install it and execute the following commandline: ```vagrant up```
 - [Vagrant](https://www.vagrantup.com/) (download, documentation)
+- You should install Vagrant with [Homebrew](http://brew.sh/)
 
 ```
 brew tap caskroom/cask
@@ -85,7 +88,7 @@ brew cask install vagrant-manager
 
 - [Ansible](http://www.ansible.com/) (download, documentation) is a tool for automating infrastructure orchestration.
   You must not know Ansible, but you have to install Ansible otherwise Vagrant is not able to create the virtual machines.
-- You should install Git with [Homebrew](http://brew.sh/)
+- You should install Ansible with [Homebrew](http://brew.sh/)
 
 ```
 brew install ansible
@@ -93,10 +96,9 @@ brew install ansible
 
 ###Boot up the cluster
 
-You only have to execute the following commands if you want to run the development cluster:
+The only thing you have to do to run the whole microservice cluster is to execute the following commands:
 
 ```bash
-curl -s https://raw.githubusercontent.com/zutherb/AppStash/master/start-cluster.sh | sh
 git clone git@github.com:zutherb/AppStash.git appstash
 cd appstash/vagrant
 vagrant plugin install vagrant-cachier
@@ -105,8 +107,7 @@ vagrant up
 ```
 
 Vagrant will provision each node in the cluster with all the necessary components (e.g. Monitoring, Build, Database,
-Debian repository and Application Server) to run a whole development cluster. The initial setup can take a few minutes
-until the provisioning on each node is completed.
+Debian repository and Application Server). The initial setup can take a few minutes.
 
 ### Deploy on production servers
 
@@ -255,5 +256,7 @@ This application provides a simple GUI to administrate Spring Boot applications 
 
 ## Contact
 
-[Bernd Zuther] (mailto:bernd.zuther@codecentric.de)
+If you have any questions or remarks, please don't hesitate to contact me.
+
+[Bernd Zuther](mailto:bernd.zuther@me.com)
 
