@@ -28,6 +28,8 @@ import org.apache.wicket.model.LoadableDetachableModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.model.util.ListModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.wicketstuff.annotation.mount.MountPath;
 
 import java.util.Collections;
@@ -41,6 +43,8 @@ import java.util.List;
 @MountPath("checkout")
 @NavigationItem(name = "Proceed to Checkout", sortOrder = 3, visible = "!@cart.isEmpty()")
 public class CheckoutPage extends AbstractBasePage {
+    private static final Logger LOGGER = LoggerFactory.getLogger(CheckoutPage.class);
+
     private static final long serialVersionUID = -6793984194989062010L;
 
     @SpringBean(name = "checkout")
@@ -61,16 +65,16 @@ public class CheckoutPage extends AbstractBasePage {
     public CheckoutPage() {
         super();
         orderInfoModel = orderInfoModel();
-        initCheckoutPage();
         validateCheckoutPage();
+        initCheckoutPage();
     }
 
 
     CheckoutPage(IModel<OrderInfo> orderInfoModel) {
         super();
         this.orderInfoModel = orderInfoModel;
-        initCheckoutPage();
         validateCheckoutPage();
+        initCheckoutPage();
     }
 
     private void initCheckoutPage() {
@@ -87,10 +91,12 @@ public class CheckoutPage extends AbstractBasePage {
         try {
             if (checkout.getOrderItemInfos().isEmpty()) {
                 getSession().error(getString("checkout.validation.failed"));
+                LOGGER.debug("Basket is empty and CheckoutPage could not be created");
                 throw new RestartResponseException(Application.get().getHomePage());
             }
         } catch (Exception e) {
             getSession().error("Cart is not available yet, please try again later.");
+            LOGGER.error("A backend error seems to be occurred: ", e);
             throw new RestartResponseException(Application.get().getHomePage());
         }
     }
