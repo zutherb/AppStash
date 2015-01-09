@@ -43,7 +43,7 @@
       <ul class="speakers">
         <li id="speaker-bernd">
           <span class="name">Bernd Zuther</span>
-          <img src="images/bernd-zuther.jpeg"
+          <img src="../master/images/bernd-zuther.jpeg"
                alt="Bernd's avatar"
                class="avatar">
           <ul class="social">
@@ -74,6 +74,28 @@
 
   <slide>
     <hgroup>
+      <h2>Development</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <object data="../master/images/scrum_process.svg" type="image/svg+xml"></object>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Product Management</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/buildmeasurelearn.jpg" alt="Build Measure Learn Cycle">
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
       <h2>Conversion</h2>
     </hgroup>
     <article>
@@ -82,56 +104,37 @@
           <li>Conversion marketing is the act of converting site visitors into paying customers.</li>
           <li>Conversion rate is the proportion of visits to a website who take action to go beyond a website
             visit.
-            <object data="images/conversion_rate.svg" type="image/svg+xml"></object>
+            <object data="../master/images/conversion_rate.svg" type="image/svg+xml"></object>
           </li>
         </ul>
       </section>
-      <section class="footer">
-        <button onclick="window.open('http://shop.monolith.io:8080/shop/');">open shop application</button>
-      </section>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Scrum</h2>
+      <h2>FeatureToggle</h2>
     </hgroup>
-    <article class="flexbox vcenter">
-      <section>
-        <object data="images/scrum_process.svg" type="image/svg+xml"></object>
-      </section>
-      <section class="footer">
-        <q cite="http://en.wikipedia.org/wiki/Scrum_%28software_development%29">
-          Scrum Process
-        </q>
-      </section>
-    </article>
-  </slide>
+    <article >
+      <pre class="prettyprint" data-lang="java">
+public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
 
-  <slide>
-    <hgroup>
-      <h2>Lean Startup</h2>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <section>
-        <img src="images/buildmeasurelearn.jpg" alt="Build Measure Learn Cycle">
-      </section>
-      <hr/>
-      <section class="footer">
-        <button onclick=" window.open('http://shop.monolith.io:8080/shop/productcatalog/handy?directBuy=nexus-s');">
-          open shop application
-        </button>
-      </section>
+    @SpringBean
+    private FeatureToogleBean featureToogleBean;
+
+    ...
+
+    @Override
+    protected void onConfigure() {
+      super.onConfigure();
+      <b>setVisible(featureToogleBean.isTopSellerFeatureEnabled());</b>
+    }
+
+    ...
+
+}
+</pre>
     </article>
-    <aside class="note">
-      <ul>
-        <li>now business is agil as well</li>
-        <li>go to <a href="http://app-server-node-2:8080/shop/productcatalog/handy?directBuy=nexus-s"
-                     rel="nofollow">catalog</a></li>
-        <li>make experiment no.1, press F2 -> bootstrap theme will change</li>
-        <li>make experiment no.2, press F3 -> bootstrap theme will change</li>
-      </ul>
-    </aside>
   </slide>
 
   <slide>
@@ -140,14 +143,16 @@
     </hgroup>
     <article class="flexbox vcenter">
       <section>
-        <object data="images/monolith_architecture.svg" type="image/svg+xml" style="height: 450px"></object>
+        <object data="../master/images/monolith_architecture.svg" type="image/svg+xml" style="height: 450px"></object>
       </section>
     </article>
   </slide>
 
-  <slide class="fill nobackground" style="background-image:url(images/crying_child.jpg);"></slide>
+  <slide class="fill nobackground" style="background-image:url(../master/images/crying_child.jpg);"></slide>
 
-  <slide class="fill nobackground" style="background-image:url(images/happy_girl.jpg);"></slide>
+  <slide class="fill nobackground" style="background-image:url(../master/images/happy_girl.jpg);"></slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/lego.jpg);"></slide>
 
   <slide>
     <hgroup>
@@ -155,7 +160,7 @@
     </hgroup>
     <article class="flexbox vcenter">
       <section>
-        <object data="images/microservice.svg" type="image/svg+xml"></object>
+        <object data="../master/images/microservice.svg" type="image/svg+xml"></object>
       </section>
     </article>
   </slide>
@@ -166,12 +171,56 @@
     </hgroup>
     <article class="flexbox vcenter">
       <section>
-        <object data="images/microservice_architecture.svg" type="image/svg+xml" style="height: 500px"></object>
+        <object data="../master/images/microservice_architecture.svg" type="image/svg+xml" style="height: 500px"></object>
       </section>
     </article>
   </slide>
 
-  <slide class="fill nobackground" style="background-image:url(images/lego.jpg);"></slide>
+  <slide>
+    <hgroup>
+      <h2>SOA</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <ul>
+          <li>
+            Service-Oriented Architecture (SOA) is an architectural style that supports service-orientation.
+          </li>
+          <li>
+            Service-orientation is a way of thinking in terms of services and service-based development and the outcomes of services.
+          </li>
+          <li>
+            A service:
+            <ul>
+              <li>
+                Is a logical representation of a repeatable business activity that has a specified outcome (e.g., check customer credit, provide weather data, consolidate drilling reports)
+              </li>
+              <li>
+                Is self-contained
+              </li>
+              <li>
+                May be composed of other services
+              </li>
+              <li>
+                Is a “black box” to consumers of the service
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>SOA</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/SOA_Elements.png" style="height: 500px"></object>
+      </section>
+    </article>
+  </slide>
 
   <slide>
     <hgroup>
@@ -179,7 +228,7 @@
     </hgroup>
     <article class="flexbox vcenter">
       <section>
-        <object data="images/use_case_online_shop.svg" type="image/svg+xml" style="height: 500px"></object>
+        <object data="../master/images/use_case_online_shop.svg" type="image/svg+xml" style="height: 500px"></object>
       </section>
     </article>
   </slide>
@@ -190,25 +239,12 @@
     </hgroup>
     <article class="flexbox vcenter">
       <section>
-        <object data="images/deployment_diagramm_online_shop.svg" type="image/svg+xml" style="height: 500px"></object>
-        <section class="footer">
-          <button onclick=" window.open('http://shop.microservice.io/');">
-            open shop application
-          </button>
-        </section>
+        <object data="../master/images/deployment_diagramm_online_shop.svg" type="image/svg+xml" style="height: 500px"></object>
       </section>
     </article>
   </slide>
 
-  <slide class="fill nobackground" style="background-image:url(images/delivery_car.jpg);">
-    <article class="flexbox vcenter">
-      <section class="footer" style="margin-top: 500px">
-        <button onclick=" window.open('http://ci.microservice.io:8080/view/Monolitic%20Deployment%20Pipeline/');">
-          open deployment pipeline
-        </button>
-      </section>
-    </article>
-  </slide>
+  <slide class="fill nobackground" style="background-image:url(../master/images/delivery_car.jpg);"></slide>
 
   <slide>
     <hgroup>
@@ -216,22 +252,15 @@
     </hgroup>
     <article class="flexbox vcenter">
       <section>
-        <object data="images/build-run-deploy.svg" type="image/svg+xml" style="height: 450px"></object>
-      </section>
-      <section class="footer">
-        <button onclick=" window.open('http://ci.microservice.io:8080/view/Microservice%20Builds/');">
-          open microservice builds
-        </button>
+        <object data="../master/images/build-run-deploy.svg" type="image/svg+xml" style="height: 450px"></object>
       </section>
     </article>
   </slide>
 
-
-
-  <slide class="fill nobackground" style="background-image:url(images/zookeeper.jpg);"></slide>
+  <slide class="fill nobackground" style="background-image:url(../master/images/zookeeper.jpg);"></slide>
 
   <slide class="thank-you-slide segue nobackground current">
-    <aside class="gdbar right"><img src="images/bernd-zuther.jpeg"></aside>
+    <aside class="gdbar right"><img src="../master/images/bernd-zuther.jpeg"></aside>
     <article class="flexbox vleft auto-fadein">
       <h2>&lt;Thank You!&gt;</h2>
 
@@ -250,13 +279,31 @@
       <section>
         <ul>
           <li>
+            <a href="http://www.heise.de/developer/artikel/Continuous-Delivery-mit-dem-FeatureToggle-Pattern-1825477.html">Continuous Delivery mit dem FeatureToggle Pattern</a>
+          </li>
+          <li>
+            <a href="http://martinfowler.com/bliki/FeatureToggle.html">FeatureToggle</a>
+          </li>
+          <li>
             <a href="http://martinfowler.com/articles/microservices.html">Microservices</a>
+          </li>
+          <li>
+            <a href="http://www.opengroup.org/soa/source-book/soa/soa.htm">Service Oriented Architecture : What Is SOA?</a>
           </li>
           <li>
             <a href="http://12factor.net/">The Twelve Factors</a>
           </li>
           <li>
+            <a href="http://blog.ralfw.de/2014/08/warnung-vor-dem-microservice-versuch.html">Warnung vor dem Microservice – Versuch einer Definition</a>
+          </li>
+          <li>
             <a href="http://jaxenter.de/artikel/nie-wieder-monolithen-176652">Micro Services in der Praxis: Nie wieder Monolithen!</a>
+          </li>
+          <li>
+            <a href="http://bernd-zuther.de/deployment-ganz-einfach/">Deployment ganz einfach – Microservice Deployment mit Hilfe der Linux Paketverwaltung</a>
+          </li>
+          <li>
+            <a href="https://bernd-zuther.de/splunk-marke-eigenbau-mit-elasticsearch-logstash-und-kibana/">Splunk – Marke Eigenbau mit Elasticsearch, Logstash und Kibana (ELK Stack)</a>
           </li>
         </ul>
       </section>
@@ -270,7 +317,17 @@
     <article>
       <section>
         <ul>
+          <li>
+            <a href="http://en.wikipedia.org/wiki/Scrum_%28software_development%29">
+                Scrum Process
+            </a>
+          </li>
           <li><a href="https://www.flickr.com/photos/piers_nye/2501994750">Wretched</a></li>
+          <li>
+            <a href="https://www.flickr.com/photos/82955120@N05/12024678335/in/photolist-ohyv4D-jjzBWg-6tWgaM-bVgvXZ-iiEWpm-ny5PKV-9oysa9-9BrdDH-nSawjv-8WRJwZ-9ghj6d-CWUU3-nBPAug-8p7gJ2-9Bu8fQ-9Brdyv-8h7SJZ-6KtiiL-aae8xm-boXcHF-78S8cD-725Xqq-6LL1Pn-78S8A6-8CZ3N7-8gKqrZ-5Q7hBs-6Zox9Y-9A88rq-bwUrMR-78PZug-jXGpeM-8u2Mdn-m5Kvkt-edgcur-78S84K-78VZFE-4dFwKf-nePxpG-prrSBZ-8Rosfm-8cGnZ5-9cc2t7-bVgw4k-fRZzku-8B6a5u-5Q7cMW-8Cxb4H-pXW2dS-8uWxej">
+              Ancient Legacies
+            </a>
+          </li>
           <li>
             <a href="https://www.flickr.com/photos/free-stock/6882422150/in/photolist-bubdjS-7AnDdo-j2AkLb-53XP6J-8StMrN-8PhTYq-mBURMz-5vZWug-F4xkn-5prMou-9AR6bz-7EocyL-9gHtiA-5bb1Rd-fr7721-cYQ6v5-7MyLbr--7rVm7i-iK5BiY-27nt9G-bMcKJ6-nSiK8C-diJT1f-gR5fpV-5JyFR-d5rFH-4LZfSe-5vvFtN-4wR3h2-83H84-6jtBYq-7kifJY-8594o-7J5fyn-by5PUn-82KGLk-7QvFkP-daprev-9icBsy-diqGfd-86KGzf-h97oRi-pGzJ45-4XvQKB-93TTcD-79KMdy-2fPPTM-7S66oc-8PnvAJ">
               Happy Girl on the Beach

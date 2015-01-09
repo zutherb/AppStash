@@ -14,7 +14,7 @@
 	<key>BackgroundGraphic</key>
 	<dict>
 		<key>Bounds</key>
-		<string>{{0, 0}, {1118, 783}}</string>
+		<string>{{0, 0}, {1118.5511054992676, 782.8897705078125}}</string>
 		<key>Class</key>
 		<string>SolidGraphic</string>
 		<key>ID</key>
@@ -52,8 +52,50 @@
 	<key>GraphicsList</key>
 	<array>
 		<dict>
+			<key>AllowLabelDrop</key>
+			<false/>
+			<key>Class</key>
+			<string>LineGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>Helvetica</string>
+				<key>Size</key>
+				<real>21</real>
+			</dict>
+			<key>Head</key>
+			<dict>
+				<key>ID</key>
+				<integer>11</integer>
+			</dict>
+			<key>ID</key>
+			<integer>57</integer>
+			<key>Points</key>
+			<array>
+				<string>{537.55401134182557, 239.93474199219486}</string>
+				<string>{114.89062499999989, 245.84481321175187}</string>
+			</array>
+			<key>Style</key>
+			<dict>
+				<key>stroke</key>
+				<dict>
+					<key>HeadArrow</key>
+					<string>0</string>
+					<key>Legacy</key>
+					<true/>
+					<key>TailArrow</key>
+					<string>0</string>
+				</dict>
+			</dict>
+			<key>Tail</key>
+			<dict>
+				<key>ID</key>
+				<integer>54</integer>
+			</dict>
+		</dict>
+		<dict>
 			<key>Bounds</key>
-			<string>{{495.49998044494055, 322.12555219211401}, {106, 26}}</string>
+			<string>{{495.37361203110413, 322.09005407181098}, {106, 26}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -125,14 +167,14 @@
 			<key>Head</key>
 			<dict>
 				<key>ID</key>
-				<integer>12</integer>
+				<integer>54</integer>
 			</dict>
 			<key>ID</key>
 			<integer>55</integer>
 			<key>Points</key>
 			<array>
-				<string>{601.32319499614914, 291.39845258016663}</string>
-				<string>{495.67676589373201, 378.85265180406145}</string>
+				<string>{495.60736767608148, 378.83319421317901}</string>
+				<string>{601.13985638612678, 291.34691393044289}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -153,7 +195,7 @@
 			<key>Tail</key>
 			<dict>
 				<key>ID</key>
-				<integer>54</integer>
+				<integer>12</integer>
 			</dict>
 		</dict>
 		<dict>
@@ -208,8 +250,8 @@
 			<integer>53</integer>
 			<key>Points</key>
 			<array>
-				<string>{342.22915019060048, 387.89731071853981}</string>
-				<string>{114.89062499999989, 275.11326644786027}</string>
+				<string>{342.22127406643426, 387.90097921316692}</string>
+				<string>{114.89062499999989, 275.14016665613133}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -231,7 +273,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{444.88660783973069, 157.29048102071178}, {106, 26}}</string>
+			<string>{{444.9479166666668, 157.25560538116605}, {106, 26}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -303,14 +345,14 @@
 			<key>Head</key>
 			<dict>
 				<key>ID</key>
-				<integer>54</integer>
+				<integer>51</integer>
 			</dict>
 			<key>ID</key>
 			<integer>14</integer>
 			<key>Points</key>
 			<array>
-				<string>{428.17222061944864, 142.04545749883019}</string>
-				<string>{567.60099506001268, 198.53550454259337}</string>
+				<string>{567.68777648548303, 198.48611726833914}</string>
+				<string>{428.20805684785057, 142.02509349399296}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -331,7 +373,7 @@
 			<key>Tail</key>
 			<dict>
 				<key>ID</key>
-				<integer>51</integer>
+				<integer>54</integer>
 			</dict>
 		</dict>
 		<dict>
@@ -355,8 +397,8 @@
 			<integer>13</integer>
 			<key>Points</key>
 			<array>
-				<string>{244.12466645308288, 147.93183864296523}</string>
-				<string>{114.89062499999989, 216.31065516931923}</string>
+				<string>{244.10820393399521, 147.92463868537189}</string>
+				<string>{114.89062499999989, 216.27087534398768}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -815,7 +857,7 @@
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2014-11-24 20:24:06 +0000</string>
+	<string>2014-12-26 12:31:46 +0000</string>
 	<key>Modifier</key>
 	<string>Bernd Zuther</string>
 	<key>NotesVisible</key>
@@ -846,7 +888,7 @@
 		<key>NSPaperSize</key>
 		<array>
 			<string>size</string>
-			<string>{595, 842}</string>
+			<string>{595.27555274963379, 841.8897705078125}</string>
 		</array>
 		<key>NSPrintReverseOrientation</key>
 		<array>
