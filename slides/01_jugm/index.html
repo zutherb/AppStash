@@ -89,7 +89,7 @@
     </hgroup>
     <article class="flexbox vcenter">
       <section>
-        <img src="../master/images/buildmeasurelearn.jpg" alt="Build Measure Learn Cycle">
+        <img src="../master/images/LeanStartupLoopClassic.png" alt="Build Measure Learn Cycle" style="height: 500px">
       </section>
     </article>
   </slide>
@@ -108,6 +108,7 @@
           </li>
         </ul>
       </section>
+      <aside class="gdbar right top"><img src="../master/images/camera-icon.png"></aside>
     </article>
   </slide>
 
@@ -180,20 +181,20 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
     <hgroup>
       <h2>Service-Oriented Architecture (SOA)</h2>
     </hgroup>
-    <article class="flexbox vcenter">
+    <article class="flexbox">
       <section>
         <ul>
           <li>
             SOA is an <b>architectural style that supports service-orientation</b>.
           </li>
           <li>
-            Service-orientation is <b>a way of thinking in terms of services and service-based development and the outcomes of services</b>.
+            Service-orientation is <b>a way of thinking in terms of services</b>.
           </li>
           <li>
             A service:
             <ul>
               <li>
-                Is a <b>logical representation of a repeatable business activity that has a specified outcome</b> (e.g., submit order)
+                Is a <b>logical representation of a repeatable business activity</b><br />(e.g., submit order)
               </li>
               <li>
                 Is <b>self-contained</b>
@@ -224,6 +225,30 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
 
   <slide>
     <hgroup>
+      <h2>Differences to SOA</h2>
+    </hgroup>
+    <article class="flexbox">
+      <section>
+        <ul>
+          <li>
+            No commitment to a unique technology
+          </li>
+          <li>
+            Greater flexibility of architecture
+          </li>
+          <li>
+            Services managed as products, with their own lifecycle
+          </li>
+          <li>
+            Industrialised deployment
+          </li>
+        </ul>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
       <h2>Online Shop - Use case</h2>
     </hgroup>
     <article class="flexbox vcenter">
@@ -241,10 +266,94 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
       <section>
         <object data="../master/images/deployment_diagramm_online_shop.svg" type="image/svg+xml" style="height: 500px"></object>
       </section>
+      <aside class="gdbar bottom"><img src="../master/images/camera-icon.png"></aside>
     </article>
   </slide>
 
-  <slide class="fill nobackground" style="background-image:url(../master/images/delivery_car.jpg);"></slide>
+  <slide>
+    <hgroup>
+      <h2>Challenges of Microservices</h2>
+    </hgroup>
+    <article class="flexbox">
+      <section>
+        <p>With all the benefits they bring, microservices also create several challenges:</p>
+        <ul>
+          <li>
+            require integration.
+          </li>
+          <li>
+            require a multi deployment pipeline.
+          </li>
+          <li>
+            require automation of deployment and configuration.
+          </li>
+          <li>
+            require logging and monitoring.
+          </li>
+        </ul>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Microservices Communication</h2>
+    </hgroup>
+    <article>
+        <table style="font-size: 0.8em;">
+          <tbody><tr>
+            <th>Type</th>
+            <th>Star</th>
+            <th>Chain</th>
+            <th>Circle</th>
+            <th>Complete Structure</th>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td><img width="54" height="53" src="../master/images/star.gif" ></td>
+            <td><img width="104" height="10" src="../master/images/chain.gif" ></td>
+            <td><img width="54" height="54" src="../master/images/circle.gif" ></td>
+            <td><img width="54" height="54" src="../master/images/full.gif"></td>
+          </tr>
+          <tr>
+            <td>centralization</td>
+            <td>high</td>
+            <td>medium</td>
+            <td>low</td>
+            <td>very low</td>
+          </tr>
+          <tr>
+            <td>communication</td>
+            <td>much</td>
+            <td>medium</td>
+            <td>many</td>
+            <td>very much</td>
+          </tr>
+          <tr>
+            <td>controllability</td>
+            <td>much</td>
+            <td>medium</td>
+            <td>low</td>
+            <td>very low</td>
+          </tr>
+          </tbody></table>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/delivery_car.jpg);">
+    <aside class="gdbar right top"><img src="../master/images/camera-icon.png"></aside>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Multi Deployment Pipeline</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <object data="../master/images/deployment_pipeline_microservice.svg" type="image/svg+xml" style="height: 450px"></object>
+      </section>
+    </article>
+  </slide>
 
   <slide>
     <hgroup>
@@ -257,7 +366,12 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
     </article>
   </slide>
 
-  <slide class="fill nobackground" style="background-image:url(../master/images/zookeeper.jpg);"></slide>
+  <slide class="fill nobackground" style="background-image:url(../master/images/zookeeper.jpg);">
+    <aside class="gdbar right top"><img src="../master/images/camera-icon.png"></aside>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/light_at_the_end_of_the_tunnel.jpg);">
+  </slide>
 
   <slide class="thank-you-slide segue nobackground current">
     <aside class="gdbar right"><img src="../master/images/bernd-zuther.jpeg"></aside>
@@ -282,10 +396,16 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
             <a href="http://theleanstartup.com/principles">Lean Startup</a>
           </li>
           <li>
+            <a href="http://oanasagile.blogspot.de/2012/11/test-driven-business-featuring-lean.html">Test Driven Business Featuring Lean StartUp</a>
+          </li>
+          <li>
             <a href="http://www.heise.de/developer/artikel/Continuous-Delivery-mit-dem-FeatureToggle-Pattern-1825477.html">Continuous Delivery mit dem FeatureToggle Pattern</a>
           </li>
           <li>
             <a href="http://martinfowler.com/bliki/FeatureToggle.html">FeatureToggle</a>
+          </li>
+          <li>
+            <a href="http://www.voxxed.com/blog/2015/01/good-microservices-architectures-death-enterprise-service-bus-part-one">Do Good Microservices Architectures Spell the Death of the Enterprise Service Bus?</a>
           </li>
           <li>
             <a href="http://martinfowler.com/articles/microservices.html">Microservices</a>
@@ -307,6 +427,9 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
           </li>
           <li>
             <a href="https://bernd-zuther.de/splunk-marke-eigenbau-mit-elasticsearch-logstash-und-kibana/">Splunk – Marke Eigenbau mit Elasticsearch, Logstash und Kibana (ELK Stack)</a>
+          </li>
+          <li>
+            <a href="https://github.com/zutherb/AppStash/">Appstash Project</a>
           </li>
         </ul>
       </section>
@@ -332,11 +455,6 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
           </li>
           <li><a href="https://www.flickr.com/photos/piers_nye/2501994750">Wretched</a></li>
           <li>
-            <a href="https://www.flickr.com/photos/82955120@N05/12024678335/in/photolist-ohyv4D-jjzBWg-6tWgaM-bVgvXZ-iiEWpm-ny5PKV-9oysa9-9BrdDH-nSawjv-8WRJwZ-9ghj6d-CWUU3-nBPAug-8p7gJ2-9Bu8fQ-9Brdyv-8h7SJZ-6KtiiL-aae8xm-boXcHF-78S8cD-725Xqq-6LL1Pn-78S8A6-8CZ3N7-8gKqrZ-5Q7hBs-6Zox9Y-9A88rq-bwUrMR-78PZug-jXGpeM-8u2Mdn-m5Kvkt-edgcur-78S84K-78VZFE-4dFwKf-nePxpG-prrSBZ-8Rosfm-8cGnZ5-9cc2t7-bVgw4k-fRZzku-8B6a5u-5Q7cMW-8Cxb4H-pXW2dS-8uWxej">
-              Ancient Legacies
-            </a>
-          </li>
-          <li>
             <a href="https://www.flickr.com/photos/free-stock/6882422150/in/photolist-bubdjS-7AnDdo-j2AkLb-53XP6J-8StMrN-8PhTYq-mBURMz-5vZWug-F4xkn-5prMou-9AR6bz-7EocyL-9gHtiA-5bb1Rd-fr7721-cYQ6v5-7MyLbr--7rVm7i-iK5BiY-27nt9G-bMcKJ6-nSiK8C-diJT1f-gR5fpV-5JyFR-d5rFH-4LZfSe-5vvFtN-4wR3h2-83H84-6jtBYq-7kifJY-8594o-7J5fyn-by5PUn-82KGLk-7QvFkP-daprev-9icBsy-diqGfd-86KGzf-h97oRi-pGzJ45-4XvQKB-93TTcD-79KMdy-2fPPTM-7S66oc-8PnvAJ">
               Happy Girl on the Beach
             </a>
@@ -354,6 +472,11 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
           <li>
             <a href="https://www.flickr.com/photos/rmlowe/3281353786">
               Developer At Work
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/christianreimer/15496733958/in/photolist-pBoP7f-8iC4FM-5iD8kx-8kiqwi-3FRm4T-7K2AcU-6jV36r-9M4jL-7VxYvw-5385pB-bQctNM-9sJPJD-eHatpF-6qBRsU-4bBqJt-qeAm-6ex5Uq-gXjfr5-do3ESw-jLypgv-98KX18-bvya7m-fTTr8R-62ctza-bbqebF-ca8Syo-6E9JUf-qquZtU-Hi88U-HickH-Hi8vE-HiccZ-6mTfkt-6TZvce-9yk4rG-bW5bmo-6TZv4g-6U4vnq-4LUzai-ecw4xY-6U4vGW-6TZv7x-7fYXzb-fTgJXM-6TZuLB-6TZuSP-6TZuHr-9QXrxm-6TZuQ2-bW5amN">
+              There's a light at the end of the tunnel...
             </a>
           </li>
         </ul>

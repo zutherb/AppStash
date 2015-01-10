@@ -20,7 +20,7 @@ var SLIDE_CONFIG = {
       gplus: 'https://plus.google.com/+BerndZuther',
       twitter: '@Bernd_Z',
       www: 'https://bernd-zuther.de',
-      github: 'https://github.com/zutherb'
+      github: 'https://github.com/zutherb/'
     }
   ]
 };
