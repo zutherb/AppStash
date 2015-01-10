@@ -168,6 +168,31 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
 
   <slide>
     <hgroup>
+      <h2>Unix Pipeline</h2>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="bash">
+vagrant@app-server-node-4:~$ ps aux
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.2  29640  4300 ?        Ss   08:38   0:02 /sbin/init
+root         2  0.0  0.0      0     0 ?        S    08:38   0:00 [kthreadd]
+root         3  0.0  0.0      0     0 ?        S    08:38   0:02 [ksoftirqd/0]
+root         5  0.0  0.0      0     0 ?        S<   08:38   0:00 [kworker/0:0H]
+...
+vagrant@app-server-node-4:~$ ps aux | grep java
+root      1827  1.4  7.2 2458576 149452 ?      Sl   08:39   8:26 java -classpath
+/usr/share/shop/product/lib/product-microservice-0.5.5.jar:/usr/share/shop/produ
+ct/lib/scala-library-2.10.3.jar:/usr/share/shop/product/lib/akka-actor_2.10-2.2.
+4.jar:/usr/share/shop/product/lib/spray-can-1.2.1.jar:/usr/share/shop/product/li
+...
+vagrant@app-server-node-4:~$ ps aux | grep java | wc -l
+6
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
       <h2>Microservice Architecture</h2>
     </hgroup>
     <article class="flexbox vcenter">
@@ -324,9 +349,9 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
           </tr>
           <tr>
             <td>communication</td>
-            <td>much</td>
+            <td>less</td>
             <td>medium</td>
-            <td>many</td>
+            <td>much</td>
             <td>very much</td>
           </tr>
           <tr>
@@ -357,12 +382,39 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
 
   <slide>
     <hgroup>
-      <h2>Build, release, run</h2>
+      <h2>Deployment</h2>
     </hgroup>
     <article class="flexbox vcenter">
       <section>
         <object data="../master/images/build-run-deploy.svg" type="image/svg+xml" style="height: 450px"></object>
       </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Unix Package</h2>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="bash">
+mkdir -p $PACKAGE_BASE_DIR
+cp build/product.jar $PACKAGE_BASE_DIR/usr/share/shop/product.jar
+mkdir -p $PACKAGE_BASE_DIR/DEBIAN
+
+cat > $PACKAGE_BASE_DIR/DEBIAN/control &lt;&lt;EOL
+Package: product-service
+Version: 1.0.0
+Section: base
+Priority: optional
+Architecture: amd64
+Depends: mongodb (>= 2.8.0)
+Maintainer: Bernd Zuther &lt;bernd.zuther@codecentric.de&gt;
+Description: Product Service
+EOL
+touch $PACKAGE_BASE_DIR/DEBIAN/postinst
+
+dpkg-deb --build $PACKAGE_BASE_DIR $BUILD_ARTIFACT
+</pre>
     </article>
   </slide>
 
