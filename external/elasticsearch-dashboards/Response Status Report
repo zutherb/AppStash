@@ -5,7 +5,7 @@
       "list": {
         "0": {
           "query": "response:[100 TO 199]",
-          "alias": "",
+          "alias": "Informational",
           "color": "#7EB26D",
           "id": 0,
           "pin": false,
@@ -15,7 +15,7 @@
         "1": {
           "id": 1,
           "color": "#EAB839",
-          "alias": "",
+          "alias": "Success",
           "pin": false,
           "type": "lucene",
           "enable": true,
@@ -24,7 +24,7 @@
         "2": {
           "id": 2,
           "color": "#6ED0E0",
-          "alias": "",
+          "alias": "Redirection",
           "pin": false,
           "type": "lucene",
           "enable": true,
@@ -33,7 +33,7 @@
         "3": {
           "id": 3,
           "color": "#EF843C",
-          "alias": "",
+          "alias": "Client Error",
           "pin": false,
           "type": "lucene",
           "enable": true,
@@ -42,7 +42,7 @@
         "4": {
           "id": 4,
           "color": "#E24D42",
-          "alias": "",
+          "alias": "Server Error",
           "pin": false,
           "type": "lucene",
           "enable": true,
@@ -62,16 +62,27 @@
         "0": {
           "type": "time",
           "field": "@timestamp",
-          "from": "now-24h",
+          "from": "now-30d",
           "to": "now",
           "mandate": "must",
           "active": true,
           "alias": "",
           "id": 0
+        },
+        "1": {
+          "type": "time",
+          "from": "2014-12-29T23:48:24.879Z",
+          "to": "2015-01-01T19:11:27.046Z",
+          "field": "@timestamp",
+          "mandate": "must",
+          "active": true,
+          "alias": "",
+          "id": 1
         }
       },
       "ids": [
-        0
+        0,
+        1
       ]
     }
   },
@@ -95,7 +106,7 @@
           "value_field": null,
           "auto_int": true,
           "resolution": 100,
-          "interval": "10m",
+          "interval": "30m",
           "fill": 3,
           "linewidth": 3,
           "timezone": "browser",
@@ -250,8 +261,8 @@
     },
     {
       "type": "filtering",
-      "collapse": true,
-      "notice": false,
+      "collapse": false,
+      "notice": true,
       "enable": true
     }
   ],
@@ -285,7 +296,7 @@
         "1d"
       ],
       "timefield": "@timestamp",
-      "now": true,
+      "now": false,
       "filter_id": 0,
       "enable": true
     }

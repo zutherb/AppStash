@@ -2,10 +2,10 @@
 
 ## Overview
 
-This application gives software architects and developers an example how a microservice web application architecture can
-look like and it simulates a development cluster, which contains continuous integration infrastructure as well as all
-necessary nodes to run an online shop. Thus it will furthermore shown, how a distributed online shop can deployed with a
-multi deployment pipeline and how the distributed system can be monitored. The application is based on
+This application gives software architects and developers an example how a microservice web application can look like
+and it simulates a development cluster, which contains continuous integration infrastructure as well as all
+necessary nodes that are needed to run an online shop. Thus it will furthermore shown, how a distributed online shop can
+deployed with a multi deployment pipeline and how the distributed system can be monitored. The application is based on
 the following two online shop applications, which can be found on Github:
 - [AngularJS Phone Catalog](https://github.com/angular/angular-phonecat)
 - [MongoDB Pizza Shop](https://github.com/comsysto/mongodb-onlineshop)
@@ -32,6 +32,10 @@ This use cases are implemented in the following two ways:
   implemented in [Scala](http://www.scala-lang.org/), [Spray](http://spray.io/), [Restx](http://restx.io/) and [Spring Boot](http://projects.spring.io/spring-boot/).
 
 ![Deployment Diagram Online Shop](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/deployment_diagramm_online_shop.png)
+
+## Presentations
+
+12.01.2015 - [JUGM](http://www.jugm.de/) - [Next Generation IT - Qual oder Segen für den Entwickler](http://zutherb.github.io/AppStash/slides/01_jugm/)
 
 ## Directory Layout
 
@@ -111,8 +115,8 @@ Debian repository and Application Server). The initial setup can take a few minu
 
 ### Deploy on production servers
 
-You have to execute the [Production Deployment Builds](http://ci.microservice.io:8080/view/Production%20Deployment/)
-[Jenkins CI Server](http://jenkins-ci.org/) after you have boot up the cluster. Otherwise you can use the production urls
+You have to execute the [Production Deployment Builds](http://ci.microservice.io:8080/view/Production%20Deployment/) on the
+[Jenkins CI Server](http://jenkins-ci.org/) after you have boot up the cluster. Otherwise you can not use the production urls
 that are given in the next section. Therefore you have to execute the following two builds:
 
 - [Microservice Production Deployment](http://ci.microservice.io:8080/view/Production%20Deployment/job/shop-microservice-production-deployment/build?delay=0sec)
@@ -256,7 +260,8 @@ This application provides a simple GUI to administrate Spring Boot applications 
 
 ## Contact
 
-If you have any questions or remarks, please don't hesitate to contact me.
+If you have any questions or remarks, please don't hesitate to contact me. For feature requests or general feedback,
+you can also use the [issue tracker](https://github.com/zutherb/AppStash/issues)
 
 [Bernd Zuther](mailto:bernd.zuther@me.com)
 

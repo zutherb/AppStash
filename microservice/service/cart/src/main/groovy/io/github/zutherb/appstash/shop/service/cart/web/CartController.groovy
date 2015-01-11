@@ -27,9 +27,7 @@ class CartController {
     @RequestMapping(value = "/get/{id}", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
     @ResponseBody
     def Cart cart(@PathVariable String id) {
-        def cart = cartRepository.cart(id)
-        cart.add(linkTo(CartController.class, cart).withSelfRel());
-        cart
+        cartRepository.cart(id)
     }
 
     @RequestMapping(value = "/add", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)

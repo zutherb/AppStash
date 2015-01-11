@@ -5,7 +5,7 @@
       "list": {
         "0": {
           "query": "request:*productdetail* OR request:*productcatalog*",
-          "alias": "",
+          "alias": "Product",
           "color": "#7EB26D",
           "id": 0,
           "pin": false,
@@ -15,7 +15,7 @@
         "2": {
           "id": 2,
           "color": "#6ED0E0",
-          "alias": "",
+          "alias": "Checkout",
           "pin": false,
           "type": "lucene",
           "enable": true,
@@ -24,7 +24,7 @@
         "3": {
           "id": 3,
           "color": "#EF843C",
-          "alias": "",
+          "alias": "Confirmation",
           "pin": false,
           "type": "lucene",
           "enable": true,
