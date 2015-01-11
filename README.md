@@ -122,6 +122,8 @@ that are given in the next section. Therefore you have to execute the following 
 - [Microservice Production Deployment](http://ci.microservice.io:8080/view/Production%20Deployment/job/shop-microservice-production-deployment/build?delay=0sec)
 - [Monolith Production Deployment](http://ci.microservice.io:8080/view/Production%20Deployment/job/shop-monolitic-production-deployment/build?delay=0sec)
 
+Please check if all builds are green sometimes the catalog ui build fails and must be re run untill it is green. 
+
 ![CI-Node](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/production-deployment.png)
 
 After the are completed the cluster is fully installed.
