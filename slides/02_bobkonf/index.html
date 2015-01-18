@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="shortcut icon" href="/favicon.ico">
+  <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="../master/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="../master/css/phone.css">
+  <link rel="stylesheet" href="../../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
+  <base target="_blank">
+  <script src="../slide_config.js"></script>
+  <script src="slide_config.js"></script>
+  <script data-main="../master/js/slides" src="../master/js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="logoslide nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="../master/images/codecentric-logo.png"></span>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar">
+      <img src="../master/images/codecentric-logo-only.png">
+    </aside>
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <article>
+      <ul class="speakers">
+        <li id="speaker-bernd">
+          <span class="name">Bernd Zuther</span>
+          <img src="../master/images/bernd-zuther.jpeg"
+               alt="Bernd's avatar"
+               class="avatar">
+          <ul class="social">
+            <li>
+              <i class="icon-twitter"></i>
+              <a href="https://twitter.com/Bernd_Z">
+                @Bernd_Z
+              </a>
+            </li>
+            <li>
+              <i class="icon-github"></i>
+              <a href="https://github.com/zutherb/">
+                github.com/zutherb
+              </a>
+            </li>
+            <li>
+              <i class="icon-envelope"></i>
+              <a href="mailto:bernd.zuther@codecentric.de">
+                bernd.zuther@codecentric.de
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li/>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Development</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <object data="../master/images/scrum_process.svg" type="image/svg+xml"></object>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Product Management</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/LeanStartupLoopClassic.png" alt="Build Measure Learn Cycle" style="height: 500px">
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Conversion</h2>
+    </hgroup>
+    <article>
+      <section>
+        <ul>
+          <li>Conversion marketing is the <b>act of converting site visitors into paying customers</b>.<br /><br /></li>
+          <li>Conversion rate is the <b>proportion of visits to a website who take action to go beyond a website
+            visit</b>.<br /><br />
+            <object data="../master/images/conversion_rate.svg" type="image/svg+xml"></object>
+          </li>
+        </ul>
+      </section>
+      <aside class="gdbar right top"><img src="../master/images/camera-icon.png"></aside>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>FeatureToggle</h2>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="java">
+public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
+
+    @SpringBean
+    private FeatureToogleBean featureToogleBean;
+
+    ...
+
+    @Override
+    protected void onConfigure() {
+      super.onConfigure();
+      <b>setVisible(featureToogleBean.isTopSellerFeatureEnabled());</b>
+    }
+
+    ...
+
+}
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Monolith</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <object data="../master/images/monolith_architecture.svg" type="image/svg+xml" style="height: 450px"></object>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/crying_child.jpg);"></slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/happy_girl.jpg);"></slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/lego.jpg);"></slide>
+
+  <slide>
+    <hgroup>
+      <h2>Functionality / Data</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <object data="../master/images/microservice.svg" type="image/svg+xml"></object>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Microservice Architecture</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <object data="../master/images/microservice_architecture.svg" type="image/svg+xml" style="height: 500px"></object>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Unix Pipeline (1973)</h2>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="bash">
+vagrant@app-server-node-4:~$ ps aux
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.2  29640  4300 ?        Ss   08:38   0:02 /sbin/init
+root         2  0.0  0.0      0     0 ?        S    08:38   0:00 [kthreadd]
+root         3  0.0  0.0      0     0 ?        S    08:38   0:02 [ksoftirqd/0]
+root         5  0.0  0.0      0     0 ?        S<   08:38   0:00 [kworker/0:0H]
+...
+vagrant@app-server-node-4:~$ ps aux | grep java
+root      1827  1.4  7.2 2458576 149452 ?      Sl   08:39   8:26 java -classpath
+/usr/share/shop/product/lib/product-microservice-0.5.5.jar:/usr/share/shop/produ
+ct/lib/scala-library-2.10.3.jar:/usr/share/shop/product/lib/akka-actor_2.10-2.2.
+4.jar:/usr/share/shop/product/lib/spray-can-1.2.1.jar:/usr/share/shop/product/li
+...
+vagrant@app-server-node-4:~$ ps aux | grep java | wc -l
+6
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Service-Oriented Architecture (SOA / 1996)</h2>
+    </hgroup>
+    <article class="flexbox">
+      <section>
+        <ul>
+          <li>
+            SOA is an <b>architectural style that supports service-orientation</b>.
+          </li>
+          <li>
+            Service-orientation is <b>a way of thinking in terms of services</b>.
+          </li>
+          <li>
+            A service:
+            <ul>
+              <li>
+                Is a <b>logical representation of a repeatable business activity</b><br />(e.g., submit order)
+              </li>
+              <li>
+                Is <b>self-contained</b>
+              </li>
+              <li>
+                May be <b>composed of other services</b>
+              </li>
+              <li>
+                Is a <b>“black box” to consumers</b> of the service
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>SOA taxonomy</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/SOA_Elements.png" style="height: 500px"></object>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Differences to SOA</h2>
+    </hgroup>
+    <article class="flexbox">
+      <section>
+        <ul>
+          <li>
+            Lightweight infrastructure and protocols (e.g. REST)
+          </li>
+          <li>
+            Greater flexibility of architecture (e.g. microservice can contain GUI)
+          </li>
+          <li>
+            Microservices managed as products, with their own lifecycle
+          </li>
+          <li>
+            Industrialised deployment (Unix packages or Container)
+          </li>
+        </ul>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Online Shop - Use case</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <object data="../master/images/use_case_online_shop.svg" type="image/svg+xml" style="height: 500px"></object>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Online Shop - Migration</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <object data="../master/images/deployment_diagramm_online_shop.svg" type="image/svg+xml" style="height: 500px"></object>
+      </section>
+      <aside class="gdbar bottom"><img src="../master/images/camera-icon.png"></aside>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Challenges of Microservices</h2>
+    </hgroup>
+    <article class="flexbox">
+      <section>
+        <p>With all the benefits they bring, microservices also create several challenges:</p>
+        <ul>
+          <li>
+            require integration.
+          </li>
+          <li>
+            require a multi deployment pipeline.
+          </li>
+          <li>
+            require automation of deployment and configuration.
+          </li>
+          <li>
+            require logging and monitoring.
+          </li>
+        </ul>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Communication Structure - Leavitt</h2>
+    </hgroup>
+    <article>
+      <table style="font-size: 0.8em;">
+        <tbody>
+        <tr>
+          <th>Type</th>
+          <th>Star</th>
+          <th>Chain</th>
+          <th>Circle</th>
+          <th>Complete Structure</th>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td><img width="54" height="53" src="../master/images/star.gif"></td>
+          <td><img width="90" height="9" src="../master/images/chain.gif"></td>
+          <td><img width="54" height="54" src="../master/images/circle.gif"></td>
+          <td><img width="54" height="54" src="../master/images/full.gif"></td>
+        </tr>
+        <tr>
+          <td>centralization</td>
+          <td>high</td>
+          <td>medium</td>
+          <td>low</td>
+          <td>very low</td>
+        </tr>
+        <tr>
+          <td>communication</td>
+          <td>low</td>
+          <td>medium</td>
+          <td>much</td>
+          <td>very much</td>
+        </tr>
+        <tr>
+          <td>controllability</td>
+          <td>much</td>
+          <td>medium</td>
+          <td>low</td>
+          <td>very low</td>
+        </tr>
+        </tbody>
+      </table>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Microservices Communication</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+        <object data="../master/images/deployment_diagramm_online_shop.svg" type="image/svg+xml" style="height: 500px"></object>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Rest Versioning</h2>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="javascript">
+{
+        firstname: "Bernd",
+        lastname: "Zuther",
+        street: "Elsenheimerstraße 55a",
+        city: "München",
+        zip: 80687
+}
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Rest Versioning</h2>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="javascript">
+{
+        firstname: "Bernd",
+        lastname: "Zuther",
+        <b>birthday: "1983/08/15"</b>,
+        street: "Elsenheimerstraße 55a",
+        city: "München",
+        zip: 80687
+}
+</pre>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/thumbsup.jpg);">
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Rest Versioning</h2>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="javascript">
+{
+        firstname: "Bernd",
+        lastname: "Zuther",
+        birthday: "1983/08/15",
+        <b>addresses : [{
+          street: "Elsenheimerstraße 55a",
+          city: "München",
+          zip: 80687,
+          type: "WORK"
+        }]</b>
+}
+</pre>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/unfall.jpg);">
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Golden Rules of Continuous Delivery</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Don’t Break Your Customer.</li>
+        <li>Don’t Break the Code Base, Builds, Tests, and Production.</li>
+        <li>Don’t Break the Delivery Flow.</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Rest Versioning</h2>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="javascript">
+{
+        firstname: "Bernd",
+        lastname: "Zuther",
+        birthday: "1983/08/15",
+        <b>street: "Elsenheimerstraße 55a",
+        city: "München",
+        zip: 80687,
+        addresses : [{
+          street: "Elsenheimerstraße 55a",
+          city: "München",
+          zip: 80687,
+          type: "WORK"
+        }]</b>
+}
+</pre>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/thumbsup.jpg);">
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/delivery_car.jpg);">
+    <aside class="gdbar right top"><img src="../master/images/camera-icon.png"></aside>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Multi Deployment Pipeline</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <object data="../master/images/deployment_pipeline_microservice.svg" type="image/svg+xml" style="height: 450px"></object>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Deployment</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <object data="../master/images/build-run-deploy.svg" type="image/svg+xml" style="height: 450px"></object>
+      </section>
+    </article>
+  </slide>
+
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/zookeeper.jpg);">
+    <aside class="gdbar right top"><img src="../master/images/camera-icon.png"></aside>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/light_at_the_end_of_the_tunnel.jpg);">
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground current">
+    <aside class="gdbar right"><img src="../master/images/bernd-zuther.jpeg"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+
+      <p><object data="images/qr-github.svg" type="image/svg+xml" style="width: 100px; height: 100px"></object></p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Links</h2>
+    </hgroup>
+    <article>
+      <section>
+        <ul>
+          <li>
+            <a href="http://theleanstartup.com/principles">Lean Startup</a>
+          </li>
+          <li>
+            <a href="http://oanasagile.blogspot.de/2012/11/test-driven-business-featuring-lean.html">Test Driven Business Featuring Lean StartUp</a>
+          </li>
+          <li>
+            <a href="http://www.heise.de/developer/artikel/Continuous-Delivery-mit-dem-FeatureToggle-Pattern-1825477.html">Continuous Delivery mit dem FeatureToggle Pattern</a>
+          </li>
+          <li>
+            <a href="http://martinfowler.com/bliki/FeatureToggle.html">FeatureToggle</a>
+          </li>
+          <li>
+            <a href="http://www.voxxed.com/blog/2015/01/good-microservices-architectures-death-enterprise-service-bus-part-one">Do Good Microservices Architectures Spell the Death of the Enterprise Service Bus?</a>
+          </li>
+          <li>
+            <a href="http://martinfowler.com/articles/microservices.html">Microservices</a>
+          </li>
+          <li>
+            <a href="http://de.wikipedia.org/wiki/Pipe_%28Informatik%29">Pipe</a>
+          </li>
+          <li>
+            <a href="http://www.opengroup.org/soa/source-book/soa/soa.htm">Service Oriented Architecture : What Is SOA?</a>
+          </li>
+          <li>
+            <a href="http://12factor.net/">The Twelve Factors</a>
+          </li>
+          <li>
+            <a href="http://blog.nwcadence.com/three-golden-rules-for-continuous-delivery/">Three Golden Rules for Continuous Delivery</a>
+          </li>
+          <li>
+            <a href="http://www.troyhunt.com/2014/02/your-api-versioning-is-wrong-which-is.html">
+              Your API versioning is wrong, which is why I decided to do it 3 different wrong ways
+            </a>
+          </li>
+        </ul>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Links</h2>
+    </hgroup>
+    <article>
+      <section>
+        <ul>
+          <li>
+            <a href="http://jaxenter.de/news/microservices-osgi-174387">Microservices versus OSGi: Über Sinn und Unsinn der 'neuen Inkarnation des Webservice</a>
+          </li>
+          <li>
+            <a href="http://blog.ralfw.de/2014/08/warnung-vor-dem-microservice-versuch.html">Warnung vor dem Microservice – Versuch einer Definition</a>
+          </li>
+          <li>
+            <a href="http://jaxenter.de/artikel/nie-wieder-monolithen-176652">Micro Services in der Praxis: Nie wieder Monolithen!</a>
+          </li>
+          <li>
+            <a href="http://bernd-zuther.de/deployment-ganz-einfach/">Deployment ganz einfach – Microservice Deployment mit Hilfe der Linux Paketverwaltung</a>
+          </li>
+          <li>
+            <a href="https://bernd-zuther.de/splunk-marke-eigenbau-mit-elasticsearch-logstash-und-kibana/">Splunk – Marke Eigenbau mit Elasticsearch, Logstash und Kibana (ELK Stack)</a>
+          </li>
+          <li>
+            <a href="https://github.com/zutherb/AppStash/">Appstash Project</a>
+          </li>
+        </ul>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Images</h2>
+    </hgroup>
+    <article>
+      <section>
+        <ul>
+          <li>
+            <a href="http://en.wikipedia.org/wiki/Scrum_%28software_development%29">
+                Scrum Process
+            </a>
+          </li>
+          <li>
+            <a href="http://en.wikipedia.org/wiki/Service-oriented_architecture">
+                SOA
+            </a>
+          </li>
+          <li><a href="https://www.flickr.com/photos/piers_nye/2501994750">Wretched</a></li>
+          <li>
+            <a href="https://www.flickr.com/photos/free-stock/6882422150/in/photolist-bubdjS-7AnDdo-j2AkLb-53XP6J-8StMrN-8PhTYq-mBURMz-5vZWug-F4xkn-5prMou-9AR6bz-7EocyL-9gHtiA-5bb1Rd-fr7721-cYQ6v5-7MyLbr--7rVm7i-iK5BiY-27nt9G-bMcKJ6-nSiK8C-diJT1f-gR5fpV-5JyFR-d5rFH-4LZfSe-5vvFtN-4wR3h2-83H84-6jtBYq-7kifJY-8594o-7J5fyn-by5PUn-82KGLk-7QvFkP-daprev-9icBsy-diqGfd-86KGzf-h97oRi-pGzJ45-4XvQKB-93TTcD-79KMdy-2fPPTM-7S66oc-8PnvAJ">
+              Happy Girl on the Beach
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/ollil/3938528404/in/photolist-712Zh9-726qjW-6pXc7N-96d2sp-8D9VpF-4A24M-7a4rxq-dj6dym-h7gjhF-adFYXV-7CEJot-ceNjpf-dt6FLj-nd5pk9-9XVVHc-9ct51C-pCZk2S-hFxFpa-9qgpDo-7qm5VU-4cWNnQ-9XYPUm-6jwp8n-op45Q7-2skGrp-o9AkXm-9Go4NF-9Go4Np-7qm3uu-2skGq6-adEcA-or5YPc-6x2znT-mG82H8-6tEW1Q-mG9FA1-6x2yNZ-ikGJDR-6x6JvG-9xnjaQ-9KDeMq-6tEW25-7qh51t-9xnnMQ-9xnnD5-9xjozz-9xnnbL-9xnmXw-9xjnYM-9xnmyY">
+              Unfall von Herbert Stenger
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/wanhoff/2371176434/in/photolist-iiqvB3-76id32-ijibAz-ijijmz-iivTMs-iiqD7q-ijjrbW-iirSCG-iiqqad-9uLhte-ijhVjx-kXJvzv-kXLC5E-kXJZiM-dg4raW-irLLTZ-2X4svU-afZron-7owTHV-4yNxWx-9qoAj1-nyrY1F-iivEhR-ijhEiF-iiqB9V-iiqKEW-iivkrA-iiqrUV-iiqzjc-iiqJtA-iiw6st-iivNMB-nfbCka-iiv9b8-iiw1QJ-84y7b6-e44eBZ-4wNH4B-anduee-hWBeZz-eUdxVv-eUdu2p-eUpTFu-8kFDRH-cyCxju-6kKdPU-4BwU9j-5nLR9K-m8wmMV-3VZFEC">
+              Lieferwagen
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/dlytle/10094837846/in/photolist-go3FAo-pqdWti-ekama-8m1Kis-7Tztjg-4E9WPz-pV7AqK-8f8Cto-bkES28-9UCLzS-8f8QFE-7Rrhv3-8wuXTN-8f5m5M-8f8CwC-nNQSBn-8f5m4D-nM6fzE-go3RE1-5mPvfA-8CWdJs-5mMuXz-go3wCm-9bH85u-8wuYto-8f8M5s-8f5uDB-8f8M3Y-8f5uB4-5PmzGj-9xMsx8-9xQu6h-9xQzLw-9xMwr4-9xN5TT-9xRbR3-9xN8FM-9xMpCt-9xQyyA-9xQwqy-9xR2Ku-9xRgqU-9xN7ix-9xQknq-9xNiCg-9xQnBj-9xMXfg-9xMU7i-9xMokz-9xR3pu">
+              Indianapolis Zoo
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/rmlowe/3281353786">
+              Developer At Work
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/zengei/6976940402/in/photolist-48A49j-edrJ32-5dKzxx-bCwDiU-dNysZT-4gBpnQ-9Y9rJo-jovijk-8VH9YR-dd7jSJ-5jWehi-4fEJem-7NoVZ9-478pma-uVojg-o93H1x-dH7qqZ-6ZaGM1-9yaonN-6YPrcM-9WzuJF-3hUVf9-cdzAXd-6YPHzH-6xCgCZ-9MTUJ1-aH4KC-a4D4nV-9QnRh-9Y9tKy-763h94-puxdoT-fNC4QW-5fWdh-aVrts-4AfCjC-6rzaDb-79Afh-6rzbwY-6Pc5Li-6rzcjW-6rAXn3-aBESL-6xc91o-9zcv3u-532GVQ-2i823m-7brDFD-aH4KP-9qnhLm">
+              [119/366] Thumbs Up
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/christianreimer/15496733958/in/photolist-pBoP7f-8iC4FM-5iD8kx-8kiqwi-3FRm4T-7K2AcU-6jV36r-9M4jL-7VxYvw-5385pB-bQctNM-9sJPJD-eHatpF-6qBRsU-4bBqJt-qeAm-6ex5Uq-gXjfr5-do3ESw-jLypgv-98KX18-bvya7m-fTTr8R-62ctza-bbqebF-ca8Syo-6E9JUf-qquZtU-Hi88U-HickH-Hi8vE-HiccZ-6mTfkt-6TZvce-9yk4rG-bW5bmo-6TZv4g-6U4vnq-4LUzai-ecw4xY-6U4vGW-6TZv7x-7fYXzb-fTgJXM-6TZuLB-6TZuSP-6TZuHr-9QXrxm-6TZuQ2-bW5amN">
+              There's a light at the end of the tunnel...
+            </a>
+          </li>
+          <!--<li>-->
+            <!--<a href="https://www.flickr.com/photos/3oheme/5141328136/in/photolist-8QjDJy-dPvWgv-Ncy3F-8HujY7-dVfECd-6twhgE-pjpNp1-osNge-o1sM2y-f7JZuc-5WJEhT-nRCGHq-nntUoZ-5M5pE7-dQCYfB-jqjryq-5uQ7Js-dPedpp-vDU5a-5CtedK-dL6eiz-6d46c7-8KiQN2-711K5g-c7ByLy-dLbD3m-7ACBAB-dLbMyS-4pxGg9-7GZQod-24tG8K-6FPWfn-7hGthj-6d45i7-71SdDG-7NBCWs-9gScHp-g4nLq-qqe9ML-dGSohj-a6F2MS-t6R6k-bMB8PT-nDLc8f-ebt15q-4zZahe-nseDcM-7BQ35F-6dkEZg-9EQHN6">-->
+              <!--Post-it time!-->
+            <!--</a>-->
+          <!--</li>-->
+        </ul>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+<script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+<script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>
