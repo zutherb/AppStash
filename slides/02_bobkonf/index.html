@@ -78,7 +78,7 @@
     </hgroup>
     <article class="flexbox vcenter">
       <section>
-        <object data="../master/images/scrum_process.svg" type="image/svg+xml"></object>
+        <object data="../master/images/scrum_process.svg" type="image/svg+xml" style="height: 500px; width: 100%"></object>
       </section>
     </article>
   </slide>
@@ -89,7 +89,7 @@
     </hgroup>
     <article class="flexbox vcenter">
       <section>
-        <img src="../master/images/LeanStartupLoopClassic.png" alt="Build Measure Learn Cycle" style="height: 500px">
+        <img src="../master/images/LeanStartupLoopClassic.png" alt="Build Measure Learn Cycle" style="height: 500px; width: 100%">
       </section>
     </article>
   </slide>
@@ -101,14 +101,13 @@
     <article>
       <section>
         <ul>
-          <li>Conversion marketing is the <b>act of converting site visitors into paying customers</b>.<br /><br /></li>
-          <li>Conversion rate is the <b>proportion of visits to a website who take action to go beyond a website
-            visit</b>.<br /><br />
+          <li>act of converting site visitors into paying customers</li>
+          <li>proportion of visits to a website who take action to go beyond a website visit
             <object data="../master/images/conversion_rate.svg" type="image/svg+xml"></object>
           </li>
         </ul>
       </section>
-      <aside class="gdbar right top"><img src="../master/images/camera-icon.png"></aside>
+      <aside class="gdbar bottom"><img src="../master/images/camera-icon.png"></aside>
     </article>
   </slide>
 
@@ -144,7 +143,7 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
     </hgroup>
     <article class="flexbox vcenter">
       <section>
-        <object data="../master/images/monolith_architecture.svg" type="image/svg+xml" style="height: 450px"></object>
+        <object data="../master/images/monolith_architecture.svg" type="image/svg+xml" style="height: 450px; width: 100%"></object>
       </section>
     </article>
   </slide>
@@ -161,7 +160,7 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
     </hgroup>
     <article class="flexbox vcenter">
       <section>
-        <object data="../master/images/microservice.svg" type="image/svg+xml"></object>
+        <object data="../master/images/microservice.svg" type="image/svg+xml" style="width: 100%"></object>
       </section>
     </article>
   </slide>
@@ -172,7 +171,7 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
     </hgroup>
     <article class="flexbox vcenter">
       <section>
-        <object data="../master/images/microservice_architecture.svg" type="image/svg+xml" style="height: 500px"></object>
+        <object data="../master/images/microservice_architecture.svg" type="image/svg+xml" style="height: 500px; width: 100%"></object>
       </section>
     </article>
   </slide>
@@ -256,16 +255,16 @@ vagrant@app-server-node-4:~$ ps aux | grep java | wc -l
       <section>
         <ul>
           <li>
-            Microservices uses Lightweight infrastructure and protocols (e.g. REST)
+            Lightweight infrastructure and protocols (e.g. REST)
           </li>
           <li>
-            Microservices have greater flexibility of architecture (e.g. can contain GUI)
+            Greater flexibility of architecture (e.g. can contain GUI)
           </li>
           <li>
-            Microservices are managed as products, with their own lifecycle
+            managed as products, with their own lifecycle
           </li>
           <li>
-            Microservices are deployed processes (Unix packages or Container)
+            deployed as processes (Unix packages or Container)
           </li>
         </ul>
       </section>
@@ -301,7 +300,6 @@ vagrant@app-server-node-4:~$ ps aux | grep java | wc -l
     </hgroup>
     <article class="flexbox">
       <section>
-        <p>With all the benefits they bring, microservices also create several challenges:</p>
         <ul>
           <li>
             require integration.
@@ -479,7 +477,7 @@ vagrant@app-server-node-4:~$ ps aux | grep java | wc -l
   </slide>
 
   <slide class="fill nobackground" style="background-image:url(../master/images/delivery_car.jpg);">
-    <aside class="gdbar right top"><img src="../master/images/camera-icon.png"></aside>
+    <aside class="gdbar bottom"><img src="../master/images/camera-icon.png"></aside>
   </slide>
 
   <slide>
@@ -488,7 +486,7 @@ vagrant@app-server-node-4:~$ ps aux | grep java | wc -l
     </hgroup>
     <article class="flexbox vcenter">
       <section>
-        <object data="../master/images/deployment_pipeline_microservice.svg" type="image/svg+xml" style="height: 450px"></object>
+        <object data="../master/images/deployment_pipeline_microservice.svg" type="image/svg+xml" style="height: 450px; width: 100%"></object>
       </section>
     </article>
   </slide>
@@ -498,7 +496,16 @@ vagrant@app-server-node-4:~$ ps aux | grep java | wc -l
       <h2>Deployment</h2>
     </hgroup>
     <article class="flexbox vcenter">
-      <object data="../master/images/build-run-deploy.svg" type="image/svg+xml" style="height: 450px"></object>
+      <object data="../master/images/build-run-deploy.svg" type="image/svg+xml" style="height: 450px; width: 100%"></object>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Unix Repository</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <img src="../master/images/debian_repo.png"  style="height: 550px; width: 100%" />
     </article>
   </slide>
 
@@ -507,12 +514,12 @@ vagrant@app-server-node-4:~$ ps aux | grep java | wc -l
       <h2>Resilience / Cluster Control</h2>
     </hgroup>
     <article class="flexbox vcenter">
-      <img src="../master/images/resilience.png" style="height: 320px" />
+      <img src="../master/images/resilience.png" style="height: 400px" />
     </article>
   </slide>
 
   <slide class="fill nobackground" style="background-image:url(../master/images/zookeeper.jpg);">
-    <aside class="gdbar right top"><img src="../master/images/camera-icon.png"></aside>
+    <aside class="gdbar bottom"><img src="../master/images/camera-icon.png"></aside>
   </slide>
 
   <slide class="fill nobackground" style="background-image:url(../master/images/light_at_the_end_of_the_tunnel.jpg);">
@@ -660,11 +667,6 @@ vagrant@app-server-node-4:~$ ps aux | grep java | wc -l
               There's a light at the end of the tunnel...
             </a>
           </li>
-          <!--<li>-->
-            <!--<a href="https://www.flickr.com/photos/3oheme/5141328136/in/photolist-8QjDJy-dPvWgv-Ncy3F-8HujY7-dVfECd-6twhgE-pjpNp1-osNge-o1sM2y-f7JZuc-5WJEhT-nRCGHq-nntUoZ-5M5pE7-dQCYfB-jqjryq-5uQ7Js-dPedpp-vDU5a-5CtedK-dL6eiz-6d46c7-8KiQN2-711K5g-c7ByLy-dLbD3m-7ACBAB-dLbMyS-4pxGg9-7GZQod-24tG8K-6FPWfn-7hGthj-6d45i7-71SdDG-7NBCWs-9gScHp-g4nLq-qqe9ML-dGSohj-a6F2MS-t6R6k-bMB8PT-nDLc8f-ebt15q-4zZahe-nseDcM-7BQ35F-6dkEZg-9EQHN6">-->
-              <!--Post-it time!-->
-            <!--</a>-->
-          <!--</li>-->
         </ul>
       </section>
     </article>
