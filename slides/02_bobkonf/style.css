@@ -9,7 +9,6 @@ aside.gdbar {
 }
 
 .speakers > * {
-  width: 50%;
   margin-bottom: 1em;
 }
 
@@ -93,7 +92,7 @@ aside.gdbar {
 }
 
 .person-types img {
-  max-width: 300px;
+  max-width: 350px;
   max-height: 150px;
   display: block;
   margin: 0 auto;
