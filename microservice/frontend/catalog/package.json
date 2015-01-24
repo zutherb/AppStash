@@ -44,6 +44,7 @@
   },
   "scripts": {
     "test": "grunt test",
-    "build": "bower install && npm install && grunt build"
+    "build": "bower install && npm install && grunt build",
+    "server": "grunt serve"
   }
 }

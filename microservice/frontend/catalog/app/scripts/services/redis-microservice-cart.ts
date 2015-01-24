@@ -2,16 +2,19 @@ class RedisMircoserviceCartService extends AbstractCartService implements ICartS
 
     private CART_ID = 'cartId';
 
+    private rootScope: ng.IScope
     private qService: ng.IQService;
     private httpService: ng.IHttpService;
 
     static $inject = ['localStorageService', '$http', '$q', 'configuration'];
 
-    constructor(private localStorageService: ng.localStorage.ILocalStorageService,
+    constructor(private $rootScope: ng.IScope,
+                private localStorageService: ng.localStorage.ILocalStorageService,
                 private $http: ng.IHttpService,
                 private $q: ng.IQService,
                 private configuration:IConfiguration) {
         super();
+        this.rootScope = $rootScope;
         this.httpService = $http;
         this.qService = $q;
     }
@@ -28,15 +31,14 @@ class RedisMircoserviceCartService extends AbstractCartService implements ICartS
                     deferred.resolve(true);
                 })
                 .error((error) => {
-                  console.log(error)
-                  deferred.resolve(false);
+                this.emitCartError(error);
+                deferred.resolve(false);
                 });
         }else {
             this.httpService.post(this.configuration.CART_SERVICE_POST_URL, cartItem, {params : {cartId: this.getCartId()}})
                 .success((data) => deferred.resolve(true))
                 .error((error) => {
-                  console.log(error)
-                  deferred.resolve(false);
+                deferred.resolve(false);
                 });
         }
       return deferred.promise;
@@ -48,7 +50,7 @@ class RedisMircoserviceCartService extends AbstractCartService implements ICartS
             this.httpService.delete(this.configuration.CART_SERVICE_DELETE_URL, {params : {cartId: this.getCartId(), itemId: itemId}})
                 .success((data) => deferred.resolve(true))
                 .error((error) => {
-                  console.log(error)
+                  this.emitCartError(error);
                   deferred.resolve(false);
                 });
         }
@@ -61,7 +63,10 @@ class RedisMircoserviceCartService extends AbstractCartService implements ICartS
         if(this.hasCardId()){
             this.httpService.get(this.configuration.CART_SERVICE_GET_URL + this.getCartId())
                 .success((data: ICart) => deferred.resolve(data.cartItems))
-                .error((error:any) => console.error(error));
+                .error((error:any) => {
+                this.emitCartError(error);
+                deferred.resolve(false);
+              });
         }else{
             deferred.resolve([]);
         }
@@ -78,6 +83,9 @@ class RedisMircoserviceCartService extends AbstractCartService implements ICartS
         return this.localStorageService.get(this.CART_ID);
     }
 
+    emitCartError(error: any): void {
+      this.rootScope.$emit(Eventnames.ADD_ALERT_MESSAGE, {type : "danger", message : "Cart can not be loaded, cart backend seems to be unreachable."});
+    }
 }
 
 eshop.service('redisMircoserviceCartService', RedisMircoserviceCartService);
