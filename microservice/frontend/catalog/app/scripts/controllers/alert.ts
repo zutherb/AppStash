@@ -23,7 +23,7 @@ class ShopAlertController {
     }
 
     closeAlert(index:number) {
-        this.alerts = this.alerts.slice(index);
+        this.alerts = this.alerts.slice(index, 1);
     }
 }
 
