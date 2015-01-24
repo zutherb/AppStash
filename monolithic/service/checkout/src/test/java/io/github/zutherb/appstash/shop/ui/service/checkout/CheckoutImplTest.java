@@ -42,7 +42,8 @@ public class CheckoutImplTest {
         initMocks(this);
         when(cart.getAll()).thenReturn(createCartItems());
         when(cart.getTotalSum()).thenReturn(BigDecimal.valueOf(2));
-        checkout = new CheckoutImpl(cart, new DozerBeanMapper(Arrays.asList("io.github.zutherb.appstash/shop/service/checkout/dozer-mapping.xml")));
+        checkout = new CheckoutImpl(cart, new DozerBeanMapper(
+                Arrays.asList("io/github/zutherb/appstash/shop/service/checkout/dozer-mapping.xml")));
     }
 
     private List<CartItemInfo> createCartItems() {

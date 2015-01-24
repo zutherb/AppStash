@@ -18,7 +18,7 @@ import static org.junit.Assert.assertNotNull;
  * @author zutherb
  */
 @ActiveProfiles("test")
-@ContextConfiguration(locations = "classpath:io.github.zutherb.appstash/shop/ui/spring-context.xml")
+@ContextConfiguration(locations = "classpath:io/github/zutherb/appstash/shop/ui/spring-context.xml")
 public class ApplicationContextTest extends AbstractJUnit4SpringContextTests {
 
     @Autowired

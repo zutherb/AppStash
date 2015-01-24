@@ -96,7 +96,7 @@ dependencies {
 }
 
 test {
-    exclude '**/*Spec'
+    exclude '**/*Spec*'
 }
 
 task uiTest(type: Test) {

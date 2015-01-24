@@ -1,6 +1,6 @@
-include 'microservice:frontend/catalog'
-include 'microservice:frontend/checkout'
-include 'microservice:frontend/registration'
+include 'microservice:frontend:catalog'
+include 'microservice:frontend:checkout'
+include 'microservice:frontend:registration'
 
 include 'microservice:service:cart'
 include 'microservice:service:dataloader'
