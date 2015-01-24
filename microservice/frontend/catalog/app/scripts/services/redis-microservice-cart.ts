@@ -6,7 +6,7 @@ class RedisMircoserviceCartService extends AbstractCartService implements ICartS
     private qService: ng.IQService;
     private httpService: ng.IHttpService;
 
-    static $inject = ['localStorageService', '$http', '$q', 'configuration'];
+    static $inject = ['$rootScope', 'localStorageService', '$http', '$q', 'configuration'];
 
     constructor(private $rootScope: ng.IScope,
                 private localStorageService: ng.localStorage.ILocalStorageService,
