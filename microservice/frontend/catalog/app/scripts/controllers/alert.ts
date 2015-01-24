@@ -4,12 +4,13 @@ interface IAlertScope extends ng.IScope {
 
 class ShopAlertController {
 
-    alerts:IAlertItem[] = [];
+    private alerts: IAlertItem[];
 
     static $inject = ['$scope', '$rootScope'];
 
     constructor(private $scope: IAlertScope,
                 private $rootScope: ng.IScope) {
+        this.alerts = [];
 
         $rootScope.$on(Eventnames.ADD_ALERT_MESSAGE, (event:ng.IAngularEvent, alert:IAlertItem) => {
             this.alerts.push(alert);
@@ -23,7 +24,7 @@ class ShopAlertController {
     }
 
     closeAlert(index:number) {
-        this.alerts.slice(index, 1);
+      this.alerts = this.alerts.slice(index, 1);
     }
 }
 

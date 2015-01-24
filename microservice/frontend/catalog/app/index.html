@@ -26,7 +26,7 @@
     <!--<div ng-view="" class="container" ></div>-->
     <main class="ng-cloak container" >
         <div ng-controller="ShopAlertController">
-            <alert ng-repeat="alert in vm.alerts" type="{{alert.type}}" close="closeAlert($index)">{{alert.message}}</alert>
+            <alert ng-repeat="alert in vm.alerts" type="{{alert.type}}" close="vm.closeAlert($index)">{{alert.message}}</alert>
         </div>
 
         <div ng-view></div>
