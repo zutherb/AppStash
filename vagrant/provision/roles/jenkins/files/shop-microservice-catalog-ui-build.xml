@@ -39,7 +39,7 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>./gradlew -p microservice/frontend/catalog bower definitelyTyped grunt_build --stacktrace
+      <command>./gradlew -p microservice/frontend/catalog bower grunt_build --stacktrace
 ./gradlew -p microservice/frontend/catalog prepareDeb buildDeb --stacktrace</command>
     </hudson.tasks.Shell>
   </builders>

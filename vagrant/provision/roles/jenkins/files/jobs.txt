@@ -14,5 +14,6 @@ shop-monolitic-load-test
 shop-monolitic-production-deployment
 shop-monolitic-test-deployment
 shop-monolitic-ui-test
+shop-top-down-build
 spring-boot-admin
 trigger-git-update

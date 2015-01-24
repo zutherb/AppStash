@@ -1,8 +1,6 @@
 #!/bin/sh
 set -e
 
-chown -R www-data:www-data /usr/share/shop/frontend/checkout/html
-chmod 755 /usr/share/shop/frontend/checkout/
 ln -sf /etc/nginx/sites-available/checkout.microservice.io /etc/nginx/sites-enabled/checkout.microservice.io
 
 nginx -t

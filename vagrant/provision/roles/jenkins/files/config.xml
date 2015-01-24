@@ -80,7 +80,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>shop-monolitic-build</firstJob>
-        <firstJobLink>job/shop-monolitic-build/</firstJobLink>
+        <firstJobLink>view/Microservice%20Builds/job/shop-monolitic-build/</firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>1</noOfDisplayedBuilds>
       <buildViewTitle></buildViewTitle>
@@ -102,7 +102,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>shop-microservice-product-service-build</firstJob>
-        <firstJobLink>job/shop-microservice-product-service-build/</firstJobLink>
+        <firstJobLink>view/Microservice%20Builds/job/shop-microservice-product-service-build/</firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>3</noOfDisplayedBuilds>
       <buildViewTitle></buildViewTitle>
@@ -146,8 +146,7 @@
       <filterQueue>false</filterQueue>
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
-        <firstJob>shop-microservice-catalog-ui-build</firstJob>
-        <firstJobLink>job/shop-microservice-catalog-ui-build/</firstJobLink>
+        <firstJobLink></firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>3</noOfDisplayedBuilds>
       <buildViewTitle></buildViewTitle>
@@ -169,7 +168,7 @@
       <properties class="hudson.model.View$PropertyList"/>
       <gridBuilder class="au.com.centrumsystems.hudson.plugin.buildpipeline.DownstreamProjectGridBuilder">
         <firstJob>shop-microservice-checkout-ui-build</firstJob>
-        <firstJobLink>job/shop-microservice-checkout-ui-build/</firstJobLink>
+        <firstJobLink>view/Microservice%20Builds/job/shop-microservice-checkout-ui-build/</firstJobLink>
       </gridBuilder>
       <noOfDisplayedBuilds>3</noOfDisplayedBuilds>
       <buildViewTitle></buildViewTitle>
@@ -218,16 +217,12 @@
       <jobNames>
         <comparator class="hudson.util.CaseInsensitiveComparator" reference="../../../listView[2]/jobNames/comparator"/>
         <string>shop-microservice-cart-service-build</string>
-        <string>shop-microservice-catalog-ui-build</string>
         <string>shop-microservice-checkout-ui-build</string>
         <string>shop-microservice-dataloader-build</string>
         <string>shop-microservice-navigation-service-build</string>
         <string>shop-microservice-product-service-build</string>
         <string>shop-microservice-production-deployment</string>
-        <string>shop-microservice-publish</string>
-        <string>shop-microservice-recommendation-service-build</string>
         <string>shop-microservice-registration-ui-build</string>
-        <string>shop-microservice-test-deployment</string>
       </jobNames>
       <jobFilters/>
       <columns>
