@@ -54,15 +54,6 @@ task bower(type: Exec){
     commandLine "bower", 'install'
 }
 
-// processes your bower.json
-task definitelyTyped(type: Exec){
-  commandLine "tsd", 'reinstall'
-}
-
-task gruntBuildWithOpts(type: GruntTask) {
-    dependsOn 'npmInstall', bower, definitelyTyped, 'installGrunt'
-}
-
 task prepareDeb (type: VersionTxtTask) {
     def htmlFolder = "${buildDir}/debian-data/usr/share/shop/frontend/catalog/html"
     def cmd = "git rev-parse HEAD"

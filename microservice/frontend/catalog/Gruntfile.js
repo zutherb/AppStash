@@ -28,6 +28,26 @@ module.exports = function (grunt) {
         // Project settings
         yeoman: appConfig,
 
+        tsd: {
+          refresh: {
+            options: {
+              // execute a command
+              command: 'reinstall',
+
+              //optional: always get from HEAD
+              latest: true,
+
+              // specify config file
+              config: 'tsd.json',
+
+              // experimental: options to pass to tsd.API
+              opts: {
+                // props from tsd.Options
+              }
+            }
+          }
+        },
+
         typescript: {
             base: {
                 src: ['<%= yeoman.app %>/scripts/{,*/}*.ts'],
@@ -561,6 +581,7 @@ module.exports = function (grunt) {
         grunt.task.run([
             'clean:server',
             'replace:development',
+            'tsd',
             'typescript',
             'copy:glyphicons',
             'wiredep',
@@ -579,6 +600,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('test', [
         'clean:server',
+        'tsd',
         'typescript',
         'concurrent:test',
         'autoprefixer',
@@ -588,6 +610,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
+        'tsd',
         'typescript',
         'replace:production',
         'wiredep',
