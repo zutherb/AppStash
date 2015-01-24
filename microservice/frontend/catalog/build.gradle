@@ -54,8 +54,13 @@ task bower(type: Exec){
     commandLine "bower", 'install'
 }
 
+// processes your bower.json
+task definitelyTyped(type: Exec){
+  commandLine "tsd", 'reinstall'
+}
+
 task gruntBuildWithOpts(type: GruntTask) {
-    dependsOn 'npmInstall', bower, 'installGrunt'
+    dependsOn 'npmInstall', bower, definitelyTyped, 'installGrunt'
 }
 
 task prepareDeb (type: VersionTxtTask) {

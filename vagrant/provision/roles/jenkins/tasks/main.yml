@@ -33,6 +33,7 @@
     - grunt-cli
     - bower
     - typescript
+    - tsd
 
 #gem plugin does'nt work correct
 - raw: sudo gem install compass

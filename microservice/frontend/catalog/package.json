@@ -36,12 +36,13 @@
     "karma-typescript-preprocessor": "0.0.7",
     "load-grunt-tasks": "^0.6.0",
     "time-grunt": "^1.0.0",
-    "typescript": "^1.0.1"
+    "typescript": "1.4.1"
   },
   "engines": {
     "node": ">=0.10.0"
   },
   "scripts": {
-    "test": "grunt test"
+    "test": "grunt test",
+    "build": "bower install && tsd reinstall && npm install && grunt build"
   }
 }
