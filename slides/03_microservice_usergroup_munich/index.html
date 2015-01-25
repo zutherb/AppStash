@@ -102,7 +102,7 @@
       <section>
         <ul>
           <li>act of converting site visitors into paying customers</li>
-          <li>proportion of visits to a website who take action to go beyond a website visit
+          <li>proportion of visits to a website which take action to go beyond a website visit
             <object data="../master/images/conversion_rate.svg" type="image/svg+xml"></object>
           </li>
         </ul>
@@ -151,11 +151,11 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
     </hgroup>
     <article>
       <ul>
-        <li>enlarge time to market</li>
         <li>reduce speed development</li>
-        <li>enlarge turn around times</li>
-        <li>enlarge build time</li>
+        <li>increase turn around times</li>
+        <li>increase build time</li>
         <li>unforeseen behavior after changes</li>
+        <li>increase time to market</li>
         <li>A/B testing of process changes nearly impossible</li>
         <li>scalability</li>
       </ul>
@@ -524,6 +524,14 @@ vagrant@app-server-node-4:~$ ps aux | grep java | wc -l
     </article>
   </slide>
 
+  <slide class="fill nobackground" style="background-image:url(../master/images/containers.jpg);"></slide>
+
+  <slide style="background-image:url(../master/images/architecture-large.png); background-repeat:no-repeat; background-position:center; background-size: 80% auto;">
+    <hgroup>
+      <h2>Cluster Management</h2>
+    </hgroup>
+  </slide>
+
   <slide class="fill nobackground" style="background-image:url(../master/images/zookeeper.jpg);">
     <aside class="gdbar bottom"><img src="../master/images/camera-icon.png"></aside>
   </slide>
@@ -532,14 +540,6 @@ vagrant@app-server-node-4:~$ ps aux | grep java | wc -l
     <article class="flexbox vcenter">
       <h1 style="color: #ffffff; font-size: 2em">Learn from your customers</h1>
     </article>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/containers.jpg);"></slide>
-
-  <slide style="background-image:url(../master/images/architecture-large.png); background-repeat:no-repeat; background-position:center; background-size: 80% auto;">
-    <hgroup>
-      <h2>Cluster Management</h2>
-    </hgroup>
   </slide>
 
   <slide class="fill nobackground" style="background-image:url(../master/images/light_at_the_end_of_the_tunnel.jpg);">
@@ -566,13 +566,15 @@ vagrant@app-server-node-4:~$ ps aux | grep java | wc -l
             <td>fully automated deployment pipeline</td>
           </tr>
           <tr>
-            <td>satisfied customers / developers</td>
+            <td>incremental migration</td>
             <td>cluster management</td>
           </tr>
         </tbody>
       </table>
       <footer style="color:red; background-color: #ffffff; margin: 20px 0px; padding: 10px; ">
-        Microservices does not guarantee more conversion, but experiments with our costumers does it!
+        Warning: <br />
+        Microservices do not guarantee more conversion! <br />
+        You need to run experiments with our customers!
       </footer>
     </article>
   </slide>
