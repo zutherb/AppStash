@@ -139,7 +139,11 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
 
   <slide class="fill nobackground" style="background-image:url(../master/images/cuba_car.jpg);"></slide>
 
-  <slide class="fill nobackground" style="background-image:url(../master/images/duisburg.jpg);"></slide>
+  <slide class="fill nobackground" style="background-image:url(../master/images/duisburg.jpg);">
+    <!--<article class="flexbox vcenter">-->
+      <!--<h1 style="color: #ffffff; font-size: 2em">Monolith</h1>-->
+    <!--</article>-->
+  </slide>
 
   <slide>
     <hgroup>
@@ -153,11 +157,14 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
         <li>enlarge build time</li>
         <li>unforeseen behavior after changes</li>
         <li>A/B testing of process changes nearly impossible</li>
+        <li>scalability</li>
       </ul>
     </article>
   </slide>
 
-  <slide class="fill nobackground" style="background-image:url(../master/images/lego.jpg);"></slide>
+  <slide class="fill nobackground" style="background-image:url(../master/images/lego.jpg);">
+
+  </slide>
 
   <slide>
     <hgroup>
@@ -266,7 +273,7 @@ vagrant@app-server-node-4:~$ ps aux | grep java | wc -l
             greater flexibility of architecture (e.g. can contain GUI)
           </li>
           <li>
-            managed as products, with their own lifecycle
+            managed as products, with their own lifecycle and delivery
           </li>
           <li>
             deployed as processes (Unix packages or Container)
@@ -527,12 +534,13 @@ vagrant@app-server-node-4:~$ ps aux | grep java | wc -l
     </article>
   </slide>
 
+  <slide class="fill nobackground" style="background-image:url(../master/images/containers.jpg);"></slide>
+
   <slide style="background-image:url(../master/images/architecture-large.png); background-repeat:no-repeat; background-position:center; background-size: 80% auto;">
     <hgroup>
-      <h2>Cluster-Management</h2>
+      <h2>Cluster Management</h2>
     </hgroup>
   </slide>
-
 
   <slide class="fill nobackground" style="background-image:url(../master/images/light_at_the_end_of_the_tunnel.jpg);">
     <hgroup>
@@ -546,7 +554,7 @@ vagrant@app-server-node-4:~$ ps aux | grep java | wc -l
             <th width="50%">Needs</th>
           </tr>
           <tr>
-            <td>better A/B Testing</td>
+            <td>better A/B testing</td>
             <td>monitoring</td>
           </tr>
           <tr>
@@ -554,16 +562,16 @@ vagrant@app-server-node-4:~$ ps aux | grep java | wc -l
             <td>centralised logging</td>
           </tr>
           <tr>
-            <td>satisfied customers / developers</td>
+            <td>solution orientation</td>
             <td>fully automated deployment pipeline</td>
           </tr>
           <tr>
-            <td></td>
-            <td>cluster control</td>
+            <td>satisfied customers / developers</td>
+            <td>cluster management</td>
           </tr>
         </tbody>
       </table>
-      <footer style="background-color: #ffffff; margin: 20px 0px; padding: 10px; ">
+      <footer style="color:red; background-color: #ffffff; margin: 20px 0px; padding: 10px; ">
         Microservices does not guarantee more conversion, but experiments with our costumers does it!
       </footer>
     </article>
@@ -724,6 +732,11 @@ vagrant@app-server-node-4:~$ ps aux | grep java | wc -l
           <li>
             <a href="https://www.flickr.com/photos/zengei/6976940402/in/photolist-48A49j-edrJ32-5dKzxx-bCwDiU-dNysZT-4gBpnQ-9Y9rJo-jovijk-8VH9YR-dd7jSJ-5jWehi-4fEJem-7NoVZ9-478pma-uVojg-o93H1x-dH7qqZ-6ZaGM1-9yaonN-6YPrcM-9WzuJF-3hUVf9-cdzAXd-6YPHzH-6xCgCZ-9MTUJ1-aH4KC-a4D4nV-9QnRh-9Y9tKy-763h94-puxdoT-fNC4QW-5fWdh-aVrts-4AfCjC-6rzaDb-79Afh-6rzbwY-6Pc5Li-6rzcjW-6rAXn3-aBESL-6xc91o-9zcv3u-532GVQ-2i823m-7brDFD-aH4KP-9qnhLm">
               [119/366] Thumbs Up
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/gcwest/281385801/in/photolist-qSbck-j7eWKk-hD7JTZ-75mqRx-6gVcao-9F5bop-hD9cR2-3EK4k-9uDMLx-4NY3Yi-75qid1-5qQuwt-23rDNy-a3NYdi-3h5aAH-5o5H1E-hD7Jqz-85HX8j-DkXpr-8ffvhp-jxLp1q-hD7Kji-2UrVHv-3RUNDA-4MtokT-5o5H31-8ffvuz-kL1Hg5-7HrALP-75mqLa-fMsCgA-5MQQVH-hD812L-7vBa2x-bMcSap-gLRa3J-6W7SPZ-4LGK2-gmkcM-bRf2oP-kKZgdV-ppYzf4-adg96W-5mDc7Z-inkvJ-cR3ow7-2x7n1u-hD7HeX-dcGZAo-4GVqqY">
+              Containers
             </a>
           </li>
           <li>
