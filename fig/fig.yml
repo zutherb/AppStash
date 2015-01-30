@@ -1,0 +1,17 @@
+dockerui:
+  image: dockerui/dockerui
+  ports:
+     - "9000:9000"
+mongodb:
+  image: dockerfile/mongodb
+  ports:
+     - "27017:27017"
+monolithic:
+  image: f74937cc5f55
+  ports:
+      - "8080:8080"
+  links:
+     - mongodb
+
+
+

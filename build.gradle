@@ -32,6 +32,7 @@ buildscript {
         classpath "com.moowork.gradle:gradle-grunt-plugin:0.6"
         classpath "org.kt3k.gradle.plugin:coveralls-gradle-plugin:1.0.2"
         classpath 'se.transmode.gradle:gradle-docker:1.2'
+        classpath 'org.codehaus.groovy:groovy-backports-compat23:2.3.5'
     }
 }
 
