@@ -13,8 +13,8 @@
                 <prop key="generator.drop.collections">0</prop>
                 <prop key="generator.generationJob.rate">0</prop>
                 <prop key="mongo.db">shop</prop>
-                <prop key="mongo.host">localhost</prop>
-                <prop key="mongo.port">27017</prop>
+                <prop key="mongo.host">${MONGODB_PORT_27017_TCP_ADDR}</prop>
+                <prop key="mongo.port">${MONGODB_PORT_27017_TCP_PORT}</prop>
                 <prop key="redis.cart.microservice.url">http://shop.microservice.io/api/cart</prop>
             </props>
         </property>
@@ -28,8 +28,10 @@
                 <prop key="generator.drop.collections">0</prop>
                 <prop key="generator.generationJob.rate">0</prop>
                 <prop key="mongo.db">shop</prop>
-                <prop key="mongo.host">10.211.55.202</prop>
-                <prop key="mongo.port">27017</prop>
+                <!--<prop key="mongo.host">mongodb</prop>-->
+                <!--<prop key="mongo.port">27017</prop>-->
+                <prop key="mongo.host">${MONGODB_PORT_27017_TCP_ADDR}</prop>
+                <prop key="mongo.port">${MONGODB_PORT_27017_TCP_PORT}</prop>
                 <prop key="redis.cart.microservice.url">http://shop.microservice.io/api/cart</prop>
             </props>
         </property>

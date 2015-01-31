@@ -101,6 +101,17 @@ jar {
     }
 }
 
+docker {
+    maintainer = 'Bernd Zuther <bernd.zuther@codecentric.de>'
+    baseImage = 'dockerfile/java:oracle-java8'
+}
+
 distDocker {
-    exposePort 18080
+    dependsOn build
+
+    applicationName = 'product-service'
+    tagVersion = "$version"
+    tag = "eshop/${applicationName}"
+
+    exposePort(18080)
 }

@@ -89,3 +89,21 @@ grunt_build.dependsOn 'npmInstall'
 
 // runs "grunt build" as part of your gradle build
 build.dependsOn grunt_build
+
+docker {
+  maintainer = 'Bernd Zuther <bernd.zuther@codecentric.de>'
+  baseImage = 'dockerfile/nginx'
+}
+
+task packageToContainer(type: Docker) {
+  dependsOn build
+
+  applicationName = 'monolithic-shop'
+  tagVersion = "$version"
+  tag = "eshop/catalog-frontend"
+
+  addFile({
+    into("/var/www/html/")
+    from("$projectDir/dist")
+  })
+}
