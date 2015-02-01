@@ -14,7 +14,7 @@ redis:
   ports:
      - "6379:6379"
 shop:
-  image: e8ef862d81c2
+  image: eshop/monolithic-shop
   ports:
      - "8080:8080"
   links:
