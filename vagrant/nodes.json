@@ -110,6 +110,22 @@
                 "checkout.microservice.io",
                 "registration.microservice.io"
             ]
+        },
+        {
+          "node": "docker-appserver",
+          "box": "docker",
+          "box_url": "https://github.com/mitchellh/boot2docker-vagrant-box/releases/download/v1.2.0/boot2docker_virtualbox.box",
+          "hostname": "docker-appserver",
+          "memory": "2048",
+          "ip": "10.211.55.105",
+          "ports":[],
+          "playbook": "provision/docker.yml",
+          "apt_cache": false,
+          "aliases" : [
+            "docker-shop.microservice.io",
+            "docker-checkout.microservice.io",
+            "docker-registration.microservice.io"
+          ]
         }
     ]
 }

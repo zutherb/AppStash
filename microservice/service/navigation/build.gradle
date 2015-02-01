@@ -1,6 +1,4 @@
 apply plugin: 'application'
-apply plugin: 'maven'
-apply plugin: 'maven-publish'
 apply plugin: 'docker'
 apply plugin: 'pkg-debian'
 
@@ -109,5 +107,13 @@ jar {
 }
 
 distDocker {
+    dependsOn build
+
+    applicationName = 'navigation-service'
+    tagVersion = "$version"
+    tag = "eshop/${applicationName}"
+
+    setEnvironment("MONGODB_HOST", "mongo")
+
     exposePort 18090
 }

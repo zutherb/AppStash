@@ -26,6 +26,12 @@ product:
      - "18080:18080"
   links:
      - mongodb
+navigation:
+  image: 1cdd42bd60f2
+  ports:
+     - "18090:18090"
+  links:
+     - mongodb
 cart:
   image: 7cd974badbd6
   ports:
@@ -38,7 +44,29 @@ catalog:
      - "80:80"
   links:
      - product
+     - navigation
      - cart
-
+#jenkins:
+#  image: jenkins
+#  ports:
+#     - "8090:8080"
+#elasticsearch:
+#  image: dockerfile/elasticsearch
+#  ports:
+#     - "9200:9200"
+#     - "9300:9300"
+#kibana:
+#  image: ehazlett/kibana
+#  ports:
+#     - "8100:80"
+#  links:
+#       - elasticsearch
+#icinga:
+#  image: jordan/icinga2
+#  ports:
+#     - "8200:80"
+#  environment:
+#    - ICINGA_WEB_PASSWORD=icinga_web
+#    - ICINGA_PASSWORD=icinga
 
 

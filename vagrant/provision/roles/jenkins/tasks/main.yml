@@ -18,6 +18,7 @@
   apt: pkg={{item}} state=present force=yes
   with_items:
     - jenkins
+    - docker.io
     - xvfb
     - firefox
     - git
