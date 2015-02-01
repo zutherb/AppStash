@@ -39,7 +39,7 @@ Date       | Event                         | Title
 -----------|-------------------------------|----------------------------------------------------------------------------------------
 12.01.2015 | [JUGM](http://www.jugm.de/)   | [Next Generation IT - Qual oder Segen für den Entwickler](http://zutherb.github.io/AppStash/slides/01_jugm/)
 23.01.2015 | [bobkonf](http://bobkonf.de/) | [Microservices und die Jagd nach mehr Konversion - Fluch oder Segen für den Entwickler](http://zutherb.github.io/AppStash/slides/02_bobkonf/)
-26.01.2015 | [Microservices Meetup Munich](http://www.meetup.com/Microservices-Meetup-Munich/) | [Microservices und die Jagd nach mehr Konversion](http://zutherb.github.io/AppStash/slides/03_microservice_usergroup_munich/)
+26.01.2015 | [Microservices Meetup Munich](http://www.meetup.com/Microservices-Meetup-Munich/) [Video(german)](http://youtu.be/t6YfKMFvPvs)| [Microservices und die Jagd nach mehr Konversion](http://zutherb.github.io/AppStash/slides/03_microservice_usergroup_munich/)
 
 ## Directory Layout
 
