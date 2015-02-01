@@ -1,7 +1,6 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<project>
+<?xml version="1.0" encoding="UTF-8"?><project>
   <actions/>
-  <description></description>
+  <description/>
   <logRotator class="hudson.tasks.LogRotator">
     <daysToKeep>5</daysToKeep>
     <numToKeep>5</numToKeep>
@@ -18,7 +17,7 @@
   <jdk>(Default)</jdk>
   <triggers>
     <jenkins.triggers.ReverseBuildTrigger>
-      <spec></spec>
+      <spec/>
       <upstreamProjects>shop-microservice-product-service-build,shop-microservice-catalog-ui-build,shop-microservice-checkout-ui-build,shop-microservice-dataloader-build,shop-microservice-cart-service-build</upstreamProjects>
       <threshold>
         <name>SUCCESS</name>
@@ -34,7 +33,7 @@
       <project>shop-microservice-catalog-ui-build</project>
       <filter>**/*.deb</filter>
       <target>artifacts</target>
-      <excludes></excludes>
+      <excludes/>
       <selector class="hudson.plugins.copyartifact.StatusBuildSelector"/>
       <flatten>true</flatten>
       <doNotFingerprintArtifacts>false</doNotFingerprintArtifacts>
@@ -43,7 +42,7 @@
       <project>shop-microservice-product-service-build</project>
       <filter>**/*.deb</filter>
       <target>artifacts</target>
-      <excludes></excludes>
+      <excludes/>
       <selector class="hudson.plugins.copyartifact.StatusBuildSelector">
         <stable>true</stable>
       </selector>
@@ -54,7 +53,7 @@
       <project>shop-microservice-navigation-service-build</project>
       <filter>**/*.deb</filter>
       <target>artifacts</target>
-      <excludes></excludes>
+      <excludes/>
       <selector class="hudson.plugins.copyartifact.StatusBuildSelector">
         <stable>true</stable>
       </selector>
@@ -65,7 +64,7 @@
       <project>shop-microservice-registration-ui-build</project>
       <filter>**/*.deb</filter>
       <target>artifacts</target>
-      <excludes></excludes>
+      <excludes/>
       <selector class="hudson.plugins.copyartifact.StatusBuildSelector">
         <stable>true</stable>
       </selector>
@@ -76,7 +75,7 @@
       <project>shop-microservice-checkout-ui-build</project>
       <filter>**/*.deb</filter>
       <target>artifacts</target>
-      <excludes></excludes>
+      <excludes/>
       <selector class="hudson.plugins.copyartifact.StatusBuildSelector">
         <stable>true</stable>
       </selector>
@@ -87,7 +86,7 @@
       <project>shop-microservice-cart-service-build</project>
       <filter>**/*.deb</filter>
       <target>artifacts</target>
-      <excludes></excludes>
+      <excludes/>
       <selector class="hudson.plugins.copyartifact.StatusBuildSelector">
         <stable>true</stable>
       </selector>
@@ -98,7 +97,7 @@
       <project>shop-microservice-dataloader-build</project>
       <filter>**/*.deb</filter>
       <target>artifacts</target>
-      <excludes></excludes>
+      <excludes/>
       <selector class="hudson.plugins.copyartifact.StatusBuildSelector">
         <stable>true</stable>
       </selector>
@@ -143,8 +142,8 @@ EOF</command>
   <buildWrappers>
     <hudson.plugins.ws__cleanup.PreBuildCleanup plugin="ws-cleanup@0.24">
       <deleteDirs>false</deleteDirs>
-      <cleanupParameter></cleanupParameter>
-      <externalDelete></externalDelete>
+      <cleanupParameter/>
+      <externalDelete/>
     </hudson.plugins.ws__cleanup.PreBuildCleanup>
   </buildWrappers>
 </project>

@@ -1,3 +1,4 @@
+shop-docker-build
 shop-microservice-cart-service-build
 shop-microservice-catalog-ui-build
 shop-microservice-checkout-ui-build
