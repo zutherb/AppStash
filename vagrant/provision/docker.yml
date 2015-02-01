@@ -4,3 +4,4 @@
   sudo: yes
 
   roles:
+      - docker
