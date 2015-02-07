@@ -102,8 +102,23 @@ task packageToContainer(type: Docker) {
   tagVersion = "$version"
   tag = "eshop/catalog-frontend"
 
-  addFile({
-    into("/var/www/html/")
-    from("$projectDir/dist")
-  })
+
+  runCommand "wget https://github.com/jwilder/dockerize/releases/download/v0.0.2/dockerize-linux-amd64-v0.0.2.tar.gz"
+  runCommand "tar -C /usr/local/bin -xzvf dockerize-linux-amd64-v0.0.2.tar.gz"
+
+  addFile {
+    into "/var/www/html/"
+    from "$projectDir/dist"
+  }
+  addFile "$projectDir/docker/default.tmpl", "/etc/nginx/sites-available/default.tmpl"
+
+  defaultCommand ([
+    "dockerize",
+    "-template",
+    "/etc/nginx/sites-available/default.tmpl:/etc/nginx/sites-available/default",
+    "-stdout",
+    "/var/log/nginx/access.log",
+    "-stderr",
+    "/var/log/nginx/error.log",
+    "nginx" ])
 }

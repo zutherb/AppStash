@@ -6,28 +6,28 @@
   "bundle": "typings/tsd.d.ts",
   "installed": {
     "jquery/jquery.d.ts": {
-      "commit": "7bab855ae33d79e86da1eb6c73a7f7eab2676ddb"
+      "commit": "b0c9a94cadc4af42d2c365b2e425788109e8a0d5"
     },
     "angularjs/angular.d.ts": {
-      "commit": "7bab855ae33d79e86da1eb6c73a7f7eab2676ddb"
+      "commit": "b0c9a94cadc4af42d2c365b2e425788109e8a0d5"
     },
     "angularjs/angular-route.d.ts": {
-      "commit": "7bab855ae33d79e86da1eb6c73a7f7eab2676ddb"
+      "commit": "b0c9a94cadc4af42d2c365b2e425788109e8a0d5"
     },
     "angularjs/angular-resource.d.ts": {
-      "commit": "7bab855ae33d79e86da1eb6c73a7f7eab2676ddb"
+      "commit": "b0c9a94cadc4af42d2c365b2e425788109e8a0d5"
     },
     "bootstrap/bootstrap.d.ts": {
-      "commit": "7bab855ae33d79e86da1eb6c73a7f7eab2676ddb"
+      "commit": "b0c9a94cadc4af42d2c365b2e425788109e8a0d5"
     },
     "underscore/underscore.d.ts": {
-      "commit": "7bab855ae33d79e86da1eb6c73a7f7eab2676ddb"
+      "commit": "b0c9a94cadc4af42d2c365b2e425788109e8a0d5"
     },
     "angular-ui-bootstrap/angular-ui-bootstrap.d.ts": {
-      "commit": "7bab855ae33d79e86da1eb6c73a7f7eab2676ddb"
+      "commit": "b0c9a94cadc4af42d2c365b2e425788109e8a0d5"
     },
     "angularLocalStorage/angularLocalStorage.d.ts": {
-      "commit": "7bab855ae33d79e86da1eb6c73a7f7eab2676ddb"
+      "commit": "b0c9a94cadc4af42d2c365b2e425788109e8a0d5"
     }
   }
 }

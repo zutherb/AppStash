@@ -113,7 +113,7 @@ distDocker {
     tagVersion = "$version"
     tag = "eshop/${applicationName}"
 
-    setEnvironment("MONGODB_HOST", "mongo")
+    workingDir "/navigation-0.6/bin"
 
     exposePort 18090
 }

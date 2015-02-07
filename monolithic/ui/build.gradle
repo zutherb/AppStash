@@ -167,7 +167,7 @@ war {
 docker {
     maintainer = 'Bernd Zuther <bernd.zuther@codecentric.de>'
     baseImage = 'wegenenverkeer/tomcat7-java8'
-    hostUrl = "$dockerHost"
+//    hostUrl = "$dockerHost"
 }
 
 task packageToContainer(type: Docker) {
