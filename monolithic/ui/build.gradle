@@ -174,7 +174,7 @@ task packageToContainer(type: Docker) {
     dependsOn war
 
     applicationName = 'monolithic-shop'
-    tagVersion = "$version"
+    tagVersion = "latest"
     tag = "eshop/${applicationName}"
 
     addFile("$rootProject.projectDir/vagrant/provision/roles/tomcat/files/server.xml", "/opt/tomcat7/conf/server.xml")

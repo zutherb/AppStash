@@ -40,9 +40,12 @@
   <concurrentBuild>false</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>export DOCKER_OPTS=&apos; --host=unix:///var/run/docker.sock --restart=false -g /opt/app/jenkins/docker -G jenkins&apos;
-./gradlew -p monolithic/ui/ packageToContainer
-./gradlew -p microservice/frontend/catalog packageToContainer</command>
+      <command>#export DOCKER_OPTS=&apos; --host=unix:///var/run/docker.sock --restart=false -g /opt/app/jenkins/docker -G jenkins&apos;
+./gradlew -p monolithic/ui packageToContainer --info
+./gradlew -p microservice/frontend/catalog packageToContainer  --info
+./gradlew -p microservice/service/cart distDocker  --info
+./gradlew -p microservice/service/product distDocker  --info
+./gradlew -p microservice/service/navigation distDocker  --info</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers/>

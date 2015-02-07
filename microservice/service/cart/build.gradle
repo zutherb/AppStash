@@ -109,7 +109,7 @@ distDocker {
     dependsOn build
 
     applicationName = 'cart-service'
-    tagVersion = "$version"
+    tagVersion = "latest"
     tag = "eshop/${applicationName}"
 
     setEnvironment("CART_SERVICE_PROFILES", "production")

@@ -110,7 +110,7 @@ distDocker {
     dependsOn build
 
     applicationName = 'product-service'
-    tagVersion = "$version"
+    tagVersion = "latest"
     tag = "eshop/${applicationName}"
 
     exposePort(18080)

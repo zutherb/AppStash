@@ -110,7 +110,7 @@ distDocker {
     dependsOn build
 
     applicationName = 'navigation-service'
-    tagVersion = "$version"
+    tagVersion = "latest"
     tag = "eshop/${applicationName}"
 
     workingDir "/navigation-0.6/bin"
