@@ -21,26 +21,26 @@ class RedisMircoserviceCartService extends AbstractCartService implements ICartS
 
     add(product: IProduct): ng.IPromise<boolean> {
       var deferred = this.qService.defer();
-        var uuid: string = this.newUUID();
-        var cartItem: ICartItem = {uuid: uuid, product : product};
+      var uuid:string = this.newUUID();
+      var cartItem:ICartItem = {uuid: uuid, product: product};
 
-        if(!this.hasCardId()) {
-            this.httpService.put(this.configuration.CART_SERVICE_PUT_URL, cartItem)
-                .success((cartId: string) => {
-                    this.localStorageService.set(this.CART_ID, cartId.replace(/\"/g, ""));
-                    deferred.resolve(true);
-                })
-                .error((error) => {
-                this.emitCartError(error);
-                deferred.resolve(false);
-                });
-        }else {
-            this.httpService.post(this.configuration.CART_SERVICE_POST_URL, cartItem, {params : {cartId: this.getCartId()}})
-                .success((data) => deferred.resolve(true))
-                .error((error) => {
-                deferred.resolve(false);
-                });
-        }
+      if (!this.hasCardId()) {
+        this.httpService.put(this.configuration.CART_SERVICE_PUT_URL, cartItem)
+          .success((cartId:string) => {
+            this.localStorageService.set(this.CART_ID, cartId.replace(/\"/g, ""));
+            deferred.resolve(true);
+          })
+          .error((error) => {
+            this.emitCartError(error);
+            deferred.resolve(false);
+          });
+      } else {
+        this.httpService.post(this.configuration.CART_SERVICE_POST_URL, cartItem, {params: {cartId: this.getCartId()}})
+          .success((data) => deferred.resolve(true))
+          .error((error) => {
+            deferred.resolve(false);
+          });
+      }
       return deferred.promise;
     }
 
@@ -61,12 +61,12 @@ class RedisMircoserviceCartService extends AbstractCartService implements ICartS
         var deferred = this.qService.defer();
 
         if(this.hasCardId()){
-            this.httpService.get(this.configuration.CART_SERVICE_GET_URL + this.getCartId())
-                .success((data: ICart) => deferred.resolve(data.cartItems))
-                .error((error:any) => {
-                this.emitCartError(error);
-                deferred.resolve(false);
-              });
+          this.httpService.get(this.configuration.CART_SERVICE_GET_URL + this.getCartId())
+            .success((data:ICart) => deferred.resolve(data.cartItems))
+            .error((error:any) => {
+              this.emitCartError(error);
+              deferred.resolve(false);
+            });
         }else{
             deferred.resolve([]);
         }

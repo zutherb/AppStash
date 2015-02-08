@@ -14,59 +14,37 @@ redis:
   ports:
      - "6379:6379"
 shop:
-  image: eshop/monolithic-shop
+  image: zutherb/monolithic-shop
   ports:
      - "8080:8080"
   links:
      - mongodb
      - cart
 product:
-  image: eshop/product-service
+  image: zutherb/product-service
   ports:
      - "18080:18080"
   links:
      - mongodb
 navigation:
-  image: eshop/navigation-service
+  image: zutherb/navigation-service
   ports:
      - "18090:18090"
   links:
      - mongodb
 cart:
-  image: eshop/cart-service
+  image: zutherb/cart-service
   ports:
      - "18100:18100"
   links:
      - redis
 catalog:
-  image: eshop/catalog-frontend
+  image: zutherb/catalog-frontend
   ports:
      - "80:80"
   links:
      - product
      - navigation
      - cart
-#jenkins:
-#  image: jenkins
-#  ports:
-#     - "8090:8080"
-#elasticsearch:
-#  image: dockerfile/elasticsearch
-#  ports:
-#     - "9200:9200"
-#     - "9300:9300"
-#kibana:
-#  image: ehazlett/kibana
-#  ports:
-#     - "8100:80"
-#  links:
-#       - elasticsearch
-#icinga:
-#  image: jordan/icinga2
-#  ports:
-#     - "8200:80"
-#  environment:
-#    - ICINGA_WEB_PASSWORD=icinga_web
-#    - ICINGA_PASSWORD=icinga
-
+     - shop
 

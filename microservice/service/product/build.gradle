@@ -111,7 +111,7 @@ distDocker {
 
     applicationName = 'product-service'
     tagVersion = "latest"
-    tag = "eshop/${applicationName}"
+    tag = "zutherb/${applicationName}"
 
     exposePort(18080)
 }

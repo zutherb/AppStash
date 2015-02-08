@@ -100,7 +100,7 @@ task packageToContainer(type: Docker) {
 
   applicationName = 'monolithic-shop'
   tagVersion = "latest"
-  tag = "eshop/catalog-frontend"
+  tag = "zutherb/catalog-frontend"
 
 
   runCommand "wget https://github.com/jwilder/dockerize/releases/download/v0.0.2/dockerize-linux-amd64-v0.0.2.tar.gz"

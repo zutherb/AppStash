@@ -17,7 +17,7 @@
             "box": "utopic64",
             "box_url": "https://cloud-images.ubuntu.com/vagrant/utopic/current/utopic-server-cloudimg-amd64-vagrant-disk1.box",
             "hostname": "ci-node",
-            "memory": "4096",
+            "memory": "2560",
             "ip": "10.211.55.200",
             "ports":[],
             "playbook": "provision/buildserver.yml",

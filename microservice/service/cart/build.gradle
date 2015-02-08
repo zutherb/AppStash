@@ -110,7 +110,7 @@ distDocker {
 
     applicationName = 'cart-service'
     tagVersion = "latest"
-    tag = "eshop/${applicationName}"
+    tag = "zutherb/${applicationName}"
 
     setEnvironment("CART_SERVICE_PROFILES", "production")
     setEnvironment("CART_SERVICE_PORT", "18100")

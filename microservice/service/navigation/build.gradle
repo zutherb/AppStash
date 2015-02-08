@@ -111,7 +111,7 @@ distDocker {
 
     applicationName = 'navigation-service'
     tagVersion = "latest"
-    tag = "eshop/${applicationName}"
+    tag = "zutherb/${applicationName}"
 
     workingDir "/navigation-0.6/bin"
 
