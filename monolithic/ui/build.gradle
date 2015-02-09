@@ -167,7 +167,6 @@ war {
 docker {
     maintainer = 'Bernd Zuther <bernd.zuther@codecentric.de>'
     baseImage = 'wegenenverkeer/tomcat7-java8'
-//    hostUrl = "$dockerHost"
 }
 
 task packageToContainer(type: Docker) {
@@ -183,5 +182,5 @@ task packageToContainer(type: Docker) {
 
     runCommand("wget -O /tmp/probe.zip https://psi-probe.googlecode.com/files/probe-2.3.3.zip")
     runCommand("unzip /tmp/probe.zip -d /opt/tomcat7/webapps/")
-    runCommand("rm -f /opt/tomcat7/webapps/Changelog.txt")
+    runCommand("rm -f tmp/probe.zip /opt/tomcat7/webapps/Changelog.txt")
 }

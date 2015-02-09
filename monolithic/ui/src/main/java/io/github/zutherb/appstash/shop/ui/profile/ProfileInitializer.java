@@ -13,14 +13,17 @@ import org.springframework.web.context.ConfigurableWebApplicationContext;
  * @author zutherb
  */
 public class ProfileInitializer implements ApplicationContextInitializer<ConfigurableWebApplicationContext> {
-
     private static final Logger LOGGER = LoggerFactory.getLogger(ProfileInitializer.class);
 
     @Override
     public void initialize(ConfigurableWebApplicationContext configurableWebApplicationContext) {
         ConfigurableEnvironment environment = configurableWebApplicationContext.getEnvironment();
+        if (environment.getSystemEnvironment().containsKey("MONGODB_PORT_27017_TCP_ADDR") &&
+                environment.getSystemEnvironment().containsKey("MONGODB_PORT_27017_TCP_PORT")) {
+            environment.setActiveProfiles("docker");
+        }
         if (!hasActiveProfile(environment)) {
-            environment.setActiveProfiles("default");
+            environment.setActiveProfiles("production");
         }
         LOGGER.info("Active profiles are {}", StringUtils.join(environment.getActiveProfiles(), ","));
     }

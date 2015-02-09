@@ -5,69 +5,66 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <bean id="defaultValues" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-        <property name="properties">
-            <props>
-                <prop key="authentication.salt">4e6ab01864d726077691caa0d19a2d3f</prop>
-                <prop key="generator.generate.orders">10000</prop>
-                <prop key="generator.drop.collections">0</prop>
-                <prop key="generator.generationJob.rate">0</prop>
-                <prop key="mongo.db">shop</prop>
-                <prop key="mongo.host">${MONGODB_PORT_27017_TCP_ADDR}</prop>
-                <prop key="mongo.port">${MONGODB_PORT_27017_TCP_PORT}</prop>
-                <prop key="redis.cart.microservice.url">http://shop.microservice.io/api/cart</prop>
-            </props>
-        </property>
-    </bean>
+    <beans profile="test">
+        <bean id="testValues" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+            <property name="properties">
+                <props>
+                    <prop key="authentication.salt">4e6ab01864d726077691caa0d19a2d3f</prop>
+                    <prop key="generator.generate.orders">0</prop>
+                    <prop key="generator.drop.collections">0</prop>
+                    <prop key="generator.generationJob.rate">0</prop>
+                    <prop key="mongo.db">shop</prop>
+                    <prop key="mongo.host">localhost</prop>
+                    <prop key="mongo.port">27017</prop>
+                    <prop key="redis.cart.microservice.url">http://shop.microservice.io/api/cart</prop>
+                </props>
+            </property>
+        </bean>
 
-    <bean id="productionValues" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-        <property name="properties">
-            <props>
-                <prop key="authentication.salt">4e6ab01864d726077691caa0d19a2d3f</prop>
-                <prop key="generator.generate.orders">0</prop>
-                <prop key="generator.drop.collections">0</prop>
-                <prop key="generator.generationJob.rate">0</prop>
-                <prop key="mongo.db">shop</prop>
-                <!--<prop key="mongo.host">mongodb</prop>-->
-                <!--<prop key="mongo.port">27017</prop>-->
-                <prop key="mongo.host">${MONGODB_PORT_27017_TCP_ADDR}</prop>
-                <prop key="mongo.port">${MONGODB_PORT_27017_TCP_PORT}</prop>
-                <prop key="redis.cart.microservice.url">http://shop.microservice.io/api/cart</prop>
-            </props>
-        </property>
-    </bean>
-
-    <bean id="testValues" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
-        <property name="properties">
-            <props>
-                <prop key="authentication.salt">4e6ab01864d726077691caa0d19a2d3f</prop>
-                <prop key="generator.generate.orders">0</prop>
-                <prop key="generator.drop.collections">0</prop>
-                <prop key="generator.generationJob.rate">0</prop>
-                <prop key="mongo.db">shop</prop>
-                <prop key="mongo.host">localhost</prop>
-                <prop key="mongo.port">27017</prop>
-                <prop key="redis.cart.microservice.url">http://shop.microservice.io/api/cart</prop>
-            </props>
-        </property>
-    </bean>
-
-    <beans profile="default">
         <context:property-placeholder system-properties-mode="OVERRIDE"
                                       ignore-resource-not-found="false"
-                                      properties-ref="defaultValues"/>
+                                      properties-ref="testValues"/>
     </beans>
 
     <beans profile="production">
         <context:property-placeholder system-properties-mode="OVERRIDE"
                                       ignore-resource-not-found="false"
                                       properties-ref="productionValues"/>
+
+        <bean id="productionValues" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+            <property name="properties">
+                <props>
+                    <prop key="authentication.salt">4e6ab01864d726077691caa0d19a2d3f</prop>
+                    <prop key="generator.generate.orders">0</prop>
+                    <prop key="generator.drop.collections">0</prop>
+                    <prop key="generator.generationJob.rate">0</prop>
+                    <prop key="mongo.db">shop</prop>
+                    <prop key="mongo.host">mongodb</prop>
+                    <prop key="mongo.port">27017</prop>
+                    <prop key="redis.cart.microservice.url">http://shop.microservice.io/api/cart</prop>
+                </props>
+            </property>
+        </bean>
     </beans>
 
-    <beans profile="test">
+    <beans profile="docker">
+        <bean id="dockerValues" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+            <property name="properties">
+                <props>
+                    <prop key="authentication.salt">4e6ab01864d726077691caa0d19a2d3f</prop>
+                    <prop key="generator.generate.orders">0</prop>
+                    <prop key="generator.drop.collections">0</prop>
+                    <prop key="generator.generationJob.rate">0</prop>
+                    <prop key="mongo.db">shop</prop>
+                    <prop key="mongo.host">${MONGODB_PORT_27017_TCP_ADDR}</prop>
+                    <prop key="mongo.port">${MONGODB_PORT_27017_TCP_PORT}</prop>
+                    <prop key="redis.cart.microservice.url">http://${CART_PORT_18100_TCP_ADDR}:${CART_PORT_18100_TCP_PORT}</prop>
+                </props>
+            </property>
+        </bean>
+
         <context:property-placeholder system-properties-mode="OVERRIDE"
                                       ignore-resource-not-found="false"
-                                      properties-ref="testValues"/>
+                                      properties-ref="dockerValues"/>
     </beans>
-
 </beans>
