@@ -368,6 +368,23 @@ module.exports = function (grunt) {
                     }
                 ]
             },
+            docker: {
+              options: {
+                patterns: [
+                  {
+                    json: grunt.file.readJSON('./config/environments/docker.json')
+                  }
+                ]
+              },
+              files: [
+                {
+                  expand: true,
+                  flatten: true,
+                  src: ['./config/config.js'],
+                  dest: '.tmp/scripts/'
+                }
+              ]
+            },
             production: {
                 options: {
                     patterns: [
@@ -627,6 +644,26 @@ module.exports = function (grunt) {
         'usemin',
         'htmlmin'
     ]);
+
+  grunt.registerTask('docker', [
+    'clean:dist',
+    'tsd',
+    'typescript',
+    'replace:docker',
+    'wiredep',
+    'useminPrepare',
+    'concurrent:dist',
+    'autoprefixer',
+    'concat',
+    'ngmin',
+    'copy:dist',
+    'cdnify',
+    'cssmin',
+    'uglify',
+    'filerev',
+    'usemin',
+    'htmlmin'
+  ]);
 
     grunt.registerTask('default', [
         'newer:jshint',

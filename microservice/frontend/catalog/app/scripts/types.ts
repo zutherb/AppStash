@@ -52,6 +52,7 @@ interface IConfiguration {
     "CART_SERVICE_PUT_URL":  string;
     "CART_SERVICE_POST_URL":  string;
     "CART_SERVICE_DELETE_URL":  string;
+    "CHECKOUT_BASE_URL":  string;
 }
 
 class AbstractCartService {
