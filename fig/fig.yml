@@ -5,25 +5,6 @@ dockerui:
      - "9000:9000"
   volumes:
      - /var/run/docker.sock:/var/run/docker.sock
-jenkins:
-  image: jenkins
-  ports:
-     - "9010:8080"
-elasticsearch:
-  image: dockerfile/elasticsearch
-  ports:
-     - "9200:9200"
-     - "9300:9300"
-logstash:
-  image: sath89/logstash
-  links:
-     - elasticsearch
-kibana:
-  image: ehazlett/kibana
-  ports:
-     - "8090:80"
-  links:
-     - elasticsearch
 mongodb:
   image: dockerfile/mongodb
   ports:

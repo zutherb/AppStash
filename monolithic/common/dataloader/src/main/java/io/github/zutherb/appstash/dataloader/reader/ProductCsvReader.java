@@ -2,7 +2,6 @@ package io.github.zutherb.appstash.dataloader.reader;
 
 
 import io.github.zutherb.appstash.shop.repository.product.model.Product;
-import io.github.zutherb.appstash.shop.repository.product.model.Product;
 import org.springframework.stereotype.Component;
 
 @Component("productCsvReader")
