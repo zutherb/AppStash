@@ -39,7 +39,7 @@ cart:
   links:
      - redis
 catalog:
-  image: zutherb/catalog-frontend
+  image: zutherb/catalog-frontend:latest-b
   ports:
      - "80:80"
   links:

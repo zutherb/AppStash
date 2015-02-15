@@ -16,6 +16,7 @@ server {
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Docker-Mode-Enabled true;
+        proxy_set_header X-Bootstrap-Design standard;
 
         proxy_pass http://{{ .Env.SHOP_PORT_8080_TCP_ADDR }}:{{ .Env.SHOP_PORT_8080_TCP_PORT }};
     }
