@@ -47,3 +47,5 @@ catalog:
      - navigation
      - cart
      - shop
+  environment:
+     - CHECKOUT_DESIGN=standard
