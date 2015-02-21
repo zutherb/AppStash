@@ -1,0 +1,27 @@
+{
+  "id": "mongodb",
+  "kind": "Pod",
+  "apiVersion": "v1beta1",
+  "desiredState": {
+    "manifest": {
+      "version": "v1beta1",
+      "id": "mongodb",
+      "containers": [
+        {
+          "name": "mongodb",
+          "image": "dockerfile/mongodb",
+          "cpu": 100,
+          "ports": [
+            {
+              "containerPort": 27017,
+              "hostPort": 27017
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "labels": {
+    "name": "mongodb"
+  }
+}

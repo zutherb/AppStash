@@ -1,0 +1,28 @@
+{
+  "id": "shop",
+  "kind": "Pod",
+  "apiVersion": "v1beta1",
+  "desiredState": {
+    "manifest": {
+      "version": "v1beta1",
+      "id": "shop",
+      "containers": [
+        {
+          "name": "shop",
+          "image": "zutherb/monolithic-shop",
+          "cpu": 100,
+          "ports": [
+            {
+              "containerPort": 8080,
+              "hostPort": 8080
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "labels": {
+    "name": "shop",
+    "uses": "mongodb"
+  }
+}
