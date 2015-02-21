@@ -78,7 +78,7 @@
     </hgroup>
     <article class="flexbox vcenter">
       <section>
-        <img src="../master/images/Scrum_process.png">
+        <img src="../master/images/Scrum_process.png" />
       </section>
     </article>
   </slide>
@@ -89,7 +89,7 @@
     </hgroup>
     <article class="flexbox vcenter">
       <section>
-        <img src="../master/images/LeanStartupLoopClassic.png" alt="Build Measure Learn Cycle" style="height: 500px; width: 100%">
+        <img src="../master/images/LeanStartupLoopClassic_scaled.png" alt="Build Measure Learn Cycle" />
       </section>
     </article>
   </slide>
@@ -137,7 +137,34 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
     </article>
   </slide>
 
-  <slide class="fill nobackground" style="background-image:url(../master/images/cuba_car.jpg);"></slide>
+  <slide>
+    <hgroup>
+      <h2>Checkout - Variant A</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/mock_tab_navigation_scaled.png" />
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Checkout - Variant B</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/mock_accordion_scaled.png" />
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/cuba_car.jpg);">
+    <!--<article class="flexbox vcenter">-->
+      <!--<h1 style="color: #ffffff; font-size: 2em">Legacy</h1>-->
+      <!--<h2 style="color: #ffffff; font-size: 1.5em">old and busted</h2>-->
+    <!--</article>-->
+  </slide>
 
   <slide class="fill nobackground" style="background-image:url(../master/images/duisburg.jpg);">
     <!--<article class="flexbox vcenter">-->
@@ -154,7 +181,7 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
         <li>Reduction of development speed</li>
         <li>Increase of turnaround times</li>
         <li>Increase of build time</li>
-        <li>Unforeseen behavior after changes</li>
+        <li>Strange behavior after changes</li>
         <li>Increase of time to market</li>
         <li>A/B testing of process changes nearly impossible</li>
         <li>Scalability (e.g. application and teams)</li>
@@ -253,7 +280,7 @@ vagrant@app-server-node-4:~$ ps aux | grep java | wc -l
     </hgroup>
     <article class="flexbox vcenter">
       <section>
-        <img src="../master/images/SOA_Elements.png" style="height: 500px"></object>
+        <img src="../master/images/SOA_Elements_scaled.png" />
       </section>
     </article>
   </slide>
@@ -544,7 +571,27 @@ vagrant@app-server-node-4:~$ ps aux | grep java | wc -l
       <h2>Unix Repository</h2>
     </hgroup>
     <article class="flexbox vcenter">
-      <img src="../master/images/debian_repo.png"  />
+      <section>
+        <img src="../master/images/debian_repo_scaled.png"  />
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Processes</h2>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="bash">
+www-data  1699  0.5  7.7 2453320 158076 ?      Sl   10:49   0:26 java -cp cart.jar
+www-data  1834  0.3  5.0 2435400 102684 ?      Sl   10:49   0:17 java -cp navigation.jar
+www-data  1972  0.0  0.1  90792  3124 ?        Ss   10:49   0:00 nginx: master process
+www-data  1973  0.0  0.1  91148  3820 ?        S    10:49   0:00 nginx: worker process
+www-data  1974  0.0  0.1  91148  3820 ?        S    10:49   0:00 nginx: worker process
+www-data  1975  0.0  0.1  91148  3820 ?        S    10:49   0:00 nginx: worker process
+www-data  1976  0.0  0.1  91148  3820 ?        S    10:49   0:00 nginx: worker process
+www-data  1980  1.5  7.0 2456532 143688 ?      Sl   10:49   1:20 java -cpa product.jar
+</pre>
     </article>
   </slide>
 
@@ -552,10 +599,10 @@ vagrant@app-server-node-4:~$ ps aux | grep java | wc -l
 
   <slide>
     <hgroup>
-      <h2>Product Construction Kit</h2>
+      <h2>Fig - Product Construction Kit</h2>
     </hgroup>
     <article >
-      <pre class="prettyprint" data-lang="yml">
+      <pre class="prettyprint" data-lang="yaml">
 redis:
   image: dockerfile/redis
   ports:
@@ -572,16 +619,20 @@ catalog:
     - "80:80"
   links:
     - product
-    - navigation
     - cart
 </pre>
     </article>
   </slide>
 
-  <slide style="background-image:url(../master/images/architecture-large.png); background-repeat:no-repeat; background-position:center; background-size: 80% auto;">
+  <slide>
     <hgroup>
       <h2>Cluster Management</h2>
     </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <object data="../master/images/graph-01.svg" type="image/svg+xml" style="height: 450px; width: 100%"></object>
+      </section>
+    </article>
   </slide>
 
   <slide class="fill nobackground" style="background-image:url(../master/images/zookeeper.jpg);">
@@ -696,6 +747,11 @@ catalog:
     <article>
       <section>
         <ul>
+          <li>
+            <a href="http://www.heise.de/developer/artikel/Microservices-im-Zusammenspiel-mit-Continuous-Delivery-Teil-1-die-Theorie-2376386.html">
+              Microservices im Zusammenspiel mit Continuous Delivery, Teil 1 – die Theorie
+            </a>
+          </li>
           <li>
             <a href="http://www.fig.sh/">Fast, isolated development environments using Docker</a>
           </li>
