@@ -4,7 +4,6 @@ import au.com.bytecode.opencsv.CSVReader;
 import au.com.bytecode.opencsv.bean.ColumnPositionMappingStrategy;
 import au.com.bytecode.opencsv.bean.CsvToBean;
 import io.github.zutherb.appstash.shop.repository.user.model.User;
-import io.github.zutherb.appstash.shop.repository.user.model.User;
 import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.core.io.ClassPathResource;
@@ -12,6 +11,7 @@ import org.springframework.core.io.ClassPathResource;
 import java.beans.PropertyDescriptor;
 import java.beans.PropertyEditor;
 import java.beans.PropertyEditorSupport;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.lang.reflect.Method;
@@ -26,7 +26,7 @@ public abstract class AbstractCsvReader<T> {
 
     public List<T> parseCsv() throws IOException {
         ClassPathResource classPathResource = new ClassPathResource(getClassPathFilePath(), this.getClass().getClassLoader());
-        InputStreamReader ioReader = new InputStreamReader(classPathResource.getInputStream());
+        InputStreamReader ioReader = new InputStreamReader(classPathResource.getInputStream(), "UTF-8");
         CSVReader reader = new CSVReader(ioReader, ';');
 
         ColumnPositionMappingStrategy<T> strat = new ColumnPositionMappingStrategy<>();

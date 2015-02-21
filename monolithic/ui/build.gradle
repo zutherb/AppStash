@@ -2,6 +2,9 @@ apply plugin: 'groovy'
 apply plugin: 'war'
 apply plugin: 'jetty'
 apply plugin: 'jmeter'
+apply plugin: 'docker'
+
+def warName = "monolithic-shop.war"
 
 buildscript {
     repositories {
@@ -140,12 +143,13 @@ jmeterRun.configure {
 }
 
 war {
-    archiveName = "monolithic-shop.war"
+    archiveName = warName
     def manifestClasspath = configurations.compile.collect { it.getName() }.join(',')
     def cmd = "git rev-parse HEAD"
     def proc = cmd.execute()
     manifest {
-        attributes("Manifest-Version"       : "1.0",
+        attributes(
+                "Manifest-Version"       : "1.0",
                 "Created-By"             : vendor,
                 "Specification-Title"    : appName,
                 "Specification-Version"  : version,
@@ -158,4 +162,25 @@ war {
                 "Build-Number"           : "${System.getenv("BUILD_NUMBER")}"
         )
     }
+}
+
+docker {
+    maintainer = 'Bernd Zuther <bernd.zuther@codecentric.de>'
+    baseImage = 'wegenenverkeer/tomcat7-java8'
+}
+
+task packageToContainer(type: Docker) {
+    dependsOn war
+
+    applicationName = 'monolithic-shop'
+    tagVersion = "latest"
+    tag = "zutherb/${applicationName}"
+
+    addFile("$rootProject.projectDir/vagrant/provision/roles/tomcat/files/server.xml", "/opt/tomcat7/conf/server.xml")
+    addFile("$rootProject.projectDir/vagrant/provision/roles/tomcat/files/tomcat-users.xml", "/opt/tomcat7/conf/tomcat-users.xml")
+    addFile("$buildDir/libs/$warName", "/opt/tomcat7/webapps/shop.war")
+
+    runCommand("wget -O /tmp/probe.zip https://psi-probe.googlecode.com/files/probe-2.3.3.zip")
+    runCommand("unzip /tmp/probe.zip -d /opt/tomcat7/webapps/")
+    runCommand("rm -f tmp/probe.zip /opt/tomcat7/webapps/Changelog.txt")
 }

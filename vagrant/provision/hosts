@@ -17,3 +17,6 @@ app-server-node-2
 [micro_appservers]
 app-server-node-3
 app-server-node-4
+
+[dockerservers]
+docker-appserver

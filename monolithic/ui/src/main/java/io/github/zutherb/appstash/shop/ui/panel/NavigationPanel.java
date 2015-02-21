@@ -205,12 +205,22 @@ public class NavigationPanel extends Panel {
     }
 
     private WebMarkupContainer navigationLink(NavigationEntry navigationEntry) {
+        String navigationEntryPageClassName = navigationEntry.getPageClass().getName();
         if (((ShopSession) ShopSession.get()).isMicroServiceMode()) {
-            switch (navigationEntry.getPageClass().getName()) {
+            switch (navigationEntryPageClassName) {
                 case "io.github.zutherb.appstash.shop.ui.page.catalog.ProductCatalogPage":
-                    return new ExternalLink("link", new ProductCatalogPageStringResourceModel(new StringResourceModel(navigationEntry.getPageClass().getName(), this, null), Model.of(navigationEntry)));
+                    return new ExternalLink("link", new ProductCatalogPageStringResourceModel(new StringResourceModel(navigationEntryPageClassName, this, null), Model.of(navigationEntry)));
                 default:
-                    return new ExternalLink("link", new StringResourceModel(navigationEntry.getPageClass().getName(), this, null));
+                    return new ExternalLink("link", new StringResourceModel(navigationEntryPageClassName, this, null));
+            }
+        }
+        if (((ShopSession) ShopSession.get()).isDockerMode()) {
+            String resourceKey = "docker." + navigationEntryPageClassName;
+            switch (navigationEntryPageClassName) {
+                case "io.github.zutherb.appstash.shop.ui.page.catalog.ProductCatalogPage":
+                    return new ExternalLink("link", new ProductCatalogPageStringResourceModel(new StringResourceModel(resourceKey, this, null), Model.of(navigationEntry)));
+                default:
+                    return new ExternalLink("link", new StringResourceModel(resourceKey, this, null));
             }
         }
         return new BookmarkablePageLink<>("link",

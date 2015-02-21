@@ -1,0 +1,7 @@
+---
+- hosts: dockerservers
+  user: vagrant
+  sudo: yes
+
+  roles:
+      - docker

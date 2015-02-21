@@ -106,5 +106,15 @@ jar {
 }
 
 distDocker {
+    dependsOn build
+
+    applicationName = 'cart-service'
+    tagVersion = "latest"
+    tag = "zutherb/${applicationName}"
+
+    setEnvironment("CART_SERVICE_PROFILES", "production")
+    setEnvironment("CART_SERVICE_PORT", "18100")
+    setEnvironment("CART_SERVICE_REDIS_URL", "redis")
+
     exposePort cardPort
 }

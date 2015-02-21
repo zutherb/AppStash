@@ -33,6 +33,8 @@ public class ShopApplication extends WebApplication {
         setJavaScriptLibrarySettings(new JavaScriptLibrarySettings());
 
         getRequestCycleListeners().add(new MicroserviceRequestCycleListener());
+        getRequestCycleListeners().add(new DockerRequestCycleListener());
+        getRequestCycleListeners().add(new BootstrapDesignRequestCycleListener());
         getRequestCycleListeners().add(new DirectBuyRequestCycleListener());
         getRequestCycleListeners().add(new CartRequestCycleListener());
     }

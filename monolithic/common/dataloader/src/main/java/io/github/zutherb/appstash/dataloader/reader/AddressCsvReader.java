@@ -1,7 +1,6 @@
 package io.github.zutherb.appstash.dataloader.reader;
 
 import io.github.zutherb.appstash.shop.repository.user.model.Address;
-import io.github.zutherb.appstash.shop.repository.user.model.Address;
 import org.springframework.stereotype.Component;
 
 /**
@@ -20,9 +19,9 @@ public class AddressCsvReader extends AbstractCsvReader<Address> {
     @Override
     protected String[] getColumnMapping() {
         return new String[]{
-                "city",     "houseNumber",  "county",
-                "zip",      "countryCode",  "country",
-                "street",   "longitude",    "latitude"
+                "city", "houseNumber", "county",
+                "zip", "countryCode", "country",
+                "street", "longitude", "latitude"
         };
     }
 
@@ -33,6 +32,7 @@ public class AddressCsvReader extends AbstractCsvReader<Address> {
 
     /**
      * Setter for property override configure
+     *
      * @param filePath ilePath of the csv file that should be loaded
      */
     public void setFilePath(String filePath) {

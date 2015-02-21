@@ -18,6 +18,8 @@
   apt: pkg={{item}} state=present force=yes
   with_items:
     - jenkins
+    - docker.io
+    - python-pip
     - xvfb
     - firefox
     - git
@@ -25,6 +27,10 @@
     - nodejs
     - ruby2.1
     - ruby2.1-dev
+
+- sudo: yes
+  sudo_user: root
+  pip: name=fig
 
 - sudo: yes
   sudo_user: root
@@ -86,6 +92,7 @@
       - chucknorris
       - greenballs
       - build-pipeline-plugin
+      - delivery-pipeline-plugin
       - copyartifact
       - performance
       - jacoco
