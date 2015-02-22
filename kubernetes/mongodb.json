@@ -15,6 +15,10 @@
             {
               "containerPort": 27017,
               "hostPort": 27017
+            },
+            {
+              "containerPort": 28017,
+              "hostPort": 28017
             }
           ]
         }

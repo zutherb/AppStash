@@ -4,7 +4,7 @@
   "apiVersion": "v1beta1",
   "desiredState": {
     "replicas": 2,
-    "replicaSelector": {"name": "frontend"},
+    "replicaSelector": {"name": "catalog"},
     "podTemplate": {
       "desiredState": {
         "manifest": {
