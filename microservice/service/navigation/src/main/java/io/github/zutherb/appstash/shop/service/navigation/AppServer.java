@@ -17,7 +17,7 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
  * Reading the port from system env PORT makes it compatible with heroku.
  */
 public class AppServer {
-    private static final String MONGODB_PORT_28017_TCP_ADDR = "MONGODB_PORT_28017_TCP_ADDR";
+    private static final String MONGODB_PORT_27017_TCP_ADDR = "MONGODB_PORT_27017_TCP_ADDR";
 
     private static final Logger LOGGER = LoggerFactory.getLogger("AppServer");
 
@@ -25,9 +25,9 @@ public class AppServer {
     private static final String WEB_APP_LOCATION = "src/main/webapp";
 
     public static void main(String[] args) throws Exception {
-        String mongodbHost = System.getenv(MONGODB_PORT_28017_TCP_ADDR);
+        String mongodbHost = System.getenv(MONGODB_PORT_27017_TCP_ADDR);
         if (isNotEmpty(mongodbHost)) {
-            String mongoUri = "mongodb://" + System.getenv(MONGODB_PORT_28017_TCP_ADDR);
+            String mongoUri = "mongodb://" + mongodbHost;
             System.setProperty("mongo.uri", mongoUri);
             LOGGER.info("Rewrite mongo.uri to " + mongoUri);
         }
