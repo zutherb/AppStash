@@ -9,6 +9,7 @@ mongodb:
   image: dockerfile/mongodb
   ports:
      - "27017:27017"
+     - "28017:28017"
 redis:
   image: dockerfile/redis
   ports:
@@ -39,7 +40,7 @@ cart:
   links:
      - redis
 catalog:
-  image: zutherb/catalog-frontend:latest-b
+  image: zutherb/catalog-frontend
   ports:
      - "80:80"
   links:
@@ -47,3 +48,5 @@ catalog:
      - navigation
      - cart
      - shop
+  environment:
+     - CHECKOUT_DESIGN=amelia

@@ -9,6 +9,7 @@ mongodb:
   image: dockerfile/mongodb
   ports:
      - "27017:27017"
+     - "28017:28017"
 redis:
   image: dockerfile/redis
   ports:
