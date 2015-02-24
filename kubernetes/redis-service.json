@@ -3,7 +3,7 @@
   "kind": "Service",
   "apiVersion": "v1beta1",
   "port": 6379,
-  "containerPort": 6379,
+  "containerPort": "redis-server",
   "selector": {
     "name": "redis"
   },

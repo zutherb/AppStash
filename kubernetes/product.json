@@ -15,7 +15,7 @@
               "name": "product",
               "image": "zutherb/product-service",
               "cpu": 100,
-              "memory": 50000000,
+              "memory": 500000000,
               "ports": [
                 {
                   "containerPort": 18080,
