@@ -42,6 +42,12 @@ Date       | Event                         | Title
 26.01.2015 | [Microservices Meetup Munich](http://www.meetup.com/Microservices-Meetup-Munich/) [Video(german)](http://youtu.be/t6YfKMFvPvs)| [Microservices und die Jagd nach mehr Konversion](http://zutherb.github.io/AppStash/slides/03_microservice_usergroup_munich/)
 24.02.2015 | [Microservices Meetup Berlin](http://www.meetup.com/Microservices-Meetup-Berlin/) | [Microservices & Conversion Hunting - Software architectures for changeableness](http://zutherb.github.io/AppStash/slides/04_microservice_usergroup_berlin/)
 
+## Articles
+
+Title | Language
+------|-----------------
+[Microservices und die Jagd nach mehr Konversion – das Heilmittel für erkrankte IT-Architekturen?](http://bernd-zuther.de/wp-content/uploads/2015/02/02-2015-Java-aktuell-Bernd-Zut-her-Microservices-und-die-Jagd-nach-mehr-Konversion-das-Heilmittel-fu%CC%88r-erkrankte-IT-Architekturen.pdf) | German
+
 ## Directory Layout
 
 The following directory layout shows only the important directories that are necessary to implement the given use cases
