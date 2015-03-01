@@ -8,6 +8,7 @@
     "name": "shop"
   },
   "labels": {
-    "name": "shop"
+    "name": "shop",
+    "role": "frontend"
   }
 }

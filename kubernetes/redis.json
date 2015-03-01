@@ -10,7 +10,6 @@
         {
           "name": "redis",
           "image": "dockerfile/redis",
-          "cpu": 100,
           "ports": [
             {
               "containerPort": 6379,
@@ -22,6 +21,7 @@
     }
   },
   "labels": {
-    "name": "redis"
+    "name": "redis",
+    "role": "database"
   }
 }

@@ -10,7 +10,6 @@
         {
           "name": "navigation",
           "image": "zutherb/navigation-service",
-          "cpu": 100,
           "ports": [
             {
               "containerPort": 18090
@@ -21,6 +20,7 @@
     }
   },
   "labels": {
-    "name": "navigation"
+    "name": "navigation",
+    "role": "service"
   }
 }

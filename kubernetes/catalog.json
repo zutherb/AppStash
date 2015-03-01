@@ -27,6 +27,7 @@
     }
   },
   "labels": {
-    "name": "catalog"
+    "name": "catalog",
+    "role": "frontend"
   }
 }

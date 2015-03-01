@@ -14,8 +14,6 @@
             {
               "name": "catalog",
               "image": "zutherb/catalog-frontend",
-              "cpu": 100,
-              "memory": 50000000,
               "ports": [
                 {
                   "containerPort": 80,
@@ -38,5 +36,8 @@
       }
     }
   },
-  "labels": {"name": "catalog"}
+  "labels": {
+    "name": "catalog",
+    "role": "frontend"
+  }
 }

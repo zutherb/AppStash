@@ -8,6 +8,7 @@
     "name": "mongodb"
   },
   "labels": {
-    "name": "mongodb"
+    "name": "mongodb",
+    "role": "database"
   }
 }

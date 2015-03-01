@@ -14,8 +14,6 @@
             {
               "name": "navigation",
               "image": "zutherb/navigation-service",
-              "cpu": 100,
-              "memory": 500000000,
               "ports": [
                 {
                   "containerPort": 18090
@@ -27,7 +25,8 @@
       },
       "labels": {
         "name": "navigation",
-        "uses": "mongodb"
+        "uses": "mongodb",
+        "role": "service"
       }
     }
   },

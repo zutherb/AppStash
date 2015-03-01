@@ -10,7 +10,6 @@
         {
           "name": "mongodb",
           "image": "dockerfile/mongodb",
-          "cpu": 100,
           "ports": [
             {
               "containerPort": 27017,
@@ -25,6 +24,7 @@
     }
   },
   "labels": {
-    "name": "mongodb"
+    "name": "mongodb",
+    "role": "database"
   }
 }

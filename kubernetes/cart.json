@@ -10,7 +10,6 @@
         {
           "name": "cart",
           "image": "zutherb/cart-service",
-          "cpu": 100,
           "ports": [
             {
               "containerPort": 18100
@@ -21,6 +20,7 @@
     }
   },
   "labels": {
-    "name": "cart"
+    "name": "cart",
+    "role": "service"
   }
 }

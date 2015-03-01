@@ -8,6 +8,7 @@
     "name": "navigation"
   },
   "labels": {
-    "name": "navigation"
+    "name": "navigation",
+    "role": "service"
   }
 }

@@ -8,6 +8,7 @@
     "name": "product"
   },
   "labels": {
-    "name": "product"
+    "name": "product",
+    "role": "service"
   }
 }

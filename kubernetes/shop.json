@@ -10,7 +10,6 @@
         {
           "name": "shop",
           "image": "zutherb/monolithic-shop",
-          "cpu": 100,
           "ports": [
             {
               "containerPort": 8080,
@@ -23,6 +22,7 @@
   },
   "labels": {
     "name": "shop",
-    "uses": "mongodb,cart"
+    "uses": "mongodb,cart",
+    "role": "frontend"
   }
 }
