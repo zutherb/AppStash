@@ -1,36 +1,26 @@
 {
   "id": "product",
-  "kind": "ReplicationController",
+  "kind": "Pod",
   "apiVersion": "v1beta1",
   "desiredState": {
-    "replicas": 2,
-    "replicaSelector": {"name": "product"},
-    "podTemplate": {
-      "desiredState": {
-        "manifest": {
-          "version": "v1beta1",
-          "id": "product",
-          "containers": [
+    "manifest": {
+      "version": "v1beta1",
+      "id": "product",
+      "containers": [
+        {
+          "name": "product",
+          "image": "zutherb/product-service",
+          "cpu": 100,
+          "ports": [
             {
-              "name": "product",
-              "image": "zutherb/product-service",
-              "cpu": 100,
-              "memory": 500000000,
-              "ports": [
-                {
-                  "containerPort": 18080,
-                  "hostPort": 18080
-                }
-              ]
+              "containerPort": 18080
             }
           ]
         }
-      },
-      "labels": {
-        "name": "product",
-        "uses": "mongodb"
-      }
+      ]
     }
   },
-  "labels": {"name": "product"}
+  "labels": {
+    "name": "product"
+  }
 }

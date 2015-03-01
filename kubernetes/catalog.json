@@ -1,36 +1,32 @@
 {
   "id": "catalog",
-  "kind": "ReplicationController",
+  "kind": "Pod",
   "apiVersion": "v1beta1",
   "desiredState": {
-    "replicas": 2,
-    "replicaSelector": {"name": "catalog"},
-    "podTemplate": {
-      "desiredState": {
-        "manifest": {
-          "version": "v1beta1",
-          "id": "catalog",
-          "containers": [
+    "manifest": {
+      "version": "v1beta1",
+      "id": "catalog",
+      "containers": [
+        {
+          "name": "catalog",
+          "image": "zutherb/catalog-frontend",
+          "ports": [
             {
-              "name": "catalog",
-              "image": "zutherb/catalog-frontend",
-              "cpu": 100,
-              "memory": 50000000,
-              "ports": [
-                {
-                  "containerPort": 80,
-                  "hostPort": 80
-                }
-              ]
+              "containerPort": 80,
+              "hostPort": 80
+            }
+          ],
+          "env": [
+            {
+              "name": "CHECKOUT_DESIGN",
+              "value": "standard"
             }
           ]
         }
-      },
-      "labels": {
-        "name": "catalog",
-        "uses": "product,navigation,cart,shop"
-      }
+      ]
     }
   },
-  "labels": {"name": "catalog"}
+  "labels": {
+    "name": "catalog"
+  }
 }

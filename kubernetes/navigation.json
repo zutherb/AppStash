@@ -1,36 +1,26 @@
 {
   "id": "navigation",
-  "kind": "ReplicationController",
+  "kind": "Pod",
   "apiVersion": "v1beta1",
   "desiredState": {
-    "replicas": 2,
-    "replicaSelector": {"name": "navigation"},
-    "podTemplate": {
-      "desiredState": {
-        "manifest": {
-          "version": "v1beta1",
-          "id": "navigation",
-          "containers": [
+    "manifest": {
+      "version": "v1beta1",
+      "id": "navigation",
+      "containers": [
+        {
+          "name": "navigation",
+          "image": "zutherb/navigation-service",
+          "cpu": 100,
+          "ports": [
             {
-              "name": "navigation",
-              "image": "zutherb/navigation-service",
-              "cpu": 100,
-              "memory": 500000000,
-              "ports": [
-                {
-                  "containerPort": 18090,
-                  "hostPort": 18090
-                }
-              ]
+              "containerPort": 18090
             }
           ]
         }
-      },
-      "labels": {
-        "name": "navigation",
-        "uses": "mongodb"
-      }
+      ]
     }
   },
-  "labels": {"name": "navigation"}
+  "labels": {
+    "name": "navigation"
+  }
 }

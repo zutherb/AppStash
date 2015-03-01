@@ -1,36 +1,26 @@
 {
   "id": "cart",
-  "kind": "ReplicationController",
+  "kind": "Pod",
   "apiVersion": "v1beta1",
   "desiredState": {
-    "replicas": 2,
-    "replicaSelector": {"name": "cart"},
-    "podTemplate": {
-      "desiredState": {
-        "manifest": {
-          "version": "v1beta1",
-          "id": "cart",
-          "containers": [
+    "manifest": {
+      "version": "v1beta1",
+      "id": "cart",
+      "containers": [
+        {
+          "name": "cart",
+          "image": "zutherb/cart-service",
+          "cpu": 100,
+          "ports": [
             {
-              "name": "cart",
-              "image": "zutherb/cart-service",
-              "cpu": 100,
-              "memory": 500000000,
-              "ports": [
-                {
-                  "containerPort": 18100,
-                  "hostPort": 18100
-                }
-              ]
+              "containerPort": 18100
             }
           ]
         }
-      },
-      "labels": {
-        "name": "cart",
-        "uses": "redis"
-      }
+      ]
     }
   },
-  "labels": {"name": "cart"}
+  "labels": {
+    "name": "cart"
+  }
 }
