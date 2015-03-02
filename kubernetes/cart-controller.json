@@ -31,6 +31,6 @@
   },
   "labels": {
     "name": "cart",
-    "role": "service"
+    "role": "backend"
   }
 }

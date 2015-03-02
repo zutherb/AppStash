@@ -9,6 +9,6 @@
   },
   "labels": {
     "name": "navigation",
-    "role": "service"
+    "role": "backend"
   }
 }

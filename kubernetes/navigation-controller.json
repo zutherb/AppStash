@@ -26,7 +26,7 @@
       "labels": {
         "name": "navigation",
         "uses": "mongodb",
-        "role": "service"
+        "role": "backend"
       }
     }
   },
