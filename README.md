@@ -278,3 +278,6 @@ you can also use the [issue tracker](https://github.com/zutherb/AppStash/issues)
 
 [Bernd Zuther](mailto:bernd.zuther@me.com)
 
+## Licensing
+
+This work is open source, and is licensed under the Apache License, Version 2.0.

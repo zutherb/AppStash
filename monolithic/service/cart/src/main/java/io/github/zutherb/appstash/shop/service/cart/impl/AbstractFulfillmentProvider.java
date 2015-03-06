@@ -6,8 +6,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 public abstract class AbstractFulfillmentProvider {
-
-
+    
     public BigDecimal getTotalSum() {
         BigDecimal sum = BigDecimal.ZERO;
         for (CartItemInfo cartItemInfo : getAllItems()) {

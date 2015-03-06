@@ -12,7 +12,8 @@
           "image": "dockerfile/redis",
           "ports": [
             {
-              "containerPort": 6379
+              "containerPort": 6379,
+              "hostPort": 6379
             }
           ]
         }
