@@ -1,0 +1,3 @@
+[submodule "kubernetes/vagrant"]
+	path = kubernetes/vagrant
+	url = https://github.com/zutherb/kubernetes-vagrant-coreos-cluster.git
