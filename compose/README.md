@@ -34,4 +34,4 @@ docker-compose up
 docker-compose -f docker-compose-variant-b.yml up
 ```
 
-[![Microservice Appserver](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/microservice-appserver.png)](https://www.youtube.com/watch?v=EhPyYsZtn8o)
+[![Microservice Appserver](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/microservice-appserver-youtube.png)](https://www.youtube.com/watch?v=EhPyYsZtn8o)
