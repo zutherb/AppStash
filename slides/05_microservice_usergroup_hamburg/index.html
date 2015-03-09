@@ -164,7 +164,13 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
           <li>around 1 1/2 h to get in production
             <ul>
               <li>35min build time</li>
-              <li>40min itil calls/ticket</li>
+              <li>40min itil stuff:
+                <ul>
+                  <li>calls</li>
+                  <li>ticket</li>
+                  <li>etc.</li>
+                </ul>
+              </li>
               <li>20min manuel deployment </li>
             </ul>
           </li>
@@ -187,7 +193,7 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
 
   <slide class="fill nobackground" style="background-image:url(../master/images/cuba_car.jpg);">
     <article class="flexbox vcenter">
-      <h1 style="color: #ffffff; font-size: 2em">Where is the problem?</h1>
+      <h1 style="color: #ffffff; font-size: 2em">How does it works?</h1>
     </article>
   </slide>
 
@@ -599,6 +605,13 @@ vagrant@app-server-node-4:~$ ps aux | grep java | wc -l
     </article>
   </slide>
 
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/containers.jpg);">
+    <article class="flexbox vcenter">
+      <h1 style="color: #ffffff; font-size: 2em; vertical-align:middle">How we can describe infrastructure and products?</h1>
+    </article>
+  </slide>
+
   <slide>
     <hgroup>
       <h2>Processes</h2>
@@ -617,8 +630,6 @@ www-data  1980  1.5  7.0 2456532 143688 ?      Sl   10:49   1:20 java -cpa produ
     </article>
   </slide>
 
-  <slide class="fill nobackground" style="background-image:url(../master/images/containers.jpg);"></slide>
-
   <slide>
     <hgroup>
       <h2>Compose - Product Construction Kit</h2>
@@ -628,11 +639,11 @@ www-data  1980  1.5  7.0 2456532 143688 ?      Sl   10:49   1:20 java -cpa produ
 redis:
   image: dockerfile/redis
   ports:
-    - "6379:6379"
+    - "6379"
 cart:
   image: eshop/cart-service
   ports:
-    - "18100:18100"
+    - "18100"
   links:
     - redis
 catalog:
@@ -643,8 +654,17 @@ catalog:
     - product
     - cart
 </pre>
-      <aside class="gdbar bottom right"><img src="../master/images/camera-icon.png"></aside>
     </article>
+  </slide>
+
+  <slide class="fill nobackground">
+    <hgroup>
+      <h2>Docker Environment</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <img src="../master/images/deployment_diagramm_online_shop_docker_small.png">
+    </article>
+    <aside class="gdbar bottom"><img src="../master/images/camera-icon.png"></aside>
   </slide>
 
   <slide>
