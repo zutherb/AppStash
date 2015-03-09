@@ -41,6 +41,7 @@ Date       | Event                         | Title
 23.01.2015 | [bobkonf](http://bobkonf.de/) | [Microservices und die Jagd nach mehr Konversion - Fluch oder Segen für den Entwickler](http://zutherb.github.io/AppStash/slides/02_bobkonf/)
 26.01.2015 | [Microservices Meetup Munich](http://www.meetup.com/Microservices-Meetup-Munich/) [Video (german)](http://youtu.be/t6YfKMFvPvs)| [Microservices und die Jagd nach mehr Konversion](http://zutherb.github.io/AppStash/slides/03_microservice_usergroup_munich/)
 24.02.2015 | [Microservices Meetup Berlin](http://www.meetup.com/Microservices-Meetup-Berlin/) | [Microservices & Conversion Hunting - Software architectures for changeableness](http://zutherb.github.io/AppStash/slides/04_microservice_usergroup_berlin/)
+09.03.2015 | [Microservices Meetup Hamburg](http://www.meetup.com/Microservices-Meetup-Hamburg/) | [Microservices und die Jagd nach mehr Konversion](http://zutherb.github.io/AppStash/slides/05_microservice_usergroup_hamburg/)
 
 ## Articles
 
