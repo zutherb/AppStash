@@ -1,0 +1,129 @@
+aside.gdbar {
+  background: -moz-linear-gradient(left center , #f1f1f1, #f1f1f1) no-repeat scroll 0 0 / 0 100% rgba(0, 0, 0, 0);
+}
+
+.speakers {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 100px;
+}
+
+.speakers > * {
+  margin-bottom: 1em;
+}
+
+.speakers li:before {
+  content: "";
+}
+
+.speakers > *:first-child {
+  float: left;
+}
+
+.speakers > *:last-child {
+  float: right;
+}
+
+.speakers .avatar {
+  display: block;
+  margin: 1em 1.5em;
+  border-radius: 5px;
+}
+
+.speakers .name {
+  display: block;
+  font-size: 1.3em;
+  margin-top: 0.5em;
+  margin-left: 1em;
+}
+
+.speakers .social {
+    margin: 3em 0;
+}
+
+.speakers ul {
+  list-style-type: none;
+}
+
+.speakers i {
+  font-size: 1.5em;
+  position: relative;
+  top: 5px;
+  min-width: 30px;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.speakers a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: 0;
+}
+
+.person-types {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+}
+
+.person-types > * {
+  padding: 5px;
+  width: 300px;
+  height: 200px;
+  margin-top: 10px;
+
+  line-height: 3;
+  font-weight: bold;
+  font-size: 1em;
+  text-align: center;
+}
+
+.person-types .smaller {
+  font-size: 0.8em;
+}
+
+.person-types img {
+  max-width: 350px;
+  max-height: 150px;
+  display: block;
+  margin: 0 auto;
+}
+
+.person-types > *:before {
+  display: none
+}
+
+.morenote {
+  margin-top: 1em;
+  font-weight: bold;
+}
+
+.note {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.75);
+    color: #ffffff;
+}
+
+section.footer q {
+    font-size: 12px;
+}
+
+section.footer q:before,
+section.footer q:after,
+section.footer blockquote:before, section.footer blockquote:after {
+    content: none;
+}
+
+.thank-you-slide {
+    background-image: url("../master/images/footer-bckg.png");
+    background-repeat: repeat;
+    color: #779ba6;
+}
