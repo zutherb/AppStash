@@ -245,31 +245,6 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
 
   <slide>
     <hgroup>
-      <h2>Unix Pipeline (1973)</h2>
-    </hgroup>
-    <article >
-      <pre class="prettyprint" data-lang="bash">
-vagrant@app-server-node-4:~$ ps aux
-USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
-root         1  0.0  0.2  29640  4300 ?        Ss   08:38   0:02 /sbin/init
-root         2  0.0  0.0      0     0 ?        S    08:38   0:00 [kthreadd]
-root         3  0.0  0.0      0     0 ?        S    08:38   0:02 [ksoftirqd/0]
-root         5  0.0  0.0      0     0 ?        S<   08:38   0:00 [kworker/0:0H]
-...
-vagrant@app-server-node-4:~$ ps aux | grep java
-root      1827  1.4  7.2 2458576 149452 ?      Sl   08:39   8:26 java -classpath
-/usr/share/shop/product/lib/product-microservice-0.5.5.jar:/usr/share/shop/produ
-ct/lib/scala-library-2.10.3.jar:/usr/share/shop/product/lib/akka-actor_2.10-2.2.
-4.jar:/usr/share/shop/product/lib/spray-can-1.2.1.jar:/usr/share/shop/product/li
-...
-vagrant@app-server-node-4:~$ ps aux | grep java | wc -l
-6
-</pre>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
       <h2>Service-Oriented Architecture (SOA / 1996)</h2>
     </hgroup>
     <article class="flexbox">
@@ -508,19 +483,6 @@ vagrant@app-server-node-4:~$ ps aux | grep java | wc -l
 
   <slide>
     <hgroup>
-      <h2>Golden Rules of Continuous Delivery</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li>Don’t break your Customer</li>
-        <li>Don’t break the Code Base, Builds, Tests, and Production</li>
-        <li>Don’t break the Delivery Flow</li>
-      </ul>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
       <h2>Versionless Rest Communication</h2>
     </hgroup>
     <article >
@@ -614,18 +576,18 @@ vagrant@app-server-node-4:~$ ps aux | grep java | wc -l
 
   <slide>
     <hgroup>
-      <h2>Processes</h2>
+      <h2>Container Linking</h2>
     </hgroup>
     <article >
       <pre class="prettyprint" data-lang="bash">
-www-data  1699  0.5  7.7 2453320 158076 ?      Sl   10:49   0:26 java -cp cart.jar
-www-data  1834  0.3  5.0 2435400 102684 ?      Sl   10:49   0:17 java -cp navigation.jar
-www-data  1972  0.0  0.1  90792  3124 ?        Ss   10:49   0:00 nginx: master process
-www-data  1973  0.0  0.1  91148  3820 ?        S    10:49   0:00 nginx: worker process
-www-data  1974  0.0  0.1  91148  3820 ?        S    10:49   0:00 nginx: worker process
-www-data  1975  0.0  0.1  91148  3820 ?        S    10:49   0:00 nginx: worker process
-www-data  1976  0.0  0.1  91148  3820 ?        S    10:49   0:00 nginx: worker process
-www-data  1980  1.5  7.0 2456532 143688 ?      Sl   10:49   1:20 java -cpa product.jar
+bz@cc ~$ docker run -d --name mongodb dockerfile/mongodb
+
+bz@cc ~$ docker run -d --name redis dockerfile/redis
+
+bz@cc ~$ docker run -d -P --name cart --link redis:redis zutherb/cart-service
+
+bz@cc ~$ docker run -d -P -p 8080:8080 --name shop --link cart:cart
+--link mongodb:mongodb zutherb/monolithic-shop
 </pre>
     </article>
   </slide>
