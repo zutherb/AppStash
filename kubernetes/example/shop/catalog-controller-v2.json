@@ -1,18 +1,18 @@
 {
-  "id": "catalog",
+  "id": "catalog-v2",
   "kind": "ReplicationController",
   "apiVersion": "v1beta1",
   "desiredState": {
     "replicas": 3,
-    "replicaSelector": {"name": "catalog"},
+    "replicaSelector": {"name": "catalog-v2"},
     "podTemplate": {
       "desiredState": {
         "manifest": {
           "version": "v1beta1",
-          "id": "catalog",
+          "id": "catalog-v2",
           "containers": [
             {
-              "name": "catalog",
+              "name": "catalog-v2",
               "image": "zutherb/catalog-frontend",
               "ports": [
                 {
@@ -23,7 +23,7 @@
               "env": [
                 {
                   "name": "CHECKOUT_DESIGN",
-                  "value": "standard"
+                  "value": "amelia"
                 }
               ]
             }
@@ -31,13 +31,13 @@
         }
       },
       "labels": {
-        "name": "catalog",
+        "name": "catalog-v2",
         "uses": "product,navigation,cart,shop"
       }
     }
   },
   "labels": {
-    "name": "catalog",
+    "name": "catalog-v2",
     "role": "frontend"
   }
 }

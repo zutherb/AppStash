@@ -51,11 +51,11 @@ Kubernetes currently supports a simple web user interface.
 ![Microservice Appserver](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/kubernetes-ui.png)
 
 
-```
 Start the server:
-```
 
+```
 kubectl proxy --www=$PWD/src/www
+```
 
 The UI should now be running on [localhost](http://localhost:8001/static/).
 
@@ -202,3 +202,42 @@ open http://172.17.8.104
 You can the the complete example in the following video.
 
 [![Microservice Appserver](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/microservice-appserver-youtube.png)](https://www.youtube.com/watch?v=C7TyIf1GqgI)
+
+## Updating the cluster
+
+```
+kubectl resize rc catalog --replicas=3
+resized
+kubectl delete pod catalog-b
+catalog-b
+kubectl get pods
+POD                 IP                  CONTAINER(S)        IMAGE(S)                     HOST                        LABELS                                           STATUS
+cart                10.244.102.5        cart                zutherb/cart-service         172.17.8.103/172.17.8.103   name=cart,role=service                           Running
+cart-fplln          10.244.5.5          cart                zutherb/cart-service         172.17.8.102/172.17.8.102   name=cart,uses=redis                             Running
+catalog-0133o       10.244.5.3          catalog             zutherb/catalog-frontend     172.17.8.102/172.17.8.102   name=catalog,uses=product,navigation,cart,shop   Running
+catalog-hh2gd       10.244.59.6         catalog             zutherb/catalog-frontend     172.17.8.104/172.17.8.104   name=catalog,uses=product,navigation,cart,shop   Running
+catalog-ls6k1       10.244.102.6        catalog             zutherb/catalog-frontend     172.17.8.103/172.17.8.103   name=catalog,uses=product,navigation,cart,shop   Running
+mongodb             10.244.5.2          mongodb             dockerfile/mongodb           172.17.8.102/172.17.8.102   name=mongodb,role=database                       Running
+navigation          10.244.102.3        navigation          zutherb/navigation-service   172.17.8.103/172.17.8.103   name=navigation,role=service                     Running
+navigation-oh43e    10.244.102.2        navigation          zutherb/navigation-service   172.17.8.103/172.17.8.103   name=navigation,role=backend,uses=mongodb        Running
+product             10.244.5.4          product             zutherb/product-service      172.17.8.102/172.17.8.102   name=product,role=service                        Running
+product-gziey       10.244.102.4        product             zutherb/product-service      172.17.8.103/172.17.8.103   name=product,role=backend,uses=mongodb           Running
+redis               10.244.59.4         redis               dockerfile/redis             172.17.8.104/172.17.8.104   name=redis,role=database                         Running
+shop                10.244.59.3         shop                zutherb/monolithic-shop      172.17.8.104/172.17.8.104   name=shop,role=frontend,uses=mongodb,cart        Running
+
+kubectl rollingupdate catalog -f catalog-controller-v2.json --update-period="5s"
+Creating catalog-v2
+Updating catalog replicas: 2, catalog-v2 replicas: 1
+Updating catalog replicas: 1, catalog-v2 replicas: 2
+Updating catalog replicas: 0, catalog-v2 replicas: 3
+Update succeeded. Deleting catalog
+catalog-v2
+
+kubectl rollingupdate catalog-v2 -f catalog-controller.json --update-period="5s"
+Creating catalog
+Updating catalog-v2 replicas: 2, catalog replicas: 1
+Updating catalog-v2 replicas: 1, catalog replicas: 2
+Updating catalog-v2 replicas: 0, catalog replicas: 3
+Update succeeded. Deleting catalog-v2
+catalog
+```

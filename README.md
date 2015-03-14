@@ -72,8 +72,11 @@ You need some dependencies to run the application cluster or to add add own serv
 
 You need at least 16 GB RAM to run the whole cluster that emulates a whole development environment like you can find it
 in the must professional software development projects. Furthermore you have to install the following software
-dependencies on your machine. The provisioning should work on other systems as well but is only tested on MacOSX 10.10.
-That is the reason because the whole instructions that are shown, are related to MacOSX.
+dependencies on your machine. If you want to run the shop applications with lower memory you has to uses [Docker](https://github.com/zutherb/AppStash/blob/master/compose/README.md)
+or [Kubernetes](https://github.com/zutherb/AppStash/blob/master/kubernetes/README.md).
+
+The provisioning should work on other systems as well but is only tested on MacOSX 10.10. That is the reason because the
+whole instructions that are shown, are related to MacOSX.
 
 #### Git
 
