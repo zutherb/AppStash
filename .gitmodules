@@ -1,3 +1,6 @@
 [submodule "kubernetes/vagrant"]
 	path = kubernetes/vagrant
-	url = https://github.com/zutherb/kubernetes-vagrant-coreos-cluster.git
+	url = https://github.com/pires/kubernetes-vagrant-coreos-cluster.git
+[submodule "kubernetes/src"]
+	path = kubernetes/src
+	url = https://github.com/GoogleCloudPlatform/kubernetes.git

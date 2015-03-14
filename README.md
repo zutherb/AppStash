@@ -213,7 +213,7 @@ provides such a feature. You can reach JMiniX under the following url http://sho
 
 ###Microservice Appserver
 
-The microservice based online shop is deployed on the Microservice Appserver which is a reference implementation for the
+The microservice based online shop is deployed on the microservice appserver which is a reference implementation for the
 given use cases in the [Overview](https://github.com/zutherb/AppStash/#overview). You can reach the online shop under the
 following url http://shop.microservice.io/ .
 
@@ -259,7 +259,8 @@ events to a variety of external programs including Elasticsearch, local files an
 The [Spring Boot Admin](https://github.com/codecentric/spring-boot-admin) is a simple admin interface for
 [Spring Boot](http://projects.spring.io/spring-boot/ "Official Spring-Boot website") applications.
 
-This application provides a simple GUI to administrate Spring Boot applications in some ways. At the moment it provides the following features for every registered application.
+This application provides a simple GUI to administrate Spring Boot applications in some ways. At the moment it provides
+the following features for every registered application.
 
 - Show name/id and version number
 - Show online status
