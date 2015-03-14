@@ -17,6 +17,8 @@ submodule init
 submodule update
 ```
 
+Now you should be able to init a Kubernetes cluster. The cluster is based on [CoreOS](https://coreos.com/) which is
+a new Linux distribution that has been rearchitected to provide features needed to run modern infrastructure stacks.
 Current ```Vagrantfile``` will bootstrap one VM with everything it needs to become a Kubernetes master.
 
 ```
@@ -24,7 +26,9 @@ cd vagrant
 vagrant up master
 ```
 
-Verify that ```fleet``` sees it
+Verify that ```fleet``` sees it. [fleet](https://github.com/coreos/fleet) ties together [systemd](http://coreos.com/using-coreos/systemd) and [etcd](https://github.com/coreos/etcd)
+into a distributed init system. Think of it as an extension of systemd that operates at the cluster level instead of the
+machine level. This project is very low level and is designed as a foundation for higher order orchestration.
 
 ```
 fleetctl list-machines
@@ -44,9 +48,17 @@ change this by setting the NUM_INSTANCES environment variable (explained below).
 NODE_MEM=1536 NODE_CPUS=1 NUM_INSTANCES=3 vagrant up
 ```
 
+If everything is init you has to export the following environment variables.
+
+```
+export ETCDCTL_PEERS=http://172.17.8.101:4001
+export FLEETCTL_ENDPOINT=http://172.17.8.101:4001
+export KUBERNETES_MASTER=http://172.17.8.101:8080
+```
+
 ## Kubernetes User Interface
 
-Kubernetes currently supports a simple web user interface.
+Kubernetes currently supports a simple [web user interface](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/ui.md).
 
 ![Microservice Appserver](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/kubernetes-ui.png)
 
@@ -240,4 +252,23 @@ Updating catalog-v2 replicas: 1, catalog replicas: 2
 Updating catalog-v2 replicas: 0, catalog replicas: 3
 Update succeeded. Deleting catalog-v2
 catalog
+```
+
+[![Microservice Appserver](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/microservice-appserver-youtube.png)](http://www.youtube.com/watch?v=hI2CdIOkqQ4)
+
+## Debugging
+
+```journalctl``` allows you to filter the output by specific fields. Be aware that if there are many messages to display
+or filtering of large time span has to be done, the output of this command can be delayed for quite some time.
+
+```
+journalctl -f -u docker.service
+journalctl -f -u kube-apiserver.service
+journalctl -f -u kube-controller-manager.service
+journalctl -f -u kube-scheduler.service
+journalctl -f -u kube-register.service
+```
+
+```
+docker ps -a
 ```
