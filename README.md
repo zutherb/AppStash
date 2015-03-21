@@ -33,6 +33,22 @@ This use cases are implemented in the following two ways:
 
 ![Deployment Diagram Online Shop](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/deployment_diagramm_online_shop.png)
 
+## Used technologies
+
+For simplicity all services are supposed to run on a Java-VM at the moment.
+
+* Web frontend
+  * Based on Angular JS and Typescript
+* Cart service
+  * Based on Spring boot and Groovy
+  * Redis backend via Spring Data
+* Product backend
+  * Based on Scala and Spray
+  * MongoDB backend via ReactiveMongo
+* Navigation backend
+  * Based on Restx with embedded Jetty
+  * MongoDB backend via Jongo
+
 ## Presentations
 
 Date       | Event                         | Title
