@@ -640,77 +640,77 @@ catalog:
     </article>
   </slide>
 
-  <slide>
+  <slide class="fill nobackground" style="background-image:url(../master/images/pod.jpg);">
     <hgroup>
       <h2>Pod</h2>
     </hgroup>
-    <article >
-      <pre class="prettyprint" data-lang="javascript">
-{ "id": "mongodb",
-  "kind": "Pod",
-  "apiVersion": "v1beta1",
-  "desiredState": {
-    "manifest": {
-      "containers": [ {
-          "name": "mongodb",
-          "image": "dockerfile/mongodb",
-          "ports": [
-            {
-              "containerPort": 27017,
-              "hostPort": 27017
-} } } ] } ] }
-      </pre>
-    </article>
+    <!--<article >-->
+      <!--<pre class="prettyprint" data-lang="javascript">-->
+<!--{ "id": "mongodb",-->
+  <!--"kind": "Pod",-->
+  <!--"apiVersion": "v1beta1",-->
+  <!--"desiredState": {-->
+    <!--"manifest": {-->
+      <!--"containers": [ {-->
+          <!--"name": "mongodb",-->
+          <!--"image": "dockerfile/mongodb",-->
+          <!--"ports": [-->
+            <!--{-->
+              <!--"containerPort": 27017,-->
+              <!--"hostPort": 27017-->
+<!--} } } ] } ] }-->
+      <!--</pre>-->
+    <!--</article>-->
   </slide>
 
-  <slide>
+  <slide class="fill nobackground" style="background-image:url(../master/images/clone.jpg);">
     <hgroup>
       <h2>Replication Controller</h2>
     </hgroup>
-    <article >
-      <pre class="prettyprint" data-lang="javascript">
-{ "id": "product",
-  "kind": "ReplicationController",
-  "apiVersion": "v1beta1",
-  "desiredState": {
-    "replicas": 2,
-    "podTemplate": {
-      "desiredState": {
-        "manifest": {
-          "containers": [
-            {
-              "name": "product",
-              "image": "zutherb/product-service",
-              "cpu": 100,
-              "memory": 50000000,
-              "ports": [ { "containerPort": 18080, "hostPort": 18080} ] },
-          "labels": { "name": "product", "uses": "mongodb" } } } } } }
-      </pre>
-    </article>
+    <!--<article >-->
+      <!--<pre class="prettyprint" data-lang="javascript">-->
+<!--{ "id": "product",-->
+  <!--"kind": "ReplicationController",-->
+  <!--"apiVersion": "v1beta1",-->
+  <!--"desiredState": {-->
+    <!--"replicas": 2,-->
+    <!--"podTemplate": {-->
+      <!--"desiredState": {-->
+        <!--"manifest": {-->
+          <!--"containers": [-->
+            <!--{-->
+              <!--"name": "product",-->
+              <!--"image": "zutherb/product-service",-->
+              <!--"cpu": 100,-->
+              <!--"memory": 50000000,-->
+              <!--"ports": [ { "containerPort": 18080, "hostPort": 18080} ] },-->
+          <!--"labels": { "name": "product", "uses": "mongodb" } } } } } }-->
+      <!--</pre>-->
+    <!--</article>-->
   </slide>
 
-  <slide>
+  <slide  style="background-image:url(../master/images/service.jpg);">
     <hgroup>
       <h2>Service</h2>
     </hgroup>
-    <article >
-      <pre class="prettyprint" data-lang="javascript">
-{ "id": "product",
-  "kind": "Service",
-  "apiVersion": "v1beta1",
-  "port": 18080,
-  "containerPort": 18080,
-  "selector": { "name": "product" },
-  "labels": { "name": "product" } }
-      </pre>
-      <pre class="prettyprint" data-lang="bash">
-PRODUCT_PORT_18080_TCP=tcp://10.0.0.11:18080
-PRODUCT_PORT_18080_TCP_PROTO=tcp
-PRODUCT_PORT_18080_TCP_PORT=18080
-PRODUCT_PORT_18080_TCP_ADDR=10.0.0.11
-      </pre>
-      <aside class="gdbar bottom"><img src="../master/images/camera-icon.png"></aside>
-    </article>
+    <!--<article >-->
+      <!--<pre class="prettyprint" data-lang="javascript">-->
+<!--{ "id": "product",-->
+  <!--"kind": "Service",-->
+  <!--"apiVersion": "v1beta1",-->
+  <!--"port": 18080,-->
+  <!--"containerPort": 18080,-->
+  <!--"selector": { "name": "product" },-->
+  <!--"labels": { "name": "product" } }-->
+      <!--</pre>-->
+      <!--<pre class="prettyprint" data-lang="bash">-->
+<!--PRODUCT_PORT_18080_TCP=tcp://10.0.0.11:18080-->
+<!--PRODUCT_PORT_18080_TCP_PROTO=tcp-->
+<!--PRODUCT_PORT_18080_TCP_PORT=18080-->
+<!--PRODUCT_PORT_18080_TCP_ADDR=10.0.0.11-->
+      <!--</pre>-->
+      <!--<aside class="gdbar bottom"><img src="../master/images/camera-icon.png"></aside>-->
+    <!--</article>-->
   </slide>
 
   <slide>
@@ -951,6 +951,33 @@ PRODUCT_PORT_18080_TCP_ADDR=10.0.0.11
           <li>
             <a href="https://www.flickr.com/photos/gcwest/281385801/in/photolist-qSbck-j7eWKk-hD7JTZ-75mqRx-6gVcao-9F5bop-hD9cR2-3EK4k-9uDMLx-4NY3Yi-75qid1-5qQuwt-23rDNy-a3NYdi-3h5aAH-5o5H1E-hD7Jqz-85HX8j-DkXpr-8ffvhp-jxLp1q-hD7Kji-2UrVHv-3RUNDA-4MtokT-5o5H31-8ffvuz-kL1Hg5-7HrALP-75mqLa-fMsCgA-5MQQVH-hD812L-7vBa2x-bMcSap-gLRa3J-6W7SPZ-4LGK2-gmkcM-bRf2oP-kKZgdV-ppYzf4-adg96W-5mDc7Z-inkvJ-cR3ow7-2x7n1u-hD7HeX-dcGZAo-4GVqqY">
               Containers
+            </a>
+          </li>
+        </ul>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Images</h2>
+    </hgroup>
+    <article>
+      <section>
+        <ul>
+          <li>
+            <a href="https://www.flickr.com/photos/marfis75/2939337382">
+              Café con leche - Milchkaffee (CC)
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/orangeacid/273899875">
+              Cloning Experiments: Jess Payne
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/blmnevada/7782462144">
+              BLM Nevada
             </a>
           </li>
           <li>
