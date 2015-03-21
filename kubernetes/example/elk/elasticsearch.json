@@ -12,7 +12,8 @@
           "image": "balsamiq/docker-elasticsearch",
           "ports": [
             {
-              "containerPort": 9200
+              "containerPort": 9200,
+              "hostPort": 9200
             },
             {
               "containerPort": 9300
