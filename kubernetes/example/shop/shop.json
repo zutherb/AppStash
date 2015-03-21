@@ -22,7 +22,6 @@
   },
   "labels": {
     "name": "shop",
-    "uses": "mongodb,cart",
     "role": "frontend"
   }
 }

@@ -31,8 +31,7 @@
         }
       },
       "labels": {
-        "name": "catalog",
-        "uses": "product,navigation,cart,shop"
+        "name": "catalog"
       }
     }
   },

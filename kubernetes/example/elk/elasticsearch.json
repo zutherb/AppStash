@@ -1,0 +1,29 @@
+{
+  "id": "elasticsearch",
+  "kind": "Pod",
+  "apiVersion": "v1beta1",
+  "desiredState": {
+    "manifest": {
+      "version": "v1beta1",
+      "id": "elasticsearch",
+      "containers": [
+        {
+          "name": "elasticsearch",
+          "image": "balsamiq/docker-elasticsearch",
+          "ports": [
+            {
+              "containerPort": 9200
+            },
+            {
+              "containerPort": 9300
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "labels": {
+    "name": "elasticsearch",
+    "role": "monitoring"
+  }
+}
