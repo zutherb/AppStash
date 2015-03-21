@@ -11,6 +11,7 @@
           "name": "fluentd",
           "image": "bprodoehl/log-collector",
           "ports": [],
+          "Privileged": "true",
           "volumeMounts": [
             {
               "name": "containers",
