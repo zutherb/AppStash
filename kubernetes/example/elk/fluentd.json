@@ -1,7 +1,7 @@
 {
   "id": "fluentd",
   "kind": "Pod",
-  "apiVersion": "v1beta1",
+  "apiVersion": "v1beta2",
   "desiredState": {
     "manifest": {
       "version": "v1beta1",
@@ -9,13 +9,19 @@
       "containers": [
         {
           "name": "fluentd",
+          "hostname": "fluentd",
           "image": "kubernetes/fluentd-elasticsearch",
           "ports": [],
-          "Privileged": true,
+          "privileged": true,
           "volumeMounts": [
             {
               "name": "containers",
               "mountPath": "/var/lib/docker/containers",
+              "readOnly": true
+            },
+            {
+              "name": "socket",
+              "mountPath": "/var/run/docker.sock",
               "readOnly": true
             }
           ]
@@ -24,8 +30,19 @@
       "volumes": [
         {
           "name": "containers",
-          "hostDir": {
-            "path": "/var/lib/docker/containers"
+          "source": {
+            "hostDir": {
+              "path": "/var/lib/docker/containers"
+
+            }
+          }
+        },
+        {
+          "name": "socket",
+          "source": {
+            "hostDir": {
+              "path": "/var/run/docker.sock"
+            }
           }
         }
       ]
