@@ -9,7 +9,7 @@
       "containers": [
         {
           "name": "elasticsearch",
-          "image": "balsamiq/docker-elasticsearch",
+          "image": "dockerfile/elasticsearch",
           "ports": [
             {
               "containerPort": 9200,
@@ -18,7 +18,21 @@
             {
               "containerPort": 9300
             }
+          ],
+          "volumeMounts": [
+            {
+              "name": "es-persistent-storage",
+              "mountPath": "/data"
+            }
           ]
+        }
+      ],
+      "volumes": [
+        {
+          "name": "es-persistent-storage",
+          "source":{
+            "emptyDir": {}
+          }
         }
       ]
     }

@@ -272,3 +272,7 @@ journalctl -f -u kube-register.service
 ```
 docker ps -a
 ```
+
+## Logging
+
+[Elk](http://blog.raintown.org/2014/11/logging-kubernetes-pods-using-fluentd.html)

@@ -9,17 +9,14 @@
       "containers": [
         {
           "name": "fluentd",
-          "image": "bprodoehl/log-collector",
+          "image": "kubernetes/fluentd-elasticsearch",
           "ports": [],
           "Privileged": true,
           "volumeMounts": [
             {
               "name": "containers",
-              "mountPath": "/var/lib/docker/containers"
-            },
-            {
-              "name": "socket",
-              "mountPath": "/var/run/docker.sock"
+              "mountPath": "/var/lib/docker/containers",
+              "readOnly": true
             }
           ]
         }
@@ -29,14 +26,6 @@
           "name": "containers",
           "hostDir": {
             "path": "/var/lib/docker/containers"
-
-          }
-        },
-        {
-          "name": "socket",
-          "hostDir": {
-            "path": "/var/run/docker.sock"
-
           }
         }
       ]
