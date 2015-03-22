@@ -100,7 +100,7 @@
         </ul>
         <object data="../master/images/conversion_rate.svg" type="image/svg+xml" style="margin-top: 75px"></object>
       </section>
-      <aside class="gdbar bottom"><img src="../master/images/camera-icon.png"></aside>
+      <aside class="gdbar bottom"><img src="../master/images/youtube.png"></aside>
     </article>
   </slide>
 
@@ -223,7 +223,7 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
 
   <slide>
     <hgroup>
-      <h2>Functionality / Data</h2>
+      <h2>Microservice</h2>
     </hgroup>
     <article class="flexbox vcenter">
       <section>
@@ -332,7 +332,7 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
       <section>
         <object data="../master/images/deployment_diagramm_online_shop.svg" type="image/svg+xml" style="height: 500px"></object>
       </section>
-      <aside class="gdbar bottom"><img src="../master/images/camera-icon.png"></aside>
+      <aside class="gdbar bottom"><img src="../master/images/youtube.png"></aside>
     </article>
   </slide>
 
@@ -534,7 +534,7 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
   </slide>
 
   <slide class="fill nobackground" style="background-image:url(../master/images/delivery_car.jpg);">
-    <aside class="gdbar bottom"><img src="../master/images/camera-icon.png"></aside>
+    <aside class="gdbar bottom"><img src="../master/images/youtube.png"></aside>
   </slide>
 
   <slide>
@@ -574,51 +574,6 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
     </article>
   </slide>
 
-  <slide>
-    <hgroup>
-      <h2>Container Linking</h2>
-    </hgroup>
-    <article >
-      <pre class="prettyprint" data-lang="bash">
-bz@cc ~$ docker run -d --name mongodb dockerfile/mongodb
-
-bz@cc ~$ docker run -d --name redis dockerfile/redis
-
-bz@cc ~$ docker run -d -P --name cart --link redis:redis zutherb/cart-service
-
-bz@cc ~$ docker run -d -P -p 8080:8080 --name shop --link cart:cart
---link mongodb:mongodb zutherb/monolithic-shop
-</pre>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Compose - Product Construction Kit</h2>
-    </hgroup>
-    <article >
-      <pre class="prettyprint" data-lang="yaml">
-redis:
-  image: dockerfile/redis
-  ports:
-    - "6379"
-cart:
-  image: eshop/cart-service
-  ports:
-    - "18100"
-  links:
-    - redis
-catalog:
-  image: eshop/catalog-frontend
-  ports:
-    - "80:80"
-  links:
-    - product
-    - cart
-</pre>
-    </article>
-  </slide>
-
   <slide class="fill nobackground">
     <hgroup>
       <h2>Docker Environment</h2>
@@ -626,7 +581,6 @@ catalog:
     <article class="flexbox vcenter">
       <img src="../master/images/deployment_diagramm_online_shop_docker_small.png">
     </article>
-    <aside class="gdbar bottom"><img src="../master/images/camera-icon.png"></aside>
   </slide>
 
   <slide>
@@ -642,75 +596,38 @@ catalog:
 
   <slide class="fill nobackground" style="background-image:url(../master/images/pod.jpg);">
     <hgroup>
-      <h2>Pod</h2>
+      <h2 style="color: #ffffff">Pod</h2>
     </hgroup>
-    <!--<article >-->
-      <!--<pre class="prettyprint" data-lang="javascript">-->
-<!--{ "id": "mongodb",-->
-  <!--"kind": "Pod",-->
-  <!--"apiVersion": "v1beta1",-->
-  <!--"desiredState": {-->
-    <!--"manifest": {-->
-      <!--"containers": [ {-->
-          <!--"name": "mongodb",-->
-          <!--"image": "dockerfile/mongodb",-->
-          <!--"ports": [-->
-            <!--{-->
-              <!--"containerPort": 27017,-->
-              <!--"hostPort": 27017-->
-<!--} } } ] } ] }-->
-      <!--</pre>-->
-    <!--</article>-->
+    <article >
+      <pre class="prettyprint" data-lang="javascript">
+{ "id": "mongodb",
+  "kind": "Pod",
+  "apiVersion": "v1beta1",
+  "desiredState": {
+    "manifest": {
+      "containers": [ {
+          "name": "mongodb",
+          "image": "dockerfile/mongodb",
+          "ports": [
+            {
+              "containerPort": 27017,
+              "hostPort": 27017
+} } } ] } ] }
+      </pre>
+    </article>
   </slide>
 
   <slide class="fill nobackground" style="background-image:url(../master/images/clone.jpg);">
     <hgroup>
-      <h2>Replication Controller</h2>
+      <h2 style="color: #ffffff">Replication Controller</h2>
     </hgroup>
-    <!--<article >-->
-      <!--<pre class="prettyprint" data-lang="javascript">-->
-<!--{ "id": "product",-->
-  <!--"kind": "ReplicationController",-->
-  <!--"apiVersion": "v1beta1",-->
-  <!--"desiredState": {-->
-    <!--"replicas": 2,-->
-    <!--"podTemplate": {-->
-      <!--"desiredState": {-->
-        <!--"manifest": {-->
-          <!--"containers": [-->
-            <!--{-->
-              <!--"name": "product",-->
-              <!--"image": "zutherb/product-service",-->
-              <!--"cpu": 100,-->
-              <!--"memory": 50000000,-->
-              <!--"ports": [ { "containerPort": 18080, "hostPort": 18080} ] },-->
-          <!--"labels": { "name": "product", "uses": "mongodb" } } } } } }-->
-      <!--</pre>-->
-    <!--</article>-->
   </slide>
 
   <slide  style="background-image:url(../master/images/service.jpg);">
     <hgroup>
       <h2>Service</h2>
     </hgroup>
-    <!--<article >-->
-      <!--<pre class="prettyprint" data-lang="javascript">-->
-<!--{ "id": "product",-->
-  <!--"kind": "Service",-->
-  <!--"apiVersion": "v1beta1",-->
-  <!--"port": 18080,-->
-  <!--"containerPort": 18080,-->
-  <!--"selector": { "name": "product" },-->
-  <!--"labels": { "name": "product" } }-->
-      <!--</pre>-->
-      <!--<pre class="prettyprint" data-lang="bash">-->
-<!--PRODUCT_PORT_18080_TCP=tcp://10.0.0.11:18080-->
-<!--PRODUCT_PORT_18080_TCP_PROTO=tcp-->
-<!--PRODUCT_PORT_18080_TCP_PORT=18080-->
-<!--PRODUCT_PORT_18080_TCP_ADDR=10.0.0.11-->
-      <!--</pre>-->
-      <!--<aside class="gdbar bottom"><img src="../master/images/camera-icon.png"></aside>-->
-    <!--</article>-->
+    <aside class="gdbar bottom"><img src="../master/images/youtube.png"></aside>
   </slide>
 
   <slide>
@@ -728,7 +645,7 @@ catalog:
   </slide>
 
   <slide class="fill nobackground" style="background-image:url(../master/images/zookeeper.jpg);">
-    <aside class="gdbar bottom"><img src="../master/images/camera-icon.png"></aside>
+    <aside class="gdbar bottom"><img src="../master/images/youtube.png"></aside>
   </slide>
 
   <slide class="fill nobackground" style="background-image:url(../master/images/crowd.jpg);">
