@@ -98,7 +98,7 @@
           <li>proportion of visits to a website which take action to go beyond a website visit
           </li>
         </ul>
-        <object data="../master/images/conversion_rate.svg" type="image/svg+xml" style="margin-top: 75px"></object>
+        <img src="../master/images/conversion_rate.svg" type="image/svg+xml" style="margin-top: 75px" />
       </section>
       <aside class="gdbar bottom"><img src="../master/images/youtube.png"></aside>
     </article>
@@ -154,7 +154,7 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
 
   <slide>
     <hgroup>
-      <h2>Project Setup</h2>
+      <h2>Project</h2>
     </hgroup>
     <article>
       <section>
@@ -227,7 +227,7 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
     </hgroup>
     <article class="flexbox vcenter">
       <section>
-        <object data="../master/images/microservice.svg" type="image/svg+xml" style="width: 100%"></object>
+        <img src="../master/images/microservice.svg" style="width: 100%" />
       </section>
     </article>
   </slide>
@@ -238,7 +238,7 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
     </hgroup>
     <article class="flexbox vcenter">
       <section>
-        <object data="../master/images/microservice_architecture.svg" type="image/svg+xml" style="height: 500px; width: 100%"></object>
+        <img src="../master/images/microservice_architecture.svg" style="height: 500px; width: 100%" />
       </section>
     </article>
   </slide>
@@ -319,7 +319,7 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
     </hgroup>
     <article class="flexbox vcenter">
       <section>
-        <object data="../master/images/use_case_online_shop.svg" type="image/svg+xml" style="height: 500px"></object>
+        <img src="../master/images/use_case_online_shop.svg" style="height: 500px" />
       </section>
     </article>
   </slide>
@@ -330,7 +330,7 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
     </hgroup>
     <article class="flexbox vcenter">
       <section>
-        <object data="../master/images/deployment_diagramm_online_shop.svg" type="image/svg+xml" style="height: 500px"></object>
+        <img src="../master/images/deployment_diagramm_online_shop.svg" style="height: 500px" />
       </section>
       <aside class="gdbar bottom"><img src="../master/images/youtube.png"></aside>
     </article>
@@ -412,7 +412,7 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
       <h2>Conway's Law</h2>
     </hgroup>
     <article class="flexbox vcenter">
-        <object data="../master/images/deployment_diagramm_online_shop.svg" type="image/svg+xml" style="height: 500px"></object>
+      <img src="../master/images/deployment_diagramm_online_shop.svg" style="height: 500px" />
     </article>
   </slide>
 
@@ -543,7 +543,7 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
     </hgroup>
     <article class="flexbox vcenter">
       <section>
-        <object data="../master/images/deployment_pipeline_microservice.svg" type="image/svg+xml" style="height: 450px; width: 100%"></object>
+        <img src="../master/images/deployment_pipeline_microservice.svg" style="height: 450px; width: 100%" />
       </section>
     </article>
   </slide>
@@ -553,7 +553,7 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
       <h2>Deployment</h2>
     </hgroup>
     <article class="flexbox vcenter">
-      <object data="../master/images/build-run-deploy.svg" type="image/svg+xml" style="height: 450px; width: 100%"></object>
+      <img src="../master/images/build-run-deploy.svg" style="height: 450px; width: 100%" />
     </article>
   </slide>
 
@@ -579,7 +579,7 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
       <h2>Docker Environment</h2>
     </hgroup>
     <article class="flexbox vcenter">
-      <img src="../master/images/deployment_diagramm_online_shop_docker_small.png">
+      <img src="../master/images/deployment_diagramm_online_shop_docker.svg" style="height: 450px; width: 100%" />
     </article>
   </slide>
 
@@ -589,7 +589,7 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
     </hgroup>
     <article class="flexbox vcenter">
       <section>
-        <object data="../master/images/graph-01.svg" type="image/svg+xml" style="height: 450px; width: 100%"></object>
+        <img src="../master/images/graph-01.svg" type="image/svg+xml" style="height: 450px; width: 100%" />
       </section>
     </article>
   </slide>
@@ -599,21 +599,17 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
       <h2 style="color: #ffffff">Pod</h2>
     </hgroup>
     <article >
-      <pre class="prettyprint" data-lang="javascript">
-{ "id": "mongodb",
-  "kind": "Pod",
-  "apiVersion": "v1beta1",
-  "desiredState": {
-    "manifest": {
-      "containers": [ {
-          "name": "mongodb",
-          "image": "dockerfile/mongodb",
-          "ports": [
-            {
-              "containerPort": 27017,
-              "hostPort": 27017
-} } } ] } ] }
-      </pre>
+      <pre class="prettyprint" data-lang="yaml">
+kind: Pod
+desiredState:
+  manifest:
+    <b>containers:
+      - name: mongodb
+        image: dockerfile/mongodb
+        cpu: 100
+        memory: 50000000
+        ports:
+          - containerPort: 27017</b></pre>
     </article>
   </slide>
 
@@ -621,6 +617,18 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
     <hgroup>
       <h2 style="color: #ffffff">Replication Controller</h2>
     </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="yaml">
+kind: ReplicationController,
+desiredState:
+  <b>replicas: 4
+  podTemplate:
+    desiredState:
+      manifest:
+        containers:
+          - name: product
+            image: zutherb/product-service</b></pre>
+    </article>
   </slide>
 
   <slide  style="background-image:url(../master/images/service.jpg);">
@@ -630,27 +638,13 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
     <aside class="gdbar bottom"><img src="../master/images/youtube.png"></aside>
   </slide>
 
-  <slide>
-    <hgroup>
-      <h2>Alternatives</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li>Mesos - abstracts CPU, memory, storage</li>
-        <li>Marathon - REST API for starting, stopping, and scaling applications</li>
-        <li>HAProxy - load balancing and proxying for TCP and HTTP-based applications</li>
-        <li>Bamboo - configures HAProxy for web services deployed on Apache Mesos and Marathon</li>
-      </ul>
-    </article>
-  </slide>
-
   <slide class="fill nobackground" style="background-image:url(../master/images/zookeeper.jpg);">
     <aside class="gdbar bottom"><img src="../master/images/youtube.png"></aside>
   </slide>
 
   <slide class="fill nobackground" style="background-image:url(../master/images/crowd.jpg);">
     <article class="flexbox vcenter">
-      <h1 style="color: #ffffff; font-size: 2em">Learn from your customers</h1>
+      <h1 style="color: #ffffff; font-size: 2em">Experiment with your customers</h1>
     </article>
   </slide>
 
