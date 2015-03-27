@@ -7,9 +7,12 @@ dockerui:
      - /var/run/docker.sock:/var/run/docker.sock
 mongodb:
   image: dockerfile/mongodb
+  command: "mongod --smallfiles"
   ports:
      - "27017:27017"
      - "28017:28017"
+  volumes:
+   - /data/db:/tmp/data/db
 redis:
   image: dockerfile/redis
   ports:
