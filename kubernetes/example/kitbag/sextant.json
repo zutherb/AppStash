@@ -14,7 +14,7 @@
           "ports": [
             {
               "containerPort": 80,
-              "hostPort": 9000
+              "hostPort": 9100
             }
           ]
         }
