@@ -10,7 +10,7 @@
 
 - copy: src=mongod.conf dest=/etc/mongod.conf force=true owner=root
 
-- raw: sudo iptables -I INPUT -p tcp -m state --state NEW,ESTABLISHED --dport 27017 -j ACCEPT
+- raw: sudo ufw disable
 
 - raw: sudo service mongod restart
 
