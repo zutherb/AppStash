@@ -9,7 +9,7 @@
       "containers": [
         {
           "name": "mongodb",
-          "image": "dockerfile/mongodb",
+          "image": "mongodb",
           "command": ["mongod", "--smallfiles"],
           "ports": [
             {

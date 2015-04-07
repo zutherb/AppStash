@@ -9,7 +9,7 @@
       "containers": [
         {
           "name": "redis",
-          "image": "dockerfile/redis",
+          "image": "redis",
           "ports": [
             {
               "containerPort": 6379,

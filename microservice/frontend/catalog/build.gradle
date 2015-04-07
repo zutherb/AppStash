@@ -94,7 +94,7 @@ clean.dependsOn grunt_clean
 
 docker {
   maintainer = 'Bernd Zuther <bernd.zuther@codecentric.de>'
-  baseImage = 'dockerfile/nginx'
+  baseImage = 'nginx'
 }
 
 task packageToContainer(type: Docker) {
