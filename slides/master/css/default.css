@@ -1584,3 +1584,21 @@ table th, table td {
 table {
   border-bottom: 0;
 }
+
+section.textbox {
+  background: white;
+  opacity: .75;
+  filter:Alpha(Opacity=85);
+  padding: 30px;
+  vertical-align: middle;
+}
+
+section.textbox h1 {
+  color: #000;
+  font-size: 2em
+}
+
+section.textbox h2 {
+  color: #000;
+  font-size: 1em
+}
