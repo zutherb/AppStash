@@ -59,6 +59,7 @@ Date       | Event                         | Title
 24.02.2015 | [Microservices Meetup Berlin](http://www.meetup.com/Microservices-Meetup-Berlin/) | [Microservices & Conversion Hunting - Software architectures for changeableness](http://zutherb.github.io/AppStash/slides/04_microservice_usergroup_berlin/)
 09.03.2015 | [Microservices Meetup Hamburg](http://www.meetup.com/Microservices-Meetup-Hamburg/) | [Microservices und die Jagd nach mehr Konversion](http://zutherb.github.io/AppStash/slides/05_microservice_usergroup_hamburg/)
 25.03.2015 | [Javaland](http://javaland.eu/) | [Die Jagd nach mehr Konversion - Fluch oder Segen für den Entwickler](http://zutherb.github.io/AppStash/slides/06_javaland/)
+25.04.2015 | [confess](https://www.regonline.com/builder/site/Default.aspx?EventID=1619724) | [Microservices and Conversion Hunting - How to build software architectures for changeableness](http://zutherb.github.io/AppStash/slides/07_confess/)
 
 ## Articles
 
