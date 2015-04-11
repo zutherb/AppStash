@@ -57,7 +57,7 @@ class CartController {
         new Manifest(manifestResource.getInputStream())
     }
 
-    @RequestMapping(value = "/shutdown", produces = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.GET)
+    @RequestMapping(value = "/shutdown", produces = MediaType.APPLICATION_JSON_VALUE, method = [RequestMethod.GET, RequestMethod.PUT])
     @ResponseBody
     def shutdown() {
         System.exit(0)
