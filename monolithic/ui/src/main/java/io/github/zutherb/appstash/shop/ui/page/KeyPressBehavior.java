@@ -1,5 +1,6 @@
 package io.github.zutherb.appstash.shop.ui.page;
 
+import io.github.zutherb.appstash.shop.ui.mbean.DesignSelector;
 import io.github.zutherb.appstash.shop.ui.mbean.DesignSelectorBean;
 import io.github.zutherb.appstash.shop.ui.mbean.FeatureTooglesBean;
 import org.apache.wicket.Component;
@@ -15,8 +16,8 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 public class KeyPressBehavior extends AjaxEventBehavior {
 
-    @SpringBean
-    private DesignSelectorBean selectorBean;
+    @SpringBean(name = "designSelector")
+    private DesignSelector selectorBean;
 
     @SpringBean
     private FeatureTooglesBean tooglesBean;
@@ -52,7 +53,7 @@ public class KeyPressBehavior extends AjaxEventBehavior {
                         "return {keycode: eventKeycode};");
 
         //whithout setting, no keyboard events will reach any inputfield
-        attributes.setAllowDefault(true);
+        attributes.setPreventDefault(true);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package io.github.zutherb.appstash.shop.ui.page;
 
 import io.github.zutherb.appstash.shop.service.authentication.api.AuthenticationService;
+import io.github.zutherb.appstash.shop.ui.mbean.DesignSelector;
 import io.github.zutherb.appstash.shop.ui.mbean.DesignSelectorBean;
 import io.github.zutherb.appstash.shop.ui.panel.NavigationPanel;
 import io.github.zutherb.appstash.shop.ui.panel.base.FeedbackPanel;
@@ -33,7 +34,7 @@ public abstract class AbstractBasePage extends WebPage {
     private AuthenticationService authenticationService;
 
     @SpringBean(name = "designSelector")
-    private DesignSelectorBean designSelector;
+    private DesignSelector designSelector;
 
     protected LoginModalPanel loginModal;
     protected WebMarkupContainer header;

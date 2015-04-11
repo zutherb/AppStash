@@ -1,5 +1,6 @@
 package io.github.zutherb.appstash.shop.ui.application;
 
+import io.github.zutherb.appstash.shop.ui.mbean.DesignSelector;
 import io.github.zutherb.appstash.shop.ui.mbean.DesignSelectorBean;
 import org.apache.wicket.injection.Injector;
 import org.apache.wicket.request.cycle.AbstractRequestCycleListener;
@@ -18,8 +19,8 @@ public class BootstrapDesignRequestCycleListener extends AbstractRequestCycleLis
     private static final Logger LOGGER = LoggerFactory.getLogger(BootstrapDesignRequestCycleListener.class);
     private static final String HEADER_NAME = "X-Bootstrap-Design";
 
-    @SpringBean
-    private DesignSelectorBean designSelectorBean;
+    @SpringBean(name = "designSelector")
+    private DesignSelector designSelectorBean;
 
     public BootstrapDesignRequestCycleListener() {
         Injector.get().inject(this);

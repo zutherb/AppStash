@@ -10,7 +10,6 @@
 
     <context:component-scan base-package="io.github.zutherb.appstash.shop.ui"/>
 
-
     <security:http auto-config="true">
         <security:anonymous enabled="false" />
         <security:http-basic />
@@ -42,5 +41,5 @@
 
     <bean id="resttemplate" class="org.springframework.web.client.RestTemplate"/>
 
-    <context:mbean-export/>
+    <context:mbean-export />
 </beans>

@@ -161,7 +161,7 @@ public class NavigationPanel extends Panel {
                 }, " "));
                 pageLink.add(new Label("name", Model.of(navigationEntry.getName())));
                 if (navigationEntry.getPageClass().isAnnotationPresent(ModalPanelItem.class)) {
-                    pageLink.add(new AjaxEventBehavior("onclick") {
+                    pageLink.add(new AjaxEventBehavior("click") {
                         private static final long serialVersionUID = 8111739824971748968L;
 
                         @Override
