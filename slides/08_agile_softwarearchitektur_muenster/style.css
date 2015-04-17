@@ -132,3 +132,9 @@ section.footer blockquote:before, section.footer blockquote:after {
     background-repeat: repeat;
     color: #779ba6;
 }
+
+hgroup {
+    background: rgba(254, 254, 254, 0.75);
+    color: black;
+    /*padding: 25px;*/
+}
