@@ -133,8 +133,16 @@ section.footer blockquote:before, section.footer blockquote:after {
     color: #779ba6;
 }
 
+slides > slide > hgroup + article {
+  margin-top: 0px;
+}
+
 hgroup {
     background: rgba(254, 254, 254, 0.75);
     color: black;
-    /*padding: 25px;*/
+    padding: 25px;
+}
+
+iframe.twitter-tweet {
+  height: 230px;
 }
