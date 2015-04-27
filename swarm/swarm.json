@@ -1,0 +1,93 @@
+{
+  "app_name": "shop",
+  "services": [
+    {
+      "service_name": "shop-service",
+      "components": [
+        {
+          "component_name": "mongodb",
+          "image": "mongodb",
+          "ports": [27017, 28017]
+        },
+        {
+          "component_name": "redis",
+          "image": "redis",
+          "ports": [6379]
+        },
+        {
+          "component_name": "shop",
+          "image": "zutherb/monolithic-shop",
+          "ports": [8080],
+          "dependencies": [
+            {
+              "name": "cart",
+              "port": 18100
+            },{
+              "name": "mongodb",
+              "port": 27017
+            }
+          ]
+        },
+        {
+          "component_name": "product",
+          "image": "zutherb/product-service",
+          "ports": [18080],
+          "dependencies": [
+            {
+              "name": "mongodb",
+              "port": 27017
+            }
+          ]
+        },
+        {
+          "component_name": "navigation",
+          "image": "zutherb/navigation-service",
+          "ports": [18090],
+          "dependencies": [
+            {
+              "name": "mongodb",
+              "port": 27017
+            }
+          ]
+        },
+        {
+          "component_name": "cart",
+          "image": "zutherb/cart-service",
+          "ports": [18100],
+          "dependencies": [
+            {
+              "name": "redis",
+              "port": 6379
+            }
+          ]
+        },
+        {
+          "component_name": "catalog",
+          "image": "zutherb/catalog-frontend",
+          "ports": [80],
+          "dependencies": [
+            {
+              "name": "product",
+              "port": 18080
+            },
+            {
+              "name": "navigation",
+              "port": 18090
+            },
+            {
+              "name": "cart",
+              "port": 18100
+            },
+            {
+              "name": "shop",
+              "port": 8080
+            }
+          ],
+          "env": {
+            "CHECKOUT_DESIGN": "standard"
+          }
+        }
+      ]
+    }
+  ]
+}

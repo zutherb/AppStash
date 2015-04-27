@@ -17,7 +17,7 @@ public class JettyStart {
 
     static {
         if (StringUtils.isEmpty(System.getProperty("spring.profiles.active"))) {
-            System.setProperty("spring.profiles.active", "production");
+            System.setProperty("spring.profiles.active", "test");
         }
     }
 
