@@ -6,6 +6,7 @@ import io.github.zutherb.appstash.shop.service.user.model.UserInfo;
 import io.github.zutherb.appstash.shop.ui.navigation.NavigationItem;
 import io.github.zutherb.appstash.shop.ui.page.AbstractBasePage;
 import io.github.zutherb.appstash.shop.ui.page.home.HomePage;
+import io.github.zutherb.appstash.shop.ui.tracking.TrackingService;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.form.*;
 import org.apache.wicket.markup.html.form.validation.EqualPasswordInputValidator;
@@ -31,6 +32,9 @@ public class RegistrationPage extends AbstractBasePage {
 
     @SpringBean(name = "userService")
     private UserService userService;
+
+    @SpringBean
+    private TrackingService trackingService;
 
     private IModel<UserInfo> userInfoModel;
 
@@ -100,9 +104,11 @@ public class RegistrationPage extends AbstractBasePage {
 
                     UserInfo userInfo = userInfoModel.getObject();
                     userService.save(userInfo);
+                    trackingService.trackSignUp(userInfo);
 
                     LoginInfo loginInfo = new LoginInfo(userInfo.getUsername(), userInfo.getPassword());
                     getAuthenticationService().authenticate(loginInfo);
+                    trackingService.trackLogin(getAuthenticationService().getAuthenticatedUserInfo());
                     setResponsePage(HomePage.class);
                 }
             }

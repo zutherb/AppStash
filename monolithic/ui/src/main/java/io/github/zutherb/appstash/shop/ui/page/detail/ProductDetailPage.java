@@ -11,6 +11,7 @@ import io.github.zutherb.appstash.shop.ui.model.PriceModel;
 import io.github.zutherb.appstash.shop.ui.page.AbstractBasePage;
 import io.github.zutherb.appstash.shop.ui.panel.cart.CartPanel;
 import io.github.zutherb.appstash.shop.ui.panel.product.RecommendationItemListPanel;
+import io.github.zutherb.appstash.shop.ui.tracking.TrackingService;
 import org.apache.wicket.AttributeModifier;
 import org.apache.wicket.Component;
 import org.apache.wicket.ajax.AjaxRequestTarget;
@@ -28,6 +29,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.apache.wicket.util.string.StringValue;
 import org.wicketstuff.annotation.mount.MountPath;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -43,6 +45,9 @@ public class ProductDetailPage extends AbstractBasePage {
     @SpringBean(name = "productService")
     private ProductService productService;
 
+    @SpringBean
+    private TrackingService trackingService;
+
     private IModel<ProductInfo> productInfoModel;
 
     public ProductDetailPage(PageParameters pageParameters) {
@@ -51,8 +56,9 @@ public class ProductDetailPage extends AbstractBasePage {
     }
 
     @Override
-    protected void onAfterRender() {
-        super.onAfterRender();
+    protected void onBeforeRender() {
+        super.onBeforeRender();
+        trackingService.trackProductView(Arrays.asList(productInfoModel.getObject()), getAuthenticationService().getAuthenticatedUserInfo());
     }
 
     private LoadableDetachableModel<ProductInfo> getProductInfoModelByUrlName(final PageParameters pageParameters) {

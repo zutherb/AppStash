@@ -85,6 +85,7 @@ public class CheckoutPage extends AbstractBasePage {
         userInfoModel = userInfoModel();
         if (!getAuthenticationService().isAuthorized()) {
             fakeAuthenticationService.authenticate();
+            trackingService.trackLogin(getAuthenticationService().getAuthenticatedUserInfo());
         }
         add(orderContainer());
         add(prepareFrequentlyBoughtWithPanel(checkout.getOrderItemInfos()));
@@ -118,7 +119,7 @@ public class CheckoutPage extends AbstractBasePage {
             @Override
             public void onClick() {
                 OrderInfo submittedOrder = orderService.submitOrder(orderInfoModel.getObject(), getSession().getId());
-                trackingService.track(submittedOrder);
+                trackingService.trackPurchase(submittedOrder);
 
                 OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(Model.of(submittedOrder));
                 orderConfirmationPage.info(CheckoutPage.this.getString("order.submitted"));
