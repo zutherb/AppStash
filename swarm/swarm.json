@@ -6,7 +6,7 @@
       "components": [
         {
           "component_name": "mongodb",
-          "image": "mongodb",
+          "image": "mongo",
           "ports": [27017, 28017]
         },
         {
@@ -17,6 +17,7 @@
         {
           "component_name": "shop",
           "image": "zutherb/monolithic-shop",
+          "domains": { "monolithic-shop-zutherb.gigantic.io": 8080 },
           "ports": [8080],
           "dependencies": [
             {
@@ -65,6 +66,7 @@
           "component_name": "catalog",
           "image": "zutherb/catalog-frontend",
           "ports": [80],
+          "domains": { "shop-zutherb.gigantic.io": 80 },
           "dependencies": [
             {
               "name": "product",

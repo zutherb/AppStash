@@ -14,6 +14,7 @@ applicationDefaultJvmArgs = [
     "-Drestx.mode=prod",
     "-Drestx.web-inf.location=../webapp/WEB-INF/web.xml",
     "-Drestx.web-app.location=../webapp",
+    "-Drestx.http.XForwardedSupport=all",
     "-Dmongo.uri=mongodb://mongodb-node",
     "-Dmongo.db=shop",
     "-Dlogs.base=../logs",
