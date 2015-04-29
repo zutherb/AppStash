@@ -9,7 +9,7 @@
   apt_repository: repo='deb http://pkg.jenkins-ci.org/debian binary/' state=present
 
 - name: add node repository into sources list.
-  apt_repository: repo='ppa:chris-lea/node.js' state=present
+  apt_repository: repo='ppa:onestone/node.js-0.12' state=present
 
 - name: update cache
   apt: update_cache=yes force=yes
