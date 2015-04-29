@@ -2,7 +2,7 @@
   "app_name": "shop",
   "services": [
     {
-      "service_name": "shop-service",
+      "service_name": "database-service",
       "components": [
         {
           "component_name": "mongodb",
@@ -13,55 +13,32 @@
           "component_name": "redis",
           "image": "redis",
           "ports": [6379]
-        },
-        {
-          "component_name": "shop",
-          "image": "zutherb/monolithic-shop",
-          "domains": { "monolithic-shop-zutherb.gigantic.io": 8080 },
-          "ports": [8080],
-          "dependencies": [
-            {
-              "name": "cart",
-              "port": 18100
-            },{
-              "name": "mongodb",
-              "port": 27017
-            }
-          ]
-        },
-        {
-          "component_name": "product",
-          "image": "zutherb/product-service",
-          "ports": [18080],
-          "dependencies": [
-            {
-              "name": "mongodb",
-              "port": 27017
-            }
-          ]
-        },
-        {
-          "component_name": "navigation",
-          "image": "zutherb/navigation-service",
-          "ports": [18090],
-          "dependencies": [
-            {
-              "name": "mongodb",
-              "port": 27017
-            }
-          ]
-        },
-        {
-          "component_name": "cart",
-          "image": "zutherb/cart-service",
-          "ports": [18100],
-          "dependencies": [
-            {
-              "name": "redis",
-              "port": 6379
-            }
-          ]
-        },
+        }
+      ]
+    },
+    {
+      "service_name": "checkout-service",
+      "components": [
+          {
+            "component_name": "shop",
+            "image": "zutherb/monolithic-shop",
+            "domains": { "monolithic-shop-zutherb.gigantic.io": 8080 },
+            "ports": [8080],
+            "dependencies": [
+              {
+                "name": "cart-service/cart",
+                "port": 18100
+              },{
+                "name": "database-service/mongodb",
+                "port": 27017
+              }
+            ]
+          }
+        ]
+    },
+    {
+      "service_name": "catalog-service",
+      "components": [
         {
           "component_name": "catalog",
           "image": "zutherb/catalog-frontend",
@@ -69,25 +46,73 @@
           "domains": { "shop-zutherb.gigantic.io": 80 },
           "dependencies": [
             {
-              "name": "product",
+              "name": "product-service/product",
               "port": 18080
             },
             {
-              "name": "navigation",
+              "name": "navigation-service/navigation",
               "port": 18090
             },
             {
-              "name": "cart",
+              "name": "cart-service/cart",
               "port": 18100
             },
             {
-              "name": "shop",
+              "name": "checkout-service/shop",
               "port": 8080
             }
           ],
           "env": {
             "CHECKOUT_DESIGN": "standard"
           }
+        }
+      ]
+    },
+    {
+      "service_name": "product-service",
+      "components": [
+        {
+          "component_name": "product",
+          "image": "zutherb/product-service",
+          "ports": [18080],
+          "dependencies": [
+            {
+              "name": "database-service/mongodb",
+              "port": 27017
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "service_name": "navigation-service",
+      "components": [
+        {
+          "component_name": "navigation",
+          "image": "zutherb/navigation-service",
+          "ports": [18090],
+          "dependencies": [
+            {
+              "name": "database-service/mongodb",
+              "port": 27017
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "service_name": "cart-service",
+      "components": [
+        {
+          "component_name": "cart",
+          "image": "zutherb/cart-service",
+          "ports": [18100],
+          "dependencies": [
+            {
+              "name": "database-service/redis",
+              "port": 6379
+            }
+          ]
         }
       ]
     }
