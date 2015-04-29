@@ -10,6 +10,7 @@ import io.github.zutherb.appstash.shop.ui.panel.base.HighLightBehavior;
 import io.github.zutherb.appstash.shop.ui.panel.cart.CartPanel;
 import io.github.zutherb.appstash.shop.ui.panel.product.ProductItemPanel;
 import io.github.zutherb.appstash.shop.ui.panel.product.TopSellerRecommendationPanel;
+import io.github.zutherb.appstash.shop.ui.tracking.TrackingService;
 import org.apache.wicket.Component;
 import org.apache.wicket.markup.html.WebMarkupContainer;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -37,6 +38,9 @@ public class ProductCatalogPage extends AbstractBasePage {
     @SpringBean(name = "productService")
     private ProductService productService;
 
+    @SpringBean
+    private TrackingService trackingService;
+
     private IModel<ProductType> productTypeModel;
     private IModel<List<List<ProductInfo>>> productListModel;
     private Component cartPanel;
@@ -51,6 +55,17 @@ public class ProductCatalogPage extends AbstractBasePage {
         add(cartPanel);
         add(recommendationPanel());
         setOutputMarkupId(true);
+    }
+
+    @Override
+    protected void onBeforeRender() {
+        super.onBeforeRender();
+        List<List<ProductInfo>> lists = productListModel.getObject();
+        List<ProductInfo> trackedProducts = new ArrayList<>();
+        for(List<ProductInfo> productInfos : lists) {
+            trackedProducts.addAll(productInfos);
+        }
+        trackingService.trackProductView(trackedProducts, getAuthenticationService().getAuthenticatedUserInfo());
     }
 
     private Component productsWrapper() {

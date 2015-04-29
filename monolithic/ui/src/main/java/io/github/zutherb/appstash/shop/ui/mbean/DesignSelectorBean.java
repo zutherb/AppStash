@@ -9,33 +9,43 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @Component("designSelector")
 @ManagedResource(objectName = "io.github.zutherb.appstash.ui:name=DesignSelector")
-public class DesignSelectorBean {
+public class DesignSelectorBean implements DesignSelector {
+    private final AtomicInteger designCounter;
 
-    private static final AtomicInteger DESIGN_COUNTER = new AtomicInteger();
-    private DesignType designType = DesignType.standard;
-
-    @ManagedOperation
-    public synchronized String getDesignType() {
-        return designType.name();
+    public DesignSelectorBean() {
+        designCounter = new AtomicInteger();
     }
 
     @ManagedOperation
-    public synchronized void setDesignType(String name) {
-        this.designType = DesignType.fromName(name);
+    @Override
+    public String getDesignType() {
+        int index = designCounter.get() % DesignType.values().length;
+        return DesignType.names().get(index);
     }
 
     @ManagedOperation
+    @Override
+    public void setDesignType(String name) {
+        int index = DesignType.names().indexOf(name);
+        designCounter.set(index);
+    }
+
+    @ManagedOperation
+    @Override
     public List<String> getAvailableDesignTypes() {
         return DesignType.names();
     }
 
     @ManagedOperation
-    public synchronized void standard() {
-        designType = DesignType.standard;
+    @Override
+    public void standard() {
+        designCounter.intValue();
     }
 
     @ManagedOperation
-    public synchronized void next() {
-        designType = DesignType.values()[DESIGN_COUNTER.incrementAndGet() % DesignType.values().length];
+    @Override
+    public void next() {
+        designCounter.incrementAndGet();
     }
+
 }

@@ -5,9 +5,9 @@ import org.apache.wicket.ajax.WicketAjaxJQueryResourceReference;
 import org.apache.wicket.ajax.WicketEventJQueryResourceReference;
 import org.apache.wicket.request.resource.JavaScriptResourceReference;
 import org.apache.wicket.request.resource.ResourceReference;
-import org.apache.wicket.settings.IJavaScriptLibrarySettings;
+import org.apache.wicket.settings.JavaScriptLibrarySettings;
 
-public class AbstractJavaScriptLibrarySettings implements IJavaScriptLibrarySettings {
+public class AbstractJavaScriptLibrarySettings extends JavaScriptLibrarySettings {
 
     private static String jQueryPath = "jquery/jquery-1.9.1.min.js";
 
@@ -17,18 +17,8 @@ public class AbstractJavaScriptLibrarySettings implements IJavaScriptLibrarySett
     }
 
     @Override
-    public void setJQueryReference(ResourceReference reference) {
-        throw new IllegalStateException("This method must not be called");
-    }
-
-    @Override
     public ResourceReference getWicketEventReference() {
         return WicketEventJQueryResourceReference.get();
-    }
-
-    @Override
-    public void setWicketEventReference(ResourceReference reference) {
-        throw new IllegalStateException("This method must not be called");
     }
 
     @Override
@@ -37,18 +27,8 @@ public class AbstractJavaScriptLibrarySettings implements IJavaScriptLibrarySett
     }
 
     @Override
-    public void setWicketAjaxReference(ResourceReference reference) {
-        throw new IllegalStateException("This method must not be called");
-    }
-
-    @Override
     public ResourceReference getWicketAjaxDebugReference() {
         return WicketAjaxDebugJQueryResourceReference.get();
-    }
-
-    @Override
-    public void setWicketAjaxDebugReference(ResourceReference reference) {
-        throw new IllegalStateException("This method must not be called");
     }
 
     protected static void setJQueryPath (String newJQueryPath) {

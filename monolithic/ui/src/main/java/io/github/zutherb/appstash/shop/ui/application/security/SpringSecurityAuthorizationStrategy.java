@@ -12,6 +12,8 @@ import org.apache.wicket.authorization.IAuthorizationStrategy;
 import org.apache.wicket.injection.Injector;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.request.component.IRequestableComponent;
+import org.apache.wicket.request.mapper.parameter.PageParameters;
+import org.apache.wicket.request.resource.IResource;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 import org.springframework.security.access.annotation.Secured;
 
@@ -51,6 +53,11 @@ public class SpringSecurityAuthorizationStrategy implements IAuthorizationStrate
                 return isAuthorized(pageClass);
             }
         }
+        return true;
+    }
+
+    @Override
+    public boolean isResourceAuthorized(IResource resource, PageParameters parameters) {
         return true;
     }
 

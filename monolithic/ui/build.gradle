@@ -75,7 +75,8 @@ dependencies {
     // for generating sample data automatically on startup
     compile project(':monolithic:common:dataloader')
     compile "com.github.fakemongo:fongo:$fongoVersion"
-    //
+
+    compile "com.mixpanel:mixpanel-java:$mixpanelVersion"
 
     testCompile jettyDeps
     testCompile testDeps

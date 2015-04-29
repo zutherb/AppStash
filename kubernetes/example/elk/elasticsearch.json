@@ -10,7 +10,7 @@
         {
           "name": "elasticsearch",
           "hostname": "elasticsearch",
-          "image": "dockerfile/elasticsearch",
+          "image": "elasticsearch",
           "ports": [
             {
               "containerPort": 9200,

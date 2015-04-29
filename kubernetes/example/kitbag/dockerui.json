@@ -1,55 +1,56 @@
 {
-  "id": "fluentd",
-  "kind": "Pod",
+  "id": "dockerui",
+  "kind": "ReplicationController",
   "apiVersion": "v1beta2",
   "desiredState": {
-    "manifest": {
-      "version": "v1beta1",
-      "id": "fluentd",
-      "containers": [
-        {
-          "name": "fluentd",
-          "hostname": "fluentd",
-          "image": "kubernetes/fluentd-elasticsearch",
-          "ports": [],
-          "privileged": true,
-          "volumeMounts": [
+    "replicas": 3,
+    "replicaSelector": {"name": "dockerui"},
+    "podTemplate": {
+      "desiredState": {
+        "manifest": {
+          "version": "v1beta1",
+          "id": "dockerui",
+          "containers": [
             {
-              "name": "containers",
-              "mountPath": "/var/lib/docker/containers",
-              "readOnly": true
-            },
+              "name": "dockerui",
+              "hostname": "dockerui",
+              "image": "dockerui/dockerui",
+              "ports": [
+                {
+                  "containerPort": 9000,
+                  "hostPort": 9000
+                }
+              ],
+              "privileged": true,
+              "volumeMounts": [
+                {
+                  "name": "socket",
+                  "mountPath": "/var/run/docker.sock",
+                  "readOnly": true
+                }
+              ]
+            }
+          ],
+          "volumes": [
             {
               "name": "socket",
-              "mountPath": "/var/run/docker.sock",
-              "readOnly": true
+              "source": {
+                "hostDir": {
+                  "path": "/var/run/docker.sock"
+                }
+              }
             }
           ]
         }
-      ],
-      "volumes": [
-        {
-          "name": "containers",
-          "source": {
-            "hostDir": {
-              "path": "/var/lib/docker/containers"
-
-            }
-          }
-        },
-        {
-          "name": "socket",
-          "source": {
-            "hostDir": {
-              "path": "/var/run/docker.sock"
-            }
-          }
-        }
-      ]
+      },
+      "labels": {
+        "name": "dockerui",
+        "role": "kitbag"
+      }
     }
   },
   "labels": {
-    "name": "fluentd",
-    "role": "monitoring"
+    "name": "dockerui",
+    "role": "kitbag"
   }
 }

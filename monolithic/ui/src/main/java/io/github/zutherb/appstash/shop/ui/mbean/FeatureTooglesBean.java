@@ -12,27 +12,27 @@ public class FeatureTooglesBean {
     private boolean highlightingFeatureEnabled = false;
 
     @ManagedOperation
-    public synchronized void disableTopSellerFeature() {
+    public void disableTopSellerFeature() {
         topSellerFeatureEnabled = false;
     }
 
     @ManagedOperation
-    public synchronized void enableTopSellerFeature() {
+    public void enableTopSellerFeature() {
         topSellerFeatureEnabled = true;
     }
 
     @ManagedOperation
-    public synchronized boolean isTopSellerFeatureEnabled() {
+    public boolean isTopSellerFeatureEnabled() {
         return topSellerFeatureEnabled;
     }
 
     @ManagedOperation
-    public synchronized void disableHighlightingFeature() {
+    public void disableHighlightingFeature() {
         highlightingFeatureEnabled = false;
     }
 
     @ManagedOperation
-    public synchronized void enableHighlightingFeature() {
+    public void enableHighlightingFeature() {
         highlightingFeatureEnabled = true;
     }
 

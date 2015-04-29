@@ -9,7 +9,7 @@ import io.github.zutherb.appstash.shop.service.product.api.ProductService;
 import io.github.zutherb.appstash.shop.service.recommendation.api.RecommendationService;
 import io.github.zutherb.appstash.shop.service.user.api.UserService;
 import io.github.zutherb.appstash.shop.ui.application.TestShopApplication;
-import io.github.zutherb.appstash.shop.ui.mbean.DesignSelectorBean;
+import io.github.zutherb.appstash.shop.ui.mbean.DesignSelector;
 import io.github.zutherb.appstash.shop.ui.mbean.FeatureTooglesBean;
 import io.github.zutherb.appstash.shop.ui.navigation.Navigation;
 import io.github.zutherb.appstash.shop.ui.navigation.NavigationEntry;
@@ -60,7 +60,7 @@ public abstract class AbstractWicketTest {
     @Mock
     protected FeatureTooglesBean featureTooglesBean;
     @Mock
-    protected DesignSelectorBean designSelectorBean;
+    protected DesignSelector designSelectorBean;
 
     @Before
     public void initializeWicketTester() throws Exception {

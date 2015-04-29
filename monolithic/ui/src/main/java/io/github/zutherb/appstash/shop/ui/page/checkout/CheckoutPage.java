@@ -16,6 +16,7 @@ import io.github.zutherb.appstash.shop.ui.page.home.HomePage;
 import io.github.zutherb.appstash.shop.ui.panel.DeliveryAdressInfoPanel;
 import io.github.zutherb.appstash.shop.ui.panel.OrderItemListPanel;
 import io.github.zutherb.appstash.shop.ui.panel.product.RecommendationItemListPanel;
+import io.github.zutherb.appstash.shop.ui.tracking.TrackingService;
 import org.apache.wicket.Application;
 import org.apache.wicket.Component;
 import org.apache.wicket.RestartResponseException;
@@ -59,6 +60,9 @@ public class CheckoutPage extends AbstractBasePage {
     @SpringBean(name = "fakeAuthenticationService")
     private FakeAuthenticationService fakeAuthenticationService;
 
+    @SpringBean
+    private TrackingService trackingService;
+
     IModel<UserInfo> userInfoModel;
     IModel<OrderInfo> orderInfoModel;
 
@@ -81,6 +85,7 @@ public class CheckoutPage extends AbstractBasePage {
         userInfoModel = userInfoModel();
         if (!getAuthenticationService().isAuthorized()) {
             fakeAuthenticationService.authenticate();
+            trackingService.trackLogin(getAuthenticationService().getAuthenticatedUserInfo());
         }
         add(orderContainer());
         add(prepareFrequentlyBoughtWithPanel(checkout.getOrderItemInfos()));
@@ -114,6 +119,7 @@ public class CheckoutPage extends AbstractBasePage {
             @Override
             public void onClick() {
                 OrderInfo submittedOrder = orderService.submitOrder(orderInfoModel.getObject(), getSession().getId());
+                trackingService.trackPurchase(submittedOrder);
 
                 OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(Model.of(submittedOrder));
                 orderConfirmationPage.info(CheckoutPage.this.getString("order.submitted"));
