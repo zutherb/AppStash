@@ -6,7 +6,7 @@ This example shows how to run the Microservice Phone Shop Application with docke
 
 ## Install
 
-If you want to run the example Microservice Phone Shop Application with, you have to install the following components:
+If you want to run the example Microservice Phone Shop Application, you have to install the following components:
 
 ```
 brew install docker boot2docker docker-compose
