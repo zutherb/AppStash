@@ -8,7 +8,7 @@ maintenance, and scaling of applications.
 
 ## Install
 
-If you want to run the example Microservice Phone Shop Application with, you have to install the components which are
+If you want to run the example Microservice Phone Shop Application, you have to install the components which are
 described in the [root readme](https://github.com/zutherb/AppStash#running) and the following components:
 
 ```
