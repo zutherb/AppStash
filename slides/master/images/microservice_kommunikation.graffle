@@ -108,7 +108,7 @@
 		</dict>
 		<dict>
 			<key>Bounds</key>
-			<string>{{280.5, 159.99999999999977}, {123, 87}}</string>
+			<string>{{307.5, 159.99999999999977}, {77, 87}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
 			<key>FitText</key>
@@ -156,7 +156,7 @@
 
 \f0\fs48 \cf2 REST/\
 \
-Messaging}</string>
+AMQP}</string>
 				<key>VerticalPad</key>
 				<integer>0</integer>
 			</dict>
@@ -551,7 +551,7 @@ Messaging}</string>
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2015-04-19 16:47:30 +0000</string>
+	<string>2015-05-04 11:51:56 +0000</string>
 	<key>Modifier</key>
 	<string>Bernd Zuther</string>
 	<key>NotesVisible</key>
@@ -641,7 +641,7 @@ Messaging}</string>
 		<key>SidebarWidth</key>
 		<integer>120</integer>
 		<key>VisibleRegion</key>
-		<string>{{0.5, 0}, {669, 687}}</string>
+		<string>{{0, 0}, {669, 687}}</string>
 		<key>Zoom</key>
 		<real>1</real>
 		<key>ZoomValues</key>

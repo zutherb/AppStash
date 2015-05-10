@@ -92,6 +92,36 @@
     </article>
   </slide>
 
+  <slide class="fill nobackground" style="background-image:url(../master/images/innovation.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>Innovation = <br />Idea + Product + Market Penetration</h1>
+        <p>
+          DIN SPEC 77555-1:2013-09 Innovation Management - Part 1: Innovation Management System
+        </p>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/speed.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>Be faster as your competitors</h1>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Continuous Improvement</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/innovation_pillar_en_agility.svg" style="height: 500px;" />
+      </section>
+    </article>
+  </slide>
+
   <slide class="fill nobackground" style="background-image:url(../master/images/shoppingcart.jpg);">
     <article class="flexbox vcenter">
       <section class="textbox">
@@ -103,7 +133,7 @@
   <slide class="fill nobackground" style="background-image:url(../master/images/abtesting.jpg);">
     <article class="flexbox vcenter">
       <section class="textbox">
-        <h1 style="color: #000; font-size: 2em">A/B Testing</h1>
+        <h1>A/B Testing</h1>
       </section>
     </article>
   </slide>
@@ -153,18 +183,6 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
 
   <slide>
     <hgroup>
-      <h2>Continuous Improvement</h2>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <section>
-        <img src="../master/images/innovation_pillar_en_agility.svg" style="height: 500px;" />
-      </section>
-    </article>
-  </slide>
-
-
-  <slide>
-    <hgroup>
       <h2>Architecture</h2>
     </hgroup>
     <article class="flexbox vcenter">
@@ -174,16 +192,7 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
     </article>
   </slide>
 
-
-  <slide>
-    <hgroup>
-      <h2>White Label-Shop</h2>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <section>
-        <img src="../master/images/whitelabelshop.svg" style="height: 500px;" />
-      </section>
-    </article>
+  <slide class="fill nobackground" style="background-image:url(../master/images/grüne_wiese.jpg);">
   </slide>
 
   <slide class="fill nobackground" style="background-image:url(../master/images/duisburg.jpg);">
@@ -244,7 +253,12 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
     </hgroup>
     <article class="flexbox vcenter">
       <section>
-        <img src="../master/images/microservice.svg" style="width: 100%" />
+        <img src="../master/images/microservice.svg" style="height: 250px; float: left; margin-right: 50px" />
+        <ul class="build">
+          <li>fits in one brain,</li>
+          <li>designed for replaceability,</li>
+          <li>autonomously (organisation & technologie)</li>
+        </ul>
       </section>
     </article>
   </slide>
@@ -256,30 +270,6 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
     <article class="flexbox vcenter">
       <section>
         <img src="../master/images/microservice_taxonomy.svg" style="height: 500px;" />
-      </section>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Differences to SOA</h2>
-    </hgroup>
-    <article class="flexbox">
-      <section>
-        <ul>
-          <li>
-            Deployed as processes (Unix packages or Container)
-          </li>
-          <li>
-            Lightweight infrastructure and protocols (e.g. REST)
-          </li>
-          <li>
-            Greater flexibility of architecture (e.g. can contain GUI)
-          </li>
-          <li>
-            Managed as products, with their own lifecycle and delivery
-          </li>
-        </ul>
       </section>
     </article>
   </slide>
@@ -630,15 +620,6 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
 
   <slide>
     <hgroup>
-      <h2>Docker Environment</h2>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <img src="../master/images/deployment_diagramm_online_shop_docker.svg" style="height: 450px; width: 100%" />
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
       <h2>Kubernetes - Cluster Management</h2>
     </hgroup>
     <article class="flexbox vcenter">
@@ -646,52 +627,8 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
         <img src="../master/images/graph-01.svg" type="image/svg+xml" style="height: 450px; width: 100%" />
       </section>
     </article>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/pod.jpg);">
-    <hgroup>
-      <h2>Pod</h2>
-    </hgroup>
-    <article >
-      <pre class="prettyprint" data-lang="yaml">
-kind: Pod
-desiredState:
-  manifest:
-    <b>containers:
-      - name: mongodb
-        image: dockerfile/mongodb
-        cpu: 100
-        memory: 50000000
-        ports:
-          - containerPort: 27017</b></pre>
-    </article>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/clone.jpg);">
-    <hgroup>
-      <h2>Replication Controller</h2>
-    </hgroup>
-    <article >
-      <pre class="prettyprint" data-lang="yaml">
-kind: ReplicationController,
-desiredState:
-  <b>replicas: 4
-  podTemplate:
-    desiredState:
-      manifest:
-        containers:
-          - name: product
-            image: zutherb/product-service</b></pre>
-    </article>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/service.jpg);">
-    <hgroup>
-      <h2>Service</h2>
-    </hgroup>
     <aside class="gdbar bottom"><img src="../master/images/youtube.png"></aside>
   </slide>
-
 
   <slide class="fill nobackground" style="background-image:url(../master/images/zookeeper.jpg);">
   </slide>
@@ -1039,6 +976,21 @@ desiredState:
           <li>
             <a href="https://www.flickr.com/photos/christianreimer/15496733958/in/photolist-pBoP7f-8iC4FM-5iD8kx-8kiqwi-3FRm4T-7K2AcU-6jV36r-9M4jL-7VxYvw-5385pB-bQctNM-9sJPJD-eHatpF-6qBRsU-4bBqJt-qeAm-6ex5Uq-gXjfr5-do3ESw-jLypgv-98KX18-bvya7m-fTTr8R-62ctza-bbqebF-ca8Syo-6E9JUf-qquZtU-Hi88U-HickH-Hi8vE-HiccZ-6mTfkt-6TZvce-9yk4rG-bW5bmo-6TZv4g-6U4vnq-4LUzai-ecw4xY-6U4vGW-6TZv7x-7fYXzb-fTgJXM-6TZuLB-6TZuSP-6TZuHr-9QXrxm-6TZuQ2-bW5amN">
               There's a light at the end of the tunnel...
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/taedc/6998471074/in/photolist-bEqZCo-bTkHG8-e9P4YC-g923eA-6a9Sr3-bqADH8-bqADJv-bqADDM-bqADFk-73j5zZ-bNX7mD-fr4jJ-fjdvh-bTeo5n-bEjDu1-bEjDt5-bNSYfp-bNSSSH-bzYkR7-9bBdFG-eAywzT-pAsSzv-fjdth-e9P34f-6eBVff-artW8z-o59rYL-72kL6g-bNSYep-7v5zvN-j9Ceiz-jzp5Cz-fjdoz-ffL7A-eMMuN-ommoi2-o59keA-ojBaiw-oooTgt-o59fe4-omBdjL-omD87F-omBoNw-omBfSb-o595qC-ommx1T-ommEqn-oop1Eg-ojAW9W-omB9MA">
+              2012 DC Zeitgeist III 11787
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/eriwst/3448608210/in/photolist-6fK25f-9RyGwn-9CYrfj-ipH2fq-dEBhN2-4AmvHU-4Amvtm-5TCu2n-noq9Bd-6JT7Wb-eeotC9-myoN5e-6BDTXJ-5xQzAg-nRMmxQ-q6aaMK-fr4cav-qnra4z-bF49vu-62hexY-dRBzwS-btc5Qg-qmCeQ-btxCeU-gqBdbo-bJjNGB-ehKosS-5yg6ij-b6Qyzi-bVMVSS-bWz4tX-5np34T-cye5Ls-oKgXwq-q6362f-co9NX-qeSgSp-cFwV41-q9YKs1-q6bvUK-q6bvKX-qnBgXD-q6coFV-q6bvwR-q64Wy1-qnxRh9-pqQJJX-q6aawe-qnAqLx-qnqkd4">
+              Red Rule
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/22040620@N04/2693258604/">
+              Schwarzwald Blumenwiese
             </a>
           </li>
         </ul>
