@@ -58,6 +58,16 @@ dependencies {
 }
 
 def debName = "cart"
+
+task prepareDeb {
+    dependsOn installApp
+
+    copy {
+        from "${buildDir}/install/"
+        into "${buildDir}/debian-data/usr/share/shop/"
+    }
+}
+
 debian {
     packagename = "cart-service"
     publications = ['mavenStuff']
@@ -74,15 +84,6 @@ debian {
             name = "${buildDir}/debian-data/"
             exclusions = ["**/.DS_Store"]
         }
-    }
-}
-
-task prepareDeb {
-    dependsOn installApp
-
-    copy {
-        from "${buildDir}/install/"
-        into "${buildDir}/debian-data/usr/share/shop/"
     }
 }
 

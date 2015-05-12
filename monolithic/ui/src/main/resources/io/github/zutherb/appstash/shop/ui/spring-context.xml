@@ -13,6 +13,7 @@
     <security:http auto-config="true">
         <security:anonymous enabled="false" />
         <security:http-basic />
+        <security:csrf disabled="true" />
     </security:http>
 
     <import resource="classpath:io/github/zutherb/appstash/shop/service/authentication/spring-context.xml"/>

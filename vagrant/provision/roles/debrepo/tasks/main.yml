@@ -12,7 +12,7 @@
 - copy: src=rng-tools dest=/etc/default/rng-tools force=yes mode=0644
   notify: restart rng-tools
 
-- name: Create gnupg directory
+- name: create gnupg directory
   sudo: yes
   sudo_user: root
   file: path=/root/.gnupg/ state=directory force=yes
@@ -27,7 +27,7 @@
       - secring.gpg
       - trustdb.gpg
 
-- name: Create deb repository
+- name: create deb repository
   sudo: yes
   sudo_user: root
   file: path=/var/packages/debian/conf state=directory force=yes
@@ -35,7 +35,6 @@
 - copy: src={{item}} dest=/var/packages/debian/conf/{{item}} force=yes mode=0644
   with_items:
       - distributions
-  #    - updates
 
 - file: path=/var/packages/debian/conf/override.shop state=touch force=yes
 - copy: src=options dest=/var/packages/debian/conf/options force=yes mode=0644
