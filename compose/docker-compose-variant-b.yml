@@ -53,3 +53,24 @@ catalog:
      - shop
   environment:
      - CHECKOUT_DESIGN=amelia
+elasticsearch:
+  image: deviantony/elk-elasticsearch
+  ports:
+    - "9200:9200"
+logstash:
+  image: deviantony/elk-logstash
+  volumes:
+    - logstash-conf:/etc/logstash/conf.d
+  ports:
+    - "5000:5000"
+  links:
+    - elasticsearch
+  privileged: true
+  volumes:
+    - /var/lib/docker/containers:/var/log/docker/containers
+kibana4:
+  image: deviantony/elk-kibana
+  ports:
+    - "5601:5601"
+  links:
+    - elasticsearch
