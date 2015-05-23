@@ -1,0 +1,18 @@
+name: sava:1.0
+
+endpoints:
+  sava.port: 9050
+
+clusters:
+
+  sava:
+    services:
+      breed:
+        name: sava:1.0.0
+        deployable: magneticio/sava:1.0.0
+        ports:
+          port: 80/http
+    scale:
+      cpu: 0.5       
+      memory: 512  
+      instances: 1

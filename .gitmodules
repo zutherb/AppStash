@@ -4,3 +4,6 @@
 [submodule "kubernetes/src"]
 	path = kubernetes/src
 	url = https://github.com/GoogleCloudPlatform/kubernetes.git
+[submodule "vamp/docker"]
+	path = vamp/docker
+	url = https://github.com/magneticio/vamp-docker.git
