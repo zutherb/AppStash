@@ -1,0 +1,24 @@
+{
+  "builders": [
+    {
+      "commit": true,
+      "image": "ubuntu",
+      "type": "docker"
+    }
+  ],
+  "post-processors": [
+    [
+      {
+        "repository": "zutherb/buildserver",
+        "tag": "latest",
+        "type": "docker-tag"
+      }
+    ]
+  ],
+  "provisioners": [
+    {
+      "playbook_file": "buildserver.yml",
+      "type": "ansible-local"
+    }
+  ]
+}
