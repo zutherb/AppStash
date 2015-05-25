@@ -149,3 +149,7 @@
     - shop-microservice-registration-ui-build
     - spring-boot-admin
   ignore_errors: yes
+
+- name: add jenkins to docker group
+  raw: gpasswd -a jenkins docker
+  sudo: yes

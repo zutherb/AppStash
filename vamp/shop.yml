@@ -1,0 +1,102 @@
+---
+name: shop:1.0
+
+endpoints:
+  catalog.port: 9050
+
+clusters:
+
+  catalog:
+    services:
+      breed:
+        name: catalog
+        deployable: zutherb/catalog-frontend
+        ports:
+          port: 80/http
+        environment_variables:
+          SHOP_PORT_8080_TCP_ADDR: $checkout.host
+          SHOP_PORT_8080_TCP_PORT: $checkout.ports.port
+          CHECKOUT_DESIGN: standard
+          PRODUCT_PORT_18080_TCP_ADDR: $product.host
+          PRODUCT_PORT_18080_TCP_PORT: $product.ports.port
+          NAVIGATION_PORT_18090_TCP_ADDR: $navigation.host
+          NAVIGATION_PORT_18090_TCP_PORT: $navigation.ports.port
+          CART_PORT_18100_TCP_ADDR: $cart.host
+          CART_PORT_18100_TCP_PORT: $cart.ports.port
+        dependencies:
+          product: product
+          navigation: navigation
+          cart: cart
+          checkout: checkout
+
+  checkout:
+    services:
+      breed:
+        name: checkout
+        deployable: zutherb/monolithic-shop
+        ports:
+          port: 8080/http
+        environment_variables:
+          CART_PORT_18100_TCP_ADDR: $cart.host
+          CART_PORT_18100_TCP_PORT: $cart.ports.port
+          MONGODB_PORT_27017_TCP_ADDR: $mongodb.host
+          MONGODB_PORT_27017_TCP_PORT: $mongodb.ports.port
+        dependencies:
+          mongodb: mongodb
+          cart: cart
+
+  product:
+    services:
+      breed:
+        name: product
+        deployable: zutherb/product-service
+        ports:
+          port: 18080/http
+        environment_variables:
+          MONGODB_PORT_27017_TCP_ADDR: $mongodb.host
+          MONGODB_PORT_27017_TCP_PORT: $mongodb.ports.port
+        dependencies:
+          mongodb: mongodb
+
+  navigation:
+    services:
+      breed:
+        name: navigation
+        deployable: zutherb/navigation-service
+        ports:
+          port: 18090/http
+        environment_variables:
+          MONGODB_PORT_27017_TCP_ADDR: $mongodb.host
+          MONGODB_PORT_27017_TCP_PORT: $mongodb.ports.port
+        dependencies:
+          mongodb: mongodb
+
+  cart:
+    services:
+      breed:
+        name: cart
+        deployable: zutherb/cart-service
+        ports:
+          port: 18100/http
+        environment_variables:
+          REDIS_PORT_6379_TCP_ADDR: $redis.host
+          REDIS_PORT_6379_TCP_PORT: $redis.ports.port
+        dependencies:
+          redis: redis
+
+  redis:
+    services:
+      breed:
+        name: redis
+        deployable: redis:latest
+        ports:
+          port: 6379/tcp
+
+  mongodb:
+    services:
+      breed:
+        name: mongodb
+        deployable: mongo:latest
+        ports:
+          port: 27017/tcp
+
