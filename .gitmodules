@@ -7,3 +7,9 @@
 [submodule "vamp/docker"]
 	path = vamp/docker
 	url = https://github.com/magneticio/vamp-docker.git
+[submodule "vamp/ui"]
+	path = vamp/ui
+	url = git@github.com:magneticio/vamp-ui.git
+[submodule "vamp/example"]
+	path = vamp/example
+	url = git@github.com:magneticio/sava.git

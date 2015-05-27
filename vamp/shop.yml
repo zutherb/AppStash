@@ -67,9 +67,11 @@ clusters:
           port: 18090/http
         environment_variables:
           MONGODB_PORT_27017_TCP_ADDR: $mongodb.host
-          MONGODB_PORT_27017_TCP_PORT: $mongodb.ports.port
+          MONGODB_PORT_27017_TCP_PORT: $mongodb.ports.port          
         dependencies:
           mongodb: mongodb
+      marathon:
+       cmd: "NAVIGATION_PORT=18090 /navigation-0.6/bin/navigation"
 
   cart:
     services:
@@ -99,4 +101,5 @@ clusters:
         deployable: mongo:latest
         ports:
           port: 27017/tcp
-
+      marathon:
+        cmd: "mongod --smallfiles"

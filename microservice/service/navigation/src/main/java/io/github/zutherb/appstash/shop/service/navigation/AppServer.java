@@ -14,7 +14,7 @@ import static org.apache.commons.lang3.StringUtils.isNotEmpty;
  * <p>
  * Alternatively, you can deploy the app as a war in a regular container like tomcat or jetty.
  * <p>
- * Reading the port from system env PORT makes it compatible with heroku.
+ * Reading the port from system env NAVIGATION_PORT makes it compatible with heroku.
  */
 public class AppServer {
     private static final String MONGODB_PORT_27017_TCP_ADDR = "MONGODB_PORT_27017_TCP_ADDR";
@@ -32,7 +32,7 @@ public class AppServer {
             LOGGER.info("Rewrite mongo.uri to " + mongoUri);
         }
 
-        int port = Integer.valueOf(Optional.fromNullable(System.getenv("PORT")).or("18090"));
+        int port = Integer.valueOf(Optional.fromNullable(System.getenv("NAVIGATION_PORT")).or("18090"));
         WebServer server = new JettyWebServer(
                 System.getProperty("restx.web-inf.location", WEB_INF_LOCATION),
                 System.getProperty("restx.web-app.location", WEB_APP_LOCATION),
