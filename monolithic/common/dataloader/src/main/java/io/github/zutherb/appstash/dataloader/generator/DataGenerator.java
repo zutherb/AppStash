@@ -33,6 +33,7 @@ import org.springframework.jmx.export.annotation.ManagedAttribute;
 import org.springframework.jmx.export.annotation.ManagedOperation;
 import org.springframework.jmx.export.annotation.ManagedResource;
 import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.security.authentication.encoding.ShaPasswordEncoder;
 import org.springframework.stereotype.Component;
 
@@ -53,7 +54,7 @@ import java.util.*;
 @ManagedResource(objectName = "io.github.zutherb.appstash.generator:name=DataGenerator")
 public class DataGenerator {
 
-    private static Logger logger = LoggerFactory.getLogger(DataGenerator.class);
+    private static final Logger logger = LoggerFactory.getLogger(DataGenerator.class);
 
     private List<Supplier> suppliers;
     private boolean randomIds = true;
@@ -103,7 +104,9 @@ public class DataGenerator {
 
     @ManagedOperation
     @PostConstruct
+    @Scheduled(fixedRate = 5000)
     public void initializeDatabase() throws IOException {
+        logger.info("reinitialize database if need");
         cleanCollections();
         createSupplierList();
 

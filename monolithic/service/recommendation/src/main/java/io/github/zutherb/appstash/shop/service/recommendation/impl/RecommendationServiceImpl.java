@@ -49,9 +49,12 @@ public class RecommendationServiceImpl implements RecommendationService {
         List<ProductInfo> result = new ArrayList<>(ProductType.values().length);
         for (ProductType type : ProductType.values()) {
             if (result.size() >= limit) {
-                break;
+               return result;
             }
-            CollectionUtils.addIgnoreNull(result, getRandomlyChosenProducts(1, type).get(0));
+            List<ProductInfo> randomlyChosenProducts = getRandomlyChosenProducts(1, type);
+            if(!randomlyChosenProducts.isEmpty()){
+                CollectionUtils.addIgnoreNull(result, randomlyChosenProducts.get(0));
+            }
         }
         return result;
     }
