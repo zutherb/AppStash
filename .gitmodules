@@ -13,3 +13,6 @@
 [submodule "vamp/example"]
 	path = vamp/example
 	url = git@github.com:magneticio/sava.git
+[submodule "vamp/vagrant"]
+	path = vamp/vagrant
+	url = https://github.com/everpeace/vagrant-mesos.git

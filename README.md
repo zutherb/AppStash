@@ -67,6 +67,10 @@ Date       | Event                         | Title
 Title | Language
 ------|-----------------
 [Microservices und die Jagd nach mehr Konversion – das Heilmittel für erkrankte IT-Architekturen?](http://bernd-zuther.de/wp-content/uploads/2015/02/02-2015-Java-aktuell-Bernd-Zut-her-Microservices-und-die-Jagd-nach-mehr-Konversion-das-Heilmittel-fu%CC%88r-erkrankte-IT-Architekturen.pdf) | German
+[Microservice-Deployment ganz einfach mit Giant Swarm](https://blog.codecentric.de/2015/05/microservice-deployment-ganz-einfach-mit-giant-swarm/) | German
+[Microservice-Deployment ganz einfach mit Kubernetes](https://blog.codecentric.de/2015/05/microservice-deployment-ganz-einfach-mit-kubernetes/) | German
+[Microservice-Deployment ganz einfach mit Docker Compose](https://blog.codecentric.de/2015/05/microservice-deployment-ganz-einfach-mit-docker-compose/) | German
+[Microservice-Deployment ganz einfach ohne Docker mit der Linux-Paketverwaltung](https://blog.codecentric.de/2015/05/microservice-deployment-ganz-einfach-ohne-docker-mit-der-linux-paketverwaltung/) | German
 
 ## Directory Layout
 

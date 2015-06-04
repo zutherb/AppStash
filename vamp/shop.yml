@@ -28,6 +28,10 @@ clusters:
           navigation: navigation
           cart: cart
           checkout: checkout
+      scale:
+        instances: 1
+        cpu: 1
+        memory: 128
 
   checkout:
     services:
@@ -44,6 +48,10 @@ clusters:
         dependencies:
           mongodb: mongodb
           cart: cart
+      scale:
+        instances: 1
+        cpu: 1
+        memory: 128
 
   product:
     services:
@@ -57,6 +65,10 @@ clusters:
           MONGODB_PORT_27017_TCP_PORT: $mongodb.ports.port
         dependencies:
           mongodb: mongodb
+      scale:
+        instances: 1
+        cpu: 1
+        memory: 128
 
   navigation:
     services:
@@ -72,6 +84,10 @@ clusters:
           mongodb: mongodb
       marathon:
        cmd: "NAVIGATION_PORT=18090 /navigation-0.6/bin/navigation"
+      scale:
+        instances: 1
+        cpu: 1
+        memory: 128
 
   cart:
     services:
@@ -85,6 +101,10 @@ clusters:
           REDIS_PORT_6379_TCP_PORT: $redis.ports.port
         dependencies:
           redis: redis
+      scale:
+        instances: 1
+        cpu: 1
+        memory: 128
 
   redis:
     services:
@@ -93,6 +113,10 @@ clusters:
         deployable: redis:latest
         ports:
           port: 6379/tcp
+      scale:
+        instances: 1
+        cpu: 1
+        memory: 128
 
   mongodb:
     services:
@@ -103,3 +127,7 @@ clusters:
           port: 27017/tcp
       marathon:
         cmd: "mongod --smallfiles"
+      scale:
+        instances: 1
+        cpu: 1
+        memory: 128
