@@ -1,0 +1,41 @@
+apply plugin: 'docker'
+
+idea {
+    module {
+        name='product-go'
+    }
+}
+
+
+task build {
+    exec {
+        commandLine "go", "get", "gopkg.in/mgo.v2"
+    }
+    exec {
+        commandLine "go", "get", "github.com/emicklei/go-restful"
+    }
+    exec {
+        workingDir "$projectDir/src"
+        environment "GOOS":"linux","GOARCH":"amd64","CGO_ENABLED": "0"
+        commandLine "go", "build", "-o", "${buildDir}/productservice", "productservice.go"
+    }
+}
+
+docker {
+    maintainer = 'Bernd Zuther <bernd.zuther@codecentric.de>'
+    baseImage = 'golang'
+}
+
+task packageToContainer(type: Docker) {
+    dependsOn build
+
+    applicationName = 'product-service'
+    tagVersion = "latest-go"
+    tag = "zutherb/${applicationName}"
+
+    addFile "${buildDir}/productservice", "/usr/local/bin/productservice"
+
+    defaultCommand (["/usr/local/bin/productservice"])
+
+    exposePort(18080)
+}
