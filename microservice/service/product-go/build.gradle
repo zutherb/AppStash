@@ -15,7 +15,7 @@ task build {
         commandLine "go", "get", "github.com/emicklei/go-restful"
     }
     exec {
-        workingDir "$projectDir/src"
+        workingDir "${projectDir}/src/github.com/zutherb/productservice/cmd"
         environment "GOOS":"linux","GOARCH":"amd64","CGO_ENABLED": "0"
         commandLine "go", "build", "-o", "${buildDir}/productservice", "productservice.go"
     }
