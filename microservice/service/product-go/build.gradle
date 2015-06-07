@@ -16,7 +16,7 @@ task build {
     }
     exec {
         workingDir "${projectDir}/src/github.com/zutherb/productservice/cmd"
-        environment "GOOS":"linux","GOARCH":"amd64","CGO_ENABLED": "0"
+        environment "GOPATH":"${projectDir}", "GOOS":"linux", "GOARCH":"amd64", "CGO_ENABLED":"0"
         commandLine "go", "build", "-o", "${buildDir}/productservice", "productservice.go"
     }
 }
@@ -37,5 +37,23 @@ task packageToContainer(type: Docker) {
 
     defaultCommand (["/usr/local/bin/productservice"])
 
+    exposePort(18080)
+}
+
+task packageToContainerWithDebug(type: Docker) {
+    dependsOn build
+
+    applicationName = 'product-service'
+    tagVersion = "latest-go-with-debug"
+    tag = "zutherb/${applicationName}"
+
+    addFile "${buildDir}/productservice", "/usr/local/bin/productservice"
+
+    runCommand "apt-get update -y"
+    runCommand "apt-get install -y cgdb gdb gdbserver"
+
+    defaultCommand (["gdbserver", ":2345", "/usr/local/bin/productservice"])
+
+    exposePort(2345)
     exposePort(18080)
 }

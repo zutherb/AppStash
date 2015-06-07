@@ -14,11 +14,11 @@ type ProductRepository struct {
 	Session *mgo.Session
 }
 
-func NewProductRepository(s *mgo.Session) ProductRepository{
+func NewProductRepository(s *mgo.Session) ProductRepository {
 	repository := ProductRepository{
 		Session: s,
 	}
-	return repository;
+	return repository
 }
 
 func (p ProductRepository) FindAllProducts() []Product {
@@ -28,4 +28,13 @@ func (p ProductRepository) FindAllProducts() []Product {
 	c.Find(bson.M{}).All(&result)
 
 	return result
+}
+
+func (p ProductRepository) CountAllProducts() int {
+	return len(p.FindAllProducts())
+}
+
+func (p ProductRepository) Save(product Product) {
+	c := p.Session.DB(DATABASE_NAME).C(COLLECTION_NAME)
+	c.Insert(product)
 }

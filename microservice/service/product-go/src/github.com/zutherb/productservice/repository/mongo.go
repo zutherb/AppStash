@@ -1,7 +1,10 @@
 package repository
+
 import (
 	"gopkg.in/mgo.v2"
 	"os"
+	"log"
+	"time"
 )
 
 func NewSession() *mgo.Session {
@@ -11,11 +14,12 @@ func NewSession() *mgo.Session {
 		mongodb_host = "mongodb-node"
 	}
 
-	session, err := mgo.Dial(mongodb_host)
+	log.Printf("Connect to MongoDB on %s", mongodb_host)
+
+	session, err := mgo.DialWithTimeout(mongodb_host, time.Duration(3)*time.Second)
 	if err != nil {
 		panic(err)
 	}
-	defer session.Close()
 
 	return session
 }
