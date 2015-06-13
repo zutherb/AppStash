@@ -3,10 +3,11 @@ package dataloader
 import (
 	"encoding/csv"
 	"os"
+	"log"
 	"strconv"
 
 	"github.com/zutherb/productservice/repository"
-	"log"
+	"gopkg.in/mgo.v2/bson"
 )
 
 type ProductDataloader struct {
@@ -30,7 +31,8 @@ func (d ProductDataloader) InitDatabaseIfNeeded() {
 }
 
 func insertProductData(d ProductDataloader) {
-	for _, row := range readCsvRawData() {
+	rawData := readCsvRawData()
+	for _, row := range rawData {
 		price, err := strconv.ParseFloat(row[4], 64)
 
 		if err != nil {
@@ -39,6 +41,7 @@ func insertProductData(d ProductDataloader) {
 		}
 
 		product := repository.Product{
+			Id: bson.NewObjectId(),
 			ArticleId:   row[0],
 			ProductType: row[1],
 			Name:        row[2],
@@ -46,7 +49,10 @@ func insertProductData(d ProductDataloader) {
 			Price:       price,
 		}
 
-		d.ProductRepository.Save(product)
+		err = d.ProductRepository.Save(product)
+		if err != nil {
+			log.Fatal(err)
+		}
 	}
 }
 
@@ -58,7 +64,7 @@ func readCsvRawData() [][]string {
 		os.Exit(1)
 	}
 
-	defer csvfile.Close()
+//	defer csvfile.Close()
 
 	reader := csv.NewReader(csvfile)
 	reader.Comma = ';'

@@ -31,10 +31,11 @@ func (p ProductRepository) FindAllProducts() []Product {
 }
 
 func (p ProductRepository) CountAllProducts() int {
-	return len(p.FindAllProducts())
+	results := p.FindAllProducts()
+	return len(results)
 }
 
-func (p ProductRepository) Save(product Product) {
+func (p ProductRepository) Save(product Product) error {
 	c := p.Session.DB(DATABASE_NAME).C(COLLECTION_NAME)
-	c.Insert(product)
+	return c.Insert(product)
 }
