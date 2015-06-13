@@ -22,7 +22,10 @@
   <slide class="fill nobackground" style="background-image:url(../master/images/cc-wallpaper_01.jpg); ); background-position: center center; background-repeat: no-repeat; background-size: cover;">
   </slide>
 
-  <slide class="title-slide segue nobackground" style="background: url(devoxx.jpg); background-position: left center; background-repeat: no-repeat; background-size: cover;">
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar">
+      <img src="../master/images/codecentric-logo-only.jpg">
+    </aside>
     <hgroup class="auto-fadein">
       <h1 data-config-title><!-- populated from slide_config.json --></h1>
 
@@ -124,65 +127,6 @@
     </article>
   </slide>
 
-  <slide class="fill nobackground" style="background-image:url(../master/images/shoppingcart.jpg);">
-    <article class="flexbox vcenter">
-      <section class="textbox">
-        <h1>How can we increase sales?</h1>
-      </section>
-    </article>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/abtesting.jpg);">
-    <article class="flexbox vcenter">
-      <section class="textbox">
-        <h1>A/B Testing</h1>
-      </section>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Conversion</h2>
-    </hgroup>
-    <article>
-      <section>
-        <ul>
-          <li>act of converting site visitors into paying customers</li>
-          <li>proportion of visits to a website which take action to go beyond a website visit
-          </li>
-        </ul>
-        <img src="../master/images/conversion_rate.svg" type="image/svg+xml" style="margin-top: 75px" />
-      </section>
-      <aside class="gdbar bottom"><img src="../master/images/youtube.png"></aside>
-    </article>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/toogle.jpg);">
-    <hgroup>
-      <h2>FeatureToggle</h2>
-    </hgroup>
-    <article >
-      <pre class="prettyprint" data-lang="java">
-public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
-
-    @SpringBean
-    private FeatureToogleBean featureToogleBean;
-
-    ...
-
-    @Override
-    protected void onConfigure() {
-      super.onConfigure();
-      <b>setVisible(featureToogleBean.isTopSellerFeatureEnabled());</b>
-    }
-
-    ...
-
-}
-</pre>
-    </article>
-  </slide>
-
   <slide>
     <hgroup>
       <h2>Architecture</h2>
@@ -194,49 +138,29 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
     </article>
   </slide>
 
-  <slide class="fill nobackground" style="background-image:url(../master/images/grüne_wiese.jpg);">
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/duisburg.jpg);">
-    <article class="flexbox vcenter">
-      <section class="textbox">
-        <h1>What have we done?</h1>
-      </section>
-    </article>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/cuba_car.jpg);">
-    <article class="flexbox vcenter">
-      <section class="textbox">
-        <h1>How does it work?</h1>
-      </section>
+  <slide>
+    <hgroup>
+      <h2>Development - Improvements</h2>
+    </hgroup>
+    <article>
+      <ul class="build">
+         <li>boost development speed</li>
+         <li>decrease turnaround times</li>
+         <li>decrease build time</li>
+         <li>scale out</li>
+      </ul>
     </article>
   </slide>
 
   <slide>
     <hgroup>
-      <h2>Disadvantages of a Monolith</h2>
+      <h2>Product Management - Improvements</h2>
     </hgroup>
     <article>
       <ul class="build">
-        <li>
-          Development:
-          <ul>
-              <li>Reduction of development speed</li>
-              <li>Increase of turnaround times</li>
-              <li>Increase of build time</li>
-              <li>Strange behavior after changes</li>
-              <li>Application Scalability</li>
-          </ul>
-        </li>
-        <li>
-          Product Management:
-          <ul>
-            <li>Increase of time to market</li>
-            <li>A/B testing of process changes nearly impossible</li>
-            <li>Scalability of Workload</li>
-          </ul>
-        </li>
+        <li>decrease of time to market</li>
+        <li>A/B testing</li>
+        <li>scale out workload</li>
       </ul>
     </article>
   </slide>
@@ -283,368 +207,6 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
     <article class="flexbox vcenter">
       <section>
         <img src="../master/images/use_case_online_shop.svg" style="height: 500px" />
-      </section>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Online Shop - Migration</h2>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <section>
-        <img src="../master/images/deployment_diagramm_online_shop.svg" style="height: 500px" />
-      </section>
-      <aside class="gdbar bottom"><img src="../master/images/youtube.png"></aside>
-    </article>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/thumbsup.jpg);">
-    <article class="flexbox vcenter">
-      <section class="textbox">
-        <h1>Flexibility</h1>
-      </section>
-    </article>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/thumbsup.jpg);">
-    <article class="flexbox vcenter">
-      <section class="textbox">
-        <h1>Improve Turnaround Times</h1>
-      </section>
-    </article>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/thumbsup.jpg);">
-    <article class="flexbox vcenter">
-      <section class="textbox">
-        <h1>Scalability</h1>
-      </section>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Challenges of Microservices</h2>
-    </hgroup>
-    <article class="flexbox">
-      <section>
-        <ul>
-          <li>
-            Require integration.
-          </li>
-          <li>
-            Require a multi deployment pipeline.
-          </li>
-          <li>
-            Require automation of deployment and configuration.
-          </li>
-          <li>
-            Require logging and monitoring.
-          </li>
-        </ul>
-      </section>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Microservice - Communication</h2>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <section>
-        <img src="../master/images/microservice_kommunikation.svg" style="height: 500px" />
-      </section>
-    </article>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/chain.jpg);">
-    <article class="flexbox vcenter">
-      <section class="textbox">
-        <h1>Adrian Cockcroft</h1>
-        <p>
-          if every service has to be updated at the same time it’s not loosely coupled
-        </p>
-      </section>
-    </article>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/tuner.jpg);">
-    <article class="flexbox vcenter">
-      <section class="textbox">
-        <h1>Postel’s Law (1980)</h1>
-        <h2>RFC 761 (Transmission Control Protocol)</h2>
-        <p>
-          be conservative in what you do, be liberal in what you accept from others
-        </p>
-      </section>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Postel’s Law</h2>
-    </hgroup>
-    <article >
-      <pre class="prettyprint" data-lang="javascript">
-{
-        firstname: "Bernd",
-        lastname: "Zuther",
-        street: "Elsenheimerstraße 55a",
-        city: "München",
-        zip: 80687
-}
-</pre>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Postel’s Law</h2>
-    </hgroup>
-    <article >
-      <pre class="prettyprint" data-lang="javascript">
-{
-        firstname: "Bernd",
-        lastname: "Zuther",
-        <b>birthday: "1983/08/15"</b>,
-        street: "Elsenheimerstraße 55a",
-        city: "München",
-        zip: 80687
-}
-</pre>
-    </article>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/thumbsup.jpg);">
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Postel’s Law</h2>
-    </hgroup>
-    <article >
-      <pre class="prettyprint" data-lang="javascript">
-{
-        firstname: "Bernd",
-        lastname: "Zuther",
-        birthday: "1983/08/15",
-        <b>addresses : [{
-          street: "Elsenheimerstraße 55a",
-          city: "München",
-          zip: 80687,
-          type: "WORK"
-        }]</b>
-}
-</pre>
-    </article>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/unfall.jpg);">
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Postel’s Law</h2>
-    </hgroup>
-    <article >
-      <pre class="prettyprint" data-lang="javascript">
-{
-        firstname: "Bernd",
-        lastname: "Zuther",
-        birthday: "1983/08/15",
-        <b>street: "Elsenheimerstraße 55a",
-        city: "München",
-        zip: 80687,
-        addresses : [{
-          street: "Elsenheimerstraße 55a",
-          city: "München",
-          zip: 80687,
-          type: "WORK"
-        }]</b>
-}
-</pre>
-    </article>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/thumbsup.jpg);">
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Alternatives</h2>
-    </hgroup>
-    <article>
-      <ul>
-        <li><b>URL</b>:
-            <ul>
-              <li>simply whack the API version into the URL, e.g. https://shop/api/v2/cart/all</li>
-            </ul>
-        </li>
-        <li><b>Custom request header</b>:
-          <ul>
-            <li>same URL as before but add a header “api-version: 2”</li>
-          </ul>
-        </li>
-        <li><b>Accept header</b>:
-          <ul>
-            <li>modify accept header to specify the version, e.g. “Accept: application/vnd.cart.v2+json”</li>
-          </ul>
-        </li>
-      </ul>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Continuous Delivery</h2>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <section>
-        <img src="../master/images/innovation_pillar_en_agility_continuous_delivery.svg" style="height: 500px;" />
-      </section>
-    </article>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/delivery_car.jpg);">
-    <article class="flexbox vcenter">
-      <section class="textbox">
-        <h1>How can we package and distribute our services?</h1>
-      </section>
-    </article>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/monolith_pipeline.png);">
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/microservice_pipeline.png);">
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Multi Deployment Pipeline</h2>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <section>
-        <img src="../master/images/deployment_pipeline_microservice.svg" style="height: 450px; width: 100%" />
-      </section>
-    </article>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/thumbsup.jpg);">
-    <article class="flexbox vcenter">
-      <section class="textbox">
-        <h1>Improve Build Times</h1>
-      </section>
-    </article>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/unfall.jpg);">
-    <article class="flexbox vcenter">
-      <section class="textbox">
-        <h1>Deployments get more complex</h1>
-      </section>
-    </article>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/containers.jpg);">
-    <article class="flexbox vcenter">
-      <section class="textbox">
-        <h1>How can we describe infrastructure of our products?</h1>
-      </section>
-    </article>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/container_crash.jpg);">
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Kubernetes - Cluster Management</h2>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <section>
-        <img src="../master/images/graph-01.svg" type="image/svg+xml" style="height: 450px; width: 100%" />
-      </section>
-    </article>
-    <aside class="gdbar bottom"><img src="../master/images/youtube.png"></aside>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/zookeeper.jpg);">
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Icinga / Nagios</h2>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <section>
-        <iframe height="211" frameborder="0" src="../master/tweets/devops_tweet.html" scrolling="no" allowtransparency="true" class="twitter-tweet twitter-tweet-rendered" allowfullscreen="" style="border-width: 1px; border-style: solid; border-color: rgb(238, 238, 238) rgb(221, 221, 221) rgb(187, 187, 187); -moz-border-top-colors: none; -moz-border-right-colors: none; -moz-border-bottom-colors: none; -moz-border-left-colors: none; border-image: none; max-width: 99%; min-width: 220px; margin: 10px 0px; padding: 0px; display: block; position: static; visibility: visible; border-radius: 5px; box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15); width: 500px;" title="Eingebetteter Tweet"></iframe>
-      </section>
-    </article>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/icinga_1.png);">
-    <hgroup>
-      <h2>Availability - Big Data for DevOps</h2>
-    </hgroup>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/icinga_2.png);">
-    <hgroup>
-      <h2>Availability - Big Data for DevOps</h2>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <section style="padding-top: 400px">
-        <ul>
-          <li>Mean Time To Failure (MTTF)</li>
-          <li>Mean Time To Recover (MTTR)</li>
-        </ul>
-      </section>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Big Data</h2>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <section>
-        <img src="../master/images/innovation_pillar_en_agility_big_data.svg" style="height: 500px;" />
-      </section>
-    </article>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/kibana_1.png);">
-    <hgroup>
-      <h2>Analysis Failures - Big Data for DevOps</h2>
-    </hgroup>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/kibana_2.png);">
-    <hgroup>
-      <h2>Research Customers  - Big Data for POs</h2>
-    </hgroup>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/optimizely.png);">
-    <hgroup>
-      <h2>Research Customers  - Big Data for POs</h2>
-    </hgroup>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/crowd.jpg);">
-    <article class="flexbox vcenter">
-      <section class="textbox">
-        <h1>Experiment with your customers!</h1>
-      </section>
-    </article>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/changemachine.jpg);">
-    <article class="flexbox vcenter">
-      <section class="textbox">
-        <h1>Work Smarter not Harder</h1>
       </section>
     </article>
   </slide>
@@ -711,26 +273,6 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
             </a>
           </li>
           <li>
-            <a href="https://blog.codecentric.de/2015/05/microservice-deployment-ganz-einfach-mit-giant-swarm/">
-              Microservice-Deployment ganz einfach mit Giant Swarm
-            </a>
-          </li>
-          <li>
-            <a href="https://blog.codecentric.de/2015/05/microservice-deployment-ganz-einfach-mit-kubernetes/">
-              Microservice-Deployment ganz einfach mit Kubernetes
-            </a>
-          </li>
-          <li>
-            <a href="https://blog.codecentric.de/2015/05/microservice-deployment-ganz-einfach-mit-docker-compose/">
-              Microservice-Deployment ganz einfach mit Docker Compose
-            </a>
-          </li>
-          <li>
-            <a href="https://blog.codecentric.de/2015/05/microservice-deployment-ganz-einfach-ohne-docker-mit-der-linux-paketverwaltung/">
-              Microservice-Deployment ganz einfach ohne Docker mit der Linux-Paketverwaltung
-            </a>
-          </li>
-          <li>
             <a href="http://theleanstartup.com/principles">Lean Startup</a>
           </li>
           <li>
@@ -748,18 +290,6 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
           <li>
             <a href="http://martinfowler.com/articles/microservices.html">Microservices</a>
           </li>
-        </ul>
-      </section>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Links</h2>
-    </hgroup>
-    <article>
-      <section>
-        <ul>
           <li>
             <a href="http://de.wikipedia.org/wiki/Pipe_%28Informatik%29">Pipe</a>
           </li>
@@ -772,6 +302,18 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
           <li>
             <a href="http://blog.nwcadence.com/three-golden-rules-for-continuous-delivery/">Three Golden Rules for Continuous Delivery</a>
           </li>
+        </ul>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Links</h2>
+    </hgroup>
+    <article>
+      <section>
+        <ul>
           <li>
             <a href="http://www.troyhunt.com/2014/02/your-api-versioning-is-wrong-which-is.html">
               Your API versioning is wrong, which is why I decided to do it 3 different wrong ways
@@ -797,18 +339,6 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
           <li>
             <a href="https://github.com/nebula-plugins/gradle-ospackage-plugin">Netflix Nebula</a>
           </li>
-        </ul>
-      </section>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Links</h2>
-    </hgroup>
-    <article>
-      <section>
-        <ul>
           <li>
             <a href="http://bernd-zuther.de/deployment-ganz-einfach/">Deployment ganz einfach – Microservice Deployment mit Hilfe der Linux Paketverwaltung</a>
           </li>
