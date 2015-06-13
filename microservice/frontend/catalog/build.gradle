@@ -105,6 +105,8 @@ task packageToContainer(type: Docker) {
   tagVersion = "latest"
   tag = "zutherb/catalog-frontend"
 
+  runCommand "apt-get update -y"
+  runCommand "apt-get install -y wget"
   runCommand "wget https://github.com/jwilder/dockerize/releases/download/v0.0.2/dockerize-linux-amd64-v0.0.2.tar.gz"
   runCommand "tar -C /usr/local/bin -xzvf dockerize-linux-amd64-v0.0.2.tar.gz"
 

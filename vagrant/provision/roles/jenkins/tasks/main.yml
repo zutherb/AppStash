@@ -19,6 +19,7 @@
   with_items:
     - jenkins
     - docker.io
+    - golang
     - python-pip
     - xvfb
     - firefox
