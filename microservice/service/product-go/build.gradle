@@ -9,14 +9,16 @@ idea {
 
 task build {
     exec {
+        environment "GOPATH":"${projectDir}", "GOOS":"linux", "GOARCH":"amd64", "CGO_ENABLED":"0"
         commandLine "go", "get", "gopkg.in/mgo.v2"
     }
     exec {
+        environment "GOPATH":"${projectDir}", "GOOS":"linux", "GOARCH":"amd64", "CGO_ENABLED":"0"
         commandLine "go", "get", "github.com/emicklei/go-restful"
     }
     exec {
-        workingDir "${projectDir}/src/github.com/zutherb/productservice/cmd"
         environment "GOPATH":"${projectDir}", "GOOS":"linux", "GOARCH":"amd64", "CGO_ENABLED":"0"
+        workingDir "${projectDir}/src/github.com/zutherb/productservice/cmd"
         commandLine "go", "build", "-o", "${buildDir}/productservice", "productservice.go"
     }
 }
