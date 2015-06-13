@@ -7,7 +7,7 @@ idea {
 }
 
 
-task build {
+task buildGo {
     exec {
         environment "GOPATH":"${projectDir}", "GOOS":"linux", "GOARCH":"amd64", "CGO_ENABLED":"0"
         commandLine "go", "get", "gopkg.in/mgo.v2"
@@ -29,7 +29,7 @@ docker {
 }
 
 task packageToContainer(type: Docker) {
-    dependsOn build
+    dependsOn buildGo
 
     applicationName = 'product-service'
     tagVersion = "latest-go"
