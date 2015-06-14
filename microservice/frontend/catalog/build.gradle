@@ -110,13 +110,13 @@ task packageToContainer(type: Docker) {
   runCommand "wget https://github.com/jwilder/dockerize/releases/download/v0.0.2/dockerize-linux-amd64-v0.0.2.tar.gz"
   runCommand "tar -C /usr/local/bin -xzvf dockerize-linux-amd64-v0.0.2.tar.gz"
 
-  addFile "$projectDir/docker/default.tmpl", "/etc/nginx/sites-available/default.tmpl"
+  addFile "$projectDir/docker/default.tmpl", "/etc/nginx/conf.d/default.tmpl"
   addFile "$projectDir/dist", "/var/www/html/"
 
   defaultCommand ([
     "dockerize",
     "-template",
-    "/etc/nginx/sites-available/default.tmpl:/etc/nginx/sites-available/default",
+    "/etc/nginx/conf.d/default.tmpl:/etc/nginx/conf.d/default.conf",
     "-stdout",
     "/var/log/nginx/access.log",
     "-stderr",

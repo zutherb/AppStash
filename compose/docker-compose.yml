@@ -60,7 +60,9 @@ elasticsearch:
   ports:
     - "9200"
 logstash:
-  image: deviantony/elk-logstash    
+  image: deviantony/elk-logstash
+  volumes:
+    - logstash-conf:/etc/logstash/conf.d
   ports:
     - "5000"
   links:

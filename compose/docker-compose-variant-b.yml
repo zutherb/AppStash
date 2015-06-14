@@ -16,30 +16,32 @@ mongodb:
 redis:
   image: redis
   ports:
-     - "6379:6379"
+     - "6379"
 shop:
   image: zutherb/monolithic-shop
   ports:
-     - "8080:8080"
+     - "8080"
   links:
      - mongodb
      - cart
+  volumes:
+     - /var/log/checkout:/var/log/
 product:
   image: zutherb/product-service
   ports:
-     - "18080:18080"
+     - "18080"
   links:
      - mongodb
 navigation:
   image: zutherb/navigation-service
   ports:
-     - "18090:18090"
+     - "18090"
   links:
      - mongodb
 cart:
   image: zutherb/cart-service
   ports:
-     - "18100:18100"
+     - "18100"
   links:
      - redis
 catalog:
@@ -56,18 +58,20 @@ catalog:
 elasticsearch:
   image: deviantony/elk-elasticsearch
   ports:
-    - "9200:9200"
+    - "9200"
 logstash:
   image: deviantony/elk-logstash
   volumes:
     - logstash-conf:/etc/logstash/conf.d
   ports:
-    - "5000:5000"
+    - "5000"
   links:
     - elasticsearch
   privileged: true
   volumes:
+    - logstash-conf:/etc/logstash/conf.d
     - /var/lib/docker/containers:/var/log/docker/containers
+    - /var/log/checkout:/var/log/docker/checkout
 kibana4:
   image: deviantony/elk-kibana
   ports:

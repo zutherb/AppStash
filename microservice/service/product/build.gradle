@@ -103,7 +103,7 @@ jar {
 
 docker {
     maintainer = 'Bernd Zuther <bernd.zuther@codecentric.de>'
-    baseImage = 'dockerfile/java:oracle-java8'
+    baseImage = 'relateiq/oracle-java8'
 }
 
 distDocker {
