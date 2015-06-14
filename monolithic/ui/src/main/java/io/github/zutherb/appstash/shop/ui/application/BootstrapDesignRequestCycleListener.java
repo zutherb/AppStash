@@ -29,7 +29,7 @@ public class BootstrapDesignRequestCycleListener extends AbstractRequestCycleLis
     @Override
     public void onBeginRequest(RequestCycle cycle) {
         Enumeration<String> headers = ((HttpServletRequest) cycle.getRequest().getContainerRequest()).getHeaders(HEADER_NAME);
-        if (headers.hasMoreElements()) {
+        if (headers.hasMoreElements() && !designSelectorBean.isUsedToSelectedDesign()) {
             String themeName = headers.nextElement();
             if (designSelectorBean.getAvailableDesignTypes().contains(themeName)) {
                 designSelectorBean.setDesignType(themeName);

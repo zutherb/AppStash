@@ -11,9 +11,11 @@ import java.util.concurrent.atomic.AtomicInteger;
 @ManagedResource(objectName = "io.github.zutherb.appstash.ui:name=DesignSelector")
 public class DesignSelectorBean implements DesignSelector {
     private final AtomicInteger designCounter;
+    private boolean isUsedToSelectedDesign;
 
     public DesignSelectorBean() {
         designCounter = new AtomicInteger();
+        isUsedToSelectedDesign = false;
     }
 
     @ManagedOperation
@@ -45,7 +47,19 @@ public class DesignSelectorBean implements DesignSelector {
     @ManagedOperation
     @Override
     public void next() {
+        isUsedToSelectedDesign = true;
         designCounter.incrementAndGet();
     }
 
+    @ManagedOperation
+    @Override
+    public boolean isUsedToSelectedDesign() {
+        return isUsedToSelectedDesign;
+    }
+
+    @ManagedOperation
+    @Override
+    public void setIsUsedToSelectedDesign(boolean isUsedToSelectedDesign) {
+        this.isUsedToSelectedDesign = isUsedToSelectedDesign;
+    }
 }

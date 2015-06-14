@@ -38,8 +38,6 @@ buildscript {
 
 allprojects {
     apply plugin: 'java'
-    apply plugin: 'jacoco'
-    apply plugin: 'com.github.kt3k.coveralls'
 
     sourceCompatibility = org.gradle.api.JavaVersion.VERSION_1_8
     targetCompatibility = org.gradle.api.JavaVersion.VERSION_1_8
