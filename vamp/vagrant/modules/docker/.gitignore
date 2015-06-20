@@ -1,0 +1,6 @@
+pkg
+spec/fixtures
+.bundle/
+.vagrant
+.yardoc
+doc

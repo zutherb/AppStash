@@ -1,0 +1,135 @@
+#!/bin/sh
+#
+# marathon 
+#
+# chkconfig:   2345 55 25
+# description: marathon for mesos
+
+### BEGIN INIT INFO
+# Provides: marathon
+# Required-Start: $local_fs $network
+# Required-Stop: $local_fs $network
+# Should-Start: 
+# Should-Stop: 
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Startup the Marathon framework
+# Description: Mesos is a Marathon framework to manage docker
+### END INIT INFO
+
+# Source function library.
+. /etc/rc.d/init.d/functions
+
+exec="<%= @install_dir %>/bin/start"
+<% @values = { 'marathon::marathon_assets_path' => scope['marathon::marathon_assets_path'],
+               'marathon::marathon_checkpoint' =>  scope['marathon::marathon_checkpoint'],
+               'marathon::marathon_event_subscribe' => scope['marathon::marathon_event_subscriber'],
+               'marathon::marathon_executor' => scope['marathon::marathon_executor'],
+               'marathon::marathon_failover_timeout' => scope['marathon::marathon_failover_timeout'],
+               'marathon::marathon_ha' => scope['marathon::marathon_ha'],
+               'marathon::marathon_hostname' => scope['marathon::marathon_hostname'],
+               'marathon::marathon_http_credentials' => scope['marathon::marathon_http_credentials'],
+               'marathon::marathon_http_endpoints' => scope['marathon::marathon_http_endpoints'],
+               'marathon::marathon_http_port' => scope['marathon::marathon_http_port'],
+               'marathon::marathon_https_port' => scope['marathon::marathon_https_port'],
+               'marathon::marathon_local_port_max' => scope['marathon::marathon_local_port_max'],
+               'marathon::marathon_local_port_min' => scope['marathon::marathon_local_port_min'],
+               'marathon::marathon_master' => scope['marathon::marathon_master'],
+               'marathon::marathon_mesos_role' => scope['marathon::marathon_mesos_role'],
+               'marathon::marathon_mesos_user' => scope['marathon::marathon_mesos_user'],
+               'marathon::marathon_reconciliation_frequency' => scope['marathon::marathon_reconciliation_frequency'],
+               'marathon::marathon_reconciliation_initial_delay' => scope['marathon::marathon_reconciliation_initial_delay'],
+               'marathon::marathon_ssl_keystore_password' => scope['marathon::marathon_ssl_keystore_password'],
+               'marathon::marathon_ssl_keystore_path' => scope['marathon::marathon_ssl_keystore_path'],
+               'marathon::marathon_task_launch_timeout' => scope['marathon::marathon_task_launch_timeout'],
+               'marathon::marathon_task_rate_limit' => scope['marathon::marathon_task_rate_limit'],
+               'marathon::marathon_zk' => scope['marathon::marathon_zk'],
+               'marathon::marathon_zk_hosts' => scope['marathon::marathon_zk_hosts'],
+               'marathon::marathon_zk_state' => scope['marathon::marathon_zk_state'],
+               'marathon::marathon_zk_timeout' => scope['marathon::marathon_zk_timeout'],
+             } -%>
+args="<% @values.each do |key,val| -%>
+<% if val != :undef -%>
+ --<% arg = key.sub ('marathon::marathon_', '') -%><%= arg -%> <%= val -%>
+<% end -%>
+<% end -%>"
+
+prog="marathon"
+
+[ -e /etc/sysconfig/$prog ] && . /etc/sysconfig/$prog
+
+lockfile=/var/lock/subsys/$prog
+
+start() {
+    [ -x $exec ] || exit 5
+    echo -n $"Starting $prog: "
+    daemon $exec $args
+    retval=$?
+    echo
+    [ $retval -eq 0 ] && touch $lockfile
+    return $retval
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+    # stop it here, often "killproc $prog"
+    retval=$?
+    echo
+    [ $retval -eq 0 ] && rm -f $lockfile
+    return $retval
+}
+
+restart() {
+    stop
+    start
+}
+
+reload() {
+    restart
+}
+
+force_reload() {
+    restart
+}
+
+rh_status() {
+    # run checks to determine if the service is running or use generic status
+    status $prog
+}
+
+rh_status_q() {
+    rh_status >/dev/null 2>&1
+}
+
+
+case "$1" in
+    start)
+        rh_status_q && exit 0
+        $1
+        ;;
+    stop)
+        rh_status_q || exit 0
+        $1
+        ;;
+    restart)
+        $1
+        ;;
+    reload)
+        rh_status_q || exit 7
+        $1
+        ;;
+    force-reload)
+        force_reload
+        ;;
+    status)
+        rh_status
+        ;;
+    condrestart|try-restart)
+        rh_status_q || exit 0
+        restart
+        ;;
+    *)
+        echo $"Usage: $0 {start|stop|status|restart|condrestart|try-restart|reload|force-reload}"
+        exit 2
+esac
+exit $?

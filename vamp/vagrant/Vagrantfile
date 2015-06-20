@@ -1,0 +1,154 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+require 'yaml'
+require './lib/gen_node_configs'
+require './lib/predicates'
+
+base_dir = File.expand_path(File.dirname(__FILE__))
+conf = YAML.load_file(File.join(base_dir, "cluster.yml"))
+node_configs = gen_node_configs(conf)
+
+## vagrant plugins required:
+# vagrant, vagrant-hosts, vagrant-cachier, vagrant-aws
+Vagrant.configure("2") do |config|
+
+  if !conf["custom_ami"] then
+    # https://vagrantcloud.com/puppetlabs/boxes/ubuntu-14.04-64-puppet
+    config.vm.box = "puppetlabs/ubuntu-14.04-64-puppet"
+  end
+
+  # if you want to use vagrant-cachier,
+  # please install vagrant-cachier plugin.
+  if Vagrant.has_plugin?("vagrant-cachier")
+    config.cache.enable :apt
+  end
+
+  # define VMs. all VMs has identical configuration.
+  [node_configs[:master], node_configs[:slave]].flatten.each_with_index do |node, i|
+    config.vm.define node[:hostname] do |cfg|
+
+      cfg.vm.provider :virtualbox do |vb, override|
+        override.vm.hostname = node[:hostname]
+        override.vm.network :private_network, :ip => node[:ip]
+        override.vm.provision :hosts
+
+        vb.name = 'vagrant-mesos-' + node[:hostname]
+        vb.customize ["modifyvm", :id, "--memory", node[:mem], "--cpus", node[:cpus] ]
+
+        override.vm.provision :shell do |s|
+          s.path = "scripts/populate_sshkey.sh"
+          s.args = "/root root"
+        end
+
+        override.vm.provision :shell do |s|
+          s.path = "scripts/populate_sshkey.sh"
+          s.args = "/home/vagrant vagrant"
+        end
+      end
+
+      cfg.vm.provider :digital_ocean do |digital_ocean, override|
+        override.ssh.private_key_path = conf["ssh_private_key_path"]
+        override.vm.box = 'digital_ocean'
+        override.vm.box_url = "https://github.com/smdahlen/vagrant-digitalocean/raw/master/box/digital_ocean.box"
+
+        digital_ocean.token = conf["token"]
+        digital_ocean.image = conf["image"]
+        digital_ocean.region = conf["region"]
+        digital_ocean.size = node[:size]
+      end
+
+      cfg.vm.provider :aws do |aws, override|
+        aws.access_key_id = conf["access_key_id"]
+        aws.secret_access_key = conf["secret_access_key"]
+
+        aws.region = conf["region"]
+        if conf["custom_ami"] then
+          override.vm.box = "dummy"
+          override.vm.box_url = "https://github.com/mitchellh/vagrant-aws/raw/master/dummy.box"
+          aws.ami = conf["custom_ami"]
+        end
+        aws.instance_type = node[:instance_type]
+        aws.keypair_name = conf["keypair_name"]
+        aws.subnet_id = conf["subnet_id"]
+        aws.security_groups = conf["security_groups"]
+        aws.private_ip_address = node[:ip]
+        aws.tags = {
+          Name: "vagrant-mesos-#{node[:hostname]}"
+        }
+        if !conf["default_vpc"] then
+          aws.associate_public_ip = true
+        end
+
+        override.ssh.username = "ubuntu"
+        override.ssh.private_key_path = conf["ssh_private_key_path"]
+
+        override.vm.provision :shell do |s|
+          s.path = "scripts/populate_sshkey.sh"
+          s.args = "/home/ubuntu ubuntu"
+        end
+
+        override.vm.provision :shell , :inline => <<-SCRIPT
+          PUBLIC_DNS=`wget -q -O - http://169.254.169.254/latest/meta-data/public-hostname`
+          hostname $PUBLIC_DNS
+          echo $PUBLIC_DNS > /etc/hostname
+          HOSTNAME=$PUBLIC_DNS  # Fix the bash built-in hostname variable too
+        SCRIPT
+
+        if master?(node[:hostname]) then
+          override.vm.provision :shell , :inline => 'restart mesos-master'
+        end
+
+        if slave?(node[:hostname]) then
+          override.vm.provision :shell , :inline => 'restart mesos-slave'
+        end
+      end
+
+      config.vm.provision "puppet" do |puppet|
+        puppet.manifests_path    = "manifests"
+        puppet.module_path       = "modules"
+        puppet.hiera_config_path = "hiera.yaml"
+        puppet.options           = "--verbose --debug"
+
+        if master?(node[:hostname]) then
+          puppet.manifest_file = "mesos-master.pp"
+          puppet.facter = {
+            "quorum"       => "#{(node_configs[:master].length.to_f/2).ceil}",
+            "zookeeper"    => "zk://"+node_configs[:master].map{|master| master[:ip]+":2181"}.join(",")+"/mesos",
+            "zookeeper_id" => (/master([0-9]+)/.match node[:hostname])[1],
+            "marathon_zk"  => "zk://"+node_configs[:master].map{|master| master[:ip]+":2181"}.join(",")+"/marathon",
+          }
+        elsif slave?(node[:hostname]) then
+          puppet.manifest_file = "mesos-slave.pp"
+          puppet.facter = {
+            "zookeeper" => "zk://"+node_configs[:master].map{|master| master[:ip]+":2181"}.join(",")+"/mesos",
+          }
+        end
+
+        # General settings, for masters and slaves.
+        puppet.facter["ip"]               = "#{node[:ip]}"
+        # Consul.io settings
+        puppet.facter["consul_enable"]    = conf["consul_enable"]
+        puppet.facter["node_name"]        = node[:hostname]
+        puppet.facter["bootstrap_expect"] = node_configs[:master].length
+        puppet.facter["datacenter"]       = conf["consul_datacenter"]
+
+        # Set the leader to join for the Consul Cluster
+        node_configs[:master].each do |master|
+          if master[:hostname] == conf["consul_join"] then
+            puppet.facter["join_cluster"] = master[:ip]
+          end
+        end
+      end
+
+      # If you wanted use `.dockercfg` file
+      # Please place the file simply on this directory
+      if File.exist?(".dockercfg")
+        config.vm.provision :shell, :priviledged => true, :inline => <<-SCRIPT
+          cp /vagrant/.dockercfg /root/.dockercfg
+          chmod 600 /root/.dockercfg
+          chown root /root/.dockercfg
+        SCRIPT
+      end
+    end
+  end
+end

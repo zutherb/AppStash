@@ -1,0 +1,7 @@
+# quorum conf
+<% @data.keys.sort.each do |host| %>
+- <%= host.client_ip %>
+  id:  <%= host.id %>
+  election_port:  <%= host.election_port %>
+  leader_port: <%= host.leader_port %>
+<% end %>

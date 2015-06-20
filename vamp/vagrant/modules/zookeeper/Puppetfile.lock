@@ -1,0 +1,10 @@
+FORGE
+  remote: https://forgeapi.puppetlabs.com
+  specs:
+    puppetlabs/stdlib (4.1.0)
+    richardc/datacat (0.4.3)
+
+DEPENDENCIES
+  puppetlabs/stdlib (>= 2.3.3)
+  richardc/datacat (>= 0)
+
