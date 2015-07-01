@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 HOME=$1
 USER=$2
 

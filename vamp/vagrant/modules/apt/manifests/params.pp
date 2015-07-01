@@ -58,13 +58,13 @@ class apt::params {
     'ubuntu': {
       case $distcodename {
         'lucid': {
-          $backports_location = 'http://us.archive.ubuntu.com/ubuntu'
+          $backports_location = 'http://eu.archive.ubuntu.com/ubuntu'
           $ppa_options        = undef
           $legacy_origin      = true
           $origins            = ['${distro_id} ${distro_codename}-security'] #lint:ignore:single_quote_string_with_variables
         }
         'precise', 'trusty': {
-          $backports_location = 'http://us.archive.ubuntu.com/ubuntu'
+          $backports_location = 'http://eu.archive.ubuntu.com/ubuntu'
           $ppa_options        = '-y'
           $legacy_origin      = true
           $origins            = ['${distro_id}:${distro_codename}-security'] #lint:ignore:single_quote_string_with_variables
