@@ -3,7 +3,7 @@ package io.github.zutherb.appstash.shop.ui.page.test
 import geb.Page
 
 class CheckoutPage extends Page {
-    static url = "http://localhost:8888/shop/checkout"
+    static url = "http://test.monolith.io:8080/shop/checkout"
     static at = { title == "Shop" }
     static content = {
         results(wait: true) { $("div.container") }
