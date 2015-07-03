@@ -1,6 +1,6 @@
 apply plugin: 'groovy'
 apply plugin: 'war'
-apply plugin: 'jetty'
+apply plugin: 'jettyEclipse'
 apply plugin: 'jmeter'
 apply plugin: 'docker'
 
@@ -93,19 +93,12 @@ dependencies {
     testCompile "org.apache.httpcomponents:httpclient:4.3.2"
 }
 
-[jettyRun, jettyRunWar]*.with {
-    httpPort = 8080
-    stopPort = 8081
-    contextPath = "shop"
-}
-
 test {
     exclude '**/*Spec*'
 }
 
-task uiTest(type: Test) {
-    finalizedBy "uiTestJettyStop"
 
+task uiTest(type: Test) {
     testClassesDir = sourceSets.uitest.output.classesDir
     classpath = sourceSets.uitest.runtimeClasspath
 
@@ -116,25 +109,6 @@ task uiTest(type: Test) {
 
     systemProperty "geb.build.reportsDir", reporting.file("$name/geb")
     systemProperty "geb.env", "firefox"
-
-    // If you wanted to set the baseUrl in your build…
-    // systemProperty "geb.build.baseUrl", "http://myapp.com"
-
-    doFirst {
-        systemProperty "spring.profiles.active", "test"
-        systemProperty "logback.configurationFile", "logback-test.groovy"
-
-        jettyRun.httpPort = 8888    // Port for test
-        jettyRun.stopPort = 8889    // Port for test
-        jettyRun.daemon = true
-        jettyRun.execute()
-    }
-}
-
-task uiTestJettyStop {
-    jettyStop.stopPort = 8889
-    jettyStop.stopKey = 'stopKey'
-    jettyStop.execute()
 }
 
 jmeterRun.configure {

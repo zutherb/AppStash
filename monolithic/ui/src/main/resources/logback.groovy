@@ -20,14 +20,14 @@ if (System.getProperty("spring.profiles.active") != "production") {
     }
 
     appender("readable", FileAppender) {
-        file = "/var/log/tomcat6/appstash-readable.log"
+        file = "/var/log/tomcat7/appstash-readable.log"
         encoder(PatternLayoutEncoder) {
             pattern = defaultPattern
         }
     }
 
     appender("logstash", FileAppender) {
-        file = "/var/log/tomcat6/appstash.log"
+        file = "/var/log/tomcat7/appstash.log"
         append = true
         encoder(PatternLayoutEncoder) {
             pattern = "%msg%n"
