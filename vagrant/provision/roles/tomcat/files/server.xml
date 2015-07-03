@@ -1,8 +1,12 @@
 <?xml version='1.0' encoding='utf-8'?>
+
 <Server port="8005" shutdown="SHUTDOWN">
+    <Listener className="org.apache.catalina.startup.VersionLoggerListener"/>
+    <Listener className="org.apache.catalina.core.AprLifecycleListener" SSLEngine="on"/>
     <Listener className="org.apache.catalina.core.JasperListener"/>
     <Listener className="org.apache.catalina.core.JreMemoryLeakPreventionListener"/>
     <Listener className="org.apache.catalina.mbeans.GlobalResourcesLifecycleListener"/>
+    <Listener className="org.apache.catalina.core.ThreadLocalLeakPreventionListener"/>
 
     <GlobalNamingResources>
         <Resource name="UserDatabase" auth="Container"
@@ -18,6 +22,9 @@
                    connectionTimeout="20000"
                    URIEncoding="UTF-8"
                    redirectPort="8443"/>
+
+        <Connector port="8009" protocol="AJP/1.3" redirectPort="8443"/>
+
         <Engine name="Catalina" defaultHost="localhost">
 
             <Realm className="org.apache.catalina.realm.LockOutRealm">
@@ -27,9 +34,11 @@
 
             <Host name="localhost" appBase="webapps"
                   unpackWARs="true" autoDeploy="true">
+
                 <Valve className="org.apache.catalina.valves.AccessLogValve" directory="logs"
                        prefix="localhost_access_log." suffix=".txt"
-                       pattern="{ &quot;remoteHost&quot;:&quot;%h&quot;, &quot;remoteLogname&quot;:&quot;%l&quot;, &quot;user&quot;:&quot;%u&quot;, &quot;time&quot;:&quot;%t&quot;, &quot;request&quot;:&quot;%r&quot;, &quot;status&quot;:&quot;%s&quot;, &quot;size&quot;:&quot;%b&quot;, &quot;referer&quot;:&quot;%{Referer}i&quot;, &quot;userAgent&quot;:&quot;%{User-agent}i&quot; }"/>
+                       pattern="%h %l %u %t &quot;%r&quot; %s %b"/>
+
             </Host>
         </Engine>
     </Service>
