@@ -15,9 +15,9 @@ clusters:
           ports:
             port: 80/http
           environment_variables:
+            CHECKOUT_DESIGN: standard
             SHOP_PORT_8080_TCP_ADDR: $checkout.host
             SHOP_PORT_8080_TCP_PORT: $checkout.ports.port
-            CHECKOUT_DESIGN: standard
             PRODUCT_PORT_18080_TCP_ADDR: $product.host
             PRODUCT_PORT_18080_TCP_PORT: $product.ports.port
             NAVIGATION_PORT_18090_TCP_ADDR: $navigation.host
@@ -42,9 +42,9 @@ clusters:
           ports:
             port: 80/http
           environment_variables:
+            CHECKOUT_DESIGN: amelia
             SHOP_PORT_8080_TCP_ADDR: $checkout.host
             SHOP_PORT_8080_TCP_PORT: $checkout.ports.port
-            CHECKOUT_DESIGN: amelia
             PRODUCT_PORT_18080_TCP_ADDR: $product.host
             PRODUCT_PORT_18080_TCP_PORT: $product.ports.port
             NAVIGATION_PORT_18090_TCP_ADDR: $navigation.host
