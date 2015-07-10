@@ -22,6 +22,8 @@ import org.apache.wicket.Component;
 import org.apache.wicket.RestartResponseException;
 import org.apache.wicket.event.IEvent;
 import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.model.IModel;
@@ -87,7 +89,7 @@ public class CheckoutPage extends AbstractBasePage {
             fakeAuthenticationService.authenticate();
             trackingService.trackLogin(getAuthenticationService().getAuthenticatedUserInfo());
         }
-        add(orderContainer());
+        add(orderForm());
         add(prepareFrequentlyBoughtWithPanel(checkout.getOrderItemInfos()));
 
     }
@@ -107,7 +109,7 @@ public class CheckoutPage extends AbstractBasePage {
     }
 
     private Component submitOrderLink() {
-        return new Link<Void>("submitOrder") {
+        return new SubmitLink("submitOrder") {
             private static final long serialVersionUID = 5203227218130238529L;
 
             @Override
@@ -117,13 +119,12 @@ public class CheckoutPage extends AbstractBasePage {
             }
 
             @Override
-            public void onClick() {
+            public void onSubmit() {
                 OrderInfo submittedOrder = orderService.submitOrder(orderInfoModel.getObject(), getSession().getId());
                 trackingService.trackPurchase(submittedOrder);
 
-                OrderConfirmationPage orderConfirmationPage = new OrderConfirmationPage(Model.of(submittedOrder));
-                orderConfirmationPage.info(CheckoutPage.this.getString("order.submitted"));
-                setResponsePage(orderConfirmationPage);
+                getSession().info(CheckoutPage.this.getString("order.submitted"));
+                setResponsePage(new OrderConfirmationPage(Model.of(submittedOrder)));
             }
         };
     }
@@ -155,8 +156,8 @@ public class CheckoutPage extends AbstractBasePage {
         };
     }
 
-    private Component orderContainer() {
-        WebMarkupContainer orderContainer = new WebMarkupContainer("orderContainer") {
+    private Component orderForm() {
+        Form<Void> orderForm = new Form<Void>("orderForm") {
 
             @Override
             public void onEvent(IEvent<?> event) {
@@ -165,7 +166,7 @@ public class CheckoutPage extends AbstractBasePage {
                 }
             }
         };
-        orderContainer.add(new DeliveryAdressInfoPanel("delieferyInfomation", orderInfoModel) {
+        orderForm.add(new DeliveryAdressInfoPanel("delieferyInfomation", orderInfoModel) {
             private static final long serialVersionUID = 8837712628875618582L;
 
             @Override
@@ -173,10 +174,10 @@ public class CheckoutPage extends AbstractBasePage {
                 return CheckoutPage.this.isReadOnly();
             }
         });
-        orderContainer.add(new OrderItemListPanel("orderItems", orderInfoModel));
-        orderContainer.add(submitOrderLink());
-        orderContainer.add(backToShopLink());
-        return orderContainer.setOutputMarkupId(true);
+        orderForm.add(new OrderItemListPanel("orderItems", orderInfoModel));
+        orderForm.add(submitOrderLink());
+        orderForm.add(backToShopLink());
+        return orderForm.setOutputMarkupId(true);
     }
 
     private Component backToShopLink() {

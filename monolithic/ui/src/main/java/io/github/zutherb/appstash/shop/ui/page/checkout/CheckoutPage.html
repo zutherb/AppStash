@@ -5,12 +5,14 @@
 </head>
 <body>
 <wicket:extend>
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-        <div wicket:id="orderContainer">
-            <div wicket:id="delieferyInfomation"></div>
-            <div wicket:id="orderItems"></div>
-            <a class="btn btn-primary" wicket:id="submitOrder">Submit Order</a>
-            <a class="btn btn-primary" wicket:id="backToShopLink">Back to Shop</a>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <form wicket:id="orderForm">
+                <div wicket:id="delieferyInfomation"></div>
+                <div wicket:id="orderItems"></div>
+                <button type="submit" class="btn btn-primary" wicket:id="submitOrder">Submit Order</button>
+                <button type="button" class="btn btn-primary" wicket:id="backToShopLink">Back to Shop</button>
+            </form>
         </div>
     </div>
     <p></p>
