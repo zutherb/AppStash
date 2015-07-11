@@ -10,6 +10,7 @@ echo "VAMP_ROUTER_URL is: $VAMP_ROUTER_URL"
 docker run -d \
     --name=vamp \
     -p 81:80 \
+    -p 9200:9200 \
     -p 8081:8080 \
     -p 10002:10001 \
     -p 8084:8083 \
@@ -19,3 +20,5 @@ docker run -d \
     magneticio/vamp-mesosphere:latest
 
 docker run -d -p 5601:5601 --name kibana --link vamp:elasticsearch deviantony/elk-kibana
+
+#docker logs -f vamp
