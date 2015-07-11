@@ -5,6 +5,7 @@ include basenode
 class { 'mesos':
   zookeeper => $zookeeper
 }
+
 class { 'mesos::slave':
   zookeeper => $zookeeper,
   options => {
@@ -14,7 +15,20 @@ class { 'mesos::slave':
     ip                            => $ip,
     log_dir                       => '/var/log/mesos'
   }
+} ->
+docker::image { [
+    "zutherb/monolithic-shop",
+    "zutherb/catalog-frontend",
+    "zutherb/product-service",
+    "zutherb/navigation-service",
+    "zutherb/cart-service",
+    "magneticio/navigation-service",
+    "magneticio/vamp-router",
+    "redis",
+    "mongo",
+  ]:
 }
+
 
 # Ensure we are not running zk, mesos-master or marathon on slave nodes.
 service { 'mesos-master':
