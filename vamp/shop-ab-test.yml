@@ -29,12 +29,12 @@ clusters:
             navigation: navigation
             cart: cart
             checkout: checkout
-          scale:
-            instances: 1
-            cpu: 0.1
-            memory: 128
-          routing:
-            weight: 100
+        scale:
+          instances: 1
+          cpu: 0.1
+          memory: 128
+        routing:
+          weight: 100
       -
         breed:
           name: catalog:b
@@ -56,14 +56,14 @@ clusters:
             navigation: navigation
             cart: cart
             checkout: checkout
-          scale:
-            instances: 1
-            cpu: 0.1
-            memory: 128
-          routing:
-            weight: 0
-            filters:
-              - condition: User-Agent = Chrome
+        scale:
+          instances: 1
+          cpu: 0.1
+          memory: 128
+        routing:
+          weight: 0
+          filters:
+          - condition: User-Agent = Chrome
 
   checkout:
     services:

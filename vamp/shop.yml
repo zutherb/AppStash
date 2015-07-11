@@ -28,10 +28,10 @@ clusters:
           navigation: navigation
           cart: cart
           checkout: checkout
-        scale:
-          instances: 1
-          cpu: 0.1
-          memory: 128
+      scale:
+        instances: 1
+        cpu: 0.1
+        memory: 128
 
   checkout:
     services:
