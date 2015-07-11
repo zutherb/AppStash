@@ -1,13 +1,13 @@
 # The numbers of servers
 ##############################
 master_n: 1      # hostname will be master1,master2,…
-slave_n: 3       # hostname will be slave1,slave2,…
+slave_n: 4       # hostname will be slave1,slave2,…
 
 # Memory and Cpus setting(only for virtualbox)
 ##########################################
 master_mem : 768
 master_cpus: 1
-slave_mem  : 1596
+slave_mem  : 2048
 slave_cpus : 2
 
 # private ip bases
