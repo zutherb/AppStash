@@ -25,7 +25,7 @@ public class ShopApplication extends WebApplication {
         new AnnotatedMountScanner().scanPackage("io.github.zutherb.appstash.shop.ui.page").mount(this);
         getMarkupSettings().setStripWicketTags(true);
         getRequestCycleSettings().setRenderStrategy(
-                RequestCycleSettings.RenderStrategy.REDIRECT_TO_RENDER);
+                RequestCycleSettings.RenderStrategy.ONE_PASS_RENDER);
         getComponentInstantiationListeners().add(new SpringComponentInjector(this));
         getSecuritySettings().setAuthorizationStrategy(new SpringSecurityAuthorizationStrategy());
         getDebugSettings().setAjaxDebugModeEnabled(false);
