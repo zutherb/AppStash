@@ -4,10 +4,6 @@ Create your [Mesosphere](http://mesosphere.com) stack with [Vagrant](http://www.
 
 This creates a Mesos cluster in which [Marathon](https://github.com/mesosphere/marathon) framework and [Consul](https://github.com/hashicorp/consul) (Optional, used for service discovery) are running.  This means you can build your own __Mesos+Marathon+Docker__ PaaS with `vagrant up`!  _If you want to deploy docker containers, please refer to the chapter "Deploy Docker Container with Marathon" in [this blog entry](http://frankhinek.com/deploy-docker-containers-on-mesos-0-20/)._
 
-* Using VirtualBox
-	* [Mesos Standalone on VirtualBox](#svb)
-	* [Mesos Cluster on VirtualBox](#clvb)
-
 Prerequisites
 ----
 * vagrant 1.6.5+: <http://www.vagrantup.com/>
@@ -21,41 +17,7 @@ Prerequisites
         `$ vagrant plugin install vagrant-aws`
     * [vagrant-digitalocean](https://github.com/smdahlen/vagrant-digitalocean) (only if you use DigitalOcean.)
         `$ vagrant plugin install vagrant-digitalocean`
-
-Clone this repository and update git submodules:
-
-```shell
-$ git clone https://github.com/tayzlor/vagrant-puppet-mesosphere.git
-$ cd vagrant-puppet-mesosphere
-$ git submodule init
-$ git submodule update
-```
-
-<a name="svb"></a>
-Mesos Standalone on VirtualBox
-----
-
-Includes -
-
-* Docker (1.4.0)
-* Mesos master (x1)
-* Mesos slave (x1)
-* Marathon (0.7.5)
-* Zookeeper
-* Consul, running in server mode (Optional - configure via ```consul_enable:``` param in ```hieradata/common.yml```  )
-
-```shell
-$ cd standalone
-$ vagrant up
-```
-
-After box is up, you can see services running at:
-
-* Mesos web UI on: <http://mesos:5050>
-* [Marathon](https://github.com/mesosphere/marathon) web UI on: <http://mesos:8080>
-* [Consul](https://github.com/hashicorp/consul) web UI on: <http://mesos:8500>
-
-<a name="clvb"></a>
+        
 Mesos Cluster on VirtualBox
 ----
 ### Cluster Configuration
@@ -88,16 +50,16 @@ slave_ipbase : "172.31.2."
 #### mesos-master
 Includes -
 
-* Docker (1.4.0)
+* Docker (1.7.0)
 * Mesos (running in master server mode)
-* Marathon (0.7.5)
+* Marathon (0.8.2)
 * Zookeeper
 * Consul, running in server mode (Optional - configure via ```consul_enable:``` param in ```cluster.yml```)
 
 #### mesos-slave
 Includes -
 
-* Docker (1.4.0)
+* Docker (1.7.0)
 * Mesos (running in slave server mode)
 * Consul, running in agent mode (optional - configure via ```consul_enable:``` param in ```cluster.yml```)
 
@@ -105,7 +67,6 @@ Includes -
 This may takes several minutes(10 to 20 min.).
 
 ```shell
-$ cd cluster
 $ vagrant up
 ```
 
@@ -124,5 +85,4 @@ $ vagrant destroy
 ```
 
 #### Credits
-Inspired by - [https://github.com/everpeace/vagrant-mesos](https://github.com/everpeace/vagrant-mesos) which is similar but uses Chef, and has a slightly different cluster layout / components.
-[http://philzim.com/2014/11/12/service-discovery-orchestration-with-mesos-and-consul](http://philzim.com/2014/11/12/service-discovery-orchestration-with-mesos-and-consul)
+Inspired by - [https://github.com/tayzlor/vagrant-puppet-mesosphere.git)
