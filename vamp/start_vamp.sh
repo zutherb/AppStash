@@ -19,6 +19,6 @@ docker run -d \
     -e VAMP_ROUTER_HOST=$VAMP_ROUTER_HOST \
     magneticio/vamp-mesosphere:latest
 
-docker run -d -p 5601:5601 --name kibana --link vamp:elasticsearch deviantony/elk-kibana
+docker run -d -p 5602:5601 --name kibana --link vamp:elasticsearch deviantony/elk-kibana
 
 #docker logs -f vamp
