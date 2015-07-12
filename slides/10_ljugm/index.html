@@ -89,6 +89,14 @@
     </article>
   </slide>
 
+  <slide class="fill nobackground" style="background-image:url(../master/images/lionseats.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>Survival of the fittest</h1>
+      </section>
+    </article>
+  </slide>
+
   <slide class="fill nobackground" style="background-image:url(../master/images/innovation.jpg);">
     <article class="flexbox vcenter">
       <section class="textbox">
@@ -108,10 +116,13 @@
     </article>
   </slide>
 
-  <slide class="fill nobackground" style="background-image:url(../master/images/lionseats.jpg);">
+  <slide>
+    <hgroup>
+      <h2>Architecture</h2>
+    </hgroup>
     <article class="flexbox vcenter">
-      <section class="textbox">
-        <h1>Survival of the fittest</h1>
+      <section>
+        <img src="../master/images/innovation_pillar_en_agility_architecture.svg" style="height: 500px;" />
       </section>
     </article>
   </slide>
@@ -145,7 +156,7 @@
 
   <slide class="fill nobackground" style="background-image:url(../master/images/martinfowler.jpg);">
     <hgroup>
-      <h2>Microservice Definition</h2>
+      <h2>Microservice Architecture</h2>
     </hgroup>
     <article class="flexbox vcenter">
       <section class="textbox">
@@ -181,6 +192,17 @@
 
   <slide>
     <hgroup>
+      <h2>Continuous Delivery</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/innovation_pillar_en_agility_continuous_delivery.svg" style="height: 500px;" />
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
       <h2>Processes</h2>
     </hgroup>
     <article >
@@ -197,6 +219,14 @@ www-data  1980  1.5  7.0 2456532 143688 ?      Sl   10:49   1:20 java -cp produc
     </article>
   </slide>
 
+  <slide class="fill nobackground" style="background-image:url(../master/images/baremetal.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h3>How do we get the sh*t to bare metal?</h3>
+      </section>
+    </article>
+  </slide>
+
   <slide>
     <hgroup>
       <h2>Unix Packages</h2>
@@ -208,7 +238,6 @@ bz@cc:~/$ ar t cart_0.6.20.deb
 control.tar.gz
 data.tar.gz</b>
 bz@cc:~/$ tar tzf data.tar.gz
-./etc/init.d/
 ./etc/default/cart
 <b>./etc/init.d/cart
 ./usr/share/shop/cart/bin/cart
@@ -220,6 +249,28 @@ bz@cc:~/$ tar tzf control.tar.gz
 ./md5sums
 bz@cc:~/$ cat debian-binary
 2.0
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Control File</h2>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="vim">
+Source: shop-cart-service
+Section: web
+Priority: optional
+Version: 4.2.42
+Maintainer: Bernd Zuther <bernd.zuther@codecentric.de>
+Homepage: http://www.bernd-zuther.de/
+Vcs-Git: https://github.com/zutherb/AppStash.git
+Vcs-Browser: https://github.com/zutherb/AppStash
+Package: shop-cart-service
+Architecture: amd64
+Depends: redis-server (>= 2.8.13)
+Description: Cart Service
 </pre>
     </article>
   </slide>
@@ -247,26 +298,14 @@ reprepro -b /var/packages/debian/ list shop
 
   <slide>
     <hgroup>
-      <h2>Control File</h2>
+      <h2>Microservice Taxonomy</h2>
     </hgroup>
-    <article >
-      <pre class="prettyprint" data-lang="vim">
-Source: shop-cart-service
-Section: web
-Priority: optional
-Version: 4.2.42
-Maintainer: Bernd Zuther <bernd.zuther@codecentric.de>
-Homepage: http://www.bernd-zuther.de/
-Vcs-Git: https://github.com/zutherb/AppStash.git
-Vcs-Browser: https://github.com/zutherb/AppStash
-Package: shop-cart-service
-Architecture: amd64
-Depends: redis-server (>= 2.8.13)
-Description: Cart Service
-</pre>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/microservice_taxonomy.svg" style="height: 500px;" />
+      </section>
     </article>
   </slide>
-
 
   <slide class="fill nobackground" style="background-image:url(../master/images/containers.jpg);">
     <article class="flexbox vcenter">
@@ -278,13 +317,13 @@ Description: Cart Service
 
   <slide class="fill nobackground">
     <hgroup>
-      <h2>Docker Environment</h2>
+      <h2>Docker</h2>
     </hgroup>
     <article>
             <pre class="prettyprint" data-lang="bash">
 bz@cc $ docker ps
-CONTAINER ID        IMAGE                               COMMAND                CREATED             STATUS
-87bb5524067d        zutherb/product-service:latest      "/product-0.6/bin/pr   14 seconds ago      Up 13 seconds
+CONTAINER ID        IMAGE                               COMMAND                CREATED
+87bb5524067d        zutherb/product-service:latest      "/product-0.6/bin/pr   14 seconds
 bz@cc $ docker exec 87bb5524067d env
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 HOSTNAME=87bb5524067d
@@ -305,7 +344,58 @@ MONGODB_PORT_27017_TCP_PROTO=tcp
     </article>
   </slide>
 
+  <slide class="fill nobackground">
+    <hgroup>
+      <h2>Docker</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="bash">bz@cc ~$ <b>docker run -d --name mongodb mongo</b>
+705084daa3f852ec796c8d6b13bac882d56d95c261b4a4f8993b43c5fb2f846c
+bz@cc ~$ <b>docker run -d --name redis redis</b>
+784ebde0e867adb18663e3011b3c1cabe990a0c906396fc306eac669345628cf
+bz@cc ~$ <b>docker run -d -P --name cart --link redis:redis zutherb/cart-service</b>
+438b2657c7a5c733787fb32b7d28e1a0b84ba9e10d19a8a015c6f24085455011
+bz@cc ~$ <b>docker run -d -P -p 8080:8080 --name shop --link cart:cart \
+              --link mongodb:mongodb zutherb/monolithic-shop</b>
+9926e187faa215ac9044603d51adbd8d679d8076b4a349ebbc9917dade6d560e</pre>
+    </article>
+  </slide>
+
   <slide class="fill nobackground" style="background-image:url(../master/images/container_crash.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>How can we avoid a shipwreck?</h1>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Docker Compose</h2>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="yaml">
+redis:
+  image: dockerfile/redis
+  ports:
+    - "6379:6379"
+cart:
+  image: eshop/cart-service
+  ports:
+    - "18100:18100"
+  links:
+    - redis
+catalog:
+  image: eshop/catalog-frontend
+  ports:
+    - "80:80"
+  links:
+    - product
+    - cart</pre>
+      <aside class="gdbar bottom">
+        <img src="../master/images/youtube.png">
+      </aside>
+    </article>
   </slide>
 
   <slide>
@@ -317,11 +407,6 @@ MONGODB_PORT_27017_TCP_PROTO=tcp
         <img src="../master/images/graph-01.svg" type="image/svg+xml" style="height: 450px; width: 100%" />
       </section>
     </article>
-    <aside class="gdbar bottom">
-      <a href="file:///Users/berndzuther/Documents/03_devoxx_demo.mp4" target="_blank">
-        <img src="../master/images/youtube.png">
-      </a>
-    </aside>
   </slide>
 
   <slide class="fill nobackground" style="background-image:url(../master/images/pod.jpg);">
@@ -365,6 +450,19 @@ desiredState:
     <hgroup>
       <h2>Service</h2>
     </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="yaml">
+id: "cart"
+kind: "Service"
+apiVersion: "v1beta1"
+port: 18100
+containerPort: 18100
+selector:
+  name: "cart"
+labels:
+  name: "cart"
+  role: "backend"</pre>
+    </article>
     <aside class="gdbar bottom"><img src="../master/images/youtube.png"></aside>
   </slide>
 
@@ -446,23 +544,9 @@ desiredState:
       <section>
         <ul>
           <li>
-            <a href="http://de.wikipedia.org/wiki/Pipe_%28Informatik%29">Pipe</a>
-          </li>
-          <li>
-            <a href="http://www.opengroup.org/soa/source-book/soa/soa.htm">Service Oriented Architecture : What Is SOA?</a>
-          </li>
-          <li>
             <a href="http://12factor.net/">The Twelve Factors</a>
           </li>
-          <li>
-            <a href="http://blog.nwcadence.com/three-golden-rules-for-continuous-delivery/">Three Golden Rules for Continuous Delivery</a>
-          </li>
-          <li>
-            <a href="http://www.troyhunt.com/2014/02/your-api-versioning-is-wrong-which-is.html">
-              Your API versioning is wrong, which is why I decided to do it 3 different wrong ways
-            </a>
-          </li>
-          <li>
+           <li>
             <a href="http://www.heise.de/developer/artikel/Microservices-im-Zusammenspiel-mit-Continuous-Delivery-Teil-1-die-Theorie-2376386.html">
               Microservices im Zusammenspiel mit Continuous Delivery, Teil 1 – die Theorie
             </a>
@@ -471,29 +555,11 @@ desiredState:
             <a href="http://www.fig.sh/">Fast, isolated development environments using Docker</a>
           </li>
           <li>
-            <a href="http://jaxenter.de/news/microservices-osgi-174387">Microservices versus OSGi: Über Sinn und Unsinn der 'neuen Inkarnation des Webservice</a>
-          </li>
-          <li>
             <a href="http://blog.ralfw.de/2014/08/warnung-vor-dem-microservice-versuch.html">Warnung vor dem Microservice – Versuch einer Definition</a>
           </li>
           <li>
             <a href="http://jaxenter.de/artikel/nie-wieder-monolithen-176652">Micro Services in der Praxis: Nie wieder Monolithen!</a>
           </li>
-          <li>
-            <a href="https://github.com/nebula-plugins/gradle-ospackage-plugin">Netflix Nebula</a>
-          </li>
-        </ul>
-      </section>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Links</h2>
-    </hgroup>
-    <article>
-      <section>
-        <ul>
           <li>
             <a href="http://bernd-zuther.de/deployment-ganz-einfach/">Deployment ganz einfach – Microservice Deployment mit Hilfe der Linux Paketverwaltung</a>
           </li>
@@ -521,6 +587,11 @@ desiredState:
           <li>
             <a href="https://www.flickr.com/photos/pragdave/173640462/in/photolist-gkXg5-66P5pq-4xYzrf-9NELbX-3pgqcZ-9NJTxs-9NEtYQ-9NAsCc-9NApiT-9NGKrb-9NGp3p-9NDvLH-DobLi-4xYKgw-9NG4oZ-9NGokq-9NC9uz-9NDCmM-9NEwpU-9NGYu8-9NJKMw-4xYxjm-4xUvjZ-4xYAMN-9NGabs-9NJPCW-9NEYMC-9M2DUT-9NG7YG-9NGn6D-9NC7mF-9NC5eF-9NK8vS-9NDrQR-9NGcbW-9NDy6B-9NDtMv-9NC2JV-9NBP6p-4xUjDe-4xYvAf-3jgXTJ-4xYv2U-4xYHcN-4xUqZR-3cZEyJ-3mi9MV-rHt9R-egFvvr-9NBBMn">
               Martin Fowler
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/1und1/11432061675/in/photolist-8mffE1-iqdiDD-s1exbc-shwTyQ-rYmNNk-s1esGx-rYmKfi-shFS26-sfoEJ3-shCWur-aQoszM-skmrxs-snBbFB-snDwFr-skmuWw-8X4eEC-bkfNsZ-bkfMjK-bkfKPp-rab7ta-s6VrZH-r9Y9Lw-6cQpjs-s6Qcou-rYmXDX-shDdpH-s17HVy-rkTeY8-shDafX-s17A8E-rYmJ7r-rkFsDy-rkFqT9-rGFdW5-aQosji-e2Y92b-snDwRg-s6c4tn-snu5jy-s65eXJ-s6c1kP-s646HY-s6c14r-snB81F-rqQtVT-rqDd2b-8ZiAee-71ki7T-dCPhwS-g14aC">
+              Dedicated Server im Rechenzentrum von 1&1
             </a>
           </li>
 
