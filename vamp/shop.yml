@@ -32,6 +32,8 @@ clusters:
         instances: 1
         cpu: 0.1
         memory: 128
+      routing:
+        weight: 100
 
   checkout:
     services:
