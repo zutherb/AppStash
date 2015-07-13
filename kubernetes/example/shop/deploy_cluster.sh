@@ -2,27 +2,27 @@
 echo "*********************************"
 echo "Setup Pods                       "
 echo "*********************************"
-kubectl create -f redis.json
-kubectl create -f cart.json
-kubectl create -f mongodb.json
-kubectl create -f product.json
-kubectl create -f navigation.json
-kubectl create -f shop.json
-kubectl create -f catalog.json
+kubectl create -f redis.yml
+kubectl create -f cart.yml
+kubectl create -f mongodb.yml
+kubectl create -f product.yml
+kubectl create -f navigation.yml
+kubectl create -f shop.yml
+kubectl create -f catalog.yml
 echo "*********************************"
 echo "Setup Replication Controller     "
 echo "*********************************"
-kubectl create -f cart-controller.json
-kubectl create -f product-controller.json
-kubectl create -f navigation-controller.json
-kubectl create -f catalog-controller.json
+kubectl create -f cart-controller.yml
+kubectl create -f product-controller.yml
+kubectl create -f navigation-controller.yml
+kubectl create -f catalog-controller.yml
 echo "*********************************"
 echo "Setup Services                   "
 echo "*********************************"
-kubectl create -f redis-service.json
-kubectl create -f cart-service.json
-kubectl create -f mongodb-service.json
-kubectl create -f product-service.json
-kubectl create -f navigation-service.json
-kubectl create -f shop-service.json
-kubectl create -f catalog-service.json
+kubectl create -f redis-service.yml
+kubectl create -f cart-service.yml
+kubectl create -f mongodb-service.yml
+kubectl create -f product-service.yml
+kubectl create -f navigation-service.yml
+kubectl create -f shop-service.yml
+kubectl create -f catalog-service.yml
