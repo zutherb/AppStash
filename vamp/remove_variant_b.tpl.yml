@@ -1,0 +1,6 @@
+name: __APP_NAME__
+clusters:
+  catalog:
+    services:
+    - breed:
+        name: catalogWithAlternativeCheckoutDesign

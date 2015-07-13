@@ -37,7 +37,7 @@ clusters:
           weight: 100
       -
         breed:
-          name: catalog_with_alternative_checkout_design
+          name: catalogWithAlternativeCheckoutDesign
           deployable: zutherb/catalog-frontend:latest-b
           ports:
             port: 80/http

@@ -4,4 +4,5 @@ export APP_NAME=$(curl -s $BOOT2DOCKER_URL:8081/api/v1/deployments | jq '.[0].na
 echo "APP_NAME=$APP_NAME"
 
 curl -v -X PUT --data-binary @shop.yml -H "Content-Type: application/x-yaml" http://$(boot2docker ip):8081/api/v1/deployments/$APP_NAME
-curl -v -X DELETE -H "Content-Type: application/x-yaml" http://192.168.59.103:8081/api/v1/breeds/catalog_with_alternative_checkout_design
+sed 's/__APP_NAME__/$APP_NAME/g' remove_variant_b.tpl.yml | \
+    curl -v -X DELETE --data-binary @- -H "Content-Type: application/x-yaml" http://$(boot2docker ip):8081/api/v1/deployments/$APP_NAME

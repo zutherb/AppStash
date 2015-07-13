@@ -19,6 +19,7 @@ class { 'mesos::slave':
 docker::image { [
     "zutherb/monolithic-shop",
     "zutherb/catalog-frontend",
+    "zutherb/catalog-frontend:latest-b",
     "zutherb/product-service",
     "zutherb/navigation-service",
     "zutherb/cart-service",
