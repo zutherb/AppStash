@@ -10,7 +10,7 @@ clusters:
     services:
       -
         breed:
-          name: catalog:a
+          name: catalog
           deployable: zutherb/catalog-frontend:latest
           ports:
             port: 80/http
@@ -37,7 +37,7 @@ clusters:
           weight: 100
       -
         breed:
-          name: catalog:b
+          name: catalog_with_alternative_checkout_design
           deployable: zutherb/catalog-frontend:latest-b
           ports:
             port: 80/http
