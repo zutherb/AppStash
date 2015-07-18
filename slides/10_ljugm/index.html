@@ -310,7 +310,7 @@ reprepro -b /var/packages/debian/ list shop
   <slide class="fill nobackground" style="background-image:url(../master/images/containers.jpg);">
     <article class="flexbox vcenter">
       <section class="textbox">
-        <h1>How can we package and describe infrastructure of our products?</h1>
+        <h1>How can we package our products?</h1>
       </section>
     </article>
   </slide>
@@ -320,8 +320,7 @@ reprepro -b /var/packages/debian/ list shop
       <h2>Docker</h2>
     </hgroup>
     <article>
-            <pre class="prettyprint" data-lang="bash">
-bz@cc $ docker ps
+            <pre class="prettyprint" data-lang="bash">bz@cc $ docker ps
 CONTAINER ID        IMAGE                               COMMAND                CREATED
 87bb5524067d        zutherb/product-service:latest      "/product-0.6/bin/pr   14 seconds
 bz@cc $ docker exec 87bb5524067d env
@@ -330,14 +329,13 @@ HOSTNAME=87bb5524067d
 MONGODB_PORT_27017_TCP=tcp://172.17.0.28:27017
 MONGODB_PORT_27017_TCP_ADDR=172.17.0.28
 MONGODB_PORT_27017_TCP_PORT=27017
-MONGODB_PORT_27017_TCP_PROTO=tcp
-</pre>
+MONGODB_PORT_27017_TCP_PROTO=tcp</pre>
     </article>
   </slide>
 
   <slide class="fill nobackground">
     <hgroup>
-      <h2>Docker Environment</h2>
+      <h2>Online Shop - Deployment</h2>
     </hgroup>
     <article class="flexbox vcenter">
       <img src="../master/images/deployment_diagramm_online_shop_docker.svg" style="height: 450px; width: 100%" />
@@ -392,9 +390,18 @@ catalog:
   links:
     - product
     - cart</pre>
-      <aside class="gdbar bottom">
+      <aside class="gdbar right bottom">
         <img src="../master/images/youtube.png">
       </aside>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground">
+    <hgroup>
+      <h2>Building a distributed system</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <img src="../master/images/distributed_system_architecture.svg" style="height: 450px; width: 100%" />
     </article>
   </slide>
 
