@@ -20,7 +20,7 @@ redis:
 shop:
   image: zutherb/monolithic-shop
   ports:
-     - "8080"
+     - "8080:8080"
   links:
      - mongodb
      - cart

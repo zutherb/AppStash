@@ -1,5 +1,5 @@
 ---
-name: shop:1.1
+name: shop:1.0
 
 endpoints:
   catalog.port: 9050
@@ -53,7 +53,7 @@ clusters:
       scale:
         instances: 1
         cpu: 0.3
-        memory: 254
+        memory: 256
 
   product:
     services:
