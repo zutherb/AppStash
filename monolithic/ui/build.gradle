@@ -12,7 +12,7 @@ buildscript {
     }
     dependencies {
         //don't move this in root script or slf4j deps will be lost
-        classpath "com.github.kulya:jmeter-gradle-plugin:1.3.2-2.9"
+        classpath "com.github.kulya:jmeter-gradle-plugin:1.3.4-2.13"
     }
 }
 
