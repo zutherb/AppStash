@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: navigation
+    role: backend
+  name: navigation
+spec:
+  containers:
+    - name: navigation
+      image: zutherb/navigation-service
+      ports:
+        - containerPort: 18090
