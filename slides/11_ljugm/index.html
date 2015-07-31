@@ -71,39 +71,13 @@
     </article>
   </slide>
 
-  <slide class="fill nobackground" style="background-image:url(../master/images/kaufrausch.jpg);">
-    <article class="flexbox vcenter">
-      <section class="textbox">
-        <h1>Get Out of the Building</h1>
-        <h2 style="margin-top: 30px">This talk is based on two real projects.</h2>
-        <h2>The demo application contains the techology stack and all concepts which was learned in this projects.</h2>
-        <a href="https://github.com/zutherb/AppStash/">
-          <h2>https://github.com/zutherb/AppStash/</h2>
-        </a>
-
-        <img src="../master/images/qrcode.svg" />
-        <a href="https://github.com/zutherb/AppStash/">
-          <img style="position: absolute; top: 0; right: 0; border: 0;" src="../master/tweets/github.png" alt="Fork me on GitHub" data-canonical-src="../master/images/forkme_right_red_aa0000.png">
-        </a>
-      </section>
-    </article>
+  <slide class="fill nobackground" style="background-image:url(../master/images/lionseats.jpg);">
   </slide>
 
   <slide class="fill nobackground" style="background-image:url(../master/images/lionseats.jpg);">
     <article class="flexbox vcenter">
       <section class="textbox">
         <h1>Survival of the fittest</h1>
-      </section>
-    </article>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/innovation.jpg);">
-    <article class="flexbox vcenter">
-      <section class="textbox">
-        <h1>Innovation = <br />Idea + Product + Customer Usage</h1>
-        <p>
-          DIN SPEC 77555-1:2013-09 Innovation Management - Part 1: Innovation Management System
-        </p>
       </section>
     </article>
   </slide>
@@ -116,13 +90,13 @@
     </article>
   </slide>
 
-  <slide>
-    <hgroup>
-      <h2>Architecture</h2>
-    </hgroup>
+  <slide class="fill nobackground" style="background-image:url(../master/images/innovation.jpg);">
     <article class="flexbox vcenter">
-      <section>
-        <img src="../master/images/innovation_pillar_en_agility_architecture.svg" style="height: 500px;" />
+      <section class="textbox">
+        <h1>Innovation = <br />Idea + Product + Customer Usage</h1>
+        <p>
+          DIN SPEC 77555-1:2013-09 Innovation Management - Part 1: Innovation Management System
+        </p>
       </section>
     </article>
   </slide>
@@ -193,13 +167,10 @@
     </article>
   </slide>
 
-  <slide>
-    <hgroup>
-      <h2>Continuous Delivery</h2>
-    </hgroup>
+  <slide class="fill nobackground" style="background-image:url(../master/images/baremetal.jpg);">
     <article class="flexbox vcenter">
-      <section>
-        <img src="../master/images/innovation_pillar_en_agility_continuous_delivery.svg" style="height: 500px;" />
+      <section class="textbox">
+        <h3>How do we get the sh*t to bare metal?</h3>
       </section>
     </article>
   </slide>
@@ -219,14 +190,6 @@ www-data  1975  0.0  0.1  91148  3820 ?        S    10:49   0:00 nginx: worker p
 www-data  1976  0.0  0.1  91148  3820 ?        S    10:49   0:00 nginx: worker process
 www-data  1980  1.5  7.0 2456532 143688 ?      Sl   10:49   1:20 java -cp product.jar
 </pre>
-    </article>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/baremetal.jpg);">
-    <article class="flexbox vcenter">
-      <section class="textbox">
-        <h3>How do we get the sh*t to bare metal?</h3>
-      </section>
     </article>
   </slide>
 
@@ -301,13 +264,52 @@ reprepro -b /var/packages/debian/ list shop
 
   <slide>
     <hgroup>
-      <h2>Microservice Taxonomy</h2>
+      <h2>Canary Release</h2>
     </hgroup>
     <article class="flexbox vcenter">
       <section>
-        <img src="../master/images/microservice_taxonomy.svg" style="height: 500px;" />
+        <img src="../master/images/canary_release.svg" type="image/svg+xml" style="height: 450px; width: 100%" />
       </section>
     </article>
+  </slide>
+
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/containers.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>How can we package services?</h1>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground">
+    <hgroup>
+      <h2>Docker</h2>
+    </hgroup>
+    <article>
+            <pre class="prettyprint" data-lang="bash">bz@cc $ docker ps
+CONTAINER ID        IMAGE                               COMMAND                CREATED
+87bb5524067d        zutherb/product-service:latest      "/product-0.6/bin/pr   14 seconds
+bz@cc $ docker exec 87bb5524067d env
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=87bb5524067d
+MONGODB_PORT_27017_TCP=tcp://172.17.0.28:27017
+MONGODB_PORT_27017_TCP_ADDR=172.17.0.28
+MONGODB_PORT_27017_TCP_PORT=27017
+MONGODB_PORT_27017_TCP_PROTO=tcp</pre>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground">
+    <hgroup>
+      <h2>Docker</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <img src="../master/images/deployment_diagramm_online_shop_docker.svg" style="height: 450px; width: 100%" />
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/container_crash.jpg);">
   </slide>
 
   <slide class="fill nobackground" style="background-image:url(../master/images/containers.jpg);">
@@ -362,10 +364,10 @@ bz@cc ~$ <b>docker run -d -P -p 8080:8080 --name shop --link cart:cart \
     </article>
   </slide>
 
-  <slide class="fill nobackground" style="background-image:url(../master/images/container_crash.jpg);">
+  <slide class="fill nobackground" style="background-image:url(../master/images/containers.jpg);">
     <article class="flexbox vcenter">
       <section class="textbox">
-        <h1>How can we avoid a shipwreck?</h1>
+        <h1>How can describe our microservice application?</h1>
       </section>
     </article>
   </slide>
@@ -401,7 +403,7 @@ catalog:
 
   <slide class="fill nobackground">
     <hgroup>
-      <h2>Building a distributed system</h2>
+      <h2>Distributed System</h2>
     </hgroup>
     <article class="flexbox vcenter">
       <img src="../master/images/distributed_system_architecture.svg" style="height: 450px; width: 100%" />
@@ -410,37 +412,48 @@ catalog:
 
   <slide>
     <hgroup>
-      <h2>Kubernetes - Cluster Management</h2>
+      <h2>Kubernetes</h2>
     </hgroup>
     <article class="flexbox vcenter">
       <section>
-        <img src="../master/images/graph-01.svg" type="image/svg+xml" style="height: 450px; width: 100%" />
+        <img src="../master/images/kubernetes_system_architecture%20.svg" type="image/svg+xml" style="height: 450px; width: 100%" />
       </section>
     </article>
   </slide>
 
   <slide class="fill nobackground" style="background-image:url(../master/images/pod.jpg);">
     <hgroup>
-      <h2 style="color: #ffffff">Pod</h2>
+      <h2>Pod</h2>
     </hgroup>
     <article >
-      <pre class="prettyprint" data-lang="yaml">
+      <pre class="prettyprint" data-lang="yaml">apiVersion: v1
 kind: Pod
-desiredState:
-  manifest:
-    <b>containers:
-      - name: mongodb
-      image: dockerfile/mongodb
-      cpu: 100
-      memory: 50000000
+metadata:
+  labels:
+    name: cart
+    role: backend
+  name: cart
+spec:
+  containers:
+    - name: cart
+      image: zutherb/cart-service
       ports:
-      - containerPort: 27017</b></pre>
+        - containerPort: 18100</pre>
     </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Pods are the smallest deployable units that can be created, scheduled, and managed.</li>
+          <li>A pod corresponds to a colocated group of applications running with a shared context</li>
+          <li>Pod is a <b>top-level resource</b> in the kubernetes REST API</li>
+        </ul>
+      </section>
+    </aside>
   </slide>
 
   <slide class="fill nobackground" style="background-image:url(../master/images/clone.jpg);">
     <hgroup>
-      <h2 style="color: #ffffff">Replication Controller</h2>
+      <h2>Replication Controller</h2>
     </hgroup>
     <article >
       <pre class="prettyprint" data-lang="yaml">
@@ -461,21 +474,33 @@ desiredState:
       <h2>Service</h2>
     </hgroup>
     <article >
-      <pre class="prettyprint" data-lang="yaml">
-id: "cart"
-kind: "Service"
-apiVersion: "v1beta1"
-port: 18100
-containerPort: 18100
-selector:
-  name: "cart"
-labels:
-  name: "cart"
-  role: "backend"</pre>
+      <pre class="prettyprint" data-lang="yaml">kind: Service
+apiVersion: v1
+metadata:
+  labels:
+      name: cart
+      role: backend
+  name: cart
+spec:
+  ports:
+    - name: cart
+      port: 18100
+  selector:
+      name: cart</pre>
     </article>
     <aside class="gdbar bottom"><img src="../master/images/youtube.png"></aside>
   </slide>
 
+  <slide>
+    <hgroup>
+      <h2>Mesos</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/mesos_system_architecture.svg" type="image/svg+xml" style="height: 450px; width: 100%" />
+      </section>
+    </article>
+  </slide>
 
 
   <slide class="thank-you-slide segue nobackground current" style="background: url(../master/images/innovate_or_die.jpg) no-repeat center center fixed;  background-size: cover;">
@@ -489,7 +514,24 @@ labels:
     </p>
   </slide>
 
-  <slide class="title-slide segue nobackground" style="background-image:url(confess_last.png); background-position: center center; background-repeat: no-repeat; background-size: cover;"></slide>
+  <slide class="fill nobackground" style="background-image:url(../master/images/kaufrausch.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>Demo Application</h1>
+
+        <a href="https://github.com/zutherb/AppStash/">
+          <h2>https://github.com/zutherb/AppStash/</h2>
+        </a>
+
+        <img src="../master/images/qrcode.svg" />
+        <a href="https://github.com/zutherb/AppStash/">
+          <img style="position: absolute; top: 0; right: 0; border: 0;" src="../master/tweets/github.png" alt="Fork me on GitHub" data-canonical-src="../master/images/forkme_right_red_aa0000.png">
+        </a>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="backdrop"></slide>
 
   <slide>
     <hgroup>

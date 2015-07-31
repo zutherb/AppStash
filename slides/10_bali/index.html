@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="shortcut icon" href="/favicon.ico">
+  <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="../master/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="../master/css/phone.css">
+  <link rel="stylesheet" href="../../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
+  <base target="_blank">
+  <script src="../slide_config.js"></script>
+  <script src="slide_config.js"></script>
+  <script data-main="../master/js/slides" src="../master/js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar">
+      <img src="../master/images/codecentric-logo-only.jpg">
+    </aside>
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/bob.jpg); ); background-position: center center; background-repeat: no-repeat; background-size: cover;">
+    <article>
+      <section>
+        <ul class="speakers">
+          <li id="speaker-bernd">
+            <span class="name">Bernd Zuther</span>
+            <img src="../master/images/bernd-zuther.jpeg"
+                 alt="Bernd's avatar"
+                 class="avatar">
+            <ul class="social">
+              <li>
+                <i class="icon-twitter"></i>
+                <a href="https://twitter.com/Bernd_Z">
+                  @Bernd_Z
+                </a>
+              </li>
+              <li>
+                <i class="icon-github"></i>
+                <a href="https://github.com/zutherb/">
+                  github.com/zutherb
+                </a>
+              </li>
+              <li>
+                <i class="icon-envelope"></i>
+                <a href="mailto:bernd.zuther@codecentric.de">
+                  bernd.zuther@codecentric.de
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li/>
+        </ul>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/cc-wallpaper_01.jpg); ); background-position: center center; background-repeat: no-repeat; background-size: cover;">
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/lionseats.jpg);">
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/lionseats.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>Survival of the fittest</h1>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/innovation.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>Innovation = <br />Idea + Product + Customer Usage</h1>
+        <p>
+          DIN SPEC 77555-1:2013-09 Innovation Management - Part 1: Innovation Management System
+        </p>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/autobahn.gif);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>Be faster than your competitors</h1>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/shoppingcart.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>How can we increase sales?</h1>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/knockout.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>Mike Tyson</h1>
+        <p>
+          Everyone has a plan until they get punched in the face.
+        </p>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/abtesting.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>A/B Testing</h1>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Conversion</h2>
+    </hgroup>
+    <article>
+      <section>
+        <ul>
+          <li>act of converting site visitors into paying customers</li>
+          <li>proportion of visits to a website which take action to go beyond a website visit
+          </li>
+        </ul>
+        <img src="../master/images/conversion_rate.svg" type="image/svg+xml" style="margin-top: 75px" />
+      </section>
+      <aside class="gdbar bottom">
+        <a href="file:///Users/berndzuther/Documents/01_devoxx_demo.mp4" target="_blank">
+          <img src="../master/images/youtube.png">
+        </a>
+      </aside>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/toogle.jpg);">
+    <hgroup>
+      <h2>FeatureToggle</h2>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="java">
+public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
+
+    @SpringBean
+    private FeatureToogleBean featureToogleBean;
+
+    ...
+
+    @Override
+    protected void onConfigure() {
+      super.onConfigure();
+      <b>setVisible(featureToogleBean.isTopSellerFeatureEnabled());</b>
+    }
+
+    ...
+
+}
+</pre>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/grüne_wiese.jpg);">
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/duisburg.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>What have we done?</h1>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/cuba_car.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>How does it work?</h1>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Disadvantages we had with the way we develop software</h2>
+    </hgroup>
+    <article>
+      <ul class="build">
+        <li>
+          Development:
+          <ul>
+              <li>Long feature development cycles</li>
+              <li>Long feedback times</li>
+              <li>Long build time</li>
+              <li>Strange behavior after changes</li>
+              <li>Application scalability</li>
+          </ul>
+        </li>
+        <li>
+          Product Management:
+          <ul>
+            <li>Long time to market</li>
+            <li>A/B testing difficult to achieve</li>
+            <li>Scalability of workload</li>
+          </ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/lego.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>How can we build software smarter?</h1>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Microservice</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/microservice.svg" style="height: 220px; float: left; margin-right: 50px" />
+        <ul class="build">
+          <li>fits in one brain,</li>
+          <li>designed for replaceability,</li>
+          <li>autonomy (organisation & technology)</li>
+        </ul>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Microservice Taxonomy</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/microservice_taxonomy.svg" style="height: 500px;" />
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Online Shop - Use cases</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/use_case_online_shop.svg" style="height: 500px" />
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Online Shop - Migration</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/deployment_diagramm_online_shop.svg" style="height: 500px" />
+      </section>
+      <aside class="gdbar bottom">
+        <a href="file:///Users/berndzuther/Documents/02_devoxx_demo.mp4" target="_blank">
+          <img src="../master/images/youtube.png">
+        </a>
+      </aside>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/thumbsup.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>Flexibility</h1>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/thumbsup.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>Improve feedback times</h1>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/thumbsup.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>Scalability</h1>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Challenges of Microservices</h2>
+    </hgroup>
+    <article class="flexbox">
+      <section>
+        <ul>
+          <li>
+            Require integration.
+          </li>
+          <li>
+            Require a multi deployment pipeline.
+          </li>
+          <li>
+            Require automation of deployment and configuration.
+          </li>
+          <li>
+            Require logging and monitoring.
+          </li>
+        </ul>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Microservice - Communication</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/microservice_kommunikation.svg" style="height: 500px" />
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/chain.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>Adrian Cockcroft</h1>
+        <p>
+          if every service has to be updated at the same time it’s not loosely coupled
+        </p>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/tuner.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>Postel’s Law (1980)</h1>
+        <h2>RFC 761 (Transmission Control Protocol)</h2>
+        <p>
+          be conservative in what you do, be liberal in what you accept from others
+        </p>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Postel’s Law</h2>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="javascript">
+{
+        firstname: "Bernd",
+        lastname: "Zuther",
+        street: "Elsenheimerstraße 55a",
+        city: "München",
+        zip: 80687
+}
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Postel’s Law</h2>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="javascript">
+{
+        firstname: "Bernd",
+        lastname: "Zuther",
+        <b>birthday: "1983/08/15"</b>,
+        street: "Elsenheimerstraße 55a",
+        city: "München",
+        zip: 80687
+}
+</pre>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/thumbsup.jpg);">
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Postel’s Law</h2>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="javascript">
+{
+        firstname: "Bernd",
+        lastname: "Zuther",
+        birthday: "1983/08/15",
+        <b>addresses : [{
+          street: "Elsenheimerstraße 55a",
+          city: "München",
+          zip: 80687,
+          type: "WORK"
+        }]</b>
+}
+</pre>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/unfall.jpg);">
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Postel’s Law</h2>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="javascript">
+{
+        firstname: "Bernd",
+        lastname: "Zuther",
+        birthday: "1983/08/15",
+        <b>street: "Elsenheimerstraße 55a",
+        city: "München",
+        zip: 80687,
+        addresses : [{
+          street: "Elsenheimerstraße 55a",
+          city: "München",
+          zip: 80687,
+          type: "WORK"
+        }]</b>
+}
+</pre>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/thumbsup.jpg);">
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Alternatives</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li><b>URL</b>:
+            <ul>
+              <li>simply whack the API version into the URL, e.g. https://shop/api/v2/cart/all</li>
+            </ul>
+        </li>
+        <li><b>Custom request header</b>:
+          <ul>
+            <li>same URL as before but add a header “api-version: 2”</li>
+          </ul>
+        </li>
+        <li><b>Accept header</b>:
+          <ul>
+            <li>modify accept header to specify the version, e.g. “Accept: application/vnd.cart.v2+json”</li>
+          </ul>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/delivery_car.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>How we can deliver faster?</h1>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/monolith_pipeline.png);">
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/microservice_pipeline.png);">
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Multi Deployment Pipeline</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/deployment_pipeline_microservice.svg" style="height: 450px; width: 100%" />
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/thumbsup.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>Improve Build Times</h1>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/unfall.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>Deployments get more complex</h1>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Deployment Overview</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/deployment_diagramm_online_shop.svg" style="height: 500px" />
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/containers.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>How can we package and describe infrastructure of our products?</h1>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/container_crash.jpg);">
+  </slide>
+
+  <slide class="fill nobackground">
+    <hgroup>
+      <h2>Distributed System</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <img src="../master/images/distributed_system_architecture.svg" style="height: 450px; width: 100%" />
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Mesos</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/mesos_system_architecture.svg" type="image/svg+xml" style="height: 450px; width: 100%" />
+      </section>
+    </article>
+    <aside class="gdbar bottom">
+      <img src="../master/images/youtube.png">
+    </aside>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/zookeeper.jpg);">
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/icinga_1.png);">
+    <hgroup>
+      <h2>Availability</h2>
+    </hgroup>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/icinga_2.png);">
+    <hgroup>
+      <h2>Availability</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section style="padding-top: 400px">
+        <ul>
+          <li>Mean Time To Failure (MTTF)</li>
+          <li>Mean Time To Recover (MTTR)</li>
+        </ul>
+      </section>
+    </article>
+  </slide>
+
+   <slide class="fill nobackground" style="background-image:url(../master/images/kibana_1.png);">
+    <hgroup>
+      <h2>Analysis Failures</h2>
+    </hgroup>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/kibana_2.png); ">
+    <hgroup>
+      <h2>Research Customers</h2>
+    </hgroup>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/optimizely.png);">
+    <hgroup>
+      <h2>Research Customers</h2>
+    </hgroup>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/crowd.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>Experiment with your customers!</h1>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/changemachine.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>Work Smarter not Harder</h1>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/light_at_the_end_of_the_tunnel.jpg);">
+    <hgroup>
+      <h2>Summary</h2>
+    </hgroup>
+    <article>
+      <table style="font-size: 0.8em; background-color: #ffffff">
+        <tbody>
+          <tr>
+            <th width="50%">Pro</th>
+            <th width="50%">Needs</th>
+          </tr>
+          <tr>
+            <td>supports A/B testing</td>
+            <td>monitoring</td>
+          </tr>
+          <tr>
+            <td>effective technologies</td>
+            <td>centralised logging</td>
+          </tr>
+          <tr>
+            <td>solution orientation</td>
+            <td>fully automated deployment pipeline</td>
+          </tr>
+          <tr>
+            <td>incremental migration</td>
+            <td>cluster management</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>organisation must be ready</td>
+          </tr>
+        </tbody>
+      </table>
+      <footer style="color:red; background-color: #ffffff; margin: 20px 0px; padding: 10px; ">
+        Microservices do not guarantee more conversion! <br />
+        You need to run experiments with your customers!
+      </footer>
+    </article>
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground current" style="background: url(../master/images/innovate_or_die.jpg) no-repeat center center fixed;  background-size: cover;">
+    <aside class="gdbar right"><img src="../master/images/bernd-zuther.jpeg"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+      <p></p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/kaufrausch.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>Get Out of the Building</h1>
+        <h2 style="margin-top: 30px">This talk is based on two real projects.</h2>
+        <h2>The demo application contains the techology stack and all concepts which were learned in these projects.</h2>
+        <a href="https://github.com/zutherb/AppStash/">
+          <h2>https://github.com/zutherb/AppStash/</h2>
+        </a>
+
+        <img src="../master/images/qrcode.svg" />
+        <a href="https://github.com/zutherb/AppStash/">
+          <img style="position: absolute; top: 0; right: 0; border: 0;" src="../master/tweets/github.png" alt="Fork me on GitHub" data-canonical-src="../master/images/forkme_right_red_aa0000.png">
+        </a>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground" style="background-image:url(confess_last.png); background-position: center center; background-repeat: no-repeat; background-size: cover;"></slide>
+
+  <slide>
+    <hgroup>
+      <h2>Links</h2>
+    </hgroup>
+    <article>
+      <section>
+        <ul>
+          <li>
+            <a href="http://www.codecentric.de/kompetenzen/publikationen/microservices-und-die-jagd-nach-mehr-konversion/">
+              Java Aktuell 02/15 - Microservices und die Jagd nach mehr Konversion
+            </a>
+          </li>
+          <li>
+            <a href="https://blog.codecentric.de/2015/05/microservice-deployment-ganz-einfach-mit-giant-swarm/">
+              Microservice-Deployment ganz einfach mit Giant Swarm
+            </a>
+          </li>
+          <li>
+            <a href="https://blog.codecentric.de/2015/05/microservice-deployment-ganz-einfach-mit-kubernetes/">
+              Microservice-Deployment ganz einfach mit Kubernetes
+            </a>
+          </li>
+          <li>
+            <a href="https://blog.codecentric.de/2015/05/microservice-deployment-ganz-einfach-mit-docker-compose/">
+              Microservice-Deployment ganz einfach mit Docker Compose
+            </a>
+          </li>
+          <li>
+            <a href="https://blog.codecentric.de/2015/05/microservice-deployment-ganz-einfach-ohne-docker-mit-der-linux-paketverwaltung/">
+              Microservice-Deployment ganz einfach ohne Docker mit der Linux-Paketverwaltung
+            </a>
+          </li>
+          <li>
+            <a href="http://theleanstartup.com/principles">Lean Startup</a>
+          </li>
+          <li>
+            <a href="http://oanasagile.blogspot.de/2012/11/test-driven-business-featuring-lean.html">Test Driven Business Featuring Lean StartUp</a>
+          </li>
+          <li>
+            <a href="http://www.heise.de/developer/artikel/Continuous-Delivery-mit-dem-FeatureToggle-Pattern-1825477.html">Continuous Delivery mit dem FeatureToggle Pattern</a>
+          </li>
+          <li>
+            <a href="http://martinfowler.com/bliki/FeatureToggle.html">FeatureToggle</a>
+          </li>
+          <li>
+            <a href="http://www.voxxed.com/blog/2015/01/good-microservices-architectures-death-enterprise-service-bus-part-one">Do Good Microservices Architectures Spell the Death of the Enterprise Service Bus?</a>
+          </li>
+          <li>
+            <a href="http://martinfowler.com/articles/microservices.html">Microservices</a>
+          </li>
+        </ul>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Links</h2>
+    </hgroup>
+    <article>
+      <section>
+        <ul>
+          <li>
+            <a href="http://de.wikipedia.org/wiki/Pipe_%28Informatik%29">Pipe</a>
+          </li>
+          <li>
+            <a href="http://www.opengroup.org/soa/source-book/soa/soa.htm">Service Oriented Architecture : What Is SOA?</a>
+          </li>
+          <li>
+            <a href="http://12factor.net/">The Twelve Factors</a>
+          </li>
+          <li>
+            <a href="http://blog.nwcadence.com/three-golden-rules-for-continuous-delivery/">Three Golden Rules for Continuous Delivery</a>
+          </li>
+          <li>
+            <a href="http://www.troyhunt.com/2014/02/your-api-versioning-is-wrong-which-is.html">
+              Your API versioning is wrong, which is why I decided to do it 3 different wrong ways
+            </a>
+          </li>
+          <li>
+            <a href="http://www.heise.de/developer/artikel/Microservices-im-Zusammenspiel-mit-Continuous-Delivery-Teil-1-die-Theorie-2376386.html">
+              Microservices im Zusammenspiel mit Continuous Delivery, Teil 1 – die Theorie
+            </a>
+          </li>
+          <li>
+            <a href="http://www.fig.sh/">Fast, isolated development environments using Docker</a>
+          </li>
+          <li>
+            <a href="http://jaxenter.de/news/microservices-osgi-174387">Microservices versus OSGi: Über Sinn und Unsinn der 'neuen Inkarnation des Webservice</a>
+          </li>
+          <li>
+            <a href="http://blog.ralfw.de/2014/08/warnung-vor-dem-microservice-versuch.html">Warnung vor dem Microservice – Versuch einer Definition</a>
+          </li>
+          <li>
+            <a href="http://jaxenter.de/artikel/nie-wieder-monolithen-176652">Micro Services in der Praxis: Nie wieder Monolithen!</a>
+          </li>
+          <li>
+            <a href="https://github.com/nebula-plugins/gradle-ospackage-plugin">Netflix Nebula</a>
+          </li>
+        </ul>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Links</h2>
+    </hgroup>
+    <article>
+      <section>
+        <ul>
+          <li>
+            <a href="http://bernd-zuther.de/deployment-ganz-einfach/">Deployment ganz einfach – Microservice Deployment mit Hilfe der Linux Paketverwaltung</a>
+          </li>
+          <li>
+            <a href="https://bernd-zuther.de/splunk-marke-eigenbau-mit-elasticsearch-logstash-und-kibana/">Splunk – Marke Eigenbau mit Elasticsearch, Logstash und Kibana (ELK Stack)</a>
+          </li>
+          <li>
+            <a href="http://www.infoq.com/articles/scaling-docker-with-kubernetes">Scaling Docker with Kubernetes</a>
+          </li>
+          <li>
+            <a href="https://github.com/zutherb/AppStash/">Appstash Project</a>
+          </li>
+        </ul>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Images</h2>
+    </hgroup>
+    <article>
+      <section>
+        <ul>
+          <li>
+            <a href="https://www.flickr.com/photos/lattefarsan/12954048234">
+              Delivery of semlor
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/cleopold73/3358744214/in/photolist-67NrD1-ohKX4-c6EuvU-5EESF-5EES3-9JycV-mNF3rK-7xjq7-5fDV5s-5C7bH1-7vj5v-6e8DKG-kobrSx-deRV69-7vESDZ-k9MR9q-66gVXK-4aJcg4-3exrv-bhroH2-dLNTNH-e3UVt-4EjEvm-4spoiZ-kcfwLt-7tEP7-87kGAN-8dXy6-qhC4T-Bxcd-69Nwf4-aDS38-7kugK7-8DrDLy-JJvQ6-8KTvpR-yRsNq-rubY2X-8YC6dc-5vkZN-7KzSE-yUdyM-6zc7c-8ZEepR-q38EU-cMbhj-q38Jz-5EETN-gzXRY-ghfdG">
+              Freebooks
+            </a>
+          </li>
+          <li>
+            <a href="http://en.wikipedia.org/wiki/Service-oriented_architecture">
+              SOA
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/alschim/3400615985/in/photolist-6bzb8E-avZHk6-6bzazo-9oAfnw-avZJtg-6bz9rC-6bz9K3-6bvb4D-6bv3E6-9wox9L-avZJwK-6bz9jq-9nKa9c-9nNczj-9p6j3o-oXHp2U-9oxcHV-9xGJpN-9nNbVy-mZKUyy-mZHuKX-mZK4uk-9xH4bY-mZHf3D-9nNcG5-mZLgAd-9xHmN9-9xDQ3g-9xEon6-9xHi8d-avZQnP-9xEuqi-9xH9Sj-9xDLjF-mZNawW-mZNrZA-mZNhu3-9rt4Jr-9xDPZa-mZKwdS-9rw31E-mZMeVN-9oAg55-9xDLuK-9xHso1-9xGK1f-9xH9kq-9nKabM-9xHivy-9xHiBy">
+              Cuba Car
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/archangel12/6820107940/in/photolist-boEQtW-bBzMm4-djwZx5-djx23t-bBzLLM-boEMbS-bBzJTx-boELgf-bBzExZ-bBzHfz-boELz3-bBzGWR-boEN37-boEMFW-bBzHVx-bBzEhB-bBzJcp-boEPNw-bBzHtZ-djwFnV-8nN6FZ-djwUNh-8nRfgW-e7jkA3-e7jjpW-8tY8KX-8tYcSM-8nN5C4-8nN6kB-8nRfuC-8nN6Li-8nN6e2-j6Jqtz-j6Kvxm-j6JQdP-j6HiBH-j6Mufj-j6Hh66-j6KwR3-j6HmJe-djwQTY-j6KcQ7-8u25Yj-djwY6m-6U3qp2-8tYhGc-8u2ov5-8tYiLr-8u2c55-8u2ax5">
+              Landschaftspark Duisburg-Nord
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/ollil/3938528404/in/photolist-712Zh9-726qjW-6pXc7N-96d2sp-8D9VpF-4A24M-7a4rxq-dj6dym-h7gjhF-adFYXV-7CEJot-ceNjpf-dt6FLj-nd5pk9-9XVVHc-9ct51C-pCZk2S-hFxFpa-9qgpDo-7qm5VU-4cWNnQ-9XYPUm-6jwp8n-op45Q7-2skGrp-o9AkXm-9Go4NF-9Go4Np-7qm3uu-2skGq6-adEcA-or5YPc-6x2znT-mG82H8-6tEW1Q-mG9FA1-6x2yNZ-ikGJDR-6x6JvG-9xnjaQ-9KDeMq-6tEW25-7qh51t-9xnnMQ-9xnnD5-9xjozz-9xnnbL-9xnmXw-9xjnYM-9xnmyY">
+              Unfall von Herbert Stenger
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/wanhoff/2371176434/in/photolist-iiqvB3-76id32-ijibAz-ijijmz-iivTMs-iiqD7q-ijjrbW-iirSCG-iiqqad-9uLhte-ijhVjx-kXJvzv-kXLC5E-kXJZiM-dg4raW-irLLTZ-2X4svU-afZron-7owTHV-4yNxWx-9qoAj1-nyrY1F-iivEhR-ijhEiF-iiqB9V-iiqKEW-iivkrA-iiqrUV-iiqzjc-iiqJtA-iiw6st-iivNMB-nfbCka-iiv9b8-iiw1QJ-84y7b6-e44eBZ-4wNH4B-anduee-hWBeZz-eUdxVv-eUdu2p-eUpTFu-8kFDRH-cyCxju-6kKdPU-4BwU9j-5nLR9K-m8wmMV-3VZFEC">
+              Lieferwagen
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/dlytle/10094837846/in/photolist-go3FAo-pqdWti-ekama-8m1Kis-7Tztjg-4E9WPz-pV7AqK-8f8Cto-bkES28-9UCLzS-8f8QFE-7Rrhv3-8wuXTN-8f5m5M-8f8CwC-nNQSBn-8f5m4D-nM6fzE-go3RE1-5mPvfA-8CWdJs-5mMuXz-go3wCm-9bH85u-8wuYto-8f8M5s-8f5uDB-8f8M3Y-8f5uB4-5PmzGj-9xMsx8-9xQu6h-9xQzLw-9xMwr4-9xN5TT-9xRbR3-9xN8FM-9xMpCt-9xQyyA-9xQwqy-9xR2Ku-9xRgqU-9xN7ix-9xQknq-9xNiCg-9xQnBj-9xMXfg-9xMU7i-9xMokz-9xR3pu">
+              Indianapolis Zoo
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/rmlowe/3281353786">
+              Developer At Work
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/schwenke/1187270918">
+              Icom IC735 + Tuner
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/scott-s_photos/12712204375/in/photolist-gJQhJC-6yELkX-nP3Rob-6GRNcS-95od44-BQjUZ-knkntv-aTJPFa-auqPdW-bCMdMw-dEwZ2-5Tri3e-6KE7MV-eZ28Uu-6zgjfQ-6KE8gT-hG6i5P-4MV9C9-f9Jjxv-gkf5kW-bVQKzX-mUXL7P-a8scVH-mU6xGR-bNAdaR-4MQXkF-jg2kDs-93h3Dh-cb1cSU-oKuKWN-cwV6K9-6UyjZU-8mQXso-pTj4Sq-4TsMvf-bRqM4Z-8VzMAM-nwXuQs-9YLN8y-4ZyTSp-bjq5dV-a2A8qD-6KE7aX-arRSR7-hZF26c-i25Yxq-4NZuH6-tMSCp-a8v4Fu-f9wzMp">
+              Just a face in the crowd
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/zengei/6976940402/in/photolist-48A49j-edrJ32-5dKzxx-bCwDiU-dNysZT-4gBpnQ-9Y9rJo-jovijk-8VH9YR-dd7jSJ-5jWehi-4fEJem-7NoVZ9-478pma-uVojg-o93H1x-dH7qqZ-6ZaGM1-9yaonN-6YPrcM-9WzuJF-3hUVf9-cdzAXd-6YPHzH-6xCgCZ-9MTUJ1-aH4KC-a4D4nV-9QnRh-9Y9tKy-763h94-puxdoT-fNC4QW-5fWdh-aVrts-4AfCjC-6rzaDb-79Afh-6rzbwY-6Pc5Li-6rzcjW-6rAXn3-aBESL-6xc91o-9zcv3u-532GVQ-2i823m-7brDFD-aH4KP-9qnhLm">
+              [119/366] Thumbs Up
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/gcwest/281385801/in/photolist-qSbck-j7eWKk-hD7JTZ-75mqRx-6gVcao-9F5bop-hD9cR2-3EK4k-9uDMLx-4NY3Yi-75qid1-5qQuwt-23rDNy-a3NYdi-3h5aAH-5o5H1E-hD7Jqz-85HX8j-DkXpr-8ffvhp-jxLp1q-hD7Kji-2UrVHv-3RUNDA-4MtokT-5o5H31-8ffvuz-kL1Hg5-7HrALP-75mqLa-fMsCgA-5MQQVH-hD812L-7vBa2x-bMcSap-gLRa3J-6W7SPZ-4LGK2-gmkcM-bRf2oP-kKZgdV-ppYzf4-adg96W-5mDc7Z-inkvJ-cR3ow7-2x7n1u-hD7HeX-dcGZAo-4GVqqY">
+              Containers
+            </a>
+          </li>
+        </ul>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Images</h2>
+    </hgroup>
+    <article>
+      <section>
+        <ul>
+          <li>
+            <a href="https://www.flickr.com/photos/andoline/8238145299">
+              Kaufrausch
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/marfis75/2939337382">
+              Café con leche - Milchkaffee (CC)
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/orangeacid/273899875">
+              Cloning Experiments: Jess Payne
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/blmnevada/7782462144">
+              hello, my name is bob ross the bushy-haired painter.
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/sashafatcat/3175576611">
+              BLM Nevada
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/tracyshaun/3685880130">
+              change machine
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/sbl/4490559638/in/photolist-7QPhW3-fC1zs7-rFoLuG-rXRJhj-rFpYZb-rFpVsG-rDDZWx-rDDWg6-r1YHZy-rDDPER-r2bmUT-r2biEM-r1YvnE-rFptiC-rXUhd8-rVFg5u-r1Yhfs-r2aYgM-rVF5NN-r2aRWT-r2aNYi-4eD8wW-4ez9Re-8rB61z-5CsE7w-5ConbK-8rB1Qt-8rB11k-88MpZZ-8rEbCN-8rB6iB-8rEaKb-fMDZDC-qg1tu5-eUgFX6-o6pSLP-i9LKmR-34Ydj3-i9LDY8-qx26Jh-qDc4vo-nwQCB2-YAR9P-pFNVmn-25yeQ4-4Fv7NG-i9LyGq-d9bhoy-gXvx5w-qfvzds">
+              s. Bär
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/christianreimer/15496733958/in/photolist-pBoP7f-8iC4FM-5iD8kx-8kiqwi-3FRm4T-7K2AcU-6jV36r-9M4jL-7VxYvw-5385pB-bQctNM-9sJPJD-eHatpF-6qBRsU-4bBqJt-qeAm-6ex5Uq-gXjfr5-do3ESw-jLypgv-98KX18-bvya7m-fTTr8R-62ctza-bbqebF-ca8Syo-6E9JUf-qquZtU-Hi88U-HickH-Hi8vE-HiccZ-6mTfkt-6TZvce-9yk4rG-bW5bmo-6TZv4g-6U4vnq-4LUzai-ecw4xY-6U4vGW-6TZv7x-7fYXzb-fTgJXM-6TZuLB-6TZuSP-6TZuHr-9QXrxm-6TZuQ2-bW5amN">
+              There's a light at the end of the tunnel...
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/taedc/6998471074/in/photolist-bEqZCo-bTkHG8-e9P4YC-g923eA-6a9Sr3-bqADH8-bqADJv-bqADDM-bqADFk-73j5zZ-bNX7mD-fr4jJ-fjdvh-bTeo5n-bEjDu1-bEjDt5-bNSYfp-bNSSSH-bzYkR7-9bBdFG-eAywzT-pAsSzv-fjdth-e9P34f-6eBVff-artW8z-o59rYL-72kL6g-bNSYep-7v5zvN-j9Ceiz-jzp5Cz-fjdoz-ffL7A-eMMuN-ommoi2-o59keA-ojBaiw-oooTgt-o59fe4-omBdjL-omD87F-omBoNw-omBfSb-o595qC-ommx1T-ommEqn-oop1Eg-ojAW9W-omB9MA">
+              2012 DC Zeitgeist III 11787
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/eriwst/3448608210/in/photolist-6fK25f-9RyGwn-9CYrfj-ipH2fq-dEBhN2-4AmvHU-4Amvtm-5TCu2n-noq9Bd-6JT7Wb-eeotC9-myoN5e-6BDTXJ-5xQzAg-nRMmxQ-q6aaMK-fr4cav-qnra4z-bF49vu-62hexY-dRBzwS-btc5Qg-qmCeQ-btxCeU-gqBdbo-bJjNGB-ehKosS-5yg6ij-b6Qyzi-bVMVSS-bWz4tX-5np34T-cye5Ls-oKgXwq-q6362f-co9NX-qeSgSp-cFwV41-q9YKs1-q6bvUK-q6bvKX-qnBgXD-q6coFV-q6bvwR-q64Wy1-qnxRh9-pqQJJX-q6aawe-qnAqLx-qnqkd4">
+              Red Rule
+            </a>
+          </li>
+          <li>
+            <a href="https://www.flickr.com/photos/22040620@N04/2693258604/">
+              Schwarzwald Blumenwiese
+            </a>
+          </li>
+        </ul>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--&lt;!&ndash;[if IE]>-->
+<!--<script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>-->
+<!--<script>CFInstall.check({mode: 'overlay'});</script>-->
+<!--<![endif]&ndash;&gt;-->
+<!--<script>-->
+  <!--(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){-->
+    <!--(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),-->
+    <!--m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)-->
+  <!--})(window,document,'script','//www.google-analytics.com/analytics.js','ga');-->
+
+  <!--ga('create', 'UA-61835462-1', 'auto');-->
+  <!--ga('send', 'pageview');-->
+
+<!--</script>-->
+</body>
+</html>
