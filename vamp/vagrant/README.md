@@ -50,7 +50,7 @@ slave_ipbase : "172.31.2."
 #### mesos-master
 Includes -
 
-* Docker (1.7.0)
+* Docker (1.7.1)
 * Mesos (running in master server mode)
 * Marathon (0.8.2)
 * Zookeeper
@@ -59,7 +59,7 @@ Includes -
 #### mesos-slave
 Includes -
 
-* Docker (1.7.0)
+* Docker (1.7.1)
 * Mesos (running in slave server mode)
 * Consul, running in agent mode (optional - configure via ```consul_enable:``` param in ```cluster.yml```)
 
