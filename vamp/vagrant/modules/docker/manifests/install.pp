@@ -10,17 +10,12 @@ class docker::install {
   validate_string($::kernelrelease)
   validate_bool($docker::use_upstream_package_source)
 
+  ensure_packages($docker::prerequired_packages)
+
   case $::osfamily {
     'Debian': {
-      ensure_packages($docker::prerequired_packages)
       if $docker::manage_package {
         Package['apt-transport-https'] -> Package['docker']
-      }
-
-      if $docker::version {
-        $dockerpackage = "${docker::package_name}-${docker::version}"
-      } else {
-        $dockerpackage = $docker::package_name
       }
 
       if ($docker::use_upstream_package_source) {
@@ -30,8 +25,8 @@ class docker::install {
           release           => 'docker',
           repos             => 'main',
           required_packages => 'debian-keyring debian-archive-keyring',
-          key               => 'A88D21E9',
-          key_source        => 'https://get.docker.io/gpg',
+          key               => '58118E89',
+          key_source        => 'https://apt.dockerproject.org/gpg',
           pin               => '10',
           include_src       => false,
         }
@@ -76,16 +71,13 @@ class docker::install {
 
       $manage_kernel = false
 
-      if $docker::version {
-        $dockerpackage = "${docker::package_name}-${docker::version}"
-      } else {
-        $dockerpackage = $docker::package_name
-      }
-      if $::operatingsystem != 'Amazon' {
+      if ($::operatingsystem != 'Amazon') and ($::operatingsystem != 'Fedora') {
         if ($docker::use_upstream_package_source) {
-          include 'epel'
-          if $docker::manage_package {
-            Class['epel'] -> Package['docker']
+          if ($docker::manage_epel == true){
+            include 'epel'
+            if $docker::manage_package {
+              Class['epel'] -> Package['docker']
+            }
           }
         }
       }
@@ -110,10 +102,24 @@ class docker::install {
     }
   }
 
+  if $docker::version {
+    $dockerpackage = "${docker::package_name}-${docker::version}"
+  } else {
+    $dockerpackage = $docker::package_name
+  }
+
   if $docker::manage_package {
-    package { 'docker':
-      ensure => $docker::ensure,
-      name   => $dockerpackage,
+    if $docker::repo_opt {
+      package { 'docker':
+        ensure          => $docker::ensure,
+        name            => $dockerpackage,
+        install_options => $docker::repo_opt,
+      }
+    } else {
+        package { 'docker':
+          ensure => $docker::ensure,
+          name   => $dockerpackage,
+        }
     }
   }
 }
