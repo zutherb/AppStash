@@ -19,6 +19,17 @@ class { 'zookeeper':
 }
 class { 'marathon':
   marathon_zk => $marathon_zk
+} ->
+docker::run { 'vamp':
+  image           => 'magneticio/vamp-mesosphere:latest',
+  ports           => ['81:80', '9200:9200', '8081:8080', '10002:10001', '8084:8083'],
+  env             => [
+    'VAMP_MARATHON_URL=http://172.31.1.11:8080',
+    'VAMP_ROUTER_HOST=172.31.2.11',
+    'VAMP_ROUTER_URL=http://172.31.2.11:10001'
+  ],
+  restart_service => true,
+  pull_on_start   => true,
 }
 
 # Ensure Slave service not running on master nodes.
