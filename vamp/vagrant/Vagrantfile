@@ -96,6 +96,9 @@ Vagrant.configure("2") do |config|
 
         if master?(node[:hostname]) then
           override.vm.provision :shell , :inline => 'restart mesos-master'
+          override.vm.provision :shell do |s|
+            s.path = "scripts/vamp/provision.sh"
+          end
         end
 
         if slave?(node[:hostname]) then
