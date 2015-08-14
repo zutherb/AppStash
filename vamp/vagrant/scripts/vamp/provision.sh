@@ -26,10 +26,10 @@ curl https://bintray.com/user/downloadSubjectPublicKey?username=bintray | sudo a
 sudo apt-get update
 
 sudo apt-get install -y vamp-core
+sudo apt-get install -y vamp-pulse
+
 sudo cp -vf /vagrant/scripts/vamp/core-application.conf /usr/share/vamp-core/conf/application.conf
 sudo service vamp-core restart
-
-sudo apt-get install -y vamp-pulse
 sudo cp -vf /vagrant/scripts/vamp/pulse-application.conf /usr/share/vamp-pulse/conf/application.conf
 sudo service vamp-pulse restart
 
