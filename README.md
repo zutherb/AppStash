@@ -62,6 +62,7 @@ Date       | Event                         | Title
 15.04.2015 | [confess](https://www.regonline.com/builder/site/Default.aspx?EventID=1619724) | [Microservices and Conversion Hunting - How to build software architectures for changeableness](http://zutherb.github.io/AppStash/slides/07_confess/)
 21.04.2015 | [Agile Softwarearchitektur Münster](http://www.meetup.com/Agile-Softwarearchitektur/) | [Microservices und die Jagd nach mehr Konversion](http://zutherb.github.io/AppStash/slides/08_agile_softwarearchitektur_muenster/)
 23.06.2015 | [Devoxx Poland](http://devoxx.pl/) | [Microservices and Conversion Hunting - How to build software architectures for adaptability](http://zutherb.github.io/AppStash/slides/09_devoxx_pl/)
+20.08.2015 | [IT Meetup Bali](http://www.meetup.com/IT-Meetup-Bali/events/224324564) | [Microservices and Conversion Hunting: Build Architectures for Changeability](http://zutherb.github.io/AppStash/slides/10_bali/)
 
 ## Articles
 
