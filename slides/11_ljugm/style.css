@@ -33,6 +33,7 @@ aside.gdbar {
   display: block;
   margin: 1em 1.5em;
   border-radius: 5px;
+  width: 128px;
 }
 
 .speakers .name {
