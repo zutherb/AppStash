@@ -181,6 +181,7 @@
     </hgroup>
     <article >
       <pre class="prettyprint" data-lang="bash">
+bz@cc:~/$ ps aux
 www-data  1699  0.5  7.7 2453320 158076 ?      Sl   10:49   0:26 java -cp cart.jar
 www-data  1834  0.3  5.0 2435400 102684 ?      Sl   10:49   0:17 java -cp navigation.jar
 www-data  1972  0.0  0.1  90792  3124 ?        Ss   10:49   0:00 nginx: master process
@@ -262,22 +263,10 @@ reprepro -b /var/packages/debian/ list shop
     </article>
   </slide>
 
-  <slide>
-    <hgroup>
-      <h2>Canary Release</h2>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <section>
-        <img src="../master/images/canary_release.svg" type="image/svg+xml" style="height: 450px; width: 100%" />
-      </section>
-    </article>
-  </slide>
-
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/containers.jpg);">
+  <slide class="fill nobackground" style="background-image:url(../master/images/oldwatch.jpg);">
     <article class="flexbox vcenter">
       <section class="textbox">
-        <h1>How can we package services?</h1>
+        <h1>Is there something new?</h1>
       </section>
     </article>
   </slide>
@@ -302,52 +291,14 @@ MONGODB_PORT_27017_TCP_PROTO=tcp</pre>
 
   <slide class="fill nobackground">
     <hgroup>
-      <h2>Docker</h2>
+      <h2>Complex Deployment Scenario</h2>
     </hgroup>
     <article class="flexbox vcenter">
       <img src="../master/images/deployment_diagramm_online_shop_docker.svg" style="height: 450px; width: 100%" />
     </article>
   </slide>
 
-  <slide class="fill nobackground" style="background-image:url(../master/images/container_crash.jpg);">
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/containers.jpg);">
-    <article class="flexbox vcenter">
-      <section class="textbox">
-        <h1>How can we package our products?</h1>
-      </section>
-    </article>
-  </slide>
-
-  <slide class="fill nobackground">
-    <hgroup>
-      <h2>Docker</h2>
-    </hgroup>
-    <article>
-            <pre class="prettyprint" data-lang="bash">bz@cc $ docker ps
-CONTAINER ID        IMAGE                               COMMAND                CREATED
-87bb5524067d        zutherb/product-service:latest      "/product-0.6/bin/pr   14 seconds
-bz@cc $ docker exec 87bb5524067d env
-PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-HOSTNAME=87bb5524067d
-MONGODB_PORT_27017_TCP=tcp://172.17.0.28:27017
-MONGODB_PORT_27017_TCP_ADDR=172.17.0.28
-MONGODB_PORT_27017_TCP_PORT=27017
-MONGODB_PORT_27017_TCP_PROTO=tcp</pre>
-    </article>
-  </slide>
-
-  <slide class="fill nobackground">
-    <hgroup>
-      <h2>Online Shop - Deployment</h2>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <img src="../master/images/deployment_diagramm_online_shop_docker.svg" style="height: 450px; width: 100%" />
-    </article>
-  </slide>
-
-  <slide class="fill nobackground">
+ <slide class="fill nobackground">
     <hgroup>
       <h2>Docker</h2>
     </hgroup>
@@ -401,7 +352,65 @@ catalog:
     </article>
   </slide>
 
-  <slide class="fill nobackground">
+  <slide class="fill nobackground" style="background-image:url(../master/images/light_at_the_end_of_the_tunnel.jpg);">
+    <hgroup>
+      <h2>Docker</h2>
+    </hgroup>
+    <article>
+      <table style="font-size: 0.8em; background-color: #ffffff">
+        <tbody>
+        <tr>
+          <th width="50%">Pro</th>
+          <th width="50%">Contra</th>
+        </tr>
+        <tr>
+          <td>Applications are isolated</td>
+          <td>Daemon runs as root on host</td>
+        </tr>
+        <tr>
+          <td>Tooling (Kubernetes, Mesos, Vamp)</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>Docker Repository</td>
+          <td>&nbsp;</td>
+        </tr>
+        </tbody>
+      </table>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Security Hole in Container can compromise host-system</li>
+          <li>Microsoft integrated Kubernetes in azure</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Blue Green Deployment</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/blue_green_deployment.svg" type="image/svg+xml" style="height: 450px; width: 100%" />
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Canary Release</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/canary_release.svg" type="image/svg+xml" style="height: 450px; width: 100%" />
+      </section>
+    </article>
+  </slide>
+
+  <slide>
     <hgroup>
       <h2>Distributed System</h2>
     </hgroup>
@@ -421,7 +430,7 @@ catalog:
     </article>
   </slide>
 
-  <slide class="fill nobackground" style="background-image:url(../master/images/pod.jpg);">
+  <slide>
     <hgroup>
       <h2>Pod</h2>
     </hgroup>
@@ -451,7 +460,7 @@ spec:
     </aside>
   </slide>
 
-  <slide class="fill nobackground" style="background-image:url(../master/images/clone.jpg);">
+  <slide>
     <hgroup>
       <h2>Replication Controller</h2>
     </hgroup>
@@ -469,7 +478,7 @@ desiredState:
     </article>
   </slide>
 
-  <slide  style="background-image:url(../master/images/service.jpg);">
+  <slide>
     <hgroup>
       <h2>Service</h2>
     </hgroup>
@@ -491,6 +500,34 @@ spec:
     <aside class="gdbar bottom"><img src="../master/images/youtube.png"></aside>
   </slide>
 
+  <slide class="fill nobackground" style="background-image:url(../master/images/light_at_the_end_of_the_tunnel.jpg);">
+    <hgroup>
+      <h2>Kubernetes</h2>
+    </hgroup>
+    <article>
+      <table style="font-size: 0.8em; background-color: #ffffff">
+        <tbody>
+          <tr>
+            <th width="50%">Pro</th>
+            <th width="50%">Contra</th>
+          </tr>
+          <tr>
+            <td>You needn't care where work is executed</td>
+            <td>No description about the whole application</td>
+          </tr>
+          <tr>
+            <td>You needn't care about dependencies</td>
+            <td>Monitoring failures will get harder</td>
+          </tr>
+          <tr>
+            <td>&nbsp;</td>
+            <td>Few tools and documentation is avaiable yet</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+  </slide>
+
   <slide>
     <hgroup>
       <h2>Mesos</h2>
@@ -502,6 +539,125 @@ spec:
     </article>
   </slide>
 
+  <slide>
+    <hgroup>
+      <h2>Marathon Deployment</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="yaml">{"id": "basic-3",
+  "cmd": "python3 -m http.server 8080",
+  "cpus": 0.5,
+  "mem": 32.0,
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "python:3",
+      "network": "BRIDGE",
+      "portMappings": [
+        { "containerPort": 8080, "hostPort": 0 }]}}}</pre>
+<pre class="prettyprint" data-lang="bash">
+curl -X POST http://10.141.141.10:8080/v2/apps -d @basic-3.json \
+  -H "Content-type: application/json"
+</pre>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/light_at_the_end_of_the_tunnel.jpg);">
+    <hgroup>
+      <h2>Marathon + Mesos</h2>
+    </hgroup>
+    <article>
+      <table style="font-size: 0.8em; background-color: #ffffff">
+        <tbody>
+        <tr>
+          <th width="50%">Pro</th>
+          <th width="50%">Contra</th>
+        </tr>
+        <tr>
+          <td>You needn't care where work is executed</td>
+          <td>No description about the whole application</td>
+        </tr>
+        <tr>
+          <td>Many tools and documentation are available</td>
+          <td>You need care about dependencies</td>
+        </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td>Monitoring failures will get harder</td>
+        </tr>
+        </tbody>
+      </table>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Very Awesome Microservices Platform (Vamp)</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/vamp.png" type="image/svg+xml" style="height: 450px; width: 100%" />
+      </section>
+    </article>
+    <aside class="gdbar bottom">
+      <img src="../master/images/youtube.png">
+    </aside>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/light_at_the_end_of_the_tunnel.jpg);">
+    <hgroup>
+      <h2>Summary</h2>
+    </hgroup>
+    <article>
+      <table style="font-size: 0.8em; background-color: #ffffff" class="summary">
+        <tbody>
+        <tr>
+          <th width="20%">&nbsp;</th>
+          <th width="20%">Linux Packages</th>
+          <th width="20%">Docker Daemon</th>
+          <th width="20%">Kubernetes</th>
+          <th width="20%">Mesos</th>
+        </tr>
+        <tr>
+          <th>Service Repository</th>
+          <td><img src="../master/images/checked.png" style="width: 50px"></td>
+          <td><img src="../master/images/checked.png" style="width: 50px"></td>
+          <td><img src="../master/images/checked.png" style="width: 50px"></td>
+          <td><img src="../master/images/checked.png" style="width: 50px"></td>
+        </tr>
+        <tr>
+          <th>Orchestration</th>
+          <td><img src="../master/images/imac.png" style="width: 50px"></td>
+          <td><img src="../master/images/imac.png" style="width: 50px"></td>
+          <td>
+            <img src="../master/images/imac.png" style="width: 50px">
+            <img src="../master/images/imac.png" style="width: 50px">
+            <img src="../master/images/imac.png" style="width: 50px">
+          </td>
+          <td>
+            <img src="../master/images/imac.png" style="width: 50px">
+            <img src="../master/images/imac.png" style="width: 50px">
+            <img src="../master/images/imac.png" style="width: 50px">
+          </td>
+        </tr>
+        <tr>
+          <th>Service Discovery</th>
+          <td><img src="../master/images/unchecked.png" style="width: 50px"></td>
+          <td><img src="../master/images/unchecked.png" style="width: 50px"></td>
+          <td><img src="../master/images/checked.png" style="width: 50px"></td>
+          <td><img src="../master/images/checked.png" style="width: 50px"></td>
+        </tr>
+        <tr>
+          <th>High Availability</th>
+          <td><img src="../master/images/unchecked.png" style="width: 50px"></td>
+          <td><img src="../master/images/unchecked.png" style="width: 50px"></td>
+          <td><img src="../master/images/checked.png" style="width: 50px"></td>
+          <td><img src="../master/images/checked.png" style="width: 50px"></td>
+        </tr>
+        </tbody>
+      </table>
+    </article>
+  </slide>
 
   <slide class="thank-you-slide segue nobackground current" style="background: url(../master/images/innovate_or_die.jpg) no-repeat center center fixed;  background-size: cover;">
     <aside class="gdbar right"><img src="../master/images/bernd-zuther.jpeg"></aside>
@@ -515,10 +671,11 @@ spec:
   </slide>
 
   <slide class="fill nobackground" style="background-image:url(../master/images/kaufrausch.jpg);">
-    <article class="flexbox vcenter">
+    <hgroup>
+      <h2>Demo Application</h2>
+    </hgroup>
+    <article>
       <section class="textbox">
-        <h1>Demo Application</h1>
-
         <a href="https://github.com/zutherb/AppStash/">
           <h2>https://github.com/zutherb/AppStash/</h2>
         </a>
@@ -622,31 +779,11 @@ spec:
             <a href="http://www.infoq.com/articles/scaling-docker-with-kubernetes">Scaling Docker with Kubernetes</a>
           </li>
           <li>
+            <a href="http://www.datacenter-insider.de/software-on-premise/middleware/articles/480855/index2.html">Container-Technik: Docker & Co.</a>
+          </li>
+          <li>
             <a href="https://github.com/zutherb/AppStash/">Appstash Project</a>
           </li>
-        </ul>
-      </section>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Images</h2>
-    </hgroup>
-    <article>
-      <section>
-        <ul>
-          <li>
-            <a href="https://www.flickr.com/photos/pragdave/173640462/in/photolist-gkXg5-66P5pq-4xYzrf-9NELbX-3pgqcZ-9NJTxs-9NEtYQ-9NAsCc-9NApiT-9NGKrb-9NGp3p-9NDvLH-DobLi-4xYKgw-9NG4oZ-9NGokq-9NC9uz-9NDCmM-9NEwpU-9NGYu8-9NJKMw-4xYxjm-4xUvjZ-4xYAMN-9NGabs-9NJPCW-9NEYMC-9M2DUT-9NG7YG-9NGn6D-9NC7mF-9NC5eF-9NK8vS-9NDrQR-9NGcbW-9NDy6B-9NDtMv-9NC2JV-9NBP6p-4xUjDe-4xYvAf-3jgXTJ-4xYv2U-4xYHcN-4xUqZR-3cZEyJ-3mi9MV-rHt9R-egFvvr-9NBBMn">
-              Martin Fowler
-            </a>
-          </li>
-          <li>
-            <a href="https://www.flickr.com/photos/1und1/11432061675/in/photolist-8mffE1-iqdiDD-s1exbc-shwTyQ-rYmNNk-s1esGx-rYmKfi-shFS26-sfoEJ3-shCWur-aQoszM-skmrxs-snBbFB-snDwFr-skmuWw-8X4eEC-bkfNsZ-bkfMjK-bkfKPp-rab7ta-s6VrZH-r9Y9Lw-6cQpjs-s6Qcou-rYmXDX-shDdpH-s17HVy-rkTeY8-shDafX-s17A8E-rYmJ7r-rkFsDy-rkFqT9-rGFdW5-aQosji-e2Y92b-snDwRg-s6c4tn-snu5jy-s65eXJ-s6c1kP-s646HY-s6c14r-snB81F-rqQtVT-rqDd2b-8ZiAee-71ki7T-dCPhwS-g14aC">
-              Dedicated Server im Rechenzentrum von 1&1
-            </a>
-          </li>
-
         </ul>
       </section>
     </article>

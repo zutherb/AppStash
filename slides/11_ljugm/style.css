@@ -147,3 +147,7 @@ hgroup {
 iframe.twitter-tweet {
   height: 230px;
 }
+
+table.summary td {
+  text-align: center;
+}
