@@ -29,7 +29,7 @@ clusters:
           cart: cart
           checkout: checkout
       scale:
-        instances: 1
+        instances: 2
         cpu: 0.1
         memory: 128
       routing:
@@ -51,9 +51,9 @@ clusters:
           mongodb: mongodb
           cart: cart
       scale:
-        instances: 1
-        cpu: 0.3
-        memory: 256
+        instances: 2
+        cpu: 0.5
+        memory: 512
 
   product:
     services:
@@ -68,7 +68,7 @@ clusters:
         dependencies:
           mongodb: mongodb
       scale:
-        instances: 1
+        instances: 2
         cpu: 0.1
         memory: 128
 
@@ -87,7 +87,7 @@ clusters:
       marathon:
        cmd: "export PORT=18090 && /navigation-0.6/bin/navigation"
       scale:
-        instances: 1
+        instances: 2
         cpu: 0.1
         memory: 128
 
@@ -104,7 +104,7 @@ clusters:
         dependencies:
           redis: redis
       scale:
-        instances: 1
+        instances: 2
         cpu: 0.1
         memory: 128
 
@@ -118,7 +118,7 @@ clusters:
       scale:
         instances: 1
         cpu: 0.1
-        memory: 128
+        memory: 256
 
   mongodb:
     services:
@@ -132,4 +132,4 @@ clusters:
       scale:
         instances: 1
         cpu: 0.1
-        memory: 128
+        memory: 256
