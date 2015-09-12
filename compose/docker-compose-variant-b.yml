@@ -61,15 +61,13 @@ elasticsearch:
     - "9200"
 logstash:
   image: deviantony/elk-logstash
-  volumes:
-    - logstash-conf:/etc/logstash/conf.d
   ports:
     - "5000"
   links:
     - elasticsearch
   privileged: true
   volumes:
-    - logstash-conf:/etc/logstash/conf.d
+    - ./logstash-conf:/etc/logstash/conf.d
     - /var/lib/docker/containers:/var/log/docker/containers
     - /var/log/checkout:/var/log/docker/checkout
 kibana4:
