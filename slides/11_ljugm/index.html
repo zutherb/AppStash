@@ -317,9 +317,17 @@ reprepro -b /var/packages/debian/ list shop
     </aside>
   </slide>
 
+  <slide class="fill nobackground" style="background-image:url(../master/images/containers.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>Build, Ship, Run</h1>
+      </section>
+    </article>
+  </slide>
+
   <slide class="fill nobackground">
     <hgroup>
-      <h2>Docker</h2>
+      <h2>Docker-Workflow</h2>
     </hgroup>
     <article>
             <pre class="prettyprint" data-lang="bash">
@@ -357,7 +365,10 @@ ENTRYPOINT ["/product-0.6/bin/product"]
     <aside class="note">
       <section>
         <ul>
-          <li>&nbsp;</li>
+          <li>The main purpose of a CMD is to provide defaults for an executing container.</li>
+          <li>These defaults can include an executable, or they can omit the executable, in which case you must specify an ENTRYPOINT instruction as well.</li>
+          <li>An ENTRYPOINT allows you to configure a container that will run as an executable.</li>
+          <li>Command line arguments to docker run <image> will be appended after all elements in an exec form ENTRYPOINT, and will override all elements specified using CMD.</li>
         </ul>
       </section>
     </aside>
@@ -454,11 +465,7 @@ catalog:
           </tr>
           <tr>
             <td>Docker Repository</td>
-            <td>Create dynamic enviorment with more then one node is hard</td>
-          </tr>
-          <tr>
-            <td>Linking is a form of service discovery on one node</td>
-            <td>&nbsp;</td>
+            <td>No Service Discovery</td>
           </tr>
           <tr>
             <td>Big ecosystem (Kubernetes, Mesos, Vamp)</td>
@@ -565,16 +572,23 @@ spec:
       <h2>Replication Controller</h2>
     </hgroup>
     <article >
-      <pre class="prettyprint" data-lang="yaml">
-kind: ReplicationController,
-desiredState:
-  <b>replicas: 4
-    podTemplate:
-    desiredState:
-    manifest:
-    containers:
-    - name: product
-    image: zutherb/product-service</b></pre>
+      <pre class="prettyprint" data-lang="yaml">apiVersion: v1
+kind: ReplicationController
+metadata:
+  ... (labels)
+spec:
+  replicas: 2
+  selector:
+    name: cart
+  template:
+    metadata:
+      ... (labels)
+    spec:
+      containers:
+      - name: cart
+        image: zutherb/cart-service
+        ports:
+        - containerPort: 18090</pre>
     </article>
   </slide>
 
@@ -617,10 +631,10 @@ spec:
           </tr>
           <tr>
             <td>You needn't care about dependencies</td>
-            <td>Monitoring failures will get harder</td>
+            <td>Analysis of failures will get harder</td>
           </tr>
           <tr>
-            <td>Service discovery in a dynamic enviorment</td>
+            <td>Service discovery</td>
             <td>Master is a single point of failure</td>
           </tr>
           <tr>
@@ -691,7 +705,7 @@ curl -X POST http://10.141.141.10:8080/v2/apps -d @basic-3.json \
         </tr>
         <tr>
           <td>&nbsp;</td>
-          <td>Monitoring failures will get harder</td>
+          <td>Analysis of failures will get harder</td>
         </tr>
         </tbody>
       </table>
@@ -729,7 +743,7 @@ curl -X POST http://10.141.141.10:8080/v2/apps -d @basic-3.json \
         </tr>
         <tr>
           <td>You needn't care where work is executed</td>
-          <td>Monitoring failures will get harder</td>
+          <td>Analysis of failures will get harder</td>
         </tr>
         <tr>
           <td>High Availability</td>
