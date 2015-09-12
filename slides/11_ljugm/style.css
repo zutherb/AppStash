@@ -151,3 +151,12 @@ iframe.twitter-tweet {
 table.summary td {
   text-align: center;
 }
+
+table.summary th, table.summary td {
+  font-size: 0.85em;
+  vertical-align: middle;
+}
+
+table th, table td {
+  vertical-align: top;
+}

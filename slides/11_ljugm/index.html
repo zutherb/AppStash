@@ -110,7 +110,7 @@
         <img src="../master/images/microservice.svg" style="height: 220px; float: left; margin-right: 50px" />
         <ul class="build">
           <li>fits in one brain,</li>
-          <li>designed for replaceability,</li>
+          <li style="color: red">designed for replaceability,</li>
           <li>autonomy (organisation & technology)</li>
         </ul>
       </section>
@@ -123,7 +123,7 @@
     </hgroup>
     <article class="flexbox vcenter">
       <section>
-        <img src="../master/images/microservice_taxonomy.svg" style="height: 500px;" />
+        <img src="../master/images/microservice_taxonomy_docker_talk.svg" style="height: 500px;" />
       </section>
     </article>
   </slide>
@@ -134,12 +134,15 @@
     </hgroup>
     <article class="flexbox vcenter">
       <section class="textbox">
-        <p style="margin-bottom: 0em">
+        <p style="margin-bottom: 0em; font-size: xx-large">
             The microservice architectural style is an approach to developing <b>a single application as a suite of small services</b>,
             <b>each running in its own process</b> and communicating with <b>lightweight mechanisms</b>, often an HTTP resource API.
             These services are <b>built around business capabilities</b> and <b>independently deployable</b> by fully automated deployment
             machinery. There is a bare <b>minimum of centralized management</b> of these services, which may be written in different
             programming languages and use different data storage technologies.
+        </p>
+        <p style="margin-top: 40px">
+          Martin Fowler - http://martinfowler.com/articles/microservices.html
         </p>
       </section>
     </article>
@@ -196,7 +199,7 @@ www-data  1980  1.5  7.0 2456532 143688 ?      Sl   10:49   1:20 java -cp produc
 
   <slide>
     <hgroup>
-      <h2>Unix Packages</h2>
+      <h2>Linux Packages</h2>
     </hgroup>
     <article >
       <pre class="prettyprint" data-lang="bash">
@@ -263,12 +266,55 @@ reprepro -b /var/packages/debian/ list shop
     </article>
   </slide>
 
-  <slide class="fill nobackground" style="background-image:url(../master/images/oldwatch.jpg);">
+  <slide class="fill nobackground" style="background-image:url(../master/images/light_at_the_end_of_the_tunnel.jpg);">
+    <hgroup>
+      <h2>Linux Packages</h2>
+    </hgroup>
+    <article>
+      <table style="font-size: 0.8em; background-color: #ffffff">
+        <tbody>
+          <tr>
+            <th width="50%">Pro</th>
+            <th width="50%">Contra</th>
+          </tr>
+          <tr>
+            <td>Service Repository</td>
+            <td>No Service Discovery</td>
+          </tr>
+          <tr>
+            <td>Dependency Management</td>
+            <td>Runtime enviroment must be created on every single node</td>
+          </tr>
+          <tr>
+            <td>Technologies are battle-tested</td>
+            <td>&nbsp;</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>time is money => save enviorment creation time</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/lazy_lion.jpg);">
     <article class="flexbox vcenter">
       <section class="textbox">
-        <h1>Is there something new?</h1>
+        <h1>How can we avoid the creation time?</h1>
       </section>
     </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>download artifact</li>
+          <li>start process</li>
+        </ul>
+      </section>
+    </aside>
   </slide>
 
   <slide class="fill nobackground">
@@ -276,22 +322,50 @@ reprepro -b /var/packages/debian/ list shop
       <h2>Docker</h2>
     </hgroup>
     <article>
-            <pre class="prettyprint" data-lang="bash">bz@cc $ docker ps
+            <pre class="prettyprint" data-lang="bash">
+bz@cc $ docker build -t zutherb/product-service .
+bz@cc $ docker push zutherb/product-service
+bz@cc $ docker pull zutherb/product-service
+bz@cc $ docker run zutherb/product-service
+bz@cc $ docker ps
 CONTAINER ID        IMAGE                               COMMAND                CREATED
 87bb5524067d        zutherb/product-service:latest      "/product-0.6/bin/pr   14 seconds
-bz@cc $ docker exec 87bb5524067d env
-PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-HOSTNAME=87bb5524067d
-MONGODB_PORT_27017_TCP=tcp://172.17.0.28:27017
-MONGODB_PORT_27017_TCP_ADDR=172.17.0.28
-MONGODB_PORT_27017_TCP_PORT=27017
-MONGODB_PORT_27017_TCP_PROTO=tcp</pre>
+</pre>
     </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Enviorment to build, ship, and run</li>
+        </ul>
+      </section>
+    </aside>
   </slide>
 
   <slide class="fill nobackground">
     <hgroup>
-      <h2>Complex Deployment Scenario</h2>
+      <h2>Docker-File</h2>
+    </hgroup>
+    <article>
+            <pre class="prettyprint" data-lang="bash">
+FROM relateiq/oracle-java8
+MAINTAINER Bernd Zuther &lt;bernd.zuther@codecentric.de&gt;
+EXPOSE 18080
+ADD product-0.6.tar /
+ENTRYPOINT ["/product-0.6/bin/product"]
+</pre>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>&nbsp;</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide class="fill nobackground">
+    <hgroup>
+      <h2>Deployment Scenario</h2>
     </hgroup>
     <article class="flexbox vcenter">
       <img src="../master/images/deployment_diagramm_online_shop_docker.svg" style="height: 450px; width: 100%" />
@@ -300,7 +374,7 @@ MONGODB_PORT_27017_TCP_PROTO=tcp</pre>
 
  <slide class="fill nobackground">
     <hgroup>
-      <h2>Docker</h2>
+      <h2>Linking</h2>
     </hgroup>
     <article>
       <pre class="prettyprint" data-lang="bash">bz@cc ~$ <b>docker run -d --name mongodb mongo</b>
@@ -311,7 +385,14 @@ bz@cc ~$ <b>docker run -d -P --name cart --link redis:redis zutherb/cart-service
 438b2657c7a5c733787fb32b7d28e1a0b84ba9e10d19a8a015c6f24085455011
 bz@cc ~$ <b>docker run -d -P -p 8080:8080 --name shop --link cart:cart \
               --link mongodb:mongodb zutherb/monolithic-shop</b>
-9926e187faa215ac9044603d51adbd8d679d8076b4a349ebbc9917dade6d560e</pre>
+9926e187faa215ac9044603d51adbd8d679d8076b4a349ebbc9917dade6d560e
+bz@cc $ docker exec 9926e187faa215ac9044603d51adbd8d679d8076b4a349ebbc9917dade6d560e env
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=87bb5524067d
+MONGODB_PORT_27017_TCP=tcp://172.17.0.28:27017
+MONGODB_PORT_27017_TCP_ADDR=172.17.0.28
+MONGODB_PORT_27017_TCP_PORT=27017
+MONGODB_PORT_27017_TCP_PROTO=tcp</pre>
     </article>
   </slide>
 
@@ -359,30 +440,38 @@ catalog:
     <article>
       <table style="font-size: 0.8em; background-color: #ffffff">
         <tbody>
-        <tr>
-          <th width="50%">Pro</th>
-          <th width="50%">Contra</th>
-        </tr>
-        <tr>
-          <td>Applications are isolated</td>
-          <td>Daemon runs as root on host</td>
-        </tr>
-        <tr>
-          <td>Tooling (Kubernetes, Mesos, Vamp)</td>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td>Docker Repository</td>
-          <td>&nbsp;</td>
-        </tr>
+          <tr>
+            <th width="50%">Pro</th>
+            <th width="50%">Contra</th>
+          </tr>
+          <tr>
+            <td>Applications are isolated</td>
+            <td>Daemon runs as root on host</td>
+          </tr>
+          <tr>
+            <td>Images are build once and run anywhere</td>
+            <td>No Process Supervisor</td>
+          </tr>
+          <tr>
+            <td>Docker Repository</td>
+            <td>Create dynamic enviorment with more then one node is hard</td>
+          </tr>
+          <tr>
+            <td>Linking is a form of service discovery on one node</td>
+            <td>&nbsp;</td>
+          </tr>
+          <tr>
+            <td>Big ecosystem (Kubernetes, Mesos, Vamp)</td>
+            <td>&nbsp;</td>
+          </tr>
         </tbody>
       </table>
     </article>
     <aside class="note">
       <section>
         <ul>
-          <li>Security Hole in Container can compromise host-system</li>
           <li>Microsoft integrated Kubernetes in azure</li>
+          <li>Security Hole in Container can compromise host-system</li>
         </ul>
       </section>
     </aside>
@@ -513,14 +602,18 @@ spec:
           </tr>
           <tr>
             <td>You needn't care where work is executed</td>
-            <td>No description about the whole application</td>
+            <td>No description of the whole application like it is done with docker compose and for deployment scenario</td>
           </tr>
           <tr>
             <td>You needn't care about dependencies</td>
             <td>Monitoring failures will get harder</td>
           </tr>
           <tr>
-            <td>&nbsp;</td>
+            <td>Service discovery in a dynamic enviorment</td>
+            <td>Master is a single point of failure</td>
+          </tr>
+          <tr>
+            <td>Process Supervisor</td>
             <td>Few tools and documentation is avaiable yet</td>
           </tr>
         </tbody>
@@ -575,11 +668,15 @@ curl -X POST http://10.141.141.10:8080/v2/apps -d @basic-3.json \
         </tr>
         <tr>
           <td>You needn't care where work is executed</td>
-          <td>No description about the whole application</td>
+          <td>No description of the whole application and for deployment scenario</td>
+        </tr>
+        <tr>
+          <td>High Availability</td>
+          <td>No Process Supervisor</td>
         </tr>
         <tr>
           <td>Many tools and documentation are available</td>
-          <td>You need care about dependencies</td>
+          <td>No Service Discovery</td>
         </tr>
         <tr>
           <td>&nbsp;</td>
@@ -606,6 +703,42 @@ curl -X POST http://10.141.141.10:8080/v2/apps -d @basic-3.json \
 
   <slide class="fill nobackground" style="background-image:url(../master/images/light_at_the_end_of_the_tunnel.jpg);">
     <hgroup>
+      <h2>Vamp + Marathon + Mesos</h2>
+    </hgroup>
+    <article>
+      <table style="font-size: 0.8em; background-color: #ffffff">
+        <tbody>
+        <tr>
+          <th width="50%">Pro</th>
+          <th width="50%">Contra</th>
+        </tr>
+        <tr>
+          <td>Description of the whole application and for deployment scenario</td>
+          <td>Many components that has to be understood</td>
+        </tr>
+        <tr>
+          <td>You needn't care where work is executed</td>
+          <td>Monitoring failures will get harder</td>
+        </tr>
+        <tr>
+          <td>High Availability</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>Process Supervisor</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>Service Discovery</td>
+          <td>&nbsp;</td>
+        </tr>
+        </tbody>
+      </table>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/light_at_the_end_of_the_tunnel.jpg);">
+    <hgroup>
       <h2>Summary</h2>
     </hgroup>
     <article>
@@ -616,43 +749,71 @@ curl -X POST http://10.141.141.10:8080/v2/apps -d @basic-3.json \
           <th width="20%">Linux Packages</th>
           <th width="20%">Docker Daemon</th>
           <th width="20%">Kubernetes</th>
-          <th width="20%">Mesos</th>
+          <th width="20%">Vamp + Marathon + Mesos</th>
         </tr>
         <tr>
           <th>Service Repository</th>
-          <td><img src="../master/images/checked.png" style="width: 50px"></td>
-          <td><img src="../master/images/checked.png" style="width: 50px"></td>
-          <td><img src="../master/images/checked.png" style="width: 50px"></td>
-          <td><img src="../master/images/checked.png" style="width: 50px"></td>
+          <td><img src="../master/images/checked.png" style="width: 25px"></td>
+          <td><img src="../master/images/checked.png" style="width: 25px"></td>
+          <td><img src="../master/images/checked.png" style="width: 25px"></td>
+          <td><img src="../master/images/checked.png" style="width: 25px"></td>
         </tr>
         <tr>
           <th>Orchestration</th>
-          <td><img src="../master/images/imac.png" style="width: 50px"></td>
-          <td><img src="../master/images/imac.png" style="width: 50px"></td>
+          <td><img src="../master/images/imac.png" style="width: 25px"></td>
+          <td><img src="../master/images/imac.png" style="width: 25px"></td>
           <td>
-            <img src="../master/images/imac.png" style="width: 50px">
-            <img src="../master/images/imac.png" style="width: 50px">
-            <img src="../master/images/imac.png" style="width: 50px">
+            <img src="../master/images/imac.png" style="width: 25px">
+            <img src="../master/images/imac.png" style="width: 25px">
+            <img src="../master/images/imac.png" style="width: 25px">
           </td>
           <td>
-            <img src="../master/images/imac.png" style="width: 50px">
-            <img src="../master/images/imac.png" style="width: 50px">
-            <img src="../master/images/imac.png" style="width: 50px">
+            <img src="../master/images/imac.png" style="width: 25px">
+            <img src="../master/images/imac.png" style="width: 25px">
+            <img src="../master/images/imac.png" style="width: 25px">
           </td>
         </tr>
         <tr>
           <th>Service Discovery</th>
-          <td><img src="../master/images/unchecked.png" style="width: 50px"></td>
-          <td><img src="../master/images/unchecked.png" style="width: 50px"></td>
-          <td><img src="../master/images/checked.png" style="width: 50px"></td>
-          <td><img src="../master/images/checked.png" style="width: 50px"></td>
+          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
+          <td>
+            <img src="../master/images/checked.png" style="width: 25px">
+            <img src="../master/images/unchecked.png" style="width: 25px">
+          </td>
+          <td><img src="../master/images/checked.png" style="width: 25px"></td>
+          <td><img src="../master/images/checked.png" style="width: 25px"></td>
+        </tr>
+        <tr>
+          <th>Process Supervisor</th>
+          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
+          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
+          <td><img src="../master/images/checked.png" style="width: 25px"></td>
+          <td><img src="../master/images/checked.png" style="width: 25px"></td>
         </tr>
         <tr>
           <th>High Availability</th>
-          <td><img src="../master/images/unchecked.png" style="width: 50px"></td>
-          <td><img src="../master/images/unchecked.png" style="width: 50px"></td>
-          <td><img src="../master/images/checked.png" style="width: 50px"></td>
-          <td><img src="../master/images/checked.png" style="width: 50px"></td>
+          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
+          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
+          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
+          <td><img src="../master/images/checked.png" style="width: 25px"></td>
+        </tr>
+        <tr>
+          <th>Application Description</th>
+          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
+          <td><img src="../master/images/text-plain-icon.png" style="width: 25px"></td>
+          <td>
+            <img src="../master/images/text-plain-icon.png" style="width: 25px">
+            <img src="../master/images/text-plain-icon.png" style="width: 25px">
+            <img src="../master/images/text-plain-icon.png" style="width: 25px">
+          </td>
+          <td><img src="../master/images/text-plain-icon.png" style="width: 25px"></td>
+        </tr>
+        <tr>
+          <th>Routing Definition</th>
+          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
+          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
+          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
+          <td><img src="../master/images/checked.png" style="width: 25px"></td>
         </tr>
         </tbody>
       </table>

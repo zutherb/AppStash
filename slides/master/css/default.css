@@ -1270,11 +1270,11 @@ aside.gdbar {
   -ms-border-radius: 0 10px 10px 0;
   -o-border-radius: 0 10px 10px 0;
   border-radius: 0 10px 10px 0;
-  background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #e6e6e6), color-stop(100%, #e6e6e6)) no-repeat;
-  background: -webkit-linear-gradient(left, #e6e6e6, #e6e6e6) no-repeat;
-  background: -moz-linear-gradient(left, #e6e6e6, #e6e6e6) no-repeat;
-  background: -o-linear-gradient(left, #e6e6e6, #e6e6e6) no-repeat;
-  background: linear-gradient(left, #e6e6e6, #e6e6e6) no-repeat;
+  background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #000), color-stop(100%, #000)) no-repeat;
+  background: -webkit-linear-gradient(left, #000, #000) no-repeat;
+  background: -moz-linear-gradient(left, #000, #000) no-repeat;
+  background: -o-linear-gradient(left, #000, #000) no-repeat;
+  background: linear-gradient(left, #000, #000) no-repeat;
   -webkit-background-size: 0% 100%;
   -moz-background-size: 0% 100%;
   -o-background-size: 0% 100%;
