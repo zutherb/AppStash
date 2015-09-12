@@ -63,6 +63,8 @@ Date       | Event                         | Title
 21.04.2015 | [Agile Softwarearchitektur Münster](http://www.meetup.com/Agile-Softwarearchitektur/) | [Microservices und die Jagd nach mehr Konversion](http://zutherb.github.io/AppStash/slides/08_agile_softwarearchitektur_muenster/)
 23.06.2015 | [Devoxx Poland](http://devoxx.pl/) | [Microservices and Conversion Hunting - How to build software architectures for adaptability](http://zutherb.github.io/AppStash/slides/09_devoxx_pl/)
 20.08.2015 | [IT Meetup Bali](http://www.meetup.com/IT-Meetup-Bali/events/224324564) | [Microservices and Conversion Hunting: Build Architectures for Changeability](http://zutherb.github.io/AppStash/slides/10_bali/)
+14.09.2015 | [Microservices Meetup Hamburg](http://www.meetup.com/Microservices-Meetup-Hamburg/) | [Microservice-Deployment ganz einfach](http://zutherb.github.io/AppStash/slides/11_ljugm/)
+15.09.2015 | [Lightweight Java User Group München](http://www.meetup.com/de/lightweight-java-user-group-munchen/) | [Microservice-Deployment ganz einfach](http://zutherb.github.io/AppStash/slides/11_ljugm/)
 
 ## Articles
 
