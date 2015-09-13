@@ -877,7 +877,7 @@ Discovery}</string>
 \pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural\qc
 
 \f0\fs48 \cf0 Service \
-Repository}</string>
+Repository /Orchestration}</string>
 			</dict>
 		</dict>
 		<dict>
@@ -1143,7 +1143,7 @@ Frontend}</string>
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2015-09-12 06:51:15 +0000</string>
+	<string>2015-09-13 06:49:01 +0000</string>
 	<key>Modifier</key>
 	<string>Bernd Zuther</string>
 	<key>NotesVisible</key>
@@ -1233,7 +1233,7 @@ Frontend}</string>
 		<key>SidebarWidth</key>
 		<integer>120</integer>
 		<key>VisibleRegion</key>
-		<string>{{40.404040014825298, 0}, {1318.1818054836754, 693.93938725462453}}</string>
+		<string>{{39.393939014454666, 0}, {1318.1818054836754, 693.93938725462453}}</string>
 		<key>Zoom</key>
 		<real>0.99000000953674316</real>
 		<key>ZoomValues</key>
