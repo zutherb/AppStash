@@ -607,6 +607,27 @@ spec:
     <hgroup>
       <h2>Service</h2>
     </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/services-overview.png" style="height: 450px;" />
+      </section>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Every node in a Kubernetes cluster runs a kube-proxy.</li>
+          <li>For each Service the kube-proxy opens a port (randomly chosen) on the local node</li>
+          <li>Any connections made to that port will be proxied to one of the corresponding backend Pods</li>
+          <li>Any traffic bound for the Service is proxied to an appropriate backend without the clients knowing anything about Kubernetes or Services or Pods.</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Service</h2>
+    </hgroup>
     <article >
       <pre class="prettyprint" data-lang="yaml">kind: Service
 apiVersion: v1
