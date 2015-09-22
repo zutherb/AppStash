@@ -52,6 +52,56 @@
 	<key>GraphicsList</key>
 	<array>
 		<dict>
+			<key>Bounds</key>
+			<string>{{0, 0}, {45, 14}}</string>
+			<key>Class</key>
+			<string>ShapedGraphic</string>
+			<key>FitText</key>
+			<string>YES</string>
+			<key>Flow</key>
+			<string>Resize</string>
+			<key>ID</key>
+			<integer>45</integer>
+			<key>Shape</key>
+			<string>Rectangle</string>
+			<key>Style</key>
+			<dict>
+				<key>fill</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+				<key>shadow</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+				<key>stroke</key>
+				<dict>
+					<key>Draws</key>
+					<string>NO</string>
+				</dict>
+			</dict>
+			<key>Text</key>
+			<dict>
+				<key>Align</key>
+				<integer>0</integer>
+				<key>Pad</key>
+				<integer>0</integer>
+				<key>Text</key>
+				<string>{\rtf1\ansi\ansicpg1252\cocoartf1404\cocoasubrtf120
+\cocoascreenfonts1{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red230\green230\blue230;}
+\pard\tx560\tx1120\tx1680\tx2240\tx2800\tx3360\tx3920\tx4480\tx5040\tx5600\tx6160\tx6720\pardirnatural
+
+\f0\fs24 \cf2 E6E6E6}</string>
+				<key>VerticalPad</key>
+				<integer>0</integer>
+			</dict>
+			<key>Wrap</key>
+			<string>NO</string>
+		</dict>
+		<dict>
 			<key>Class</key>
 			<string>LineGraphic</string>
 			<key>ID</key>
@@ -115,11 +165,11 @@
 					<key>Color</key>
 					<dict>
 						<key>b</key>
-						<string>0.96545</string>
+						<string>0.901961</string>
 						<key>g</key>
-						<string>0.965433</string>
+						<string>0.901961</string>
 						<key>r</key>
-						<string>0.965462</string>
+						<string>0.901961</string>
 					</dict>
 				</dict>
 				<key>stroke</key>
@@ -371,11 +421,11 @@ Logging}</string>
 					<key>Color</key>
 					<dict>
 						<key>b</key>
-						<string>0.96545</string>
+						<string>0.901961</string>
 						<key>g</key>
-						<string>0.965433</string>
+						<string>0.901961</string>
 						<key>r</key>
-						<string>0.965462</string>
+						<string>0.901961</string>
 					</dict>
 				</dict>
 				<key>stroke</key>
@@ -441,11 +491,11 @@ Logging}</string>
 					<key>Color</key>
 					<dict>
 						<key>b</key>
-						<string>0.96545</string>
+						<string>0.901961</string>
 						<key>g</key>
-						<string>0.965433</string>
+						<string>0.901961</string>
 						<key>r</key>
-						<string>0.965462</string>
+						<string>0.901961</string>
 					</dict>
 				</dict>
 				<key>stroke</key>
@@ -567,11 +617,11 @@ Logic}</string>
 					<key>Color</key>
 					<dict>
 						<key>b</key>
-						<string>0.96545</string>
+						<string>0.901961</string>
 						<key>g</key>
-						<string>0.965433</string>
+						<string>0.901961</string>
 						<key>r</key>
-						<string>0.965462</string>
+						<string>0.901961</string>
 					</dict>
 				</dict>
 				<key>stroke</key>
@@ -637,11 +687,11 @@ Logic}</string>
 					<key>Color</key>
 					<dict>
 						<key>b</key>
-						<string>0.96545</string>
+						<string>0.901961</string>
 						<key>g</key>
-						<string>0.965433</string>
+						<string>0.901961</string>
 						<key>r</key>
-						<string>0.965462</string>
+						<string>0.901961</string>
 					</dict>
 				</dict>
 				<key>stroke</key>
@@ -707,11 +757,11 @@ Logic}</string>
 					<key>Color</key>
 					<dict>
 						<key>b</key>
-						<string>0.96545</string>
+						<string>0.901961</string>
 						<key>g</key>
-						<string>0.965433</string>
+						<string>0.901961</string>
 						<key>r</key>
-						<string>0.965462</string>
+						<string>0.901961</string>
 					</dict>
 				</dict>
 				<key>stroke</key>
@@ -919,11 +969,11 @@ Repository /Orchestration}</string>
 					<key>Color</key>
 					<dict>
 						<key>b</key>
-						<string>0.96545</string>
+						<string>0.901961</string>
 						<key>g</key>
-						<string>0.965433</string>
+						<string>0.901961</string>
 						<key>r</key>
-						<string>0.965462</string>
+						<string>0.901961</string>
 					</dict>
 				</dict>
 				<key>stroke</key>
@@ -989,11 +1039,11 @@ Repository /Orchestration}</string>
 					<key>Color</key>
 					<dict>
 						<key>b</key>
-						<string>0.96545</string>
+						<string>0.901961</string>
 						<key>g</key>
-						<string>0.965433</string>
+						<string>0.901961</string>
 						<key>r</key>
-						<string>0.965462</string>
+						<string>0.901961</string>
 					</dict>
 				</dict>
 				<key>stroke</key>
@@ -1143,7 +1193,7 @@ Frontend}</string>
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2015-09-22 19:49:29 +0000</string>
+	<string>2015-09-22 20:06:02 +0000</string>
 	<key>Modifier</key>
 	<string>Bernd Zuther</string>
 	<key>NotesVisible</key>
@@ -1219,7 +1269,7 @@ Frontend}</string>
 		<key>ExpandedCanvases</key>
 		<array/>
 		<key>Frame</key>
-		<string>{{0, 48}, {1440, 829}}</string>
+		<string>{{0, 45}, {1440, 829}}</string>
 		<key>ListView</key>
 		<true/>
 		<key>OutlineWidth</key>
@@ -1233,7 +1283,7 @@ Frontend}</string>
 		<key>SidebarWidth</key>
 		<integer>120</integer>
 		<key>VisibleRegion</key>
-		<string>{{37.373737013713402, 0}, {1318.1818054836754, 693.93938725462453}}</string>
+		<string>{{0, 51.010100518716939}, {1318.1818054836754, 693.93938725462453}}</string>
 		<key>Zoom</key>
 		<real>0.99000000953674316</real>
 		<key>ZoomValues</key>
