@@ -19,6 +19,9 @@
 
 <slides class="layout-widescreen">
 
+  <slide class="fill nobackground" style="background-image:url(../master/images/cc-wallpaper_01.jpg); ); background-position: center center; background-repeat: no-repeat; background-size: cover;">
+  </slide>
+
   <slide class="title-slide segue nobackground">
     <aside class="gdbar">
       <img src="../master/images/codecentric-logo-only.jpg">
@@ -68,10 +71,7 @@
     </article>
   </slide>
 
-  <slide class="fill nobackground" style="background-image:url(../master/images/cc-wallpaper_01.jpg); ); background-position: center center; background-repeat: no-repeat; background-size: cover;">
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/crow_nut.jpgs);">
+  <slide class="fill nobackground" style="background-image:url(../master/images/crow_nut.jpg);">
   </slide>
 
   <slide class="fill nobackground" style="background-image:url(../master/images/lionseats.jpg);">
@@ -506,17 +506,6 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
     </article>
   </slide>
 
-  <slide>
-    <hgroup>
-      <h2>Deployment Overview</h2>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <section>
-        <img src="../master/images/deployment_diagramm_online_shop.svg" style="height: 500px" />
-      </section>
-    </article>
-  </slide>
-
   <slide class="fill nobackground" style="background-image:url(../master/images/containers.jpg);">
     <article class="flexbox vcenter">
       <section class="textbox">
@@ -532,25 +521,6 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
     <article class="flexbox vcenter">
       <section>
         <img src="../master/images/canary_release.svg" type="image/svg+xml" style="height: 450px; width: 100%" />
-      </section>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Microservice - Canary Release</h2>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <section>
-        <img src="../master/images/blue_green_deploymen_microservice.svg" type="image/svg+xml" style="height: 450px; width: 100%" />
-      </section>
-    </article>
-  </slide>
-
-  <slide class="fill nobackground" style="background-image:url(../master/images/container_crash.jpg);">
-    <article class="flexbox vcenter">
-      <section class="textbox">
-        <h1>How can we avoid a shipwreck?</h1>
       </section>
     </article>
   </slide>
@@ -613,6 +583,27 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
       </section>
     </article>
   </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Mapped Diagnostic Context</h2>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="java">
+MDC.put("correlationId", "A8FFA290");
+Logger logger = LoggerFactory.getLogger(SimpleMDC.class);
+logger.info("Create Order");
+</pre>
+<pre class="prettyprint" data-lang="xml">
+&lt;appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender"&gt
+  &lt;layout&gt;
+   &lt;Pattern&gt;[%X{correlationId}] - %m%n&lt;/Pattern&gt;
+  &lt;/layout&gt;
+&lt;/appender&gt;
+</pre>
+    </article>
+  </slide>
+
 
   <slide class="fill nobackground" style="background-image:url(../master/images/light_at_the_end_of_the_tunnel.jpg);">
     <hgroup>
