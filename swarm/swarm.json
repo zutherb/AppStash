@@ -1,120 +1,171 @@
 {
-  "app_name": "shop",
-  "services": [
-    {
-      "service_name": "database-service",
-      "components": [
+  "name": "shop",
+  "components": {
+    "cart-service": {
+      "expose": [
         {
-          "component_name": "mongodb",
-          "image": "mongo",
-          "ports": [27017, 28017]
+          "port": "8008",
+          "component": "cart-service/cart",
+          "target_port": 18100
+        }
+      ]
+    },
+    "cart-service/cart": {
+      "image": "zutherb/cart-service",
+      "ports": [
+        18100
+      ],
+      "links": [
+        {
+          "component": "database-service",
+          "target_port": "8003/tcp"
+        }
+      ]
+    },
+    "catalog-service": {
+      "expose": [
+        {
+          "port": "8005",
+          "component": "catalog-service/catalog",
+          "target_port": 80
+        }
+      ]
+    },
+    "catalog-service/catalog": {
+      "image": "zutherb/catalog-frontend",
+      "ports": [
+        80
+      ],
+      "env": [
+        "CHECKOUT_DESIGN=standard"
+      ],
+      "domains": {
+        "80/tcp": [
+          "shop-zutherb.gigantic.io"
+        ]
+      },
+      "links": [
+        {
+          "component": "product-service",
+          "target_port": "8006/tcp"
         },
         {
-          "component_name": "redis",
-          "image": "redis",
-          "ports": [6379]
+          "component": "navigation-service",
+          "target_port": "8007/tcp"
+        },
+        {
+          "component": "cart-service",
+          "target_port": "8008/tcp"
+        },
+        {
+          "component": "checkout-service",
+          "target_port": "8004/tcp"
         }
       ]
     },
-    {
-      "service_name": "checkout-service",
-      "components": [
-          {
-            "component_name": "shop",
-            "image": "zutherb/monolithic-shop",
-            "domains": { "monolithic-shop-zutherb.gigantic.io": 8080 },
-            "ports": [8080],
-            "dependencies": [
-              {
-                "name": "cart-service/cart",
-                "port": 18100
-              },{
-                "name": "database-service/mongodb",
-                "port": 27017
-              }
-            ]
-          }
+    "checkout-service": {
+      "expose": [
+        {
+          "port": "8004",
+          "component": "checkout-service/shop",
+          "target_port": 8080
+        }
+      ]
+    },
+    "checkout-service/shop": {
+      "image": "zutherb/monolithic-shop",
+      "ports": [
+        8080
+      ],
+      "domains": {
+        "8080/tcp": [
+          "monolithic-shop-zutherb.gigantic.io"
         ]
-    },
-    {
-      "service_name": "catalog-service",
-      "components": [
+      },
+      "links": [
         {
-          "component_name": "catalog",
-          "image": "zutherb/catalog-frontend",
-          "ports": [80],
-          "domains": { "shop-zutherb.gigantic.io": 80 },
-          "dependencies": [
-            {
-              "name": "product-service/product",
-              "port": 18080
-            },
-            {
-              "name": "navigation-service/navigation",
-              "port": 18090
-            },
-            {
-              "name": "cart-service/cart",
-              "port": 18100
-            },
-            {
-              "name": "checkout-service/shop",
-              "port": 8080
-            }
-          ],
-          "env": {
-            "CHECKOUT_DESIGN": "standard"
-          }
+          "component": "cart-service",
+          "target_port": "8008/tcp"
+        },
+        {
+          "component": "database-service",
+          "target_port": "8002/tcp"
         }
       ]
     },
-    {
-      "service_name": "product-service",
-      "components": [
+    "database-service": {
+      "expose": [
         {
-          "component_name": "product",
-          "image": "zutherb/product-service",
-          "ports": [18080],
-          "dependencies": [
-            {
-              "name": "database-service/mongodb",
-              "port": 27017
-            }
-          ]
+          "port": "8001",
+          "component": "database-service/mongodb",
+          "target_port": 27017
+        },
+        {
+          "port": "8002",
+          "component": "database-service/mongodb",
+          "target_port": 28017
+        },
+        {
+          "port": "8003",
+          "component": "database-service/redis",
+          "target_port": 6379
         }
       ]
     },
-    {
-      "service_name": "navigation-service",
-      "components": [
+    "database-service/mongodb": {
+      "image": "mongo",
+      "ports": [
+        27017,
+        28017
+      ]
+    },
+    "database-service/redis": {
+      "image": "redis",
+      "ports": [
+        6379
+      ]
+    },
+    "navigation-service": {
+      "expose": [
         {
-          "component_name": "navigation",
-          "image": "zutherb/navigation-service",
-          "ports": [18090],
-          "dependencies": [
-            {
-              "name": "database-service/mongodb",
-              "port": 27017
-            }
-          ]
+          "port": "8007",
+          "component": "navigation-service/navigation",
+          "target_port": 18090
         }
       ]
     },
-    {
-      "service_name": "cart-service",
-      "components": [
+    "navigation-service/navigation": {
+      "image": "zutherb/navigation-service",
+      "ports": [
+        18090
+      ],
+      "links": [
         {
-          "component_name": "cart",
-          "image": "zutherb/cart-service",
-          "ports": [18100],
-          "dependencies": [
-            {
-              "name": "database-service/redis",
-              "port": 6379
-            }
-          ]
+          "component": "database-service",
+          "target_port": "8002/tcp"
+        }
+      ]
+    },
+    "product-service": {
+      "expose": [
+        {
+          "port": "8006",
+          "component": "product-service/product",
+          "target_port": 18080
+        }
+      ]
+    },
+    "product-service/product": {
+      "image": "zutherb/product-service",
+      "ports": [
+        18080
+      ],
+      "links": [
+        {
+          "component": "database-service",
+          "target_port": "8002/tcp"
         }
       ]
     }
-  ]
+  }
 }
