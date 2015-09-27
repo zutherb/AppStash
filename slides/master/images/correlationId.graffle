@@ -54,6 +54,13 @@
 		<dict>
 			<key>Class</key>
 			<string>LineGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>EurostileLTStd</string>
+				<key>Size</key>
+				<real>20</real>
+			</dict>
 			<key>Head</key>
 			<dict>
 				<key>ID</key>
@@ -91,6 +98,13 @@
 		<dict>
 			<key>Class</key>
 			<string>LineGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>EurostileLTStd</string>
+				<key>Size</key>
+				<real>20</real>
+			</dict>
 			<key>Head</key>
 			<dict>
 				<key>ID</key>
@@ -121,6 +135,13 @@
 		<dict>
 			<key>Class</key>
 			<string>LineGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>EurostileLTStd</string>
+				<key>Size</key>
+				<real>20</real>
+			</dict>
 			<key>Head</key>
 			<dict>
 				<key>ID</key>
@@ -158,6 +179,13 @@
 		<dict>
 			<key>Class</key>
 			<string>LineGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>EurostileLTStd</string>
+				<key>Size</key>
+				<real>20</real>
+			</dict>
 			<key>Head</key>
 			<dict>
 				<key>ID</key>
@@ -167,8 +195,8 @@
 			<integer>24</integer>
 			<key>Points</key>
 			<array>
-				<string>{363.06931889118198, 213}</string>
-				<string>{545.37203931019155, 383.65847808838066}</string>
+				<string>{363.08750478396456, 213.00000000000003}</string>
+				<string>{545.52471199267984, 383.65805589744247}</string>
 			</array>
 			<key>Style</key>
 			<dict>
@@ -195,6 +223,13 @@
 			<string>{{540, 384}, {143, 123}}</string>
 			<key>Class</key>
 			<string>ShapedGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>EurostileLTStd</string>
+				<key>Size</key>
+				<real>20</real>
+			</dict>
 			<key>ID</key>
 			<integer>15</integer>
 			<key>Shape</key>
@@ -224,6 +259,13 @@ X-Correlation-ID}</string>
 			<string>YES</string>
 			<key>Flow</key>
 			<string>Resize</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>EurostileLTStd</string>
+				<key>Size</key>
+				<real>20</real>
+			</dict>
 			<key>ID</key>
 			<integer>23</integer>
 			<key>Shape</key>
@@ -273,6 +315,13 @@ shipping}</string>
 			<string>YES</string>
 			<key>Flow</key>
 			<string>Resize</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>EurostileLTStd</string>
+				<key>Size</key>
+				<real>20</real>
+			</dict>
 			<key>ID</key>
 			<integer>22</integer>
 			<key>Shape</key>
@@ -322,6 +371,13 @@ confirmation}</string>
 			<string>YES</string>
 			<key>Flow</key>
 			<string>Resize</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>EurostileLTStd</string>
+				<key>Size</key>
+				<real>20</real>
+			</dict>
 			<key>ID</key>
 			<integer>21</integer>
 			<key>Shape</key>
@@ -371,6 +427,13 @@ Payment}</string>
 			<string>YES</string>
 			<key>Flow</key>
 			<string>Resize</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>EurostileLTStd</string>
+				<key>Size</key>
+				<real>20</real>
+			</dict>
 			<key>ID</key>
 			<integer>20</integer>
 			<key>Shape</key>
@@ -416,6 +479,13 @@ Order}</string>
 			<false/>
 			<key>Class</key>
 			<string>LineGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>EurostileLTStd</string>
+				<key>Size</key>
+				<real>20</real>
+			</dict>
 			<key>ID</key>
 			<integer>19</integer>
 			<key>Points</key>
@@ -443,6 +513,13 @@ Order}</string>
 			<false/>
 			<key>Class</key>
 			<string>LineGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>EurostileLTStd</string>
+				<key>Size</key>
+				<real>20</real>
+			</dict>
 			<key>ID</key>
 			<integer>18</integer>
 			<key>Points</key>
@@ -470,6 +547,13 @@ Order}</string>
 			<false/>
 			<key>Class</key>
 			<string>LineGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>EurostileLTStd</string>
+				<key>Size</key>
+				<real>20</real>
+			</dict>
 			<key>ID</key>
 			<integer>17</integer>
 			<key>Points</key>
@@ -497,6 +581,13 @@ Order}</string>
 			<false/>
 			<key>Class</key>
 			<string>LineGraphic</string>
+			<key>FontInfo</key>
+			<dict>
+				<key>Font</key>
+				<string>EurostileLTStd</string>
+				<key>Size</key>
+				<real>20</real>
+			</dict>
 			<key>ID</key>
 			<integer>16</integer>
 			<key>Points</key>
@@ -538,7 +629,7 @@ Order}</string>
 				<key>Font</key>
 				<string>EurostileLTStd</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>20</real>
 			</dict>
 			<key>ID</key>
 			<integer>10</integer>
@@ -609,7 +700,7 @@ System}</string>
 				<key>Font</key>
 				<string>EurostileLTStd</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>20</real>
 			</dict>
 			<key>ID</key>
 			<integer>9</integer>
@@ -680,7 +771,7 @@ Provider}</string>
 				<key>Font</key>
 				<string>EurostileLTStd</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>20</real>
 			</dict>
 			<key>ID</key>
 			<integer>8</integer>
@@ -751,7 +842,7 @@ Service}</string>
 				<key>Font</key>
 				<string>EurostileLTStd</string>
 				<key>Size</key>
-				<real>24</real>
+				<real>20</real>
 			</dict>
 			<key>ID</key>
 			<integer>7</integer>
@@ -850,7 +941,7 @@ Service}</string>
 	<key>MasterSheets</key>
 	<array/>
 	<key>ModificationDate</key>
-	<string>2015-09-22 20:17:59 +0000</string>
+	<string>2015-09-27 16:41:21 +0000</string>
 	<key>Modifier</key>
 	<string>Bernd Zuther</string>
 	<key>NotesVisible</key>
@@ -931,7 +1022,7 @@ Service}</string>
 			</dict>
 		</array>
 		<key>Frame</key>
-		<string>{{187, 45}, {1150, 832}}</string>
+		<string>{{187, 48}, {1150, 829}}</string>
 		<key>ListView</key>
 		<true/>
 		<key>OutlineWidth</key>
@@ -945,7 +1036,7 @@ Service}</string>
 		<key>SidebarWidth</key>
 		<integer>120</integer>
 		<key>VisibleRegion</key>
-		<string>{{77, 0}, {1015, 690}}</string>
+		<string>{{76, 0}, {1015, 687}}</string>
 		<key>Zoom</key>
 		<real>1</real>
 		<key>ZoomValues</key>

@@ -293,26 +293,10 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
     </article>
   </slide>
 
-  <slide>
-    <hgroup>
-      <h2>Challenges of Microservices</h2>
-    </hgroup>
-    <article class="flexbox">
-      <section>
-        <ul>
-          <li>
-            Require integration.
-          </li>
-          <li>
-            Require a multi deployment pipeline.
-          </li>
-          <li>
-            Require automation of deployment and configuration.
-          </li>
-          <li>
-            Require logging and monitoring.
-          </li>
-        </ul>
+  <slide class="fill nobackground" style="background-image:url(../master/images/challanges.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>Challenges</h1>
       </section>
     </article>
   </slide>
@@ -514,6 +498,41 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
     </article>
   </slide>
 
+  <slide class="fill nobackground" style="background-image:url(../master/images/containers.jpg);">
+    <hgroup>
+      <h2>Docker</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>Build, Ship, Run</h1>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground">
+    <hgroup>
+      <h2>Docker-Workflow</h2>
+    </hgroup>
+    <article>
+            <pre class="prettyprint" data-lang="bash">
+bz@cc $ docker build -t zutherb/product-service .
+bz@cc $ docker push zutherb/product-service
+bz@cc $ docker pull zutherb/product-service
+bz@cc $ docker run zutherb/product-service
+bz@cc $ docker ps
+CONTAINER ID        IMAGE                               COMMAND                CREATED
+87bb5524067d        zutherb/product-service:latest      "/product-0.6/bin/pr   14 seconds
+</pre>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Enviorment to build, ship, and run</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
   <slide>
     <hgroup>
       <h2>Canary Release</h2>
@@ -569,7 +588,7 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
 
   <slide class="fill nobackground" style="background-image:url(../master/images/kibana_1.png);">
     <hgroup>
-      <h2>Analysis Failures</h2>
+      <h2>Log-Aggregator</h2>
     </hgroup>
   </slide>
 
