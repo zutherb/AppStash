@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="shortcut icon" href="/favicon.ico">
+  <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="../master/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="../master/css/phone.css">
+  <link rel="stylesheet" href="../../vendor/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
+  <base target="_blank">
+  <script src="../slide_config.js"></script>
+  <script src="slide_config.js"></script>
+  <script data-main="../master/js/slides" src="../master/js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="title-slide segue nobackground" style="background-image:url(wjax.png); background-position: center center; background-repeat: no-repeat; background-size: cover;">
+    <article class="flexbox vcenter">
+      <hgroup class="auto-fadein" style="bottom: 170px; left: 50px; background-color: transparent; color: white">
+        <h2 style="color: white">Bernd Zuther | codecentric AG</h2>
+        <h1 style="color: white">Von Null auf Hundert mit Microservices</h1>
+      </hgroup>
+      <hgroup style="display: none">
+        <h1 data-config-title ><!-- populated from slide_config.json --></h1>
+
+        <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+
+        <p data-config-presenter><!-- populated from slide_config.json --></p>
+      </hgroup>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/bob.jpg); ); background-position: center center; background-repeat: no-repeat; background-size: cover;">
+    <article>
+      <section>
+        <ul class="speakers">
+          <li id="speaker-bernd">
+            <span class="name">Bernd Zuther</span>
+            <img src="../master/images/bernd-zuther.jpeg"
+                 alt="Bernd's avatar"
+                 class="avatar">
+            <ul class="social">
+              <li>
+                <i class="icon-twitter"></i>
+                <a href="https://twitter.com/Bernd_Z">
+                  @Bernd_Z
+                </a>
+              </li>
+              <li>
+                <i class="icon-github"></i>
+                <a href="https://github.com/zutherb/">
+                  github.com/zutherb
+                </a>
+              </li>
+              <li>
+                <i class="icon-envelope"></i>
+                <a href="mailto:bernd.zuther@codecentric.de">
+                  bernd.zuther@codecentric.de
+                </a>
+              </li>
+            </ul>
+          </li>
+          <li/>
+        </ul>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/lionseats.jpg);">
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/lionseats.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>Survival of the fittest</h1>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/autobahn.gif);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>Be faster than your competitors</h1>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/innovation.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>Innovation = <br />Idea + Product + Customer Usage</h1>
+        <p>
+          DIN SPEC 77555-1:2013-09 Innovation Management - Part 1: Innovation Management System
+        </p>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Microservice</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/microservice.svg" style="height: 200px; float: left; margin-right: 50px" />
+        <ul class="build">
+          <li>fits in one brain,</li>
+          <li style="color: red">designed for replaceability,</li>
+          <li>autonomy (organisation & technology)</li>
+        </ul>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Microservice Taxonomy</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/microservice_taxonomy_docker_talk.svg" style="height: 500px;" />
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/martinfowler.jpg);">
+    <hgroup>
+      <h2>Microservice Architecture</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <p style="margin-bottom: 0em; font-size: xx-large">
+            The microservice architectural style is an approach to developing <b>a single application as a suite of small services</b>,
+            <b>each running in its own process</b> and communicating with <b>lightweight mechanisms</b>, often an HTTP resource API.
+            These services are <b>built around business capabilities</b> and <b>independently deployable</b> by fully automated deployment
+            machinery. There is a bare <b>minimum of centralized management</b> of these services, which may be written in different
+            programming languages and use different data storage technologies.
+        </p>
+        <p style="margin-top: 40px">
+          Martin Fowler - http://martinfowler.com/articles/microservices.html
+        </p>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Online Shop - Use cases</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/use_case_online_shop.svg" style="height: 500px" />
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Online Shop - Deployment</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/deployment_diagramm_online_shop.svg" style="height: 500px" />
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/baremetal.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h3>How do we get the sh*t to bare metal?</h3>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Processes</h2>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="bash">
+bz@cc:~/$ ps aux
+www-data  1699  0.5  7.7 2453320 158076 ?      Sl   10:49   0:26 java -cp cart.jar
+www-data  1834  0.3  5.0 2435400 102684 ?      Sl   10:49   0:17 java -cp navigation.jar
+www-data  1972  0.0  0.1  90792  3124 ?        Ss   10:49   0:00 nginx: master process
+www-data  1973  0.0  0.1  91148  3820 ?        S    10:49   0:00 nginx: worker process
+www-data  1974  0.0  0.1  91148  3820 ?        S    10:49   0:00 nginx: worker process
+www-data  1975  0.0  0.1  91148  3820 ?        S    10:49   0:00 nginx: worker process
+www-data  1976  0.0  0.1  91148  3820 ?        S    10:49   0:00 nginx: worker process
+www-data  1980  1.5  7.0 2456532 143688 ?      Sl   10:49   1:20 java -cp product.jar
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Linux Packages</h2>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="bash">
+bz@cc:~/$ ar t cart_0.6.20.deb
+<b>debian-binary
+control.tar.gz
+data.tar.gz</b>
+bz@cc:~/$ tar tzf data.tar.gz
+./etc/default/cart
+<b>./etc/init.d/cart
+./usr/share/shop/cart/bin/cart
+./usr/share/shop/cart/bin/cart.bat
+./usr/share/shop/cart/lib/cart-microservice-0.6.20.jar</b>
+bz@cc:~/$ tar tzf control.tar.gz
+./postinst
+./control
+./md5sums
+bz@cc:~/$ cat debian-binary
+2.0
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Control File</h2>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="vim">
+Source: shop-cart-service
+Section: web
+Priority: optional
+Version: 4.2.42
+Maintainer: Bernd Zuther <bernd.zuther@codecentric.de>
+Homepage: http://www.bernd-zuther.de/
+Vcs-Git: https://github.com/zutherb/AppStash.git
+Vcs-Browser: https://github.com/zutherb/AppStash
+Package: shop-cart-service
+Architecture: amd64
+Depends: redis-server (>= 2.8.13)
+Description: Cart Service
+</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Package Source</h2>
+    </hgroup>
+    <article >
+      <h3>Buildserver</h3>
+      <pre class="prettyprint" data-lang="bash">reprepro -Vb /var/packages/debian includedeb shop /tmp/*.deb
+reprepro -b /var/packages/debian/ export
+reprepro -b /var/packages/debian/ list shop
+</pre>
+      <h3>Provision</h3>
+<pre class="prettyprint" data-lang="yaml">---
+- apt_repository: repo='deb http://ci-repo/debian/ shop main' state=present
+- apt: update_cache=yes force=yes
+- apt: pkg={{item}} state=present force=yes
+  with_items:
+  - shop-cart-service
+</pre>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/light_at_the_end_of_the_tunnel.jpg);">
+    <hgroup>
+      <h2>Linux Packages</h2>
+    </hgroup>
+    <article>
+      <table style="font-size: 0.8em; background-color: #ffffff">
+        <tbody>
+          <tr>
+            <th width="50%">Pro</th>
+            <th width="50%">Contra</th>
+          </tr>
+          <tr>
+            <td>Service Repository</td>
+            <td>No Service Discovery</td>
+          </tr>
+          <tr>
+            <td>Dependency Management</td>
+            <td>Runtime enviroment must be created on every single node</td>
+          </tr>
+          <tr>
+            <td>Technologies are battle-tested</td>
+            <td>Depends on the linux distribution</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>time is money => save enviorment creation time</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/lazy_lion.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>How can we avoid the creation time?</h1>
+      </section>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>download artifact</li>
+          <li>start process</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/containers.jpg);">
+    <hgroup>
+      <h2>Docker</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>Build, Ship, Run</h1>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground">
+    <hgroup>
+      <h2>Docker-Workflow</h2>
+    </hgroup>
+    <article>
+            <pre class="prettyprint" data-lang="bash">
+bz@cc $ docker build -t zutherb/product-service .
+bz@cc $ docker push zutherb/product-service
+bz@cc $ docker pull zutherb/product-service
+bz@cc $ docker run zutherb/product-service
+bz@cc $ docker ps
+CONTAINER ID        IMAGE                               COMMAND                CREATED
+87bb5524067d        zutherb/product-service:latest      "/product-0.6/bin/pr   14 seconds
+</pre>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Enviorment to build, ship, and run</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide class="fill nobackground">
+    <hgroup>
+      <h2>Docker-File</h2>
+    </hgroup>
+    <article>
+            <pre class="prettyprint" data-lang="bash">
+FROM relateiq/oracle-java8
+MAINTAINER Bernd Zuther &lt;bernd.zuther@codecentric.de&gt;
+EXPOSE 18080
+ADD product-0.6.tar /
+ENTRYPOINT ["/product-0.6/bin/product"]
+</pre>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>The main purpose of a CMD is to provide defaults for an executing container.</li>
+          <li>These defaults can include an executable, or they can omit the executable, in which case you must specify an ENTRYPOINT instruction as well.</li>
+          <li>An ENTRYPOINT allows you to configure a container that will run as an executable.</li>
+          <li>Command line arguments to docker run <image> will be appended after all elements in an exec form ENTRYPOINT, and will override all elements specified using CMD.</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide class="fill nobackground">
+    <hgroup>
+      <h2>Deployment Scenario</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <img src="../master/images/deployment_diagramm_online_shop_docker.svg" style="height: 450px; width: 100%" />
+    </article>
+  </slide>
+
+ <slide class="fill nobackground">
+    <hgroup>
+      <h2>Linking</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="bash">bz@cc ~$ <b>docker run -d --name mongodb mongo</b>
+705084daa3f852ec796c8d6b13bac882d56d95c261b4a4f8993b43c5fb2f846c
+bz@cc ~$ <b>docker run -d --name redis redis</b>
+784ebde0e867adb18663e3011b3c1cabe990a0c906396fc306eac669345628cf
+bz@cc ~$ <b>docker run -d -P --name cart --link redis:redis zutherb/cart-service</b>
+438b2657c7a5c733787fb32b7d28e1a0b84ba9e10d19a8a015c6f24085455011
+bz@cc ~$ <b>docker run -d -P -p 8080:8080 --name shop --link cart:cart \
+              --link mongodb:mongodb zutherb/monolithic-shop</b>
+9926e187faa215ac9044603d51adbd8d679d8076b4a349ebbc9917dade6d560e
+bz@cc $ docker exec 9926e187faa215ac9044603d51adbd8d679d8076b4a349ebbc9917dade6d560e env
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+HOSTNAME=87bb5524067d
+MONGODB_PORT_27017_TCP=tcp://172.17.0.28:27017
+MONGODB_PORT_27017_TCP_ADDR=172.17.0.28
+MONGODB_PORT_27017_TCP_PORT=27017
+MONGODB_PORT_27017_TCP_PROTO=tcp</pre>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/containers.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>How can describe our microservice application?</h1>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Docker Compose</h2>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="yaml">
+redis:
+  image: dockerfile/redis
+  ports:
+    - "6379:6379"
+cart:
+  image: eshop/cart-service
+  ports:
+    - "18100:18100"
+  links:
+    - redis
+catalog:
+  image: eshop/catalog-frontend
+  ports:
+    - "80:80"
+  links:
+    - product
+    - cart</pre>
+      <aside class="gdbar right bottom">
+        <img src="../master/images/youtube.png">
+      </aside>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/light_at_the_end_of_the_tunnel.jpg);">
+    <hgroup>
+      <h2>Docker</h2>
+    </hgroup>
+    <article>
+      <table style="font-size: 0.8em; background-color: #ffffff">
+        <tbody>
+          <tr>
+            <th width="50%">Pro</th>
+            <th width="50%">Contra</th>
+          </tr>
+          <tr>
+            <td>Applications are isolated</td>
+            <td>Daemon runs as root on host</td>
+          </tr>
+          <tr>
+            <td>Images are build once and run anywhere</td>
+            <td>No Process Supervisor</td>
+          </tr>
+          <tr>
+            <td>Docker Repository</td>
+            <td>No Service Discovery</td>
+          </tr>
+          <tr>
+            <td>Big ecosystem (Kubernetes, Mesos, Vamp)</td>
+            <td>&nbsp;</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Microsoft integrated Kubernetes in azure</li>
+          <li>Security Hole in Container can compromise host-system</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Blue Green Deployment</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/blue_green_deployment.svg" type="image/svg+xml" style="height: 450px; width: 100%" />
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Canary Release</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/canary_release.svg" type="image/svg+xml" style="height: 450px; width: 100%" />
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Microservice - Canary Release</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/blue_green_deploymen_microservice.svg" type="image/svg+xml" style="height: 450px; width: 100%" />
+      </section>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/lazy_dog.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>I don't care</h1>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Distributed System</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <img src="../master/images/distributed_system_architecture.svg" style="height: 450px; width: 100%" />
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Kubernetes</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/kubernetes_system_architecture%20.svg" type="image/svg+xml" style="height: 450px; width: 100%" />
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Pod</h2>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="yaml">apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: cart
+    role: backend
+  name: cart
+spec:
+  containers:
+    - name: cart
+      image: zutherb/cart-service
+      ports:
+        - containerPort: 18100</pre>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Pods are the smallest deployable units that can be created, scheduled, and managed.</li>
+          <li>A pod corresponds to a colocated group of applications running with a shared context</li>
+          <li>Pod is a <b>top-level resource</b> in the kubernetes REST API</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Replication Controller</h2>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="yaml">apiVersion: v1
+kind: ReplicationController
+metadata:
+  ... (labels)
+spec:
+  replicas: 2
+  selector:
+    name: cart
+  template:
+    metadata:
+      ... (labels)
+    spec:
+      containers:
+      - name: cart
+        image: zutherb/cart-service
+        ports:
+        - containerPort: 18100</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Service</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/services-overview.png" style="height: 450px;" />
+      </section>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Every node in a Kubernetes cluster runs a kube-proxy.</li>
+          <li>For each Service the kube-proxy opens a port (randomly chosen) on the local node</li>
+          <li>Any connections made to that port will be proxied to one of the corresponding backend Pods</li>
+          <li>Any traffic bound for the Service is proxied to an appropriate backend without the clients knowing anything about Kubernetes or Services or Pods.</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Service</h2>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="yaml">kind: Service
+apiVersion: v1
+metadata:
+  labels:
+      name: cart
+      role: backend
+  name: cart
+spec:
+  ports:
+    - name: cart
+      port: 18100
+  selector:
+      name: cart</pre>
+    </article>
+    <aside class="gdbar bottom"><img src="../master/images/youtube.png"></aside>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/light_at_the_end_of_the_tunnel.jpg);">
+    <hgroup>
+      <h2>Kubernetes</h2>
+    </hgroup>
+    <article>
+      <table style="font-size: 0.8em; background-color: #ffffff">
+        <tbody>
+          <tr>
+            <th width="50%">Pro</th>
+            <th width="50%">Contra</th>
+          </tr>
+          <tr>
+            <td>You needn't care where work is executed</td>
+            <td>No description of the whole application like it is done with docker compose and for deployment scenario</td>
+          </tr>
+          <tr>
+            <td>You needn't care about dependencies</td>
+            <td>Analysis of failures will get harder</td>
+          </tr>
+          <tr>
+            <td>Service discovery</td>
+            <td>Master is a single point of failure</td>
+          </tr>
+          <tr>
+            <td>Process Supervisor</td>
+            <td>Few tools and documentation is avaiable yet</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Mesos</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/mesos_system_architecture.svg" type="image/svg+xml" style="height: 450px; width: 100%" />
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Marathon Deployment</h2>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="yaml">{"id": "basic-3",
+  "cmd": "python3 -m http.server 8080",
+  "cpus": 0.5,
+  "mem": 32.0,
+  "container": {
+    "type": "DOCKER",
+    "docker": {
+      "image": "python:3",
+      "network": "BRIDGE",
+      "portMappings": [
+        { "containerPort": 8080, "hostPort": 0 }]}}}</pre>
+<pre class="prettyprint" data-lang="bash">
+curl -X POST http://10.141.141.10:8080/v2/apps -d @basic-3.json \
+  -H "Content-type: application/json"
+</pre>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/light_at_the_end_of_the_tunnel.jpg);">
+    <hgroup>
+      <h2>Marathon + Mesos</h2>
+    </hgroup>
+    <article>
+      <table style="font-size: 0.8em; background-color: #ffffff">
+        <tbody>
+        <tr>
+          <th width="50%">Pro</th>
+          <th width="50%">Contra</th>
+        </tr>
+        <tr>
+          <td>You needn't care where work is executed</td>
+          <td>No description of the whole application and for deployment scenario</td>
+        </tr>
+        <tr>
+          <td>High Availability</td>
+          <td>No Service Discovery</td>
+        </tr>
+        <tr>
+          <td>Process Supervisor</td>
+          <td>Analysis of failures will get harder</td>
+        </tr>
+        <tr>
+          <td>Many tools and documentation are available</td>
+          <td>&nbsp;</td>
+        </tr>
+        </tbody>
+      </table>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Very Awesome Microservices Platform (Vamp)</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/vamp.png" type="image/svg+xml" style="height: 450px; width: 100%" />
+      </section>
+    </article>
+    <aside class="gdbar bottom">
+      <img src="../master/images/youtube.png">
+    </aside>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/light_at_the_end_of_the_tunnel.jpg);">
+    <hgroup>
+      <h2>Vamp + Marathon + Mesos</h2>
+    </hgroup>
+    <article>
+      <table style="font-size: 0.8em; background-color: #ffffff">
+        <tbody>
+        <tr>
+          <th width="50%">Pro</th>
+          <th width="50%">Contra</th>
+        </tr>
+        <tr>
+          <td>Description of the whole application and for deployment scenario</td>
+          <td>Many components that has to be understood</td>
+        </tr>
+        <tr>
+          <td>You needn't care where work is executed</td>
+          <td>Analysis of failures will get harder</td>
+        </tr>
+        <tr>
+          <td>High Availability</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>Process Supervisor</td>
+          <td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td>Service Discovery</td>
+          <td>&nbsp;</td>
+        </tr>
+        </tbody>
+      </table>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/light_at_the_end_of_the_tunnel.jpg);">
+    <hgroup>
+      <h2>Summary</h2>
+    </hgroup>
+    <article>
+      <table style="font-size: 0.8em; background-color: #ffffff" class="summary">
+        <tbody>
+        <tr>
+          <th width="20%">&nbsp;</th>
+          <th width="20%">Linux Packages</th>
+          <th width="20%">Docker Daemon</th>
+          <th width="20%">Kubernetes</th>
+          <th width="20%">Vamp + Marathon + Mesos</th>
+        </tr>
+        <tr>
+          <th>Service Repository</th>
+          <td><img src="../master/images/checked.png" style="width: 25px"></td>
+          <td><img src="../master/images/checked.png" style="width: 25px"></td>
+          <td><img src="../master/images/checked.png" style="width: 25px"></td>
+          <td><img src="../master/images/checked.png" style="width: 25px"></td>
+        </tr>
+        <tr>
+          <th>Orchestration</th>
+          <td><img src="../master/images/imac.png" style="width: 25px"></td>
+          <td><img src="../master/images/imac.png" style="width: 25px"></td>
+          <td>
+            <img src="../master/images/imac.png" style="width: 25px">
+            <img src="../master/images/imac.png" style="width: 25px">
+            <img src="../master/images/imac.png" style="width: 25px">
+          </td>
+          <td>
+            <img src="../master/images/imac.png" style="width: 25px">
+            <img src="../master/images/imac.png" style="width: 25px">
+            <img src="../master/images/imac.png" style="width: 25px">
+          </td>
+        </tr>
+        <tr>
+          <th>Service Discovery</th>
+          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
+          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
+          <td><img src="../master/images/checked.png" style="width: 25px"></td>
+          <td><img src="../master/images/checked.png" style="width: 25px"></td>
+        </tr>
+        <tr>
+          <th>Process Supervisor</th>
+          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
+          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
+          <td><img src="../master/images/checked.png" style="width: 25px"></td>
+          <td><img src="../master/images/checked.png" style="width: 25px"></td>
+        </tr>
+        <tr>
+          <th>High Availability</th>
+          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
+          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
+          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
+          <td><img src="../master/images/checked.png" style="width: 25px"></td>
+        </tr>
+        <tr>
+          <th>Application Description</th>
+          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
+          <td><img src="../master/images/text-plain-icon.png" style="width: 25px"></td>
+          <td>
+            <img src="../master/images/text-plain-icon.png" style="width: 25px">
+            <img src="../master/images/text-plain-icon.png" style="width: 25px">
+            <img src="../master/images/text-plain-icon.png" style="width: 25px">
+          </td>
+          <td><img src="../master/images/text-plain-icon.png" style="width: 25px"></td>
+        </tr>
+        <tr>
+          <th>Routing Definition</th>
+          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
+          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
+          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
+          <td><img src="../master/images/checked.png" style="width: 25px"></td>
+        </tr>
+        </tbody>
+      </table>
+    </article>
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground current" style="background: url(../master/images/innovate_or_die.jpg) no-repeat center center fixed;  background-size: cover;">
+    <aside class="gdbar right"><img src="../master/images/bernd-zuther.jpeg"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <h2>&lt;Thank You!&gt;</h2>
+      <p></p>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/kaufrausch.jpg);">
+    <hgroup>
+      <h2>Demo Application</h2>
+    </hgroup>
+    <article>
+      <section class="textbox">
+        <a href="https://github.com/zutherb/AppStash/">
+          <h2>https://github.com/zutherb/AppStash/</h2>
+        </a>
+
+        <img src="../master/images/qrcode.svg" />
+        <a href="https://github.com/zutherb/AppStash/">
+          <img style="position: absolute; top: 0; right: 0; border: 0;" src="../master/tweets/github.png" alt="Fork me on GitHub" data-canonical-src="../master/images/forkme_right_red_aa0000.png">
+        </a>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+  <slide>
+    <hgroup>
+      <h2>Links</h2>
+    </hgroup>
+    <article>
+      <section>
+        <ul>
+          <li>
+            <a href="http://www.codecentric.de/kompetenzen/publikationen/microservices-und-die-jagd-nach-mehr-konversion/">
+              Java Aktuell 02/15 - Microservices und die Jagd nach mehr Konversion
+            </a>
+          </li>
+          <li>
+            <a href="https://blog.codecentric.de/2015/05/microservice-deployment-ganz-einfach-mit-giant-swarm/">
+              Microservice-Deployment ganz einfach mit Giant Swarm
+            </a>
+          </li>
+          <li>
+            <a href="https://blog.codecentric.de/2015/05/microservice-deployment-ganz-einfach-mit-kubernetes/">
+              Microservice-Deployment ganz einfach mit Kubernetes
+            </a>
+          </li>
+          <li>
+            <a href="https://blog.codecentric.de/2015/05/microservice-deployment-ganz-einfach-mit-docker-compose/">
+              Microservice-Deployment ganz einfach mit Docker Compose
+            </a>
+          </li>
+          <li>
+            <a href="https://blog.codecentric.de/2015/05/microservice-deployment-ganz-einfach-ohne-docker-mit-der-linux-paketverwaltung/">
+              Microservice-Deployment ganz einfach ohne Docker mit der Linux-Paketverwaltung
+            </a>
+          </li>
+          <li>
+            <a href="http://theleanstartup.com/principles">Lean Startup</a>
+          </li>
+          <li>
+            <a href="http://oanasagile.blogspot.de/2012/11/test-driven-business-featuring-lean.html">Test Driven Business Featuring Lean StartUp</a>
+          </li>
+          <li>
+            <a href="http://www.heise.de/developer/artikel/Continuous-Delivery-mit-dem-FeatureToggle-Pattern-1825477.html">Continuous Delivery mit dem FeatureToggle Pattern</a>
+          </li>
+          <li>
+            <a href="http://martinfowler.com/bliki/FeatureToggle.html">FeatureToggle</a>
+          </li>
+          <li>
+            <a href="http://www.voxxed.com/blog/2015/01/good-microservices-architectures-death-enterprise-service-bus-part-one">Do Good Microservices Architectures Spell the Death of the Enterprise Service Bus?</a>
+          </li>
+          <li>
+            <a href="http://martinfowler.com/articles/microservices.html">Microservices</a>
+          </li>
+        </ul>
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Links</h2>
+    </hgroup>
+    <article>
+      <section>
+        <ul>
+          <li>
+            <a href="http://12factor.net/">The Twelve Factors</a>
+          </li>
+           <li>
+            <a href="http://www.heise.de/developer/artikel/Microservices-im-Zusammenspiel-mit-Continuous-Delivery-Teil-1-die-Theorie-2376386.html">
+              Microservices im Zusammenspiel mit Continuous Delivery, Teil 1 – die Theorie
+            </a>
+          </li>
+          <li>
+            <a href="http://www.fig.sh/">Fast, isolated development environments using Docker</a>
+          </li>
+          <li>
+            <a href="http://blog.ralfw.de/2014/08/warnung-vor-dem-microservice-versuch.html">Warnung vor dem Microservice – Versuch einer Definition</a>
+          </li>
+          <li>
+            <a href="http://jaxenter.de/artikel/nie-wieder-monolithen-176652">Micro Services in der Praxis: Nie wieder Monolithen!</a>
+          </li>
+          <li>
+            <a href="http://bernd-zuther.de/deployment-ganz-einfach/">Deployment ganz einfach – Microservice Deployment mit Hilfe der Linux Paketverwaltung</a>
+          </li>
+          <li>
+            <a href="https://bernd-zuther.de/splunk-marke-eigenbau-mit-elasticsearch-logstash-und-kibana/">Splunk – Marke Eigenbau mit Elasticsearch, Logstash und Kibana (ELK Stack)</a>
+          </li>
+          <li>
+            <a href="http://www.infoq.com/articles/scaling-docker-with-kubernetes">Scaling Docker with Kubernetes</a>
+          </li>
+          <li>
+            <a href="http://www.datacenter-insider.de/software-on-premise/middleware/articles/480855/index2.html">Container-Technik: Docker & Co.</a>
+          </li>
+          <li>
+            <a href="https://github.com/zutherb/AppStash/">Appstash Project</a>
+          </li>
+        </ul>
+      </section>
+    </article>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<!--[if IE]>
+<script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+<script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-61835462-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
