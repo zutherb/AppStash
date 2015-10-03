@@ -555,6 +555,147 @@ CONTAINER ID        IMAGE                               COMMAND                C
 
   <slide>
     <hgroup>
+      <h2>Kubernetes</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/kubernetes_system_architecture%20.svg" type="image/svg+xml" style="height: 450px; width: 100%" />
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Pod</h2>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="yaml">apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    name: cart
+    role: backend
+  name: cart
+spec:
+  containers:
+    - name: cart
+      image: zutherb/cart-service
+      ports:
+        - containerPort: 18100</pre>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Pods are the smallest deployable units that can be created, scheduled, and managed.</li>
+          <li>A pod corresponds to a colocated group of applications running with a shared context</li>
+          <li>Pod is a <b>top-level resource</b> in the kubernetes REST API</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Replication Controller</h2>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="yaml">apiVersion: v1
+kind: ReplicationController
+metadata:
+  ... (labels)
+spec:
+  replicas: 2
+  selector:
+    name: cart
+  template:
+    metadata:
+      ... (labels)
+    spec:
+      containers:
+      - name: cart
+        image: zutherb/cart-service
+        ports:
+        - containerPort: 18100</pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Service</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/services-overview.png" style="height: 450px;" />
+      </section>
+    </article>
+    <aside class="note">
+      <section>
+        <ul>
+          <li>Every node in a Kubernetes cluster runs a kube-proxy.</li>
+          <li>For each Service the kube-proxy opens a port (randomly chosen) on the local node</li>
+          <li>Any connections made to that port will be proxied to one of the corresponding backend Pods</li>
+          <li>Any traffic bound for the Service is proxied to an appropriate backend without the clients knowing anything about Kubernetes or Services or Pods.</li>
+        </ul>
+      </section>
+    </aside>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Service</h2>
+    </hgroup>
+    <article >
+      <pre class="prettyprint" data-lang="yaml">kind: Service
+apiVersion: v1
+metadata:
+  labels:
+      name: cart
+      role: backend
+  name: cart
+spec:
+  ports:
+    - name: cart
+      port: 18100
+  selector:
+      name: cart</pre>
+    </article>
+    <aside class="gdbar bottom"><img src="../master/images/youtube.png"></aside>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/light_at_the_end_of_the_tunnel.jpg);">
+    <hgroup>
+      <h2>Kubernetes</h2>
+    </hgroup>
+    <article>
+      <table style="font-size: 0.8em; background-color: #ffffff">
+        <tbody>
+        <tr>
+          <th width="50%">Pro</th>
+          <th width="50%">Contra</th>
+        </tr>
+        <tr>
+          <td>You needn't care where work is executed</td>
+          <td>No description of the whole application like it is done with docker compose and for deployment scenario</td>
+        </tr>
+        <tr>
+          <td>You needn't care about dependencies</td>
+          <td>Analysis of failures will get harder</td>
+        </tr>
+        <tr>
+          <td>Service discovery</td>
+          <td>Master is a single point of failure</td>
+        </tr>
+        <tr>
+          <td>Process Supervisor</td>
+          <td>Few tools and documentation is avaiable yet</td>
+        </tr>
+        </tbody>
+      </table>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
       <h2>Mesos</h2>
     </hgroup>
     <article class="flexbox vcenter">
