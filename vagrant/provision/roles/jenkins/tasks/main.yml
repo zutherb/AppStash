@@ -8,8 +8,11 @@
 - name: add jenkins repository into sources list.
   apt_repository: repo='deb http://pkg.jenkins-ci.org/debian binary/' state=present
 
+- name: install node key file
+  apt_key: url=https://deb.nodesource.com/gpgkey/nodesource.gpg.key state=present
+
 - name: add node repository into sources list.
-  apt_repository: repo='ppa:onestone/node.js-0.12' state=present
+  apt_repository: repo='deb https://deb.nodesource.com/node_0.12 vivid main' state=present
 
 - name: update cache
   apt: update_cache=yes force=yes
@@ -28,10 +31,6 @@
     - nodejs
     - ruby2.1
     - ruby2.1-dev
-
-- sudo: yes
-  sudo_user: root
-  pip: name=fig
 
 - sudo: yes
   sudo_user: root
@@ -148,7 +147,6 @@
     - shop-microservice-catalog-ui-build
     - shop-microservice-checkout-ui-build
     - shop-microservice-registration-ui-build
-    - spring-boot-admin
   ignore_errors: yes
 
 - name: add jenkins to docker group

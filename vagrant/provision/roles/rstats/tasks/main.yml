@@ -3,7 +3,7 @@
   apt_key: keyserver=keyserver.ubuntu.com id=E084DAB9 state=present
 
 - name: add rstats repository into sources list.
-  apt_repository: repo='deb http://ftp5.gwdg.de/pub/misc/cran/bin/linux/ubuntu trusty/' state=present
+  apt_repository: repo='deb http://ftp5.gwdg.de/pub/misc/cran/bin/linux/ubuntu vivid/' state=present
 
 - name: update cache
   apt: update_cache=yes force=yes

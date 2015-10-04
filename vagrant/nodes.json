@@ -2,8 +2,8 @@
     "nodes" : [
         {
             "node": "elasticsearch",
-            "box": "utopic64",
-            "box_url": "https://cloud-images.ubuntu.com/vagrant/utopic/current/utopic-server-cloudimg-amd64-vagrant-disk1.box",
+            "box": "vivid64",
+            "box_url": "https://cloud-images.ubuntu.com/vagrant/vivid/current/vivid-server-cloudimg-amd64-vagrant-disk1.box",
             "hostname": "monitoring-node",
             "memory": "1024",
             "ip": "10.211.55.100",
@@ -13,21 +13,9 @@
             "aliases" : ["monitoring.microservice.io"]
         },
         {
-            "node": "buildserver",
-            "box": "utopic64",
-            "box_url": "https://cloud-images.ubuntu.com/vagrant/utopic/current/utopic-server-cloudimg-amd64-vagrant-disk1.box",
-            "hostname": "ci-node",
-            "memory": "2560",
-            "ip": "10.211.55.200",
-            "ports":[],
-            "playbook": "provision/buildserver.yml",
-            "apt_cache": true,
-            "aliases" : ["ci.microservice.io"]
-        },
-        {
             "node": "reposerver",
-            "box": "utopic64",
-            "box_url": "https://cloud-images.ubuntu.com/vagrant/utopic/current/utopic-server-cloudimg-amd64-vagrant-disk1.box",
+            "box": "vivid64",
+            "box_url": "https://cloud-images.ubuntu.com/vagrant/vivid/current/vivid-server-cloudimg-amd64-vagrant-disk1.box",
             "hostname": "ci-repo",
             "memory": "256",
             "ip": "10.211.55.201",
@@ -38,8 +26,8 @@
         },
         {
             "node": "dbserver",
-            "box": "utopic64",
-            "box_url": "https://cloud-images.ubuntu.com/vagrant/utopic/current/utopic-server-cloudimg-amd64-vagrant-disk1.box",
+            "box": "vivid64",
+            "box_url": "https://cloud-images.ubuntu.com/vagrant/vivid/current/vivid-server-cloudimg-amd64-vagrant-disk1.box",
             "hostname": "mongodb-node",
             "memory": "1024",
             "ip": "10.211.55.202",
@@ -57,8 +45,8 @@
         },
         {
             "node": "appserver1",
-            "box": "utopic64",
-            "box_url": "https://cloud-images.ubuntu.com/vagrant/utopic/current/utopic-server-cloudimg-amd64-vagrant-disk1.box",
+            "box": "vivid64",
+            "box_url": "https://cloud-images.ubuntu.com/vagrant/vivid/current/vivid-server-cloudimg-amd64-vagrant-disk1.box",
             "hostname": "app-server-node-1",
             "memory": "1536",
             "ip": "10.211.55.101",
@@ -69,8 +57,8 @@
         },
         {
             "node": "appserver2",
-            "box": "utopic64",
-            "box_url": "https://cloud-images.ubuntu.com/vagrant/utopic/current/utopic-server-cloudimg-amd64-vagrant-disk1.box",
+            "box": "vivid64",
+            "box_url": "https://cloud-images.ubuntu.com/vagrant/vivid/current/vivid-server-cloudimg-amd64-vagrant-disk1.box",
             "hostname": "app-server-node-2",
             "memory": "1536",
             "ip": "10.211.55.102",
@@ -81,8 +69,8 @@
         },
         {
             "node": "appserver3",
-            "box": "utopic64",
-            "box_url": "https://cloud-images.ubuntu.com/vagrant/utopic/current/utopic-server-cloudimg-amd64-vagrant-disk1.box",
+            "box": "vivid64",
+            "box_url": "https://cloud-images.ubuntu.com/vagrant/vivid/current/vivid-server-cloudimg-amd64-vagrant-disk1.box",
             "hostname": "app-server-node-3",
             "memory": "2048",
             "ip": "10.211.55.103",
@@ -97,8 +85,8 @@
         },
         {
             "node": "appserver4",
-            "box": "utopic64",
-            "box_url": "https://cloud-images.ubuntu.com/vagrant/utopic/current/utopic-server-cloudimg-amd64-vagrant-disk1.box",
+            "box": "vivid64",
+            "box_url": "https://cloud-images.ubuntu.com/vagrant/vivid/current/vivid-server-cloudimg-amd64-vagrant-disk1.box",
             "hostname": "app-server-node-4",
             "memory": "2048",
             "ip": "10.211.55.104",
@@ -110,6 +98,18 @@
                 "checkout.microservice.io",
                 "registration.microservice.io"
             ]
+        },
+        {
+            "node": "buildserver",
+            "box": "vivid64",
+            "box_url": "https://cloud-images.ubuntu.com/vagrant/vivid/current/vivid-server-cloudimg-amd64-vagrant-disk1.box",
+            "hostname": "ci-node",
+            "memory": "2560",
+            "ip": "10.211.55.200",
+            "ports":[],
+            "playbook": "provision/buildserver.yml",
+            "apt_cache": true,
+            "aliases" : ["ci.microservice.io"]
         }
     ]
 }

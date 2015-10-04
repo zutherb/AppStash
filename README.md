@@ -287,23 +287,6 @@ events to a variety of external programs including Elasticsearch, local files an
 
 ![Kibana](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/kibana.png)
 
-The [Spring Boot Admin](https://github.com/codecentric/spring-boot-admin) is a simple admin interface for
-[Spring Boot](http://projects.spring.io/spring-boot/ "Official Spring-Boot website") applications.
-
-This application provides a simple GUI to administrate Spring Boot applications in some ways. At the moment it provides
-the following features for every registered application.
-
-- Show name/id and version number
-- Show online status
-- Download main logfile
-- Show details, like
-  - Java system properties
-  - Java environment properties
-  - Memory metrics
-  - Spring environment properties
-
-![Spring Boot Admin](https://raw.githubusercontent.com/zutherb/AppStash/master/external/images/spring-boot-admin.png)
-
 ## Contact
 
 If you have any questions or remarks, please don't hesitate to contact me. For feature requests or general feedback,
