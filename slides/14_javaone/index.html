@@ -145,14 +145,14 @@
 public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
 
     @SpringBean
-    private FeatureToogleBean featureToogleBean;
+    private FeatureToggleBean featureToggleBean;
 
     ...
 
     @Override
     protected void onConfigure() {
       super.onConfigure();
-      <b>setVisible(featureToogleBean.isTopSellerFeatureEnabled());</b>
+      <b>setVisible(featureToggleBean.isTopSellerFeatureEnabled());</b>
     }
 
     ...
@@ -183,7 +183,7 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
 
   <slide>
     <hgroup>
-      <h2>Disadvantages that we had with the way we develop software</h2>
+      <h2>Disadvantages of previous software development practices</h2>
     </hgroup>
     <article>
       <ul class="build">
@@ -455,7 +455,7 @@ public class TopSellerRecommendationPanel extends AbstractShopBasePanel {
   <slide class="fill nobackground" style="background-image:url(../master/images/pipeline.jpg);">
     <article class="flexbox vcenter">
       <section class="textbox">
-        <h1>What change on your build pipeline?</h1>
+        <h1>What needs to be changed in the build pipeline?</h1>
       </section>
     </article>
   </slide>
@@ -563,7 +563,7 @@ MONGODB_PORT_27017_TCP_PROTO=tcp</pre>
   <slide class="fill nobackground" style="background-image:url(../master/images/delivery_car.jpg);">
     <article class="flexbox vcenter">
       <section class="textbox">
-        <h1>How can we distributed the containers?</h1>
+        <h1>How can we distribute containers?</h1>
       </section>
     </article>
   </slide>
@@ -625,7 +625,7 @@ MONGODB_PORT_27017_TCP_PROTO=tcp</pre>
         </tr>
         <tr>
           <td>You needn't care where work is executed</td>
-          <td>No description of the whole application like it is done with docker compose and for deployment scenario</td>
+          <td>No description of the whole application (in contrast to docker compose) and for deployment scenario</td>
         </tr>
         <tr>
           <td>You needn't care about dependencies</td>
@@ -637,21 +637,10 @@ MONGODB_PORT_27017_TCP_PROTO=tcp</pre>
         </tr>
         <tr>
           <td>Process Supervisor</td>
-          <td>Few tools and documentation is available yet</td>
+          <td>Few tools and documentation is available</td>
         </tr>
         </tbody>
       </table>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Canary Release</h2>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <section>
-        <img src="../master/images/canary_release.svg" type="image/svg+xml" style="height: 450px; width: 100%" />
-      </section>
     </article>
   </slide>
 
@@ -662,6 +651,17 @@ MONGODB_PORT_27017_TCP_PROTO=tcp</pre>
     <article class="flexbox vcenter">
       <section>
         <img src="../master/images/mesos_system_architecture.svg" type="image/svg+xml" style="height: 450px; width: 100%" />
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Canary Release</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/canary_release.svg" type="image/svg+xml" style="height: 450px; width: 100%" />
       </section>
     </article>
   </slide>
@@ -781,7 +781,7 @@ logger.info("Create Order");
           </tr>
           <tr>
             <td>effective technologies</td>
-            <td>centralised logging</td>
+            <td>centralized logging</td>
           </tr>
           <tr>
             <td>solution orientation</td>
@@ -793,7 +793,7 @@ logger.info("Create Order");
           </tr>
           <tr>
             <td>&nbsp;</td>
-            <td>organisation must be ready</td>
+            <td>organization must be ready</td>
           </tr>
         </tbody>
       </table>
