@@ -158,17 +158,6 @@ www-data  1980  1.5  7.0 2456532 143688 ?      Sl   10:49   1:20 java -cp produc
 
   <slide>
     <hgroup>
-      <h2>Online Shop - Use cases</h2>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <section>
-        <img src="../master/images/use_case_online_shop.svg" style="height: 500px" />
-      </section>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
       <h2>Online Shop - Deployment</h2>
     </hgroup>
     <article class="flexbox vcenter">
@@ -348,11 +337,11 @@ ENTRYPOINT ["/product-0.6/bin/product"]
     </hgroup>
     <article>
             <pre class="prettyprint" data-lang="bash">
-bz@cc $ docker build -t zutherb/product-service .
-bz@cc $ docker push zutherb/product-service
-bz@cc $ docker pull zutherb/product-service
-bz@cc $ docker run zutherb/product-service
-bz@cc $ docker ps
+bz@cc1 $ docker build -t zutherb/product-service .
+bz@cc1 $ docker push zutherb/product-service
+bz@cc2 $ docker pull zutherb/product-service
+bz@cc2 $ docker run zutherb/product-service
+bz@cc2 $ docker ps
 CONTAINER ID        IMAGE                               COMMAND                CREATED
 87bb5524067d        zutherb/product-service:latest      "/product-0.6/bin/pr   14 seconds
 </pre>
@@ -652,7 +641,7 @@ spec:
           </tr>
           <tr>
             <td>You needn't care about dependencies</td>
-            <td>Analysis of failures will get harder</td>
+            <td>Failure analysis will get harder</td>
           </tr>
           <tr>
             <td>Service discovery</td>
