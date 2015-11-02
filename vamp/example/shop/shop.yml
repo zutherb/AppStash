@@ -30,7 +30,7 @@ clusters:
           checkout: checkout
       scale:
         instances: 1
-        cpu: 0.1
+        cpu: 0.3
         memory: 128
       routing:
         weight: 100
@@ -69,7 +69,7 @@ clusters:
           mongodb: mongodb
       scale:
         instances: 1
-        cpu: 0.1
+        cpu: 0.3
         memory: 128
 
   navigation:
@@ -88,7 +88,7 @@ clusters:
        cmd: "export PORT=18090 && /navigation-0.6/bin/navigation"
       scale:
         instances: 1
-        cpu: 0.1
+        cpu: 0.3
         memory: 128
 
   cart:
@@ -105,7 +105,7 @@ clusters:
           redis: redis
       scale:
         instances: 1
-        cpu: 0.1
+        cpu: 0.3
         memory: 128
 
   redis:
@@ -117,7 +117,7 @@ clusters:
           port: 6379/tcp
       scale:
         instances: 1
-        cpu: 0.1
+        cpu: 0.3
         memory: 256
 
   mongodb:
@@ -131,5 +131,5 @@ clusters:
         cmd: "mongod --smallfiles"
       scale:
         instances: 1
-        cpu: 0.1
+        cpu: 0.3
         memory: 256

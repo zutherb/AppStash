@@ -57,7 +57,7 @@ clusters:
             checkout: checkout
         scale:
           instances: 1
-          cpu: 0.1
+          cpu: 0.3
           memory: 128
         routing:
           weight: 0
