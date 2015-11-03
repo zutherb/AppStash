@@ -16,6 +16,7 @@ sudo apt-get install -y oracle-java8-set-default
 sudo add-apt-repository -y ppa:vbernat/haproxy-1.5
 sudo apt-get update
 sudo apt-get install -y haproxy
+sudo update-rc.d -f haproxy remove
 
 REPO_ENTRY="deb https://dl.bintray.com/magnetic-io/upstart trusty main"
 if ! grep --quiet "${REPO_ENTRY}" /etc/apt/sources.list; then
