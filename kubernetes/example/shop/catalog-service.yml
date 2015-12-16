@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  labels:
+      name: catalog
+      role: frontend
+  name: catalog
+spec:
+  ports:
+    - name: catalog
+      port: 80
+  selector:
+      name: catalog
+  type: LoadBalancer

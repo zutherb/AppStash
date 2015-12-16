@@ -1,13 +1,20 @@
 apiVersion: v1
-kind: Pod
+kind: ReplicationController
 metadata:
-  labels:
-    name: shop
-    role: frontend
   name: shop
 spec:
-  containers:
-    - name: shop
-      image: zutherb/monolithic-shop
-      ports:
-        - containerPort: 8080
+  replicas: 3
+  selector:
+    name: shop
+  template:
+    metadata:
+      labels:
+        name: shop
+        role: frontend
+      name: shop
+    spec:
+      containers:
+        - name: shop
+          image: zutherb/monolithic-shop
+          ports:
+            - containerPort: 8080

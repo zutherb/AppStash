@@ -3,7 +3,7 @@ kind: Pod
 metadata:
   labels:
     name: catalog-b
-    role: backend
+    role: frontend
   name: catalog-b
 spec:
   containers:

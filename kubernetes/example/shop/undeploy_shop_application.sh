@@ -1,24 +1,4 @@
 #!/bin/sh
-
-kubectl stop -f redis.yml
-kubectl stop -f redis-service.yml
-kubectl stop -f cart.yml
-kubectl stop -f cart-service.yml
-kubectl stop -f cart-controller.yml
-kubectl stop -f mongodb.yml
-kubectl stop -f mongodb-service.yml
-kubectl stop -f product.yml
-kubectl stop -f product-service.yml
-kubectl stop -f product-controller.yml
-kubectl stop -f navigation.yml
-kubectl stop -f navigation-service.yml
-kubectl stop -f navigation-controller.yml
-kubectl stop -f shop.yml
-kubectl stop -f shop-service.yml
-kubectl stop -f catalog.yml
-kubectl stop -f catalog-service.yml
-kubectl stop -f catalog-controller.yml
-
 kubectl delete -f redis.yml
 kubectl delete -f redis-service.yml
 kubectl delete -f cart.yml

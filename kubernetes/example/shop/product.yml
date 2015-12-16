@@ -1,13 +1,20 @@
 apiVersion: v1
-kind: Pod
+kind: ReplicationController
 metadata:
-  labels:
-    name: product
-    role: backend
   name: product
 spec:
-  containers:
-    - name: product
-      image: zutherb/product-service
-      ports:
-        - containerPort: 18080
+  replicas: 3
+  selector:
+    name: product
+  template:
+    metadata:
+      labels:
+        name: product
+        role: backend
+      name: product
+    spec:
+      containers:
+        - name: product
+          image: zutherb/product-service
+          ports:
+            - containerPort: 18080

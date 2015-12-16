@@ -1,13 +1,20 @@
 apiVersion: v1
-kind: Pod
+kind: ReplicationController
 metadata:
-  labels:
-    name: redis
-    role: database
   name: redis
 spec:
-  containers:
-    - name: redis
-      image: redis
-      ports:
-        - containerPort: 6379
+  replicas: 1
+  selector:
+    name: redis
+  template:
+    metadata:
+      labels:
+        name: redis
+        role: database
+      name: redis
+    spec:
+      containers:
+        - name: redis
+          image: redis
+          ports:
+            - containerPort: 6379
