@@ -565,33 +565,11 @@ spec:
 
   <slide>
     <hgroup>
-      <h2>Blue Green Deployment</h2>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <section>
-        <img src="../master/images/blue_green_deployment.svg" type="image/svg+xml" style="height: 450px; width: 100%" />
-      </section>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
       <h2>Canary Release</h2>
     </hgroup>
     <article class="flexbox vcenter">
       <section>
         <img src="../master/images/canary_release.svg" type="image/svg+xml" style="height: 450px; width: 100%" />
-      </section>
-    </article>
-  </slide>
-
-  <slide>
-    <hgroup>
-      <h2>Microservice - Canary Release</h2>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <section>
-        <img src="../master/images/blue_green_deploymen_microservice.svg" type="image/svg+xml" style="height: 450px; width: 100%" />
       </section>
     </article>
   </slide>
@@ -688,8 +666,8 @@ curl -X POST http://10.141.141.10:8080/v2/apps -d @basic-3.json \
           <th width="50%">Contra</th>
         </tr>
         <tr>
-          <td>Description of the whole application and for deployment scenario</td>
-          <td>Many components that have to be understood</td>
+          <td>Description of the whole application and for routing scenario</td>
+          <td>Many components have to be understood</td>
         </tr>
         <tr>
           <td>You needn't care where work is executed</td>
@@ -719,75 +697,82 @@ curl -X POST http://10.141.141.10:8080/v2/apps -d @basic-3.json \
     <article>
       <table style="font-size: 0.8em; background-color: #ffffff" class="summary">
         <tbody>
-        <tr>
-          <th width="20%">&nbsp;</th>
-          <th width="20%">Linux Packages</th>
-          <th width="20%">Docker Daemon</th>
-          <th width="20%">Kubernetes</th>
-          <th width="20%">Vamp + Marathon + Mesos</th>
-        </tr>
-        <tr>
-          <th>Service Repository</th>
-          <td><img src="../master/images/checked.png" style="width: 25px"></td>
-          <td><img src="../master/images/checked.png" style="width: 25px"></td>
-          <td><img src="../master/images/checked.png" style="width: 25px"></td>
-          <td><img src="../master/images/checked.png" style="width: 25px"></td>
-        </tr>
-        <tr>
-          <th>Orchestration</th>
-          <td><img src="../master/images/imac.png" style="width: 25px"></td>
-          <td><img src="../master/images/imac.png" style="width: 25px"></td>
-          <td>
-            <img src="../master/images/imac.png" style="width: 25px">
-            <img src="../master/images/imac.png" style="width: 25px">
-            <img src="../master/images/imac.png" style="width: 25px"><br />
-            (< 100)
-          </td>
-          <td>
-            <img src="../master/images/imac.png" style="width: 25px">
-            <img src="../master/images/imac.png" style="width: 25px">
-            <img src="../master/images/imac.png" style="width: 25px">
-          </td>
-        </tr>
-        <tr>
-          <th>Service Discovery</th>
-          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
-          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
-          <td><img src="../master/images/checked.png" style="width: 25px"></td>
-          <td><img src="../master/images/checked.png" style="width: 25px"></td>
-        </tr>
-        <tr>
-          <th>Process Supervisor</th>
-          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
-          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
-          <td><img src="../master/images/checked.png" style="width: 25px"></td>
-          <td><img src="../master/images/checked.png" style="width: 25px"></td>
-        </tr>
-        <tr>
-          <th>High Availability</th>
-          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
-          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
-          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
-          <td><img src="../master/images/checked.png" style="width: 25px"></td>
-        </tr>
-        <tr>
-          <th>Application Description</th>
-          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
-          <td><img src="../master/images/text-plain-icon.png" style="width: 25px"></td>
-          <td>
-            <img src="../master/images/text-plain-icon.png" style="width: 25px">
-            <img src="../master/images/text-plain-icon.png" style="width: 25px">
-            <img src="../master/images/text-plain-icon.png" style="width: 25px">
-          </td>
-          <td><img src="../master/images/text-plain-icon.png" style="width: 25px"></td>
-        </tr>
-        <tr>
-          <th>Routing Definition</th>
-          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
-          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
-          <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
-          <td><img src="../master/images/checked.png" style="width: 25px"></td>
-        </tr>
+          <tr>
+            <th width="20%">&nbsp;</th>
+            <th width="20%">Docker Daemon</th>
+            <th width="20%">Docker Swarm</th>
+            <th width="20%">Kubernetes</th>
+            <th width="20%">Mesos</th>
+          </tr>
+          <tr>
+            <th>Service Repository</th>
+            <td><img src="../master/images/checked.png" style="width: 25px"></td>
+            <td><img src="../master/images/checked.png" style="width: 25px"></td>
+            <td><img src="../master/images/checked.png" style="width: 25px"></td>
+            <td><img src="../master/images/checked.png" style="width: 25px"></td>
+          </tr>
+          <tr>
+            <th>Orchestration</th>
+            <td><img src="../master/images/imac.png" style="width: 25px"></td>
+            <td>
+              <img src="../master/images/imac.png" style="width: 25px">
+              <img src="../master/images/imac.png" style="width: 25px">
+              <img src="../master/images/imac.png" style="width: 25px">
+            </td>
+            <td>
+              <img src="../master/images/imac.png" style="width: 25px">
+              <img src="../master/images/imac.png" style="width: 25px">
+              <img src="../master/images/imac.png" style="width: 25px"><br />
+              (< 100)
+            </td>
+            <td>
+              <img src="../master/images/imac.png" style="width: 25px">
+              <img src="../master/images/imac.png" style="width: 25px">
+              <img src="../master/images/imac.png" style="width: 25px">
+            </td>
+          </tr>
+          <tr>
+            <th>Scheduler</th>
+            <td>Docker Compose</td>
+            <td>Docker Compose</td>
+            <td>API Server</td>
+            <td>(Vamp+) Marathon/Chronos</td>
+          </tr>
+          <tr>
+            <th>Ressource Allocation</th>
+            <td>Docker Daemon</td>
+            <td>Swarm Master</td>
+            <td>Kublet Info Service</td>
+            <td>Mesos Master</td>
+          </tr>
+          <tr>
+            <th>Executor</th>
+            <td>Docker Daemon</td>
+            <td>Swarm Agent</td>
+            <td>Kublet</td>
+            <td>Mesos Slave</td>
+          </tr>
+          <tr>
+            <th>High Availability</th>
+            <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
+            <td><img src="../master/images/checked.png" style="width: 25px"></td>
+            <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
+            <td><img src="../master/images/checked.png" style="width: 25px"></td>
+          </tr>
+          <tr>
+            <th>Routing Definition</th>
+            <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
+            <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
+            <td><img src="../master/images/unchecked.png" style="width: 25px"></td>
+            <td><img src="../master/images/checked.png" style="width: 25px"></td>
+          </tr>
+          <tr>
+            <th>Use Cases</th>
+            <td>Web Application</td>
+            <td>Web Application</td>
+            <td>Web Application</td>
+            <td>Web Application/Big Data</td>
+          </tr>
         </tbody>
       </table>
     </article>
