@@ -1,6 +1,17 @@
-apply plugin: 'application'
+apply plugin: 'groovy'
+apply plugin: 'spring-boot'
 apply plugin: 'docker'
 apply plugin: 'pkg-debian'
+
+jar.baseName = "navigation-microservice"
+
+mainClassName = "io.github.zutherb.appstash.shop.service.navigation.Boot"
+def navigationPort = 18090
+
+applicationDefaultJvmArgs = [
+    '-Dspring.profiles.active=production',
+    "-Dserver.port=$navigationPort"
+]
 
 idea {
     module {
@@ -8,56 +19,53 @@ idea {
     }
 }
 
-mainClassName = "io.github.zutherb.appstash.shop.service.navigation.AppServer"
-
-applicationDefaultJvmArgs = [
-    "-Drestx.mode=prod",
-    "-Drestx.web-inf.location=../webapp/WEB-INF/web.xml",
-    "-Drestx.web-app.location=../webapp",
-    "-Drestx.http.XForwardedSupport=all",
-    "-Dmongo.uri=mongodb://mongodb-node",
-    "-Dmongo.db=shop",
-    "-Dlogs.base=../logs",
-]
+configurations {
+    all*.exclude group: 'org.springframework.security'
+}
 
 sourceSets {
     main {
         resources {
-            srcDir 'src/main/java'
+            srcDir 'src/main/groovy'
             srcDir 'src/main/resources'
         }
     }
     test {
         resources {
-            srcDir 'src/test/java'
+            srcDir 'src/test/groovy'
         }
     }
 }
 
 dependencies {
-    //please extract version numbers and don't forget main gradle
     compile commonDeps
+    compile springDeps
+    compile jacksonDeps
+    compile("org.springframework.data:spring-data-redis:$springDataRedisVersion")
+    compile("org.springframework.boot:spring-boot-starter-web") {
+        exclude module: "spring-boot-starter-tomcat"
+    }
+    compile("org.springframework.boot:spring-boot-starter-jetty")
+    compile("org.springframework.boot:spring-boot-starter-actuator")
+    compile("org.springframework.hateoas:spring-hateoas")
+    compile("redis.clients:jedis:$jedisVersion")
 
-    compile "io.restx:restx-core:$restxVersion"
-    compile "io.restx:restx-core-annotation-processor:$restxVersion"
-    compile "io.restx:restx-factory:$restxVersion"
-    compile "io.restx:restx-jongo:$restxVersion"
-    compile "io.restx:restx-factory-admin:$restxVersion"
-    compile "io.restx:restx-monitor-admin:$restxVersion"
-    compile "io.restx:restx-server-jetty:$restxVersion"
-    compile "io.restx:restx-apidocs:$restxVersion"
-    compile "io.restx:restx-specs-admin:$restxVersion"
+    compile("de.codecentric:spring-boot-starter-admin-client:$springBootAdminVersion")
 
-    testCompile "io.restx:restx-specs-tests:$restxVersion"
-    testCompile "io.restx:restx-jongo-specs-tests:$restxVersion"
     testCompile testDeps
 }
 
-applicationDistribution.from("src/main/webapp") {
-    into "webapp"
+def debName = "navigation"
+
+task prepareDeb {
+    dependsOn installApp
+
+    copy {
+        from "${buildDir}/install/"
+        into "${buildDir}/debian-data/usr/share/shop/"
+    }
 }
 
-def debName = "navigation"
 debian {
     packagename = "navigation-service"
     publications = ['mavenStuff']
@@ -74,15 +82,6 @@ debian {
             name = "${buildDir}/debian-data/"
             exclusions = ["**/.DS_Store"]
         }
-    }
-}
-
-task prepareDeb {
-    dependsOn installApp
-
-    copy {
-        from "${buildDir}/install/"
-        into "${buildDir}/debian-data/usr/share/shop/"
     }
 }
 
@@ -114,7 +113,5 @@ distDocker {
     tagVersion = "latest"
     tag = "zutherb/${applicationName}"
 
-    workingDir "/navigation-0.6/bin"
-
-    exposePort 18090
+    exposePort navigationPort
 }
