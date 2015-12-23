@@ -110,6 +110,14 @@
     </article>
   </slide>
 
+  <slide class="fill nobackground" style="background-image:url(../master/images/speed.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h2>Speed</h2>
+      </section>
+    </article>
+  </slide>
+
   <slide>
     <hgroup>
       <h2>Linux Packages</h2>
@@ -243,7 +251,7 @@ reprepro -b /var/packages/debian/ list shop
 
   <slide class="fill nobackground">
     <hgroup>
-      <h2>Docker-File</h2>
+      <h2>Docker File</h2>
     </hgroup>
     <article>
             <pre class="prettyprint" data-lang="bash">
@@ -268,7 +276,7 @@ ENTRYPOINT ["/product-0.6/bin/product"]
 
   <slide class="fill nobackground">
     <hgroup>
-      <h2>Docker-Workflow</h2>
+      <h2>Docker Workflow</h2>
     </hgroup>
     <article>
             <pre class="prettyprint" data-lang="bash">
@@ -391,12 +399,40 @@ catalog:
       </table>
     </article>
     <aside class="note">
-      <section>
-        <ul>
-          <li>Microsoft integrated Kubernetes in azure</li>
-          <li>Security Hole in Container can compromise host-system</li>
-        </ul>
+      <ul>
+        <li>Microsoft integrated Kubernetes in azure</li>
+        <li>Security Hole in Container can compromise host-system</li>
+      </ul>
+    </aside>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/postit.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>Distributed System - Requirements</h1>
       </section>
+    </article>
+    <aside class="note">
+    </aside>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/minion.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>Autonomous Worker </h1>
+      </section>
+    </article>
+    <aside class="note">
+    </aside>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/controlplane.jpg);">
+    <article class="flexbox vcenter">
+      <section class="textbox">
+        <h1>Control Plane</h1>
+      </section>
+    </article>
+    <aside class="note">
     </aside>
   </slide>
 
@@ -439,11 +475,11 @@ catalog:
         </tr>
         <tr>
           <td>You needn't care about dependencies</td>
-          <td>Master is a single point of failure</td>
+          <td>Few tools and documentation is avaiable yet</td>
         </tr>
         <tr>
           <td>Service discovery</td>
-          <td>Few tools and documentation is avaiable yet</td>
+          <td>&nbsp;</td>
         </tr>
         <tr>
           <td>Process Supervisor</td>
@@ -562,6 +598,39 @@ spec:
     </article>
     <aside class="gdbar bottom"><img src="../master/images/youtube.png"></aside>
   </slide>
+
+  <slide class="fill nobackground" style="background-image:url(../master/images/light_at_the_end_of_the_tunnel.jpg);">
+    <hgroup>
+      <h2>Kubernetes</h2>
+    </hgroup>
+    <article>
+      <table style="font-size: 0.8em; background-color: #ffffff">
+        <tbody>
+        <tr>
+          <th width="50%">Pro</th>
+          <th width="50%">Contra</th>
+        </tr>
+        <tr>
+          <td>You needn't care where work is executed</td>
+          <td>No description of the whole application</td>
+        </tr>
+        <tr>
+          <td>You needn't care about dependencies</td>
+          <td>Failure analysis will get harder</td>
+        </tr>
+        <tr>
+          <td>Service discovery</td>
+          <td>Master is a single point of failure</td>
+        </tr>
+        <tr>
+          <td>Process Supervisor</td>
+          <td>Routing must be implemented by hand</td>
+        </tr>
+        </tbody>
+      </table>
+    </article>
+  </slide>
+
 
   <slide>
     <hgroup>
@@ -695,7 +764,7 @@ curl -X POST http://10.141.141.10:8080/v2/apps -d @basic-3.json \
       <h2>Summary</h2>
     </hgroup>
     <article>
-      <table style="font-size: 0.8em; background-color: #ffffff" class="summary">
+      <table style="font-size: 0.7em; background-color: #ffffff" class="summary">
         <tbody>
           <tr>
             <th width="20%">&nbsp;</th>
@@ -771,7 +840,7 @@ curl -X POST http://10.141.141.10:8080/v2/apps -d @basic-3.json \
             <td>Web Application</td>
             <td>Web Application</td>
             <td>Web Application</td>
-            <td>Web Application/Big Data</td>
+            <td>Web Application/<br />Big Data</td>
           </tr>
         </tbody>
       </table>
@@ -832,6 +901,11 @@ curl -X POST http://10.141.141.10:8080/v2/apps -d @basic-3.json \
             </a>
           </li>
           <li>
+            <a href="https://blog.codecentric.de/2015/12/in-10-minuten-zum-kubernetes-cluster-auf-aws/">
+              In 10 Minuten zum Kubernetes Cluster auf AWS
+            </a>
+          </li>
+          <li>
             <a href="https://blog.codecentric.de/2015/05/microservice-deployment-ganz-einfach-mit-docker-compose/">
               Microservice-Deployment ganz einfach mit Docker Compose
             </a>
@@ -845,18 +919,6 @@ curl -X POST http://10.141.141.10:8080/v2/apps -d @basic-3.json \
             <a href="https://blog.codecentric.de/2015/10/canary-release-mit-der-awesome-microservices-platform-vamp/">
               Canary Release mit der Very Awesome Microservices Platform
             </a>
-          </li>
-          <li>
-            <a href="http://theleanstartup.com/principles">Lean Startup</a>
-          </li>
-          <li>
-            <a href="http://oanasagile.blogspot.de/2012/11/test-driven-business-featuring-lean.html">Test Driven Business Featuring Lean StartUp</a>
-          </li>
-          <li>
-            <a href="http://www.heise.de/developer/artikel/Continuous-Delivery-mit-dem-FeatureToggle-Pattern-1825477.html">Continuous Delivery mit dem FeatureToggle Pattern</a>
-          </li>
-          <li>
-            <a href="http://martinfowler.com/bliki/FeatureToggle.html">FeatureToggle</a>
           </li>
           <li>
             <a href="http://www.voxxed.com/blog/2015/01/good-microservices-architectures-death-enterprise-service-bus-part-one">Do Good Microservices Architectures Spell the Death of the Enterprise Service Bus?</a>
@@ -877,27 +939,10 @@ curl -X POST http://10.141.141.10:8080/v2/apps -d @basic-3.json \
       <section>
         <ul>
           <li>
-            <a href="http://12factor.net/">The Twelve Factors</a>
-          </li>
-           <li>
-            <a href="http://www.heise.de/developer/artikel/Microservices-im-Zusammenspiel-mit-Continuous-Delivery-Teil-1-die-Theorie-2376386.html">
-              Microservices im Zusammenspiel mit Continuous Delivery, Teil 1 – die Theorie
-            </a>
-          </li>
-          <li>
-            <a href="http://www.fig.sh/">Fast, isolated development environments using Docker</a>
-          </li>
-          <li>
-            <a href="http://blog.ralfw.de/2014/08/warnung-vor-dem-microservice-versuch.html">Warnung vor dem Microservice – Versuch einer Definition</a>
-          </li>
-          <li>
-            <a href="http://jaxenter.de/artikel/nie-wieder-monolithen-176652">Micro Services in der Praxis: Nie wieder Monolithen!</a>
+            <a href="https://docs.docker.com/compose/">Fast, isolated development environments using Docker</a>
           </li>
           <li>
             <a href="http://bernd-zuther.de/deployment-ganz-einfach/">Deployment ganz einfach – Microservice Deployment mit Hilfe der Linux Paketverwaltung</a>
-          </li>
-          <li>
-            <a href="https://bernd-zuther.de/splunk-marke-eigenbau-mit-elasticsearch-logstash-und-kibana/">Splunk – Marke Eigenbau mit Elasticsearch, Logstash und Kibana (ELK Stack)</a>
           </li>
           <li>
             <a href="http://www.infoq.com/articles/scaling-docker-with-kubernetes">Scaling Docker with Kubernetes</a>
