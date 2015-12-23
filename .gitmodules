@@ -1,6 +1,3 @@
 [submodule "kubernetes/vagrant"]
 	path = kubernetes/vagrant
 	url = https://github.com/pires/kubernetes-vagrant-coreos-cluster.git
-[submodule "vamp/ui"]
-	path = vamp/ui
-	url = https://github.com/magneticio/vamp-ui.git
