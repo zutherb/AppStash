@@ -80,6 +80,7 @@ Title | Language
 [Microservice-Deployment ganz einfach mit Docker Compose](https://blog.codecentric.de/2015/05/microservice-deployment-ganz-einfach-mit-docker-compose/) | German
 [Microservice-Deployment ganz einfach ohne Docker mit der Linux-Paketverwaltung](https://blog.codecentric.de/2015/05/microservice-deployment-ganz-einfach-ohne-docker-mit-der-linux-paketverwaltung/) | German
 [Canary-Releases mit der Very Awesome Microservices Platform (Vamp)](https://blog.codecentric.de/2015/10/canary-release-mit-der-awesome-microservices-platform-vamp/) | German
+[In 10 Minuten zum Kubernetes Cluster auf AWS](https://blog.codecentric.de/2015/12/in-10-minuten-zum-kubernetes-cluster-auf-aws/) | German
 
 ## Directory Layout
 
