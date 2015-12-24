@@ -32,7 +32,7 @@ server {
   }
 
   location /api/navigation/ {
-      rewrite /api/navigation/(.*) /api/$1  break;
+      rewrite /api/navigation/(.*) /$1  break;
 
       proxy_set_header Host $host;
       proxy_set_header X-Real-IP $remote_addr;

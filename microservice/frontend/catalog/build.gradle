@@ -101,7 +101,7 @@ task packageToContainer(type: Docker) {
   dependsOn clean
   dependsOn grunt_docker
 
-  applicationName = 'monolithic-shop'
+  applicationName = 'catalog-frontend'
   tagVersion = "latest"
   tag = "zutherb/catalog-frontend"
 
