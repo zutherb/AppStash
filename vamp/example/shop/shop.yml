@@ -76,7 +76,7 @@ clusters:
     services:
       breed:
         name: navigation
-        deployable: magneticio/navigation-service:latest
+        deployable: zutherb/navigation-service:latest
         ports:
           port: 18090/http
         environment_variables:
@@ -84,8 +84,6 @@ clusters:
           MONGODB_PORT_27017_TCP_PORT: $mongodb.ports.port          
         dependencies:
           mongodb: mongodb
-      marathon:
-       cmd: "export PORT=18090 && /navigation-0.6/bin/navigation"
       scale:
         instances: 1
         cpu: 0.3
