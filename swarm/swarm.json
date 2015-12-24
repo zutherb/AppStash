@@ -18,7 +18,8 @@
       "links": [
         {
           "component": "database-service",
-          "target_port": "8003/tcp"
+          "target_port": "8003/tcp",
+          "alias": "redis"
         }
       ]
     },
@@ -41,25 +42,29 @@
       ],
       "domains": {
         "80/tcp": [
-          "shop-zutherb.gigantic.io"
+          "shop-$GIANTSWARM_LOGIN_NAME.gigantic.io"
         ]
       },
       "links": [
         {
           "component": "product-service",
-          "target_port": "8006/tcp"
+          "target_port": "8006/tcp",
+          "alias": "product"
         },
         {
           "component": "navigation-service",
-          "target_port": "8007/tcp"
+          "target_port": "8007/tcp",
+          "alias": "navigation"
         },
         {
           "component": "cart-service",
-          "target_port": "8008/tcp"
+          "target_port": "8008/tcp",
+          "alias": "cart"
         },
         {
           "component": "checkout-service",
-          "target_port": "8004/tcp"
+          "target_port": "8004/tcp",
+          "alias": "shop"
         }
       ]
     },
@@ -85,11 +90,13 @@
       "links": [
         {
           "component": "cart-service",
-          "target_port": "8008/tcp"
+          "target_port": "8008/tcp",
+          "alias": "cart"
         },
         {
           "component": "database-service",
-          "target_port": "8002/tcp"
+          "target_port": "8001/tcp",
+          "alias": "mongodb"
         }
       ]
     },
@@ -142,7 +149,8 @@
       "links": [
         {
           "component": "database-service",
-          "target_port": "8002/tcp"
+          "target_port": "8001/tcp",
+          "alias": "mongodb"
         }
       ]
     },
@@ -163,7 +171,8 @@
       "links": [
         {
           "component": "database-service",
-          "target_port": "8002/tcp"
+          "target_port": "8002/tcp",
+          "alias": "mongodb"
         }
       ]
     }
