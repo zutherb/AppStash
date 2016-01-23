@@ -1,8 +1,8 @@
 ---
 name: shop:1.0
 
-endpoints:
-  catalog.port: 9050
+gateways:
+  9050/http: catalog/port
 
 clusters:
 
@@ -31,9 +31,7 @@ clusters:
       scale:
         instances: 1
         cpu: 0.3
-        memory: 128
-      routing:
-        weight: 100
+        memory: 128MB
 
   checkout:
     services:
@@ -53,7 +51,7 @@ clusters:
       scale:
         instances: 1
         cpu: 0.5
-        memory: 512
+        memory: 512MB
 
   product:
     services:
@@ -70,7 +68,7 @@ clusters:
       scale:
         instances: 1
         cpu: 0.3
-        memory: 128
+        memory: 128MB
 
   navigation:
     services:
@@ -87,7 +85,7 @@ clusters:
       scale:
         instances: 1
         cpu: 0.3
-        memory: 128
+        memory: 128MB
 
   cart:
     services:
@@ -104,7 +102,7 @@ clusters:
       scale:
         instances: 1
         cpu: 0.3
-        memory: 128
+        memory: 128MB
 
   redis:
     services:
@@ -116,7 +114,7 @@ clusters:
       scale:
         instances: 1
         cpu: 0.3
-        memory: 256
+        memory: 256MB
 
   mongodb:
     services:
@@ -130,4 +128,4 @@ clusters:
       scale:
         instances: 1
         cpu: 0.3
-        memory: 256
+        memory: 256MB

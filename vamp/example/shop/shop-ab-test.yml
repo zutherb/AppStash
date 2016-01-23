@@ -1,12 +1,21 @@
 ---
 name: shop:1.0
 
-endpoints:
-  catalog.port: 9050
+gateways:
+  9050/http: catalog/port
 
 clusters:
 
   catalog:
+    routing:
+        sticky: instance
+        routes:
+          catalog:
+            weight: 100%
+          catalogWithAlternativeCheckoutDesign:
+            weight: 0%
+            filters:
+              - condition: User-Agent = Chrome
     services:
       -
         breed:
@@ -31,10 +40,8 @@ clusters:
             checkout: checkout
         scale:
           instances: 1
-          cpu: 0.1
-          memory: 128
-        routing:
-          weight: 100
+          cpu: 0.3
+          memory: 128MB
       -
         breed:
           name: catalogWithAlternativeCheckoutDesign
@@ -58,11 +65,7 @@ clusters:
         scale:
           instances: 1
           cpu: 0.3
-          memory: 128
-        routing:
-          weight: 0
-          filters:
-          - condition: User-Agent = Chrome
+          memory: 128MB
 
   checkout:
     services:
@@ -82,7 +85,7 @@ clusters:
       scale:
         instances: 1
         cpu: 0.5
-        memory: 512
+        memory: 512MB
 
   product:
     services:
@@ -98,14 +101,14 @@ clusters:
           mongodb: mongodb
       scale:
         instances: 1
-        cpu: 0.1
-        memory: 128
+        cpu: 0.3
+        memory: 128MB
 
   navigation:
     services:
       breed:
         name: navigation
-        deployable: magneticio/navigation-service:latest
+        deployable: zutherb/navigation-service:latest
         ports:
           port: 18090/http
         environment_variables:
@@ -113,12 +116,10 @@ clusters:
           MONGODB_PORT_27017_TCP_PORT: $mongodb.ports.port          
         dependencies:
           mongodb: mongodb
-      marathon:
-       cmd: "export PORT=18090 && /navigation-0.6/bin/navigation"
       scale:
         instances: 1
-        cpu: 0.1
-        memory: 128
+        cpu: 0.3
+        memory: 128MB
 
   cart:
     services:
@@ -134,8 +135,8 @@ clusters:
           redis: redis
       scale:
         instances: 1
-        cpu: 0.1
-        memory: 128
+        cpu: 0.3
+        memory: 128MB
 
   redis:
     services:
@@ -146,8 +147,8 @@ clusters:
           port: 6379/tcp
       scale:
         instances: 1
-        cpu: 0.1
-        memory: 256
+        cpu: 0.3
+        memory: 256MB
 
   mongodb:
     services:
@@ -160,5 +161,5 @@ clusters:
         cmd: "mongod --smallfiles"
       scale:
         instances: 1
-        cpu: 0.1
-        memory: 256
+        cpu: 0.3
+        memory: 256MB
