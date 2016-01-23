@@ -3,7 +3,7 @@ kind: ReplicationController
 metadata:
   name: navigation
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     name: navigation
   template:
