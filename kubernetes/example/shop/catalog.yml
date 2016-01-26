@@ -11,6 +11,7 @@ spec:
       labels:
         name: catalog
         role: frontend
+        app: catalog
       name: catalog
     spec:
       containers:
@@ -18,7 +19,6 @@ spec:
           image: zutherb/catalog-frontend
           ports:
             - containerPort: 80
-              hostPort: 80
           env:
             - name: CHECKOUT_DESIGN
               value: "standard"

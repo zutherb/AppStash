@@ -1,3 +1,0 @@
-[submodule "kubernetes/vagrant"]
-	path = kubernetes/vagrant
-	url = https://github.com/pires/kubernetes-vagrant-coreos-cluster.git
