@@ -69,6 +69,7 @@ Date       | Event                         | Title
 06.10.2015 | [Java Forum Nord](http://www.java-forum-nord.de/) | [Microservices und die Jagd nach mehr Konversion](http://zutherb.github.io/AppStash/slides/13_java_forum_nord)
 29.10.2015 | [JavaOne](https://www.oracle.com/javaone/index.html) | [Microservices and Conversion Hunting: Build Architectures for Changeability](http://zutherb.github.io/AppStash/slides/14_javaone)
 03.11.2015 | [W-Jax](https://jax.de/wjax2015/) | [Von Null auf Hundert mit Microservices](http://zutherb.github.io/AppStash/slides/15_wjax)
+28.01.2016 | [DevOps Karlsruhe Meetup](http://www.meetup.com/de-DE/DevOps-Karlsruhe-Meetup/) | [Von Null auf Hundert mit Microservices](http://zutherb.github.io/AppStash/slides/16_karlsruhe)
 
 ## Articles
 
