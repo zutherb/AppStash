@@ -152,6 +152,17 @@
 
   <slide>
     <hgroup>
+      <h2>Canary Release</h2>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <section>
+        <img src="../master/images/canary_release.svg" type="image/svg+xml" style="height: 450px; width: 100%" />
+      </section>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
       <h2>Linux Packages</h2>
     </hgroup>
     <article >
@@ -378,7 +389,7 @@ MONGODB_PORT_27017_TCP_PROTO=tcp</pre>
     <article >
       <pre class="prettyprint" data-lang="yaml">
 redis:
-  image: dockerfile/redis
+  image: redis
   ports:
     - "6379:6379"
 cart:
@@ -503,7 +514,7 @@ catalog:
         </tr>
         <tr>
           <td>Description of the whole application</td>
-          <td>Routing must be implemented by hand</td>
+          <td>No Service discovery (Hosted Discovery is not recommended for production use)</td>
         </tr>
         <tr>
           <td>You needn't care where work is executed</td>
@@ -511,11 +522,7 @@ catalog:
         </tr>
         <tr>
           <td>You needn't care about dependencies</td>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td>Service discovery</td>
-          <td>&nbsp;</td>
+          <td>Routing must be implemented by hand</td>
         </tr>
         </tbody>
       </table>
@@ -663,17 +670,6 @@ spec:
     </article>
   </slide>
 
-
-  <slide>
-    <hgroup>
-      <h2>Canary Release</h2>
-    </hgroup>
-    <article class="flexbox vcenter">
-      <section>
-        <img src="../master/images/canary_release.svg" type="image/svg+xml" style="height: 450px; width: 100%" />
-      </section>
-    </article>
-  </slide>
 
   <slide>
     <hgroup>
@@ -834,21 +830,21 @@ curl -X POST http://10.141.141.10:8080/v2/apps -d @basic-3.json \
           </tr>
           <tr>
             <th>Scheduler</th>
-            <td>Docker Compose</td>
+            <td>-</td>
             <td>Docker Compose</td>
             <td>API Server</td>
             <td>(Vamp+) Marathon/Chronos</td>
           </tr>
           <tr>
             <th>Ressource Allocation</th>
-            <td>Docker Daemon</td>
+            <td>-</td>
             <td>Swarm Master</td>
             <td>Kublet Info Service</td>
             <td>Mesos Master</td>
           </tr>
           <tr>
             <th>Executor</th>
-            <td>Docker Daemon</td>
+            <td>-</td>
             <td>Swarm Agent</td>
             <td>Kublet</td>
             <td>Mesos Slave</td>
@@ -869,10 +865,18 @@ curl -X POST http://10.141.141.10:8080/v2/apps -d @basic-3.json \
           </tr>
           <tr>
             <th>Use Cases</th>
-            <td>Web Application</td>
-            <td>Web Application</td>
-            <td>Web Application</td>
-            <td>Web Application/<br />Big Data</td>
+            <td>
+                Single Application<br />
+                Microservice Application<br />
+                Web Application
+            </td>
+            <td>Distributed Microservice Application</td>
+            <td>Distributed Microservice Application</td>
+            <td>
+                Distributed Microservice Application<br />
+                Big Data<br />
+                Kubernetes / Docker Swarm
+            </td>
           </tr>
         </tbody>
       </table>
