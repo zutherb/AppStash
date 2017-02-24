@@ -2,7 +2,7 @@ kind: Service
 apiVersion: v1
 metadata:
   labels:
-      name: catalog-b
+      name: catalog
       role: backend
   name: catalog
 spec:
